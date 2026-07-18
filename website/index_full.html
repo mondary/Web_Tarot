@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tarot Divinatoire — Diaporama</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#050505;
+  --bg-2:#0a0907;
+  --fg:#f1ede4;
+  --muted:#8a8378;
+  --line:rgba(241,237,228,.08);
+  --ease:cubic-bezier(.16,1,.3,1);
+  --accent:#c9a227;
+  --mat:#ffffff;
+  --mat-line:rgba(255,255,255,.22);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{height:100%}
+body{
+  background:var(--bg);
+  color:var(--fg);
+  font-family:'Plus Jakarta Sans',sans-serif;
+  overflow:hidden;
+  -webkit-font-smoothing:antialiased;
+}
+img{display:block;max-width:100%}
+button{font-family:inherit;color:inherit;background:none;border:none;cursor:pointer}
+a{color:inherit;text-decoration:none}
+
+/* ---------- Grain + vignette ---------- */
+.fx-grain{
+  position:fixed;inset:0;z-index:9000;pointer-events:none;opacity:.035;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+.fx-vignette{
+  position:fixed;inset:0;z-index:8990;pointer-events:none;
+  background:radial-gradient(120% 100% at 50% 50%,transparent 55%,rgba(0,0,0,.55) 100%);
+}
+
+/* ---------- View system ---------- */
+.view{position:fixed;inset:0;z-index:10;opacity:0;visibility:hidden;transition:opacity .6s var(--ease),visibility .6s}
+.view.active{opacity:1;visibility:visible;z-index:20}
+
+/* ---------- Brand mark ---------- */
+.brand{
+  position:fixed;top:1.8rem;left:2.2rem;z-index:200;font-family:'DM Mono',monospace;
+  font-size:.7rem;letter-spacing:.32em;text-transform:uppercase;color:var(--muted);
+}
+.brand b{color:var(--fg);font-weight:400}
+
+/* =====================================================
+   LANDING — horizontal carousel
+   ===================================================== */
+#view-landing{display:flex;align-items:center}
+.carousel{
+  display:flex;align-items:center;height:100vh;width:100%;
+  overflow-x:auto;overflow-y:hidden;
+  scroll-snap-type:x mandatory;scroll-behavior:smooth;
+  scrollbar-width:none;-ms-overflow-style:none;
+  padding:0 8vw 0 0;
+}
+.carousel::-webkit-scrollbar{display:none}
+
+/* Title block — first scroll item, scrolls WITH the cards */
+.title-block{
+  flex:0 0 58vw;height:100vh;display:flex;flex-direction:column;justify-content:center;
+  padding:0 4vw 0 8vw;scroll-snap-align:start;position:relative;will-change:transform,opacity;
+  transform-origin:left center;
+}
+.title-block .overline{
+  font-family:'DM Mono',monospace;font-size:.72rem;letter-spacing:.34em;
+  text-transform:uppercase;color:var(--muted);margin-bottom:2.4rem;
+  display:flex;align-items:center;gap:1rem;
+}
+.title-block .overline::before{content:'';width:46px;height:1px;background:var(--muted)}
+.title-block h1{
+  font-family:'Cormorant Garamond',serif;font-weight:300;
+  font-size:clamp(4rem,11vw,11.5rem);line-height:.86;letter-spacing:-.02em;
+  text-transform:uppercase;
+}
+.title-block h1 em{font-style:italic;font-weight:400;color:var(--accent)}
+.title-block .lede{
+  margin-top:2.6rem;max-width:30rem;font-size:1.05rem;line-height:1.7;color:var(--muted);font-weight:300;
+}
+.title-block .stats{
+  margin-top:3rem;display:flex;gap:2.6rem;font-family:'DM Mono',monospace;
+  font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);
+}
+.title-block .stats b{display:block;color:var(--fg);font-family:'Cormorant Garamond',serif;
+  font-size:2rem;letter-spacing:0;text-transform:none;font-weight:400;margin-bottom:.2rem}
+
+/* scroll hint */
+.hint{
+  position:fixed;bottom:2rem;left:50%;transform:translateX(-50%);z-index:50;
+  font-family:'DM Mono',monospace;font-size:.66rem;letter-spacing:.3em;text-transform:uppercase;
+  color:var(--muted);display:flex;align-items:center;gap:.8rem;transition:opacity .5s;
+}
+.hint .line{width:34px;height:1px;background:var(--muted);position:relative;overflow:hidden}
+.hint .line::after{content:'';position:absolute;inset:0;background:var(--fg);
+  transform:translateX(-100%);animation:slide 2.2s var(--ease) infinite}
+@keyframes slide{0%{transform:translateX(-100%)}55%,100%{transform:translateX(100%)}}
+
+/* progress rail */
+.rail{position:fixed;bottom:0;left:0;right:0;height:2px;background:rgba(241,237,228,.05);z-index:60}
+.rail span{display:block;height:100%;width:0;background:var(--fg);transition:width .15s linear}
+
+/* ---------- Family entry card ---------- */
+.entry{
+  flex:0 0 22vw;min-width:300px;max-width:380px;height:72vh;
+  scroll-snap-align:center;position:relative;border-radius:1.4rem;overflow:hidden;
+  background:var(--mat);border:1px solid var(--mat-line);
+  display:flex;flex-direction:column;
+  box-shadow:0 24px 60px rgba(0,0,0,.45);
+  transition:transform .7s var(--ease),border-color .5s,box-shadow .6s;
+  will-change:transform;
+}
+.entry:hover{transform:translateY(-10px);border-color:rgba(255,255,255,.45);box-shadow:0 34px 80px rgba(0,0,0,.6)}
+.entry .img-wrap{flex:1;display:flex;align-items:center;justify-content:center;padding:1.3rem;min-height:0;position:relative}
+.entry .img-wrap img{height:100%;width:auto;max-width:100%;object-fit:contain;transition:transform .9s var(--ease)}
+.entry:hover .img-wrap img{transform:scale(1.04)}
+.entry .meta{
+  padding:1.05rem 1.4rem 1.25rem;display:flex;align-items:flex-end;justify-content:space-between;gap:1rem;
+  border-top:1px solid rgba(0,0,0,.06);background:var(--mat);
+}
+.entry .meta .lbl{font-family:'DM Mono',monospace;font-size:.64rem;letter-spacing:.26em;
+  text-transform:uppercase;color:var(--ac,#c9a227);margin-bottom:.45rem;display:block}
+.entry .meta .fam{font-family:'Cormorant Garamond',serif;font-size:1.65rem;line-height:1;font-weight:500;color:#1c1814}
+.entry .meta .sub{font-size:.76rem;color:#8a8378;margin-top:.4rem;letter-spacing:.04em}
+.entry .go{
+  flex:0 0 auto;width:38px;height:38px;border-radius:50%;border:1px solid rgba(0,0,0,.12);
+  display:grid;place-items:center;transition:.4s var(--ease);color:#1c1814;background:rgba(0,0,0,.02);
+}
+.entry:hover .go{background:var(--ac,#c9a227);border-color:transparent;color:#fff;transform:rotate(-45deg)}
+.entry .go svg{width:14px;height:14px}
+.entry .num{
+  position:absolute;top:1rem;right:1.1rem;z-index:2;font-family:'DM Mono',monospace;
+  font-size:.64rem;letter-spacing:.2em;color:#a59c8e;
+}
+
+/* =====================================================
+   GRID view
+   ===================================================== */
+#view-grid{display:flex;flex-direction:column}
+.grid-head{
+  display:flex;align-items:flex-end;justify-content:space-between;
+  padding:5.5rem 4vw 1.8rem;gap:2rem;flex-wrap:wrap;
+}
+.grid-head .left .crumb{font-family:'DM Mono',monospace;font-size:.7rem;letter-spacing:.28em;
+  text-transform:uppercase;color:var(--muted);margin-bottom:1rem;display:flex;gap:.7rem;align-items:center}
+.grid-head .left .crumb .ac-dot{width:8px;height:8px;border-radius:50%;background:var(--ac)}
+.grid-head h2{font-family:'Cormorant Garamond',serif;font-weight:300;
+  font-size:clamp(2.6rem,6vw,5rem);line-height:.9;text-transform:uppercase;letter-spacing:-.01em}
+.grid-head h2 em{font-style:italic;color:var(--ac);font-weight:400}
+.grid-head .right{text-align:right;font-family:'DM Mono',monospace;font-size:.72rem;
+  letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
+.grid-head .right b{display:block;font-family:'Cormorant Garamond',serif;font-size:2.4rem;
+  color:var(--fg);letter-spacing:0;text-transform:none;font-weight:400}
+
+/* family band : horizontal carousel of families (swipe + buttons) */
+.family-band{
+  flex:1;display:flex;overflow-x:auto;overflow-y:hidden;
+  scroll-snap-type:x mandatory;scroll-behavior:smooth;
+  scrollbar-width:none;-ms-overflow-style:none;
+}
+.family-band::-webkit-scrollbar{display:none}
+.family-pane{
+  flex:0 0 100vw;min-width:100vw;height:100%;overflow-y:auto;overflow-x:hidden;
+  scroll-snap-align:start;scroll-snap-stop:always;padding:1rem 4vw 7rem;
+}
+.family-pane::-webkit-scrollbar{width:6px}
+.family-pane::-webkit-scrollbar-thumb{background:rgba(241,237,228,.12);border-radius:3px}
+.grid{
+  display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:1.2rem;
+}
+
+/* family step buttons (desktop) */
+.fam-step{
+  position:fixed;top:50%;transform:translateY(-50%);z-index:150;width:48px;height:48px;border-radius:50%;
+  border:1px solid var(--line);display:grid;place-items:center;color:var(--muted);
+  background:rgba(10,9,7,.5);backdrop-filter:blur(8px);transition:.4s var(--ease)
+}
+.fam-step:hover{color:var(--fg);border-color:var(--ac);background:rgba(241,237,228,.06)}
+.fam-step.prev{left:1.2rem}.fam-step.next{right:1.2rem}
+.fam-step svg{width:18px;height:18px}
+.fam-step[hidden]{display:none}
+
+/* family dots indicator */
+.fam-dots{position:fixed;bottom:1.2rem;left:50%;transform:translateX(-50%);z-index:150;
+  display:flex;gap:.6rem;align-items:center;padding:.5rem 1rem;
+  background:rgba(10,9,7,.6);backdrop-filter:blur(10px);border:1px solid var(--line);border-radius:50px}
+.fam-dots button{width:7px;height:7px;border-radius:50%;background:rgba(241,237,228,.2);transition:.4s var(--ease);padding:0}
+.fam-dots button.active{width:22px;border-radius:50px;background:var(--ac)}
+.fam-dots[hidden]{display:none}
+.mini{
+  position:relative;border-radius:.9rem;overflow:hidden;background:var(--mat);
+  border:1px solid var(--mat-line);cursor:pointer;transition:.5s var(--ease);
+  display:flex;flex-direction:column;box-shadow:0 10px 28px rgba(0,0,0,.35);
+}
+.mini:hover{transform:translateY(-6px);border-color:var(--ac);box-shadow:0 16px 40px rgba(0,0,0,.5)}
+.mini .ph{aspect-ratio:2/3;display:flex;align-items:center;justify-content:center;padding:.5rem;position:relative}
+.mini .ph img{height:100%;object-fit:contain;transition:transform .6s var(--ease)}
+.mini:hover .ph img{transform:scale(1.05)}
+.mini .cap{padding:.6rem .75rem .7rem;border-top:1px solid rgba(0,0,0,.06);
+  font-size:.78rem;display:flex;justify-content:space-between;align-items:center;gap:.5rem;background:var(--mat)}
+.mini .cap .nm{font-family:'Cormorant Garamond',serif;font-size:1.02rem;line-height:1.1;font-weight:500;color:#1c1814;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.mini .cap .no{font-family:'DM Mono',monospace;font-size:.62rem;color:#a59c8e;letter-spacing:.1em;flex:0 0 auto}
+
+/* =====================================================
+   DETAIL view — fullscreen diaporama (hero collapses on scroll)
+   ===================================================== */
+#view-detail{overflow:hidden;background:#000}
+.d-stage{position:absolute;inset:0;overflow-y:auto;overflow-x:hidden;-webkit-overflow-scrolling:touch;scrollbar-width:thin;scrollbar-color:rgba(241,237,228,.25) transparent}
+.d-stage::-webkit-scrollbar{width:8px}
+.d-stage::-webkit-scrollbar-thumb{background:rgba(241,237,228,.22);border-radius:4px}
+
+/* hero : sticky at top, gets covered by panel on scroll */
+.d-hero{position:sticky;top:0;height:64vh;min-height:380px;display:flex;align-items:flex-end;justify-content:center;
+  background:radial-gradient(120% 90% at 50% 30%,#15130f 0%,#050505 70%);z-index:0;overflow:hidden}
+.d-hero-img{height:60vh;max-height:560px;width:auto;object-fit:contain;padding:2rem 1rem 0;
+  background:var(--mat);border:1px solid var(--mat-line);border-bottom:none;border-radius:.6rem .6rem 0 0;
+  box-shadow:0 30px 80px rgba(0,0,0,.7);transition:opacity .4s var(--ease)}
+.d-hero::after{content:'';position:absolute;left:0;right:0;bottom:0;height:34%;
+  background:linear-gradient(to bottom,transparent 0%,rgba(10,10,10,.65) 55%,#0a0a0a 100%);pointer-events:none;z-index:1}
+
+/* panel : slides over the hero, scrolls naturally */
+.d-panel{position:relative;z-index:2;background:#0a0a0a;color:var(--fg);
+  margin-top:-28px;border-radius:26px 26px 0 0;padding:34px 8% 120px;min-height:60vh}
+.d-panel-inner{max-width:46rem;margin:0 auto}
+
+.d-meta{font-family:'DM Mono',monospace;font-size:.7rem;letter-spacing:.26em;text-transform:uppercase;color:var(--muted);
+  margin-bottom:14px;display:flex;gap:.8rem;align-items:center;flex-wrap:wrap}
+.d-meta b{color:var(--ac);font-weight:400}
+.d-meta .sep{opacity:.4}
+.d-title{font-family:'Cormorant Garamond',serif;font-weight:300;
+  font-size:clamp(2.4rem,5.5vw,4.6rem);line-height:1;text-transform:uppercase;letter-spacing:-.01em;margin:0 0 22px}
+.d-title em{font-style:italic;color:var(--ac);font-weight:400;text-shadow:0 0 28px rgba(255,255,255,.12)}
+
+/* section pills nav — sticky inside the panel */
+.d-nav{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:2.4rem;position:sticky;top:.6rem;z-index:6;
+  padding:.6rem;background:rgba(10,10,10,.7);backdrop-filter:blur(12px);border:1px solid var(--line);border-radius:60px;width:fit-content;max-width:100%}
+.d-nav button{font-family:'DM Mono',monospace;font-size:.64rem;letter-spacing:.14em;text-transform:uppercase;
+  padding:.5rem .9rem;border-radius:50px;color:var(--muted);transition:.3s;border:1px solid transparent;white-space:nowrap}
+.d-nav button:hover{color:var(--fg)}
+.d-nav button.active{color:#050505;background:var(--ac)}
+
+/* prose (rendered markdown) */
+.prose section{margin-bottom:2.4rem;scroll-margin-top:7rem}
+.prose h2{font-family:'Cormorant Garamond',serif;font-weight:400;font-size:1.7rem;
+  margin-bottom:.9rem;display:flex;align-items:center;gap:.8rem}
+.prose h2::before{content:'';width:24px;height:1px;background:var(--ac)}
+.prose h3{font-family:'DM Mono',monospace;font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--muted);margin:1.4rem 0 .7rem}
+.prose p{font-size:1.02rem;line-height:1.85;color:#d8d2c5;font-weight:300;margin-bottom:.9rem}
+.prose p.field{margin-bottom:.5rem;display:flex;gap:.6rem;flex-wrap:wrap;font-size:.92rem;color:#bdb5a6}
+.prose p.field strong{color:var(--ac);font-family:'DM Mono',monospace;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;font-weight:400;margin:0}
+.prose strong{color:var(--fg);font-weight:500}
+.prose ul{list-style:none;margin:.6rem 0 1.2rem}
+.prose li{position:relative;padding-left:1.4rem;margin-bottom:.5rem;font-size:.98rem;line-height:1.7;color:#cfc8ba;font-weight:300}
+.prose li::before{content:'';position:absolute;left:0;top:.65rem;width:6px;height:6px;border-radius:50%;background:var(--ac)}
+.prose blockquote{margin:1.6rem 0;padding:1.2rem 1.6rem;border-left:3px solid var(--ac);
+  background:rgba(241,237,228,.04);border-radius:0 .6rem .6rem 0;
+  font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.2rem;line-height:1.6;color:var(--fg)}
+.prose blockquote p{color:var(--fg);font-family:inherit;font-style:italic;font-size:inherit;margin:0}
+.prose hr{border:none;height:1px;background:var(--line);margin:2.4rem 0}
+
+/* family thumbnails strip */
+.d-thumbs{display:flex;gap:8px;overflow-x:auto;padding:1.4rem 0 4px;margin-top:2.6rem;
+  scrollbar-width:thin;scrollbar-color:rgba(241,237,228,.25) transparent}
+.d-thumbs::-webkit-scrollbar{height:6px}
+.d-thumbs::-webkit-scrollbar-thumb{background:rgba(241,237,228,.22);border-radius:3px}
+.d-thumb{flex:0 0 auto;width:60px;aspect-ratio:2/3;border-radius:6px;overflow:hidden;background:var(--mat);
+  border:2px solid transparent;cursor:pointer;transition:.3s var(--ease);padding:3px}
+.d-thumb img{width:100%;height:100%;object-fit:contain}
+.d-thumb:hover{transform:translateY(-3px);border-color:rgba(241,237,228,.5)}
+.d-thumb.current{border-color:var(--ac)}
+
+/* ---------- Back button ---------- */
+.back{
+  position:fixed;top:1.6rem;right:2.2rem;z-index:300;display:flex;align-items:center;gap:.6rem;
+  font-family:'DM Mono',monospace;font-size:.7rem;letter-spacing:.24em;text-transform:uppercase;color:var(--muted);
+  padding:.6rem 1.1rem;border:1px solid var(--line);border-radius:50px;transition:.4s var(--ease);
+  background:rgba(10,9,7,.5);backdrop-filter:blur(10px)
+}
+.back:hover{color:var(--fg);border-color:var(--ac)}
+.back svg{width:13px;height:13px;transition:transform .4s}
+.back:hover svg{transform:translateX(-3px)}
+
+/* prev / next side buttons (diaporama) */
+.d-side{position:fixed;top:50%;transform:translateY(-50%);z-index:250;width:52px;height:52px;border-radius:50%;
+  border:1px solid var(--line);display:grid;place-items:center;color:var(--fg);background:rgba(255,255,255,.08);
+  backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);transition:.3s var(--ease)}
+.d-side:hover{background:var(--ac);border-color:transparent;color:#050505;transform:translateY(-50%) scale(1.06)}
+.d-side.prev{left:1.4rem}.d-side.next{right:1.4rem}
+.d-side svg{width:20px;height:20px}
+
+/* continuous loop bar — position counter */
+.d-loop{position:fixed;bottom:1.4rem;left:50%;transform:translateX(-50%);z-index:250;
+  display:flex;align-items:center;gap:1rem;padding:.5rem 1.1rem;
+  background:rgba(10,9,7,.7);backdrop-filter:blur(14px);
+  border:1px solid var(--line);border-radius:50px;font-family:'DM Mono',monospace;font-size:.68rem;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--muted);max-width:calc(100vw - 130px)}
+.d-loop b{color:var(--ac);font-weight:400}
+
+/* ---------- responsive ---------- */
+@media (max-width:900px){
+  .title-block{flex:0 0 88vw;padding:0 8vw}
+  .title-block .stats{gap:1.6rem}
+  .entry{flex:0 0 70vw;min-width:240px;height:64vh}
+  .d-hero{height:50vh;min-height:300px}
+  .d-hero-img{height:48vh;max-height:440px}
+  .d-panel{padding:28px 6% 110px;border-radius:22px 22px 0 0}
+  .d-side.prev{left:.6rem}.d-side.next{right:.6rem}
+  .d-side{width:44px;height:44px}
+  .grid-head{padding:5rem 6vw 1.4rem}
+  .grid-scroll{padding:1rem 6vw 6rem}
+  .grid{grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:.8rem}
+  .brand{left:1.2rem;top:1.2rem}
+  .back{right:1.2rem;top:1.2rem}
+  .d-nav{position:static}
+}
+</style>
+</head>
+<body>
+<div class="fx-grain"></div>
+<div class="fx-vignette"></div>
+
+<div class="brand"><b>Tarot</b> · Divinatoire</div>
+<button class="back" id="back-btn" style="display:none">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+  Retour
+</button>
+
+<!-- ============ LANDING ============ -->
+<section class="view active" id="view-landing">
+  <div class="carousel" id="carousel"></div>
+  <div class="hint" id="hint">
+    <span class="line"></span> Faire défiler
+    <span class="line"></span>
+  </div>
+  <div class="rail"><span id="rail-fill"></span></div>
+</section>
+
+<!-- ============ GRID ============ -->
+<section class="view" id="view-grid">
+  <header class="grid-head">
+    <div class="left">
+      <div class="crumb"><span class="ac-dot" id="grid-dot"></span><span id="grid-crumb">—</span></div>
+      <h2 id="grid-title">—</h2>
+    </div>
+    <div class="right"><b id="grid-count">0</b>lames<br>élément <span id="grid-elem">—</span></div>
+  </header>
+  <button class="fam-step prev" id="fam-prev" aria-label="Famille précédente">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
+  </button>
+  <button class="fam-step next" id="fam-next" aria-label="Famille suivante">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+  </button>
+  <div class="family-band" id="family-band"></div>
+  <div class="fam-dots" id="fam-dots"></div>
+</section>
+
+<!-- ============ DETAIL — fullscreen diaporama ============ -->
+<section class="view" id="view-detail">
+  <button class="d-side prev" id="d-prev" aria-label="Carte précédente">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
+  </button>
+  <button class="d-side next" id="d-next" aria-label="Carte suivante">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+  </button>
+  <div class="d-loop" id="d-loop"></div>
+  <div class="d-stage" id="d-stage">
+    <div class="d-hero"><img class="d-hero-img" id="d-hero-img" src="" alt=""></div>
+    <div class="d-panel">
+      <div class="d-panel-inner">
+        <div class="d-meta" id="d-meta"></div>
+        <h1 class="d-title" id="d-title"></h1>
+        <div class="d-nav" id="d-nav"></div>
+        <div class="prose" id="d-prose"></div>
+        <div class="d-thumbs" id="d-thumbs"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script src="data.js"></script>
+<script>
+/* =========================================================
+   State
+   ========================================================= */
+const state = { view:'landing', familyKey:null, cardId:null, familyCards:[], gridIndex:0 };
+
+// Flat ordered list of all 78 cards (majors → bâtons → épées → coupes → deniers) for continuous looping
+const ALL_CARDS = TAROT.families.flatMap(f => f.cards);
+
+const $ = s => document.querySelector(s);
+const el = (t,c,h)=>{const e=document.createElement(t); if(c)e.className=c; if(h!=null)e.innerHTML=h; return e;};
+
+/* =========================================================
+   Landing carousel : title scrolls WITH the cards
+   ========================================================= */
+function renderLanding(){
+  const c = $('#carousel');
+  // Title block — first scroll child
+  const title = el('div','title-block',`
+    <span class="overline">Tirage · Étude · Réflexion</span>
+    <h1>Tarot<br><em>Divinatoire</em></h1>
+    <p class="lede">Soixante-dix-huit lames, cinq familles, un seul voyage initiatique à travers les arcanes du Tarot de Waite.</p>
+    <div class="stats">
+      <div><b>78</b>lames</div>
+      <div><b>5</b>familles</div>
+      <div><b>22</b>majeurs</div>
+      <div><b>56</b>mineurs</div>
+    </div>
+  `);
+  c.appendChild(title);
+
+  TAROT.families.forEach((f,i)=>{
+    const card = f.cards[0];
+    const entry = el('a','entry','');
+    entry.href='#';entry.dataset.family=f.key;
+    entry.style.setProperty('--ac',f.accent);
+    entry.innerHTML = `
+      <span class="num">${String(i+1).padStart(2,'0')} / 05</span>
+      <div class="img-wrap"><img src="cards/${card.file}" alt="${card.name}" loading="lazy"></div>
+      <div class="meta">
+        <div>
+          <span class="lbl">${f.element}</span>
+          <div class="fam">${f.name}</div>
+          <div class="sub">${f.count} lames · entrée par ${card.name}</div>
+        </div>
+        <span class="go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+      </div>`;
+    entry.addEventListener('click',e=>{e.preventDefault();openFamily(f.key);});
+    c.appendChild(entry);
+  });
+
+  // Title scrolls naturally WITH the cards (same flow). Elegant fade + rail.
+  const onScroll = ()=>{
+    const max = c.scrollWidth - c.clientWidth;
+    const p = max>0 ? c.scrollLeft/max : 0;
+    // fade the title as the cards take over (first 25% of travel)
+    const titleP = Math.min(1, c.scrollLeft / (c.clientWidth*0.6));
+    title.style.opacity = 1 - titleP*0.85;
+    title.style.transform = `scale(${1 - titleP*0.04})`;
+    $('#rail-fill').style.width = (p*100)+'%';
+    $('#hint').style.opacity = c.scrollLeft>60 ? '0':'';
+  };
+  c.addEventListener('scroll',onScroll,{passive:true});
+  onScroll();
+}
+
+/* =========================================================
+   Grid view — horizontal family carousel (swipe + buttons)
+   ========================================================= */
+let gridBuilt = false;
+function buildGrid(){
+  if(gridBuilt) return;
+  const band = $('#family-band');
+  const dots = $('#fam-dots');
+  TAROT.families.forEach((f,i)=>{
+    const pane = el('div','family-pane');
+    pane.dataset.key = f.key; pane.dataset.index = i;
+    const grid = el('div','grid');
+    f.cards.forEach(card=>{
+      const m = el('div','mini');
+      m.innerHTML = `
+        <div class="ph"><img src="cards/${card.file}" alt="${card.name}" loading="lazy"></div>
+        <div class="cap"><span class="nm">${card.name}</span><span class="no">${String(card.num).padStart(2,'0')}</span></div>`;
+      m.addEventListener('click',()=>openCard(card.id));
+      grid.appendChild(m);
+    });
+    pane.appendChild(grid);
+    band.appendChild(pane);
+
+    const dot = el('button',''); dot.dataset.index = i;
+    dot.setAttribute('aria-label', f.name);
+    dot.addEventListener('click',()=>scrollToFam(i));
+    dots.appendChild(dot);
+  });
+  // update header as panes scroll into view
+  const io = new IntersectionObserver(es=>{
+    es.forEach(e=>{ if(e.isIntersecting && e.intersectionRatio>=0.5){
+      updateGridHeader(+e.target.dataset.index);
+    }});
+  },{root:band,threshold:[0.5,0.75]});
+  band.querySelectorAll('.family-pane').forEach(p=>io.observe(p));
+  gridBuilt = true;
+}
+
+function updateGridHeader(idx){
+  const f = TAROT.families[idx];
+  state.familyKey=f.key; state.familyCards=f.cards; state.gridIndex=idx;
+  document.documentElement.style.setProperty('--ac',f.accent);
+  $('#grid-crumb').textContent = 'Famille · '+f.element;
+  $('#grid-title').innerHTML = f.name.replace(/(.+ )?(.+)$/,(_,a,b)=>a?`${a}<em>${b}</em>`:`<em>${b}</em>`);
+  $('#grid-count').textContent = f.count;
+  $('#grid-elem').textContent = f.element;
+  $('#fam-dots').querySelectorAll('button').forEach((d,i)=>d.classList.toggle('active',i===idx));
+  // hide prev/next at ends? No — it loops, so always visible. But keep them.
+}
+
+function scrollToFam(idx){
+  const band = $('#family-band');
+  const pane = band.children[idx];
+  if(pane) pane.scrollIntoView({behavior:'smooth',inline:'start',block:'nearest'});
+}
+
+function openFamily(key){
+  buildGrid();
+  const idx = Math.max(0, TAROT.families.findIndex(f=>f.key===key));
+  updateGridHeader(idx);
+  // instant jump to the requested pane (no animation on open)
+  const band = $('#family-band');
+  requestAnimationFrame(()=>{ band.scrollTo({left: idx*band.clientWidth, behavior:'auto'}); });
+  switchView('grid');
+}
+
+function famStep(dir){
+  let idx = state.gridIndex || 0;
+  idx = (idx + dir + TAROT.families.length) % TAROT.families.length;
+  scrollToFam(idx);
+}
+
+/* =========================================================
+   Detail view + lightweight MD renderer
+   ========================================================= */
+function openCard(id){
+  const card = findCard(id);
+  if(!card) return;
+  state.cardId=id;
+  const family = TAROT.families.find(f=>f.key===card.family);
+  document.documentElement.style.setProperty('--ac',family.accent);
+  const globalIdx = ALL_CARDS.findIndex(c=>c.id===id);
+  const inFam = family.cards.findIndex(c=>c.id===id);
+
+  // hero image (fade transition)
+  const heroImg=$('#d-hero-img');
+  heroImg.style.opacity='0';
+  setTimeout(()=>{ heroImg.src=`cards/${card.file}`; heroImg.alt=card.name; heroImg.style.opacity='1'; },180);
+
+  // meta + title
+  $('#d-meta').innerHTML = `
+    <b>${String(globalIdx+1).padStart(2,'0')} / 78</b>
+    <span class="sep">·</span>
+    <span>${card.familyName} ${inFam+1}/${family.count}</span>
+    <span class="sep">·</span>
+    <span>${card.element}</span>`;
+  $('#d-title').innerHTML = `<em>${card.name}</em>`;
+
+  // prose content
+  $('#d-prose').innerHTML = renderMd(card.md);
+
+  // family thumbnails strip (quick jump within family)
+  const thumbs=$('#d-thumbs'); thumbs.innerHTML='';
+  family.cards.forEach(c=>{
+    const t=el('div','d-thumb' + (c.id===card.id?' current':''));
+    t.innerHTML=`<img src="cards/${c.file}" alt="${c.name}" loading="lazy">`;
+    t.addEventListener('click',()=>openCard(c.id));
+    thumbs.appendChild(t);
+  });
+
+  buildDetailNav();
+  updateLoopBar(globalIdx);
+  $('#d-stage').scrollTop=0;
+  switchView('detail');
+}
+
+function updateLoopBar(idx){
+  const prev = ALL_CARDS[(idx-1+ALL_CARDS.length)%ALL_CARDS.length];
+  const nxt = ALL_CARDS[(idx+1)%ALL_CARDS.length];
+  $('#d-loop').innerHTML = `
+    <span>← ${prev.name}</span>
+    <b>${String(idx+1).padStart(2,'0')} / ${ALL_CARDS.length}</b>
+    <span>${nxt.name} →</span>`;
+}
+
+function findCard(id){
+  for(const f of TAROT.families){const c=f.cards.find(x=>x.id===id);if(c)return c;}
+  return null;
+}
+
+function familyCardsOf(card){
+  return TAROT.families.find(f=>f.key===card.family).cards;
+}
+
+/* ---- MD renderer (tailored to our file format) ---- */
+function renderMd(md){
+  // strip source / illustration footer, image-only lines, then split
+  md = md.replace(/\*Source :[\s\S]*$/i,'').replace(/\*Illustration :[^\n]*\*/g,'');
+  const lines = md.split('\n').filter(l => !/^!\[/.test(l.trim()));
+  const html = [];
+  let listOpen=false, sectionOpen=false, skippedH1=false;
+  const closeList = ()=>{ if(listOpen){html.push('</ul>');listOpen=false;} };
+  const closeSection = ()=>{ closeList(); if(sectionOpen){html.push('</section>');sectionOpen=false;} };
+
+  for(let i=0;i<lines.length;){
+    const t = lines[i].trim();
+    if(!t){ closeList(); i++; continue; }
+    // skip the very first H1 (card title — we render our own)
+    if(!skippedH1 && /^# /.test(t)){ skippedH1=true; i++; continue; }
+    if(t.startsWith('## ')){
+      closeSection(); sectionOpen=true;
+      html.push(`<section id="${slug(t.slice(3))}"><h2>${esc(t.slice(3))}</h2>`); i++; continue;
+    }
+    if(t.startsWith('### ')){ closeList(); html.push(`<h3>${esc(t.slice(4))}</h3>`); i++; continue; }
+    if(t.startsWith('> ')){
+      closeList(); const buf=[t.slice(2)]; i++;
+      while(i<lines.length && lines[i].trim().startsWith('> ')){ buf.push(lines[i].trim().slice(2)); i++; }
+      html.push(`<blockquote><p>${inline(buf.join(' '))}</p></blockquote>`); continue;
+    }
+    if(t.startsWith('- ')){ if(!listOpen){html.push('<ul>');listOpen=true;} html.push(`<li>${inline(t.slice(2))}</li>`); i++; continue; }
+    if(/^---\s*$/.test(t)){ closeSection(); html.push('<hr>'); i++; continue; }
+    // definition line (e.g. "**Type :** ...") -> own paragraph
+    if(/^\*\*[^*]+:\*\*/.test(t)){ closeList(); html.push(`<p class="field">${inline(t)}</p>`); i++; continue; }
+    // paragraph: gather consecutive plain lines
+    { closeList(); const buf=[t]; i++;
+      while(i<lines.length){ const nt=lines[i].trim();
+        if(!nt || /^(#{1,3} |- |> |---)/.test(nt) || /^\*\*[^*]+:\*\*/.test(nt)) break;
+        buf.push(nt); i++; }
+      html.push(`<p>${inline(buf.join(' '))}</p>`); }
+  }
+  closeSection();
+  return html.join('\n');
+
+  function inline(s){
+    return esc(s)
+      .replace(/\*\*(.+?)\*\*/g,'<strong>$1</strong>')
+      .replace(/(^|[^*])\*([^*]+)\*(?!\*)/g,'$1<em>$2</em>')
+      .replace(/\[([^\]]+)\]\(([^)]+)\)/g,'<a href="$2" target="_blank" rel="noopener" style="color:var(--ac);text-decoration:underline">$1</a>');
+  }
+  function esc(s){return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+  function slug(s){return 'sec-'+s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');}
+}
+
+function buildDetailNav(){
+  const nav=$('#d-nav'); if(!nav)return;
+  const sections=[...document.querySelectorAll('#d-prose section')];
+  nav.innerHTML='';
+  sections.forEach((s,idx)=>{
+    const heading=s.querySelector('h2');
+    const b=el('button','',heading?heading.textContent:'§');
+    b.dataset.target=s.id;
+    b.addEventListener('click',()=>{s.scrollIntoView({behavior:'smooth',block:'start'});});
+    nav.appendChild(b);
+  });
+  if(!sections.length){nav.style.display='none';return;}
+  nav.style.display='';
+  // active state via observer
+  const io=new IntersectionObserver(es=>{
+    es.forEach(e=>{if(e.isIntersecting){
+      nav.querySelectorAll('button').forEach(b=>b.classList.toggle('active',b.dataset.target===e.target.id));
+    }});
+  },{root:$('#d-stage'),rootMargin:'-30% 0px -55% 0px',threshold:0});
+  sections.forEach(s=>io.observe(s));
+  nav.querySelector('button')?.classList.add('active');
+}
+
+/* prev / next */
+/* prev / next — loops through ALL 78 cards continuously, crossing families */
+function stepCard(dir){
+  let idx = ALL_CARDS.findIndex(c => c.id === state.cardId);
+  if(idx === -1) idx = 0;
+  const nxt = ALL_CARDS[(idx + dir + ALL_CARDS.length) % ALL_CARDS.length];
+  openCard(nxt.id);
+}
+
+/* =========================================================
+   View switching
+   ========================================================= */
+function switchView(v){
+  state.view=v;
+  document.querySelectorAll('.view').forEach(x=>x.classList.remove('active'));
+  $('#view-'+v).classList.add('active');
+  const back=$('#back-btn');
+  back.style.display = v==='landing' ? 'none':'flex';
+  if(v==='landing'){document.documentElement.style.setProperty('--ac','#c9a227');}
+}
+
+$('#back-btn').addEventListener('click',()=>{
+  if(state.view==='detail') switchView('grid');
+  else if(state.view==='grid') switchView('landing');
+});
+$('#d-prev').addEventListener('click',()=>stepCard(-1));
+$('#d-next').addEventListener('click',()=>stepCard(1));
+$('#fam-prev').addEventListener('click',()=>famStep(-1));
+$('#fam-next').addEventListener('click',()=>famStep(1));
+
+document.addEventListener('keydown',e=>{
+  if(e.key==='Escape'){if(state.view!=='landing')$('#back-btn').click();}
+  if(state.view==='detail'){
+    if(e.key==='ArrowLeft')stepCard(-1);
+    if(e.key==='ArrowRight')stepCard(1);
+  } else if(state.view==='grid'){
+    if(e.key==='ArrowLeft')famStep(-1);
+    if(e.key==='ArrowRight')famStep(1);
+  }
+});
+
+// touch swipe — change card on horizontal-dominant swipe (diaporama)
+(function(){
+  let sx=0, sy=0, tracking=false;
+  const stage=$('#d-stage');
+  stage.addEventListener('touchstart',e=>{ const t=e.touches[0]; sx=t.clientX; sy=t.clientY; tracking=true; },{passive:true});
+  stage.addEventListener('touchend',e=>{
+    if(!tracking) return; tracking=false;
+    if(state.view!=='detail') return;
+    const t=e.changedTouches[0];
+    const dx=t.clientX-sx, dy=t.clientY-sy;
+    if(Math.abs(dx)>60 && Math.abs(dx)>Math.abs(dy)*1.4){
+      stepCard(dx<0?1:-1);
+    }
+  },{passive:true});
+})();
+
+/* init */
+renderLanding();
+</script>
+</body>
+</html>

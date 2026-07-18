@@ -14,6 +14,8 @@ Statut : `1.2026.1` (interface V2 livrée, enrichissement du contenu en cours d'
 - [x] Fiches .md enrichies pour les 78 cartes
 - [x] Génération de `data.js` (contenu .md embarqué, fonctionnement hors-ligne)
 - [x] Navigation continue traversant les 5 familles en boucle
+- [x] Grille : carousel horizontal de familles (swipe + boutons + indicateurs)
+- [x] Vue détail alternative en diaporama plein écran (`index_full.html`)
 - [x] Matelas blanc simulant la bordure réelle des cartes
 
 ### Phase 2 — Expérience
@@ -33,6 +35,8 @@ Statut : `1.2026.1` (interface V2 livrée, enrichissement du contenu en cours d'
 - 78 cartes : 22 arcanes majeurs + 56 mineurs (Bâtons, Épées, Coupes, Deniers), images et fiches descriptives
 - `build_data.js` : script de génération produisant `data.js` (contenu .md embarqué via `<script src>` pour un fonctionnement en `file://`)
 - Navigation continue : les flèches précédent / suivant traversent les 78 cartes en boucle, d'une famille à l'autre
+- Grille : carousel horizontal de familles (swipe tactile, boutons desktop, indicateurs en points)
+- Vue détail alternative `website/index_full.html` : diaporama plein écran, hero de la carte qui se replie au scroll, panneau de contenu qui remonte par-dessus, navigation par swipe et boutons latéraux
 - Barre de boucle indiquant la position globale et les cartes voisines
 - Détail par famille : couleur d'accent dédiée (Majeurs, Bâtons, Épées, Coupes, Deniers)
 - Rendu Markdown léger et navigation par section (Signification, Mots-clés, Interprétation, Amour, Travail, Finances, Guidance)
