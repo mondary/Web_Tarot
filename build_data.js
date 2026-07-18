@@ -89,7 +89,7 @@ const output = {
 
 const json = JSON.stringify(output, null, 0);
 const out = `/* Auto-généré par build_data.js — ne pas éditer manuellement */\nconst TAROT = ${json};\n`;
-fs.writeFileSync(path.join(__dirname, 'data.js'), out);
+fs.writeFileSync(path.join(__dirname, 'website', 'data.js'), out);
 
 let total = 0;
 output.families.forEach(f => total += f.cards.length);

@@ -13,7 +13,7 @@ A static, immersive website to explore the 78 cards of the Rider-Waite-Smith Tar
 - **Rich sheets**: meaning, keywords (upright / reversed), interpretation, love, work, finances, guidance
 - **Continuous navigation**: arrows loop through all 78 cards, crossing from one family to the next
 - **Visual consistency**: a dedicated accent color per family, a white mat simulating the border of real cards
-- **Offline**: content embedded in `data.js`, works by double-clicking `index.html`
+- **Offline**: content embedded in `website/data.js`, works by double-clicking `website/index.html`
 - **Accessible**: keyboard navigation (Esc, arrows) and touch support
 
 ## 🧠 Usage
@@ -25,7 +25,7 @@ A static, immersive website to explore the 78 cards of the Rider-Waite-Smith Tar
 
 ## ⚙️ Settings
 
-Per-family accent colors and the global palette are defined via CSS variables in `index.html` (the `:root` block). The card mat uses `--mat` (`#ffffff`).
+Per-family accent colors and the global palette are defined via CSS variables in `website/index.html` (the `:root` block). The card mat uses `--mat` (`#ffffff`).
 
 ## 🧾 Shortcuts
 
@@ -43,7 +43,7 @@ The sheet content (`.md`) is embedded into `data.js` via a generator script.
 node build_data.js
 ```
 
-This reads `website/cards/*.md`, generates `data.js` (~515 KB), and logs a confirmation. Run it after editing any `.md` file.
+This reads `website/cards/*.md`, generates `website/data.js` (~515 KB), and logs a confirmation. Run it after editing any `.md` file.
 
 No bundling step: the site ships as vanilla HTML/CSS/JS.
 
@@ -52,15 +52,15 @@ No bundling step: the site ships as vanilla HTML/CSS/JS.
 ```bash
 git clone <repo-url>
 cd Web_Tarot
-node build_data.js      # regenerate data.js (optional, already committed)
-open index.html         # or serve via a local server
+node build_data.js      # regenerate website/data.js (optional, already committed)
+open website/index.html # or serve via a local server
 ```
 
 To run a local server:
 
 ```bash
 python3 -m http.server 8000
-# then open http://localhost:8000
+# then open http://localhost:8000/website/
 ```
 
 ## 📋 See the [CHANGELOG](CHANGELOG.md) for full history.

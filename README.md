@@ -13,7 +13,7 @@ Un site statique immersif pour explorer les 78 lames du Tarot de Rider-Waite-Smi
 - **Fiches enrichies** : signification, mots-clés (endroit / envers), interprétation, amour, travail, finances, guidance
 - **Navigation continue** : les flèches traversent les 78 cartes en boucle, d'une famille à l'autre
 - **Cohérence visuelle** : couleur d'accent dédiée par famille, matelas blanc simulant la bordure des cartes réelles
-- **Hors-ligne** : contenu embarqué dans `data.js`, fonctionne en double-cliquant sur `index.html`
+- **Hors-ligne** : contenu embarqué dans `website/data.js`, fonctionne en double-cliquant sur `website/index.html`
 - **Accessible** : navigation clavier (Échap, flèches) et tactile
 
 ## 🧠 Utilisation
@@ -25,7 +25,7 @@ Un site statique immersif pour explorer les 78 lames du Tarot de Rider-Waite-Smi
 
 ## ⚙️ Régages
 
-Les couleurs d'accent par famille et la palette globale sont définies via des variables CSS dans `index.html` (bloc `:root`). Le matelas des cartes utilise `--mat` (`#ffffff`).
+Les couleurs d'accent par famille et la palette globale sont définies via des variables CSS dans `website/index.html` (bloc `:root`). Le matelas des cartes utilise `--mat` (`#ffffff`).
 
 ## 🧾 Commandes
 
@@ -43,7 +43,7 @@ Le contenu des fiches (`.md`) est embarqué dans `data.js` via un script de gén
 node build_data.js
 ```
 
-Ce script lit `website/cards/*.md`, génère `data.js` (≈ 515 KB) et le log de confirmation. À exécuter après toute modification d'un fichier `.md`.
+Ce script lit `website/cards/*.md`, génère `website/data.js` (≈ 515 KB) et le log de confirmation. À exécuter après toute modification d'un fichier `.md`.
 
 Aucune étape de bundling : le site est livré en HTML/CSS/JS vanilla.
 
@@ -52,15 +52,15 @@ Aucune étape de bundling : le site est livré en HTML/CSS/JS vanilla.
 ```bash
 git clone <repo-url>
 cd Web_Tarot
-node build_data.js      # régénère data.js (optionnel, déjà commité)
-open index.html         # ou servir via un serveur local
+node build_data.js      # régénère website/data.js (optionnel, déjà commité)
+open website/index.html # ou servir via un serveur local
 ```
 
 Pour un serveur local :
 
 ```bash
 python3 -m http.server 8000
-# puis ouvrir http://localhost:8000
+# puis ouvrir http://localhost:8000/website/
 ```
 
 ## 📋 Voir le [CHANGELOG](CHANGELOG.md) pour l'historique complet.
