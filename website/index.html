@@ -111,7 +111,7 @@ a{color:inherit;text-decoration:none}
 
 /* ---------- Family entry card ---------- */
 .entry{
-  flex:0 0 22vw;min-width:300px;max-width:380px;height:72vh;
+  flex:0 0 auto;height:84vh;aspect-ratio:3/5;min-width:260px;
   scroll-snap-align:center;position:relative;border-radius:1.4rem;overflow:hidden;
   background:var(--mat);border:1px solid var(--mat-line);
   display:flex;flex-direction:column;
@@ -329,7 +329,7 @@ a{color:inherit;text-decoration:none}
 @media (max-width:900px){
   .title-block{flex:0 0 88vw;padding:0 8vw}
   .title-block .stats{gap:1.6rem}
-  .entry{flex:0 0 70vw;min-width:240px;height:64vh}
+  .entry{height:68vh;min-width:220px}
   .detail-wrap{grid-template-columns:1fr;gap:2.4rem;padding:5rem 6vw 6rem}
   .d-card{position:static;max-width:340px;margin:0 auto}
   .grid-head{padding:5rem 6vw 1.4rem}
