@@ -16,7 +16,7 @@
   --line:rgba(241,237,228,.08);
   --ease:cubic-bezier(.16,1,.3,1);
   --accent:#c9a227;
-  --mat:#f6f1e6;
+  --mat:#ffffff;
   --mat-line:rgba(255,255,255,.22);
 }
 *{margin:0;padding:0;box-sizing:border-box}
@@ -199,8 +199,9 @@ a{color:inherit;text-decoration:none}
 .d-card .tag .el{color:var(--ac)}
 
 .d-content{min-width:0}
-.d-content .kicker{font-family:'DM Mono',monospace;font-size:.72rem;letter-spacing:.28em;
-  text-transform:uppercase;color:var(--muted);margin-bottom:1rem}
+.d-content .kicker{font-family:'DM Mono',monospace;font-size:.72rem;letter-spacing:.2em;
+  text-transform:uppercase;color:var(--muted);margin-bottom:1rem;display:flex;gap:.7rem;align-items:center;flex-wrap:wrap}
+.d-content .kicker .sep{opacity:.4}
 .d-content h1{font-family:'Cormorant Garamond',serif;font-weight:300;
   font-size:clamp(2.4rem,4.5vw,3.8rem);line-height:1;text-transform:uppercase;letter-spacing:-.01em;margin-bottom:.6rem}
 .d-content h1 em{font-style:italic;color:var(--ac);font-weight:400}
@@ -251,6 +252,21 @@ a{color:inherit;text-decoration:none}
 .d-step:hover{color:var(--fg);border-color:var(--ac);background:rgba(241,237,228,.04)}
 .d-step.prev{left:1.4rem}.d-step.next{right:1.4rem}
 .d-step svg{width:16px;height:16px}
+
+/* continuous loop bar — prev / position / next */
+.d-loop{
+  position:fixed;bottom:1.4rem;left:50%;transform:translateX(-50%);z-index:200;
+  display:flex;align-items:center;gap:1rem;padding:.55rem 1.2rem;
+  background:rgba(10,9,7,.72);backdrop-filter:blur(14px);
+  border:1px solid var(--line);border-radius:50px;
+  font-family:'DM Mono',monospace;font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;
+  max-width:calc(100vw - 120px);
+}
+.d-loop button{color:var(--muted);transition:.3s var(--ease);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:30vw}
+.d-loop button:hover{color:var(--fg)}
+.d-loop button.prev{text-align:right}
+.d-loop .pos{color:var(--fg);flex:0 0 auto;border-left:1px solid var(--line);border-right:1px solid var(--line);padding:0 1rem}
+.d-loop .pos b{color:var(--ac);font-weight:400}
 
 /* ---------- responsive ---------- */
 @media (max-width:900px){
@@ -308,6 +324,7 @@ a{color:inherit;text-decoration:none}
   <button class="d-step next" id="d-next" aria-label="Suivant">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
   </button>
+  <div class="d-loop" id="d-loop"></div>
   <div class="detail-wrap" id="detail-wrap"></div>
 </section>
 
@@ -317,6 +334,9 @@ a{color:inherit;text-decoration:none}
    State
    ========================================================= */
 const state = { view:'landing', familyKey:null, cardId:null, familyCards:[] };
+
+// Flat ordered list of all 78 cards (majors → bâtons → épées → coupes → deniers) for continuous looping
+const ALL_CARDS = TAROT.families.flatMap(f => f.cards);
 
 const $ = s => document.querySelector(s);
 const el = (t,c,h)=>{const e=document.createElement(t); if(c)e.className=c; if(h!=null)e.innerHTML=h; return e;};
@@ -407,7 +427,10 @@ function openCard(id){
   const card = findCard(id);
   if(!card) return;
   state.cardId=id;
-  document.documentElement.style.setProperty('--ac',TAROT.families.find(f=>f.key===card.family).accent);
+  const family = TAROT.families.find(f=>f.key===card.family);
+  document.documentElement.style.setProperty('--ac',family.accent);
+  const globalIdx = ALL_CARDS.findIndex(c=>c.id===id);
+  const inFam = family.cards.findIndex(c=>c.id===id);
 
   const html = renderMd(card.md);
   const wrap = $('#detail-wrap');
@@ -417,14 +440,31 @@ function openCard(id){
       <div class="tag"><span>${card.familyName}</span><span class="el">${card.element}</span></div>
     </aside>
     <div class="d-content">
-      <div class="kicker">${String(card.num).padStart(2,'0')} · ${card.familyName}</div>
+      <div class="kicker">
+        <span>${String(globalIdx+1).padStart(2,'0')} / 78</span>
+        <span class="sep">·</span>
+        <span>${card.familyName} ${inFam+1}/${family.count}</span>
+      </div>
       <h1><em>${card.name}</em></h1>
       <div class="d-nav" id="d-nav"></div>
       <div class="prose" id="prose">${html}</div>
     </div>`;
   buildDetailNav();
+  updateLoopBar(globalIdx);
   $('#view-detail').scrollTop=0;
   switchView('detail');
+}
+
+function updateLoopBar(idx){
+  const prev = ALL_CARDS[(idx-1+ALL_CARDS.length)%ALL_CARDS.length];
+  const nxt = ALL_CARDS[(idx+1)%ALL_CARDS.length];
+  const loop=$('#d-loop');
+  loop.innerHTML=`
+    <button class="prev" id="loop-prev">← ${prev.name}</button>
+    <span class="pos"><b>${String(idx+1).padStart(2,'0')}</b>/${ALL_CARDS.length}</span>
+    <button class="next" id="loop-next">${nxt.name} →</button>`;
+  $('#loop-prev').addEventListener('click',()=>stepCard(-1));
+  $('#loop-next').addEventListener('click',()=>stepCard(1));
 }
 
 function findCard(id){
@@ -508,11 +548,12 @@ function buildDetailNav(){
 }
 
 /* prev / next */
+/* prev / next — loops through ALL 78 cards continuously, crossing families */
 function stepCard(dir){
-  const cur=findCard(state.cardId); if(!cur)return;
-  const arr=familyCardsOf(cur);
-  const idx=arr.findIndex(c=>c.id===cur.id);
-  const nxt=arr[idx+dir]; if(nxt)openCard(nxt.id);
+  let idx = ALL_CARDS.findIndex(c => c.id === state.cardId);
+  if(idx === -1) idx = 0;
+  const nxt = ALL_CARDS[(idx + dir + ALL_CARDS.length) % ALL_CARDS.length];
+  openCard(nxt.id);
 }
 
 /* =========================================================
