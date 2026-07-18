@@ -124,13 +124,16 @@ a{color:inherit;text-decoration:none}
 .entry .img-wrap img{height:100%;width:auto;max-width:100%;object-fit:contain;transition:transform .9s var(--ease)}
 .entry:hover .img-wrap img{transform:scale(1.04)}
 .entry .meta{
-  padding:1.05rem 1.4rem 1.25rem;display:flex;align-items:flex-end;justify-content:space-between;gap:1rem;
+  padding:1.1rem 1.4rem 1.3rem;display:flex;align-items:flex-end;justify-content:space-between;gap:1rem;
   border-top:1px solid rgba(0,0,0,.06);background:var(--mat);
 }
-.entry .meta .lbl{font-family:'DM Mono',monospace;font-size:.64rem;letter-spacing:.26em;
-  text-transform:uppercase;color:var(--ac,#c9a227);margin-bottom:.45rem;display:block}
-.entry .meta .fam{font-family:'Cormorant Garamond',serif;font-size:1.65rem;line-height:1;font-weight:500;color:#1c1814}
-.entry .meta .sub{font-size:.76rem;color:#8a8378;margin-top:.4rem;letter-spacing:.04em}
+.entry .meta-info{min-width:0;flex:1}
+.entry .meta-top{display:flex;align-items:center;justify-content:space-between;gap:.6rem;margin-bottom:.55rem}
+.entry .meta .lbl{font-size:.8rem;color:#6f6a5f;letter-spacing:.01em;font-style:italic;line-height:1.2}
+.entry .meta .lbl .esym{font-style:normal;font-size:1.05rem;margin-right:.4rem;color:var(--ac,#c9a227);vertical-align:-1px}
+.entry .signs{display:flex;gap:.4rem;flex:0 0 auto;font-size:1.1rem;color:#9a9388;line-height:1}
+.entry .meta .fam{font-family:'Cormorant Garamond',serif;font-size:1.7rem;line-height:1;font-weight:500;color:#1c1814;margin-bottom:.5rem}
+.entry .meta .desc{font-size:.83rem;line-height:1.5;color:#6f6a5f;font-weight:300;margin:0}
 .entry .go{
   flex:0 0 auto;width:38px;height:38px;border-radius:50%;border:1px solid rgba(0,0,0,.12);
   display:grid;place-items:center;transition:.4s var(--ease);color:#1c1814;background:rgba(0,0,0,.02);
@@ -367,7 +370,7 @@ a{color:inherit;text-decoration:none}
     </div>
     <div class="right"><b id="grid-count">0</b>lames<br>élément <span id="grid-elem">—</span></div>
   </header>
-  <button class="fam-step prev" id="fam-prev" aria-label="Famille précédente">
+  <button class="fam-step prev" id="fam-prev" aria-label="Suite précédente">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
   </button>
   <button class="fam-step next" id="fam-next" aria-label="Famille suivante">
@@ -419,10 +422,10 @@ function renderLanding(){
   const title = el('div','title-block',`
     <span class="overline">Tirage · Étude · Réflexion</span>
     <h1>Tarot<br><em>Divinatoire</em></h1>
-    <p class="lede">Soixante-dix-huit lames, cinq familles, un seul voyage initiatique à travers les arcanes du Tarot de Waite.</p>
+    <p class="lede">Soixante-dix-huit lames réparties en quatre suites et vingt-deux arcanes majeurs. Un voyage initiatique à travers le Tarot de Waite.</p>
     <div class="stats">
       <div><b>78</b>lames</div>
-      <div><b>5</b>familles</div>
+      <div><b>4</b>suites</div>
       <div><b>22</b>majeurs</div>
       <div><b>56</b>mineurs</div>
     </div>
@@ -434,14 +437,18 @@ function renderLanding(){
     const entry = el('a','entry','');
     entry.href='#';entry.dataset.family=f.key;
     entry.style.setProperty('--ac',f.accent);
+    const signs = (f.signs||[]).map(s=>`<span title="${s.n}">${s.s}</span>`).join('');
     entry.innerHTML = `
       <span class="num">${String(i+1).padStart(2,'0')} / 05</span>
-      <div class="img-wrap"><img src="cards/${card.file}" alt="${card.name}" loading="lazy"></div>
+      <div class="img-wrap"><img src="${card.file}" alt="${card.name}" loading="lazy"></div>
       <div class="meta">
-        <div>
-          <span class="lbl">${f.element}</span>
-          <div class="fam">${f.name}</div>
-          <div class="sub">${f.count} lames · entrée par ${card.name}</div>
+        <div class="meta-info">
+          <div class="meta-top">
+            <span class="lbl"><span class="esym">${f.elementSym}</span>${f.elementLine}</span>
+            ${signs ? `<span class="signs">${signs}</span>` : ''}
+          </div>
+          <div class="fam">${f.titleFull}</div>
+          <p class="desc">${f.desc}</p>
         </div>
         <span class="go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
       </div>`;
@@ -479,7 +486,7 @@ function buildGrid(){
     f.cards.forEach(card=>{
       const m = el('div','mini');
       m.innerHTML = `
-        <div class="ph"><img src="cards/${card.file}" alt="${card.name}" loading="lazy"></div>
+        <div class="ph"><img src="${card.file}" alt="${card.name}" loading="lazy"></div>
         <div class="cap"><span class="nm">${card.name}</span><span class="no">${String(card.num).padStart(2,'0')}</span></div>`;
       m.addEventListener('click',()=>openCard(card.id));
       grid.appendChild(m);
@@ -552,7 +559,7 @@ function openCard(id){
   const wrap = $('#detail-wrap');
   wrap.innerHTML = `
     <aside class="d-card">
-      <div class="frame"><img src="cards/${card.file}" alt="${card.name}"></div>
+      <div class="frame"><img src="${card.file}" alt="${card.name}"></div>
       <div class="tag"><span>${card.familyName}</span><span class="el">${card.element}</span></div>
     </aside>
     <div class="d-content">
@@ -747,7 +754,7 @@ function renderSearch(){
   results.forEach(card=>{
     const m = el('div','mini');
     m.innerHTML = `
-      <div class="ph"><img src="cards/${card.file}" alt="${card.name}" loading="lazy"></div>
+      <div class="ph"><img src="${card.file}" alt="${card.name}" loading="lazy"></div>
       <div class="cap"><span class="nm">${card.name}</span><span class="no">${String(card.num).padStart(2,'0')}</span></div>`;
     m.addEventListener('click',()=>{ closeSearch(); openCard(card.id); });
     g.appendChild(m);

@@ -40,13 +40,15 @@ Les couleurs d'accent par famille et la palette globale sont définies via des v
 
 ## 📦 Build & Package
 
-Le contenu des fiches (`.md`) est embarqué dans `data.js` via un script de génération.
+Le site est **autoporté** : les 78 images sont embarquées en WebP (data URI) dans `website/data.js`. Pour déployer, il suffit de déposer `website/index.html` et `website/data.js` sur le serveur — aucun dossier d'images à uploader.
+
+Les sources (`website/cards/*.md` et `*.jpg`) produisent `data.js` via un script de génération.
 
 ```bash
 node website/build_data.js
 ```
 
-Ce script lit `website/cards/*.md`, génère `website/data.js` (≈ 515 KB) et le log de confirmation. À exécuter après toute modification d'un fichier `.md`.
+Ce script lit `website/cards/*.md` et `*.jpg`, régénère `website/data.js` (≈ 7 Mo, images WebP 420px incluses) et affiche un log de confirmation. Nécessite [ImageMagick](https://imagemagick.org/) (`magick`). À exécuter après toute modification d'un `.md` ou d'une image.
 
 Aucune étape de bundling : le site est livré en HTML/CSS/JS vanilla.
 
@@ -55,8 +57,11 @@ Aucune étape de bundling : le site est livré en HTML/CSS/JS vanilla.
 ```bash
 git clone <repo-url>
 cd Web_Tarot
-node website/build_data.js  # régénère website/data.js (optionnel, déjà commité)
-open website/index.html # ou servir via un serveur local
+# data.js est déjà commité (autoporté) — prêt à déployer tel quel.
+# Pour le régénérer après une modif :
+node website/build_data.js
+# puis déposer website/index.html + website/data.js sur le FTP
+open website/index.html
 ```
 
 Pour un serveur local :

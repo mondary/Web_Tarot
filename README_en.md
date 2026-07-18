@@ -40,13 +40,15 @@ Per-family accent colors and the global palette are defined via CSS variables in
 
 ## 📦 Build & Package
 
-The sheet content (`.md`) is embedded into `data.js` via a generator script.
+The site is **self-contained**: all 78 images are embedded as WebP (data URIs) inside `website/data.js`. To deploy, simply drop `website/index.html` and `website/data.js` onto the server — no image folder to upload.
+
+The sources (`website/cards/*.md` and `*.jpg`) produce `data.js` via a generator script.
 
 ```bash
 node website/build_data.js
 ```
 
-This reads `website/cards/*.md`, generates `website/data.js` (~515 KB), and logs a confirmation. Run it after editing any `.md` file.
+This reads `website/cards/*.md` and `*.jpg`, regenerates `website/data.js` (~7 MB, 420px WebP images included), and logs a confirmation. Requires [ImageMagick](https://imagemagick.org/) (`magick`). Run it after editing any `.md` file or image.
 
 No bundling step: the site ships as vanilla HTML/CSS/JS.
 
@@ -55,8 +57,11 @@ No bundling step: the site ships as vanilla HTML/CSS/JS.
 ```bash
 git clone <repo-url>
 cd Web_Tarot
-node website/build_data.js  # regenerate website/data.js (optional, already committed)
-open website/index.html # or serve via a local server
+# data.js is already committed (self-contained) — ready to deploy as is.
+# To regenerate it after an edit:
+node website/build_data.js
+# then drop website/index.html + website/data.js on the FTP
+open website/index.html
 ```
 
 To run a local server:

@@ -460,7 +460,7 @@ function renderLanding(){
     entry.style.setProperty('--ac',f.accent);
     entry.innerHTML = `
       <span class="num">${String(i+1).padStart(2,'0')} / 05</span>
-      <div class="img-wrap"><img src="cards/${card.file}" alt="${card.name}" loading="lazy"></div>
+      <div class="img-wrap"><img src="${card.file}" alt="${card.name}" loading="lazy"></div>
       <div class="meta">
         <div>
           <span class="lbl">${f.element}</span>
@@ -503,7 +503,7 @@ function buildGrid(){
     f.cards.forEach(card=>{
       const m = el('div','mini');
       m.innerHTML = `
-        <div class="ph"><img src="cards/${card.file}" alt="${card.name}" loading="lazy"></div>
+        <div class="ph"><img src="${card.file}" alt="${card.name}" loading="lazy"></div>
         <div class="cap"><span class="nm">${card.name}</span><span class="no">${String(card.num).padStart(2,'0')}</span></div>`;
       m.addEventListener('click',()=>openCard(card.id));
       grid.appendChild(m);
@@ -575,7 +575,7 @@ function openCard(id){
   // hero image (fade transition)
   const heroImg=$('#d-hero-img');
   heroImg.style.opacity='0';
-  setTimeout(()=>{ heroImg.src=`cards/${card.file}`; heroImg.alt=card.name; heroImg.style.opacity='1'; },180);
+  setTimeout(()=>{ heroImg.src=card.file; heroImg.alt=card.name; heroImg.style.opacity='1'; },180);
 
   // meta + title
   $('#d-meta').innerHTML = `
@@ -793,7 +793,7 @@ function renderSearch(){
   results.forEach(card=>{
     const m = el('div','mini');
     m.innerHTML = `
-      <div class="ph"><img src="cards/${card.file}" alt="${card.name}" loading="lazy"></div>
+      <div class="ph"><img src="${card.file}" alt="${card.name}" loading="lazy"></div>
       <div class="cap"><span class="nm">${card.name}</span><span class="no">${String(card.num).padStart(2,'0')}</span></div>`;
     m.addEventListener('click',()=>{ closeSearch(); openCard(card.id); });
     g.appendChild(m);

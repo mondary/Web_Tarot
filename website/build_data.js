@@ -1,14 +1,52 @@
 const fs = require('fs');
 const path = require('path');
+const { execFileSync } = require('child_process');
 
 const CARDS_DIR = path.join(__dirname, 'cards');
 
+// Embarque chaque image en data URI WebP (420px, q80) pour un site autoporté.
+// Requiert ImageMagick (`magick`). Fallback vers le chemin fichier si indisponible.
+function imageDataUri(imgPath){
+  try{
+    const buf = execFileSync('magick', [imgPath, '-resize','420x', '-strip', '-define','webp:method=6', '-quality','80', 'webp:-'], {maxBuffer: 4*1024*1024});
+    return 'data:image/webp;base64,' + buf.toString('base64');
+  }catch(e){
+    console.warn('  ⚠ ImageMagick indisponible pour '+path.basename(imgPath)+' — fallback chemin fichier');
+    return null;
+  }
+}
+
+const VS = '\uFE0E'; // text-style variation selector (monochrome glyphs)
 const FAMILY_META = {
-  a: { key: 'majors', name: 'Arcanes Majeurs', short: 'Majeurs', element: 'Éther', accent: '#c9a227', entryNum: 0 },
-  b: { key: 'batons', name: 'Bâtons', short: 'Bâtons', element: 'Feu', accent: '#c45a2e', entryNum: 1 },
-  e: { key: 'epees', name: 'Épées', short: 'Épées', element: 'Air', accent: '#8fa3b5', entryNum: 3 },
-  c: { key: 'coupes', name: 'Coupes', short: 'Coupes', element: 'Eau', accent: '#5b8fa3', entryNum: 2 },
-  d: { key: 'deniers', name: 'Deniers', short: 'Deniers', element: 'Terre', accent: '#7a9b5e', entryNum: 4 },
+  a: { key:'majors', name:'Arcanes Majeurs', short:'Majeurs', element:'Éther', elementSym:'✦'+VS,
+       accent:'#c9a227', entryNum:0, signs:[],
+       titleFull:'Arcanes Majeurs',
+       elementLine:'les 22 arcanes du chemin initiatique',
+       desc:"Les 22 arcanes majeurs racontent les grandes étapes et leçons de la vie. Ils parlent du destin, du cheminement spirituel et de l'accomplissement de soi." },
+  b: { key:'batons', name:'Bâtons', short:'Bâtons', element:'Feu', elementSym:'🜂',
+       accent:'#c45a2e', entryNum:1,
+       signs:[{n:'Bélier',s:'♈'+VS},{n:'Lion',s:'♌'+VS},{n:'Sagittaire',s:'♐'+VS}],
+       titleFull:'Les Bâtons',
+       elementLine:'associés à l’élément Feu',
+       desc:"Les Lames des Bâtons symbolisent ce qui motive et dynamise. Les Bâtons vous parlent de vos désirs et de votre élan vital." },
+  e: { key:'epees', name:'Épées', short:'Épées', element:'Air', elementSym:'🜁',
+       accent:'#8fa3b5', entryNum:3,
+       signs:[{n:'Gémeaux',s:'♊'+VS},{n:'Balance',s:'♎'+VS},{n:'Verseau',s:'♒'+VS}],
+       titleFull:'Les Épées',
+       elementLine:'associées à l’élément Air',
+       desc:"Les Lames des Épées symbolisent les idées et l’intellect. Les Épées évoquent votre esprit rationnel, la réflexion, le « Mental ». Elles sont aussi associées à la communication." },
+  c: { key:'coupes', name:'Coupes', short:'Coupes', element:'Eau', elementSym:'🜄',
+       accent:'#5b8fa3', entryNum:2,
+       signs:[{n:'Cancer',s:'♋'+VS},{n:'Scorpion',s:'♏'+VS},{n:'Poissons',s:'♓'+VS}],
+       titleFull:'Les Coupes',
+       elementLine:'associées à l’élément Eau',
+       desc:"Les Lames des Coupes symbolisent les émotions et les sentiments. Les Coupes vous parlent de ce que vous ressentez et de vos relations avec vos proches." },
+  d: { key:'deniers', name:'Deniers', short:'Deniers', element:'Terre', elementSym:'🜃',
+       accent:'#7a9b5e', entryNum:4,
+       signs:[{n:'Taureau',s:'♉'+VS},{n:'Vierge',s:'♍'+VS},{n:'Capricorne',s:'♑'+VS}],
+       titleFull:'Les Deniers',
+       elementLine:'associés à l’élément Terre',
+       desc:"Les Lames des Deniers évoquent le plan matériel de l’existence, notamment l’argent et les possessions matérielles. Elles représentent aussi tout ce qui a de la valeur pour vous : compétences, Énergie, santé…" },
 };
 
 const MAJOR_NAMES = {
@@ -51,9 +89,11 @@ mdFiles.forEach(file => {
     name = `${MINOR_NAMES[num] || slug} de ${meta.name}`;
   }
 
+  const imgFile = path.join(CARDS_DIR, base + '.jpg');
+
   families[meta.key].cards.push({
     id: base,
-    file: base + '.jpg',
+    file: imageDataUri(imgFile) || ('cards/' + base + '.jpg'),
     name,
     family: meta.key,
     familyName: meta.name,
@@ -77,8 +117,13 @@ const output = {
     return {
       key: f.key,
       name: f.name,
+      titleFull: meta.titleFull,
       short: f.short,
       element: f.element,
+      elementSym: meta.elementSym,
+      elementLine: meta.elementLine,
+      desc: meta.desc,
+      signs: meta.signs,
       accent: f.accent,
       count: f.cards.length,
       entryCard: f.cards[0].id,
