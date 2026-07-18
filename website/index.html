@@ -297,7 +297,32 @@ a{color:inherit;text-decoration:none}
 .d-loop .pos{color:var(--fg);flex:0 0 auto;border-left:1px solid var(--line);border-right:1px solid var(--line);padding:0 1rem}
 .d-loop .pos b{color:var(--ac);font-weight:400}
 
-/* ---------- responsive ---------- */
+/* =====================================================
+   SEARCH overlay — instant, fuzzy/occurrence based
+   ===================================================== */
+#search{position:fixed;inset:0;z-index:8000;background:rgba(5,5,5,.94);
+  backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+  display:none;flex-direction:column;opacity:0;transition:opacity .3s var(--ease)}
+#search.open{display:flex;opacity:1;animation:search-in .35s var(--ease)}
+@keyframes search-in{from{opacity:0}to{opacity:1}}
+.s-query{flex:0 0 auto;text-align:center;padding:7vh 4vw 1vh;min-height:26vh;
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Cormorant Garamond',serif;font-weight:300;
+  font-size:clamp(4rem,17vw,17rem);line-height:.86;letter-spacing:-.02em;color:var(--fg);
+  word-break:break-word;text-transform:uppercase}
+.s-query .ph{color:var(--muted);font-style:italic;font-weight:300;text-transform:none;font-size:.18em;letter-spacing:.04em}
+.s-query .caret{display:inline-block;width:.05em;min-height:.7em;background:var(--ac);margin-left:.05em;align-self:center;animation:s-blink 1s steps(2) infinite}
+@keyframes s-blink{50%{opacity:0}}
+.s-info{text-align:center;color:var(--muted);font-family:'DM Mono',monospace;font-size:.7rem;
+  letter-spacing:.2em;text-transform:uppercase;margin-bottom:1.4rem;flex:0 0 auto}
+.s-info b{color:var(--ac);font-weight:400}
+.s-hint{text-align:center;color:var(--muted);font-family:'DM Mono',monospace;font-size:.64rem;
+  letter-spacing:.18em;text-transform:uppercase;margin-bottom:1.4rem;opacity:.6;flex:0 0 auto}
+.s-scroll{flex:1;overflow-y:auto;padding:0 4vw 6vh;min-height:0}
+.s-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(118px,1fr));gap:1rem;max-width:1500px;margin:0 auto}
+.s-grid .mini{cursor:pointer}
+.s-empty{grid-column:1/-1;text-align:center;color:var(--muted);padding:3rem 0;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.4rem}
+
 @media (max-width:900px){
   .title-block{flex:0 0 88vw;padding:0 8vw}
   .title-block .stats{gap:1.6rem}
@@ -363,6 +388,14 @@ a{color:inherit;text-decoration:none}
   <div class="d-loop" id="d-loop"></div>
   <div class="detail-wrap" id="detail-wrap"></div>
 </section>
+
+<!-- ============ SEARCH overlay ============ -->
+<div id="search" role="dialog" aria-modal="true" aria-label="Recherche">
+  <div class="s-query" id="s-query"></div>
+  <div class="s-info" id="s-info"></div>
+  <div class="s-hint">Cliquez une carte pour l'ouvrir · Échap pour fermer</div>
+  <div class="s-scroll"><div class="s-grid" id="s-grid"></div></div>
+</div>
 
 <script src="data.js"></script>
 <script>
@@ -661,6 +694,7 @@ $('#fam-prev').addEventListener('click',()=>famStep(-1));
 $('#fam-next').addEventListener('click',()=>famStep(1));
 
 document.addEventListener('keydown',e=>{
+  if(search && search.open) return; // search overlay handles keys
   if(e.key==='Escape'){if(state.view!=='landing')$('#back-btn').click();}
   if(state.view==='detail'){
     if(e.key==='ArrowLeft')stepCard(-1);
@@ -669,6 +703,76 @@ document.addEventListener('keydown',e=>{
     if(e.key==='ArrowLeft')famStep(-1);
     if(e.key==='ArrowRight')famStep(1);
   }
+});
+
+/* =========================================================
+   Instant search — FZF-like, matches occurrences anywhere
+   (name + family + element + content), accent/case insensitive
+   ========================================================= */
+const sNorm = s => (s||'').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');
+const sKeywords = md => { const m = md.match(/## Mots-clés[\s\S]*?(?=\n## )/i); return m ? m[0] : ''; };
+ALL_CARDS.forEach(c => { c._blob = sNorm(c.name+' '+c.familyName+' '+c.element+' '+sKeywords(c.md)); });
+const search = { open:false, q:'' };
+
+function openSearch(initial){
+  search.open=true; search.q = initial || '';
+  $('#search').classList.add('open');
+  renderSearch();
+}
+function closeSearch(){
+  search.open=false; search.q='';
+  $('#search').classList.remove('open');
+}
+function renderSearch(){
+  const q = search.q;
+  $('#s-query').innerHTML = q
+    ? sEsc(q) + '<span class="caret"></span>'
+    : '<span class="ph">Tapez pour rechercher…</span>';
+  const nq = sNorm(q);
+  let results = q ? ALL_CARDS.filter(c => c._blob.includes(nq)) : ALL_CARDS.slice();
+  if(q){
+    results.sort((a,b)=>{
+      const an = sNorm(a.name).includes(nq) ? 0 : 1;
+      const bn = sNorm(b.name).includes(nq) ? 0 : 1;
+      if(an!==bn) return an-bn;
+      return a.name.localeCompare(b.name);
+    });
+  }
+  $('#s-info').innerHTML = '<b>'+results.length+'</b> / 78 carte'+(results.length>1?'s':'');
+  const g = $('#s-grid'); g.innerHTML='';
+  if(!results.length){
+    g.innerHTML = '<div class="s-empty">Aucune carte ne correspond à « '+sEsc(q)+' »</div>';
+    return;
+  }
+  results.forEach(card=>{
+    const m = el('div','mini');
+    m.innerHTML = `
+      <div class="ph"><img src="cards/${card.file}" alt="${card.name}" loading="lazy"></div>
+      <div class="cap"><span class="nm">${card.name}</span><span class="no">${String(card.num).padStart(2,'0')}</span></div>`;
+    m.addEventListener('click',()=>{ closeSearch(); openCard(card.id); });
+    g.appendChild(m);
+  });
+}
+function sEsc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+
+document.addEventListener('keydown',e=>{
+  if(e.metaKey||e.ctrlKey||e.altKey) return;
+  const tag = e.target && e.target.tagName;
+  if(tag && /INPUT|TEXTAREA|SELECT/i.test(tag)) return;
+  if(search.open){
+    if(e.key==='Escape'){ closeSearch(); e.preventDefault(); return; }
+    if(e.key==='Backspace'){ search.q = search.q.slice(0,-1); renderSearch(); e.preventDefault(); return; }
+    if(e.key==='Enter'){
+      const nq=sNorm(search.q);
+      const first = (search.q?ALL_CARDS.filter(c=>c._blob.includes(nq)):ALL_CARDS)[0];
+      if(first){ closeSearch(); openCard(first.id); }
+      e.preventDefault(); return;
+    }
+    if(/^\p{L}{1}$/u.test(e.key)){ search.q += e.key; renderSearch(); e.preventDefault(); return; }
+    return; // swallow other keys while searching
+  }
+  // closed : a single letter opens the search
+  if(/^\p{L}{1}$/u.test(e.key)){ openSearch(e.key); e.preventDefault(); }
 });
 
 /* init */

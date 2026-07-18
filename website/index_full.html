@@ -218,14 +218,15 @@ a{color:inherit;text-decoration:none}
 .d-stage::-webkit-scrollbar{width:8px}
 .d-stage::-webkit-scrollbar-thumb{background:rgba(241,237,228,.22);border-radius:4px}
 
-/* hero : sticky at top, gets covered by panel on scroll */
-.d-hero{position:sticky;top:0;height:64vh;min-height:380px;display:flex;align-items:flex-end;justify-content:center;
-  background:radial-gradient(120% 90% at 50% 30%,#15130f 0%,#050505 70%);z-index:0;overflow:hidden}
-.d-hero-img{height:60vh;max-height:560px;width:auto;object-fit:contain;padding:2rem 1rem 0;
-  background:var(--mat);border:1px solid var(--mat-line);border-bottom:none;border-radius:.6rem .6rem 0 0;
-  box-shadow:0 30px 80px rgba(0,0,0,.7);transition:opacity .4s var(--ease)}
-.d-hero::after{content:'';position:absolute;left:0;right:0;bottom:0;height:34%;
-  background:linear-gradient(to bottom,transparent 0%,rgba(10,10,10,.65) 55%,#0a0a0a 100%);pointer-events:none;z-index:1}
+/* hero : full-width, mega-zoomed card, fades out into the panel */
+.d-hero{position:sticky;top:0;height:78vh;min-height:460px;width:100%;overflow:hidden;
+  background:#0a0a0a;z-index:0}
+.d-hero-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;
+  transform:scale(1.06);transition:opacity .45s var(--ease);filter:saturate(1.05) contrast(1.02)}
+.d-hero::before{content:'';position:absolute;inset:0;z-index:1;pointer-events:none;
+  background:linear-gradient(180deg,rgba(0,0,0,.28) 0%,transparent 22%,transparent 45%,rgba(10,10,10,.55) 72%,#0a0a0a 100%)}
+.d-hero::after{content:'';position:absolute;left:0;right:0;bottom:-1px;height:42%;pointer-events:none;z-index:2;
+  background:linear-gradient(to bottom,transparent 0%,rgba(10,10,10,.5) 45%,#0a0a0a 100%)}
 
 /* panel : slides over the hero, scrolls naturally */
 .d-panel{position:relative;z-index:2;background:#0a0a0a;color:var(--fg);
@@ -306,13 +307,38 @@ a{color:inherit;text-decoration:none}
   letter-spacing:.14em;text-transform:uppercase;color:var(--muted);max-width:calc(100vw - 130px)}
 .d-loop b{color:var(--ac);font-weight:400}
 
+/* =====================================================
+   SEARCH overlay — instant, fuzzy/occurrence based
+   ========================================================= */
+#search{position:fixed;inset:0;z-index:8000;background:rgba(5,5,5,.94);
+  backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+  display:none;flex-direction:column;opacity:0;transition:opacity .3s var(--ease)}
+#search.open{display:flex;opacity:1;animation:search-in .35s var(--ease)}
+@keyframes search-in{from{opacity:0}to{opacity:1}}
+.s-query{flex:0 0 auto;text-align:center;padding:7vh 4vw 1vh;min-height:26vh;
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Cormorant Garamond',serif;font-weight:300;
+  font-size:clamp(4rem,17vw,17rem);line-height:.86;letter-spacing:-.02em;color:var(--fg);
+  word-break:break-word;text-transform:uppercase}
+.s-query .ph{color:var(--muted);font-style:italic;font-weight:300;text-transform:none;font-size:.18em;letter-spacing:.04em}
+.s-query .caret{display:inline-block;width:.05em;min-height:.7em;background:var(--ac);margin-left:.05em;align-self:center;animation:s-blink 1s steps(2) infinite}
+@keyframes s-blink{50%{opacity:0}}
+.s-info{text-align:center;color:var(--muted);font-family:'DM Mono',monospace;font-size:.7rem;
+  letter-spacing:.2em;text-transform:uppercase;margin-bottom:1.4rem;flex:0 0 auto}
+.s-info b{color:var(--ac);font-weight:400}
+.s-hint{text-align:center;color:var(--muted);font-family:'DM Mono',monospace;font-size:.64rem;
+  letter-spacing:.18em;text-transform:uppercase;margin-bottom:1.4rem;opacity:.6;flex:0 0 auto}
+.s-scroll{flex:1;overflow-y:auto;padding:0 4vw 6vh;min-height:0}
+.s-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(118px,1fr));gap:1rem;max-width:1500px;margin:0 auto}
+.s-grid .mini{cursor:pointer}
+.s-empty{grid-column:1/-1;text-align:center;color:var(--muted);padding:3rem 0;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.4rem}
+
 /* ---------- responsive ---------- */
 @media (max-width:900px){
   .title-block{flex:0 0 88vw;padding:0 8vw}
   .title-block .stats{gap:1.6rem}
   .entry{flex:0 0 70vw;min-width:240px;height:64vh}
-  .d-hero{height:50vh;min-height:300px}
-  .d-hero-img{height:48vh;max-height:440px}
+  .d-hero{height:62vh;min-height:340px}
   .d-panel{padding:28px 6% 110px;border-radius:22px 22px 0 0}
   .d-side.prev{left:.6rem}.d-side.next{right:.6rem}
   .d-side{width:44px;height:44px}
@@ -386,6 +412,14 @@ a{color:inherit;text-decoration:none}
     </div>
   </div>
 </section>
+
+<!-- ============ SEARCH overlay ============ -->
+<div id="search" role="dialog" aria-modal="true" aria-label="Recherche">
+  <div class="s-query" id="s-query"></div>
+  <div class="s-info" id="s-info"></div>
+  <div class="s-hint">Cliquez une carte pour l'ouvrir · Échap pour fermer</div>
+  <div class="s-scroll"><div class="s-grid" id="s-grid"></div></div>
+</div>
 
 <script src="data.js"></script>
 <script>
@@ -691,6 +725,7 @@ $('#fam-prev').addEventListener('click',()=>famStep(-1));
 $('#fam-next').addEventListener('click',()=>famStep(1));
 
 document.addEventListener('keydown',e=>{
+  if(search && search.open) return; // search overlay handles keys
   if(e.key==='Escape'){if(state.view!=='landing')$('#back-btn').click();}
   if(state.view==='detail'){
     if(e.key==='ArrowLeft')stepCard(-1);
@@ -716,6 +751,74 @@ document.addEventListener('keydown',e=>{
     }
   },{passive:true});
 })();
+
+/* =========================================================
+   Instant search — FZF-like, matches occurrences anywhere
+   ========================================================= */
+const sNorm = s => (s||'').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');
+const sKeywords = md => { const m = md.match(/## Mots-clés[\s\S]*?(?=\n## )/i); return m ? m[0] : ''; };
+ALL_CARDS.forEach(c => { c._blob = sNorm(c.name+' '+c.familyName+' '+c.element+' '+sKeywords(c.md)); });
+const search = { open:false, q:'' };
+
+function openSearch(initial){
+  search.open=true; search.q = initial || '';
+  $('#search').classList.add('open');
+  renderSearch();
+}
+function closeSearch(){
+  search.open=false; search.q='';
+  $('#search').classList.remove('open');
+}
+function renderSearch(){
+  const q = search.q;
+  $('#s-query').innerHTML = q
+    ? sEsc(q) + '<span class="caret"></span>'
+    : '<span class="ph">Tapez pour rechercher…</span>';
+  const nq = sNorm(q);
+  let results = q ? ALL_CARDS.filter(c => c._blob.includes(nq)) : ALL_CARDS.slice();
+  if(q){
+    results.sort((a,b)=>{
+      const an = sNorm(a.name).includes(nq) ? 0 : 1;
+      const bn = sNorm(b.name).includes(nq) ? 0 : 1;
+      if(an!==bn) return an-bn;
+      return a.name.localeCompare(b.name);
+    });
+  }
+  $('#s-info').innerHTML = '<b>'+results.length+'</b> / 78 carte'+(results.length>1?'s':'');
+  const g = $('#s-grid'); g.innerHTML='';
+  if(!results.length){
+    g.innerHTML = '<div class="s-empty">Aucune carte ne correspond à « '+sEsc(q)+' »</div>';
+    return;
+  }
+  results.forEach(card=>{
+    const m = el('div','mini');
+    m.innerHTML = `
+      <div class="ph"><img src="cards/${card.file}" alt="${card.name}" loading="lazy"></div>
+      <div class="cap"><span class="nm">${card.name}</span><span class="no">${String(card.num).padStart(2,'0')}</span></div>`;
+    m.addEventListener('click',()=>{ closeSearch(); openCard(card.id); });
+    g.appendChild(m);
+  });
+}
+function sEsc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+
+document.addEventListener('keydown',e=>{
+  if(e.metaKey||e.ctrlKey||e.altKey) return;
+  const tag = e.target && e.target.tagName;
+  if(tag && /INPUT|TEXTAREA|SELECT/i.test(tag)) return;
+  if(search.open){
+    if(e.key==='Escape'){ closeSearch(); e.preventDefault(); return; }
+    if(e.key==='Backspace'){ search.q = search.q.slice(0,-1); renderSearch(); e.preventDefault(); return; }
+    if(e.key==='Enter'){
+      const nq=sNorm(search.q);
+      const first = (search.q?ALL_CARDS.filter(c=>c._blob.includes(nq)):ALL_CARDS)[0];
+      if(first){ closeSearch(); openCard(first.id); }
+      e.preventDefault(); return;
+    }
+    if(/^\p{L}{1}$/u.test(e.key)){ search.q += e.key; renderSearch(); e.preventDefault(); return; }
+    return;
+  }
+  if(/^\p{L}{1}$/u.test(e.key)){ openSearch(e.key); e.preventDefault(); }
+});
 
 /* init */
 renderLanding();
