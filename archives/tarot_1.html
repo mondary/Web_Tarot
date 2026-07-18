@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="fr" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atlas Tarot — Les Familles</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=DM+Mono:wght@300;400;500&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #060606;
+            --fg: #f1ede4;
+            --accent: #bf5b39;
+            --muted: #89847a;
+            --glass: rgba(255, 255, 255, 0.03);
+            --border: rgba(255, 255, 255, 0.08);
+            --ease: cubic-bezier(0.16, 1, 0.3, 1);
+            --slide-width: 76vw; /* Peek effect: 76vw slide + gap means next slide is partially visible */
+            --slide-gap: 3vw;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background: var(--bg);
+            color: var(--fg);
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            overflow: hidden;
+            -webkit-font-smoothing: antialiased;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        /* Grain Overlay */
+        .noise {
+            position: fixed;
+            inset: 0;
+            z-index: 999;
+            pointer-events: none;
+            opacity: 0.03;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+        }
+
+        /* Global Header */
+        header {
+            position: absolute;
+            top: 3rem;
+            left: 6vw;
+            right: 6vw;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+        }
+
+        .brand {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.6rem;
+            text-decoration: none;
+            color: var(--fg);
+            letter-spacing: 0.05em;
+        }
+
+        .back-link {
+            font-family: 'DM Mono', monospace;
+            font-size: 11px;
+            text-transform: uppercase;
+            text-decoration: none;
+            color: var(--muted);
+            letter-spacing: 0.1em;
+            transition: color 0.3s var(--ease);
+        }
+
+        .back-link:hover {
+            color: var(--fg);
+        }
+
+        /* Horizontal Carousel Slider Container with peek padding */
+        .slider-wrapper {
+            width: 100vw;
+            overflow: hidden;
+            position: relative;
+            margin-top: 2vh;
+        }
+
+        .slider-container {
+            display: flex;
+            gap: var(--slide-gap);
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            scroll-behavior: smooth;
+            scrollbar-width: none; /* Firefox */
+            padding: 0 6vw; /* Initial offset so the first slide is beautifully padded */
+        }
+
+        .slider-container::-webkit-scrollbar {
+            display: none; /* Safari/Chrome */
+        }
+
+        /* Slide as a massive physical Double-Bezel Card */
+        .slide {
+            flex: 0 0 var(--slide-width);
+            width: var(--slide-width);
+            height: 65vh;
+            scroll-snap-align: start;
+            position: relative;
+            perspective: 1000px;
+        }
+
+        /* Double-Bezel Card Architecture */
+        .card-outer {
+            width: 100%;
+            height: 100%;
+            padding: 2.5rem;
+            background: var(--glass);
+            border: 1px solid var(--border);
+            border-radius: 3rem;
+            box-shadow: 0 50px 100px -30px rgba(0,0,0,0.7);
+            transition: transform 0.8s var(--ease), border-color 0.5s var(--ease);
+            display: grid;
+            grid-template-columns: 1.1fr 1fr;
+            align-items: center;
+            gap: 4vw;
+            overflow: hidden;
+        }
+
+        .card-inner-text {
+            max-width: 460px;
+        }
+
+        .card-inner-visual {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* The Nested Bezel for Image */
+        .image-bezel-outer {
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 2rem;
+            max-width: 280px;
+            width: 100%;
+            transition: transform 0.8s var(--ease);
+        }
+
+        .image-bezel-inner {
+            background: #111;
+            border-radius: calc(2rem - 0.75rem);
+            overflow: hidden;
+            border: 1px solid rgba(255,255,255,0.04);
+            position: relative;
+            aspect-ratio: 2/3;
+        }
+
+        .image-bezel-inner img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 1.2s var(--ease);
+        }
+
+        .image-bezel-inner::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(255,255,255,0.06) 0%, transparent 50%, rgba(0,0,0,0.4) 100%);
+            pointer-events: none;
+        }
+
+        /* Interactive States & Micro-animations */
+        .slide:hover .card-outer {
+            transform: translateY(-8px) rotateY(-2deg);
+            border-color: rgba(255, 255, 255, 0.15);
+        }
+
+        .slide:hover .image-bezel-outer {
+            transform: translateY(-4px) scale(1.02);
+        }
+
+        .slide:hover .image-bezel-inner img {
+            transform: scale(1.05);
+        }
+
+        /* Typography */
+        .eyebrow {
+            font-family: 'DM Mono', monospace;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.3em;
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+            display: block;
+        }
+
+        h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(2.5rem, 5vw, 4.8rem);
+            font-weight: 300;
+            line-height: 1;
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.01em;
+        }
+
+        .desc {
+            font-size: 1rem;
+            line-height: 1.6;
+            color: var(--muted);
+            margin-bottom: 2.5rem;
+            font-weight: 300;
+        }
+
+        /* Double-Bezel CTA Pattern */
+        .cta-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 1.5rem;
+            padding: 0.5rem 0.5rem 0.5rem 2rem;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--border);
+            border-radius: 100px;
+            text-decoration: none;
+            color: var(--fg);
+            font-family: 'DM Mono', monospace;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            transition: all 0.5s var(--ease);
+        }
+
+        .cta-btn .arrow-wrapper {
+            width: 36px;
+            height: 36px;
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 50%;
+            display: grid;
+            place-items: center;
+            transition: transform 0.5s var(--ease), background 0.3s var(--ease);
+        }
+
+        .cta-btn:hover {
+            border-color: rgba(255,255,255,0.2);
+            background: rgba(255,255,255,0.06);
+        }
+
+        .cta-btn:hover .arrow-wrapper {
+            transform: rotate(45deg);
+            background: var(--accent);
+        }
+
+        /* Navigation Controls */
+        .controls-container {
+            position: absolute;
+            bottom: 4rem;
+            left: 6vw;
+            right: 6vw;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+        }
+
+        .indicators {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .ind-dot {
+            font-family: 'DM Mono', monospace;
+            font-size: 11px;
+            color: var(--muted);
+            cursor: pointer;
+            transition: color 0.3s var(--ease);
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+
+        .ind-dot::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: var(--accent);
+            transition: width 0.4s var(--ease);
+        }
+
+        .ind-dot.active {
+            color: var(--fg);
+        }
+
+        .ind-dot.active::after {
+            width: 100%;
+        }
+
+        .nav-arrows {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .nav-arrow {
+            width: 52px;
+            height: 52px;
+            border: 1px solid var(--border);
+            background: var(--glass);
+            border-radius: 50%;
+            color: var(--fg);
+            display: grid;
+            place-items: center;
+            cursor: pointer;
+            transition: all 0.4s var(--ease);
+        }
+
+        .nav-arrow:hover {
+            border-color: rgba(255,255,255,0.2);
+            background: rgba(255,255,255,0.1);
+            transform: translateY(-2px);
+        }
+
+        /* Mobile & Responsive Overrides */
+        @media (max-width: 900px) {
+            :root {
+                --slide-width: 84vw; /* More peek on mobile */
+                --slide-gap: 4vw;
+            }
+
+            .slide {
+                height: 70vh;
+            }
+
+            .card-outer {
+                grid-template-columns: 1fr;
+                grid-template-rows: auto 1fr;
+                gap: 2.5rem;
+                padding: 1.8rem;
+                align-content: center;
+                text-align: center;
+            }
+
+            .card-inner-text {
+                max-width: 100%;
+                order: 2;
+            }
+
+            .card-inner-visual {
+                order: 1;
+            }
+
+            .image-bezel-outer {
+                max-width: 180px;
+                padding: 0.6rem;
+            }
+
+            h2 {
+                font-size: clamp(2.2rem, 6vw, 3rem);
+                margin-bottom: 1rem;
+            }
+
+            .desc {
+                font-size: 0.95rem;
+                margin-bottom: 1.8rem;
+                line-height: 1.5;
+            }
+
+            .indicators {
+                display: none;
+            }
+
+            .controls-container {
+                justify-content: center;
+                bottom: 3rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="noise"></div>
+
+    <header>
+        <a href="#" class="brand">Atlas Tarot</a>
+        <a href="website/index.html" class="back-link">Retour à la grille</a>
+    </header>
+
+    <div class="slider-wrapper">
+        <div class="slider-container" id="slider">
+            <!-- MAJORS -->
+            <div class="slide" id="slide-majors">
+                <div class="card-outer">
+                    <div class="card-inner-text">
+                        <span class="eyebrow">Famille I</span>
+                        <h2>Arcanes Majeurs</h2>
+                        <p class="desc">Le voyage initiatique de l'esprit à travers les 22 portes de l'existence. Des archétypes intemporels pour éclairer le chemin intérieur.</p>
+                        <a href="website/index.html?family=majors" class="cta-btn">
+                            Explorer les arcanes
+                            <div class="arrow-wrapper">↗</div>
+                        </a>
+                    </div>
+                    <div class="card-inner-visual">
+                        <div class="image-bezel-outer">
+                            <div class="image-bezel-inner">
+                                <img src="website/cards/a_00_Fou.jpg" alt="Le Fou">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SWORDS -->
+            <div class="slide" id="slide-swords">
+                <div class="card-outer">
+                    <div class="card-inner-text">
+                        <span class="eyebrow">Famille II</span>
+                        <h2>Épées</h2>
+                        <p class="desc">Le royaume de l'esprit, de l'intellect et du discernement. Représentant l'élément Air, les Épées tranchent le brouillard des illusions avec vérité.</p>
+                        <a href="#" class="cta-btn" style="pointer-events: none; opacity: 0.5;">
+                            Bientôt disponible
+                            <div class="arrow-wrapper">↗</div>
+                        </a>
+                    </div>
+                    <div class="card-inner-visual">
+                        <div class="image-bezel-outer" style="background: rgba(66, 84, 255, 0.02);">
+                            <div class="image-bezel-inner" style="background: #09090b;">
+                                <img src="image.png" alt="Épées" style="opacity: 0.3; filter: grayscale(100%);">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- WANDS -->
+            <div class="slide" id="slide-wands">
+                <div class="card-outer">
+                    <div class="card-inner-text">
+                        <span class="eyebrow">Famille III</span>
+                        <h2>Bâtons</h2>
+                        <p class="desc">L'expression de la créativité pure, de la passion et de l'action. Représentant l'élément Feu, les Bâtons animent l'élan vital.</p>
+                        <a href="#" class="cta-btn" style="pointer-events: none; opacity: 0.5;">
+                            Bientôt disponible
+                            <div class="arrow-wrapper">↗</div>
+                        </a>
+                    </div>
+                    <div class="card-inner-visual">
+                        <div class="image-bezel-outer" style="background: rgba(255, 160, 0, 0.02);">
+                            <div class="image-bezel-inner" style="background: #0b0905;">
+                                <img src="image2.png" alt="Bâtons" style="opacity: 0.3; filter: grayscale(100%);">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CUPS -->
+            <div class="slide" id="slide-cups">
+                <div class="card-outer">
+                    <div class="card-inner-text">
+                        <span class="eyebrow">Famille IV</span>
+                        <h2>Coupes</h2>
+                        <p class="desc">La sphère des sentiments, de l'intuition profonde et de l'amour partagé. Représentant l'élément Eau, les Coupes accueillent le flux de l'âme.</p>
+                        <a href="#" class="cta-btn" style="pointer-events: none; opacity: 0.5;">
+                            Bientôt disponible
+                            <div class="arrow-wrapper">↗</div>
+                        </a>
+                    </div>
+                    <div class="card-inner-visual">
+                        <div class="image-bezel-outer" style="background: rgba(0, 184, 212, 0.02);">
+                            <div class="image-bezel-inner" style="background: #050b0c;">
+                                <img src="image3.png" alt="Coupes" style="opacity: 0.3; filter: grayscale(100%);">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Controls & Indicators -->
+    <div class="controls-container">
+        <div class="indicators">
+            <span class="ind-dot active" data-slide="0">01 / Majeurs</span>
+            <span class="ind-dot" data-slide="1">02 / Épées</span>
+            <span class="ind-dot" data-slide="2">03 / Bâtons</span>
+            <span class="ind-dot" data-slide="3">04 / Coupes</span>
+        </div>
+        <div class="nav-arrows">
+            <button class="nav-arrow" id="prev-btn" aria-label="Famille précédente">←</button>
+            <button class="nav-arrow" id="next-btn" aria-label="Famille suivante">→</button>
+        </div>
+    </div>
+
+    <script>
+        const slider = document.getElementById('slider');
+        const prevBtn = document.getElementById('prev-btn');
+        const nextBtn = document.getElementById('next-btn');
+        const indicators = document.querySelectorAll('.ind-dot');
+        const slides = document.querySelectorAll('.slide');
+
+        let currentIdx = 0;
+
+        // Mathematical offset calculations for peek layout
+        function getScrollOffset(index) {
+            const slideWidth = slides[0].getBoundingClientRect().width;
+            const style = window.getComputedStyle(slider);
+            const gap = parseFloat(style.gap || 0);
+            
+            // Total width of one slide + gap
+            return index * (slideWidth + gap);
+        }
+
+        function updateState(index) {
+            currentIdx = index;
+            indicators.forEach((ind, idx) => {
+                ind.classList.toggle('active', idx === currentIdx);
+            });
+        }
+
+        // Arrow Navigation
+        nextBtn.addEventListener('click', () => {
+            const nextIdx = (currentIdx + 1) % slides.length;
+            slider.scrollTo({
+                left: getScrollOffset(nextIdx),
+                behavior: 'smooth'
+            });
+            updateState(nextIdx);
+        });
+
+        prevBtn.addEventListener('click', () => {
+            const prevIdx = (currentIdx - 1 + slides.length) % slides.length;
+            slider.scrollTo({
+                left: getScrollOffset(prevIdx),
+                behavior: 'smooth'
+            });
+            updateState(prevIdx);
+        });
+
+        // Indicator Navigation
+        indicators.forEach(indicator => {
+            indicator.addEventListener('click', () => {
+                const targetIdx = parseInt(indicator.dataset.slide);
+                slider.scrollTo({
+                    left: getScrollOffset(targetIdx),
+                    behavior: 'smooth'
+                });
+                updateState(targetIdx);
+            });
+        });
+
+        // Sync active state with manual trackpad/swipe gesture
+        let isScrolling;
+        slider.addEventListener('scroll', () => {
+            window.clearTimeout(isScrolling);
+            isScrolling = setTimeout(() => {
+                const slideWidth = slides[0].getBoundingClientRect().width;
+                const style = window.getComputedStyle(slider);
+                const gap = parseFloat(style.gap || 0);
+                
+                const index = Math.round(slider.scrollLeft / (slideWidth + gap));
+                if (index !== currentIdx && index >= 0 && index < slides.length) {
+                    updateState(index);
+                }
+            }, 100);
+        });
+
+        // Handle window resize to re-calculate offsets cleanly
+        window.addEventListener('resize', () => {
+            slider.scrollTo({
+                left: getScrollOffset(currentIdx),
+                behavior: 'auto'
+            });
+        });
+    </script>
+</body>
+</html>
