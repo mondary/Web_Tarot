@@ -31,8 +31,11 @@ Les couleurs d'accent par famille et la palette globale sont définies via des v
 
 | Touche | Action |
 |--------|--------|
-| `←` / `→` | Carte précédente / suivante (vue détail) |
-| `Échap` | Retour à la vue précédente |
+| `A-Z` | Ouvre la recherche instantanée (tapez pour filtrer) |
+| `←` / `→` | Carte précédente / suivante (vue détail) ou famille précédente/suivante (grille) |
+| `Échap` | Retour à la vue précédente / ferme la recherche |
+| `Entrée` | Ouvre la première carte des résultats de recherche |
+| `⌫` | Efface un caractère de la recherche |
 | Molette / glisser | Défilement horizontal du carousel d'accueil |
 
 ## 📦 Build & Package

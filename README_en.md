@@ -31,8 +31,11 @@ Per-family accent colors and the global palette are defined via CSS variables in
 
 | Key | Action |
 |-----|--------|
-| `←` / `→` | Previous / next card (detail view) |
-| `Esc` | Back to the previous view |
+| `A-Z` | Opens instant search (type to filter) |
+| `←` / `→` | Previous / next card (detail view) or previous/next family (grid) |
+| `Esc` | Back to the previous view / close search |
+| `Enter` | Open the first search result |
+| `⌫` | Delete a search character |
 | Wheel / drag | Horizontal scrolling on the landing carousel |
 
 ## 📦 Build & Package

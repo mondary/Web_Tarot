@@ -37,6 +37,8 @@ Statut : `1.2026.1` (interface V2 livrée, enrichissement du contenu en cours d'
 - Navigation continue : les flèches précédent / suivant traversent les 78 cartes en boucle, d'une famille à l'autre
 - Grille : carousel horizontal de familles (swipe tactile, boutons desktop, indicateurs en points)
 - Vue détail alternative `website/index_full.html` : diaporama plein écran, hero de la carte qui se replie au scroll, panneau de contenu qui remonte par-dessus, navigation par swipe et boutons latéraux
+- Hero « mega zoom » pleine largeur dans `index_full.html` (couverture cinématographique tronquée avec fondu vers le panneau)
+- Recherche instantanée FZF (par occurrences) : une lettre tapée n'importe où ouvre une overlay, requête affichée en géant, grille des 78 cartes filtrée (nom + famille + élément + mots-clés, sans accent ni casse)
 - Barre de boucle indiquant la position globale et les cartes voisines
 - Détail par famille : couleur d'accent dédiée (Majeurs, Bâtons, Épées, Coupes, Deniers)
 - Rendu Markdown léger et navigation par section (Signification, Mots-clés, Interprétation, Amour, Travail, Finances, Guidance)
