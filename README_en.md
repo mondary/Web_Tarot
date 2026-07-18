@@ -43,7 +43,7 @@ Per-family accent colors and the global palette are defined via CSS variables in
 The sheet content (`.md`) is embedded into `data.js` via a generator script.
 
 ```bash
-node build_data.js
+node website/build_data.js
 ```
 
 This reads `website/cards/*.md`, generates `website/data.js` (~515 KB), and logs a confirmation. Run it after editing any `.md` file.
@@ -55,7 +55,7 @@ No bundling step: the site ships as vanilla HTML/CSS/JS.
 ```bash
 git clone <repo-url>
 cd Web_Tarot
-node build_data.js      # regenerate website/data.js (optional, already committed)
+node website/build_data.js  # regenerate website/data.js (optional, already committed)
 open website/index.html # or serve via a local server
 ```
 

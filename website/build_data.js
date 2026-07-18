@@ -1,7 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 
-const CARDS_DIR = path.join(__dirname, 'website', 'cards');
+const CARDS_DIR = path.join(__dirname, 'cards');
 
 const FAMILY_META = {
   a: { key: 'majors', name: 'Arcanes Majeurs', short: 'Majeurs', element: 'Éther', accent: '#c9a227', entryNum: 0 },
@@ -89,7 +89,7 @@ const output = {
 
 const json = JSON.stringify(output, null, 0);
 const out = `/* Auto-généré par build_data.js — ne pas éditer manuellement */\nconst TAROT = ${json};\n`;
-fs.writeFileSync(path.join(__dirname, 'website', 'data.js'), out);
+fs.writeFileSync(path.join(__dirname, 'data.js'), out);
 
 let total = 0;
 output.families.forEach(f => total += f.cards.length);

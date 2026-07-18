@@ -43,7 +43,7 @@ Les couleurs d'accent par famille et la palette globale sont définies via des v
 Le contenu des fiches (`.md`) est embarqué dans `data.js` via un script de génération.
 
 ```bash
-node build_data.js
+node website/build_data.js
 ```
 
 Ce script lit `website/cards/*.md`, génère `website/data.js` (≈ 515 KB) et le log de confirmation. À exécuter après toute modification d'un fichier `.md`.
@@ -55,7 +55,7 @@ Aucune étape de bundling : le site est livré en HTML/CSS/JS vanilla.
 ```bash
 git clone <repo-url>
 cd Web_Tarot
-node build_data.js      # régénère website/data.js (optionnel, déjà commité)
+node website/build_data.js  # régénère website/data.js (optionnel, déjà commité)
 open website/index.html # ou servir via un serveur local
 ```
 
