@@ -6,7 +6,7 @@ Toutes les notes de release du projet Web Tarot. Le format de version suit `🔥
 
 ## TODO — Roadmap
 
-Statut : `1.2026.1` (interface V2 livrée, enrichissement du contenu en cours d'amélioration continue)
+Statut : `2.2026.1` (interface V2 livrée, enrichissement du contenu en cours d'amélioration continue)
 
 ### Phase 1 — Fondations ✅
 - [x] Interface V2 unifiée (carousel d'accueil + grille par famille + vue détail)
@@ -28,6 +28,19 @@ Statut : `1.2026.1` (interface V2 livrée, enrichissement du contenu en cours d'
 ---
 
 ## Releases
+
+### [2.2026.1] - 2026-07-19
+#### Changed
+- Site **autoporté** : les 78 images sont embarquées en WebP (data URI) dans `data.js` — déploiement en déposant juste `index.html` + `data.js`, plus de dossier `cards/` requis
+- Cartes des suites (accueil) en ratio tarot `2/3`, image remplissant la hauteur (88vh) sur tous les écrans, y compris très hautes résolutions
+- Header de grille : défile avec les cartes sur mobile (`position:static`) pour libérer le visuel ; sticky sur desktop
+- Terminologie tarot corrigée : « lames » (au lieu de cartes) et « suites » (au lieu de familles)
+- Données enrichies par suite : élément + symbole alchimique, 3 signes astrologiques avec glyphes, ligne d'élément et description symbolique
+
+#### Added
+- Recherche instantanée FZF (par occurrences) : une lettre tapée n'importe où ouvre une overlay, requête affichée en géant, grille des 78 lames filtrée (nom + suite + élément + mots-clés, sans accent ni casse)
+- Vue détail alternative `index_full.html` : diaporama plein écran, hero mega-zoom pleine largeur tronqué par un fondu, panneau contenu qui remonte par-dessus, navigation par swipe et boutons latéraux
+- Grille : carousel horizontal de suites (swipe tactile, boutons desktop, indicateurs en points)
 
 ### [1.2026.1] - 2026-07-18
 #### Added
