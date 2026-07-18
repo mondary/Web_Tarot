@@ -1,5 +1,48 @@
 # Changelog
 
-## [0.10] - 2026-07-18
-### Added
-- Initial project scaffold
+Toutes les notes de release du projet Web Tarot. Le format de version suit `🔥vMAJOR.YY.PATCH`.
+
+---
+
+## TODO — Roadmap
+
+Statut : `1.2026.1` (interface V2 livrée, enrichissement du contenu en cours d'amélioration continue)
+
+### Phase 1 — Fondations ✅
+- [x] Interface V2 unifiée (carousel d'accueil + grille par famille + vue détail)
+- [x] 78 cartes référencées (22 arcanes majeurs + 56 mineurs)
+- [x] Fiches .md enrichies pour les 78 cartes
+- [x] Génération de `data.js` (contenu .md embarqué, fonctionnement hors-ligne)
+- [x] Navigation continue traversant les 5 familles en boucle
+- [x] Matelas blanc simulant la bordure réelle des cartes
+
+### Phase 2 — Expérience
+- [ ] Tirages (spreads) interactifs (croix, past, présent, futur…)
+- [ ] Mode diaporama plein écran avec lecture auto
+- [ ] Recherche et filtrage des cartes par mot-clé
+- [ ] Animations d'entrée et transitions entre vues
+- [ ] Sélecteur de thème / palette
+
+---
+
+## Releases
+
+### [1.2026.1] - 2026-07-18
+#### Added
+- Interface unifiée en un seul fichier : vue d'accueil (carousel horizontal), grille par famille, et vue détail avec fiche complète
+- 78 cartes : 22 arcanes majeurs + 56 mineurs (Bâtons, Épées, Coupes, Deniers), images et fiches descriptives
+- `build_data.js` : script de génération produisant `data.js` (contenu .md embarqué via `<script src>` pour un fonctionnement en `file://`)
+- Navigation continue : les flèches précédent / suivant traversent les 78 cartes en boucle, d'une famille à l'autre
+- Barre de boucle indiquant la position globale et les cartes voisines
+- Détail par famille : couleur d'accent dédiée (Majeurs, Bâtons, Épées, Coupes, Deniers)
+- Rendu Markdown léger et navigation par section (Signification, Mots-clés, Interprétation, Amour, Travail, Finances, Guidance)
+- Film grain, vignette et typographie éditoriale (Cormorant Garamond + Plus Jakarta Sans + DM Mono)
+- Support clavier (Échap, flèches) et navigation tactile
+
+#### Changed
+- Refonte V2 de l'interface (remplace la V1 archivée)
+- Matelas blanc (`#ffffff`) autour des illustrations pour simuler la bordure des cartes réelles, avec filet discret et ombre portée
+- Le titre « Tarot Divinatoire » défile désormais avec les cartes (au lieu d'être une barre latérale fixe)
+
+#### Fixed
+- Correction du rendu Markdown : fermeture correcte des sections et gestion des lignes de définition
