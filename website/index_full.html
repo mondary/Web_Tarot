@@ -147,8 +147,11 @@ a{color:inherit;text-decoration:none}
    ===================================================== */
 #view-grid{display:flex;flex-direction:column}
 .grid-head{
+  position:sticky;top:0;z-index:6;
   display:flex;align-items:flex-end;justify-content:space-between;
-  padding:5.5rem 4vw 1.8rem;gap:2rem;flex-wrap:wrap;
+  padding:5rem 4vw 1.4rem;gap:2rem;flex-wrap:wrap;
+  background:var(--bg);
+  border-bottom:1px solid var(--line);
 }
 .grid-head .left .crumb{font-family:'DM Mono',monospace;font-size:.7rem;letter-spacing:.28em;
   text-transform:uppercase;color:var(--muted);margin-bottom:1rem;display:flex;gap:.7rem;align-items:center}
@@ -170,12 +173,13 @@ a{color:inherit;text-decoration:none}
 .family-band::-webkit-scrollbar{display:none}
 .family-pane{
   flex:0 0 100vw;min-width:100vw;height:100%;overflow-y:auto;overflow-x:hidden;
-  scroll-snap-align:start;scroll-snap-stop:always;padding:1rem 4vw 7rem;
+  scroll-snap-align:start;scroll-snap-stop:always;
 }
 .family-pane::-webkit-scrollbar{width:6px}
 .family-pane::-webkit-scrollbar-thumb{background:rgba(241,237,228,.12);border-radius:3px}
 .grid{
   display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:1.2rem;
+  padding:1.4rem 4vw 7rem;
 }
 
 /* family step buttons (desktop) */
@@ -342,9 +346,9 @@ a{color:inherit;text-decoration:none}
   .d-panel{padding:28px 6% 110px;border-radius:22px 22px 0 0}
   .d-side.prev{left:.6rem}.d-side.next{right:.6rem}
   .d-side{width:44px;height:44px}
-  .grid-head{padding:5rem 6vw 1.4rem}
-  .grid-scroll{padding:1rem 6vw 6rem}
-  .grid{grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:.8rem}
+  /* mobile : le header défile avec les cartes */
+  .grid-head{position:static;padding:4.5rem 6vw 1rem;border-bottom:none}
+  .grid{grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:.8rem;padding:.8rem 6vw 6rem}
   .brand{left:1.2rem;top:1.2rem}
   .back{right:1.2rem;top:1.2rem}
   .d-nav{position:static}
@@ -373,17 +377,10 @@ a{color:inherit;text-decoration:none}
 
 <!-- ============ GRID ============ -->
 <section class="view" id="view-grid">
-  <header class="grid-head">
-    <div class="left">
-      <div class="crumb"><span class="ac-dot" id="grid-dot"></span><span id="grid-crumb">—</span></div>
-      <h2 id="grid-title">—</h2>
-    </div>
-    <div class="right"><b id="grid-count">0</b>lames<br>élément <span id="grid-elem">—</span></div>
-  </header>
-  <button class="fam-step prev" id="fam-prev" aria-label="Famille précédente">
+  <button class="fam-step prev" id="fam-prev" aria-label="Suite précédente">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
   </button>
-  <button class="fam-step next" id="fam-next" aria-label="Famille suivante">
+  <button class="fam-step next" id="fam-next" aria-label="Suite suivante">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
   </button>
   <div class="family-band" id="family-band"></div>
@@ -499,6 +496,15 @@ function buildGrid(){
   TAROT.families.forEach((f,i)=>{
     const pane = el('div','family-pane');
     pane.dataset.key = f.key; pane.dataset.index = i;
+    const titleHtml = f.name.replace(/(.+ )?(.+)$/,(_,a,b)=>a?`${a}<em>${b}</em>`:`<em>${b}</em>`);
+    const crumb = (f.key==='majors' ? 'Arcane · ' : 'Suite · ') + f.element;
+    const head = el('header','grid-head',`
+      <div class="left">
+        <div class="crumb"><span class="ac-dot"></span><span>${crumb}</span></div>
+        <h2>${titleHtml}</h2>
+      </div>
+      <div class="right"><b>${f.count}</b>lames<br>élément ${f.element}</div>`);
+    pane.appendChild(head);
     const grid = el('div','grid');
     f.cards.forEach(card=>{
       const m = el('div','mini');
@@ -516,7 +522,7 @@ function buildGrid(){
     dot.addEventListener('click',()=>scrollToFam(i));
     dots.appendChild(dot);
   });
-  // update header as panes scroll into view
+  // update accent + dots as panes scroll into view
   const io = new IntersectionObserver(es=>{
     es.forEach(e=>{ if(e.isIntersecting && e.intersectionRatio>=0.5){
       updateGridHeader(+e.target.dataset.index);
@@ -530,12 +536,7 @@ function updateGridHeader(idx){
   const f = TAROT.families[idx];
   state.familyKey=f.key; state.familyCards=f.cards; state.gridIndex=idx;
   document.documentElement.style.setProperty('--ac',f.accent);
-  $('#grid-crumb').textContent = 'Famille · '+f.element;
-  $('#grid-title').innerHTML = f.name.replace(/(.+ )?(.+)$/,(_,a,b)=>a?`${a}<em>${b}</em>`:`<em>${b}</em>`);
-  $('#grid-count').textContent = f.count;
-  $('#grid-elem').textContent = f.element;
   $('#fam-dots').querySelectorAll('button').forEach((d,i)=>d.classList.toggle('active',i===idx));
-  // hide prev/next at ends? No — it loops, so always visible. But keep them.
 }
 
 function scrollToFam(idx){
