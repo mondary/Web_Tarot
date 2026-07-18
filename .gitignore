@@ -1,0 +1,21 @@
+.agent
+/AGENT.md
+/AGENTS.md
+/CLAUDE.md
+/CODEX.md
+/GEMINI.md
+/GLM.md
+/OPENCODE.md
+.*
+.DS_Store
+node_modules/
+dist/
+build/
+.env
+.venv/
+__pycache__/
+*.log
+
+# Reference / benchmark materials (working files, ~45 MB of binaries)
+/benchmarks/
+/archives/index copy.html
