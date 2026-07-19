@@ -262,23 +262,18 @@ a{color:inherit;text-decoration:none}
   margin-bottom:14px;display:flex;gap:.8rem;align-items:center;flex-wrap:wrap}
 .d-meta b{color:var(--ac);font-weight:400}
 .d-meta .sep{opacity:.4}
-.d-title{font-family:'Cormorant Garamond',serif;font-weight:300;
-  font-size:clamp(2.4rem,5.5vw,4.6rem);line-height:1;text-transform:uppercase;letter-spacing:-.01em;margin:0 0 22px}
+.d-title{position:sticky;top:0;z-index:10;font-family:'Cormorant Garamond',serif;font-weight:300;
+  font-size:clamp(2.4rem,5.5vw,4.6rem);line-height:1;text-transform:uppercase;letter-spacing:-.01em;margin:0 0 22px;
+  padding:26px 0 20px;background:linear-gradient(#0a0a0a 72%,rgba(10,10,10,0))}
 .d-title em{font-style:italic;color:var(--ac);font-weight:400;text-shadow:0 0 28px rgba(255,255,255,.12)}
-
-/* section navigation stays above the prose instead of covering it while scrolling. */
-.d-nav{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:2.4rem;
-  padding:0;background:transparent;backdrop-filter:none;border:none;border-radius:0;width:auto;max-width:100%}
-.d-nav button{font-family:'DM Mono',monospace;font-size:.64rem;letter-spacing:.14em;text-transform:uppercase;
-  padding:.5rem .9rem;border-radius:50px;color:var(--muted);transition:.3s;border:1px solid transparent;white-space:nowrap}
-.d-nav button:hover{color:var(--fg)}
-.d-nav button.active{color:#050505;background:var(--ac)}
 
 /* prose (rendered markdown) */
 .prose section{margin-bottom:2.4rem;scroll-margin-top:7rem}
 .prose h2{font-family:'Cormorant Garamond',serif;font-weight:400;font-size:1.7rem;
   margin-bottom:.9rem;display:flex;align-items:center;gap:.8rem}
 .prose h2::before{content:'';width:24px;height:1px;background:var(--ac)}
+.prose h2 .content-icon{display:inline-flex;width:1.05em;height:1.05em;color:var(--ac);vertical-align:-.12em;flex:0 0 auto}
+.prose h2 .content-icon svg{width:100%;height:100%;fill:none;stroke:currentColor;stroke-width:1.5}
 .prose h3{font-family:'DM Mono',monospace;font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;
   color:var(--muted);margin:1.4rem 0 .7rem}
 .prose p{font-size:1.02rem;line-height:1.85;color:#d8d2c5;font-weight:300;margin-bottom:.9rem}
@@ -380,7 +375,6 @@ a{color:inherit;text-decoration:none}
   .brand{left:1.2rem;top:1.2rem}
   .mode-switch{right:1.2rem;top:.9rem}
   .back{left:1.2rem;top:3.7rem}
-  .d-nav{position:static}
 }
 </style>
 </head>
@@ -396,7 +390,7 @@ a{color:inherit;text-decoration:none}
 </nav>
 <div class="landing-foot" id="landing-foot">
   <span class="ver">v<span id="lf-ver">2.2026.1</span></span>
-  <a href="https://github.com/clm/Web_Tarot" target="_blank" rel="noopener">GitHub</a>
+  <a href="https://github.com/mondary/Web_Tarot" target="_blank" rel="noopener">GitHub</a>
   <a href="https://mondary.design" target="_blank" rel="noopener">mondary.design</a>
 </div>
 <button class="back" id="back-btn" style="display:none">
@@ -441,7 +435,6 @@ a{color:inherit;text-decoration:none}
       <div class="d-panel-inner">
         <div class="d-meta" id="d-meta"></div>
         <h1 class="d-title" id="d-title"></h1>
-        <div class="d-nav" id="d-nav"></div>
         <div class="prose" id="d-prose"></div>
         <div class="d-thumbs" id="d-thumbs"></div>
       </div>
@@ -644,7 +637,8 @@ function openCard(id){
   $('#d-title').innerHTML = `<em>${card.name}</em>`;
 
   // prose content
-  $('#d-prose').innerHTML = renderMd(card.md);
+  $('#d-prose').innerHTML = reorderClassique(renderMd(card.md));
+  decorateThemeIcons($('#d-prose'));
 
   // family thumbnails strip (quick jump within family)
   const thumbs=$('#d-thumbs'); thumbs.innerHTML='';
@@ -655,7 +649,6 @@ function openCard(id){
     thumbs.appendChild(t);
   });
 
-  buildDetailNav();
   updateLoopBar(globalIdx);
   $('#d-stage').scrollTop=0;
   switchView('detail');
@@ -730,27 +723,46 @@ function renderMd(md){
   function slug(s){return 'sec-'+s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');}
 }
 
-function buildDetailNav(){
-  const nav=$('#d-nav'); if(!nav)return;
-  const sections=[...document.querySelectorAll('#d-prose section')];
-  nav.innerHTML='';
-  sections.forEach((s,idx)=>{
-    const heading=s.querySelector('h2');
-    const b=el('button','',heading?heading.textContent:'§');
-    b.dataset.target=s.id;
-    b.addEventListener('click',()=>{s.scrollIntoView({behavior:'smooth',block:'start'});});
-    nav.appendChild(b);
+/* immersive view : reorder sections so Mots-clés + Interprétation lead,
+   Signification + Description sink to the bottom (stable sort by priority). */
+function reorderClassique(html){
+  const parts = html.split('</section>').map(s=>s.trim()).filter(Boolean);
+  const sections = parts.map(s=>{
+    const m = s.match(/<h2>([\s\S]*?)<\/h2>/);
+    const heading = m ? m[1].trim() : '';
+    return { html:s+'</section>', heading,
+      pri: /mots?\s*-?\s*cl/i.test(heading) ? 0
+         : /interpr.tation/i.test(heading) ? 1
+         : /signification/i.test(heading) ? 99
+         : /description/i.test(heading) ? 100
+         : 50 };
   });
-  if(!sections.length){nav.style.display='none';return;}
-  nav.style.display='';
-  // active state via observer
-  const io=new IntersectionObserver(es=>{
-    es.forEach(e=>{if(e.isIntersecting){
-      nav.querySelectorAll('button').forEach(b=>b.classList.toggle('active',b.dataset.target===e.target.id));
-    }});
-  },{root:$('#d-stage'),rootMargin:'-30% 0px -55% 0px',threshold:0});
-  sections.forEach(s=>io.observe(s));
-  nav.querySelector('button')?.classList.add('active');
+  const order = sections.map((s,i)=>i).sort((a,b)=> sections[a].pri-sections[b].pri || a-b);
+  return order.map(i=>sections[i].html).join('\n');
+}
+
+/* immersive + classique : add the small themed pictograms before theme headings
+   (Amour, Travail, Finances, Guidance, Affirmation, Interprétation). */
+function decorateThemeIcons(root){
+  const icons = {
+    interpretation:'<span class="content-icon"><svg viewBox="0 0 24 24"><path d="M2 12s3.5-6 10-6 10 6 10 6-3.5 6-10 6S2 12 2 12Z"/><circle cx="12" cy="12" r="2.5"/></svg></span>',
+    amour:'<span class="content-icon"><svg viewBox="0 0 24 24"><path d="M20.8 4.8a5.5 5.5 0 0 0-7.8 0L12 5.9l-1.1-1.1a5.5 5.5 0 0 0-7.8 7.8L12 21l8.9-8.4a5.5 5.5 0 0 0-.1-7.8Z"/></svg></span>',
+    travail:'<span class="content-icon"><svg viewBox="0 0 24 24"><rect x="3" y="7" width="18" height="13" rx="1"/><path d="M8 7V4h8v3M3 12h18M10 12v2h4v-2"/></svg></span>',
+    finances:'<span class="content-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M14.5 9.5c-.5-.7-1.4-1.1-2.5-1.1-1.5 0-2.5.8-2.5 1.9 0 2.9 5 1.3 5 4.1 0 1.1-1 1.9-2.5 1.9-1.1 0-2.1-.4-2.7-1.2M12 6.8v10.4"/></svg></span>',
+    guidance:'<span class="content-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="m15.8 8.2-2.2 5.4-5.4 2.2 2.2-5.4 5.4-2.2Z"/></svg></span>',
+    affirmation:'<span class="content-icon"><svg viewBox="0 0 24 24"><path d="M5 18V6h10l4 4v8H5Z"/><path d="M8 12h8M8 15h5"/></svg></span>',
+  };
+  root.querySelectorAll('section > h2').forEach(h2=>{
+    const title=h2.textContent.trim().toLocaleLowerCase('fr');
+    let type='';
+    if(title==='interprétation') type='interpretation';
+    else if(title.includes('amour')) type='amour';
+    else if(title.includes('travail')) type='travail';
+    else if(title.includes('finance')) type='finances';
+    else if(title.includes('guidance')) type='guidance';
+    else if(title.includes('affirmation')) type='affirmation';
+    if(type){ h2.innerHTML=icons[type]+'<span>'+h2.innerHTML+'</span>'; }
+  });
 }
 
 /* prev / next */

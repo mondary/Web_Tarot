@@ -259,24 +259,19 @@ a{color:inherit;text-decoration:none}
 .d-content .kicker{font-family:'DM Mono',monospace;font-size:.72rem;letter-spacing:.2em;
   text-transform:uppercase;color:var(--muted);margin-bottom:1rem;display:flex;gap:.7rem;align-items:center;flex-wrap:wrap}
 .d-content .kicker .sep{opacity:.4}
-.d-content h1{font-family:'Cormorant Garamond',serif;font-weight:300;
-  font-size:clamp(2.4rem,4.5vw,3.8rem);line-height:1;text-transform:uppercase;letter-spacing:-.01em;margin-bottom:.6rem}
+.d-content h1{position:sticky;top:0;z-index:20;font-family:'Cormorant Garamond',serif;font-weight:300;
+  font-size:clamp(2.4rem,4.5vw,3.8rem);line-height:1;text-transform:uppercase;letter-spacing:-.01em;margin-bottom:.6rem;
+  padding:5.5rem 0 1.1rem;background:linear-gradient(var(--bg) 80%,rgba(5,5,5,0))}
 .d-content h1 em{font-style:italic;color:var(--ac);font-weight:400}
 .d-lede{color:var(--muted);font-size:1.02rem;line-height:1.7;margin-bottom:2.4rem;max-width:42rem}
-
-/* section pills nav */
-.d-nav{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:2.6rem;position:sticky;top:1rem;z-index:5;
-  padding:.6rem;margin:0 0 2.6rem -.6rem;background:rgba(5,5,5,.6);backdrop-filter:blur(12px);border-radius:1rem;width:fit-content}
-.d-nav button{font-family:'DM Mono',monospace;font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;
-  padding:.5rem .9rem;border-radius:50px;color:var(--muted);transition:.3s;border:1px solid transparent}
-.d-nav button:hover{color:var(--fg)}
-.d-nav button.active{color:#050505;background:var(--ac)}
 
 .prose{max-width:44rem}
 .prose section{margin-bottom:2.4rem;scroll-margin-top:7rem}
 .prose h2{font-family:'Cormorant Garamond',serif;font-weight:400;font-size:1.7rem;
   margin-bottom:.9rem;display:flex;align-items:center;gap:.8rem}
 .prose h2::before{content:'';width:24px;height:1px;background:var(--ac)}
+.prose h2 .content-icon{display:inline-flex;width:1.05em;height:1.05em;color:var(--ac);vertical-align:-.12em;flex:0 0 auto}
+.prose h2 .content-icon svg{width:100%;height:100%;fill:none;stroke:currentColor;stroke-width:1.5}
 .prose h3{font-family:'DM Mono',monospace;font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;
   color:var(--muted);margin:1.4rem 0 .7rem}
 .prose p{font-size:1rem;line-height:1.85;color:#d8d2c5;font-weight:300;margin-bottom:.9rem}
@@ -469,7 +464,6 @@ a{color:inherit;text-decoration:none}
   .brand{left:1.2rem;top:1.2rem}
   .mode-switch{right:1.2rem;top:.9rem}
   .back{left:1.2rem;top:3.7rem}
-  .d-nav{position:static}
 }
 </style>
 </head>
@@ -484,8 +478,8 @@ a{color:inherit;text-decoration:none}
   <a href="index_detail.html">Détaillée</a>
 </nav>
 <div class="landing-foot" id="landing-foot">
-  <span class="ver">v<span id="lf-ver">2.2026.8</span></span>
-  <a href="https://github.com/clm/Web_Tarot" target="_blank" rel="noopener">GitHub</a>
+  <span class="ver">v<span id="lf-ver">2.2026.9</span></span>
+  <a href="https://github.com/mondary/Web_Tarot" target="_blank" rel="noopener">GitHub</a>
   <a href="https://mondary.design" target="_blank" rel="noopener">mondary.design</a>
 </div>
 <button class="back" id="back-btn" style="display:none">
@@ -864,7 +858,7 @@ function openCard(id){
   const globalIdx = ALL_CARDS.findIndex(c=>c.id===id);
   const inFam = family.cards.findIndex(c=>c.id===id);
 
-  const html = renderMd(card.md);
+  const html = reorderClassique(renderMd(card.md));
   const wrap = $('#detail-wrap');
   wrap.innerHTML = `
     <aside class="d-card">
@@ -878,10 +872,9 @@ function openCard(id){
         <span>${card.familyName} ${inFam+1}/${family.count}</span>
       </div>
       <h1><em>${card.name}</em></h1>
-      <div class="d-nav" id="d-nav"></div>
       <div class="prose" id="prose">${html}</div>
     </div>`;
-  buildDetailNav();
+  decorateThemeIcons($('#prose'));
   updateLoopBar(globalIdx);
   $('#view-detail').scrollTop=0;
   switchView('detail');
@@ -957,26 +950,22 @@ function renderMd(md){
   function slug(s){return 'sec-'+s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');}
 }
 
-function buildDetailNav(){
-  const nav=$('#d-nav'); if(!nav)return;
-  const sections=[...document.querySelectorAll('#prose section')];
-  nav.innerHTML='';
-  sections.forEach((s,idx)=>{
-    const heading=s.querySelector('h2');
-    const b=el('button','',heading?heading.textContent:'§');
-    b.dataset.target=s.id;
-    b.addEventListener('click',()=>{s.scrollIntoView({behavior:'smooth',block:'start'});});
-    nav.appendChild(b);
+/* classique view : reorder sections so Mots-clés + Interprétation lead,
+   Signification + Description sink to the bottom (stable sort by priority). */
+function reorderClassique(html){
+  const parts = html.split('</section>').map(s=>s.trim()).filter(Boolean);
+  const sections = parts.map(s=>{
+    const m = s.match(/<h2>([\s\S]*?)<\/h2>/);
+    const heading = m ? m[1].trim() : '';
+    return { html:s+'</section>', heading,
+      pri: /mots?\s*-?\s*cl/i.test(heading) ? 0
+         : /interpr.tation/i.test(heading) ? 1
+         : /signification/i.test(heading) ? 99
+         : /description/i.test(heading) ? 100
+         : 50 };
   });
-  if(!sections.length){nav.style.display='none';return;}
-  // active state via observer
-  const io=new IntersectionObserver(es=>{
-    es.forEach(e=>{if(e.isIntersecting){
-      nav.querySelectorAll('button').forEach(b=>b.classList.toggle('active',b.dataset.target===e.target.id));
-    }});
-  },{root:$('#view-detail'),rootMargin:'-30% 0px -55% 0px',threshold:0});
-  sections.forEach(s=>io.observe(s));
-  nav.querySelector('button')?.classList.add('active');
+  const order = sections.map((s,i)=>i).sort((a,b)=> sections[a].pri-sections[b].pri || a-b);
+  return order.map(i=>sections[i].html).join('\n');
 }
 
 /* prev / next */
