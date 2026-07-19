@@ -243,7 +243,7 @@ a{color:inherit;text-decoration:none}
 /* hero : full-width, mega-zoomed card, fades out into the panel */
 .d-hero{position:sticky;top:0;height:78vh;min-height:460px;width:100%;overflow:hidden;
   background:#0a0a0a;z-index:0}
-.d-hero-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;
+.d-hero-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top;
   transform:scale(1.06);transition:opacity .45s var(--ease);filter:saturate(1.05) contrast(1.02)}
 .d-hero::before{content:'';position:absolute;inset:0;z-index:1;pointer-events:none;
   background:linear-gradient(180deg,rgba(0,0,0,.28) 0%,transparent 22%,transparent 45%,rgba(10,10,10,.55) 72%,#0a0a0a 100%)}
@@ -353,7 +353,7 @@ a{color:inherit;text-decoration:none}
 .s-scroll{flex:1;overflow-y:auto;padding:0 4vw 6vh;min-height:0}
 .s-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(118px,1fr));gap:1rem;max-width:1500px;margin:0 auto}
 .s-grid .mini{cursor:pointer}
-.s-grid .mini.sel{border-color:var(--ac)!important;box-shadow:0 0 0 2px var(--ac),0 18px 42px rgba(0,0,0,.55);transform:translateY(-5px)}
+.s-grid .mini.sel{border:2px solid var(--ac);box-shadow:0 0 0 1px var(--ac);transform:none}
 .s-empty{grid-column:1/-1;text-align:center;color:var(--muted);padding:3rem 0;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.4rem}
 
 /* ---------- responsive ---------- */
@@ -383,7 +383,7 @@ a{color:inherit;text-decoration:none}
 <div class="fx-vignette"></div>
 
 <div class="brand"><b>Tarot</b> · Divinatoire</div>
-<a class="mode-switch" href="index.html">Vue classique ↗</a>
+<a class="mode-switch" id="mode-switch" href="index.html">Vue classique ↗</a>
 <div class="landing-foot" id="landing-foot">
   <span class="ver">v<span id="lf-ver">2.2026.1</span></span>
   <a href="https://github.com/clm/Web_Tarot" target="_blank" rel="noopener">GitHub</a>
@@ -579,6 +579,7 @@ function openFamily(key){
   buildGrid();
   const idx = Math.max(0, TAROT.families.findIndex(f=>f.key===key));
   updateGridHeader(idx);
+  history.replaceState(null,'','#suite='+encodeURIComponent(key));
   // instant jump to the requested pane (no animation on open)
   const band = $('#family-band');
   requestAnimationFrame(()=>{ band.scrollTo({left: idx*band.clientWidth, behavior:'auto'}); });
@@ -599,6 +600,7 @@ function openCard(id){
   if(!card) return;
   state.cardId=id;
   const family = TAROT.families.find(f=>f.key===card.family);
+  history.replaceState(null,'','#suite='+encodeURIComponent(card.family)+'&lame='+encodeURIComponent(id));
   document.documentElement.style.setProperty('--ac',family.accent);
   const globalIdx = ALL_CARDS.findIndex(c=>c.id===id);
   const inFam = family.cards.findIndex(c=>c.id===id);
@@ -874,6 +876,21 @@ document.addEventListener('keydown',e=>{
 
 /* init */
 renderLanding();
+function syncModeLink(){
+  const link=$('#mode-switch');
+  if(link) link.addEventListener('click',e=>{
+    if(location.hash){e.preventDefault();location.href=link.getAttribute('href')+location.hash;}
+  });
+}
+function restoreRoute(){
+  const params=new URLSearchParams(location.hash.slice(1));
+  const suite=params.get('suite');
+  const lame=params.get('lame');
+  if(lame){if(suite) openFamily(suite);openCard(lame);}
+  else if(suite) openFamily(suite);
+}
+syncModeLink();
+restoreRoute();
 </script>
 </body>
 </html>

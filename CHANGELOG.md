@@ -6,7 +6,7 @@ Toutes les notes de release du projet Web Tarot. Le format de version suit `🔥
 
 ## TODO — Roadmap
 
-Statut : `2.2026.1` (interface V2 livrée, enrichissement du contenu en cours d'amélioration continue)
+Statut : `2.2026.2` (interface V2 livrée, enrichissement du contenu en cours d'amélioration continue)
 
 ### Phase 1 — Fondations ✅
 - [x] Interface V2 unifiée (carousel d'accueil + grille par famille + vue détail)
@@ -28,6 +28,15 @@ Statut : `2.2026.1` (interface V2 livrée, enrichissement du contenu en cours d'
 ---
 
 ## Releases
+
+### [2.2026.2] - 2026-07-19
+#### Added
+- Choix entre vue classique et vue immersive depuis toutes les vues, avec conservation de la suite et de la lame via le hash URL
+- Navigation clavier complète dans la recherche : flèches, Tab, focus visuel accentué et Entrée pour ouvrir la lame sélectionnée
+
+#### Changed
+- Hero immersif cadré sur la partie haute de la lame pour conserver le sujet principal visible
+- Focus de recherche remplacé par un contour d'accent net, sans effet de sursaut
 
 ### [2.2026.1] - 2026-07-19
 #### Changed
