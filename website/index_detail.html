@@ -420,15 +420,16 @@ a{color:inherit;text-decoration:none}
 .study-plate,.polarity-plate{background:#0a0907;border:1px solid var(--line);padding:1.5rem}
 .plate-label{font-family:'DM Mono',monospace;font-size:.64rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);display:flex;align-items:center;gap:.7rem}
 .plate-label::before{content:'';width:24px;height:1px;background:var(--ac)}
-.study-canvas{position:relative;min-height:610px;margin-top:1.2rem;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
-.study-card{position:absolute;top:7%;left:31%;width:38%;padding:.55rem;background:var(--mat);box-shadow:0 18px 44px rgba(0,0,0,.35)}
+.study-canvas{position:relative;min-height:610px;margin-top:1.2rem}
+.study-card{position:absolute;top:5%;left:28%;width:44%;padding:.55rem;background:var(--mat);box-shadow:0 18px 44px rgba(0,0,0,.35)}
 .study-card img{width:100%;height:auto}
 .study-arrows{position:absolute;inset:0;width:100%;height:100%;color:var(--ac);pointer-events:none}
-.study-callout{position:absolute;width:25%;color:var(--fg)}
-.study-callout span{display:block;font-family:'DM Mono',monospace;font-size:.58rem;letter-spacing:.16em;text-transform:uppercase;color:var(--ac);margin-bottom:.35rem}
-.study-callout b{display:block;font-family:'Cormorant Garamond',serif;font-size:1.18rem;line-height:1.05;font-weight:400}
+.study-callout{position:absolute;width:22%;color:var(--fg)}
+.study-callout span{display:block;font-family:'DM Mono',monospace;font-size:.58rem;letter-spacing:.16em;text-transform:uppercase;color:var(--ac)!important;margin-bottom:.35rem}
+.study-callout b{display:block;font-family:'Cormorant Garamond',serif;font-size:1.05rem;line-height:1.1;font-weight:400;color:#fff!important;text-transform:lowercase;font-style:normal}
 .study-callout.c1{top:11%;left:0}.study-callout.c2{top:42%;left:0}.study-callout.c3{bottom:10%;left:0}
 .study-callout.c4{top:11%;right:0;text-align:right}.study-callout.c5{top:42%;right:0;text-align:right}.study-callout.c6{bottom:10%;right:0;text-align:right}
+
 .polarity-plate{display:flex;flex-direction:column}
 .polarity-plate h2{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,3vw,3.2rem);font-weight:300;line-height:.95;margin:1.4rem 0 1.8rem}
 .polarity-cards{display:grid;grid-template-columns:1fr 1fr;gap:1rem;align-items:start}
@@ -455,8 +456,8 @@ a{color:inherit;text-decoration:none}
   .dossier-diptych{grid-template-columns:1fr;gap:1.2rem;margin-bottom:2.8rem}
   .study-plate,.polarity-plate{padding:1rem}
   .study-canvas{min-height:510px}
-  .study-card{left:28%;width:44%;top:11%}
-  .study-callout{width:25%}
+  .study-card{left:22%;width:56%;top:8%}
+  .study-callout{width:20%}
   .study-callout b{font-size:1rem}
   .study-callout span{font-size:.5rem}
   .polarity-cards{gap:.7rem}
@@ -542,6 +543,715 @@ const FAMILY_SUMMARY = {
   epees:'Les Épées parlent des idées, des pensées, des opinions et du langage.',
   coupes:'Les Coupes parlent des émotions et des liens qui nous traversent.',
   deniers:'Les Deniers parlent des besoins, des ressources et de ce qui nous ancre.',
+};
+
+// Per-card visual symbol annotations (x,y in % of the card illustration, 0=top-left)
+// Source d'inspiration : playingcarddecks.com — synthèses originales en français.
+const CARD_SYMBOLS = {
+  'a_00_Fou':[
+    {label:'Chien', short:'Innocence, loyauté', side:'l', x:15, y:10, desc:'Innocence, loyauté.'},
+    {label:'Falaise', short:'Critique, décisions', side:'r', x:68, y:19, desc:'Critique, décisions.'},
+    {label:'Rose blanche', short:'Innocence, purification', side:'l', x:21, y:28, desc:'Innocence, purification.'},
+    {label:'Débuts, fins', short:'éternel', side:'r', x:74, y:37, desc:'éternel.'},
+    {label:'Besace', short:'Fardeaux, but de la vie', side:'l', x:27, y:46, desc:'Fardeaux, but de la vie.'},
+    {label:'Soleil blanc', short:'Confiance, naïveté, liberté', side:'r', x:80, y:54, desc:'Confiance, naïveté, liberté.'},
+    {label:'Ciel jaune', short:'Confiance, énergie masculine', side:'l', x:33, y:63, desc:'Confiance, énergie masculine.'},
+    {label:'Plume', short:'Vitalité, force, potentiel', side:'r', x:66, y:72, desc:'Vitalité, force, potentiel.'},
+    {label:'Montagnes', short:'Voyage de vie spirituel', side:'l', x:19, y:81, desc:'Voyage de vie spirituel.'},
+    {label:'Bottes', short:'Confiance, action', side:'r', x:72, y:90, desc:'Confiance, action.'},
+  ],
+  'a_01_Bateleur':[
+    {label:'Baguette magique', short:'Canaliser l\'énergie', side:'l', x:15, y:10, desc:'Canaliser l\'énergie.'},
+    {label:'Coupe', short:'Émotion', side:'r', x:68, y:21, desc:'Émotion.'},
+    {label:'Epée', short:'Communication', side:'l', x:21, y:33, desc:'Communication.'},
+    {label:'Pentacle', short:'Fardeaux, but de la vie', side:'r', x:74, y:44, desc:'Fardeaux, but de la vie.'},
+    {label:'Verdure', short:'Nature, connexion énergétique', side:'l', x:27, y:56, desc:'Nature, connexion énergétique.'},
+    {label:'Ciel jaune', short:'Confiance, énergie masculine', side:'r', x:80, y:67, desc:'Confiance, énergie masculine.'},
+    {label:'Table', short:'Le présent, les choses telles qu\'elle...', side:'l', x:33, y:79, desc:'Le présent, les choses telles qu\'elles sont.'},
+    {label:'Roses et lys', short:'Bonheur et succès', side:'r', x:66, y:90, desc:'Bonheur et succès.'},
+  ],
+  'a_02_Papesse':[
+    {label:'Colonnes', short:'Temple de Salomon. B - Boaz - \'force\'...', side:'l', x:15, y:10, desc:'Temple de Salomon. B - Boaz - \'force\' et J - Jachin - \'il établira\'. Cela correspond aussi à l\'énergie (noire) yin et (blanche) yang ou énergie féminine et masculine.'},
+    {label:'Croix', short:'Croyances, valeurs et objectifs intér...', side:'r', x:68, y:21, desc:'Croyances, valeurs et objectifs intérieurs.'},
+    {label:'Livre', short:'Un livre de connaissances pour le cou...', side:'l', x:21, y:33, desc:'Un livre de connaissances pour le cours de votre vie.'},
+    {label:'Palmiers', short:'Grenades Fertility, abundance of spir...', side:'r', x:74, y:44, desc:'Grenades Fertility, abundance of spiritual life.'},
+    {label:'Ciel jaune', short:'Confiance, énergie masculine', side:'l', x:27, y:56, desc:'Confiance, énergie masculine.'},
+    {label:'Voile', short:'Vie et connexion spirituelle', side:'r', x:80, y:67, desc:'Vie et connexion spirituelle.'},
+    {label:'Robes flottantes', short:'Ne vous laissez pas emporter par les ...', side:'l', x:33, y:79, desc:'Ne vous laissez pas emporter par les émotions du monde.'},
+    {label:'Couronne lunaire', short:'Confiance, action', side:'r', x:66, y:90, desc:'Confiance, action.'},
+  ],
+  'a_03_Impératrice':[
+    {label:'Robes amples', short:'Abondance et fertilité', side:'l', x:15, y:10, desc:'Abondance et fertilité.'},
+    {label:'Sceptre', short:'Fertilité et unité des sens', side:'r', x:68, y:20, desc:'Fertilité et unité des sens.'},
+    {label:'Bouclier', short:'Cœur accommodant, fertilité, féminité', side:'l', x:21, y:30, desc:'Cœur accommodant, fertilité, féminité.'},
+    {label:'Le choix d\'ouvrir', short:'ourselves to our dreams', side:'r', x:74, y:40, desc:'ourselves to our dreams.'},
+    {label:'Couronne d\'étoiles', short:'12 étoiles - signes du zodiaque signi...', side:'l', x:27, y:50, desc:'12 étoiles - signes du zodiaque signifient rêves réalisés.'},
+    {label:'Blé', short:'Vous récoltez ce que vous semez. Soin...', side:'r', x:80, y:60, desc:'Vous récoltez ce que vous semez. Soins du monde, abondance.'},
+    {label:'Forêt', short:'Nature et abondance', side:'l', x:33, y:70, desc:'Nature et abondance.'},
+    {label:'Chute d\'eau', short:'Flowing water,  the force of life', side:'r', x:66, y:80, desc:'Flowing water,  the force of life.'},
+    {label:'Trône/Canapé', short:'Expressif du sang vital et de la passion', side:'l', x:19, y:90, desc:'Expressif du sang vital et de la passion.'},
+  ],
+  'a_04_Emperor':[
+    {label:'Orbeeee', short:'Pouvoir, royauté. Vie éternelle, fert...', side:'l', x:15, y:10, desc:'Pouvoir, royauté. Vie éternelle, fertilité, la croix représente le dirigeant divin.'},
+    {label:'Barbe', short:'Sagesse de l\'âge et expérience', side:'r', x:68, y:18, desc:'Sagesse de l\'âge et expérience.'},
+    {label:'Robes rouges', short:'Idées, passion, créativité', side:'l', x:21, y:26, desc:'Idées, passion, créativité.'},
+    {label:'Le pouvoir créatif de', short:'the universal energy', side:'r', x:74, y:34, desc:'the universal energy.'},
+    {label:'Trône gris', short:'Gouverner avec respect pour soi et le...', side:'l', x:27, y:42, desc:'Gouverner avec respect pour soi et les autres.'},
+    {label:'Armure de pied', short:'Être bien préparé et courageux. Prote...', side:'r', x:80, y:50, desc:'Être bien préparé et courageux. Protecteur des autres et de soi. Attention à l\'abus de pouvoir - faiblesse - pieds d\'argile cachés.'},
+    {label:'Tête de bélier', short:'Signe du zodiaque Bélier', side:'l', x:33, y:58, desc:'Signe du zodiaque Bélier.'},
+    {label:'Armure', short:'Préparé, courageux, protecteur des au...', side:'r', x:66, y:66, desc:'Préparé, courageux, protecteur des autres et de soi.'},
+    {label:'Rivière', short:'The flow of life and  change', side:'l', x:19, y:74, desc:'The flow of life and  change.'},
+    {label:'Clé de vie', short:'Organes reproducteurs masculins, fert...', side:'r', x:72, y:82, desc:'Organes reproducteurs masculins, fertilité. Vie éternelle, autorité de gouverner.'},
+    {label:'Montagnes', short:'Le dirigeant et pionnier de nouvelles...', side:'l', x:25, y:90, desc:'Le dirigeant et pionnier de nouvelles terres.'},
+  ],
+  'a_05_Pape':[
+    {label:'Colonne', short:'Autorité, structure, limites', side:'l', x:15, y:10, desc:'Autorité, structure, limites.'},
+    {label:'Tête rasée', short:'(Tonsure) Spirituality, closeness to God', side:'r', x:68, y:21, desc:'(Tonsure) Spirituality, closeness to God.'},
+    {label:'Couronne à trois étages', short:'Pont vers le Dieu unique en trois per...', side:'l', x:21, y:33, desc:'Pont vers le Dieu unique en trois personnes : Père, Fils et Saint-Esprit.'},
+    {label:'Bâton épiscopal à trois branches', short:'L\'appel à être un leader', side:'r', x:74, y:44, desc:'L\'appel à être un leader.'},
+    {label:'Clés croisées', short:'Les clés du paradis', side:'l', x:27, y:56, desc:'Les clés du paradis.'},
+    {label:'Lys et roses', short:'Roses rouges passion, lys blancs pure...', side:'r', x:80, y:67, desc:'Roses rouges passion, lys blancs pureté amour et spiritualité.'},
+    {label:'Bénédiction', short:'Acte de purification - rendre votre v...', side:'l', x:33, y:79, desc:'Acte de purification - rendre votre vie worthwhile.'},
+    {label:'Trinité', short:'Trois croix - symbolisent la divine t...', side:'r', x:66, y:90, desc:'Trois croix - symbolisent la divine trinité. Signifie aussi divine féminine, mère vierge et reine ou trois mondes ciel, terre et enfer ou les trois niveaux de conscience ça, moi et surmoi.'},
+  ],
+  'a_06_Amoureux':[
+    {label:'Arbre de vie/Knowledge', short:'Arbre de vie et arbre de la tentation...', side:'l', x:15, y:10, desc:'Arbre de vie et arbre de la tentation - innocence et expérience énergie masculine et féminine.'},
+    {label:'Serpent', short:'Sagesse de l\'expérience et mise en ga...', side:'r', x:68, y:23, desc:'Sagesse de l\'expérience et mise en garde contre la tentation.'},
+    {label:'Ange', short:'Votre plus haut potentiel personnel', side:'l', x:21, y:37, desc:'Votre plus haut potentiel personnel.'},
+    {label:'Nuages', short:'Gris - confusion, l\'inconscient', side:'r', x:74, y:50, desc:'Gris - confusion, l\'inconscient.'},
+    {label:'Soleil jaune', short:'Nous connecte à notre plus haut poten...', side:'l', x:27, y:63, desc:'Nous connecte à notre plus haut potentiel.'},
+    {label:'Nudité', short:'Ouverture, honnêteté, sexualité, limites', side:'r', x:80, y:77, desc:'Ouverture, honnêteté, sexualité, limites.'},
+    {label:'Montagnes', short:'Voyage de vie spirituel', side:'l', x:33, y:90, desc:'Voyage de vie spirituel.'},
+  ],
+  'a_07_Chariot':[
+    {label:'Sphinx', short:'Les mystères de la vie', side:'l', x:15, y:10, desc:'Les mystères de la vie.'},
+    {label:'Chariot', short:'Our Karma  is shaped by our actions', side:'r', x:68, y:20, desc:'Our Karma  is shaped by our actions.'},
+    {label:'Couronne', short:'Victoire et honneur dans la vie', side:'l', x:21, y:30, desc:'Victoire et honneur dans la vie.'},
+    {label:'Ciel étoilé', short:'Liberté de l\'univers', side:'r', x:74, y:40, desc:'Liberté de l\'univers.'},
+    {label:'Armure', short:'Être armé et prêt pour la vie', side:'l', x:27, y:50, desc:'Être armé et prêt pour la vie.'},
+    {label:'Cocher debout', short:'Prendre position pour ce en quoi vous...', side:'r', x:80, y:60, desc:'Prendre position pour ce en quoi vous croyez.'},
+    {label:'Bâton', short:'Être prêt pour la vie', side:'l', x:33, y:70, desc:'Être prêt pour la vie.'},
+    {label:'Soleil ailé', short:'Notre centre intérieur et énergie vitale', side:'r', x:66, y:80, desc:'Notre centre intérieur et énergie vitale.'},
+    {label:'Toupie', short:'Équilibrer nos opposés dans la vie', side:'l', x:19, y:90, desc:'Équilibrer nos opposés dans la vie.'},
+  ],
+  'a_08_Force':[
+    {label:'Lion', short:'Force de volonté et pouvoir impulsif', side:'l', x:15, y:10, desc:'Force de volonté et pouvoir impulsif.'},
+    {label:'Montagnes bleues', short:'Expériences culminantes, conscience', side:'r', x:68, y:21, desc:'Expériences culminantes, conscience.'},
+    {label:'Ciel jaune', short:'Confiance, énergie masculine', side:'l', x:21, y:33, desc:'Confiance, énergie masculine.'},
+    {label:'Femme', short:'Pouvoir féminin douceur sur la force', side:'r', x:74, y:44, desc:'Pouvoir féminin douceur sur la force.'},
+    {label:'Robe blanche', short:'L\'innocence apprivoise la sauvagerie', side:'l', x:27, y:56, desc:'L\'innocence apprivoise la sauvagerie.'},
+    {label:'Couronne de fleurs', short:'And belt Wisdom and power of nature', side:'r', x:80, y:67, desc:'And belt Wisdom and power of nature.'},
+    {label:'Mains', short:'Confiance, calme et force face à l\'ag...', side:'l', x:33, y:79, desc:'Confiance, calme et force face à l\'agression.'},
+    {label:'Infini', short:'Vitalité et vigueur d\'être dans votre...', side:'r', x:66, y:90, desc:'Vitalité et vigueur d\'être dans votre force.'},
+  ],
+  'a_09_Hermite':[
+    {label:'Grise robe', short:'Uncertainty, personal development', side:'l', x:15, y:10, desc:'Uncertainty, personal development.'},
+    {label:'Lanterneeeee', short:'Vigilance et insomnie', side:'r', x:68, y:20, desc:'Vigilance et insomnie.'},
+    {label:'Bâton', short:'Trouver votre chemin', side:'l', x:21, y:30, desc:'Trouver votre chemin.'},
+    {label:'Étoile à 6 branches', short:'Le ciel sur terre et la lumière en nous', side:'r', x:74, y:40, desc:'Le ciel sur terre et la lumière en nous.'},
+    {label:'Barbe blanche', short:'Sagesse de l\'âge et expérience', side:'l', x:27, y:50, desc:'Sagesse de l\'âge et expérience.'},
+    {label:'Grey  Sky', short:'Se retirer du monde, confusion', side:'r', x:80, y:60, desc:'Se retirer du monde, confusion.'},
+    {label:'Zodiac Virgo', short:'Loyal, analytical, kind, critical', side:'l', x:33, y:70, desc:'Loyal, analytical, kind, critical.'},
+    {label:'Neige', short:'Oublier une partie de soi et laisser ...', side:'r', x:66, y:80, desc:'Oublier une partie de soi et laisser geler. Nouveaux débuts. Purification et pardon de soi.'},
+    {label:'Montagne', short:'Prendre du recul pour revoir votre vi...', side:'l', x:19, y:90, desc:'Prendre du recul pour revoir votre vie et faire la paix avec vous-même.'},
+  ],
+  'a_10_Roue_de_Fortune':[
+    {label:'Timing', short:'Unexpected, any time without notice. ...', side:'l', x:15, y:10, desc:'Unexpected, any time without notice. Nov 23 - Dec 21'},
+    {label:'Sphinx', short:'Mystère et les quatre éléments Feau, ...', side:'r', x:68, y:21, desc:'Mystère et les quatre éléments Feau, Eau, Air et Terre.'},
+    {label:'Serpent', short:'Voie négative ou descendante de la roue', side:'l', x:21, y:33, desc:'Voie négative ou descendante de la roue.'},
+    {label:'Anubis', short:'Egyptian god  - positive passages and...', side:'r', x:74, y:44, desc:'Egyptian god  - positive passages and the ups and downs of life.'},
+    {label:'I am ready to receive the', short:'emotion of others', side:'l', x:27, y:56, desc:'emotion of others.'},
+    {label:'Nuages', short:'Événements de notre vie évoluant dans...', side:'r', x:80, y:67, desc:'Événements de notre vie évoluant dans une direction inattendue.'},
+    {label:'Roue dentée', short:'Sortir et découvrir le monde et aller...', side:'l', x:33, y:79, desc:'Sortir et découvrir le monde et aller en soi et se découvrir.'},
+    {label:'Quatre signes fixes', short:'Les signes tiennent des livres de sag...', side:'r', x:66, y:90, desc:'Les signes tiennent des livres de sagesse et leurs ailes symbolisent le potentiel. Ils sont estompés pour représenter que la connaissance est encore en cours d\'acquisition. Ils représentent les 4 éléments Feau, Eau, Air et Terre.'},
+  ],
+  'a_11_Justice':[
+    {label:'Rouge robe', short:'Gestion des émotions. Décisions, pass...', side:'l', x:15, y:10, desc:'Gestion des émotions. Décisions, passion et action.'},
+    {label:'Ciel jaune', short:'Conscience, créativité, inspiration c...', side:'r', x:68, y:23, desc:'Conscience, créativité, inspiration contrainte par des règles.'},
+    {label:'Broche blanche', short:'Third eye higher wisdom and  intuition', side:'l', x:21, y:37, desc:'Third eye higher wisdom and  intuition.'},
+    {label:'Colonnes', short:'Contraintes de ce qui devrait arriver...', side:'r', x:74, y:50, desc:'Contraintes de ce qui devrait arriver plutôt que l\'équité.'},
+    {label:'Rideau', short:'Le besoin de clarté de pensée dans la...', side:'l', x:27, y:63, desc:'Le besoin de clarté de pensée dans la justice qui va au-delà de ce qui est visible.'},
+    {label:'Scales And Épée', short:'Les balances représentent l\'évaluatio...', side:'r', x:80, y:77, desc:'Les balances représentent l\'évaluation des options et l\'équité. L\'épée met en œuvre le jugement.'},
+    {label:'Couronne', short:'The power of three,  the four-sided j...', side:'l', x:33, y:90, desc:'The power of three,  the four-sided jewel represents masculine and feminine and the spiritual and material world.'},
+  ],
+  'a_12_Pendu':[
+    {label:'Aura', short:'Expérience sainte ou spirituelle et i...', side:'l', x:15, y:10, desc:'Expérience sainte ou spirituelle et illumination.'},
+    {label:'Arbre de vie', short:'Vie et résurrection', side:'r', x:68, y:30, desc:'Vie et résurrection.'},
+    {label:'Tunique bleue', short:'Le bleu est la couleur de l\'intuition...', side:'l', x:21, y:50, desc:'Le bleu est la couleur de l\'intuition et de la clarté de pensée - écoutez-vous pour l\'illumination.'},
+    {label:'Bas rouges', short:'Le rouge est le symbole de la passion...', side:'r', x:74, y:70, desc:'Le rouge est le symbole de la passion et de l\'action - les jambes sont actives et pourraient descendre à tout moment.'},
+    {label:'Pied', short:'The foot is simply tied and could be ...', side:'l', x:27, y:90, desc:'The foot is simply tied and could be untied at any time. This represents- encouragement to consciously take a break - to take time out.'},
+  ],
+  'a_13_Mort':[
+    {label:'Cavalier noir', short:'La mort transition vers autre chose, ...', side:'l', x:15, y:10, desc:'La mort transition vers autre chose, une autre phase de nos vies.'},
+    {label:'Cheval blanc', short:'Achèvement et nouveaux débuts', side:'r', x:68, y:21, desc:'Achèvement et nouveaux débuts.'},
+    {label:'Ciel gris', short:'Mé contre l\'indifférence et l\'apathie...', side:'l', x:21, y:33, desc:'Mé contre l\'indifférence et l\'apathie et de respecter la mort comme partie de la Vie.'},
+    {label:'Lettre hébraïque Nun', short:'Fidélité, spiritualité, pleine consci...', side:'r', x:74, y:44, desc:'Fidélité, spiritualité, pleine conscience.'},
+    {label:'Porte céleste', short:'La mort n\'est pas la fin', side:'l', x:27, y:56, desc:'La mort n\'est pas la fin.'},
+    {label:'Barque', short:'Transportant les âmes de la mort à la...', side:'r', x:80, y:67, desc:'Transportant les âmes de la mort à la réincarnation sur la rivière de la vie.'},
+    {label:'Drapeau', short:'Le drapeau noir a une couronne de réc...', side:'l', x:33, y:79, desc:'Le drapeau noir a une couronne de récolte blanche - le renversement de l\'ordre naturel des choses et les forces du mal défiant l\'esprit.'},
+    {label:'Ville éternelle', short:'Le paradis du Nouveau Testament, auqu...', side:'r', x:66, y:90, desc:'Le paradis du Nouveau Testament, auquel nous retournerons le jour du jugement représentant la circularité de la vie.'},
+  ],
+  'a_14_Temperance':[
+    {label:'Ange', short:'Nous mettant en contact avec notre po...', side:'l', x:15, y:10, desc:'Nous mettant en contact avec notre potentiel céleste.'},
+    {label:'Ciel gris', short:'Le ciel gris nous rappelle de ne pas ...', side:'r', x:68, y:20, desc:'Le ciel gris nous rappelle de ne pas être indifférents aux objectifs de vie qui sont importants pour nous.'},
+    {label:'Robe blanche', short:'Innocence et expérience', side:'l', x:21, y:30, desc:'Innocence et expérience.'},
+    {label:'Symbole triangulaire', short:'Un ancien symbole égyptien d\'intellig...', side:'r', x:74, y:40, desc:'Un ancien symbole égyptien d\'intelligence et de capacité d\'amour.'},
+    {label:'Eau And Coupes', short:'Trouver la bonne mesure entre les cou...', side:'l', x:27, y:50, desc:'Trouver la bonne mesure entre les coupes, représente tester les choses et trouver le bon équilibre.'},
+    {label:'Pied droit', short:'Conscience équilibre entre conscient ...', side:'r', x:80, y:60, desc:'Conscience équilibre entre conscient et inconscient.'},
+    {label:'Soleil et Aura', short:'Réunir la volonté personnelle la volo...', side:'l', x:33, y:70, desc:'Réunir la volonté personnelle la volonté du destin dans la vie.'},
+    {label:'Joyau frontal', short:'Ouvrir le troisième œil pour une sage...', side:'r', x:66, y:80, desc:'Ouvrir le troisième œil pour une sagesse spirituelle et perspicace.'},
+    {label:'Fire Wings', short:'Nouvelle possibilité pour nos vies es...', side:'l', x:19, y:90, desc:'Nouvelle possibilité pour nos vies est toujours là.'},
+  ],
+  'a_15_Diable':[
+    {label:'Downward Facing', short:'Pentagram A warning of all the negati...', side:'l', x:15, y:10, desc:'Pentagram A warning of all the negative energy that can hold you back.'},
+    {label:'Ailes de chauve-souris', short:'Utilisez vos sens pour voir au-delà d...', side:'r', x:68, y:20, desc:'Utilisez vos sens pour voir au-delà de ce qui vous retient.'},
+    {label:'Cornes du diable', short:'Tout en vous qui est sauvage et non r...', side:'l', x:21, y:30, desc:'Tout en vous qui est sauvage et non raffiné.'},
+    {label:'Main du diable', short:'Main ouverte est laisse notre esprit ...', side:'r', x:74, y:40, desc:'Main ouverte est laisse notre esprit ouvert pour trouver ce qui est bon et mauvais.'},
+    {label:'Torche du diable', short:'Apporter la lumière dans l\'obscurité ...', side:'l', x:27, y:50, desc:'Apporter la lumière dans l\'obscurité ou comprendre le positif et le négatif.'},
+    {label:'Cube noir', short:'Le soi inexploré', side:'r', x:80, y:60, desc:'Le soi inexploré.'},
+    {label:'Deux figures', short:'Comment nous pouvons être pris dans l...', side:'l', x:33, y:70, desc:'Comment nous pouvons être pris dans les attentes des relations et des choix.'},
+    {label:'Chaînes', short:'Nos liens matériels que nous pourrion...', side:'r', x:66, y:80, desc:'Nos liens matériels que nous pourrions abandonner si nous le voulions.'},
+    {label:'Queues', short:'Notre nature animale l\'apprivoiser et...', side:'l', x:19, y:90, desc:'Notre nature animale l\'apprivoiser et trouver notre vrai self.'},
+  ],
+  'a_16_Tour':[
+    {label:'Ciel noir', short:'Confusion about which way to turn, th...', side:'l', x:15, y:10, desc:'Confusion about which way to turn, the blackness that comes before enlightenment.'},
+    {label:'Deux figures tombant', short:'Tomber ou voler les deux peuvent être...', side:'r', x:68, y:23, desc:'Tomber ou voler les deux peuvent être terrifiants mais tomber représente la négativité et voler représente la positivité.'},
+    {label:'Éclair', short:'Un changement soudain et dramatique i...', side:'l', x:21, y:37, desc:'Un changement soudain et dramatique irréversible.'},
+    {label:'Nuages gris', short:'Représente la confusion', side:'r', x:74, y:50, desc:'Représente la confusion.'},
+    {label:'Flammes', short:'Émotion et passion, destruction et ag...', side:'l', x:27, y:63, desc:'Émotion et passion, destruction et agression.'},
+    {label:'Couronne inclinée', short:'Tout ce que nous avions connu, a été ...', side:'r', x:80, y:77, desc:'Tout ce que nous avions connu, a été jeté de la tour, représentant nos vies détruites.'},
+    {label:'Tour', short:'Protection, pouvoir et étroitesse d\'e...', side:'l', x:33, y:90, desc:'Protection, pouvoir et étroitesse d\'esprit et faux sentiment de sécurité.'},
+  ],
+  'a_17_Etoile':[
+    {label:'Ciel bleu clair', short:'Represents the will of spirit and the...', side:'l', x:15, y:10, desc:'Represents the will of spirit and the mind coming together.'},
+    {label:'Étoile à 8 branches', short:'L\'étoile centrale à huit branches rep...', side:'r', x:68, y:21, desc:'L\'étoile centrale à huit branches représente le soi, et les sept étoiles autour représentent les sept chakras.'},
+    {label:'Position des figures', short:'L\'acte d\'essayer de voir qui nous som...', side:'l', x:21, y:33, desc:'L\'acte d\'essayer de voir qui nous sommes dans le reflet de l\'eau.'},
+    {label:'Nudité', short:'Représente être vulnérable et authent...', side:'r', x:74, y:44, desc:'Représente être vulnérable et authentique.'},
+    {label:'Pied sur l\'eau', short:'Emotions,  unconscious and the foot o...', side:'l', x:27, y:56, desc:'Emotions,  unconscious and the foot on the water support of the soul and emotional life.'},
+    {label:'Cruche', short:'Capacité spirituelle et cycle de la vie', side:'r', x:80, y:67, desc:'Capacité spirituelle et cycle de la vie.'},
+    {label:'Cinq ruisseaux', short:'Donner de l\'énergie à la terre', side:'l', x:33, y:79, desc:'Donner de l\'énergie à la terre.'},
+    {label:'Arbres', short:'La connexion entre le Ciel et la Terre', side:'r', x:66, y:90, desc:'La connexion entre le Ciel et la Terre.'},
+  ],
+  'a_18_Lune':[
+    {label:'Soleil et Lune', short:'Full Moon, Crescent Moon and Sun are ...', side:'l', x:15, y:10, desc:'Full Moon, Crescent Moon and Sun are as one Day and night  as one means confusion and dreaming. The Moon - unconscious, the Sun - consciousness.'},
+    {label:'Yod', short:'Le monde ou la transition entre le bi...', side:'r', x:68, y:26, desc:'Le monde ou la transition entre le bien et le mal.'},
+    {label:'Chiens', short:'Un chien domestique et un chien sauva...', side:'l', x:21, y:42, desc:'Un chien domestique et un chien sauvage montrent la confusion et comment les instincts anciens sont transmis à travers les générations.'},
+    {label:'Crabeeeee', short:'Le crabe rampant hors de la piscine -...', side:'r', x:74, y:58, desc:'Le crabe rampant hors de la piscine - nos cauchemars réalisés. Écoutez votre instinct et faites face à ce qui doit être fait plutôt que d\'écouter une imagination hyperactive.'},
+    {label:'Route longue', short:'Le chemin de vie et l\'unification ent...', side:'l', x:27, y:74, desc:'Le chemin de vie et l\'unification entre ici et maintenant et l\'au-delà.'},
+    {label:'Tours', short:'Coloré en gris - confusion et obstina...', side:'r', x:80, y:90, desc:'Coloré en gris - confusion et obstination, et mettent en garde contre le manque de flexibilité et la vue de l\'autre perspective.'},
+  ],
+  'a_19_Soleil':[
+    {label:'Tournesols', short:'Bonheur et force, la recherche consta...', side:'l', x:15, y:10, desc:'Bonheur et force, la recherche constante de la lumière, ou l\'illumination.'},
+    {label:'Mur', short:'Bonheur venant de limites claires et ...', side:'r', x:68, y:23, desc:'Bonheur venant de limites claires et fermées dans nos vies.'},
+    {label:'Soleil jaune', short:'The knowledge we have about the world...', side:'l', x:21, y:37, desc:'The knowledge we have about the world in our consciousness. 21 rays of the sun - represent each of the elements of the Major Arcana,.'},
+    {label:'Ciel bleu -', short:'Représente le bonheur et la clarté de...', side:'r', x:74, y:50, desc:'Représente le bonheur et la clarté de pensée.'},
+    {label:'Enfant', short:'Exprime le bonheur et l\'ouverture. Le...', side:'l', x:27, y:63, desc:'Exprime le bonheur et l\'ouverture. Le désir d\'être un enfant encore. La nudité représente l\'innocence.'},
+    {label:'Cheval gris', short:'Ne pas être conscient de la force en ...', side:'r', x:80, y:77, desc:'Ne pas être conscient de la force en nous.'},
+    {label:'Plume/écharpe rouge', short:'Representing joy happiness and life e...', side:'l', x:33, y:90, desc:'Representing joy happiness and life energy .'},
+  ],
+  'a_20_Jugement':[
+    {label:'Ange Gabriel', short:'Un appel à l\'action et au pouvoir', side:'l', x:15, y:10, desc:'Un appel à l\'action et au pouvoir.'},
+    {label:'Ciel bleu clair', short:'Clarté de pensée et esprit sain', side:'r', x:68, y:21, desc:'Clarté de pensée et esprit sain.'},
+    {label:'The Neige-Capped', short:'Montagnes The process of continual re...', side:'l', x:21, y:33, desc:'Montagnes The process of continual renewal and inspiration.'},
+    {label:'La corne du jugement', short:'Dit éveiller l\'énergie réprimée et ra...', side:'r', x:74, y:44, desc:'Dit éveiller l\'énergie réprimée et ramener les morts à la vie. L\'appel à passer à l\'action'},
+    {label:'La croix', short:'Un appel à l\'équité et à un jugement ...', side:'l', x:27, y:56, desc:'Un appel à l\'équité et à un jugement sain.'},
+    {label:'Mains tendues', short:'Être ouvert à de nouvelles connaissan...', side:'r', x:80, y:67, desc:'Être ouvert à de nouvelles connaissances idées et défis leur permettant d\'accepter des connaissances supérieures et de prendre une nouvelle direction.'},
+    {label:'Personnes', short:'Coloured Grey Rising out of their con...', side:'l', x:33, y:79, desc:'Coloured Grey Rising out of their confusion into enlightenment.'},
+    {label:'Cercueils ouverts', short:'Libération de l\'oppression et de la c...', side:'r', x:66, y:90, desc:'Libération de l\'oppression et de la confinement et de ce qui a été.'},
+  ],
+  'a_21_Monde':[
+    {label:'Figure', short:'Être en mouvement mais avoir la vie é...', side:'l', x:15, y:10, desc:'Être en mouvement mais avoir la vie équilibrée - faire face à la vérité nue - la nudité représente aussi la naissance le mariage et la mort - le cercle complet de la vie.'},
+    {label:'Châle mauve', short:'La continuité du mouvement l\'évolutio...', side:'r', x:68, y:23, desc:'La continuité du mouvement l\'évolution continue de l\'âme ou de l\'esprit.'},
+    {label:'Deux baguettes', short:'Quatre éléments being bought ensemble...', side:'l', x:21, y:37, desc:'Quatre éléments being bought ensemble dans leur totalité.'},
+    {label:'Bandes rouges', short:'Le signe de l\'infini, positivité, équ...', side:'r', x:74, y:50, desc:'Le signe de l\'infini, positivité, équilibre et vitalité.'},
+    {label:'Ciel bleu clair', short:'Clarté de pensée', side:'l', x:27, y:63, desc:'Clarté de pensée.'},
+    {label:'Couronne verte', short:'Triomphe et accomplissements', side:'r', x:80, y:77, desc:'Triomphe et accomplissements.'},
+    {label:'Quatre signes du zodiaque', short:'Quatre éléments et signes du zodiaque...', side:'l', x:33, y:90, desc:'Quatre éléments et signes du zodiaque sont montrés par les figures. L\'ange Verseau - Air, l\'aigle Scorpion - Eau, le lion Lion -Feu, et le taureau est Taureau - Terre. Chacun est maintenant représenté en couleur montrant l\'achèvement du voyage de vie et l\'arrivée à la connaissance.'},
+  ],
+  'b_01_As':[
+    {label:'Ciel gris ou nuages', short:'Confusion, neutralité, pas de directi...', side:'l', x:15, y:10, desc:'Confusion, neutralité, pas de direction, et pas d\'opinion.'},
+    {label:'Main', short:'La main émerge des nuages pour donner...', side:'r', x:68, y:23, desc:'La main émerge des nuages pour donner un signe clair pour passer à l\'action.'},
+    {label:'Baguette', short:'Fait de bois symbolisant le feu de la...', side:'l', x:21, y:37, desc:'Fait de bois symbolisant le feu de la vie en nous. Les feuilles représentent la force vitale passant à l\'action.'},
+    {label:'18 feuilles vertes', short:'Nature, fertilité, croissance et espo...', side:'r', x:74, y:50, desc:'Nature, fertilité, croissance et espoir. Les feuilles nous rappellent d\'être réaliste et équilibré.'},
+    {label:'Rivière', short:'Continuité du changement, rester dans...', side:'l', x:27, y:63, desc:'Continuité du changement, rester dans le \'flux\' en travaillant vers des objectifs.'},
+    {label:'Trois arbres', short:'Les trois étapes du cycle de vie nais...', side:'r', x:80, y:77, desc:'Les trois étapes du cycle de vie naissance vieillissement et mort. Aussi fertilité et action.'},
+    {label:'Château', short:'Un foyer sécurisé au sommet d\'une mon...', side:'l', x:33, y:90, desc:'Un foyer sécurisé au sommet d\'une montagne. Objectifs et passage à l\'action.'},
+  ],
+  'b_02_Deux':[
+    {label:'Cape rouge', short:'La passion de passer à l\'action', side:'l', x:15, y:10, desc:'La passion de passer à l\'action.'},
+    {label:'Deux baguettes', short:'Deux chemins que vous pouvez prendre ...', side:'r', x:68, y:23, desc:'Deux chemins que vous pouvez prendre dans la vie, choix en vous-même et dans le monde.'},
+    {label:'Globe', short:'Le monde entier entre vos mains - fai...', side:'l', x:21, y:37, desc:'Le monde entier entre vos mains - faites un choix judicieux.'},
+    {label:'Remparts', short:'Le monde depuis un point de vue sûr. ...', side:'r', x:74, y:50, desc:'Le monde depuis un point de vue sûr. Regardez toutes les options et prenez des décisions.'},
+    {label:'Ciel gris', short:'Neutre, objectif, pas d\'opinion, conf...', side:'l', x:27, y:63, desc:'Neutre, objectif, pas d\'opinion, confusion - prise de décision.'},
+    {label:'Montagnes', short:'Le voyage que chaque décision nous fa...', side:'r', x:80, y:77, desc:'Le voyage que chaque décision nous fait faire.'},
+    {label:'Croix lys et rose', short:'Le lys blanc représente l\'innocence e...', side:'l', x:33, y:90, desc:'Le lys blanc représente l\'innocence et le chagrin. La rose rouge passion pouvoir et bonheur. Ensemble la dualité de chaque décision et ses effets.'},
+  ],
+  'b_03_Trois':[
+    {label:'Robes rouge et verte', short:'Robe rouge - passion et désir, object...', side:'l', x:15, y:10, desc:'Robe rouge - passion et désir, objectifs. Cape verte fertilité, succès de l\'action.'},
+    {label:'Armure', short:'Être préparé, structure, prise de déc...', side:'r', x:68, y:23, desc:'Être préparé, structure, prise de décision claire.'},
+    {label:'Bandeau', short:'Être prêt pour quoi que ce soit consc...', side:'l', x:21, y:37, desc:'Être prêt pour quoi que ce soit conscience de l\'environnement.'},
+    {label:'Ciel jaune', short:'Confidence, masculine energy', side:'r', x:74, y:50, desc:'Confidence, masculine energy'},
+    {label:'Deux rives', short:'D\'où vous venez et où vous allez. Les...', side:'l', x:27, y:63, desc:'D\'où vous venez et où vous allez. Les conflits en vous. Mer dorée - aperçu de votre vie et résultats positifs.'},
+    {label:'Trois baguettes', short:'Baguettes derrière la figure - vous a...', side:'r', x:80, y:77, desc:'Baguettes derrière la figure - vous avez surmonté des défis ou vous les ignorez.'},
+    {label:'Navires', short:'S\'embarquer pour une nouvelle aventur...', side:'l', x:33, y:90, desc:'S\'embarquer pour une nouvelle aventure dans la vie, attendre quelque chose ou être laissé pour compte.'},
+  ],
+  'b_04_Quatre':[
+    {label:'Deux figures', short:'Bonheur - fleurs dans l\'air - célébra...', side:'l', x:15, y:10, desc:'Bonheur - fleurs dans l\'air - célébration familiale traditionnelle.'},
+    {label:'Quatre baguettes', short:'Quatre baguettes forment un portail, ...', side:'r', x:68, y:26, desc:'Quatre baguettes forment un portail, les figures sont farewell ou vous accueillent. Les hautes baguettes créent une haute énergie.'},
+    {label:'Guirlande', short:'Un signe de succès célébration, plais...', side:'l', x:21, y:42, desc:'Un signe de succès célébration, plaisir, et fertilité.'},
+    {label:'Ciel jaune', short:'Confiance, énergie masculine', side:'r', x:74, y:58, desc:'Confiance, énergie masculine.'},
+    {label:'Pont', short:'Emporter le bonheur à la maison', side:'l', x:27, y:74, desc:'Emporter le bonheur à la maison.'},
+    {label:'Château', short:'Plus grand château du jeu de tarot. R...', side:'r', x:80, y:90, desc:'Plus grand château du jeu de tarot. Représente la sécurité et la protection - votre endroit sûr, votre foyer.'},
+  ],
+  'b_05_Cinq':[
+    {label:'Cinq figures', short:'Un concours équilibré où il n\'y a pas...', side:'l', x:15, y:10, desc:'Un concours équilibré où il n\'y a pas de gagnants. Énergie juvénile et exubérance. Volonté consciente et inconsciente, la volonté des autres et la volonté du destin qui rivalisent ensemble.'},
+    {label:'Green/Yellow', short:'Ground Positive symbolism, a place wh...', side:'r', x:68, y:30, desc:'Ground Positive symbolism, a place where things can grow - a fertile place for an argument or conflict.'},
+    {label:'Chapeau rouge', short:'Parler à travers votre chapeau - ou l...', side:'l', x:21, y:50, desc:'Parler à travers votre chapeau - ou le garder sous votre chapeau - plutôt que d\'être clair sur ce que vous voulez.'},
+    {label:'Cinq baguettes', short:'5 flames within you - elements of spi...', side:'r', x:74, y:70, desc:'5 flames within you - elements of spirit fire, air, water and earth, competing for attention.'},
+    {label:'Ciel bleu', short:'Ciel bleu clair indique travailler po...', side:'l', x:27, y:90, desc:'Ciel bleu clair indique travailler pour la clarté d\'esprit et de pensée.'},
+  ],
+  'b_06_Six':[
+    {label:'Cavalier', short:'Commandant ou leader victorieux - un ...', side:'l', x:15, y:10, desc:'Commandant ou leader victorieux - un symbole de notre volonté consciente.'},
+    {label:'Vêtements rouge/jaune', short:'Passion positive. Vous avez la capaci...', side:'r', x:68, y:23, desc:'Passion positive. Vous avez la capacité de diriger et de mener votre vie dans la direction que vous choisissez. Prendre des décisions critiques.'},
+    {label:'Cheval vert', short:'Cloth Growth, potential, and fertilit...', side:'l', x:21, y:37, desc:'Cloth Growth, potential, and fertility in motion.'},
+    {label:'Cheval gris', short:'Symbole de la volonté inconsciente qu...', side:'r', x:74, y:50, desc:'Symbole de la volonté inconsciente qui nous pousse en avant et qui nous est inconnue.'},
+    {label:'Couronnes de laurier', short:'Couronne on the riders head is symbol...', side:'l', x:27, y:63, desc:'Couronne on the riders head is symbolic of victory. The laurel crown on the wand - union of masculine and feminine aspects of  life energy.'},
+    {label:'Foule', short:'Suit volontairement représentant le s...', side:'r', x:80, y:77, desc:'Suit volontairement représentant le soutien conscient de tout ce que vous faites.'},
+    {label:'Ciel bleu', short:'Clarté de but et clarté de message', side:'l', x:33, y:90, desc:'Clarté de but et clarté de message.'},
+  ],
+  'b_07_Septr':[
+    {label:'Vêtements', short:'Le vert et le jaune représentent la f...', side:'l', x:15, y:10, desc:'Le vert et le jaune représentent la fertilité, l\'espoir et la positivité.'},
+    {label:'Sept baguettes', short:'Tous les obstacles que vous avez surm...', side:'r', x:68, y:30, desc:'Tous les obstacles que vous avez surmontés pour en être où vous êtes maintenant. Ce qui doit être accompli pour créer de la stabilité dans votre vie.'},
+    {label:'Chaussures', short:'Boot and the shoe - being caught off ...', side:'l', x:21, y:50, desc:'Boot and the shoe - being caught off balance and unprepared. The boot - working class. The shoe - being affluent. This shows the challenges of life. Confidence, action'},
+    {label:'Ciel bleu', short:'Ciel bleu clair indique un chemin cla...', side:'r', x:74, y:70, desc:'Ciel bleu clair indique un chemin clair devant, clarté de but et clarté de message.'},
+    {label:'Terrain inégal', short:'Se tenir au-dessus dans une position ...', side:'l', x:27, y:90, desc:'Se tenir au-dessus dans une position sûre pour relever les défis.'},
+  ],
+  'b_08_Huit':[
+    {label:'Feuilles vertes', short:'Fertilité, nouvelle croissance, symbo...', side:'l', x:15, y:10, desc:'Fertilité, nouvelle croissance, symbolisant de nouvelles idées et de nouvelles actions.'},
+    {label:'Maison sur la colline', short:'Vos objectifs et rêves', side:'r', x:68, y:30, desc:'Vos objectifs et rêves.'},
+    {label:'Huit baguettes', short:'You are coordinating everything in mo...', side:'l', x:21, y:50, desc:'You are coordinating everything in motion. Action - things are happening quickly. Fence or barrier - the wands form a barrier stopping you from getting to the house on the far bank of the river - what is happening that is stopping you from reaching your goals?'},
+    {label:'Rivière', short:'Continuité et changement, rester dans...', side:'r', x:74, y:70, desc:'Continuité et changement, rester dans le flux, tout comme les baguettes sont figées dans un moment de mouvement.'},
+    {label:'Ciel bleu', short:'Clarté de pensée et de but', side:'l', x:27, y:90, desc:'Clarté de pensée et de but.'},
+  ],
+  'b_09_Neuf':[
+    {label:'Neuf baguettes', short:'Upright forming a barrier of things i...', side:'l', x:15, y:10, desc:'Upright forming a barrier of things in the past overcome, that you cannot go back to. Baguettes of differing heights represent differing degrees of challenge. Green leaves represent new hope.'},
+    {label:'Bandage de tête', short:'Peut signifier que vous avez été bles...', side:'r', x:68, y:37, desc:'Peut signifier que vous avez été blessé par les luttes de la vie, qu\'il y a beaucoup à penser, ou que vous avez traversé le pire de vos défis et êtes maintenant préparé pour la guérison et ce qui vient ensuite.'},
+    {label:'Chemin gris', short:'Se tenant sur une surface plane neutr...', side:'l', x:21, y:63, desc:'Se tenant sur une surface plane neutre pour contempler la vie et où vous avez été. Le gris peut aussi symboliser la confusion et peut indiquer l\'incertitude et l\'inaction.'},
+    {label:'Ciel bleu', short:'Clarté de pensée et d\'action. Peut in...', side:'r', x:74, y:90, desc:'Clarté de pensée et d\'action. Peut indiquer le pensée désirative et trop d\'efforts.'},
+  ],
+  'b_10_Dix':[
+    {label:'Burden', short:'You are struggling to carry your resp...', side:'l', x:15, y:10, desc:'You are struggling to carry your responsibilities effectively. You are determined and learning from your failures You will push through anything.'},
+    {label:'Orange Tunic', short:'Orange can mean clear vibrant passion...', side:'r', x:68, y:26, desc:'Orange can mean clear vibrant passion and decisive action (think red and yellow blended together) or confusion and ambiguity (not red or yellow).'},
+    {label:'Baguettes', short:'Work out what is important and bring ...', side:'l', x:21, y:42, desc:'Work out what is important and bring everything together to create the one goal and solution. Don\'t let your problems get in the way - slow down!'},
+    {label:'Flat Ground', short:'You can reach your goal you just need...', side:'r', x:74, y:58, desc:'You can reach your goal you just need to push forward. The dirty yellow of the ground can indicate a mixture of sun and darkness or confusion on your travels.'},
+    {label:'House', short:'The goal you are trying to achieve. Y...', side:'l', x:27, y:74, desc:'The goal you are trying to achieve. Your home is your castle and your identity.'},
+    {label:'Ciel bleu', short:'Clarté de pensée et d\'action. Peut in...', side:'r', x:80, y:90, desc:'Clarté de pensée et d\'action. Peut indiquer le pensée désirative et trop d\'efforts.'},
+  ],
+  'b_11_Valet':[
+    {label:'Salamanders On Tunic', short:'Folklore states that the salamander i...', side:'l', x:15, y:10, desc:'Folklore states that the salamander is an animal that can pass through fire without injury - symbolising Magick spirituality and the ability to withstand challenges.'},
+    {label:'Ciel bleu clair', short:'Lightheartednes s, clarity of thought...', side:'r', x:68, y:26, desc:'Lightheartednes s, clarity of thought and purpose, free will and clear mind. Can indicate wishful thinking and striving too much.'},
+    {label:'Baguette', short:'Is taller than the page indicating bi...', side:'l', x:21, y:42, desc:'Is taller than the page indicating big ideas and impulsivity. Green leaves indicate new ideas and possibilities but care that your immaturity doesn\'t cause you to take on too much.'},
+    {label:'Pyramids', short:'Are a sign of timeless age wisdom and...', side:'r', x:74, y:58, desc:'Are a sign of timeless age wisdom and science. The pyramid symbolises energy and transforming yourself through ideas.'},
+    {label:'Red Plume', short:'Represents being positive, full of en...', side:'l', x:27, y:74, desc:'Represents being positive, full of energy and prepared to set big goals.'},
+    {label:'Desert', short:'The heat and fire within us that if o...', side:'r', x:80, y:90, desc:'The heat and fire within us that if over emphasised can burn you out and cause us to wither away.'},
+  ],
+  'b_12_Cavalier':[
+    {label:'Elemental', short:'Correspondence Air of Fire. Knights a...', side:'l', x:15, y:10, desc:'Correspondence Air of Fire. Knights are air, the suit is Fire.'},
+    {label:'Zodiac', short:'3rd Decan Cancer – 2nd Decan Leo', side:'r', x:68, y:21, desc:'3rd Decan Cancer – 2nd Decan Leo'},
+    {label:'Knight On Cheval', short:'Controlled energy - controlling the o...', side:'l', x:21, y:33, desc:'Controlled energy - controlling the out of control horse.'},
+    {label:'Armure/Helmet', short:'Shows preparation and protection also...', side:'r', x:74, y:44, desc:'Shows preparation and protection also stubbornness in the pursuit of your thoughts and ideas.'},
+    {label:'Red Plumes', short:'Helmet/Sleeves Fire and passion - ind...', side:'l', x:27, y:56, desc:'Helmet/Sleeves Fire and passion - indicating someone who cannot be restrained.'},
+    {label:'Pyramids', short:'A sign of timeless age, wisdom and sc...', side:'r', x:80, y:67, desc:'A sign of timeless age, wisdom and science. The pyramid symbolises energy and. transforming yourself through ideas.'},
+    {label:'Baguette In', short:'Desert Overcoming obstacles and perso...', side:'l', x:33, y:79, desc:'Desert Overcoming obstacles and personal hardship to achieve goals.'},
+    {label:'Yellow Tunic', short:'Yellow indicates energy, drive, clari...', side:'r', x:66, y:90, desc:'Yellow indicates energy, drive, clarity of thought and wild enthusiasm.'},
+  ],
+  'b_13_Reine':[
+    {label:'Elemental', short:'Correspondence Eau of Fire. Queens ar...', side:'l', x:15, y:10, desc:'Correspondence Eau of Fire. Queens are water, the suit is Fire.'},
+    {label:'Zodiac', short:'3rd Decan Pisces – 2nd Decan Aries', side:'r', x:68, y:20, desc:'3rd Decan Pisces – 2nd Decan Aries'},
+    {label:'Leafy Couronne', short:'Abundance and prosperity the queen th...', side:'l', x:21, y:30, desc:'Abundance and prosperity the queen thrives in everything she does.'},
+    {label:'Yellow Robe', short:'Indicates happiness, peace, clarity o...', side:'r', x:74, y:40, desc:'Indicates happiness, peace, clarity of thought and energy .'},
+    {label:'White Cape', short:'The white cape balances her yellow go...', side:'l', x:27, y:50, desc:'The white cape balances her yellow gown and indicates purity of presence.'},
+    {label:'Red Jewel', short:'The small red jewel indicates passion', side:'r', x:80, y:60, desc:'The small red jewel indicates passion.'},
+    {label:'Red Shoe', short:'Represents grounding and passion devo...', side:'l', x:33, y:70, desc:'Represents grounding and passion devoting your whole heart and mind to the task at hand.'},
+    {label:'Throne', short:'Reaching the sky - symbolic of the co...', side:'r', x:66, y:80, desc:'Reaching the sky - symbolic of the connection between heaven and earth.'},
+    {label:'Tournesols', short:'Tournesols always turn to face the su...', side:'l', x:19, y:90, desc:'Tournesols always turn to face the sun and so are symbolic of vitality.'},
+  ],
+  'b_14_Roi':[
+    {label:'Elemental', short:'Correspondence Fire of Fire. Kings ar...', side:'l', x:15, y:10, desc:'Correspondence Fire of Fire. Kings are fire, the suit is Fire.'},
+    {label:'Zodiac', short:'3rd Decan Scorpio – 2nd Decan Sagitta...', side:'r', x:68, y:20, desc:'3rd Decan Scorpio – 2nd Decan Sagittarius'},
+    {label:'Couronne of flames', short:'Symbolises strength of will and inner...', side:'l', x:21, y:30, desc:'Symbolises strength of will and inner fire.'},
+    {label:'Red/orange', short:'robes and hair Orange means clear vib...', side:'r', x:74, y:40, desc:'robes and hair Orange means clear vibrant passion and decisive action (think red and yellow blended together) .'},
+    {label:'Yellow cape', short:'Happiness, peace, clarity of thought ...', side:'l', x:27, y:50, desc:'Happiness, peace, clarity of thought and energy - this energy if in over abundance can be described as being too energetic and too overbearing.'},
+    {label:'Green Shoes/Cape', short:'Shoes - the steps we take in life, an...', side:'r', x:80, y:60, desc:'Shoes - the steps we take in life, and the shoulders represent the responsibility we bear. Green - fertility, growth and life,.'},
+    {label:'Black lion on the', short:'throne Strength of will and determina...', side:'l', x:33, y:70, desc:'throne Strength of will and determination.'},
+    {label:'Throne', short:'Reaching the sky - symbolic of the co...', side:'r', x:66, y:80, desc:'Reaching the sky - symbolic of the connection between heaven and earth.'},
+    {label:'Salamanders', short:'cape/king\'s feet Folklore states that...', side:'l', x:19, y:90, desc:'cape/king\'s feet Folklore states that the salamander is an animal that can pass through fire without injury. Symbolising Magick, spirituality and the ability to withstand challenges. The circle indicates circularity of life.'},
+  ],
+  'c_01_As':[
+    {label:'Ciel gris ou nuages', short:'Confusion et neutralité, pas de direc...', side:'l', x:15, y:10, desc:'Confusion et neutralité, pas de direction et pas d\'opinion.'},
+    {label:'Main', short:'Émerge des nuages et vous présente la...', side:'r', x:68, y:20, desc:'Émerge des nuages et vous présente la coupe comme un cadeau pour vous encourager à écouter vos sentiments.'},
+    {label:'Coupe', short:'Représente nos émotions prenant forme', side:'l', x:21, y:30, desc:'Représente nos émotions prenant forme.'},
+    {label:'26 gouttes d', short:'Comme les 26 lettres de l\'alphabet, c...', side:'r', x:74, y:40, desc:'Comme les 26 lettres de l\'alphabet, chaque goutte représente notre langage des sentiments.'},
+    {label:'Cinq jets d', short:'Les jets d\'eau représentent le lien e...', side:'l', x:27, y:50, desc:'Les jets d\'eau représentent le lien entre nous-mêmes et le monde.'},
+    {label:'Colombe blanche', short:'La colombe blanche représente la paix...', side:'r', x:80, y:60, desc:'La colombe blanche représente la paix - nous encourageant à avoir la paix en nous.'},
+    {label:'Croix', short:'Symbolisme religieux du saint-esprit', side:'l', x:33, y:70, desc:'Symbolisme religieux du saint-esprit.'},
+    {label:'Nénuphars', short:'Pureté religieuse et illumination', side:'r', x:66, y:80, desc:'Pureté religieuse et illumination.'},
+    {label:'Lettre W sur Coupe', short:'Le sens est encore débattu et peu cla...', side:'l', x:19, y:90, desc:'Le sens est encore débattu et peu clair - pourrait être une référence à A.E.Waite ou une référence religieuse ou une référence au saint graal.'},
+  ],
+  'c_02_Deux':[
+    {label:'Figures In', short:'Half Profile Symbolise two halves to ...', side:'l', x:15, y:10, desc:'Half Profile Symbolise two halves to  make a whole.'},
+    {label:'Vêtements', short:'Figure in blue clothing - represents ...', side:'r', x:68, y:26, desc:'Figure in blue clothing - represents the feminine side of a relationship. Figure in black and yellow - represents the masculine side of a relationship. White tunic - represents the innocence and purity of love. Red shoes - represent grounding and passion.'},
+    {label:'Winged Lions', short:'Head And Bâton Of Hermes Inspired by ...', side:'l', x:21, y:42, desc:'Head And Bâton Of Hermes Inspired by Caduceus and Zurvan - energies of passion and the heart that must be overcome through communication and strength.'},
+    {label:'Hills', short:'The ups and downs of life and relatio...', side:'r', x:74, y:58, desc:'The ups and downs of life and relationships.'},
+    {label:'Couronnes de laurier', short:'Symbolise a celebration of love and c...', side:'l', x:27, y:74, desc:'Symbolise a celebration of love and connection.'},
+    {label:'Ciel bleu clair -', short:'Lightheartedness, clarity of thought ...', side:'r', x:80, y:90, desc:'Lightheartedness, clarity of thought and purpose, free will and clear mind. Can indicate wishful thinking and striving too much.'},
+  ],
+  'c_03_Trois':[
+    {label:'Three Women', short:'Dancing A round dance of spiritual po...', side:'l', x:15, y:10, desc:'Dancing A round dance of spiritual power and emotion. The women dancing represent feminine power. Life is a celebration.'},
+    {label:'Red, Beige And', short:'White Vêtements Red represents soul w...', side:'r', x:68, y:30, desc:'White Vêtements Red represents soul white the mind and beige the body. The idea of the three aspects of self coming together in a positive way.'},
+    {label:'Raising Of The', short:'Coupes Traditional symbolism of celeb...', side:'l', x:21, y:50, desc:'Coupes Traditional symbolism of celebration - raising the energy of emotion upwards.'},
+    {label:'Fruits Of Harvest', short:'Abundance and being thankful for all ...', side:'r', x:74, y:70, desc:'Abundance and being thankful for all that is given to you.'},
+    {label:'Ciel bleu clair', short:'Lightheartedness, clarity of thought ...', side:'l', x:27, y:90, desc:'Lightheartedness, clarity of thought and purpose, free will and clear mind. Can indicate wishful thinking and striving too much.'},
+  ],
+  'c_04_Quatre':[
+    {label:'Raised Ground', short:'Isolates the figure and sets him apar...', side:'l', x:15, y:10, desc:'Isolates the figure and sets him apart - shows a deliberate separation from the world and other people.'},
+    {label:'Red Shoes And Shirt', short:'Passion, but the figure being on the ...', side:'r', x:68, y:21, desc:'Passion, but the figure being on the ground symbolises passion contained.'},
+    {label:'Three Coupes', short:'Shows that ideas and emotions that ca...', side:'l', x:21, y:33, desc:'Shows that ideas and emotions that can be seen and known.'},
+    {label:'Main', short:'The hand extending from the cloud is ...', side:'r', x:74, y:44, desc:'The hand extending from the cloud is offering the cup. This represents new ideas that come from the confusion that the figure refuses to see.'},
+    {label:'Grey Cloud', short:'The colour grey represents lack of cl...', side:'l', x:27, y:56, desc:'The colour grey represents lack of clarity and confusion.'},
+    {label:'Fourth Coupe', short:'Extended from the hand symbolises new...', side:'r', x:80, y:67, desc:'Extended from the hand symbolises new ideas and emotions that are not known and acknowledged.'},
+    {label:'Tree', short:'Represents having our roots or feet o...', side:'l', x:33, y:79, desc:'Represents having our roots or feet on the ground but your head or the branches and leaves in the clouds. The figures position close to the tree could be symbolic of the figure being grounded - or even too closed.'},
+    {label:'Ciel bleu', short:'Lightheartedness, clarity of thought ...', side:'r', x:66, y:90, desc:'Lightheartedness, clarity of thought and purpose, free will and clear mind. Can indicate wishful thinking and striving too much.'},
+  ],
+  'c_05_Cinq':[
+    {label:'Black Cape', short:'Symbolic of grieving and loss', side:'l', x:15, y:10, desc:'Symbolic of grieving and loss.'},
+    {label:'Overturned Coupes', short:'Past emotional experiences that canno...', side:'r', x:68, y:23, desc:'Past emotional experiences that cannot be overcome.'},
+    {label:'Standing Coupes', short:'Something from the past that offers h...', side:'l', x:21, y:37, desc:'Something from the past that offers hope but has been overlooked.'},
+    {label:'Rivière', short:'The continuity of emotion and life an...', side:'r', x:74, y:50, desc:'The continuity of emotion and life and can also represent constant change.'},
+    {label:'Pont', short:'Having faith in yourself to cross the...', side:'l', x:27, y:63, desc:'Having faith in yourself to cross the bridge to new opportunities.'},
+    {label:'Ruined Château', short:'Shows the passing of time and what wi...', side:'r', x:80, y:77, desc:'Shows the passing of time and what will be left for you if you keep focussing on the overturned cups.'},
+    {label:'Ciel gris', short:'Confusion and lack of focus', side:'l', x:33, y:90, desc:'Confusion and lack of focus.'},
+  ],
+  'c_06_Six':[
+    {label:'Croix', short:'Resetting the difficult moments in ou...', side:'l', x:15, y:10, desc:'Resetting the difficult moments in our lives - going back to a point in time and experience both sides of the situation.'},
+    {label:'Deux figures', short:'The two figures depict our maturity w...', side:'r', x:68, y:26, desc:'The two figures depict our maturity when as an adult we can go back to our childhood experiences and understand them.'},
+    {label:'White Glove', short:'Suggesting innocence or not wanting t...', side:'l', x:21, y:42, desc:'Suggesting innocence or not wanting to get your hands dirty - may indicate not wanting to face childhood truths.'},
+    {label:'Ciel bleu', short:'Lightheartedness, clarity of thought ...', side:'r', x:74, y:58, desc:'Lightheartedness, clarity of thought and purpose, free will and clear mind. Can indicate wishful thinking and striving too much.'},
+    {label:'Big House', short:'The childhood aspect of everything ap...', side:'l', x:27, y:74, desc:'The childhood aspect of everything appearing bigger as a child. Symbolic of big experiences and emotions.'},
+    {label:'Coupes With Flowers', short:'A blooming spiritual existence such a...', side:'r', x:80, y:90, desc:'A blooming spiritual existence such as returning to childhood to explore where we came from and understand ourselves.'},
+  ],
+  'c_07_Septr':[
+    {label:'Black Figure', short:'Making choices. ', side:'l', x:15, y:10, desc:'Making choices. .'},
+    {label:'Coupe - Château', short:'Protection home and security ', side:'r', x:68, y:19, desc:'Protection home and security .'},
+    {label:'Coupe - Shrouded', short:'Figure The mystery within us all', side:'l', x:21, y:28, desc:'Figure The mystery within us all.'},
+    {label:'Coupe - Curly haired', short:'head Eternal youth and a warning agai...', side:'r', x:74, y:37, desc:'head Eternal youth and a warning against chasing youth and vanity.'},
+    {label:'Coupe with Serpent', short:'The snake is a symbol of deceit, betr...', side:'l', x:27, y:46, desc:'The snake is a symbol of deceit, betrayal, wisdom and transformation. .'},
+    {label:'Coupe -', short:'Dragon Power, strength luck and the p...', side:'r', x:80, y:54, desc:'Dragon Power, strength luck and the power of the mind.'},
+    {label:'Coupe - Laurel', short:'Couronne Life and death. The skull re...', side:'l', x:33, y:63, desc:'Couronne Life and death. The skull reminds you to make life meaningful.'},
+    {label:'Coupe', short:'Treasure Inner and outer riches and g...', side:'r', x:66, y:72, desc:'Treasure Inner and outer riches and greed.'},
+    {label:'Ciel bleu', short:'Free will and clear mind', side:'l', x:19, y:81, desc:'Free will and clear mind.'},
+    {label:'Nuages gris', short:'The confusion of choice', side:'r', x:72, y:90, desc:'The confusion of choice.'},
+  ],
+  'c_08_Huit':[
+    {label:'Figure', short:'Travelling from whatever is troubling...', side:'l', x:15, y:10, desc:'Travelling from whatever is troubling you.'},
+    {label:'Rouge robe', short:'Red is passion and indicates that you...', side:'r', x:68, y:21, desc:'Red is passion and indicates that you will find a way despite set backs.'},
+    {label:'Bâton', short:'Deliberateness of step and consciousness', side:'l', x:21, y:33, desc:'Deliberateness of step and consciousness.'},
+    {label:'Red Shoes', short:'Passion and grounding - you are purpo...', side:'r', x:74, y:44, desc:'Passion and grounding - you are purposeful in your travelling.'},
+    {label:'Rivière', short:'Walking with the flow of life or is w...', side:'l', x:27, y:56, desc:'Walking with the flow of life or is walking upstream against the flow of life.'},
+    {label:'Moon And Sun', short:'Sun and Moon compete for dominance in...', side:'r', x:80, y:67, desc:'Sun and Moon compete for dominance in the sky - The Sun stands for our conscious will and the Moon our unconscious beliefs and values about life.'},
+    {label:'Montagne', short:'Difficulties and blockages in your li...', side:'l', x:33, y:79, desc:'Difficulties and blockages in your life journey and the goals you are working hard to reach.'},
+    {label:'Ciel gris', short:'Confusion and lack of focus', side:'r', x:66, y:90, desc:'Confusion and lack of focus.'},
+  ],
+  'c_09_Neuf':[
+    {label:'Chapeau rouge And plume', short:'Passion purpose and accomplishment', side:'l', x:15, y:10, desc:'Passion purpose and accomplishment.'},
+    {label:'Blue Tablecloth', short:'Clarity of emotion and thought', side:'r', x:68, y:30, desc:'Clarity of emotion and thought.'},
+    {label:'Robe blanche', short:'Beginnings and completion', side:'l', x:21, y:50, desc:'Beginnings and completion.'},
+    {label:'Ciel jaune', short:'Confiance, énergie masculine', side:'r', x:74, y:70, desc:'Confiance, énergie masculine.'},
+    {label:'Nine Coupes', short:'Coupes are behind the figure and sugg...', side:'l', x:27, y:90, desc:'Coupes are behind the figure and suggest he either doesn\'t know they are there and so doesn\'t recognise all of the contributions to his success. Or that he has displayed his cups behind him as a demonstration of his wealth and success. His cups are raised meaning he is raising his happy emotions upwards as an expression of success.'},
+  ],
+  'c_10_Dix':[
+    {label:'Couples Position', short:'Partnership between a man and woman o...', side:'l', x:15, y:10, desc:'Partnership between a man and woman or symbolic of the masculine and feminine aspects between us all. Facing the view they are celebrating all they have achieved.'},
+    {label:'Countryside', short:'Symbolic green fertile countryside sh...', side:'r', x:68, y:30, desc:'Symbolic green fertile countryside shows possibilities and growth. The river - represents the flow of life and abundance.'},
+    {label:'House', short:'Home and identity, fulfilment of secu...', side:'l', x:21, y:50, desc:'Home and identity, fulfilment of security.'},
+    {label:'Enfantren', short:'Your immortality, a sense of family a...', side:'r', x:74, y:70, desc:'Your immortality, a sense of family and completion.'},
+    {label:'Ciel bleu', short:'Lightheartedness, clarity of thought ...', side:'l', x:27, y:90, desc:'Lightheartedness, clarity of thought and purpose, free will and clear mind. Can indicate wishful thinking and striving too much.'},
+  ],
+  'c_11_Valet':[
+    {label:'Blue Cap/Scarf/', short:'Tunic Blue represents the emotions an...', side:'l', x:15, y:10, desc:'Tunic Blue represents the emotions and spirituality of a person of high passion.'},
+    {label:'Wavy Eau', short:'The ebb and flow of emotions', side:'r', x:68, y:30, desc:'The ebb and flow of emotions'},
+    {label:'Fish Coupe', short:'Fish is a symbol of happiness and pro...', side:'l', x:21, y:50, desc:'Fish is a symbol of happiness and prosperity,  also coldness. Being focussed on dreams and emotions.'},
+    {label:'Ciel gris', short:'Confusion of emotions', side:'r', x:74, y:70, desc:'Confusion of emotions.'},
+    {label:'Yellow Bottes', short:'Happiness within yourself, taking pos...', side:'l', x:27, y:90, desc:'Happiness within yourself, taking positive action.'},
+  ],
+  'c_12_Cavalier':[
+    {label:'Knight', short:'Riding with confidence and care to sh...', side:'l', x:15, y:10, desc:'Riding with confidence and care to share his emotions with the world.'},
+    {label:'Armure', short:'Protection and security  - but can al...', side:'r', x:68, y:18, desc:'Protection and security  - but can also mean keeping one\'s emotions protected and close.'},
+    {label:'Wings On Helmet', short:'Wings of Hermes - symbolic of being a...', side:'l', x:21, y:26, desc:'Wings of Hermes - symbolic of being attuned to love and emotion.'},
+    {label:'Elemental', short:'Correspondence Air of Eau. Knights ar...', side:'r', x:74, y:34, desc:'Correspondence Air of Eau. Knights are air, the suit is water.'},
+    {label:'Zodiac', short:'3rd Decan Libra – 2nd Decan Scorpio', side:'l', x:27, y:42, desc:'3rd Decan Libra – 2nd Decan Scorpio'},
+    {label:'Fish On Cape', short:'Fish is a symbol of happiness and pro...', side:'r', x:80, y:50, desc:'Fish is a symbol of happiness and prosperity but also for coldness. Represents being focussed on dreams and emotions.'},
+    {label:'Rivière', short:'The flow of life', side:'l', x:33, y:58, desc:'The flow of life.'},
+    {label:'Coupe', short:'Represents the emotions carried out i...', side:'r', x:66, y:66, desc:'Represents the emotions carried out into the world.'},
+    {label:'Ciel bleu', short:'Lightheartedness, clarity of thought ...', side:'l', x:19, y:74, desc:'Lightheartedness, clarity of thought and purpose, free will and clear mind.'},
+    {label:'Cheval gris', short:'Emotional confusion. The playful gait...', side:'r', x:72, y:82, desc:'Emotional confusion. The playful gait of the horse can express passion,.'},
+    {label:'Montagnes', short:'represent the emotional obstacles in ...', side:'l', x:25, y:90, desc:'represent the emotional obstacles in the world.'},
+  ],
+  'c_13_Reine':[
+    {label:'Elemental', short:'Correspondence Eau of Eau. Queens are...', side:'l', x:15, y:10, desc:'Correspondence Eau of Eau. Queens are water, the suit is Eau.'},
+    {label:'Zodiac', short:'3rd Decan Gemini – 2nd Decan Cancer', side:'r', x:68, y:20, desc:'3rd Decan Gemini – 2nd Decan Cancer'},
+    {label:'Flowing Blue Robes', short:'Robes flow down to the stones and wat...', side:'l', x:21, y:30, desc:'Robes flow down to the stones and water at her feet the blending of the emotional consciousness of the world.'},
+    {label:'Stones At Her Feet', short:'The water can mould to emotions, and ...', side:'r', x:74, y:40, desc:'The water can mould to emotions, and how we might stumble on those stones when emotions get in the way.'},
+    {label:'Large cup', short:'Large sacred chalice stands for the c...', side:'l', x:27, y:50, desc:'Large sacred chalice stands for the collective spiritual wealth of the world and a warning against being caught up in self-importance.'},
+    {label:'Gray Throne', short:'In the shape of a shell and symbolise...', side:'r', x:80, y:60, desc:'In the shape of a shell and symbolises spiritual openness and patience. In the negative it can represent personal preoccupation.'},
+    {label:'Throne Cherubs', short:'Being young at heart and innocence. T...', side:'l', x:33, y:70, desc:'Being young at heart and innocence. The cherub holding a fish is symbolic of happiness and prosperity but also for coldness.'},
+    {label:'Falaise', short:'Challenges of life', side:'r', x:66, y:80, desc:'Challenges of life.'},
+    {label:'Ciel bleu', short:'Lightheartedness, clarity of thought ...', side:'l', x:19, y:90, desc:'Lightheartedness, clarity of thought and purpose, free will and clear mind.'},
+  ],
+  'c_14_Roi':[
+    {label:'Elemental', short:'Correspondence Fire of Eau. Kings are...', side:'l', x:15, y:10, desc:'Correspondence Fire of Eau. Kings are fire, the suit is water.'},
+    {label:'Zodiac', short:'3rd Decan Aquarius – 2nd Decan Pisces', side:'r', x:68, y:30, desc:'3rd Decan Aquarius – 2nd Decan Pisces'},
+    {label:'Fish Pendant', short:'Ability to express feelings and deepl...', side:'l', x:21, y:50, desc:'Ability to express feelings and deeply felt needs.'},
+    {label:'Coupe', short:'Alertness and the ability to understa...', side:'r', x:74, y:70, desc:'Alertness and the ability to understand the needs of others and of the self.'},
+    {label:'King\'s Robes', short:'Red yellow and blue - keep your life ...', side:'l', x:27, y:90, desc:'Red yellow and blue - keep your life uncomplicated with a clarity of purpose - being dressed in such bold colours being simplistic and structured.'},
+  ],
+  'd_01_As':[
+    {label:'Ciel gris ou nuages', short:'Confusion et neutralité, pas de direc...', side:'l', x:15, y:10, desc:'Confusion et neutralité, pas de direction et pas d\'opinion.'},
+    {label:'Main', short:'The hand emerges from the clouds to g...', side:'r', x:68, y:23, desc:'The hand emerges from the clouds to give you a gift for yourself -confident to show your true self!'},
+    {label:'Epée', short:'The sword is upright and held with au...', side:'l', x:21, y:37, desc:'The sword is upright and held with authority for whoever is brave enough to take it. The sword rules your emotions, spirituality and intellect.'},
+    {label:'Couronne Plants', short:'Date palm and an olive branch. These ...', side:'r', x:74, y:50, desc:'Date palm and an olive branch. These are masculine- feminine symbols; symbols of victory (palm) and peace (olive); Fertility and balance.'},
+    {label:'The Couronne', short:'Our thoughts. The sword through the c...', side:'l', x:27, y:63, desc:'Our thoughts. The sword through the centre of the crown is calling us to be conscious of the clarity of our thinking.'},
+    {label:'Ciel gris', short:'Grey in the Tarot refers to confusion...', side:'r', x:80, y:77, desc:'Grey in the Tarot refers to confusion - and is symbolic in this card of the sword cutting through and creating clarity.'},
+    {label:'Six Gold Drops', short:'Dew drops of yods (Hebrew symbolism) ...', side:'l', x:33, y:90, desc:'Dew drops of yods (Hebrew symbolism) represent spiritualism and emotion.'},
+  ],
+  'd_02_Deux':[
+    {label:'Blindfold', short:'Blindfold can suggest taking a chance...', side:'l', x:15, y:10, desc:'Blindfold can suggest taking a chance on a choice, or could suggest that there is lots of thinking going on and the person doesn\'t want to be distracted in their thoughts. Or it could suggest not being open to new ideas.'},
+    {label:'The Épée Croix', short:'the swords are crossed indicating two...', side:'r', x:68, y:37, desc:'the swords are crossed indicating two pathways or two choices.'},
+    {label:'Grey Vêtements', short:'Grey in the Tarot means confusion and...', side:'l', x:21, y:63, desc:'Grey in the Tarot means confusion and so this outfit is reflective of the confusion about choice this person is feeling.'},
+    {label:'Crescent Moon', short:'Time passing and the cycles of time p...', side:'r', x:74, y:90, desc:'Time passing and the cycles of time psychic power and moving from one phase to another.'},
+  ],
+  'd_03_Trois':[
+    {label:'Grey Nuages/Grey', short:'Sky Confusion and heartbreak', side:'l', x:15, y:10, desc:'Sky Confusion and heartbreak.'},
+    {label:'Heart', short:'Love, joy affection, truth, courage a...', side:'r', x:68, y:50, desc:'Love, joy affection, truth, courage and our conscience. The heart is our centre where all our deepest values, fears, hopes, dreams, desires, wishes and deepest emotions come from. The centre of who we are both physically and emotionally.'},
+    {label:'Three swords Through The Heart', short:'Three swords pierce the heart or our ...', side:'l', x:21, y:90, desc:'Three swords pierce the heart or our very sense of self. The three swords represent cutting through difficult times. The strength that comes from great sorrow and the lessons we learn from life, hearts broken and hearts mended.'},
+  ],
+  'd_04_Quatre':[
+    {label:'Sarcophagus', short:'Lying on a coffin is symbolic of spir...', side:'l', x:15, y:10, desc:'Lying on a coffin is symbolic of spiritual contemplation and life and death situations.'},
+    {label:'Stained Glass', short:'Window Stained glass window is symbol...', side:'r', x:68, y:50, desc:'Window Stained glass window is symbolic of perception and how our perceptions can change depending upon our beliefs and values in any given moment.'},
+    {label:'Four Épées -', short:'One sword lies beneath the figure and...', side:'l', x:21, y:90, desc:'One sword lies beneath the figure and this symbolises the one thing being thought about and concentrated on. The three swords above point to the head (intellect) heart (emotion) and gut (instinct) the three things we need to focus on whenever we contemplate what to do about a problem.'},
+  ],
+  'd_05_Cinq':[
+    {label:'Main Figure', short:'The figure looks back at the others. ...', side:'l', x:15, y:10, desc:'The figure looks back at the others. Arrogance and meanness or self- satisfaction at calling a well needed boundary that others have chosen not to accept.'},
+    {label:'Red/Green', short:'Vêtements The main figure is wearing ...', side:'r', x:68, y:30, desc:'Vêtements The main figure is wearing red and green, passion and fertility, recognising this person\'s will and potential for growth through taking a stand.'},
+    {label:'Deux figures', short:'Giving up as they have left their swo...', side:'l', x:21, y:50, desc:'Giving up as they have left their swords behind, or abandonment where they have disagreed so strongly they have dropped their swords and walked away.'},
+    {label:'Eaus Edge', short:'Edge of the water is straight boundar...', side:'r', x:74, y:70, desc:'Edge of the water is straight boundary drawn or a moment in time where there is no compromise.The water - represents emotion in the situation.'},
+    {label:'Nuages And Sky', short:'Grey clouds which appear to be breaki...', side:'l', x:27, y:90, desc:'Grey clouds which appear to be breaking up and disappearing - it is as if the events in the card although difficult have shifted.  Breaking clouds revealing a clear blue sky - symbolic of clarity of thoughts.'},
+  ],
+  'd_06_Six':[
+    {label:'Personnes In Barque', short:'Standing figure is the active part of...', side:'l', x:15, y:10, desc:'Standing figure is the active part of you or the masculine side.  The figure bent over sitting in the boat represents your passive or feminine side. The child symbolises your inner child or your unconscious. The back view - represents grief or turning your back on something to move away from it and or your unconscious drives.'},
+    {label:'Black Pole', short:'Making progress one step at a time. D...', side:'r', x:68, y:30, desc:'Making progress one step at a time. Digging deep to get to the bottom of things through the (water) emotion.'},
+    {label:'Six Épées', short:'The swords pierce the boat. They repr...', side:'l', x:21, y:50, desc:'The swords pierce the boat. They represent what you take with you. You have to take whatever it is that is troubling you with you on the journey.'},
+    {label:'Ciel gris', short:'Confusion and lack of clarity', side:'r', x:74, y:70, desc:'Confusion and lack of clarity.'},
+    {label:'Two different', short:'waters Rippled water and still water....', side:'l', x:27, y:90, desc:'waters Rippled water and still water.  This represents consciously bringing about change in your life. Eau represents emotion.'},
+  ],
+  'd_07_Septr':[
+    {label:'The Figures Pose', short:'The person is running ahead and glanc...', side:'l', x:15, y:10, desc:'The person is running ahead and glancing back at the same time. It is a sign of inner conflict. What are you sneaking around for and stealing?'},
+    {label:'Épées', short:'Figure carries five swords but leaves...', side:'r', x:68, y:37, desc:'Figure carries five swords but leaves two behind. You have grabbed what you are taking in haste and have carelessly left something behind. Perhaps you leave with doubts about what you have done (the two swords left behind)'},
+    {label:'Tents', short:'Sneaking into the enemy camp  - you a...', side:'l', x:21, y:63, desc:'Sneaking into the enemy camp  - you as an individual against many. Non-permanent housing - life is constantly moving and changing and you have to take constant action to move with it - even if it means being dishonest - to keep yourself safe.'},
+    {label:'Red Shoes/ Hat', short:'Red is passion. Red hat passionate th...', side:'r', x:74, y:90, desc:'Red is passion. Red hat passionate thoughts, Red shoes, passionate action.'},
+  ],
+  'd_08_Huit':[
+    {label:'Blindfold', short:'She is unable to see what is going on...', side:'l', x:15, y:10, desc:'She is unable to see what is going on - the blindfold stops her taking action for herself.'},
+    {label:'Red Vêtements', short:'Passion - what is this person passion...', side:'r', x:68, y:21, desc:'Passion - what is this person passionately denying.'},
+    {label:'Figure\'s Position', short:'She is all tied up. Yet her feet are ...', side:'l', x:21, y:33, desc:'She is all tied up. Yet her feet are free and she isn\'t gagged - she could walk away and seek help at any time.'},
+    {label:'Épées', short:'Eight Épées are forming a barrier - s...', side:'r', x:74, y:44, desc:'Eight Épées are forming a barrier - swords represent intellect - being bound and restricted by her thinking.'},
+    {label:'Eau/Muddy Feet', short:'Unconscious mind or symbolic of the m...', side:'l', x:27, y:56, desc:'Unconscious mind or symbolic of the mess and despair this person perceives they are in.'},
+    {label:'Montagne', short:'Represents overcoming difficulties yo...', side:'r', x:80, y:67, desc:'Represents overcoming difficulties you might be avoiding or denying..'},
+    {label:'Ciel gris', short:'Grey represents confusion. This perso...', side:'l', x:33, y:79, desc:'Grey represents confusion. This person is confused about their restrictions and binds..'},
+    {label:'Château', short:'Isolated away the castle represents c...', side:'r', x:66, y:90, desc:'Isolated away the castle represents cutting yourself off from the world.'},
+  ],
+  'd_09_Neuf':[
+    {label:'Figure\'s Pose', short:'Suddenly waking up from a nightmare. ...', side:'l', x:15, y:10, desc:'Suddenly waking up from a nightmare. Their face is covered by the hands in despair.'},
+    {label:'Épées', short:'Nine swords on the wall tell us this ...', side:'r', x:68, y:37, desc:'Nine swords on the wall tell us this is a complex nightmare and the swords are depicted here as enemies of the intellect and appear as overwhelming. The nine swords do not touch the person because the perceived threat is in their mind.'},
+    {label:'Bed Carving', short:'Below the person\'s consciousness and ...', side:'l', x:21, y:63, desc:'Below the person\'s consciousness and represents what has just happened in the person\'s dream.'},
+    {label:'Quilt', short:'Red roses on the quilt symbolise pass...', side:'r', x:74, y:90, desc:'Red roses on the quilt symbolise passion, Zodiac and planetary symbols indicate that this is a dream full of meaningful symbolism. It also reminds us that no matter what is happening we are part of the solar system.'},
+  ],
+  'd_10_Dix':[
+    {label:'Prone Figure', short:'The figure is lying as if dead with t...', side:'l', x:15, y:10, desc:'The figure is lying as if dead with ten swords in the back .Murder or betrayal - the stab in the back.'},
+    {label:'Red Cloth', short:'Symbolises the lifeblood and passion ...', side:'r', x:68, y:37, desc:'Symbolises the lifeblood and passion that has flowed from this person in death.'},
+    {label:'Épées', short:'Ten swords symbolise endings but they...', side:'l', x:21, y:63, desc:'Ten swords symbolise endings but they also symbolise betrayal - the person has been stabbed in the back. It is as if all their secrets have been taken with them to the grave.'},
+    {label:'Ciel noir', short:'The black stands for all that is unkn...', side:'r', x:74, y:90, desc:'The black stands for all that is unknown whether it is suppressed, forgotten or unconscious.'},
+  ],
+  'd_11_Valet':[
+    {label:'Swinging Épée', short:'The pages position - he is swinging t...', side:'l', x:15, y:10, desc:'The pages position - he is swinging the sword without looking - although his feet are firmly placed there is carelessness in his pose.the sword goes beyond the edge of the card, indicating everything we do does not just impact us immediately but impacts everyone around us.'},
+    {label:'Green Earth', short:'Symbolic of growth, nature and potential', side:'r', x:68, y:23, desc:'Symbolic of growth, nature and potential.'},
+    {label:'Red Bottes', short:'Red symbolises passion and the need t...', side:'l', x:21, y:37, desc:'Red symbolises passion and the need to be grounded.'},
+    {label:'Red/Yellow', short:'Vêtements Red symbolises passion and ...', side:'r', x:74, y:50, desc:'Vêtements Red symbolises passion and yellow clarity of thought and action - the page needs to take care that he is not too passionate.'},
+    {label:'Ciel bleu', short:'Ciel bleu clair indique un chemin cla...', side:'l', x:27, y:63, desc:'Ciel bleu clair indique un chemin clair devant, clarté de but et clarté de message.'},
+    {label:'White Nuages', short:'Innocence and naivety', side:'r', x:80, y:77, desc:'Innocence and naivety.'},
+    {label:'Flock Of Oiseaus', short:'Positivity and creative thinking', side:'l', x:33, y:90, desc:'Positivity and creative thinking.'},
+  ],
+  'd_12_Cavalier':[
+    {label:'Elemental', short:'Correspondence Air of Air. Knights ar...', side:'l', x:15, y:10, desc:'Correspondence Air of Air. Knights are Air, the suit is Air.'},
+    {label:'Zodiac', short:'3rd Decan Capricorn – 2nd Decan Aquarius', side:'r', x:68, y:20, desc:'3rd Decan Capricorn – 2nd Decan Aquarius'},
+    {label:'The knight\'s', short:'Position On The Cheval A highly energ...', side:'l', x:21, y:30, desc:'Position On The Cheval A highly energetic personality - he is riding with his sword held high ready to take on the world.'},
+    {label:'Armure And Helmet', short:'Shows preparation and protection but ...', side:'r', x:74, y:40, desc:'Shows preparation and protection but can also indicate being fixed in your ways and impenetrable - that you can be stubborn in the pursuit of your own thoughts and ideas.'},
+    {label:'Cheval gris', short:'Grey symbolises confusion and ambival...', side:'l', x:27, y:50, desc:'Grey symbolises confusion and ambivalence - be mindful of your impact on others.'},
+    {label:'Butterflies Oiseaus', short:'Represent the lightness and flightine...', side:'r', x:80, y:60, desc:'Represent the lightness and flightiness of The Knight Of Épées.'},
+    {label:'Red Plume/Cape', short:'Passion for life', side:'l', x:33, y:70, desc:'Passion for life.'},
+    {label:'Wind In The Arbres', short:'Knight is charging against the wind i...', side:'r', x:66, y:80, desc:'Knight is charging against the wind in the trees - symbolic of being defiant of all the old ideas and creating his own new ideas.'},
+    {label:'Ciel bleu', short:'Ciel bleu clair indique un chemin cla...', side:'l', x:19, y:90, desc:'Ciel bleu clair indique un chemin clair devant, clarté de but et clarté de message.'},
+  ],
+  'd_13_Reine':[
+    {label:'Elemental', short:'Correspondence Eau of Air. Queens are...', side:'l', x:15, y:10, desc:'Correspondence Eau of Air. Queens are water, the suit is air.'},
+    {label:'Zodiac', short:'3rd Decan Virgo – 2nd Decan Libra', side:'r', x:68, y:20, desc:'3rd Decan Virgo – 2nd Decan Libra'},
+    {label:'Queens Couronne', short:'Shows authority. The butterflies symb...', side:'l', x:21, y:30, desc:'Shows authority. The butterflies symbolise metamorphosis transformation and flight. Showing that although she is able to cut with her words she has a softness about her.'},
+    {label:'Stone Throne', short:'Butterflies - lightness, cherubs head...', side:'r', x:74, y:40, desc:'Butterflies - lightness, cherubs head - children and maturity. The two crescent moons suggest the cycles of life and feminine energy.'},
+    {label:'White Dress', short:'symbolic of the purity of thought', side:'l', x:27, y:50, desc:'symbolic of the purity of thought.'},
+    {label:'Nuages gris', short:'Confusion but the queens head is abov...', side:'r', x:80, y:60, desc:'Confusion but the queens head is above the clouds which indicates clarity of thought.'},
+    {label:'Bracelet', short:'Victorian mourning bracelet suggestin...', side:'l', x:33, y:70, desc:'Victorian mourning bracelet suggesting that she has been widowed.  This suggests she has an understanding of life and emotion.'},
+    {label:'Ciel bleu', short:'Lightheartedness, clarity of thought ...', side:'r', x:66, y:80, desc:'Lightheartedness, clarity of thought and purpose, free will and clear mind.'},
+    {label:'Epée', short:'Épée points upwards showing clarity o...', side:'l', x:19, y:90, desc:'Épée points upwards showing clarity of words and clear thinking.'},
+  ],
+  'd_14_Roi':[
+    {label:'Elemental', short:'Correspondence Fire of Air. Kings are...', side:'l', x:15, y:10, desc:'Correspondence Fire of Air. Kings are fire, the suit is air.'},
+    {label:'Zodiac', short:'3rd Decan Taurus – 2nd Decan Gemini', side:'r', x:68, y:21, desc:'3rd Decan Taurus – 2nd Decan Gemini'},
+    {label:'Epée', short:'King holds his sword forward suggesti...', side:'l', x:21, y:33, desc:'King holds his sword forward suggesting clarity of thought and words.'},
+    {label:'Couronne', short:'King\'s crown with butterflies and a c...', side:'r', x:74, y:44, desc:'King\'s crown with butterflies and a cherub symbolising a childlike innocence lightness, but also the ability to have a softness in harsh decisions.'},
+    {label:'Two Oiseaus', short:'New Ideas and having a birds-eye view...', side:'l', x:27, y:56, desc:'New Ideas and having a birds-eye view of the world.'},
+    {label:'Kings Throne', short:'Butterflies - lightness. The carved d...', side:'r', x:80, y:67, desc:'Butterflies - lightness. The carved dancing women - feminine energy and happiness. The two crescent moons - the cycles of life and feminine energy. The throne extends beyond the top of the card connection heaven and earth.'},
+    {label:'Nuages gris', short:'Grey clouds can symbolise confusion a...', side:'l', x:33, y:79, desc:'Grey clouds can symbolise confusion and clear blue sky clarity of thought.'},
+    {label:'Ciel bleu', short:'Indicates lightheartedness, clarity o...', side:'r', x:66, y:90, desc:'Indicates lightheartedness, clarity of thought and purpose, free will and clear mind.'},
+  ],
+  'e_01_As':[
+    {label:'Ciel gris ou nuages', short:'Confusion et neutralité, pas de direc...', side:'l', x:15, y:10, desc:'Confusion et neutralité, pas de direction et pas d\'opinion.'},
+    {label:'Main', short:'A hand emerges from the clouds to giv...', side:'r', x:68, y:30, desc:'A hand emerges from the clouds to give you a  gift for yourself and the world - it is up to you to create something from it.'},
+    {label:'Garden Lilies', short:'White lilies symbolise purity of spir...', side:'l', x:21, y:50, desc:'White lilies symbolise purity of spirit. - Being pure of heart as you go out into the world.'},
+    {label:'Pentagram', short:'Pentagram on the pentacle is an ancie...', side:'r', x:74, y:70, desc:'Pentagram on the pentacle is an ancient symbol of magic.'},
+    {label:'Pentacles Double', short:'Edge Two sides to every coin, every s...', side:'l', x:27, y:90, desc:'Edge Two sides to every coin, every story of every situation.'},
+  ],
+  'e_02_Deux':[
+    {label:'Chapeau rouge', short:'Too much passion and eagerness of life', side:'l', x:15, y:10, desc:'Too much passion and eagerness of life.'},
+    {label:'Green Band', short:'Forms an infinity sign, the never- en...', side:'r', x:68, y:23, desc:'Forms an infinity sign, the never- ending sign,  which symbolises being restless and repetitive without progress.  Green is the colour of life, vitality and hope. Green can also symbolises immaturity and an inability to cope.'},
+    {label:'Orange Vêtements', short:'Orange a mixture between red passion ...', side:'l', x:21, y:37, desc:'Orange a mixture between red passion and yellow creativity, enthusiasm and drive. The two colours mixed suggest an overabundance of these qualities.'},
+    {label:'Two Pentacles', short:'Two issues presenting or trying to ma...', side:'r', x:74, y:50, desc:'Two issues presenting or trying to manage too many things at once.'},
+    {label:'Waves', short:'Rocky waters or life having lots of u...', side:'l', x:27, y:63, desc:'Rocky waters or life having lots of ups and downs.'},
+    {label:'Sailing Navires', short:'Your ability to handle changing winds...', side:'r', x:80, y:77, desc:'Your ability to handle changing winds and rocky waters of life.'},
+    {label:'Clear Blue Sky', short:'Calls you to  clarity of thought and ...', side:'l', x:33, y:90, desc:'Calls you to  clarity of thought and action that you need to take.'},
+  ],
+  'e_03_Trois':[
+    {label:'Three figures', short:'Working together', side:'l', x:15, y:10, desc:'Working together.'},
+    {label:'Plans', short:'Your life plan and what the universe ...', side:'r', x:68, y:37, desc:'Your life plan and what the universe has in store for you.'},
+    {label:'Bench', short:'Bench the sculptor is standing on ele...', side:'l', x:21, y:63, desc:'Bench the sculptor is standing on elevates him and his work as something of importance.'},
+    {label:'Crypt/Cellar', short:'Where they are meeting symbolises fun...', side:'r', x:74, y:90, desc:'Where they are meeting symbolises fundamental values and groundwork required to work together. The three pentacles at the top represent the basic needs of working together.'},
+  ],
+  'e_04_Quatre':[
+    {label:'Couronne', short:'The ego and perhaps being boastful - ...', side:'l', x:15, y:10, desc:'The ego and perhaps being boastful - believing you are a king?'},
+    {label:'Red Tunic', short:'Symbolises passion', side:'r', x:68, y:26, desc:'Symbolises passion.'},
+    {label:'Black Cape', short:'Black represents mystery fear and gri...', side:'l', x:21, y:42, desc:'Black represents mystery fear and grief and in this case, is a symbol of locking others out.'},
+    {label:'Ciel gris', short:'Confusion and lack of neutrality', side:'r', x:74, y:58, desc:'Confusion and lack of neutrality.'},
+    {label:'Four Pentacles', short:'The practical possessions this person...', side:'l', x:27, y:74, desc:'The practical possessions this person is clinging to.'},
+    {label:'Tours Behind', short:'Watchfulness and also isolation in a ...', side:'r', x:80, y:90, desc:'Watchfulness and also isolation in a crowd.'},
+  ],
+  'e_05_Cinq':[
+    {label:'Numeroloy', short:'Instability, exaggeration, over exert...', side:'l', x:15, y:10, desc:'Instability, exaggeration, over exertion, strife, changes, freedom, loss.'},
+    {label:'Deux figures', short:'One blind one lame are walking in the...', side:'r', x:68, y:23, desc:'One blind one lame are walking in the snow, and they are poor. The main significance is in the cooperation - the way they work together to keep one another safe.'},
+    {label:'White Neige', short:'Innocence and purity of spirit also c...', side:'l', x:21, y:37, desc:'Innocence and purity of spirit also cleansing of all that has gone before.'},
+    {label:'Crutches', short:'The solution to any problem', side:'r', x:74, y:50, desc:'The solution to any problem.'},
+    {label:'Plague Bell', short:'Every outcast had to have a bell arou...', side:'l', x:27, y:63, desc:'Every outcast had to have a bell around their neck. But in the positive, the bell announces your arrival as someone special.'},
+    {label:'Stained Glass', short:'Window Our perception and how our ide...', side:'r', x:80, y:77, desc:'Window Our perception and how our ideas beliefs values goals and dreams can change with our life experience.'},
+    {label:'Five Pentacles', short:'Pentacles are lit up in the stained g...', side:'l', x:33, y:90, desc:'Pentacles are lit up in the stained glass window indicating help is there if you look for it.'},
+  ],
+  'e_06_Six':[
+    {label:'Rich Homme', short:'Your strength of character your exper...', side:'l', x:15, y:10, desc:'Your strength of character your experiences, talents and gifts. The man is showing that you have enough to share with those less fortunate than yourself.'},
+    {label:'Rouge robe', short:'Passion for life', side:'r', x:68, y:26, desc:'Passion for life.'},
+    {label:'Two Beggars', short:'Those who would benefit from your gen...', side:'l', x:21, y:42, desc:'Those who would benefit from your generosity who are less fortunate than yourself.'},
+    {label:'Scales', short:'Weighing up the pros and cons of life...', side:'r', x:74, y:58, desc:'Weighing up the pros and cons of life and the balancing out of give and take.'},
+    {label:'Pentacles /Grey sky', short:'Represent that prosperity often fails...', side:'l', x:27, y:74, desc:'Represent that prosperity often fails to reach the people who need it most.'},
+    {label:'City', short:'Taking yourself away from the daily r...', side:'r', x:80, y:90, desc:'Taking yourself away from the daily routine to notice what needs to be done in your life around you.'},
+  ],
+  'e_07_Septr':[
+    {label:'Hoe', short:'The tools you may need to create some...', side:'l', x:15, y:10, desc:'The tools you may need to create something new.'},
+    {label:'Blue/Orange', short:'Vêtements Blue indicates clarity of t...', side:'r', x:68, y:37, desc:'Vêtements Blue indicates clarity of thought and orange passion and creativity.'},
+    {label:'Ciel gris', short:'Grey in the Tarot is an indication of...', side:'l', x:21, y:63, desc:'Grey in the Tarot is an indication of confusion and stuckness.'},
+    {label:'Pentacles', short:'The heap of pentacles represents how ...', side:'r', x:74, y:90, desc:'The heap of pentacles represents how things have always been done so far. The pentacle at the figure\'s feet represents the new way of doing things. The single pentacle is a call to question life and the usual way of doing things..'},
+  ],
+  'e_08_Huit':[
+    {label:'Blue/Red', short:'Vêtements Red stocking and shoes symb...', side:'l', x:15, y:10, desc:'Vêtements Red stocking and shoes symbolise passionate grounding and the blue tunic clarity of thought and action.'},
+    {label:'Workbench', short:'Creating your benchmark of excellence...', side:'r', x:68, y:21, desc:'Creating your benchmark of excellence in your work.'},
+    {label:'Ciel gris', short:'Confusion and lack of clarity', side:'l', x:21, y:33, desc:'Confusion and lack of clarity.'},
+    {label:'Working On The', short:'Pentacles Skill is not perfected with...', side:'r', x:74, y:44, desc:'Pentacles Skill is not perfected without practice.'},
+    {label:'Hammer And', short:'Chisel Your ability to make an impres...', side:'l', x:27, y:56, desc:'Chisel Your ability to make an impression.'},
+    {label:'Pentacles On The', short:'Pole Building one skill over and over...', side:'r', x:80, y:67, desc:'Pole Building one skill over and over. In the negative could also refer to the monotony of repetition.'},
+    {label:'One Pentacle On The', short:'Ground Emphasises your personal situa...', side:'l', x:33, y:79, desc:'Ground Emphasises your personal situation and may even suggest finding a new approach to your situation.'},
+    {label:'village', short:'Represents getting away from everyone...', side:'r', x:66, y:90, desc:'Represents getting away from everyone to focus on your talents.'},
+  ],
+  'e_09_Neuf':[
+    {label:'Femme', short:'A beautiful woman in a garden it is s...', side:'l', x:15, y:10, desc:'A beautiful woman in a garden it is symbolic of everything that is successful and right in your life.'},
+    {label:'Grapes', short:'Affluence maturity and success. Grape...', side:'r', x:68, y:23, desc:'Affluence maturity and success. Grapes are also one of the most labour intensive harvests symbolising that you have worked hard for your abundance.'},
+    {label:'Falcon', short:'Higher vision superiority and rising ...', side:'l', x:21, y:37, desc:'Higher vision superiority and rising above mundane life. It is also a symbol of vibrancy and power. The falcon symbolises challenging you to live your life to your highest potential.'},
+    {label:'Flowers On Robe', short:'Feminine symbol or the symbol of Venu...', side:'r', x:74, y:50, desc:'Feminine symbol or the symbol of Venus for fertility and nature.'},
+    {label:'Ciel jaune', short:'Confidence, masculine energy', side:'l', x:27, y:63, desc:'Confidence, masculine energy'},
+    {label:'Snail', short:'The cycle of life the spiral of its s...', side:'r', x:80, y:77, desc:'The cycle of life the spiral of its shell is representative of birth death and rebirth.'},
+    {label:'Pentacles', short:'The woman is surrounded by the pentac...', side:'l', x:33, y:90, desc:'The woman is surrounded by the pentacles the symbol of her affluence.'},
+  ],
+  'e_10_Dix':[
+    {label:'Generations', short:'Each of the figures represents a gene...', side:'l', x:15, y:10, desc:'Each of the figures represents a generation in your life - childhood midlife and old age.'},
+    {label:'Château', short:'A secure home and identity', side:'r', x:68, y:20, desc:'A secure home and identity.'},
+    {label:'Ten Pentacles', short:'Mark each of the stations of the Quab...', side:'l', x:21, y:30, desc:'Mark each of the stations of the Quaballah tree of life. It means you have come to the conclusion of your life and you have achieved everything you need to achieve.'},
+    {label:'Two Coats', short:'Of Arms Family identity and continuity', side:'r', x:74, y:40, desc:'Of Arms Family identity and continuity.'},
+    {label:'Ciel bleu', short:'A clear way ahead, clarity of purpose...', side:'l', x:27, y:50, desc:'A clear way ahead, clarity of purpose and clarity of message.'},
+    {label:'Chiens', short:'Hommes best friend a symbol of loyalt...', side:'r', x:80, y:60, desc:'Hommes best friend a symbol of loyalty, truth, honesty, affection and stability.'},
+    {label:'bridge/archway', short:'The emotional links that join everyon...', side:'l', x:33, y:70, desc:'The emotional links that join everyone together.'},
+    {label:'Bâton', short:'Your goal has been reached deliberate...', side:'r', x:66, y:80, desc:'Your goal has been reached deliberately and step by step.'},
+    {label:'Grapes', short:'Affluence maturity and success. You h...', side:'l', x:19, y:90, desc:'Affluence maturity and success. You have worked hard for your abundance.'},
+  ],
+  'e_11_Valet':[
+    {label:'Mains', short:'The care you need to take with your t...', side:'l', x:15, y:10, desc:'The care you need to take with your talents and gifts.'},
+    {label:'Green Tunic', short:'Growth, nature and potential. Green c...', side:'r', x:68, y:21, desc:'Growth, nature and potential. Green can also symbolise immaturity.'},
+    {label:'Green Land', short:'New ideas and new possibilities', side:'l', x:21, y:33, desc:'New ideas and new possibilities.'},
+    {label:'Montagnes bleues', short:'Reaching for your goals', side:'r', x:74, y:44, desc:'Reaching for your goals.'},
+    {label:'Arbres', short:'Nature, fertility and community', side:'l', x:27, y:56, desc:'Nature, fertility and community.'},
+    {label:'Pentacle', short:'Practical ideas, goals and talents', side:'r', x:80, y:67, desc:'Practical ideas, goals and talents.'},
+    {label:'Chapeau rouge/Scarf', short:'Passion and positive thoughts', side:'l', x:33, y:79, desc:'Passion and positive thoughts.'},
+    {label:'Ciel jaune', short:'Confiance, énergie masculine', side:'r', x:66, y:90, desc:'Confiance, énergie masculine.'},
+  ],
+  'e_12_Cavalier':[
+    {label:'Elemental', short:'Correspondence Air of Earth. Knights ...', side:'l', x:15, y:10, desc:'Correspondence Air of Earth. Knights are Air, the suit is Earth.'},
+    {label:'Zodiac', short:'3rd Decan  Aries – 2nd Decan Taurus', side:'r', x:68, y:23, desc:'3rd Decan  Aries – 2nd Decan Taurus'},
+    {label:'Knight', short:'Riding out into the world with confid...', side:'l', x:21, y:37, desc:'Riding out into the world with confidence and care to carry his wealth, gifts and talents to share.'},
+    {label:'Cheval noir', short:'All that is unknown about the self wh...', side:'r', x:74, y:50, desc:'All that is unknown about the self whether it is suppressed, forgotten or unconscious.'},
+    {label:'Armure', short:'Protection and security  - but can al...', side:'l', x:27, y:63, desc:'Protection and security  - but can also mean keeping your emotions protected and close.'},
+    {label:'Red Bridle', short:'Red stands for passion and invites yo...', side:'r', x:80, y:77, desc:'Red stands for passion and invites you to find out more about where you need to go in your life and to have the confidence to search for new ideas and opportunities.'},
+    {label:'Green Plumes', short:'Green represents fertility and abunda...', side:'l', x:33, y:90, desc:'Green represents fertility and abundance suggesting successful endeavours but also warns against immaturity.'},
+  ],
+  'e_13_Reine':[
+    {label:'Elemental', short:'Correspondence Eau of Earth. Queens a...', side:'l', x:15, y:10, desc:'Correspondence Eau of Earth. Queens are Eau, the suit is Earth.'},
+    {label:'Zodiac', short:'3rd Decan Sagittarius – 2nd Decan Cap...', side:'r', x:68, y:19, desc:'3rd Decan Sagittarius – 2nd Decan Capricorn'},
+    {label:'Pentacle', short:'Taking care of talents and personal n...', side:'l', x:21, y:28, desc:'Taking care of talents and personal needs.'},
+    {label:'Red Dress/While', short:'Undergarments Red robe represents pas...', side:'r', x:74, y:37, desc:'Undergarments Red robe represents passion - White under tunic naivety innocence and pureness of heart.'},
+    {label:'Golden Couronne', short:'Winged goat\'s head indicating an asso...', side:'l', x:27, y:46, desc:'Winged goat\'s head indicating an association with Capricorn. The red wings indicate higher spiritual mental powers.'},
+    {label:'Ciel jaune', short:'Passion and creativity', side:'r', x:80, y:54, desc:'Passion and creativity.'},
+    {label:'Rose Garden', short:'Roses are a sign of passion fertility...', side:'l', x:33, y:63, desc:'Roses are a sign of passion fertility and fruitfulness of nature. The fruits and flowers surrounding the queen symbolise productivity naturalness and creativity.'},
+    {label:'Green Cloak', short:'Fertility and love of nature', side:'r', x:66, y:72, desc:'Fertility and love of nature.'},
+    {label:'Rabbit', short:'Fertility and drives and instincts. I...', side:'l', x:19, y:81, desc:'Fertility and drives and instincts. It also shows the love of animals and new life.freedom.'},
+    {label:'Trône gris', short:'Is covered in symbols of animals frui...', side:'r', x:72, y:90, desc:'Is covered in symbols of animals fruits indicating abundance fertility and love of nature.'},
+  ],
+  'e_14_Roi':[
+    {label:'Elemental', short:'Correspondence Fire of Earth. Kings a...', side:'l', x:15, y:10, desc:'Correspondence Fire of Earth. Kings are Fire, the suit is Earth.'},
+    {label:'Zodiac', short:'3rd Decan Leo – 2nd Decan Virgo', side:'r', x:68, y:16, desc:'3rd Decan Leo – 2nd Decan Virgo'},
+    {label:'Orbeeee/Sceptre', short:'Sceptre left hand - symbolising power...', side:'l', x:21, y:22, desc:'Sceptre left hand - symbolising power and authority. Pentacle symbolising the orb right hand - the power  to rule the world.'},
+    {label:'Grapes', short:'Affluence maturity and success. worki...', side:'r', x:74, y:28, desc:'Affluence maturity and success. working hard for your abundance.'},
+    {label:'Kings Couronne', short:'Is ornate with flowers, it is a golde...', side:'l', x:27, y:35, desc:'Is ornate with flowers, it is a golden laurel wreath, symbolic of wealth affluence and power'},
+    {label:'Laurel Leaves', short:'symbolise clairvoyance, victory and i...', side:'r', x:80, y:41, desc:'symbolise clairvoyance, victory and immortality. The crown symbolises his victory and success.'},
+    {label:'Bulls On Throne', short:'Symbol of Earth and fertility. They s...', side:'l', x:33, y:47, desc:'Symbol of Earth and fertility. They symbolise Taurus in Astrology and natural fixed power.'},
+    {label:'Ciel jaune', short:'Confiance, énergie masculine', side:'r', x:66, y:53, desc:'Confiance, énergie masculine.'},
+    {label:'Château', short:'Protection and security', side:'l', x:19, y:59, desc:'Protection and security.'},
+    {label:'Armure de pied', short:'Être bien préparé et courageux. Prote...', side:'r', x:72, y:65, desc:'Être bien préparé et courageux. Protecteur des autres et de soi. Attention à l\'abus de pouvoir - faiblesse - pieds d\'argile cachés.'},
+    {label:'Copyright - No part of this publication may be reproduced, resold distributed,', short:'or transmitted in any form or by any ...', side:'l', x:25, y:72, desc:'or transmitted in any form or by any means, including photocopying, recording, or other electronic or mechanical methods or by hand, without the prior written permission of Roebuck-Jones and Associates Pty Ltd, except in the case of brief quotations embodied in critical reviews and certain other non commercial and fair personal uses as permitted by copyright law.'},
+    {label:'Warning -  Roebuck-Jones and Associates Pty Ltd does not guarantee or warrant', short:'the accuracy, reliability or currency...', side:'r', x:78, y:78, desc:'the accuracy, reliability or currency of the information contained in this publication. Roebuck-Jones and Associates Pty Ltd will attempt to correct any errors in any information that is brought to its attention as soon as practicable. Roebuck-Jones and Associates Pty Ltd has the right to change at any time without notice any information contained in this publication. In no event will Roebuck-Jones and Associates Pty Ltd or related corporations, officers, agents or employees be liable for any decisions made or action taken for the reliance on the information in this publication, even if advised of the possibility of such damages. If any links in this publication connect to other websites maintained by third parties, Roebuck-Jones and Associates Pty Ltd makes no representations as to the accuracy or any other aspect of information contained in such websites.'},
+    {label:'Copyright in plain English - We spend significant time and resources creating', short:'these materials. You may use and repr...', side:'l', x:31, y:84, desc:'these materials. You may use and reproduce the pages in this publication for your own personal use as many times as you like - but please respect our copyright and do not distribute this publication to other people. If you want to photograph or reproduce a small part of this publication for social media purposes, you must acknowledge our work and copyright using our full name Roebuck-Jones and Associates Pty Ltd and @eroebuckjones in the description. Hommey thanks in advance for your support of this work.'},
+    {label:'US GAMES PERMISSIONS', short:'Illustrations from the Rider-Waite Ta...', side:'r', x:84, y:90, desc:'Illustrations from the Rider-Waite Tarot Deck, known also as the Rider Tarot and the Waite Tarot, reproduced by permission of U.S. Games Systems, Inc., Stamford, CT 06902. c. 1971 by U.S. Games Systems, Inc. All rights reserved. The Rider-Waite Tarot deck is a registered trademark of U.S. Games Systems, Inc. © Roebuck-Jones And Associates Pty Ltd 2020/2021 connectwithyourdeck.com'},
+  ],
 };
 
 const $ = s => document.querySelector(s);
@@ -715,6 +1425,61 @@ function openCard(id){
     ['Pierre',fields['Pierre / Cristal'] || 'Non renseignée'],
     ['Plante',fields['Plante'] || 'Non renseignée'],
   ];
+  const symbols = CARD_SYMBOLS[id] || null;
+  let studyPlate;
+  if(symbols){
+    // Card geometry in canvas % (centered, wider: top:5%, width:50%)
+    const CARD={l:25,r:75,t:5,b:85};
+    // Split symbols: left half of card -> left callouts, right half -> right callouts
+    const left=symbols.filter(s=>s.side==='l').sort((a,b)=>a.y-b.y);
+    const right=symbols.filter(s=>s.side==='r').sort((a,b)=>a.y-b.y);
+    // Distribute each side vertically
+    const slots=arr=>arr.map((_,i)=>arr.length===1?50:8+i*(84/(arr.length-1)));
+    const leftY=slots(left), rightY=slots(right);
+    // Convert card-relative (0-100) target to canvas %
+    const tx=s=>CARD.l+s.x/100*(CARD.r-CARD.l);
+    const ty=s=>CARD.t+s.y/100*(CARD.b-CARD.t);
+    const calloutHtml=(s,i,side,y)=>{
+      const num=symbols.indexOf(s)+1;
+      const anchorX = side==='l'?32:68;
+      const tX=tx(s), tY=ty(s);
+      const posStyle = side==='l' ? 'left:0' : 'right:0';
+      return {html:`<div class="study-callout sym" data-i="${num}" data-side="${side}" style="top:${y}%;${posStyle}"><span>${escHtml(s.label)}</span><b>${escHtml(s.short||s.desc||'')}</b></div>`,
+              path:`M${anchorX} ${y} L${tX.toFixed(1)} ${tY.toFixed(1)}`,
+              dot:`<circle cx="${tX.toFixed(1)}" cy="${tY.toFixed(1)}" r=".7" fill="currentColor"/>`};
+    };
+    const all=[...left.map((s,i)=>calloutHtml(s,i,'l',leftY[i])),
+               ...right.map((s,i)=>calloutHtml(s,i,'r',rightY[i]))];
+    studyPlate = `<article class="study-plate">
+      <div class="plate-label">Planche symbolique · ${symbols.length} points</div>
+      <div class="study-canvas has-symbols">
+        <div class="study-card"><img src="${card.file}" alt="${escHtml(card.name)}"></div>
+        <svg class="study-arrows" viewBox="0 0 100 100" preserveAspectRatio="none" fill="none" aria-hidden="true">
+          <defs><marker id="arrow-head" markerWidth="5" markerHeight="5" refX="4" refY="2.5" orient="auto"><path d="M0,0 L5,2.5 L0,5" fill="none" stroke="currentColor" stroke-width="1.2"/></marker></defs>
+          <g stroke="currentColor" stroke-width=".3" marker-end="url(#arrow-head)">
+            ${all.map(a=>`<path d="${a.path}"/>`).join('')}
+          </g>
+          <g fill="currentColor">${all.map(a=>a.dot).join('')}</g>
+        </svg>
+        ${all.map(a=>a.html).join('')}
+      </div>
+    </article>`;
+  } else {
+    studyPlate = `<article class="study-plate">
+      <div class="plate-label">Planche symbolique</div>
+      <div class="study-canvas">
+        <div class="study-card"><img src="${card.file}" alt="${escHtml(card.name)}"></div>
+        <svg class="study-arrows" viewBox="0 0 100 100" preserveAspectRatio="none" fill="none" aria-hidden="true">
+          <defs><marker id="arrow-head" markerWidth="5" markerHeight="5" refX="4" refY="2.5" orient="auto"><path d="M0,0 L5,2.5 L0,5" fill="none" stroke="currentColor" stroke-width="1.2"/></marker></defs>
+          <g stroke="currentColor" stroke-width=".35" marker-end="url(#arrow-head)">
+            <path d="M25 15 L34 25"/><path d="M25 48 L34 48"/><path d="M25 85 L39 68"/>
+            <path d="M75 15 L66 26"/><path d="M75 48 L66 48"/><path d="M75 85 L61 68"/>
+          </g>
+        </svg>
+        ${callouts.map(([label,value],i)=>`<div class="study-callout c${i+1}"><span>${escHtml(label)}</span><b>${escHtml(value)}</b></div>`).join('')}
+      </div>
+    </article>`;
+  }
   const wrap = $('#detail-wrap');
   wrap.innerHTML = `
     <header class="dossier-head">
@@ -725,20 +1490,7 @@ function openCard(id){
       <div class="position"><b>${String(globalIdx+1).padStart(2,'0')}</b> / 78 · ${inFam+1}/${family.count}</div>
     </header>
     <section class="dossier-diptych">
-      <article class="study-plate">
-        <div class="plate-label">Planche symbolique</div>
-        <div class="study-canvas">
-          <div class="study-card"><img src="${card.file}" alt="${escHtml(card.name)}"></div>
-          <svg class="study-arrows" viewBox="0 0 100 100" preserveAspectRatio="none" fill="none" aria-hidden="true">
-            <defs><marker id="arrow-head" markerWidth="5" markerHeight="5" refX="4" refY="2.5" orient="auto"><path d="M0,0 L5,2.5 L0,5" fill="none" stroke="currentColor" stroke-width="1.2"/></marker></defs>
-            <g stroke="currentColor" stroke-width=".35" marker-end="url(#arrow-head)">
-              <path d="M25 15 L34 25"/><path d="M25 48 L34 48"/><path d="M25 85 L39 68"/>
-              <path d="M75 15 L66 26"/><path d="M75 48 L66 48"/><path d="M75 85 L61 68"/>
-            </g>
-          </svg>
-          ${callouts.map(([label,value],i)=>`<div class="study-callout c${i+1}"><span>${escHtml(label)}</span><b>${escHtml(value)}</b></div>`).join('')}
-        </div>
-      </article>
+      ${studyPlate}
       <article class="polarity-plate">
         <div class="plate-label">Lecture comparative</div>
         <h2>${escHtml(card.name)}</h2>
@@ -754,6 +1506,15 @@ function openCard(id){
   updateLoopBar(globalIdx);
   $('#view-detail').scrollTop=0;
   switchView('detail');
+}
+
+function wireSymbolLegend(){
+  const callouts = document.querySelectorAll('.study-callout.sym');
+  if(!callouts.length) return;
+  callouts.forEach(c=>{
+    c.addEventListener('mouseenter',()=>c.classList.add('active'));
+    c.addEventListener('mouseleave',()=>c.classList.remove('active'));
+  });
 }
 
 function mdFields(md){
