@@ -358,6 +358,75 @@ a{color:inherit;text-decoration:none}
   width:56px;height:56px;border-radius:50%;display:none;place-items:center;background:var(--accent);color:#050505;
   box-shadow:0 12px 28px rgba(0,0,0,.42);transition:transform .2s ease-out,background .2s ease-out
 }
+
+/* ---------- Draws (Tirages) ---------- */
+.draws-launch{
+  position:fixed;left:max(1.4rem,env(safe-area-inset-left));bottom:max(1.4rem,env(safe-area-inset-bottom));z-index:500;
+  display:inline-flex;align-items:center;gap:.6rem;padding:.85rem 1.2rem;border-radius:50px;
+  background:var(--bg-2);border:1px solid var(--line);color:var(--fg);
+  font-family:'DM Mono',monospace;font-size:.66rem;letter-spacing:.18em;text-transform:uppercase;
+  box-shadow:0 12px 28px rgba(0,0,0,.42);transition:transform .2s var(--ease),border-color .2s,background .2s
+}
+.draws-launch:hover{transform:translateY(-2px);border-color:var(--accent);color:var(--accent)}
+.draws-launch svg{width:16px;height:16px}
+.draws-launch .dot{width:6px;height:6px;border-radius:50%;background:var(--accent);box-shadow:0 0 8px var(--accent)}
+
+/* ---------- Draws overlay ---------- */
+#draws{position:fixed;inset:0;z-index:8400;display:none;align-items:center;justify-content:center;
+  background:rgba(5,5,5,.78);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);opacity:0;transition:opacity .3s var(--ease)}
+#draws.open{display:flex;opacity:1}
+.draws-panel{
+  width:min(92vw,540px);max-height:86vh;overflow-y:auto;background:var(--bg-2);border:1px solid var(--line);
+  border-radius:1.2rem;padding:2rem;
+}
+.draws-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:1.6rem;padding-bottom:1rem;border-bottom:1px solid var(--line)}
+.draws-head h2{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:2rem;line-height:1;text-transform:uppercase;letter-spacing:-.01em}
+.draws-head h2 em{font-style:italic;color:var(--accent);font-weight:400}
+.draws-close{width:38px;height:38px;border-radius:50%;display:grid;place-items:center;border:1px solid var(--line);color:var(--muted);transition:.3s}
+.draws-close:hover{color:var(--fg);border-color:var(--accent)}
+.draws-close svg{width:16px;height:16px}
+.draws-list{display:grid;gap:.7rem}
+.draw-item{
+  display:flex;align-items:center;gap:1.1rem;padding:1.2rem 1.3rem;border:1px solid var(--line);border-radius:.9rem;
+  cursor:pointer;transition:.3s var(--ease);background:rgba(241,237,228,.02)
+}
+.draw-item:hover{border-color:var(--accent);background:rgba(241,237,228,.04);transform:translateX(4px)}
+.draw-item .icon{flex:0 0 auto;width:42px;height:42px;border-radius:50%;display:grid;place-items:center;border:1px solid var(--line);color:var(--accent)}
+.draw-item .icon svg{width:20px;height:20px}
+.draw-item .copy{flex:1;min-width:0}
+.draw-item .copy b{display:block;font-family:'Cormorant Garamond',serif;font-size:1.25rem;font-weight:400;line-height:1.1;color:var(--fg);margin-bottom:.2rem}
+.draw-item .copy span{display:block;font-size:.82rem;color:var(--muted);line-height:1.4}
+.draw-item .arrow{flex:0 0 auto;color:var(--muted);transition:.3s}
+.draw-item:hover .arrow{color:var(--accent);transform:translateX(3px)}
+.draw-item.disabled{opacity:.4;cursor:not-allowed;pointer-events:none}
+.draw-item .badge{flex:0 0 auto;font-family:'DM Mono',monospace;font-size:.55rem;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);padding:.3rem .55rem;border:1px solid var(--accent);border-radius:50px}
+
+/* ---------- Card reveal (draw result) ---------- */
+#reveal{position:fixed;inset:0;z-index:8600;display:none;align-items:center;justify-content:center;
+  background:rgba(5,5,5,.94);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);opacity:0;transition:opacity .4s var(--ease)}
+#reveal.open{display:flex;opacity:1}
+.reveal-stage{display:flex;flex-direction:column;align-items:center;gap:1.6rem;padding:2rem}
+.reveal-label{font-family:'DM Mono',monospace;font-size:.68rem;letter-spacing:.28em;text-transform:uppercase;color:var(--accent);text-align:center}
+.reveal-card{width:min(62vw,300px);aspect-ratio:2/3;perspective:1200px;cursor:pointer}
+.reveal-inner{position:relative;width:100%;height:100%;transition:transform 1s cubic-bezier(.6,0,.3,1);transform-style:preserve-3d}
+.reveal-inner.flipped{transform:rotateY(180deg)}
+.reveal-face{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;border-radius:.8rem;overflow:hidden;display:flex;align-items:center;justify-content:center}
+.reveal-back{background:linear-gradient(135deg,#1a1612,#0a0907);border:1px solid var(--line);
+  display:grid;place-items:center;color:var(--accent)}
+.reveal-back svg{width:50%;height:50%;opacity:.6}
+.reveal-front{transform:rotateY(180deg);background:var(--mat);padding:.5rem;box-shadow:0 24px 60px rgba(0,0,0,.5)}
+.reveal-front img{width:100%;height:100%;object-fit:contain}
+.reveal-hint{font-family:'DM Mono',monospace;font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);text-align:center}
+.reveal-open{margin-top:.4rem;padding:.7rem 1.4rem;border-radius:50px;background:var(--accent);color:#050505;
+  font-family:'DM Mono',monospace;font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;border:none;cursor:pointer;transition:.3s;display:none}
+.reveal-open.show{display:block}
+.reveal-open:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(201,162,39,.4)}
+@media (max-width:900px){
+  .draws-launch{left:max(1rem,env(safe-area-inset-left));bottom:max(1rem,env(safe-area-inset-bottom));padding:.7rem 1rem;font-size:.6rem}
+  .draws-launch svg{width:14px;height:14px}
+  .draws-panel{padding:1.5rem}
+  .draws-head h2{font-size:1.6rem}
+}
 .scan-launch:hover{transform:translateY(-2px);background:var(--fg)}
 .scan-launch:focus-visible,.scan-close:focus-visible{outline:2px solid var(--fg);outline-offset:3px}
 .scan-launch svg{width:23px;height:23px}
@@ -415,7 +484,7 @@ a{color:inherit;text-decoration:none}
   <a href="index_detail.html">Détaillée</a>
 </nav>
 <div class="landing-foot" id="landing-foot">
-  <span class="ver">v<span id="lf-ver">2.2026.1</span></span>
+  <span class="ver">v<span id="lf-ver">2.2026.7</span></span>
   <a href="https://github.com/clm/Web_Tarot" target="_blank" rel="noopener">GitHub</a>
   <a href="https://mondary.design" target="_blank" rel="noopener">mondary.design</a>
 </div>
@@ -426,6 +495,51 @@ a{color:inherit;text-decoration:none}
 <button class="scan-launch" id="scan-launch" aria-label="Scanner une lame" title="Scanner une lame">
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 8V5a1 1 0 0 1 1-1h3M16 4h3a1 1 0 0 1 1 1v3M20 16v3a1 1 0 0 1-1 1h-3M8 20H5a1 1 0 0 1-1-1v-3"/><path d="M8 12h8"/></svg>
 </button>
+
+<button class="draws-launch" id="draws-launch" aria-label="Tirages" title="Tirages">
+  <span class="dot"></span>
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="3" y="9" width="18" height="6" rx="1"/><path d="M3 12h18"/></svg>
+  <span>Tirages</span>
+</button>
+
+<!-- ============ DRAWS overlay ============ -->
+<div id="draws" role="dialog" aria-modal="true" aria-label="Modes de tirage">
+  <div class="draws-panel">
+    <div class="draws-head">
+      <h2><em>Tirages</em></h2>
+      <button class="draws-close" id="draws-close" aria-label="Fermer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 6 12 12M18 6 6 18"/></svg></button>
+    </div>
+    <div class="draws-list">
+      <div class="draw-item" id="draw-today" role="button" tabindex="0">
+        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/><circle cx="12" cy="15" r="2" fill="currentColor"/></svg></div>
+        <div class="copy">
+          <b>Carte du jour</b>
+          <span>Une lame pour vous guider aujourd'hui. À découvrir chaque matin.</span>
+        </div>
+        <span class="arrow"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ REVEAL overlay ============ -->
+<div id="reveal" role="dialog" aria-modal="true" aria-label="Révélation de la carte">
+  <div class="reveal-stage">
+    <div class="reveal-label" id="reveal-label">Carte du jour</div>
+    <div class="reveal-card" id="reveal-card">
+      <div class="reveal-inner" id="reveal-inner">
+        <div class="reveal-face reveal-back">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><circle cx="12" cy="12" r="10"/><path d="M12 2v20M2 12h20M5 5l14 14M19 5L5 19"/></svg>
+        </div>
+        <div class="reveal-face reveal-front">
+          <img id="reveal-img" src="" alt="">
+        </div>
+      </div>
+    </div>
+    <div class="reveal-hint" id="reveal-hint">Touchez la carte pour la révéler</div>
+    <button class="reveal-open" id="reveal-open">Découvrir la lame</button>
+  </div>
+</div>
 
 <!-- ============ LANDING ============ -->
 <section class="view active" id="view-landing">
@@ -507,7 +621,7 @@ const el = (t,c,h)=>{const e=document.createElement(t); if(c)e.className=c; if(h
    Scanner — local visual matching against the 78 embedded cards
    ========================================================= */
 const scanner = { stream:null, timer:null, refs:null, lastId:null, streak:0, trigger:null, active:false };
-const SCAN_WIDTH = 24, SCAN_HEIGHT = 36, SCAN_THRESHOLD = .62;
+const SCAN_WIDTH = 48, SCAN_HEIGHT = 72, SCAN_THRESHOLD = .78;
 
 function scanVector(source, sx=0, sy=0, sw=source.width, sh=source.height, reverse=false){
   const canvas=document.createElement('canvas'); canvas.width=SCAN_WIDTH; canvas.height=SCAN_HEIGHT;
@@ -905,6 +1019,103 @@ $('#fam-prev').addEventListener('click',()=>famStep(-1));
 $('#fam-next').addEventListener('click',()=>famStep(1));
 $('#scan-launch').addEventListener('click',openScanner);
 $('#scan-close').addEventListener('click',closeScanner);
+
+/* =========================================================
+   Draws — Carte du Jour et autres tirages
+   ========================================================= */
+const draws = { open:false };
+
+function openDraws(){
+  draws.open = true;
+  $('#draws').classList.add('open');
+  // Marquer la carte du jour si déjà tirée
+  const today = new Date().toISOString().slice(0,10);
+  const drawn = localStorage.getItem('tarot_cjd_'+today);
+  const item = $('#draw-today');
+  item.classList.toggle('disabled', false);
+  let badge = item.querySelector('.badge');
+  if(drawn){
+    if(!badge){
+      badge = document.createElement('span'); badge.className='badge'; item.appendChild(badge);
+    }
+    badge.textContent = 'Tirée';
+  } else if(badge){
+    badge.remove();
+  }
+}
+function closeDraws(){ draws.open=false; $('#draws').classList.remove('open'); }
+
+// Hash déterministe (mulberry32) à partir d'une chaîne
+function strSeed(str){
+  let h = 1779033703 ^ str.length;
+  for(let i=0;i<str.length;i++){
+    h = Math.imul(h ^ str.charCodeAt(i), 3432918353);
+    h = (h << 13) | (h >>> 19);
+  }
+  return () => {
+    h = Math.imul(h ^ (h >>> 16), 2246822507);
+    h = Math.imul(h ^ (h >>> 13), 3266489909);
+    return ((h ^= h >>> 16) >>> 0) / 4294967296;
+  };
+}
+
+function cardOfTheDay(){
+  const today = new Date().toISOString().slice(0,10);
+  const rng = strSeed('cjd|'+today);
+  return ALL_CARDS[Math.floor(rng()*ALL_CARDS.length)];
+}
+
+function revealCard(card, label){
+  const reveal = $('#reveal');
+  $('#reveal-label').textContent = label || 'Votre lame';
+  $('#reveal-img').src = card.file;
+  $('#reveal-img').alt = card.name;
+  const inner = $('#reveal-inner');
+  inner.classList.remove('flipped');
+  $('#reveal-open').classList.remove('show');
+  $('#reveal-hint').style.display = 'block';
+  reveal.classList.add('open');
+  reveal._cardId = card.id;
+}
+
+function flipReveal(){
+  const inner = $('#reveal-inner');
+  if(inner.classList.contains('flipped')) return;
+  inner.classList.add('flipped');
+  $('#reveal-hint').style.display = 'none';
+  // Ouvre directement la carte en mode immersif après le flip
+  const id = $('#reveal')._cardId;
+  setTimeout(()=>{
+    closeReveal();
+    if(id){
+      const card = typeof findCard==='function' ? findCard(id) : ALL_CARDS.find(c=>c.id===id);
+      if(card){
+        location.href = 'index_full.html#suite='+encodeURIComponent(card.family)+'&lame='+encodeURIComponent(id);
+      }
+    }
+  }, 1600);
+}
+
+function closeReveal(){
+  $('#reveal').classList.remove('open');
+}
+
+$('#draws-launch').addEventListener('click',openDraws);
+$('#draws-close').addEventListener('click',closeDraws);
+$('#draws').addEventListener('click',e=>{ if(e.target===$('#draws')) closeDraws(); });
+$('#draw-today').addEventListener('click',()=>{
+  const card = cardOfTheDay();
+  const today = new Date().toISOString().slice(0,10);
+  localStorage.setItem('tarot_cjd_'+today, card.id);
+  closeDraws();
+  revealCard(card, 'Carte du jour · '+today.split('-').reverse().join('/'));
+});
+$('#reveal-card').addEventListener('click',flipReveal);
+$('#reveal-open').addEventListener('click',()=>{
+  const id = $('#reveal')._cardId;
+  closeReveal();
+  if(id) openCard(id);
+});
 
 document.addEventListener('keydown',e=>{
   if(scanner.active){if(e.key==='Escape'){closeScanner();e.preventDefault();}return;}
