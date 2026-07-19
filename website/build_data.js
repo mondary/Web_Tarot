@@ -105,12 +105,16 @@ mdFiles.forEach(file => {
 
 Object.values(families).forEach(f => f.cards.sort((a, b) => a.num - b.num));
 
+// Version lue depuis ../VERSION (source unique de vérité)
+const VERSION = fs.readFileSync(path.join(__dirname, '..', 'VERSION'), 'utf8').trim();
+
 const entryCards = ORDER.map(p => {
   const meta = FAMILY_META[p];
   return families[meta.key].cards[0].id;
 });
 
 const output = {
+  version: VERSION,
   families: ORDER.map(p => {
     const meta = FAMILY_META[p];
     const f = families[meta.key];
