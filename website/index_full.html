@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Tarot Divinatoire — Diaporama</title>
+<link rel="icon" href="icon.png" type="image/png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
@@ -48,17 +49,18 @@ a{color:inherit;text-decoration:none}
 
 /* ---------- Brand mark ---------- */
 .brand{
-  position:fixed;top:1.8rem;left:2.2rem;z-index:200;font-family:'DM Mono',monospace;
+  position:fixed;top:1.8rem;left:2.2rem;z-index:200;display:flex;align-items:center;gap:.65rem;font-family:'DM Mono',monospace;
   font-size:.7rem;letter-spacing:.32em;text-transform:uppercase;color:var(--muted);
 }
 .brand b{color:var(--fg);font-weight:400}
+.brand img{width:1.25rem;height:1.25rem;object-fit:contain}
 
-.mode-switch{position:fixed;top:4rem;left:2.2rem;z-index:250;
-  font-family:'DM Mono',monospace;font-size:.62rem;letter-spacing:.16em;
-  text-transform:uppercase;color:var(--muted);padding:.45rem .7rem;
-  border:1px solid var(--line);border-radius:50px;background:rgba(5,5,5,.5);
-  backdrop-filter:blur(10px);transition:.3s var(--ease)}
-.mode-switch:hover{color:var(--fg);border-color:var(--ac)}
+.mode-switch{position:fixed;top:1.5rem;right:2.2rem;z-index:250;display:flex;align-items:center;
+  font-family:'DM Mono',monospace;font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;
+  padding:.25rem;border:1px solid var(--line);border-radius:50px;background:var(--bg)}
+.mode-switch a{color:var(--muted);padding:.42rem .62rem;border-radius:50px;transition:color .2s,background .2s}
+.mode-switch a:hover{color:var(--fg)}
+.mode-switch a.active{color:#050505;background:var(--accent)}
 
 /* landing footer : version + liens (GitHub, mondary.design) */
 .landing-foot{
@@ -180,7 +182,8 @@ a{color:inherit;text-decoration:none}
 .grid-head .right{text-align:right;font-family:'DM Mono',monospace;font-size:.72rem;
   letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
 .grid-head .right b{display:block;font-family:'Cormorant Garamond',serif;font-size:2.4rem;
-  color:var(--fg);letter-spacing:0;text-transform:none;font-weight:400}
+   color:var(--fg);letter-spacing:0;text-transform:none;font-weight:400}
+.grid-head .right p{max-width:25rem;margin:.5rem 0 0 auto;font-size:.8rem;line-height:1.55;letter-spacing:0;text-transform:none}
 
 /* family band : horizontal carousel of families (swipe + buttons) */
 .family-band{
@@ -263,9 +266,9 @@ a{color:inherit;text-decoration:none}
   font-size:clamp(2.4rem,5.5vw,4.6rem);line-height:1;text-transform:uppercase;letter-spacing:-.01em;margin:0 0 22px}
 .d-title em{font-style:italic;color:var(--ac);font-weight:400;text-shadow:0 0 28px rgba(255,255,255,.12)}
 
-/* section pills nav — sticky inside the panel */
-.d-nav{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:2.4rem;position:sticky;top:.6rem;z-index:6;
-  padding:.6rem;background:rgba(10,10,10,.7);backdrop-filter:blur(12px);border:1px solid var(--line);border-radius:60px;width:fit-content;max-width:100%}
+/* section navigation stays above the prose instead of covering it while scrolling. */
+.d-nav{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:2.4rem;
+  padding:0;background:transparent;backdrop-filter:none;border:none;border-radius:0;width:auto;max-width:100%}
 .d-nav button{font-family:'DM Mono',monospace;font-size:.64rem;letter-spacing:.14em;text-transform:uppercase;
   padding:.5rem .9rem;border-radius:50px;color:var(--muted);transition:.3s;border:1px solid transparent;white-space:nowrap}
 .d-nav button:hover{color:var(--fg)}
@@ -304,10 +307,10 @@ a{color:inherit;text-decoration:none}
 
 /* ---------- Back button ---------- */
 .back{
-  position:fixed;top:1.6rem;right:2.2rem;z-index:300;display:flex;align-items:center;gap:.6rem;
+  position:fixed;top:4rem;left:2.2rem;z-index:300;display:flex;align-items:center;gap:.6rem;
   font-family:'DM Mono',monospace;font-size:.7rem;letter-spacing:.24em;text-transform:uppercase;color:var(--muted);
   padding:.6rem 1.1rem;border:1px solid var(--line);border-radius:50px;transition:.4s var(--ease);
-  background:rgba(10,9,7,.5);backdrop-filter:blur(10px)
+  background:var(--bg)
 }
 .back:hover{color:var(--fg);border-color:var(--ac)}
 .back svg{width:13px;height:13px;transition:transform .4s}
@@ -328,6 +331,9 @@ a{color:inherit;text-decoration:none}
   border:1px solid var(--line);border-radius:50px;font-family:'DM Mono',monospace;font-size:.68rem;
   letter-spacing:.14em;text-transform:uppercase;color:var(--muted);max-width:calc(100vw - 130px)}
 .d-loop b{color:var(--ac);font-weight:400}
+.d-loop button{color:var(--muted);transition:.3s var(--ease);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:30vw}
+.d-loop button:hover{color:var(--fg)}
+.d-loop button.prev{text-align:right}
 
 /* =====================================================
    SEARCH overlay — instant, fuzzy/occurrence based
@@ -372,8 +378,8 @@ a{color:inherit;text-decoration:none}
   .grid-head{position:static;padding:4.5rem 6vw 1rem;border-bottom:none}
   .grid{grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:.8rem;padding:.8rem 6vw 6rem}
   .brand{left:1.2rem;top:1.2rem}
-  .mode-switch{left:1.2rem;top:3.7rem}
-  .back{right:1.2rem;top:1.2rem}
+  .mode-switch{right:1.2rem;top:.9rem}
+  .back{left:1.2rem;top:3.7rem}
   .d-nav{position:static}
 }
 </style>
@@ -382,8 +388,12 @@ a{color:inherit;text-decoration:none}
 <div class="fx-grain"></div>
 <div class="fx-vignette"></div>
 
-<div class="brand"><b>Tarot</b> · Divinatoire</div>
-<a class="mode-switch" id="mode-switch" href="index.html">Vue classique ↗</a>
+<a class="brand" id="home-link" href="#" aria-label="Retour à l'accueil"><img src="icon.png" alt=""><span><b>Tarot</b> · Divinatoire</span></a>
+<nav class="mode-switch" aria-label="Choisir une vue">
+  <a href="index.html">Classique</a>
+  <a class="active" href="index_full.html">Immersive</a>
+  <a href="index_detail.html">Détaillée</a>
+</nav>
 <div class="landing-foot" id="landing-foot">
   <span class="ver">v<span id="lf-ver">2.2026.1</span></span>
   <a href="https://github.com/clm/Web_Tarot" target="_blank" rel="noopener">GitHub</a>
@@ -456,6 +466,13 @@ const state = { view:'landing', familyKey:null, cardId:null, familyCards:[], gri
 
 // Flat ordered list of all 78 cards (majors → bâtons → épées → coupes → deniers) for continuous looping
 const ALL_CARDS = TAROT.families.flatMap(f => f.cards);
+const FAMILY_GRID_COPY = {
+  majors:'Les Arcanes majeurs décrivent un processus humain universel qui englobe tous les aspects spirituels de l’être.',
+  batons:'Les Bâtons parlent des désirs.',
+  epees:'Les Épées parlent des idées, des pensées, des opinions, du langage. C’est aussi la vie sexuelle et la créativité.',
+  coupes:'Les Coupes parlent des émotions.',
+  deniers:'Les Deniers parlent des besoins.',
+};
 
 const $ = s => document.querySelector(s);
 const el = (t,c,h)=>{const e=document.createElement(t); if(c)e.className=c; if(h!=null)e.innerHTML=h; return e;};
@@ -512,6 +529,11 @@ function renderLanding(){
     $('#hint').style.opacity = c.scrollLeft>60 ? '0':'';
   };
   c.addEventListener('scroll',onScroll,{passive:true});
+  c.addEventListener('wheel',e=>{
+    if(Math.abs(e.deltaY)<=Math.abs(e.deltaX)) return;
+    e.preventDefault();
+    c.scrollLeft += e.deltaY;
+  },{passive:false});
   onScroll();
 }
 
@@ -533,7 +555,7 @@ function buildGrid(){
         <div class="crumb"><span class="ac-dot"></span><span>${crumb}</span></div>
         <h2>${titleHtml}</h2>
       </div>
-      <div class="right"><b>${f.count}</b>lames<br>élément ${f.element}</div>`);
+      <div class="right"><b>${f.count}</b>lames<br>élément ${f.element}<p>${FAMILY_GRID_COPY[f.key]}</p></div>`);
     pane.appendChild(head);
     const grid = el('div','grid');
     f.cards.forEach(card=>{
@@ -626,7 +648,7 @@ function openCard(id){
   const thumbs=$('#d-thumbs'); thumbs.innerHTML='';
   family.cards.forEach(c=>{
     const t=el('div','d-thumb' + (c.id===card.id?' current':''));
-    t.innerHTML=`<img src="cards/${c.file}" alt="${c.name}" loading="lazy">`;
+    t.innerHTML=`<img src="${c.file}" alt="${c.name}" loading="lazy">`;
     t.addEventListener('click',()=>openCard(c.id));
     thumbs.appendChild(t);
   });
@@ -641,9 +663,11 @@ function updateLoopBar(idx){
   const prev = ALL_CARDS[(idx-1+ALL_CARDS.length)%ALL_CARDS.length];
   const nxt = ALL_CARDS[(idx+1)%ALL_CARDS.length];
   $('#d-loop').innerHTML = `
-    <span>← ${prev.name}</span>
+    <button class="prev" id="loop-prev">← ${prev.name}</button>
     <b>${String(idx+1).padStart(2,'0')} / ${ALL_CARDS.length}</b>
-    <span>${nxt.name} →</span>`;
+    <button class="next" id="loop-next">${nxt.name} →</button>`;
+  $('#loop-prev').addEventListener('click',()=>stepCard(-1));
+  $('#loop-next').addEventListener('click',()=>stepCard(1));
 }
 
 function findCard(id){
@@ -750,10 +774,17 @@ function switchView(v){
   if(v==='landing'){document.documentElement.style.setProperty('--ac','#c9a227');}
 }
 
+function goHome(){
+  history.replaceState(null,'',location.pathname);
+  $('#carousel').scrollTo({left:0,behavior:'smooth'});
+  switchView('landing');
+}
+
 $('#back-btn').addEventListener('click',()=>{
   if(state.view==='detail') switchView('grid');
-  else if(state.view==='grid') switchView('landing');
+  else if(state.view==='grid') goHome();
 });
+$('#home-link').addEventListener('click',e=>{e.preventDefault();goHome();});
 $('#d-prev').addEventListener('click',()=>stepCard(-1));
 $('#d-next').addEventListener('click',()=>stepCard(1));
 $('#fam-prev').addEventListener('click',()=>famStep(-1));
@@ -877,10 +908,9 @@ document.addEventListener('keydown',e=>{
 /* init */
 renderLanding();
 function syncModeLink(){
-  const link=$('#mode-switch');
-  if(link) link.addEventListener('click',e=>{
+  document.querySelectorAll('.mode-switch a').forEach(link=>link.addEventListener('click',e=>{
     if(location.hash){e.preventDefault();location.href=link.getAttribute('href')+location.hash;}
-  });
+  }));
 }
 function restoreRoute(){
   const params=new URLSearchParams(location.hash.slice(1));

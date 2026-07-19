@@ -6,7 +6,7 @@ Toutes les notes de release du projet Web Tarot. Le format de version suit `🔥
 
 ## TODO — Roadmap
 
-Statut : `2.2026.2` (interface V2 livrée, enrichissement du contenu en cours d'amélioration continue)
+Statut : `2.2026.3` (trois vues de lecture livrées, enrichissement du contenu en cours d'amélioration continue)
 
 ### Phase 1 — Fondations ✅
 - [x] Interface V2 unifiée (carousel d'accueil + grille par famille + vue détail)
@@ -16,18 +16,30 @@ Statut : `2.2026.2` (interface V2 livrée, enrichissement du contenu en cours d'
 - [x] Navigation continue traversant les 5 familles en boucle
 - [x] Grille : carousel horizontal de familles (swipe + boutons + indicateurs)
 - [x] Vue détail alternative en diaporama plein écran (`index_full.html`)
+- [x] Vue détaillée éditoriale (`index_detail.html`)
 - [x] Matelas blanc simulant la bordure réelle des cartes
 
 ### Phase 2 — Expérience
 - [ ] Tirages (spreads) interactifs (croix, past, présent, futur…)
 - [ ] Mode diaporama plein écran avec lecture auto
-- [ ] Recherche et filtrage des cartes par mot-clé
+- [x] Recherche et filtrage des cartes par mot-clé
 - [ ] Animations d'entrée et transitions entre vues
 - [ ] Sélecteur de thème / palette
 
 ---
 
 ## Releases
+
+### [2.2026.3] - 2026-07-19
+#### Added
+- Troisième vue détaillée (`index_detail.html`) : dossier éditorial noir, métadonnées, lecture endroit/envers et article de la lame
+- Sélecteur segmenté commun aux vues classique, immersive et détaillée, en conservant la lame via le hash URL
+- Icône du Tarot dans l'en-tête et favicon
+
+#### Changed
+- Navigation d'accueil compatible avec la molette verticale, en plus du défilement horizontal
+- Retours, sélecteur de vue et navigation immersive rendus lisibles sur les contenus sombres
+- En-têtes de suites enrichis avec leur rôle symbolique
 
 ### [2.2026.2] - 2026-07-19
 #### Added
