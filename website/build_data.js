@@ -16,6 +16,18 @@ function imageDataUri(imgPath){
   }
 }
 
+// Empreinte monochrome compacte destinée au scanner local. Elle évite de
+// décoder les 78 images au moment où la caméra est ouverte.
+function scanReference(imgPath){
+  try{
+    const buf = execFileSync('magick', [imgPath, '-auto-orient', '-resize', '32x48!', '-colorspace', 'Gray', '-depth', '8', 'gray:-'], {maxBuffer: 1024*1024});
+    return buf.toString('base64');
+  }catch(e){
+    console.warn('  ⚠ Empreinte scanner indisponible pour '+path.basename(imgPath));
+    return null;
+  }
+}
+
 const VS = '\uFE0E'; // text-style variation selector (monochrome glyphs)
 const FAMILY_META = {
   a: { key:'majors', name:'Arcanes Majeurs', short:'Majeurs', element:'Éther', elementSym:'✦'+VS,
@@ -72,7 +84,9 @@ ORDER.forEach(prefix => {
   families[meta.key] = { ...meta, cards: [] };
 });
 
-const mdFiles = fs.readdirSync(CARDS_DIR).filter(f => f.endsWith('.md')).sort();
+const mdFiles = fs.readdirSync(CARDS_DIR)
+  .filter(f => f.endsWith('.md') && !f.endsWith('_symbols.md') && !f.endsWith('_symboles_pcd.md'))
+  .sort();
 
 mdFiles.forEach(file => {
   const match = file.match(/^([abecd])_(\d{2})_(.+)\.md$/);
@@ -94,6 +108,7 @@ mdFiles.forEach(file => {
   families[meta.key].cards.push({
     id: base,
     file: imageDataUri(imgFile) || ('cards/' + base + '.jpg'),
+    scan: scanReference(imgFile),
     name,
     family: meta.key,
     familyName: meta.name,

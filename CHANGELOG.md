@@ -6,7 +6,7 @@ Toutes les notes de release du projet Web Tarot. Le format de version suit `🔥
 
 ## TODO — Roadmap
 
-Statut : `2.2026.5` (trois vues de lecture livrées, enrichissement du contenu en cours d'amélioration continue)
+Statut : `2.2026.10` (trois vues de lecture livrées, enrichissement du contenu en cours d'amélioration continue)
 
 ### Phase 1 — Fondations ✅
 - [x] Interface V2 unifiée (carousel d'accueil + grille par famille + vue détail)
@@ -30,6 +30,12 @@ Statut : `2.2026.5` (trois vues de lecture livrées, enrichissement du contenu e
 ---
 
 ## Releases
+
+### [2.2026.10] - 2026-07-19
+#### Fixed
+- Scanner de lames accéléré : empreintes visuelles compactes pré-générées, sans décodage des 78 illustrations à l'ouverture de la caméra
+- Zone analysée alignée sur le cadre de scan affiché, pour éviter que l'arrière-plan ne perturbe la reconnaissance
+- Validation ramenée à deux images espacées de 120 ms pour ouvrir la lame détectée en moins d'une seconde après le démarrage de la caméra
 
 ### [2.2026.5] - 2026-07-19
 #### Added

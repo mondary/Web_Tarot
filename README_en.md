@@ -74,7 +74,7 @@ python3 -m http.server 8000
 
 ## 📋 See the [CHANGELOG](CHANGELOG.md) for full history.
 
-Current version: `🔥v2.2026.5`
+Current version: `🔥v2.2026.10`
 
 ## 🔗 Links
 

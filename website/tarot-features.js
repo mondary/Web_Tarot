@@ -257,12 +257,16 @@
   /* =========================================================
      Scan logic
      ========================================================= */
-  const scanner = { stream:null, timer:null, refs:null, lastId:null, streak:0, trigger:null, active:false };
-  const SCAN_WIDTH = 48, SCAN_HEIGHT = 72, SCAN_THRESHOLD = .78;
+  const scanner = { stream:null, timer:null, refs:null, lastId:null, streak:0, trigger:null, active:false, canvas:null, ctx:null };
+  const SCAN_WIDTH = 32, SCAN_HEIGHT = 48, SCAN_THRESHOLD = .72, SCAN_INTERVAL = 120;
 
   function scanVector(source, sx, sy, sw, sh, reverse){
-    const canvas=document.createElement('canvas'); canvas.width=SCAN_WIDTH; canvas.height=SCAN_HEIGHT;
-    const ctx=canvas.getContext('2d',{willReadFrequently:true});
+    if(!scanner.canvas){
+      scanner.canvas=document.createElement('canvas'); scanner.canvas.width=SCAN_WIDTH; scanner.canvas.height=SCAN_HEIGHT;
+      scanner.ctx=scanner.canvas.getContext('2d',{willReadFrequently:true});
+    }
+    const ctx=scanner.ctx;
+    ctx.setTransform(1,0,0,1,0,0); ctx.clearRect(0,0,SCAN_WIDTH,SCAN_HEIGHT);
     if(reverse){ctx.translate(SCAN_WIDTH,SCAN_HEIGHT);ctx.rotate(Math.PI);}
     ctx.drawImage(source,sx,sy,sw,sh,0,0,SCAN_WIDTH,SCAN_HEIGHT);
     const data=ctx.getImageData(0,0,SCAN_WIDTH,SCAN_HEIGHT).data;
@@ -278,28 +282,64 @@
   }
   function similarity(a,b){let s=0;for(let i=0;i<a.length;i++)s+=a[i]*b[i];return s;}
 
+  function normalizeVector(values){
+    let mean=0;
+    for(let i=0;i<values.length;i++)mean+=values[i];
+    mean/=values.length;
+    let norm=0;
+    for(let i=0;i<values.length;i++){values[i]-=mean;norm+=values[i]*values[i];}
+    norm=Math.sqrt(norm)||1;
+    for(let i=0;i<values.length;i++)values[i]/=norm;
+    return values;
+  }
+
+  function decodeScanReference(encoded){
+    const binary=atob(encoded);
+    const vector=new Float32Array(binary.length);
+    for(let i=0;i<binary.length;i++)vector[i]=binary.charCodeAt(i);
+    return normalizeVector(vector);
+  }
+
+  function reverseVector(vector){
+    const reversed=new Float32Array(vector.length);
+    for(let y=0;y<SCAN_HEIGHT;y++)for(let x=0;x<SCAN_WIDTH;x++)reversed[(SCAN_HEIGHT-1-y)*SCAN_WIDTH+(SCAN_WIDTH-1-x)]=vector[y*SCAN_WIDTH+x];
+    return reversed;
+  }
+
   function prepareScanReferences(){
-    if(scanner.refs) return Promise.resolve(scanner.refs);
+    if(scanner.refs) return scanner.refs;
     const refs=[];
-    return Promise.all(ALL_CARDS.map(card=>new Promise(resolve=>{
-      const image=new Image();
-      image.onload=()=>{
-        refs.push({id:card.id,vector:scanVector(image,0,0,image.width,image.height,false)});
-        refs.push({id:card.id,vector:scanVector(image,0,0,image.width,image.height,true)});
-        resolve();
-      };
-      image.onerror=resolve; image.src=card.file;
-    }))).then(()=>{ scanner.refs=refs; return refs; });
+    ALL_CARDS.forEach(card=>{
+      if(!card.scan) return;
+      const vector=decodeScanReference(card.scan);
+      refs.push({id:card.id,vector});
+      refs.push({id:card.id,vector:reverseVector(vector)});
+    });
+    scanner.refs=refs;
+    return refs;
+  }
+
+  function scanCrop(video, frame){
+    const videoBox=video.getBoundingClientRect();
+    const frameBox=frame.getBoundingClientRect();
+    const scale=Math.max(videoBox.width/video.videoWidth,videoBox.height/video.videoHeight);
+    const renderedWidth=video.videoWidth*scale;
+    const renderedHeight=video.videoHeight*scale;
+    const renderedLeft=videoBox.left+(videoBox.width-renderedWidth)/2;
+    const renderedTop=videoBox.top+(videoBox.height-renderedHeight)/2;
+    return {
+      sx:Math.max(0,(frameBox.left-renderedLeft)/scale),
+      sy:Math.max(0,(frameBox.top-renderedTop)/scale),
+      sw:Math.min(video.videoWidth,frameBox.width/scale),
+      sh:Math.min(video.videoHeight,frameBox.height/scale),
+    };
   }
 
   function scanFrame(){
     const video=document.getElementById('tf-scan-video');
     if(!scanner.active||video.readyState<2||!scanner.refs||!scanner.refs.length)return;
-    const cardRatio=2/3, videoRatio=video.videoWidth/video.videoHeight;
-    let sw,sh,sx,sy;
-    if(videoRatio>cardRatio){sh=video.videoHeight;sw=sh*cardRatio;sx=(video.videoWidth-sw)/2;sy=0;}
-    else{sw=video.videoWidth;sh=sw/cardRatio;sx=0;sy=(video.videoHeight-sh)/2;}
-    const vector=scanVector(video,sx,sy,sw,sh,false);
+    const crop=scanCrop(video,document.getElementById('tf-scan-frame'));
+    const vector=scanVector(video,crop.sx,crop.sy,crop.sw,crop.sh,false);
     let best=null;
     scanner.refs.forEach(ref=>{const score=similarity(vector,ref.vector);if(!best||score>best.score)best={...ref,score};});
     if(!best)return;
@@ -320,17 +360,15 @@
     el.classList.add('open');
     const closeBtn=document.getElementById('tf-scan-close'); if(closeBtn) closeBtn.focus();
     const err=document.getElementById('tf-scan-error'); if(err) err.classList.remove('visible');
-    const status=document.getElementById('tf-scan-status'); if(status) status.textContent='Chargement des références...';
+    const status=document.getElementById('tf-scan-status'); if(status) status.textContent='Ouverture de la caméra...';
     try{
-      const [refs,stream]=await Promise.all([
-        prepareScanReferences(),
-        navigator.mediaDevices.getUserMedia({video:{facingMode:{ideal:'environment'},width:{ideal:1280},height:{ideal:1920}},audio:false})
-      ]);
+      const refs=prepareScanReferences();
+      const stream=await navigator.mediaDevices.getUserMedia({video:{facingMode:{ideal:'environment'},width:{ideal:1280},height:{ideal:1920}},audio:false});
       if(!scanner.active){stream.getTracks().forEach(t=>t.stop());return;}
       scanner.refs=refs; scanner.stream=stream;
       const video=document.getElementById('tf-scan-video'); video.srcObject=stream; await video.play();
       const st=document.getElementById('tf-scan-status'); if(st) st.textContent='Cadrez la lame dans le repère';
-      scanner.timer=window.setInterval(scanFrame,450);
+      scanner.timer=window.setInterval(scanFrame,SCAN_INTERVAL);
     }catch(error){
       scanner.active=false;
       showScanError(error.name==='NotAllowedError'?'L\'accès à la caméra a été refusé. Autorisez-le puis réessayez.':'Impossible d\'ouvrir la caméra. Utilisez le site en HTTPS.');
@@ -393,6 +431,10 @@
     injectStyles();
     injectHTML();
     wireUp();
+    // The compact fingerprints make this warm-up instantaneous before a scan.
+    const warmScanner=()=>prepareScanReferences();
+    if('requestIdleCallback' in window) window.requestIdleCallback(warmScanner,{timeout:500});
+    else window.setTimeout(warmScanner,0);
   });
 
 })();
