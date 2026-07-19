@@ -11,6 +11,7 @@ A static, immersive website to explore the 78 cards of the Rider-Waite-Smith Tar
 - **78 cards**: 22 Major Arcana + 56 Minor Arcana (Wands, Swords, Cups, Pentacles)
 - **Unified interface** in a single file: landing view, per-family grid, detail view
 - **Rich sheets**: meaning, keywords (upright / reversed), interpretation, love, work, finances, guidance
+- **Mobile scanner**: local recognition of a Rider-Waite-Smith card through the camera, then direct opening of its page
 - **Continuous navigation**: arrows loop through all 78 cards, crossing from one family to the next
 - **Visual consistency**: a dedicated accent color per family, a white mat simulating the border of real cards
 - **Offline**: content embedded in `website/data.js`, works by double-clicking `website/index.html`
@@ -73,7 +74,7 @@ python3 -m http.server 8000
 
 ## 📋 See the [CHANGELOG](CHANGELOG.md) for full history.
 
-Current version: `🔥v2.2026.4`
+Current version: `🔥v2.2026.5`
 
 ## 🔗 Links
 

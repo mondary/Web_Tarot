@@ -6,7 +6,7 @@ Toutes les notes de release du projet Web Tarot. Le format de version suit `🔥
 
 ## TODO — Roadmap
 
-Statut : `2.2026.4` (trois vues de lecture livrées, enrichissement du contenu en cours d'amélioration continue)
+Statut : `2.2026.5` (trois vues de lecture livrées, enrichissement du contenu en cours d'amélioration continue)
 
 ### Phase 1 — Fondations ✅
 - [x] Interface V2 unifiée (carousel d'accueil + grille par famille + vue détail)
@@ -23,12 +23,20 @@ Statut : `2.2026.4` (trois vues de lecture livrées, enrichissement du contenu e
 - [ ] Tirages (spreads) interactifs (croix, past, présent, futur…)
 - [ ] Mode diaporama plein écran avec lecture auto
 - [x] Recherche et filtrage des cartes par mot-clé
+- [x] Scanner mobile de lames par caméra
 - [ ] Animations d'entrée et transitions entre vues
 - [ ] Sélecteur de thème / palette
 
 ---
 
 ## Releases
+
+### [2.2026.5] - 2026-07-19
+#### Added
+- Scanner de lames mobile : reconnaissance locale des illustrations Rider-Waite-Smith via la caméra et ouverture directe de la fiche détectée
+
+#### Changed
+- Bouton de scan réservé aux écrans mobiles pour préserver l'interface desktop
 
 ### [2.2026.4] - 2026-07-19
 #### Changed

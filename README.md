@@ -11,6 +11,7 @@ Un site statique immersif pour explorer les 78 lames du Tarot de Rider-Waite-Smi
 - **78 cartes** : 22 arcanes majeurs + 56 mineurs (Bâtons, Épées, Coupes, Deniers)
 - **Interface unifiée** en un seul fichier : vue d'accueil, grille par famille, vue détail
 - **Fiches enrichies** : signification, mots-clés (endroit / envers), interprétation, amour, travail, finances, guidance
+- **Scanner mobile** : reconnaissance locale d'une lame Rider-Waite-Smith par caméra, puis ouverture directe de sa fiche
 - **Navigation continue** : les flèches traversent les 78 cartes en boucle, d'une famille à l'autre
 - **Cohérence visuelle** : couleur d'accent dédiée par famille, matelas blanc simulant la bordure des cartes réelles
 - **Hors-ligne** : contenu embarqué dans `website/data.js`, fonctionne en double-cliquant sur `website/index.html`
@@ -73,7 +74,7 @@ python3 -m http.server 8000
 
 ## 📋 Voir le [CHANGELOG](CHANGELOG.md) pour l'historique complet.
 
-Version courante : `🔥v2.2026.4`
+Version courante : `🔥v2.2026.5`
 
 ## 🔗 Liens
 

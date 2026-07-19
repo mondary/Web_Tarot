@@ -352,6 +352,39 @@ a{color:inherit;text-decoration:none}
 .s-grid .mini.sel{border:2px solid var(--ac);box-shadow:0 0 0 1px var(--ac);transform:none}
 .s-empty{grid-column:1/-1;text-align:center;color:var(--muted);padding:3rem 0;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.4rem}
 
+/* ---------- Card scanner ---------- */
+.scan-launch{
+  position:fixed;right:max(1.4rem,env(safe-area-inset-right));bottom:max(1.4rem,env(safe-area-inset-bottom));z-index:500;
+  width:56px;height:56px;border-radius:50%;display:none;place-items:center;background:var(--accent);color:#050505;
+  box-shadow:0 12px 28px rgba(0,0,0,.42);transition:transform .2s ease-out,background .2s ease-out
+}
+.scan-launch:hover{transform:translateY(-2px);background:var(--fg)}
+.scan-launch:focus-visible,.scan-close:focus-visible{outline:2px solid var(--fg);outline-offset:3px}
+.scan-launch svg{width:23px;height:23px}
+#scanner{position:fixed;inset:0;z-index:8500;display:none;align-items:center;justify-content:center;background:#050505}
+#scanner.open{display:flex}
+.scan-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.scan-shade{position:absolute;inset:0;background:rgba(0,0,0,.52);pointer-events:none}
+.scan-frame{
+  position:relative;z-index:1;width:min(68vw,330px);aspect-ratio:2/3;border:2px solid var(--accent);border-radius:1rem;
+  box-shadow:0 0 0 100vmax rgba(0,0,0,.42);pointer-events:none
+}
+.scan-frame::before,.scan-frame::after{content:'';position:absolute;width:26px;height:26px;border-color:var(--fg)}
+.scan-frame::before{top:-2px;left:-2px;border-top:3px solid;border-left:3px solid;border-radius:.8rem 0 0 0}
+.scan-frame::after{right:-2px;bottom:-2px;border-right:3px solid;border-bottom:3px solid;border-radius:0 0 .8rem 0}
+.scan-ui{position:absolute;z-index:2;inset:0;display:flex;flex-direction:column;justify-content:space-between;padding:max(1.3rem,env(safe-area-inset-top)) max(1.3rem,env(safe-area-inset-right)) max(1.3rem,env(safe-area-inset-bottom)) max(1.3rem,env(safe-area-inset-left));pointer-events:none}
+.scan-top{display:flex;align-items:flex-start;justify-content:space-between;gap:1rem}
+.scan-copy{max-width:18rem;font-family:'DM Mono',monospace;font-size:.68rem;line-height:1.6;letter-spacing:.12em;text-transform:uppercase;color:var(--fg);text-shadow:0 1px 10px #000}
+.scan-status{margin-top:.45rem;color:var(--accent)}
+.scan-close{pointer-events:auto;width:42px;height:42px;border-radius:50%;display:grid;place-items:center;background:rgba(5,5,5,.75);border:1px solid var(--line);color:var(--fg)}
+.scan-close svg{width:18px;height:18px}
+.scan-error{display:none;align-self:center;max-width:22rem;padding:1rem 1.2rem;background:#15130f;border:1px solid var(--accent);border-radius:.8rem;color:var(--fg);font-size:.9rem;line-height:1.5;text-align:center;pointer-events:auto}
+.scan-error.visible{display:block}
+
+@media (max-width:900px){
+  .scan-launch{right:max(1rem,env(safe-area-inset-right));bottom:max(1rem,env(safe-area-inset-bottom));width:52px;height:52px;display:grid}
+}
+
 @media (max-width:900px){
   .title-block{flex:0 0 52vw;padding:0 4vw 0 7vw}
   .title-block h1{font-size:clamp(2.6rem,13vw,4.4rem)}
@@ -389,6 +422,9 @@ a{color:inherit;text-decoration:none}
 <button class="back" id="back-btn" style="display:none">
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
   Retour
+</button>
+<button class="scan-launch" id="scan-launch" aria-label="Scanner une lame" title="Scanner une lame">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 8V5a1 1 0 0 1 1-1h3M16 4h3a1 1 0 0 1 1 1v3M20 16v3a1 1 0 0 1-1 1h-3M8 20H5a1 1 0 0 1-1-1v-3"/><path d="M8 12h8"/></svg>
 </button>
 
 <!-- ============ LANDING ============ -->
@@ -433,6 +469,20 @@ a{color:inherit;text-decoration:none}
   <div class="s-scroll"><div class="s-grid" id="s-grid"></div></div>
 </div>
 
+<!-- ============ SCANNER ============ -->
+<div id="scanner" role="dialog" aria-modal="true" aria-label="Scanner une lame" aria-describedby="scan-status">
+  <video class="scan-video" id="scan-video" playsinline muted></video>
+  <div class="scan-shade" aria-hidden="true"></div>
+  <div class="scan-frame" aria-hidden="true"></div>
+  <div class="scan-ui">
+    <div class="scan-top">
+      <div class="scan-copy">Cadrez la lame dans le repère<div class="scan-status" id="scan-status" role="status" aria-live="polite">Préparation du scanner...</div></div>
+      <button class="scan-close" id="scan-close" aria-label="Fermer le scanner"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg></button>
+    </div>
+    <p class="scan-error" id="scan-error" role="alert"></p>
+  </div>
+</div>
+
 <script src="data.js"></script>
 <script>
 /* =========================================================
@@ -452,6 +502,98 @@ const FAMILY_SUMMARY = {
 
 const $ = s => document.querySelector(s);
 const el = (t,c,h)=>{const e=document.createElement(t); if(c)e.className=c; if(h!=null)e.innerHTML=h; return e;};
+
+/* =========================================================
+   Scanner — local visual matching against the 78 embedded cards
+   ========================================================= */
+const scanner = { stream:null, timer:null, refs:null, lastId:null, streak:0, trigger:null, active:false };
+const SCAN_WIDTH = 24, SCAN_HEIGHT = 36, SCAN_THRESHOLD = .62;
+
+function scanVector(source, sx=0, sy=0, sw=source.width, sh=source.height, reverse=false){
+  const canvas=document.createElement('canvas'); canvas.width=SCAN_WIDTH; canvas.height=SCAN_HEIGHT;
+  const ctx=canvas.getContext('2d',{willReadFrequently:true});
+  if(reverse){ctx.translate(SCAN_WIDTH,SCAN_HEIGHT);ctx.rotate(Math.PI);}
+  ctx.drawImage(source,sx,sy,sw,sh,0,0,SCAN_WIDTH,SCAN_HEIGHT);
+  const data=ctx.getImageData(0,0,SCAN_WIDTH,SCAN_HEIGHT).data;
+  const values=new Float32Array(SCAN_WIDTH*SCAN_HEIGHT);
+  let mean=0;
+  for(let i=0;i<values.length;i++){const p=i*4;values[i]=data[p]*.299+data[p+1]*.587+data[p+2]*.114;mean+=values[i];}
+  mean/=values.length;
+  let norm=0;
+  for(let i=0;i<values.length;i++){values[i]-=mean;norm+=values[i]*values[i];}
+  norm=Math.sqrt(norm)||1;
+  for(let i=0;i<values.length;i++)values[i]/=norm;
+  return values;
+}
+
+function similarity(a,b){let score=0;for(let i=0;i<a.length;i++)score+=a[i]*b[i];return score;}
+
+async function prepareScanReferences(){
+  if(scanner.refs)return scanner.refs;
+  const refs=[];
+  await Promise.all(ALL_CARDS.map(card=>new Promise(resolve=>{
+    const image=new Image();
+    image.onload=()=>{
+      refs.push({id:card.id,vector:scanVector(image)});
+      refs.push({id:card.id,vector:scanVector(image,0,0,image.width,image.height,true)});
+      resolve();
+    };
+    image.onerror=resolve; image.src=card.file;
+  })));
+  scanner.refs=refs;
+  return refs;
+}
+
+function scanFrame(){
+  const video=$('#scan-video');
+  if(!scanner.active||video.readyState<2||!scanner.refs?.length)return;
+  const cardRatio=2/3, videoRatio=video.videoWidth/video.videoHeight;
+  let sw,sh,sx,sy;
+  if(videoRatio>cardRatio){sh=video.videoHeight;sw=sh*cardRatio;sx=(video.videoWidth-sw)/2;sy=0;}
+  else {sw=video.videoWidth;sh=sw/cardRatio;sx=0;sy=(video.videoHeight-sh)/2;}
+  const vector=scanVector(video,sx,sy,sw,sh);
+  let best=null;
+  scanner.refs.forEach(ref=>{const score=similarity(vector,ref.vector);if(!best||score>best.score)best={...ref,score};});
+  if(!best)return;
+  $('#scan-status').textContent=best.score>=SCAN_THRESHOLD ? 'Carte détectée, confirmation...' : 'Recherche de la lame...';
+  if(best.score>=SCAN_THRESHOLD&&best.id===scanner.lastId)scanner.streak++;
+  else {scanner.lastId=best.id;scanner.streak=best.score>=SCAN_THRESHOLD?1:0;}
+  if(scanner.streak>=2){closeScanner();openCard(best.id);}
+}
+
+async function openScanner(){
+  if(!navigator.mediaDevices?.getUserMedia){showScanError('La caméra n’est pas disponible dans ce navigateur.');return;}
+  scanner.trigger=document.activeElement; scanner.active=true;
+  $('#scanner').classList.add('open'); $('#scan-close').focus();
+  $('#scan-error').classList.remove('visible'); $('#scan-status').textContent='Chargement des références...';
+  try{
+    const [refs,stream]=await Promise.all([
+      prepareScanReferences(),
+      navigator.mediaDevices.getUserMedia({video:{facingMode:{ideal:'environment'},width:{ideal:1280},height:{ideal:1920}},audio:false})
+    ]);
+    if(!scanner.active){stream.getTracks().forEach(track=>track.stop());return;}
+    scanner.refs=refs; scanner.stream=stream;
+    const video=$('#scan-video'); video.srcObject=stream; await video.play();
+    $('#scan-status').textContent='Cadrez la lame dans le repère';
+    scanner.timer=window.setInterval(scanFrame,450);
+  }catch(error){
+    scanner.active=false;
+    showScanError(error.name==='NotAllowedError'?'L’accès à la caméra a été refusé. Autorisez-le puis réessayez.':'Impossible d’ouvrir la caméra. Utilisez le site en HTTPS ou sur localhost.');
+  }
+}
+
+function showScanError(message){
+  const error=$('#scan-error'); error.textContent=message; error.classList.add('visible');
+  if(!$('#scanner').classList.contains('open'))$('#scanner').classList.add('open');
+  $('#scan-status').textContent='Scanner indisponible';
+}
+
+function closeScanner(){
+  scanner.active=false; window.clearInterval(scanner.timer); scanner.timer=null; scanner.lastId=null; scanner.streak=0;
+  if(scanner.stream){scanner.stream.getTracks().forEach(track=>track.stop());scanner.stream=null;}
+  $('#scan-video').srcObject=null; $('#scanner').classList.remove('open');
+  scanner.trigger?.focus(); scanner.trigger=null;
+}
 
 /* =========================================================
    Landing carousel : title scrolls WITH the cards
@@ -761,8 +903,11 @@ $('#d-prev').addEventListener('click',()=>stepCard(-1));
 $('#d-next').addEventListener('click',()=>stepCard(1));
 $('#fam-prev').addEventListener('click',()=>famStep(-1));
 $('#fam-next').addEventListener('click',()=>famStep(1));
+$('#scan-launch').addEventListener('click',openScanner);
+$('#scan-close').addEventListener('click',closeScanner);
 
 document.addEventListener('keydown',e=>{
+  if(scanner.active){if(e.key==='Escape'){closeScanner();e.preventDefault();}return;}
   if(search && search.open) return; // search overlay handles keys
   if(e.key==='Escape'){if(state.view!=='landing')$('#back-btn').click();}
   if(state.view==='detail'){
