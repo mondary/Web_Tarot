@@ -53,6 +53,13 @@ a{color:inherit;text-decoration:none}
 }
 .brand b{color:var(--fg);font-weight:400}
 
+.mode-switch{position:fixed;top:4rem;left:2.2rem;z-index:250;
+  font-family:'DM Mono',monospace;font-size:.62rem;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--muted);padding:.45rem .7rem;
+  border:1px solid var(--line);border-radius:50px;background:rgba(5,5,5,.5);
+  backdrop-filter:blur(10px);transition:.3s var(--ease)}
+.mode-switch:hover{color:var(--fg);border-color:var(--ac)}
+
 /* landing footer : version + liens (GitHub, mondary.design) */
 .landing-foot{
   position:fixed;bottom:1.2rem;left:1.6rem;z-index:200;
@@ -339,6 +346,7 @@ a{color:inherit;text-decoration:none}
 .s-scroll{flex:1;overflow-y:auto;padding:0 4vw 6vh;min-height:0}
 .s-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(118px,1fr));gap:1rem;max-width:1500px;margin:0 auto}
 .s-grid .mini{cursor:pointer}
+.s-grid .mini.sel{border-color:var(--ac)!important;box-shadow:0 0 0 2px var(--ac),0 18px 42px rgba(0,0,0,.55);transform:translateY(-5px)}
 .s-empty{grid-column:1/-1;text-align:center;color:var(--muted);padding:3rem 0;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.4rem}
 
 @media (max-width:900px){
@@ -354,6 +362,7 @@ a{color:inherit;text-decoration:none}
   .grid-head{position:static;padding:4.5rem 6vw 1rem;border-bottom:none}
   .grid{grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:.8rem;padding:.8rem 6vw 6rem}
   .brand{left:1.2rem;top:1.2rem}
+  .mode-switch{left:1.2rem;top:3.7rem}
   .back{right:1.2rem;top:1.2rem}
   .d-nav{position:static}
 }
@@ -364,6 +373,7 @@ a{color:inherit;text-decoration:none}
 <div class="fx-vignette"></div>
 
 <div class="brand"><b>Tarot</b> · Divinatoire</div>
+<a class="mode-switch" href="index_full.html">Vue immersive ↗</a>
 <div class="landing-foot" id="landing-foot">
   <span class="ver">v<span id="lf-ver">2.2026.1</span></span>
   <a href="https://github.com/clm/Web_Tarot" target="_blank" rel="noopener">GitHub</a>
@@ -412,7 +422,7 @@ a{color:inherit;text-decoration:none}
 <div id="search" role="dialog" aria-modal="true" aria-label="Recherche">
   <div class="s-query" id="s-query"></div>
   <div class="s-info" id="s-info"></div>
-  <div class="s-hint">Cliquez une carte pour l'ouvrir · Échap pour fermer</div>
+  <div class="s-hint">↑ ↓ naviguer · Entrée ouvrir · Échap fermer</div>
   <div class="s-scroll"><div class="s-grid" id="s-grid"></div></div>
 </div>
 
@@ -742,15 +752,15 @@ document.addEventListener('keydown',e=>{
 const sNorm = s => (s||'').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');
 const sKeywords = md => { const m = md.match(/## Mots-clés[\s\S]*?(?=\n## )/i); return m ? m[0] : ''; };
 ALL_CARDS.forEach(c => { c._blob = sNorm(c.name+' '+c.familyName+' '+c.element+' '+sKeywords(c.md)); });
-const search = { open:false, q:'' };
+const search = { open:false, q:'', sel:0, results:[] };
 
 function openSearch(initial){
-  search.open=true; search.q = initial || '';
+  search.open=true; search.q = initial || ''; search.sel=0;
   $('#search').classList.add('open');
   renderSearch();
 }
 function closeSearch(){
-  search.open=false; search.q='';
+  search.open=false; search.q=''; search.sel=0; search.results=[];
   $('#search').classList.remove('open');
 }
 function renderSearch(){
@@ -768,20 +778,37 @@ function renderSearch(){
       return a.name.localeCompare(b.name);
     });
   }
-  $('#s-info').innerHTML = '<b>'+results.length+'</b> / 78 carte'+(results.length>1?'s':'');
+  search.results = results;
+  if(search.sel >= results.length) search.sel = Math.max(0, results.length-1);
+  paintSearchSel(true);
   const g = $('#s-grid'); g.innerHTML='';
   if(!results.length){
     g.innerHTML = '<div class="s-empty">Aucune carte ne correspond à « '+sEsc(q)+' »</div>';
     return;
   }
-  results.forEach(card=>{
-    const m = el('div','mini');
+  results.forEach((card,idx)=>{
+    const m = el('div','mini' + (idx===search.sel ? ' sel':''));
     m.innerHTML = `
       <div class="ph"><img src="${card.file}" alt="${card.name}" loading="lazy"></div>
       <div class="cap"><span class="nm">${card.name}</span><span class="no">${String(card.num).padStart(2,'0')}</span></div>`;
     m.addEventListener('click',()=>{ closeSearch(); openCard(card.id); });
+    m.addEventListener('mouseenter',()=>{ search.sel=idx; paintSearchSel(); });
     g.appendChild(m);
   });
+  const sel = g.querySelector('.mini.sel');
+  if(sel) sel.scrollIntoView({block:'nearest'});
+}
+// met à jour le compteur et la classe .sel sans tout re-rendre (flèches/survol)
+function paintSearchSel(rebuildCounter){
+  const n = search.results.length;
+  $('#s-info').innerHTML = n
+    ? '<b>'+(search.sel+1)+'</b> / <b>'+n+'</b> lame'+(n>1?'s':'')
+    : '<b>0</b> / 78';
+  if(rebuildCounter) return;
+  const g=$('#s-grid');
+  g.querySelectorAll('.mini').forEach((m,i)=>m.classList.toggle('sel', i===search.sel));
+  const sel=g.querySelector('.mini.sel');
+  if(sel) sel.scrollIntoView({block:'nearest'});
 }
 function sEsc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
 
@@ -791,14 +818,12 @@ document.addEventListener('keydown',e=>{
   if(tag && /INPUT|TEXTAREA|SELECT/i.test(tag)) return;
   if(search.open){
     if(e.key==='Escape'){ closeSearch(); e.preventDefault(); return; }
-    if(e.key==='Backspace'){ search.q = search.q.slice(0,-1); renderSearch(); e.preventDefault(); return; }
-    if(e.key==='Enter'){
-      const nq=sNorm(search.q);
-      const first = (search.q?ALL_CARDS.filter(c=>c._blob.includes(nq)):ALL_CARDS)[0];
-      if(first){ closeSearch(); openCard(first.id); }
-      e.preventDefault(); return;
-    }
-    if(/^\p{L}{1}$/u.test(e.key)){ search.q += e.key; renderSearch(); e.preventDefault(); return; }
+    if(e.key==='Backspace'){ search.q = search.q.slice(0,-1); search.sel=0; renderSearch(); e.preventDefault(); return; }
+    if(e.key==='Enter'){ const c=search.results[search.sel]; if(c){ closeSearch(); openCard(c.id); } e.preventDefault(); return; }
+    if(e.key==='ArrowDown'){ if(search.results.length){ search.sel=(search.sel+1)%search.results.length; paintSearchSel(); } e.preventDefault(); return; }
+    if(e.key==='ArrowUp'){ if(search.results.length){ search.sel=(search.sel-1+search.results.length)%search.results.length; paintSearchSel(); } e.preventDefault(); return; }
+    if(e.key==='Tab'){ if(search.results.length){ search.sel=(search.sel+(e.shiftKey?-1:1)+search.results.length)%search.results.length; paintSearchSel(); } e.preventDefault(); return; }
+    if(/^\p{L}{1}$/u.test(e.key)){ search.q += e.key; search.sel=0; renderSearch(); e.preventDefault(); return; }
     return; // swallow other keys while searching
   }
   // closed : a single letter opens the search
