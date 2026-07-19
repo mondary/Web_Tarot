@@ -6,7 +6,7 @@ Toutes les notes de release du projet Web Tarot. Le format de version suit `🔥
 
 ## TODO — Roadmap
 
-Statut : `2.2026.3` (trois vues de lecture livrées, enrichissement du contenu en cours d'amélioration continue)
+Statut : `2.2026.4` (trois vues de lecture livrées, enrichissement du contenu en cours d'amélioration continue)
 
 ### Phase 1 — Fondations ✅
 - [x] Interface V2 unifiée (carousel d'accueil + grille par famille + vue détail)
@@ -29,6 +29,15 @@ Statut : `2.2026.3` (trois vues de lecture livrées, enrichissement du contenu e
 ---
 
 ## Releases
+
+### [2.2026.4] - 2026-07-19
+#### Changed
+- Vue détaillée restructurée : diptyque de lecture, planche annotée, description mise en avant et domaines en deux colonnes avec icônes
+- Mots-clés à l'endroit et à l'envers correctement extraits dans le diptyque
+- Accueil mobile ajusté pour garder la première lame visible
+
+#### Fixed
+- Fond opaque appliqué au header sticky des grilles pour empêcher le chevauchement du contenu
 
 ### [2.2026.3] - 2026-07-19
 #### Added
