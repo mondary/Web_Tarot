@@ -18,5 +18,7 @@ __pycache__/
 
 # Reference / benchmark materials (working files, ~45 MB of binaries)
 /benchmarks/
-/archives/index copy.html
+/archives/
 archives/
+/screenshots/
+screenshots/
