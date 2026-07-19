@@ -1507,6 +1507,7 @@ function openCard(id){
     <p class="dossier-intro">${escHtml(description)}</p>
     <div class="prose detailed-content" id="prose">${html}</div>`;
   decorateDetailedProse();
+  if(typeof injectVoiceButton==='function') injectVoiceButton($('#detail-wrap'), card);
   updateLoopBar(globalIdx);
   $('#view-detail').scrollTop=0;
   switchView('detail');

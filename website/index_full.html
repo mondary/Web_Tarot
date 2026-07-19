@@ -637,6 +637,7 @@ function openCard(id){
   // prose content
   $('#d-prose').innerHTML = reorderClassique(renderMd(card.md));
   decorateThemeIcons($('#d-prose'));
+  if(typeof injectVoiceButton==='function') injectVoiceButton($('#d-panel-inner'), card);
 
   // family thumbnails strip (quick jump within family)
   const thumbs=$('#d-thumbs'); thumbs.innerHTML='';

@@ -85,7 +85,10 @@
 #tf-scanner.open{display:flex}
 .tf-scan-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .tf-scan-shade{position:absolute;inset:0;background:rgba(0,0,0,.52);pointer-events:none}
-.tf-scan-frame{position:relative;z-index:1;width:min(68vw,330px);aspect-ratio:2/3;border:2px solid var(--accent,#c9a227);border-radius:1rem;box-shadow:0 0 0 100vmax rgba(0,0,0,.42);pointer-events:none}
+.tf-scan-frame{position:relative;z-index:1;width:min(68vw,330px);aspect-ratio:2/3;border:2px solid var(--accent,#c9a227);border-radius:1rem;box-shadow:0 0 0 100vmax rgba(0,0,0,.42);pointer-events:none;transition:border-color .3s}
+.tf-scan-frame.scanning{animation:tf-scan-pulse 1.8s ease-in-out infinite}
+@keyframes tf-scan-pulse{0%,100%{border-color:var(--accent,#c9a227);box-shadow:0 0 0 100vmax rgba(0,0,0,.42)}50%{border-color:rgba(201,162,39,.35);box-shadow:0 0 0 100vmax rgba(0,0,0,.52)}}
+.tf-scan-frame.found{border-color:#3ecf6e;box-shadow:0 0 0 100vmax rgba(0,0,0,.42),0 0 30px rgba(62,207,110,.35)}
 .tf-scan-frame::before,.tf-scan-frame::after{content:'';position:absolute;width:26px;height:26px;border-color:var(--fg,#f1ede4)}
 .tf-scan-frame::before{top:-2px;left:-2px;border-top:3px solid;border-left:3px solid;border-radius:.8rem 0 0 0}
 .tf-scan-frame::after{right:-2px;bottom:-2px;border-right:3px solid;border-bottom:3px solid;border-radius:0 0 .8rem 0}
@@ -93,10 +96,21 @@
 .tf-scan-top{display:flex;align-items:flex-start;justify-content:space-between;gap:1rem}
 .tf-scan-copy{max-width:18rem;font-family:'DM Mono',monospace;font-size:.68rem;line-height:1.6;letter-spacing:.12em;text-transform:uppercase;color:var(--fg,#f1ede4);text-shadow:0 1px 10px #000}
 .tf-scan-status{margin-top:.45rem;color:var(--accent,#c9a227)}
+.tf-scan-status .tf-scan-card-name{display:block;font-family:'Cormorant Garamond',serif;font-size:1.3rem;letter-spacing:0;text-transform:none;color:var(--fg,#f1ede4);margin-top:.3rem}
+.tf-scan-status .tf-scan-score{display:inline-block;font-family:'DM Mono',monospace;font-size:.6rem;letter-spacing:.14em;background:rgba(201,162,39,.18);padding:.15rem .45rem;border-radius:50px;margin-top:.25rem}
 .tf-scan-close{pointer-events:auto;width:42px;height:42px;border-radius:50%;display:grid;place-items:center;background:rgba(5,5,5,.75);border:1px solid rgba(241,237,228,.08);color:var(--fg,#f1ede4);cursor:pointer}
 .tf-scan-close svg{width:18px;height:18px}
 .tf-scan-error{display:none;align-self:center;max-width:22rem;padding:1rem 1.2rem;background:#15130f;border:1px solid var(--accent,#c9a227);border-radius:.8rem;color:var(--fg,#f1ede4);font-size:.9rem;line-height:1.5;text-align:center;pointer-events:auto}
 .tf-scan-error.visible{display:block}
+/* voice reader button */
+.tf-voice-btn{display:inline-flex;align-items:center;gap:.5rem;padding:.55rem 1rem;border-radius:50px;
+  background:rgba(201,162,39,.12);border:1px solid rgba(201,162,39,.25);color:var(--accent,#c9a227);
+  font-family:'DM Mono',monospace;font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;
+  cursor:pointer;transition:all .25s ease;margin-top:1rem}
+.tf-voice-btn:hover{background:rgba(201,162,39,.22);border-color:var(--accent,#c9a227)}
+.tf-voice-btn.speaking{background:rgba(201,162,39,.22);border-color:var(--accent,#c9a227);animation:tf-voice-pulse 1.4s ease-in-out infinite}
+@keyframes tf-voice-pulse{0%,100%{opacity:1}50%{opacity:.55}}
+.tf-voice-btn svg{width:16px;height:16px;flex:0 0 auto}
 
 @media (max-width:900px){
   .tf-scan-btn{right:max(1rem,env(safe-area-inset-right));bottom:max(1rem,env(safe-area-inset-bottom));width:50px;height:50px}
@@ -162,7 +176,7 @@
 <div id="tf-scanner" role="dialog" aria-modal="true" aria-label="Scanner une lame">
   <video class="tf-scan-video" id="tf-scan-video" playsinline muted></video>
   <div class="tf-scan-shade"></div>
-  <div class="tf-scan-frame"></div>
+  <div class="tf-scan-frame" id="tf-scan-frame"></div>
   <div class="tf-scan-ui">
     <div class="tf-scan-top">
       <div class="tf-scan-copy">Cadrez la lame dans le repère<div class="tf-scan-status" id="tf-scan-status" role="status">Préparation du scanner...</div></div>
@@ -344,7 +358,20 @@
     scanner.refs.forEach(ref=>{const score=similarity(vector,ref.vector);if(!best||score>best.score)best={...ref,score};});
     if(!best)return;
     const status=document.getElementById('tf-scan-status');
-    if(status) status.textContent = best.score>=SCAN_THRESHOLD ? 'Carte détectée, confirmation...' : 'Recherche de la lame...';
+    const frame=document.getElementById('tf-scan-frame');
+    const card = best.score>=SCAN_THRESHOLD ? ALL_CARDS.find(c=>c.id===best.id) : null;
+    const pct = Math.round(best.score*100);
+    if(status){
+      if(best.score>=SCAN_THRESHOLD){
+        status.innerHTML = 'Carte détectée, confirmation...<span class="tf-scan-card-name">'+(card?card.name:'')+'</span><span class="tf-scan-score">'+pct+'% · '+scanner.streak+'/2</span>';
+      } else {
+        status.innerHTML = 'Recherche de la lame...';
+      }
+    }
+    if(frame){
+      frame.classList.toggle('scanning', best.score<SCAN_THRESHOLD);
+      frame.classList.toggle('found', best.score>=SCAN_THRESHOLD);
+    }
     if(best.score>=SCAN_THRESHOLD&&best.id===scanner.lastId)scanner.streak++;
     else{scanner.lastId=best.id;scanner.streak=best.score>=SCAN_THRESHOLD?1:0;}
     if(scanner.streak>=2){closeScanner(); if(typeof openCard==='function') openCard(best.id);}
@@ -360,6 +387,7 @@
     el.classList.add('open');
     const closeBtn=document.getElementById('tf-scan-close'); if(closeBtn) closeBtn.focus();
     const err=document.getElementById('tf-scan-error'); if(err) err.classList.remove('visible');
+    const frame=document.getElementById('tf-scan-frame'); if(frame){frame.classList.remove('found');frame.classList.add('scanning');}
     const status=document.getElementById('tf-scan-status'); if(status) status.textContent='Ouverture de la caméra...';
     try{
       const refs=prepareScanReferences();
@@ -391,7 +419,94 @@
     if(scanner.stream){scanner.stream.getTracks().forEach(t=>t.stop());scanner.stream=null;}
     const video=document.getElementById('tf-scan-video'); if(video) video.srcObject=null;
     const el=document.getElementById('tf-scanner'); if(el) el.classList.remove('open');
+    const frame=document.getElementById('tf-scan-frame'); if(frame){frame.classList.remove('scanning','found');}
+    if(typeof window.stopVoice==='function') window.stopVoice();
     if(scanner.trigger){scanner.trigger.focus();scanner.trigger=null;}
+  }
+
+  /* =========================================================
+     Voice reader — Web Speech API
+     ========================================================= */
+  const voice = { utterance:null, speaking:false };
+
+  function extractCardText(card){
+    if(!card||!card.md) return '';
+    const md = card.md;
+    // Extract interpretation sections (theme sections after Interprétation)
+    const interp = mdSection(md,'Interprétation') || '';
+    const amour = mdSection(md,/(Amour|Love)/i) || '';
+    const travail = mdSection(md,/Travail/i) || '';
+    const finances = mdSection(md,/Finance/i) || '';
+    const guidance = mdSection(md,/Guidance/i) || '';
+    const affirmation = mdSection(md,/Affirmation/i) || '';
+    const description = mdSection(md,'Description') || '';
+    // Build a clean reading text
+    const parts = [];
+    parts.push(card.name + '.');
+    if(interp) parts.push('Interprétation. ' + interp);
+    if(amour) parts.push('Amour. ' + amour);
+    if(travail) parts.push('Travail. ' + travail);
+    if(finances) parts.push('Finances. ' + finances);
+    if(guidance) parts.push('Guidance. ' + guidance);
+    if(affirmation) parts.push('Affirmation. ' + affirmation);
+    if(description) parts.push('Description. ' + description);
+    return parts.join(' ');
+  }
+
+  function mdSectionLocal(md, pattern){
+    const re = typeof pattern==='string'
+      ? new RegExp('^## '+pattern.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')+'\\s*\\n([\\s\\S]*?)(?=^## |(?![\\s\\S]))','mi')
+      : new RegExp('^## '+pattern.source+'\\s*\\n([\\s\\S]*?)(?=^## |(?![\\s\\S]))','mi');
+    const match = md.match(re);
+    return match ? match[1].replace(/^\*\*[^\n]+\*\*\s*$/gm,'').replace(/\n+/g,' ').replace(/\*|`/g,'').trim() : '';
+  }
+
+  function startVoice(card){
+    if(!('speechSynthesis' in window)) return;
+    stopVoice();
+    const text = extractCardText(card);
+    if(!text) return;
+    const utt = new SpeechSynthesisUtterance(text);
+    utt.lang = 'fr-FR';
+    utt.rate = 0.92;
+    // Try to find a French voice
+    const voices = speechSynthesis.getVoices();
+    const fr = voices.find(v=>v.lang.startsWith('fr'));
+    if(fr) utt.voice = fr;
+    utt.onend = ()=>{ voice.speaking=false; updateVoiceBtn(); };
+    utt.onerror = ()=>{ voice.speaking=false; updateVoiceBtn(); };
+    voice.utterance = utt;
+    voice.speaking = true;
+    speechSynthesis.speak(utt);
+    updateVoiceBtn();
+  }
+
+  function stopVoice(){
+    if('speechSynthesis' in window) speechSynthesis.cancel();
+    voice.utterance = null;
+    voice.speaking = false;
+    updateVoiceBtn();
+  }
+
+  function toggleVoice(card){
+    if(voice.speaking) stopVoice();
+    else startVoice(card);
+  }
+
+  function updateVoiceBtn(){
+    document.querySelectorAll('.tf-voice-btn').forEach(btn=>{
+      btn.classList.toggle('speaking', voice.speaking);
+      btn.setAttribute('aria-label', voice.speaking ? 'Arrêter la lecture' : 'Écouter la carte');
+    });
+  }
+
+  function injectVoiceButton(container, card){
+    if(!('speechSynthesis' in window)) return;
+    const btn = document.createElement('button');
+    btn.className = 'tf-voice-btn';
+    btn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M11 5L6 9H2v6h4l5 4V5Z"/><path d="M15.5 8.5a5 5 0 0 1 0 7M19 5a9 9 0 0 1 0 14"/></svg><span>Écouter la carte</span>';
+    btn.addEventListener('click',()=>toggleVoice(card));
+    container.prepend(btn);
   }
 
   /* =========================================================
@@ -431,6 +546,9 @@
     injectStyles();
     injectHTML();
     wireUp();
+    // expose voice reader for views
+    window.injectVoiceButton = injectVoiceButton;
+    window.stopVoice = stopVoice;
     // The compact fingerprints make this warm-up instantaneous before a scan.
     const warmScanner=()=>prepareScanReferences();
     if('requestIdleCallback' in window) window.requestIdleCallback(warmScanner,{timeout:500});

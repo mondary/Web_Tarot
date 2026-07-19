@@ -6,7 +6,7 @@ Toutes les notes de release du projet Web Tarot. Le format de version suit `🔥
 
 ## TODO — Roadmap
 
-Statut : `2.2026.11` (trois vues de lecture livrées, enrichissement du contenu en cours d'amélioration continue)
+Statut : `2.2026.12` (scanner amélioré, lecteur vocal, feedback visuel en temps réel)
 
 ### Phase 1 — Fondations ✅
 - [x] Interface V2 unifiée (carousel d'accueil + grille par famille + vue détail)
@@ -30,6 +30,14 @@ Statut : `2.2026.11` (trois vues de lecture livrées, enrichissement du contenu 
 ---
 
 ## Releases
+
+### [2.2026.12] - 2026-07-19
+#### Added
+- Lecteur vocal (Web Speech API) : bouton « Écouter la carte » sur les pages de détail des 3 vues, lit l'interprétation et la description en français
+#### Changed
+- Scanner : feedback visuel en temps réel — nom de la carte détectée, score de confiance (%), compteur de validation 0/2 → 1/2 → 2/2
+- Scanner : cadre animé (pulse doré en recherche, bordure verte + halo à la détection)
+- Fermeture du scanner arrête automatiquement la lecture vocale
 
 ### [2.2026.11] - 2026-07-19
 #### Changed

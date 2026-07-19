@@ -432,8 +432,11 @@ a{color:inherit;text-decoration:none}
 .scan-shade{position:absolute;inset:0;background:rgba(0,0,0,.52);pointer-events:none}
 .scan-frame{
   position:relative;z-index:1;width:min(68vw,330px);aspect-ratio:2/3;border:2px solid var(--accent);border-radius:1rem;
-  box-shadow:0 0 0 100vmax rgba(0,0,0,.42);pointer-events:none
+  box-shadow:0 0 0 100vmax rgba(0,0,0,.42);pointer-events:none;transition:border-color .3s
 }
+.scan-frame.scanning{animation:scan-pulse 1.8s ease-in-out infinite}
+@keyframes scan-pulse{0%,100%{border-color:var(--accent);box-shadow:0 0 0 100vmax rgba(0,0,0,.42)}50%{border-color:rgba(201,162,39,.35);box-shadow:0 0 0 100vmax rgba(0,0,0,.52)}}
+.scan-frame.found{border-color:#3ecf6e;box-shadow:0 0 0 100vmax rgba(0,0,0,.42),0 0 30px rgba(62,207,110,.35)}
 .scan-frame::before,.scan-frame::after{content:'';position:absolute;width:26px;height:26px;border-color:var(--fg)}
 .scan-frame::before{top:-2px;left:-2px;border-top:3px solid;border-left:3px solid;border-radius:.8rem 0 0 0}
 .scan-frame::after{right:-2px;bottom:-2px;border-right:3px solid;border-bottom:3px solid;border-radius:0 0 .8rem 0}
@@ -441,6 +444,8 @@ a{color:inherit;text-decoration:none}
 .scan-top{display:flex;align-items:flex-start;justify-content:space-between;gap:1rem}
 .scan-copy{max-width:18rem;font-family:'DM Mono',monospace;font-size:.68rem;line-height:1.6;letter-spacing:.12em;text-transform:uppercase;color:var(--fg);text-shadow:0 1px 10px #000}
 .scan-status{margin-top:.45rem;color:var(--accent)}
+.scan-status .scan-card-name{display:block;font-family:'Cormorant Garamond',serif;font-size:1.3rem;letter-spacing:0;text-transform:none;color:var(--fg);margin-top:.3rem}
+.scan-status .scan-score{display:inline-block;font-family:'DM Mono',monospace;font-size:.6rem;letter-spacing:.14em;background:rgba(201,162,39,.18);padding:.15rem .45rem;border-radius:50px;margin-top:.25rem}
 .scan-close{pointer-events:auto;width:42px;height:42px;border-radius:50%;display:grid;place-items:center;background:rgba(5,5,5,.75);border:1px solid var(--line);color:var(--fg)}
 .scan-close svg{width:18px;height:18px}
 .scan-error{display:none;align-self:center;max-width:22rem;padding:1rem 1.2rem;background:#15130f;border:1px solid var(--accent);border-radius:.8rem;color:var(--fg);font-size:.9rem;line-height:1.5;text-align:center;pointer-events:auto}
@@ -449,6 +454,16 @@ a{color:inherit;text-decoration:none}
 @media (max-width:900px){
   .scan-launch{right:max(1rem,env(safe-area-inset-right));bottom:max(1rem,env(safe-area-inset-bottom));width:52px;height:52px}
 }
+
+/* voice reader button */
+.tf-voice-btn{display:inline-flex;align-items:center;gap:.5rem;padding:.55rem 1rem;border-radius:50px;
+  background:rgba(201,162,39,.12);border:1px solid rgba(201,162,39,.25);color:var(--accent);
+  font-family:'DM Mono',monospace;font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;
+  cursor:pointer;transition:all .25s ease;margin-top:1rem}
+.tf-voice-btn:hover{background:rgba(201,162,39,.22);border-color:var(--accent)}
+.tf-voice-btn.speaking{background:rgba(201,162,39,.22);border-color:var(--accent);animation:tf-voice-pulse 1.4s ease-in-out infinite}
+@keyframes tf-voice-pulse{0%,100%{opacity:1}50%{opacity:.55}}
+.tf-voice-btn svg{width:16px;height:16px;flex:0 0 auto}
 
 @media (max-width:900px){
   .title-block{flex:0 0 52vw;padding:0 4vw 0 7vw}
@@ -702,17 +717,33 @@ function scanFrame(){
   let best=null;
   scanner.refs.forEach(ref=>{const score=similarity(vector,ref.vector);if(!best||score>best.score)best={...ref,score};});
   if(!best)return;
-  $('#scan-status').textContent=best.score>=SCAN_THRESHOLD ? 'Carte détectée, confirmation...' : 'Recherche de la lame...';
+  const status=$('#scan-status');
+  const frame=$('#scan-frame');
+  const card = best.score>=SCAN_THRESHOLD ? ALL_CARDS.find(c=>c.id===best.id) : null;
+  const pct = Math.round(best.score*100);
+  if(status){
+    if(best.score>=SCAN_THRESHOLD){
+      status.innerHTML = 'Carte détectée, confirmation...<span class="scan-card-name">'+(card?card.name:'')+'</span><span class="scan-score">'+pct+'% · '+scanner.streak+'/2</span>';
+    } else {
+      status.innerHTML = 'Recherche de la lame...';
+    }
+  }
+  if(frame){
+    frame.classList.toggle('scanning', best.score<SCAN_THRESHOLD);
+    frame.classList.toggle('found', best.score>=SCAN_THRESHOLD);
+  }
   if(best.score>=SCAN_THRESHOLD&&best.id===scanner.lastId)scanner.streak++;
   else {scanner.lastId=best.id;scanner.streak=best.score>=SCAN_THRESHOLD?1:0;}
   if(scanner.streak>=2){closeScanner();openCard(best.id);}
 }
 
 async function openScanner(){
-  if(!navigator.mediaDevices?.getUserMedia){showScanError('La caméra n’est pas disponible dans ce navigateur.');return;}
+  if(!navigator.mediaDevices?.getUserMedia){showScanError('La caméra n'est pas disponible dans ce navigateur.');return;}
   scanner.trigger=document.activeElement; scanner.active=true;
   $('#scanner').classList.add('open'); $('#scan-close').focus();
-  $('#scan-error').classList.remove('visible'); $('#scan-status').textContent='Ouverture de la caméra...';
+  $('#scan-error').classList.remove('visible');
+  const frame=$('#scan-frame'); if(frame){frame.classList.remove('found');frame.classList.add('scanning');}
+  $('#scan-status').textContent='Ouverture de la caméra...';
   try{
     const refs=prepareScanReferences();
     const stream=await navigator.mediaDevices.getUserMedia({video:{facingMode:{ideal:'environment'},width:{ideal:1280},height:{ideal:1920}},audio:false});
@@ -737,6 +768,8 @@ function closeScanner(){
   scanner.active=false; window.clearInterval(scanner.timer); scanner.timer=null; scanner.lastId=null; scanner.streak=0;
   if(scanner.stream){scanner.stream.getTracks().forEach(track=>track.stop());scanner.stream=null;}
   $('#scan-video').srcObject=null; $('#scanner').classList.remove('open');
+  const frame=$('#scan-frame'); if(frame) frame.classList.remove('scanning','found');
+  if(typeof stopVoice==='function') stopVoice();
   scanner.trigger?.focus(); scanner.trigger=null;
 }
 
@@ -913,6 +946,7 @@ function openCard(id){
       <div class="prose" id="prose">${html}</div>
     </div>`;
   decorateThemeIcons($('#prose'));
+  if(typeof injectVoiceButton==='function') injectVoiceButton($('#view-detail .d-content'), card);
   updateLoopBar(globalIdx);
   $('#view-detail').scrollTop=0;
   switchView('detail');
