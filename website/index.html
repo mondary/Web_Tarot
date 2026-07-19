@@ -140,7 +140,7 @@ a{color:inherit;text-decoration:none}
   will-change:transform;
 }
 .entry:hover{transform:translateY(-10px);border-color:rgba(255,255,255,.45);box-shadow:0 34px 80px rgba(0,0,0,.6)}
-.entry .img-wrap{flex:1;display:flex;align-items:center;justify-content:center;padding:.6rem;min-height:0;position:relative}
+.entry .img-wrap{flex:1;display:flex;align-items:center;justify-content:center;padding:.6rem;min-height:58%;position:relative}
 .entry .img-wrap img{height:100%;width:auto;max-width:100%;object-fit:contain;transition:transform .9s var(--ease)}
 .entry:hover .img-wrap img{transform:scale(1.04)}
 .entry .meta{
@@ -153,6 +153,7 @@ a{color:inherit;text-decoration:none}
 .entry .meta .lbl .esym{font-style:normal;font-size:1.05rem;margin-right:.4rem;color:var(--ac,#c9a227);vertical-align:-1px}
 .entry .signs{display:flex;gap:.4rem;flex:0 0 auto;font-size:1.1rem;color:#9a9388;line-height:1}
 .entry .meta .fam{font-family:'Cormorant Garamond',serif;font-size:1.7rem;line-height:1;font-weight:500;color:#1c1814;margin-bottom:.5rem}
+.entry .meta .first-card{font-family:'DM Mono',monospace;font-size:.56rem;letter-spacing:.15em;text-transform:uppercase;color:var(--ac,#c9a227);margin:0 0 .45rem}
 .entry .meta .desc{font-size:.83rem;line-height:1.5;color:#6f6a5f;font-weight:300;margin:0}
 .entry .go{
   flex:0 0 auto;width:38px;height:38px;border-radius:50%;border:1px solid rgba(0,0,0,.12);
@@ -773,9 +774,10 @@ function renderLanding(){
           <div class="meta-top">
             <span class="lbl"><span class="esym">${f.elementSym}</span>${f.elementLine}</span>
             ${signs ? `<span class="signs">${signs}</span>` : ''}
-          </div>
-          <div class="fam">${f.titleFull}</div>
-          <p class="desc">${f.desc}</p>
+           </div>
+           <div class="fam">${f.titleFull}</div>
+           <p class="first-card">Première lame · ${card.name}</p>
+           <p class="desc">${f.desc}</p>
         </div>
         <span class="go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
       </div>`;

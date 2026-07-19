@@ -6,7 +6,7 @@ Toutes les notes de release du projet Web Tarot. Le format de version suit `🔥
 
 ## TODO — Roadmap
 
-Statut : `2.2026.10` (trois vues de lecture livrées, enrichissement du contenu en cours d'amélioration continue)
+Statut : `2.2026.11` (trois vues de lecture livrées, enrichissement du contenu en cours d'amélioration continue)
 
 ### Phase 1 — Fondations ✅
 - [x] Interface V2 unifiée (carousel d'accueil + grille par famille + vue détail)
@@ -30,6 +30,13 @@ Statut : `2.2026.10` (trois vues de lecture livrées, enrichissement du contenu 
 ---
 
 ## Releases
+
+### [2.2026.11] - 2026-07-19
+#### Changed
+- Accueil : première lame de chaque famille mise en avant avec son nom, tout en conservant la signification de la famille
+- Vue immersive : les cinq grilles de familles se lisent maintenant de haut en bas, sans carousel latéral
+- Vue détaillée : les cartes de grille affichent directement les mots-clés à l'endroit
+- Bouton Tirages remonté pour ne plus recouvrir la version ni les liens du footer
 
 ### [2.2026.10] - 2026-07-19
 #### Fixed

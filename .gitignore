@@ -17,9 +17,6 @@ __pycache__/
 *.log
 package-lock.json
 
-# Fichiers symboles source (pas besoin dans le repo)
-website/cards/*_symboles_pcd.md
-
 # Reference / benchmark materials (working files, ~45 MB of binaries)
 /benchmarks/
 /archives/

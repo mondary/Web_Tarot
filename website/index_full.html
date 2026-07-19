@@ -140,7 +140,7 @@ a{color:inherit;text-decoration:none}
   will-change:transform;
 }
 .entry:hover{transform:translateY(-10px);border-color:rgba(255,255,255,.45);box-shadow:0 34px 80px rgba(0,0,0,.6)}
-.entry .img-wrap{flex:1;display:flex;align-items:center;justify-content:center;padding:.6rem;min-height:0;position:relative}
+.entry .img-wrap{flex:1;display:flex;align-items:center;justify-content:center;padding:.6rem;min-height:58%;position:relative}
 .entry .img-wrap img{height:100%;width:auto;max-width:100%;object-fit:contain;transition:transform .9s var(--ease)}
 .entry:hover .img-wrap img{transform:scale(1.04)}
 .entry .meta{
@@ -150,6 +150,8 @@ a{color:inherit;text-decoration:none}
 .entry .meta .lbl{font-family:'DM Mono',monospace;font-size:.64rem;letter-spacing:.26em;
   text-transform:uppercase;color:var(--ac,#c9a227);margin-bottom:.45rem;display:block}
 .entry .meta .fam{font-family:'Cormorant Garamond',serif;font-size:1.65rem;line-height:1;font-weight:500;color:#1c1814}
+.entry .meta .first-card{font-family:'DM Mono',monospace;font-size:.56rem;letter-spacing:.15em;text-transform:uppercase;color:var(--ac,#c9a227);margin:.45rem 0}
+.entry .meta .desc{font-size:.8rem;line-height:1.45;color:#6f6a5f;font-weight:300;margin:0}
 .entry .meta .sub{font-size:.76rem;color:#8a8378;margin-top:.4rem;letter-spacing:.04em}
 .entry .go{
   flex:0 0 auto;width:38px;height:38px;border-radius:50%;border:1px solid rgba(0,0,0,.12);
@@ -185,19 +187,13 @@ a{color:inherit;text-decoration:none}
 .grid-head .right b{display:block;font-family:'Cormorant Garamond',serif;font-size:2.4rem;
    color:var(--fg);letter-spacing:0;text-transform:none;font-weight:400}
 
-/* family band : horizontal carousel of families (swipe + buttons) */
+/* immersive grid: family sections follow one another vertically */
 .family-band{
-  flex:1;display:flex;overflow-x:auto;overflow-y:hidden;
-  scroll-snap-type:x mandatory;scroll-behavior:smooth;
-  scrollbar-width:none;-ms-overflow-style:none;
+  flex:1;display:block;overflow-y:auto;overflow-x:hidden;
+  scroll-behavior:smooth;scrollbar-width:none;-ms-overflow-style:none;
 }
 .family-band::-webkit-scrollbar{display:none}
-.family-pane{
-  flex:0 0 100vw;min-width:100vw;height:100%;overflow-y:auto;overflow-x:hidden;
-  scroll-snap-align:start;scroll-snap-stop:always;
-}
-.family-pane::-webkit-scrollbar{width:6px}
-.family-pane::-webkit-scrollbar-thumb{background:rgba(241,237,228,.12);border-radius:3px}
+.family-pane{min-width:0;min-height:100%;overflow:visible;scroll-margin-top:0;border-bottom:1px solid var(--line)}
 .grid{
   display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:1.2rem;
   padding:1.4rem 4vw 7rem;
@@ -221,6 +217,7 @@ a{color:inherit;text-decoration:none}
 .fam-dots button{width:7px;height:7px;border-radius:50%;background:rgba(241,237,228,.2);transition:.4s var(--ease);padding:0}
 .fam-dots button.active{width:22px;border-radius:50px;background:var(--ac)}
 .fam-dots[hidden]{display:none}
+#view-grid .fam-step,#view-grid .fam-dots{display:none}
 .mini{
   position:relative;border-radius:.9rem;overflow:hidden;background:var(--mat);
   border:1px solid var(--mat-line);cursor:pointer;transition:.5s var(--ease);
@@ -501,9 +498,10 @@ function renderLanding(){
       <div class="img-wrap"><img src="${card.file}" alt="${card.name}" loading="lazy"></div>
       <div class="meta">
         <div>
-          <span class="lbl">${f.element}</span>
-          <div class="fam">${f.name}</div>
-          <div class="sub">${f.count} lames · entrée par ${card.name}</div>
+           <span class="lbl">${f.element}</span>
+           <div class="fam">${f.name}</div>
+           <p class="first-card">Première lame · ${card.name}</p>
+           <p class="desc">${f.desc}</p>
         </div>
         <span class="go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
       </div>`;
@@ -532,7 +530,7 @@ function renderLanding(){
 }
 
 /* =========================================================
-   Grid view — horizontal family carousel (swipe + buttons)
+   Grid view — vertical family sequence
    ========================================================= */
 let gridBuilt = false;
 function buildGrid(){
@@ -589,7 +587,7 @@ function updateGridHeader(idx){
 function scrollToFam(idx){
   const band = $('#family-band');
   const pane = band.children[idx];
-  if(pane) pane.scrollIntoView({behavior:'smooth',inline:'start',block:'nearest'});
+  if(pane) pane.scrollIntoView({behavior:'smooth',block:'start'});
 }
 
 function openFamily(key){
@@ -597,9 +595,9 @@ function openFamily(key){
   const idx = Math.max(0, TAROT.families.findIndex(f=>f.key===key));
   updateGridHeader(idx);
   history.replaceState(null,'','#suite='+encodeURIComponent(key));
-  // instant jump to the requested pane (no animation on open)
+  // Instant jump to the requested family section on open.
   const band = $('#family-band');
-  requestAnimationFrame(()=>{ band.scrollTo({left: idx*band.clientWidth, behavior:'auto'}); });
+  requestAnimationFrame(()=>{ const pane=band.children[idx]; if(pane) band.scrollTo({top:pane.offsetTop,behavior:'auto'}); });
   switchView('grid');
 }
 

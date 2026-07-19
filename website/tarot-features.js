@@ -33,7 +33,7 @@
 .tf-scan-btn:hover{transform:translateY(-2px);background:var(--fg,#f1ede4)}
 .tf-scan-btn svg{width:22px;height:22px}
 .tf-draws-btn{
-  position:fixed;left:max(1.4rem,env(safe-area-inset-left));bottom:max(1.4rem,env(safe-area-inset-bottom));z-index:500;
+  position:fixed;left:max(1.4rem,env(safe-area-inset-left));bottom:max(4.6rem,calc(env(safe-area-inset-bottom) + 3.2rem));z-index:500;
   display:inline-flex;align-items:center;gap:.6rem;padding:.8rem 1.15rem;border-radius:50px;
   background:rgba(10,9,7,.72);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
   border:1px solid rgba(241,237,228,.08);color:var(--fg,#f1ede4);
@@ -100,7 +100,7 @@
 
 @media (max-width:900px){
   .tf-scan-btn{right:max(1rem,env(safe-area-inset-right));bottom:max(1rem,env(safe-area-inset-bottom));width:50px;height:50px}
-  .tf-draws-btn{left:max(1rem,env(safe-area-inset-left));bottom:max(1rem,env(safe-area-inset-bottom));padding:.7rem 1rem;font-size:.6rem}
+  .tf-draws-btn{left:max(1rem,env(safe-area-inset-left));bottom:max(4.2rem,calc(env(safe-area-inset-bottom) + 3rem));padding:.7rem 1rem;font-size:.6rem}
   .tf-draws-btn svg{width:14px;height:14px}
 }
 `;
