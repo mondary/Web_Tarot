@@ -6,7 +6,7 @@ Toutes les notes de release du projet Web Tarot. Le format de version suit `🔥
 
 ## TODO — Roadmap
 
-Statut : `2.2026.16` (lectures comparatives à deux cartes dans toutes les vues)
+Statut : `2.2026.17` (lisibilité et contrôles des lectures comparatives)
 
 ### Phase 1 — Fondations ✅
 - [x] Interface V2 unifiée (carousel d'accueil + grille par famille + vue détail)
@@ -30,6 +30,13 @@ Statut : `2.2026.16` (lectures comparatives à deux cartes dans toutes les vues)
 ---
 
 ## Releases
+
+### [2.2026.17] - 2026-07-20
+#### Changed
+- Associations : texte agrandi et plus contrasté pour une lecture confortable
+- Comparaisons : icône SVG fiable à la place du glyphe pouvant s'afficher en `??`
+- Lecteur vocal : le bouton affiche maintenant `Écouter la carte` puis `Arrêter l'écoute`
+- Bouton Tirages classique aligné verticalement sur les vues immersive et détaillée
 
 ### [2.2026.16] - 2026-07-20
 #### Changed

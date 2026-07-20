@@ -357,7 +357,7 @@ a{color:inherit;text-decoration:none}
 
 /* ---------- Draws (Tirages) ---------- */
 .draws-launch{
-  position:fixed;left:max(1.4rem,env(safe-area-inset-left));bottom:max(1.4rem,env(safe-area-inset-bottom));z-index:500;
+  position:fixed;left:max(1.4rem,env(safe-area-inset-left));bottom:max(4.6rem,calc(env(safe-area-inset-bottom) + 3.2rem));z-index:500;
   display:inline-flex;align-items:center;gap:.6rem;padding:.85rem 1.2rem;border-radius:50px;
   background:var(--bg-2);border:1px solid var(--line);color:var(--fg);
   font-family:'DM Mono',monospace;font-size:.66rem;letter-spacing:.18em;text-transform:uppercase;
@@ -420,7 +420,7 @@ a{color:inherit;text-decoration:none}
 .reveal-open.show{display:block}
 .reveal-open:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(201,162,39,.4)}
 @media (max-width:900px){
-  .draws-launch{left:max(1rem,env(safe-area-inset-left));bottom:max(1rem,env(safe-area-inset-bottom));padding:.7rem 1rem;font-size:.6rem}
+  .draws-launch{left:max(1rem,env(safe-area-inset-left));bottom:max(4.2rem,calc(env(safe-area-inset-bottom) + 3rem));padding:.7rem 1rem;font-size:.6rem}
   .draws-launch svg{width:14px;height:14px}
   .draws-panel{padding:1.5rem}
   .draws-head h2{font-size:1.6rem}
@@ -496,7 +496,7 @@ a{color:inherit;text-decoration:none}
   <a href="index_detail.html">Détaillée</a>
 </nav>
 <div class="landing-foot" id="landing-foot">
-  <span class="ver">v<span id="lf-ver">2.2026.16</span></span>
+  <span class="ver">v<span id="lf-ver">2.2026.17</span></span>
   <a href="https://github.com/mondary/Web_Tarot" target="_blank" rel="noopener">GitHub</a>
   <a href="https://mondary.design" target="_blank" rel="noopener">mondary.design</a>
 </div>
@@ -609,8 +609,8 @@ a{color:inherit;text-decoration:none}
   </div>
 </div>
 
-<script src="data.js?v=2.2026.16"></script>
-<script src="tarot-features.js?v=2.2026.16"></script>
+<script src="data.js?v=2.2026.17"></script>
+<script src="tarot-features.js?v=2.2026.17"></script>
 <script>
 /* =========================================================
    State

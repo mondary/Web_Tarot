@@ -126,6 +126,7 @@
   cursor:pointer;transition:.25s ease-out;margin:0 0 1rem
 }
 .tf-mirror-trigger .glyph{font-size:.85rem;letter-spacing:0}
+.tf-mirror-trigger .glyph svg{width:14px;height:14px;display:block}
 .tf-mirror-trigger:hover{background:rgba(201,162,39,.16);transform:translateY(-1px)}
 
 #tf-mirror{
@@ -232,9 +233,9 @@
 .tf-assoc-item:hover,.tf-assoc-item:focus-within{border-color:var(--ac);transform:translateY(-2px)}
 .tf-assoc-duo{display:flex;align-items:center;gap:.4rem}
 .tf-assoc-duo img{width:70px;height:105px;object-fit:cover;border-radius:.25rem;background:#12100d}
-.tf-assoc-pair{display:flex;flex-wrap:wrap;gap:.25rem .4rem;align-items:baseline;margin-bottom:.4rem;font-family:'DM Mono',monospace;font-size:.58rem;line-height:1.4;letter-spacing:.06em;text-transform:uppercase;color:var(--muted,#8a8378)}
+.tf-assoc-pair{display:flex;flex-wrap:wrap;gap:.25rem .4rem;align-items:baseline;margin-bottom:.55rem;font-family:'DM Mono',monospace;font-size:.68rem;line-height:1.4;letter-spacing:.06em;text-transform:uppercase;color:var(--muted,#8a8378)}
 .tf-assoc-pair strong{color:var(--fg,#f1ede4);font-weight:500}
-.tf-assoc-item p{margin:0;color:rgba(241,237,228,.78);font-family:'Cormorant Garamond',serif;font-size:1.05rem;line-height:1.38}
+.tf-assoc-item p{margin:0;color:rgba(241,237,228,.82);font-family:'Cormorant Garamond',serif;font-size:clamp(1.2rem,1.8vw,1.38rem);line-height:1.46}
 @media (max-width:720px){
   .tf-mirror-grid{padding:0 1rem 2rem}
   .tf-association-summary{font-size:.52rem;letter-spacing:.1em}
@@ -242,7 +243,7 @@
   .tf-assoc-item{grid-template-columns:96px minmax(0,1fr);gap:.7rem;padding:.7rem;align-items:start}
   .tf-assoc-duo{gap:.25rem}
   .tf-assoc-duo img{width:46px;height:69px}
-  .tf-assoc-item p{font-size:1rem}
+  .tf-assoc-item p{font-size:1.16rem;line-height:1.42}
 }
 @media (prefers-reduced-motion:reduce){
   #tf-mirror,.tf-assoc-item{transition:none}
@@ -652,7 +653,9 @@
   function updateVoiceBtn(){
     document.querySelectorAll('.tf-voice-btn').forEach(btn=>{
       btn.classList.toggle('speaking', voice.speaking);
-      btn.setAttribute('aria-label', voice.speaking ? 'Arrêter la lecture' : 'Écouter la carte');
+      btn.setAttribute('aria-label', voice.speaking ? 'Arrêter l’écoute' : 'Écouter la carte');
+      const label = btn.querySelector('.tf-voice-label');
+      if(label) label.textContent = voice.speaking ? 'Arrêter l’écoute' : 'Écouter la carte';
     });
   }
 
@@ -660,7 +663,7 @@
     if(!('speechSynthesis' in window)) return;
     const btn = document.createElement('button');
     btn.className = 'tf-voice-btn';
-    btn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M11 5L6 9H2v6h4l5 4V5Z"/><path d="M15.5 8.5a5 5 0 0 1 0 7M19 5a9 9 0 0 1 0 14"/></svg><span>Écouter la carte</span>';
+    btn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M11 5L6 9H2v6h4l5 4V5Z"/><path d="M15.5 8.5a5 5 0 0 1 0 7M19 5a9 9 0 0 1 0 14"/></svg><span class="tf-voice-label">Écouter la carte</span>';
     btn.addEventListener('click',()=>toggleVoice(card));
     container.prepend(btn);
   }
@@ -936,7 +939,7 @@
     if(!n) return;
     const btn = document.createElement('button');
     btn.className = 'tf-mirror-trigger';
-    btn.innerHTML = `<span class="glyph">✦</span><span>Associations · ${n}</span>`;
+    btn.innerHTML = `<span class="glyph" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="m12 2 2.35 7.65L22 12l-7.65 2.35L12 22l-2.35-7.65L2 12l7.65-2.35L12 2Z"/></svg></span><span>Associations · ${n}</span>`;
     btn.setAttribute('aria-label', `Voir les ${n} associations de cette carte`);
     btn.addEventListener('click', () => openMirror(card));
     container.prepend(btn);
