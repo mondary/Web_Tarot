@@ -554,9 +554,9 @@ function openCard(id){
   decorateThemeIcons($('#d-prose'));
   restructureKeywords($('#d-prose'));
 
-  // Insert ES badges before Description section
-  const descSec = $('#d-prose section[id*="description"], #d-prose section:last-of-type');
-  if(descSec && esHtml){ descSec.insertAdjacentHTML('beforebegin', esHtml); }
+  // Insert ES badges before Interprétation section
+  const interpSec = [...$('#d-prose').querySelectorAll('section')].find(s=>/interpr.tation/i.test(s.querySelector('h2')?.textContent||''));
+  if(interpSec && esHtml){ interpSec.insertAdjacentHTML('beforebegin', esHtml); }
 
   if(typeof injectVoiceButton==='function') injectVoiceButton($('#d-panel-inner'), card);
   if(typeof injectMirrorTrigger==='function') injectMirrorTrigger($('#d-panel-inner'), card);
