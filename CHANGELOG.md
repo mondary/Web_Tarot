@@ -6,7 +6,7 @@ Toutes les notes de release du projet Web Tarot. Le format de version suit `🔥
 
 ## TODO — Roadmap
 
-Statut : `2.2026.18` (séparateur visuel des cartes associées)
+Statut : `2.2026.19` (version visible dans l'en-tête)
 
 ### Phase 1 — Fondations ✅
 - [x] Interface V2 unifiée (carousel d'accueil + grille par famille + vue détail)
@@ -30,6 +30,10 @@ Statut : `2.2026.18` (séparateur visuel des cartes associées)
 ---
 
 ## Releases
+
+### [2.2026.19] - 2026-07-20
+#### Changed
+- Numéro de version déplacé dans l'en-tête, à côté du titre, pour rester visible en permanence
 
 ### [2.2026.18] - 2026-07-20
 #### Changed
