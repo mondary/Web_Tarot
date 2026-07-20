@@ -472,11 +472,18 @@ a{color:inherit;text-decoration:none}
   .back{left:1.2rem;top:3.7rem}
 }
 /* ES badges: Réponse + Affirmation */
-.es-badges{display:flex;gap:.6rem;flex-wrap:wrap;margin:.5rem 0 .3rem;align-items:center}
-.es-badge{display:inline-flex;align-items:center;gap:.35rem;padding:.25rem .65rem;border-radius:999px;font-size:.72rem;font-weight:600;letter-spacing:.03em;text-transform:uppercase;line-height:1.2}
-.es-badge.resp{background:var(--ac,#c9a227);color:#fff}
-.es-badge.aff{background:transparent;border:1.5px solid var(--ac,#c9a227);color:var(--ac,#c9a227);text-transform:none;font-weight:500;letter-spacing:0;font-size:.78rem}
-.es-badge .lbl{opacity:.7;font-size:.65rem;font-weight:400}
+.es-badges{display:flex;flex-direction:column;gap:1rem;margin:2rem auto 2.5rem;align-items:center;text-align:center;max-width:700px}
+.es-badge{display:inline-flex;align-items:center;gap:.5rem;padding:.5rem 1.2rem;border-radius:999px;font-size:.85rem;font-weight:600;letter-spacing:.04em;text-transform:uppercase;line-height:1.2}
+.es-badge.resp{background:var(--ac,#c9a227);color:#fff;font-size:1rem;padding:.6rem 1.4rem}
+.es-badge.aff{font-family:'Cormorant Garamond',serif;font-weight:400;font-size:clamp(1.6rem,3vw,2.4rem);line-height:1.2;color:var(--fg);font-style:italic;border-left:3px solid var(--ac);border-radius:0;padding:.5rem 0 .5rem 1.5rem;text-transform:none;letter-spacing:0;display:block;max-width:600px}
+.es-badge .lbl{opacity:.7;font-size:.7rem;font-weight:400}
+#sec-mots-cles{display:block}
+#sec-mots-cles h2{margin-bottom:1.2rem}
+#sec-mots-cles .kw-cols{display:grid;grid-template-columns:1fr 1fr;gap:2rem}
+#sec-mots-cles .kw-col h3{font-family:'DM Mono',monospace;font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;color:var(--ac);margin-bottom:.8rem;padding-bottom:.5rem;border-bottom:1px solid var(--line)}
+#sec-mots-cles .kw-col ul{list-style:none;display:grid;gap:.45rem}
+#sec-mots-cles .kw-col li{position:relative;padding-left:1rem;color:#d8d2c5;font-size:.92rem;line-height:1.4}
+#sec-mots-cles .kw-col li::before{content:'◆';position:absolute;left:0;top:.35rem;color:var(--ac);font-size:.42rem}
 </style>
 </head>
 <body>
@@ -915,7 +922,7 @@ function openCard(id){
 
   const html = reorderClassique(renderMd(card.md));
   const es = card.es;
-  const esHtml = es ? `<div class="es-badges">${es.reponse ? `<span class="es-badge resp"><span class="lbl">Réponse</span> ${esc(es.reponse)}</span>` : ''}${es.affirmation ? `<span class="es-badge aff">« ${esc(es.affirmation)} »</span>` : ''}</div>` : '';
+  const esHtml = es ? `<div class="es-badges">${es.affirmation ? `<span class="es-badge aff">« ${esc(es.affirmation)} »</span>` : ''}${es.reponse ? `<span class="es-badge resp"><span class="lbl">Réponse</span> ${esc(es.reponse)}</span>` : ''}</div>` : '';
   const wrap = $('#detail-wrap');
   wrap.innerHTML = `
     <h1 class="d-card-title"><em>${card.name}</em></h1>
@@ -929,11 +936,14 @@ function openCard(id){
         <span class="sep">·</span>
         <span>${card.familyName} ${inFam+1}/${family.count}</span>
       </div>
-      ${esHtml}
       <div class="card-actions"></div>
       <div class="prose" id="prose">${html}</div>
     </div>`;
   if(typeof decorateThemeIcons==='function') decorateThemeIcons($('#prose'));
+  restructureKeywords($('#prose'));
+  // Insert ES badges before Interprétation section
+  const interpSec = [...$('#prose').querySelectorAll('section')].find(s=>/interpr.tation/i.test(s.querySelector('h2')?.textContent||''));
+  if(interpSec && esHtml){ interpSec.insertAdjacentHTML('beforebegin', esHtml); }
   if(typeof injectVoiceButton==='function') injectVoiceButton($('#view-detail .card-actions'), card);
   if(typeof injectMirrorTrigger==='function') injectMirrorTrigger($('#view-detail .card-actions'), card);
   updateLoopBar(globalIdx);
@@ -960,6 +970,21 @@ function findCard(id){
 
 function familyCardsOf(card){
   return TAROT.families.find(f=>f.key===card.family).cards;
+}
+
+function restructureKeywords(root){
+  const sec=root.querySelector('#sec-mots-cles');
+  if(!sec) return;
+  const h2=sec.querySelector('h2');
+  const h3s=sec.querySelectorAll('h3');
+  const uls=sec.querySelectorAll('ul');
+  if(h3s.length>=2&&uls.length>=2){
+    sec.innerHTML=h2.outerHTML+
+      '<div class="kw-cols">'+
+        '<div class="kw-col">'+h3s[0].outerHTML+uls[0].outerHTML+'</div>'+
+        '<div class="kw-col">'+h3s[1].outerHTML+uls[1].outerHTML+'</div>'+
+      '</div>';
+  }
 }
 
 function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
