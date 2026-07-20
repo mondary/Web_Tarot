@@ -7,7 +7,7 @@
 ## Associations avec les Arcanes majeurs
 
 - **L'Impératrice + Le Fou / Le Mat** : Un nouvel élan créatif naissant dans la spontanéité. L’Impératrice incarne la fertilité et la vie, tandis que Le Fou insuffle l’innocence et l’aventure. Ensemble, ils annoncent un projet ou une relation naissante, portée par l'enthousiasme et l'abondance.
-- **L'Impératrice + Le Magicien / Le** : Bateleur : Une manifestation concrète des idées et désirs. L’Impératrice fournit la matière, et Le Magicien l’outil pour la modeler. Cette association parle de la capacité de créer, de donner vie à ses inspirations par une action habile et alignée.
+- **L'Impératrice + Le Magicien / Le Bateleur** : Une manifestation concrète des idées et désirs. L’Impératrice fournit la matière, et Le Magicien l’outil pour la modeler. Cette association parle de la capacité de créer, de donner vie à ses inspirations par une action habile et alignée.
 - **L'Impératrice + La Grande Prêtresse / La Papesse** : Une fusion entre la création tangible et la sagesse intérieure. L’Impératrice donne forme, et La Grande Prêtresse éclaire le processus. Ensemble, elles appellent à créer non seulement avec les mains, mais aussi avec l'âme.
 - **L'Impératrice + L'Empereur** : L'équilibre parfait entre création et structure. L’Impératrice offre la croissance et l’Empereur apporte les limites nécessaires pour que cette croissance soit durable. Ensemble, ils symbolisent un projet ou une relation solide et fertile.
 - **L'Impératrice + Le Hiérophante / Le Pape** : Une création guidée par des valeurs traditionnelles ou spirituelles. L’Impératrice inspire l'abondance, et Le Pape la canalise dans une voie conforme à une sagesse collective. C’est un temps pour développer ses dons dans le respect d’un cadre éthique.

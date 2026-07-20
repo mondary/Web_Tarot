@@ -6,7 +6,7 @@ Toutes les notes de release du projet Web Tarot. Le format de version suit `🔥
 
 ## TODO — Roadmap
 
-Statut : `2.2026.13` (associations de cartes pour les 78 lames)
+Statut : `2.2026.14` (Miroir des Lames et correction de la vue classique)
 
 ### Phase 1 — Fondations ✅
 - [x] Interface V2 unifiée (carousel d'accueil + grille par famille + vue détail)
@@ -30,6 +30,16 @@ Statut : `2.2026.13` (associations de cartes pour les 78 lames)
 ---
 
 ## Releases
+
+### [2.2026.14] - 2026-07-20
+#### Added
+- Miroir des Lames : lecture immersive des associations en tirage à deux cartes dans les trois vues
+- Navigation par suite, compteur, flèches et clavier dans les 5904 combinaisons
+#### Fixed
+- Écran noir de la vue classique causé par une apostrophe JavaScript non échappée
+- Chargement de `tarot-features.js` dans la vue classique
+- Conteneur manquant dans la vue immersive pour les boutons vocal et Miroir
+- Quelques coquilles récupérées dans les associations source
 
 ### [2.2026.13] - 2026-07-20
 #### Added

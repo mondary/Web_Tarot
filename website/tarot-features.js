@@ -117,6 +117,108 @@
   .tf-draws-btn{left:max(1rem,env(safe-area-inset-left));bottom:max(4.2rem,calc(env(safe-area-inset-bottom) + 3rem));padding:.7rem 1rem;font-size:.6rem}
   .tf-draws-btn svg{width:14px;height:14px}
 }
+
+/* === Miroir des Lames (associations) === */
+.tf-mirror-trigger{
+  display:inline-flex;align-items:center;gap:.55rem;padding:.55rem .95rem;border-radius:50px;
+  border:1px solid var(--accent,#c9a227);background:rgba(201,162,39,.06);color:var(--accent,#c9a227);
+  font-family:'DM Mono',monospace;font-size:.58rem;letter-spacing:.22em;text-transform:uppercase;
+  cursor:pointer;transition:.25s ease-out;margin:0 0 1rem
+}
+.tf-mirror-trigger .glyph{font-size:.85rem;letter-spacing:0}
+.tf-mirror-trigger:hover{background:rgba(201,162,39,.16);transform:translateY(-1px)}
+
+#tf-mirror{
+  position:fixed;inset:0;z-index:8800;display:none;flex-direction:column;
+  background:radial-gradient(ellipse at center,rgba(20,18,15,.96),rgba(5,5,5,.99));
+  backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
+  opacity:0;transition:opacity .5s ease;--ac:var(--accent,#c9a227)
+}
+#tf-mirror.open{display:flex;opacity:1;animation:tf-mirror-in .5s ease-out}
+@keyframes tf-mirror-in{from{opacity:0}to{opacity:1}}
+
+.tf-mirror-top{
+  display:flex;justify-content:space-between;align-items:center;gap:1rem;flex-wrap:wrap;
+  padding:1.4rem max(1.6rem,env(safe-area-inset-top)) 1rem max(1.6rem,env(safe-area-inset-left))
+}
+.tf-mirror-close{
+  width:42px;height:42px;border-radius:50%;display:grid;place-items:center;
+  border:1px solid rgba(241,237,228,.08);background:none;color:var(--muted,#8a8378);cursor:pointer;transition:.3s;flex:0 0 auto
+}
+.tf-mirror-close:hover{color:var(--ac);border-color:var(--ac)}
+.tf-mirror-close svg{width:16px;height:16px}
+.tf-mirror-title-wrap{text-align:center;flex:1;min-width:160px}
+.tf-mirror-kicker{font-family:'DM Mono',monospace;font-size:.56rem;letter-spacing:.28em;text-transform:uppercase;color:var(--ac);margin-bottom:.25rem}
+.tf-mirror-title{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:300;font-size:1.4rem;color:var(--fg,#f1ede4);line-height:1.1}
+
+.tf-mirror-filters{display:flex;gap:.3rem;flex-wrap:wrap;justify-content:center;padding:0 max(1.6rem,env(safe-area-inset-left)) 1rem}
+.tf-mirror-filter{
+  display:inline-flex;align-items:center;gap:.35rem;padding:.35rem .7rem;border-radius:50px;
+  border:1px solid rgba(241,237,228,.08);background:transparent;color:var(--muted,#8a8378);
+  font-family:'DM Mono',monospace;font-size:.55rem;letter-spacing:.18em;text-transform:uppercase;cursor:pointer;transition:.3s
+}
+.tf-mirror-filter:hover{color:var(--fg,#f1ede4);border-color:rgba(241,237,228,.2)}
+.tf-mirror-filter.active{border-color:var(--ac);color:var(--ac);background:rgba(201,162,39,.06)}
+.tf-mirror-filter .glyph{font-size:.8rem;letter-spacing:0}
+
+.tf-mirror-stage{
+  flex:1;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;justify-items:center;
+  gap:2.5rem;padding:1rem max(2rem,env(safe-area-inset-left)) 3rem;min-height:0
+}
+.tf-mirror-card{
+  width:min(26vw,220px);aspect-ratio:2/3;border-radius:.7rem;overflow:hidden;display:grid;place-items:center;
+  background:rgba(241,237,228,.04);border:1px solid rgba(241,237,228,.08);
+  transition:opacity .3s ease,transform .3s ease;position:relative
+}
+.tf-mirror-card.left{justify-self:end}
+.tf-mirror-card.right{justify-self:start}
+.tf-mirror-card img{width:100%;height:100%;object-fit:cover;display:block}
+.tf-mirror-card.swapping{opacity:0;transform:translateY(10px)}
+.tf-mirror-card.empty{background:linear-gradient(135deg,#1a1612,#0a0907)}
+.tf-mirror-card-back{color:var(--ac);font-size:2rem;opacity:.5}
+.tf-mirror-card-tag{
+  position:absolute;bottom:-1.5rem;left:50%;transform:translateX(-50%);
+  font-family:'DM Mono',monospace;font-size:.54rem;letter-spacing:.22em;text-transform:uppercase;color:var(--muted,#8a8378);white-space:nowrap
+}
+
+.tf-mirror-divider{display:flex;flex-direction:column;align-items:center;gap:.7rem;color:var(--ac)}
+.tf-mirror-divider .line{width:1px;height:28px;background:linear-gradient(180deg,transparent,var(--ac),transparent)}
+.tf-mirror-divider .glyph{font-size:1.1rem}
+
+.tf-mirror-text-wrap{text-align:center;padding:1rem max(2rem,env(safe-area-inset-left)) 1.5rem;max-width:720px;margin:0 auto}
+.tf-mirror-text{
+  font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:300;
+  font-size:clamp(1.05rem,2vw,1.35rem);line-height:1.55;color:var(--fg,#f1ede4);transition:opacity .3s ease
+}
+.tf-mirror-text.swapping{opacity:0}
+.tf-mirror-text::before{content:'';display:block;width:30px;height:1px;background:var(--ac);margin:0 auto 1rem;opacity:.6}
+
+.tf-mirror-nav{
+  display:flex;justify-content:center;align-items:center;gap:1.5rem;
+  padding:1rem max(1.6rem,env(safe-area-inset-bottom)) max(1.6rem,env(safe-area-inset-bottom))
+}
+.tf-mirror-nav button{
+  width:46px;height:46px;border-radius:50%;border:1px solid rgba(241,237,228,.1);
+  background:rgba(10,9,7,.5);color:var(--fg,#f1ede4);display:grid;place-items:center;cursor:pointer;transition:.3s
+}
+.tf-mirror-nav button:hover{border-color:var(--ac);color:var(--ac);transform:scale(1.05)}
+.tf-mirror-nav button svg{width:18px;height:18px}
+.tf-mirror-counter{font-family:'DM Mono',monospace;font-size:.62rem;letter-spacing:.22em;color:var(--muted,#8a8378);min-width:80px;text-align:center}
+.tf-mirror-counter b{color:var(--ac);font-weight:400}
+
+@media (max-width:720px){
+  .tf-mirror-top{padding:1rem max(1rem,env(safe-area-inset-top)) .8rem max(1rem,env(safe-area-inset-left))}
+  .tf-mirror-title{font-size:1.05rem}
+  .tf-mirror-stage{grid-template-columns:1fr 1fr;gap:.8rem;padding:.5rem 1rem 2.4rem}
+  .tf-mirror-card{width:min(42vw,170px)}
+  .tf-mirror-card-tag{bottom:-1.2rem;font-size:.5rem}
+  .tf-mirror-divider{display:none}
+  .tf-mirror-filter{padding:.3rem .5rem;font-size:.5rem;gap:.25rem}
+  .tf-mirror-text-wrap{padding:.5rem 1.2rem 1rem}
+  .tf-mirror-nav{gap:1rem;padding-bottom:max(1.2rem,env(safe-area-inset-bottom))}
+  .tf-mirror-trigger span:not(.glyph){display:none}
+  .tf-mirror-trigger{padding:.55rem .7rem}
+}
 `;
     const style = document.createElement('style');
     style.id = 'tf-styles';
@@ -183,6 +285,29 @@
       <button class="tf-scan-close" id="tf-scan-close" aria-label="Fermer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 6 12 12M18 6 6 18"/></svg></button>
     </div>
     <p class="tf-scan-error" id="tf-scan-error" role="alert"></p>
+  </div>
+</div>
+
+<div id="tf-mirror" role="dialog" aria-modal="true" aria-label="Miroir des Lames — associations">
+  <div class="tf-mirror-top">
+    <button class="tf-mirror-close" id="tf-mirror-close" aria-label="Fermer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 6 12 12M18 6 6 18"/></svg></button>
+    <div class="tf-mirror-title-wrap">
+      <div class="tf-mirror-kicker">Miroir des Lames</div>
+      <div class="tf-mirror-title" id="tf-mirror-title"></div>
+    </div>
+    <div style="width:42px"></div>
+  </div>
+  <div class="tf-mirror-filters" id="tf-mirror-filters"></div>
+  <div class="tf-mirror-stage">
+    <div class="tf-mirror-card left" id="tf-mirror-current"></div>
+    <div class="tf-mirror-divider"><span class="line"></span><span class="glyph">✦</span><span class="line"></span></div>
+    <div class="tf-mirror-card right" id="tf-mirror-partner"></div>
+  </div>
+  <div class="tf-mirror-text-wrap"><p class="tf-mirror-text" id="tf-mirror-text"></p></div>
+  <div class="tf-mirror-nav">
+    <button id="tf-mirror-prev" aria-label="Précédent"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M15 6l-6 6 6 6"/></svg></button>
+    <div class="tf-mirror-counter" id="tf-mirror-counter"></div>
+    <button id="tf-mirror-next" aria-label="Suivant"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 6l6 6-6 6"/></svg></button>
   </div>
 </div>
 `);
@@ -510,6 +635,228 @@
   }
 
   /* =========================================================
+     Miroir des Lames — associations cinématiques
+     ========================================================= */
+
+  // Noms composés des arcanes majeurs tels qu'utilisés dans les fichiers d'associations
+  // (pour résoudre la carte partenaire depuis la paire « X + Y »).
+  const MAJOR_COMPOUND = {
+    '00': 'Le Fou / Le Mat',
+    '01': 'Le Magicien / Le Bateleur',
+    '02': 'La Grande Prêtresse / La Papesse',
+    '05': 'Le Hiérophante / Le Pape',
+    '09': "L'Ermite / L'Hermite",
+    '13': "La Mort / L'Arcane sans nom",
+    '14': 'La Tempérance',
+    '16': 'La Tour / La Maison Dieu',
+  };
+
+  const SUITE_FILTERS = [
+    { key: 'all',     glyph: '✦',  label: 'Toutes' },
+    { key: 'majors',  glyph: '✦',  label: 'Majeurs' },
+    { key: 'batons',  glyph: '🜂', label: 'Bâtons' },
+    { key: 'coupes',  glyph: '🜄', label: 'Coupes' },
+    { key: 'epees',   glyph: '🜁', label: 'Épées' },
+    { key: 'deniers', glyph: '🜃', label: 'Deniers' },
+  ];
+
+  function normalizeName(s){
+    return (s||'').toLowerCase()
+      .replace(/[''´`’]/g,"'")
+      .replace(/[àáâäã]/g,'a').replace(/[èéêë]/g,'e').replace(/[ìíîï]/g,'i')
+      .replace(/[òóôöõ]/g,'o').replace(/[ùúûü]/g,'u').replace(/[ç]/g,'c')
+      .replace(/\s+/g,' ').trim();
+  }
+
+  let _nameIndex = null;
+  function getNameIndex(){
+    if(_nameIndex) return _nameIndex;
+    _nameIndex = new Map();
+    for(const f of TAROT.families){
+      for(const c of f.cards){
+        const numStr = c.id.split('_')[1];
+        const aliases = new Set([c.name]);
+        if(MAJOR_COMPOUND[numStr]){
+          aliases.add(MAJOR_COMPOUND[numStr]);
+          MAJOR_COMPOUND[numStr].split(' / ').forEach(p => aliases.add(p));
+        }
+        // Variantes sans article (La/La/Les/L') — au cas où le texte source utiliserait l'une ou l'autre forme.
+        const extras = [];
+        for(const a of aliases){
+          const stripped = a.replace(/^(La |Le |Les |L'|L')/i,'');
+          if(stripped && stripped !== a) extras.push(stripped);
+        }
+        extras.forEach(e => aliases.add(e));
+        for(const a of aliases) _nameIndex.set(normalizeName(a), c);
+      }
+    }
+    return _nameIndex;
+  }
+
+  function parseAssociations(md){
+    if(!md) return [];
+    const titleMap = {
+      'arcanes majeurs':'majors',
+      'suite de bâtons':'batons','suite de batons':'batons',
+      'suite de coupes':'coupes',
+      "suite d'épées":'epees',"suite d'epees":'epees',"suite d’épées":'epees',
+      'suite de deniers':'deniers'
+    };
+    const sections = [];
+    const headerRe = /^## (.+)$/gm;
+    const headers = [];
+    let m;
+    while((m = headerRe.exec(md)) !== null){
+      headers.push({ start:m.index, end:m.index + m[0].length, title:m[1].trim() });
+    }
+    for(let i=0; i<headers.length; i++){
+      const h = headers[i];
+      const body = md.slice(h.end, i+1 < headers.length ? headers[i+1].start : md.length);
+      const key = titleMap[h.title.toLowerCase()] || 'misc';
+      const items = [];
+      const itemRe = /^- \*\*([^*]+?)\*\*\s*:\s*(.+)$/gm;
+      let im;
+      while((im = itemRe.exec(body)) !== null){
+        items.push({ pair: im[1].trim().replace(/[\s:]+$/, ''), text: im[2].trim() });
+      }
+      if(items.length) sections.push({ key, title:h.title, items });
+    }
+    return sections;
+  }
+
+  function countCombos(md){
+    if(!md) return 0;
+    const m = md.match(/^- \*\*[^*]+\*\*\s*:/gm);
+    return m ? m.length : 0;
+  }
+
+  function resolvePartnerCard(pair){
+    // « Carte courante + Carte partenaire »
+    const parts = pair.split(' + ');
+    if(parts.length < 2) return null;
+    const partnerName = parts[parts.length - 1].trim();
+    return getNameIndex().get(normalizeName(partnerName)) || null;
+  }
+
+  const mirror = { card:null, sections:[], filter:'all', idx:0 };
+
+  function mirrorItems(){
+    if(mirror.filter === 'all') return mirror.sections.flatMap(s => s.items);
+    const sec = mirror.sections.find(s => s.key === mirror.filter);
+    return sec ? sec.items : [];
+  }
+
+  function openMirror(card){
+    if(!card || !card.associations) return;
+    const sections = parseAssociations(card.associations);
+    if(!sections.length) return;
+    mirror.card = card;
+    mirror.sections = sections;
+    mirror.filter = 'all';
+    mirror.idx = 0;
+
+    const family = TAROT.families.find(f => f.key === card.family);
+    const overlay = document.getElementById('tf-mirror');
+    if(family) overlay.style.setProperty('--ac', family.accent);
+
+    const titleEl = document.getElementById('tf-mirror-title');
+    if(titleEl) titleEl.textContent = card.name;
+
+    // Carte courante (fixe pendant la session)
+    const currentEl = document.getElementById('tf-mirror-current');
+    currentEl.innerHTML = `<img src="${card.file}" alt="${card.name}"><div class="tf-mirror-card-tag">${card.name}</div>`;
+
+    renderMirrorFilters();
+    renderMirrorCombo(true);
+    overlay.classList.add('open');
+    document.addEventListener('keydown', mirrorKeyHandler);
+  }
+
+  function closeMirror(){
+    const overlay = document.getElementById('tf-mirror');
+    if(overlay) overlay.classList.remove('open');
+    document.removeEventListener('keydown', mirrorKeyHandler);
+  }
+
+  function mirrorKeyHandler(e){
+    if(e.key === 'Escape'){ closeMirror(); e.preventDefault(); }
+    else if(e.key === 'ArrowRight'){ navigateMirror(1); e.preventDefault(); }
+    else if(e.key === 'ArrowLeft'){ navigateMirror(-1); e.preventDefault(); }
+  }
+
+  function navigateMirror(delta){
+    const items = mirrorItems();
+    if(!items.length) return;
+    mirror.idx = (mirror.idx + delta + items.length) % items.length;
+    renderMirrorCombo();
+  }
+
+  function setMirrorFilter(key){
+    mirror.filter = key;
+    mirror.idx = 0;
+    renderMirrorFilters();
+    renderMirrorCombo(true);
+  }
+
+  function renderMirrorFilters(){
+    const wrap = document.getElementById('tf-mirror-filters');
+    if(!wrap) return;
+    wrap.innerHTML = SUITE_FILTERS.map(s =>
+      `<button class="tf-mirror-filter${s.key === mirror.filter ? ' active' : ''}" data-key="${s.key}">` +
+      `<span class="glyph">${s.glyph}</span><span>${s.label}</span></button>`
+    ).join('');
+    wrap.querySelectorAll('.tf-mirror-filter').forEach(btn => {
+      btn.addEventListener('click', () => setMirrorFilter(btn.dataset.key));
+    });
+  }
+
+  function renderMirrorCombo(immediate){
+    const items = mirrorItems();
+    const item = items[mirror.idx];
+    if(!item) return;
+    const partner = resolvePartnerCard(item.pair);
+    const partnerEl = document.getElementById('tf-mirror-partner');
+    const textEl = document.getElementById('tf-mirror-text');
+    const counterEl = document.getElementById('tf-mirror-counter');
+
+    const apply = () => {
+      if(partner){
+        partnerEl.innerHTML = `<img src="${partner.file}" alt="${partner.name}"><div class="tf-mirror-card-tag">${partner.name}</div>`;
+        partnerEl.classList.remove('empty');
+      } else {
+        partnerEl.innerHTML = '<div class="tf-mirror-card-back">✦</div>';
+        partnerEl.classList.add('empty');
+      }
+      textEl.textContent = item.text;
+      counterEl.innerHTML = `<b>${String(mirror.idx + 1).padStart(2,'0')}</b> / ${String(items.length).padStart(2,'0')}`;
+      partnerEl.classList.remove('swapping');
+      textEl.classList.remove('swapping');
+    };
+
+    if(immediate){
+      apply();
+    } else {
+      partnerEl.classList.add('swapping');
+      textEl.classList.add('swapping');
+      setTimeout(apply, 220);
+    }
+  }
+
+  function injectMirrorTrigger(container, card){
+    if(!card || !card.associations) return;
+    const old = container.querySelector('.tf-mirror-trigger');
+    if(old) old.remove();
+    const n = countCombos(card.associations);
+    if(!n) return;
+    const btn = document.createElement('button');
+    btn.className = 'tf-mirror-trigger';
+    btn.innerHTML = `<span class="glyph">✦</span><span>${n} échos</span>`;
+    btn.setAttribute('aria-label', `Voir les ${n} associations de cette carte`);
+    btn.addEventListener('click', () => openMirror(card));
+    container.prepend(btn);
+  }
+
+  /* =========================================================
      Wire up
      ========================================================= */
   function wireUp(){
@@ -527,11 +874,21 @@
       revealCard(card,'Carte du jour · '+today.split('-').reverse().join('/'));
     });
     document.getElementById('tf-reveal-card').addEventListener('click',flipReveal);
+
+    // Miroir des Lames
+    document.getElementById('tf-mirror-close').addEventListener('click',closeMirror);
+    document.getElementById('tf-mirror-prev').addEventListener('click',()=>navigateMirror(-1));
+    document.getElementById('tf-mirror-next').addEventListener('click',()=>navigateMirror(1));
+    const mirrorOverlay=document.getElementById('tf-mirror');
+    mirrorOverlay.addEventListener('click',e=>{ if(e.target===mirrorOverlay) closeMirror(); });
+
     document.addEventListener('keydown',e=>{
       const drawsOpen=document.getElementById('tf-draws');
       const revealOpen=document.getElementById('tf-reveal');
       const scanOpen=document.getElementById('tf-scanner');
+      const mirOpen=document.getElementById('tf-mirror');
       if(e.key==='Escape'){
+        if(mirOpen&&mirOpen.classList.contains('open')){closeMirror();e.preventDefault();return;}
         if(scanner.active){closeScanner();e.preventDefault();return;}
         if(revealOpen&&revealOpen.classList.contains('open')){closeReveal();e.preventDefault();return;}
         if(drawsOpen&&drawsOpen.classList.contains('open')){closeDraws();e.preventDefault();return;}
@@ -546,8 +903,9 @@
     injectStyles();
     injectHTML();
     wireUp();
-    // expose voice reader for views
+    // expose voice reader + mirror trigger for views
     window.injectVoiceButton = injectVoiceButton;
+    window.injectMirrorTrigger = injectMirrorTrigger;
     window.stopVoice = stopVoice;
     // The compact fingerprints make this warm-up instantaneous before a scan.
     const warmScanner=()=>prepareScanReferences();

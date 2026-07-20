@@ -608,6 +608,7 @@ a{color:inherit;text-decoration:none}
 </div>
 
 <script src="data.js"></script>
+<script src="tarot-features.js"></script>
 <script>
 /* =========================================================
    State
@@ -738,7 +739,7 @@ function scanFrame(){
 }
 
 async function openScanner(){
-  if(!navigator.mediaDevices?.getUserMedia){showScanError('La caméra n'est pas disponible dans ce navigateur.');return;}
+  if(!navigator.mediaDevices?.getUserMedia){showScanError('La caméra n’est pas disponible dans ce navigateur.');return;}
   scanner.trigger=document.activeElement; scanner.active=true;
   $('#scanner').classList.add('open'); $('#scan-close').focus();
   $('#scan-error').classList.remove('visible');
@@ -945,8 +946,9 @@ function openCard(id){
       <h1><em>${card.name}</em></h1>
       <div class="prose" id="prose">${html}</div>
     </div>`;
-  decorateThemeIcons($('#prose'));
+  if(typeof decorateThemeIcons==='function') decorateThemeIcons($('#prose'));
   if(typeof injectVoiceButton==='function') injectVoiceButton($('#view-detail .d-content'), card);
+  if(typeof injectMirrorTrigger==='function') injectMirrorTrigger($('#view-detail .d-content'), card);
   updateLoopBar(globalIdx);
   $('#view-detail').scrollTop=0;
   switchView('detail');

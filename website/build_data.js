@@ -100,7 +100,10 @@ mdFiles.forEach(file => {
   if (prefix === 'a') {
     name = MAJOR_NAMES[num] || slug;
   } else {
-    name = `${MINOR_NAMES[num] || slug} de ${meta.name}`;
+    // Élision : « d'Épées » (voyelle initiale), sinon « de Bâtons/Coupes/Deniers ».
+    const suiteName = meta.name;
+    const article = /^[AEIOUYÉÈÊÀ]/i.test(suiteName) ? 'd\'' : 'de ';
+    name = `${MINOR_NAMES[num] || slug} ${article}${suiteName}`;
   }
 
   const imgFile = path.join(CARDS_DIR, base + '.jpg');

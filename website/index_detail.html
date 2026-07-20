@@ -1508,6 +1508,7 @@ function openCard(id){
     <div class="prose detailed-content" id="prose">${html}</div>`;
   decorateDetailedProse();
   if(typeof injectVoiceButton==='function') injectVoiceButton($('#detail-wrap'), card);
+  if(typeof injectMirrorTrigger==='function') injectMirrorTrigger($('#detail-wrap'), card);
   updateLoopBar(globalIdx);
   $('#view-detail').scrollTop=0;
   switchView('detail');

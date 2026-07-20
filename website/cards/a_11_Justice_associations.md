@@ -6,7 +6,7 @@
 
 ## Associations avec les Arcanes majeurs
 
-- **La Justice + Le Fou / Le Pape** : Le besoin d'équilibre rencontre l'imprévisibilité. Cette combinaison évoque un moment où il faut accepter une décision sérieuse tout en s'abandonnant à l'inconnu avec confiance, sans tout maîtriser.
+- **La Justice + Le Pape** : Le besoin d'équilibre rencontre l'imprévisibilité. Cette combinaison évoque un moment où il faut accepter une décision sérieuse tout en s'abandonnant à l'inconnu avec confiance, sans tout maîtriser.
 - **La Justice + Le Magicien / Le Bateleur** : La clarté d’esprit de la Justice soutient le pouvoir de manifestation du Magicien. Cette association montre que l'on peut créer sa réalité en respectant les lois de cause à effet et en agissant avec intégrité.
 - **La Justice + La Grande Prêtresse / La Papesse** : L’équilibre passe par l’écoute de la sagesse intérieure. Cette combinaison indique qu’une vérité cachée doit être révélée ou comprise avec intuition autant qu’avec logique.
 - **La Justice + L’Impératrice** : La Justice tempère l’abondance de l’Impératrice. Cette association parle de responsabilités liées à la création ou à la maternité, et de la nécessité d’agir pour le bien commun en cultivant le respect et la compassion.
