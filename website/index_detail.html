@@ -351,7 +351,7 @@ a{color:inherit;text-decoration:none}
 
 <a class="brand" id="home-link" href="#" aria-label="Retour à l'accueil"><img src="icon.png" alt=""><span><b>Tarot</b> · Divinatoire</span><span class="brand-version">v<span id="lf-ver">3.2026.0</span></span></a>
 <nav class="mode-switch" aria-label="Choisir une vue" id="mode-switch">
-  <a href="index.html#grid">Classique</a>
+  <a href="index_classic.html#grid">Classique</a>
   <a href="index_full.html#grid">Immersive</a>
   <a class="active" href="index_detail.html#grid">Détaillée</a>
   <a href="index_quick.html#grid">Rapide</a>
@@ -1427,7 +1427,7 @@ function switchView(v){
 $('#back-btn').addEventListener('click',()=>{
   if(state.view==='detail') goHome();
 });
-$('#home-link').addEventListener('click',e=>{e.preventDefault();goHome();});
+$('#home-link').addEventListener('click',e=>{e.preventDefault();window.location.href='index.html';});
 $('#d-prev').addEventListener('click',()=>stepCard(-1));
 $('#d-next').addEventListener('click',()=>stepCard(1));
 
