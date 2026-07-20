@@ -344,11 +344,6 @@ a{color:inherit;text-decoration:none}
 .s-query .ph{color:var(--muted);font-style:italic;font-weight:300;text-transform:none;font-size:.18em;letter-spacing:.04em}
 .s-query .caret{display:inline-block;width:.05em;min-height:.7em;background:var(--ac);margin-left:.05em;align-self:center;animation:s-blink 1s steps(2) infinite}
 @keyframes s-blink{50%{opacity:0}}
-.s-info{text-align:center;color:var(--muted);font-family:'DM Mono',monospace;font-size:.7rem;
-  letter-spacing:.2em;text-transform:uppercase;margin-bottom:1.4rem;flex:0 0 auto}
-.s-info b{color:var(--ac);font-weight:400}
-.s-hint{text-align:center;color:var(--muted);font-family:'DM Mono',monospace;font-size:.64rem;
-  letter-spacing:.18em;text-transform:uppercase;margin-bottom:1.4rem;opacity:.6;flex:0 0 auto}
 .s-scroll{flex:1;overflow-y:auto;padding:0 4vw 6vh;min-height:0}
 .s-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(118px,1fr));gap:1rem;max-width:1500px;margin:0 auto}
 .s-grid .mini{cursor:pointer}
@@ -442,13 +437,11 @@ a{color:inherit;text-decoration:none}
 <!-- ============ SEARCH overlay ============ -->
 <div id="search" role="dialog" aria-modal="true" aria-label="Recherche">
   <div class="s-query" id="s-query"></div>
-  <div class="s-info" id="s-info"></div>
-  <div class="s-hint">↑ ↓ naviguer · Entrée ouvrir · Échap fermer</div>
   <div class="s-scroll"><div class="s-grid" id="s-grid"></div></div>
 </div>
 
-<script src="data.js?v=2.2026.24"></script>
-<script src="tarot-features.js?v=2.2026.24"></script>
+<script src="data.js?v=2.2026.25"></script>
+<script src="tarot-features.js?v=2.2026.25"></script>
 <script>
 /* =========================================================
    State
@@ -866,9 +859,6 @@ function renderSearch(){
   }
   search.results=results;
   if(search.sel>=results.length) search.sel=Math.max(0,results.length-1);
-  $('#s-info').innerHTML = results.length
-    ? '<b>'+(search.sel+1)+'</b> / <b>'+results.length+'</b> lame'+(results.length>1?'s':'')
-    : '<b>0</b> / 78';
   const g = $('#s-grid'); g.innerHTML='';
   if(!results.length){
     g.innerHTML = '<div class="s-empty">Aucune carte ne correspond à « '+sEsc(q)+' »</div>';
@@ -889,10 +879,6 @@ function renderSearch(){
 function paintSearchSel(){
   const g=$('#s-grid');
   g.querySelectorAll('.mini').forEach((m,i)=>m.classList.toggle('sel',i===search.sel));
-  const n=search.results.length;
-  $('#s-info').innerHTML=n
-    ? '<b>'+(search.sel+1)+'</b> / <b>'+n+'</b> lame'+(n>1?'s':'')
-    : '<b>0</b> / 78';
   const selected=g.querySelector('.mini.sel');
   if(selected) selected.scrollIntoView({block:'nearest'});
 }
