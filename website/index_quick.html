@@ -64,18 +64,15 @@ a{color:inherit;text-decoration:none}
 
 .full-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:1rem;padding:2rem 4vw 6rem;align-items:start}
 
-/* Family separator card — CSS designed */
-.fam-sep{grid-column:1/-1;display:flex;align-items:center;gap:1.5rem;padding:2.5rem 0 1rem;margin-top:1rem;border-bottom:1px solid var(--line)}
-.fam-sep-art{flex:0 0 auto;width:80px;height:120px;position:relative;display:grid;place-items:center}
-.fam-sep-art .glyph{font-family:'Cormorant Garamond',serif;font-size:3rem;color:var(--ac);line-height:1;text-align:center}
-.fam-sep-art .ring{position:absolute;inset:0;border:1.5px solid var(--ac);border-radius:.6rem;opacity:.3}
-.fam-sep-body{flex:1;min-width:0}
-.fam-sep-body .lbl{font-family:'DM Mono',monospace;font-size:.62rem;letter-spacing:.26em;text-transform:uppercase;color:var(--ac);margin-bottom:.4rem}
-.fam-sep-body .name{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(1.8rem,3.5vw,2.8rem);line-height:1;text-transform:uppercase;letter-spacing:-.01em}
-.fam-sep-body .name em{font-style:italic;color:var(--ac);font-weight:400}
-.fam-sep-body .desc{color:var(--muted);font-size:.82rem;line-height:1.5;font-weight:300;margin-top:.5rem;max-width:32rem}
-.fam-sep-count{flex:0 0 auto;font-family:'DM Mono',monospace;font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);text-align:right}
-.fam-sep-count b{display:block;font-family:'Cormorant Garamond',serif;font-size:2rem;color:var(--fg);letter-spacing:0;text-transform:none;font-weight:400}
+/* Family separator — card-shaped fake card */
+.fam-card{position:relative;border-radius:.9rem;overflow:hidden;cursor:pointer;transition:.5s var(--ease);display:flex;flex-direction:column;aspect-ratio:2/3;border:1px solid var(--ac);background:linear-gradient(160deg,rgba(241,237,228,.06),rgba(241,237,228,.02));box-shadow:0 10px 28px rgba(0,0,0,.35)}
+.fam-card:hover{transform:translateY(-6px);box-shadow:0 16px 40px rgba(0,0,0,.5),0 0 30px rgba(201,162,39,.15)}
+.fam-card-inner{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:1rem;text-align:center;position:relative}
+.fam-card-inner .glyph{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,4vw,3.5rem);color:var(--ac);line-height:1;margin-bottom:.6rem}
+.fam-card-inner .name{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(.85rem,1.3vw,1.1rem);line-height:1.1;text-transform:uppercase;letter-spacing:.02em;color:var(--fg)}
+.fam-card-inner .name em{font-style:italic;color:var(--ac);font-weight:400}
+.fam-card-inner .count{position:absolute;bottom:.6rem;right:.7rem;font-family:'DM Mono',monospace;font-size:.55rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+.fam-card-cap{padding:.5rem .7rem;border-top:1px solid var(--ac);font-family:'DM Mono',monospace;font-size:.55rem;letter-spacing:.2em;text-transform:uppercase;color:var(--ac);text-align:center;background:rgba(201,162,39,.06)}
 
 /* Card mini */
 .mini{position:relative;border-radius:.9rem;overflow:hidden;background:var(--mat);border:1px solid var(--mat-line);cursor:pointer;transition:.5s var(--ease);display:flex;flex-direction:column;box-shadow:0 10px 28px rgba(0,0,0,.35)}
@@ -150,8 +147,6 @@ a{color:inherit;text-decoration:none}
   .d-content{padding:1.5rem 2rem 3rem;text-align:center;align-items:center}
   .affirmation{max-width:100%}
   .kw-list{justify-content:center}
-  .fam-sep{flex-wrap:wrap;gap:1rem}
-  .fam-sep-count{text-align:left}
 }
 </style>
 </head>
@@ -166,10 +161,10 @@ a{color:inherit;text-decoration:none}
 </div>
 
 <nav class="mode-switch" aria-label="Choisir une vue">
-  <a href="index.html">Classique</a>
-  <a href="index_full.html">Immersive</a>
-  <a href="index_detail.html">Détaillée</a>
-  <a href="index_quick.html" class="active">Rapide</a>
+  <a href="index.html#grid">Classique</a>
+  <a href="index_full.html#grid">Immersive</a>
+  <a href="index_detail.html#grid">Détaillée</a>
+  <a href="index_quick.html#grid" class="active">Rapide</a>
 </nav>
 
 <div class="landing-foot" id="landing-foot">
@@ -233,18 +228,22 @@ function buildFullGrid(){
   const g=$('#full-grid');
   g.innerHTML='';
   TAROT.families.forEach((fam,fi)=>{
-    // Family separator card
-    const sep=el('div','fam-sep','');
-    sep.style.setProperty('--ac',fam.accent);
-    sep.innerHTML=`
-      <div class="fam-sep-art" style="--ac:${fam.accent}"><div class="ring" style="border-color:${fam.accent}"></div><div class="glyph" style="color:${fam.accent}">${fam.elementSym}</div></div>
-      <div class="fam-sep-body">
-        <div class="lbl" style="color:${fam.accent}">${fam.elementLine}</div>
-        <div class="name">${fam.titleFull}</div>
-        <div class="desc">${fam.desc}</div>
+    // Family fake card — same grid cell as a real card
+    const fc=el('div','fam-card','');
+    fc.style.setProperty('--ac',fam.accent);
+    fc.style.borderColor=fam.accent;
+    fc.innerHTML=`
+      <div class="fam-card-inner">
+        <div class="glyph" style="color:${fam.accent}">${fam.elementSym}</div>
+        <div class="name"><em>${fam.short||fam.name}</em></div>
+        <div class="count">${fam.cards.length} LAMES</div>
       </div>
-      <div class="fam-sep-count"><b>${fam.cards.length}</b>LAMES</div>`;
-    g.appendChild(sep);
+      <div class="fam-card-cap" style="color:${fam.accent};border-color:${fam.accent};background:${fam.accent}11">${fam.name}</div>`;
+    fc.addEventListener('click',()=>{
+      const firstCard=fam.cards[0];
+      if(firstCard) openCard(firstCard.id);
+    });
+    g.appendChild(fc);
     // Family cards
     fam.cards.forEach(c=>{
       const m=el('div','mini','');

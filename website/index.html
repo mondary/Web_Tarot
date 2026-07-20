@@ -485,10 +485,10 @@ a{color:inherit;text-decoration:none}
 
 <a class="brand" id="home-link" href="#" aria-label="Retour à l'accueil"><img src="icon.png" alt=""><span><b>Tarot</b> · Divinatoire</span><span class="brand-version">v<span id="lf-ver">3.2026.0</span></span></a>
 <nav class="mode-switch" aria-label="Choisir une vue">
-  <a class="active" href="index.html">Classique</a>
-  <a href="index_full.html">Immersive</a>
-  <a href="index_detail.html">Détaillée</a>
-  <a href="index_quick.html">Rapide</a>
+  <a class="active" href="index.html#grid">Classique</a>
+  <a href="index_full.html#grid">Immersive</a>
+  <a href="index_detail.html#grid">Détaillée</a>
+  <a href="index_quick.html#grid">Rapide</a>
 </nav>
 <div class="landing-foot" id="landing-foot">
   <a href="https://github.com/mondary/Web_Tarot" target="_blank" rel="noopener">GitHub</a>
@@ -1295,6 +1295,9 @@ function syncModeLink(){
   }));
 }
 function restoreRoute(){
+  if(location.hash==='#grid'||location.hash==='#grid'){
+    openFamily(TAROT.families[0].key);return;
+  }
   const params=new URLSearchParams(location.hash.slice(1));
   const suite=params.get('suite');
   const lame=params.get('lame');
