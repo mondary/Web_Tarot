@@ -1251,7 +1251,7 @@ function openCard(id){
   }
   const wrap = $('#detail-wrap');
   const es = card.es;
-  const esHtml = es ? `<div class="es-badges">${es.reponse ? `<span class="es-badge resp"><span class="lbl">Réponse</span> ${escHtml(es.reponse)}</span>` : ''}${es.affirmation ? `<span class="es-badge aff">« ${escHtml(es.affirmation)} »</span>` : ''}</div>` : '';
+  const esHtml = es ? `<div class="es-badges">${es.affirmation ? `<span class="es-badge aff">« ${escHtml(es.affirmation)} »</span>` : ''}${es.reponse ? `<span class="es-badge resp"><span class="lbl">Réponse</span> ${escHtml(es.reponse)}</span>` : ''}</div>` : '';
   wrap.innerHTML = `
     <header class="dossier-head">
       <div class="position"><b>${String(globalIdx+1).padStart(2,'0')}</b> / 78 · ${inFam+1}/${family.count}</div>
