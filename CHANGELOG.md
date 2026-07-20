@@ -6,7 +6,7 @@ Toutes les notes de release du projet Web Tarot. Le format de version suit `🔥
 
 ## TODO — Roadmap
 
-Statut : `2.2026.20` (barre d'actions carte + retrait du compteur)
+Statut : `2.2026.21` (boutons carte stylés au chargement + placement détaillé)
 
 ### Phase 1 — Fondations ✅
 - [x] Interface V2 unifiée (carousel d'accueil + grille par famille + vue détail)
@@ -30,6 +30,11 @@ Statut : `2.2026.20` (barre d'actions carte + retrait du compteur)
 ---
 
 ## Releases
+
+### [2.2026.21] - 2026-07-20
+#### Fixed
+- Boutons « Associations » / « Écouter la carte » désormais stylés dès l'ouverture de la carte (le CSS et les injecteurs sont exposés immédiatement, avant la restauration par hash) — corrige le bouton Association « trop gros » en classique
+- Version détaillée : la barre d'actions est placée sous le titre, à l'intérieur du header sticky (toujours visible, plus jamais sous le header)
 
 ### [2.2026.20] - 2026-07-20
 #### Changed

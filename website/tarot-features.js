@@ -999,14 +999,18 @@
   /* =========================================================
      Init
      ========================================================= */
+  // Expose card-control injectors + inject their CSS immediately, so they are
+  // ready the instant openCard() runs (e.g. on hash-restore / mode-switch
+  // navigation), which happens BEFORE waitForGlobals resolves. Without this,
+  // the buttons were injected unstyled (default browser button) or skipped.
+  window.injectVoiceButton = injectVoiceButton;
+  window.injectMirrorTrigger = injectMirrorTrigger;
+  window.stopVoice = stopVoice;
+  injectStyles();
+
   waitForGlobals(()=>{
-    injectStyles();
     injectHTML();
     wireUp();
-    // expose voice reader + mirror trigger for views
-    window.injectVoiceButton = injectVoiceButton;
-    window.injectMirrorTrigger = injectMirrorTrigger;
-    window.stopVoice = stopVoice;
     // The compact fingerprints make this warm-up instantaneous before a scan.
     const warmScanner=()=>prepareScanReferences();
     if('requestIdleCallback' in window) window.requestIdleCallback(warmScanner,{timeout:500});

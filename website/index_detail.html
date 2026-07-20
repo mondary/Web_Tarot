@@ -332,7 +332,8 @@ a{color:inherit;text-decoration:none}
    ===================================================== */
 #view-detail{overflow-y:auto;background:var(--bg-2)}
 .detail-wrap{max-width:1540px;margin:0 auto;padding:0 4vw 8rem;display:block}
-.dossier-head{position:sticky;top:0;z-index:30;display:flex;align-items:end;justify-content:space-between;gap:2rem;margin-bottom:3rem;padding:5.2rem 0 1.25rem;background:linear-gradient(var(--bg-2) 78%,rgba(10,9,7,0));border-bottom:1px solid var(--line)}
+.dossier-head{position:sticky;top:0;z-index:30;display:flex;align-items:end;justify-content:space-between;gap:2rem;margin-bottom:3rem;padding:5.2rem 0 1.25rem;background:linear-gradient(var(--bg-2) 78%,rgba(10,9,7,0));border-bottom:1px solid var(--line);flex-wrap:wrap}
+.dossier-head .tf-actions{flex:1 0 100%;order:3;margin:1.4rem 0 0;justify-content:flex-start}
 .dossier-head .eyebrow{font-family:'DM Mono',monospace;font-size:.68rem;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);margin-bottom:.8rem}
 .dossier-head h1{font-family:'Cormorant Garamond',serif;font-size:clamp(3rem,6vw,6rem);font-weight:300;line-height:.85;text-transform:uppercase}
 .dossier-head h1 em{color:var(--ac);font-style:italic;font-weight:400}
@@ -528,8 +529,8 @@ a{color:inherit;text-decoration:none}
   <div class="s-scroll"><div class="s-grid" id="s-grid"></div></div>
 </div>
 
-<script src="data.js?v=2.2026.20"></script>
-<script src="tarot-features.js?v=2.2026.20"></script>
+<script src="data.js?v=2.2026.21"></script>
+<script src="tarot-features.js?v=2.2026.21"></script>
 <script>
 /* =========================================================
    State
@@ -1507,8 +1508,8 @@ function openCard(id){
     <p class="dossier-intro">${escHtml(description)}</p>
     <div class="prose detailed-content" id="prose">${html}</div>`;
   decorateDetailedProse();
-  if(typeof injectVoiceButton==='function') injectVoiceButton($('#detail-wrap'), card);
-  if(typeof injectMirrorTrigger==='function') injectMirrorTrigger($('#detail-wrap'), card);
+  if(typeof injectVoiceButton==='function') injectVoiceButton($('#detail-wrap .dossier-head'), card);
+  if(typeof injectMirrorTrigger==='function') injectMirrorTrigger($('#detail-wrap .dossier-head'), card);
   updateLoopBar(globalIdx);
   $('#view-detail').scrollTop=0;
   switchView('detail');
