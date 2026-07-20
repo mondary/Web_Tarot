@@ -4,19 +4,19 @@
 
 **Nombre :** DOS DE OROS
 
-**RÉPONSE :** SÍ
+**RÉPONSE :** EL QUIZÁ
 
 **Mots-clés (posición vertical) :**
 
-Equilibrio financiero, dualidad, flexibilidad, adaptación, gestión de recursos, múltiples prioridades, balance entre trabajo y vida
+Equilibrio, ingenio, altibajos, adaptabilidad, flexibilidad, malabarismo en la vida, malabarismo con el dinero, transferencia de dinero, pérdidas y ganancias, ingresos y gastos, decisiones financieras, estrés financiero, asociación
 
 **Mots-clés (posición inversa) :**
 
-Desequilibre, mal manejo del dinero, prioridades confusas, estrés financiero
+Falta de equilibrio, falta de organización, malas decisiones financieras, tomadura de pelo, engaño
 
 **Afirmación :**
 
-> EQUIIBRO MIS FINANZAS Y MI VIDA CON SABIDURÍA
+> BALANCE
 
 ---
 
@@ -24,19 +24,19 @@ Desequilibre, mal manejo del dinero, prioridades confusas, estrés financiero
 
 **Nom :** DEUX DE DENIERS
 
-**RÉPONSE :** OUI
+**RÉPONSE :** PEUT-ÊTRE
 
 **Mots-clés (à l'endroit) :**
 
-Équilibre financier, dualité, flexibilité, adaptation, gestion des ressources, priorités multiples, balance entre travail et vie
+Équilibre, ingéniosité, hauts et bas, adaptabilité, flexibilité, jonglerie dans la vie, jonglerie avec l'argent, transfert d'argent, pertes et gains, revenus et dépenses, décisions financières, stress financier, association
 
 **Mots-clés (à l'envers) :**
 
-Déséquilibre, mauvaise gestion de l'argent, priorités confuses, stress financier
+Manque d'équilibre, manque d'organisation, mauvaises décisions financières, arnaque, tromperie
 
 **Affirmation :**
 
-> J'ÉQUILIBRE MES FINANCES ET MA VIE AVEC SAGESSE
+> ÉQUILIBRE
 
 ---
 

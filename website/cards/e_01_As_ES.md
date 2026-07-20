@@ -8,15 +8,15 @@
 
 **Mots-clés (posición vertical) :**
 
-Nuevas oportunidades financieras, aumento, nuevo puesto, prosperidad, nueva vía, abundancia, seguridad material, estabilidad
+Un nuevo comienzo financiero, nuevas oportunidades financieras, nuevo trabajo, nuevo negocio, dinero, inversiones, ahorros, prosperidad, seguridad, estabilidad, abundancia, manifestación
 
 **Mots-clés (posición inversa) :**
 
-Gasto imprevisto, avaricia, falta de generosidad, inestabilidad financiera, oportunidad perdida
+Falta de dinero, mal control financiero, falta de oportunidades o pérdida de oportunidades
 
 **Afirmación :**
 
-> LA ABUNDANCIA FLUYE HACÍA MÍ DE MANERAS QUE ESPERO Y NO ESPERO
+> PROSPERIDAD
 
 ---
 
@@ -28,15 +28,15 @@ Gasto imprevisto, avaricia, falta de generosidad, inestabilidad financiera, opor
 
 **Mots-clés (à l'endroit) :**
 
-Nouvelles opportunités financières, augmentation, nouveau poste, prospérité, nouvelle voie, abondance, sécurité matérielle, stabilité
+Un nouveau début financier, nouvelles opportunités financières, nouveau travail, nouveau commerce, argent, économies, épargne, prospérité, sécurité, stabilité, abondance, manifestation
 
 **Mots-clés (à l'envers) :**
 
-Dépense imprévue, avarice, manque de générosité, instabilité financière, opportunité manquée
+Manque d'argent, mauvaise gestion financière, manque d'opportunités ou perte d'opportunités
 
 **Affirmation :**
 
-> L'ABONDANCE COULE VERS MOI DE MANIÈRES QUE J'ATTENDS ET QUE JE N'ATTENDS PAS
+> PROSPÉRITÉ
 
 ---
 

@@ -8,15 +8,15 @@
 
 **Mots-clés (posición vertical) :**
 
-Equilibrio emocional, sabiduría, compasión, diplomacia, paciencia, calm, generosidad, liderazgo emocional, protección, estabilidad afectiva
+Confianza, riqueza de conocimientos, cariño, curación, buenos consejos. Alguien que entienda las motivaciones inconscientes. Un hombre en contacto con su vida emocional. Un buen amigo. Una persona madura y emocionalmente estable
 
 **Mots-clés (posición inversa) :**
 
-Manipulación emocional, inestabilidad, frialdad, desapego excesivo, tiranía emocional
+Un mal consejo, una maquinación, un fraude. Un alcohólico o drogadicto. Uno que sólo mira por sí mismo
 
 **Afirmación :**
 
-> MI SABIDURÍA EMOCIONAL GUIA MIS RELACIONES
+> EXPRESIÓN CREATIVA
 
 ---
 
@@ -28,15 +28,15 @@ Manipulación emocional, inestabilidad, frialdad, desapego excesivo, tiranía em
 
 **Mots-clés (à l'endroit) :**
 
-Équilibre émotionnel, sagesse, compassion, diplomatie, patience, calme, générosité, leadership émotionnel, protection, stabilité affective
+Confiance, richesse de connaissances, affection, guérison, bons conseils. Quelqu'un qui comprend les motivations inconscientes. Un homme en contact avec sa vie émotionnelle. Un bon ami. Une personne mature et émotionnellement stable
 
 **Mots-clés (à l'envers) :**
 
-Manipulation émotionnelle, instabilité, froideur, détachement excessif, tyrannie émotionnelle
+Mauvais conseil, machination, fraude. Un alcoolique ou toxicomane. Celui qui ne pense qu'à lui
 
 **Affirmation :**
 
-> MA SAGESSE ÉMOTIONNELLE GUIDENT MES RELATIONS
+> EXPRESSION CRÉATIVE
 
 ---
 

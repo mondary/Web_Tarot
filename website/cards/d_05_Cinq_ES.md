@@ -4,19 +4,19 @@
 
 **Nombre :** CINCO DE ESPADAS
 
-**RÉPONSE :** SÍ
+**RÉPONSE :** NO
 
 **Mots-clés (posición vertical) :**
 
-Victoria, derrota, conflicto, ganadores y perdedores, agresión, crueldad, humillación, enemigos,争い
+Rendición, cambio, alejamiento, autosacrificio, comportamiento de autosabotaje, comportamiento solapado, engaño, falta de comunicación, agresión, acoso, intimidación, abuso, violencia, crimen, violación, asesinato, asaltos
 
 **Mots-clés (posición inversa) :**
 
-Reconciliación, perdón, aprender de la derrota, crecimiento personal, resolver conflictos
+Resolución pacífica, seguir adelante, compromiso, comunicación, fin del conflicto
 
 **Afirmación :**
 
-> APRENDO DE CADA BATALLA Y CREZCO COMO PERSONA
+> DERROTA
 
 ---
 
@@ -24,19 +24,19 @@ Reconciliación, perdón, aprender de la derrota, crecimiento personal, resolver
 
 **Nom :** CINQ D'ÉPÉES
 
-**RÉPONSE :** OUI
+**RÉPONSE :** NON
 
 **Mots-clés (à l'endroit) :**
 
-Victoire, défaite, conflit, gagnants et perdants, agressivité, cruauté, humiliation, ennemis
+Rendition, changement, éloignement, autosacrifice, comportement d'autosabotage, comportement sournois, tromperie, manque de communication, agression, harcèlement, intimidation, abus, violence, crime, viol, meurtre, agressions
 
 **Mots-clés (à l'envers) :**
 
-Réconciliation, pardon, apprendre de la défaite, croissance personnelle, résoudre les conflits
+Résolution pacifique, aller de l'avant, compromis, communication, fin du conflit
 
 **Affirmation :**
 
-> J'APPRENDS DE CHAQUE BATAILLE ET JE GRANDIS EN TANT QUE PERSONNE
+> DÉFAITE
 
 ---
 

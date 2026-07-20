@@ -8,15 +8,15 @@
 
 **Mots-clés (posición vertical) :**
 
-Oportunidad financiera, nueva inversión,学习技能,好消息, praktik, estudiar, aprender un oficio, progreso gradual
+Buenas noticias en asuntos terrenales, comienzos sólidos, fijación de objetivos, oportunidad de aumentar los ingresos, libros, negociaciones. Una persona de mente abierta. Estudiantes. Eruditos. Alguien que esté dispuesto a aprender. Alguien con quien se puede contar
 
 **Mots-clés (posición inversa) :**
 
-Falta de progreso, malas inversiones, inmadurez financiera, gasto innecesario
+Malas noticias en asuntos terrenales, problemas de dinero, ignorancia. Alguien que no te aprecia
 
 **Afirmación :**
 
-> CADA PASO ME ACERCA A MI OBJETIVO FINANCIERO
+> NUEVO EMPLEO
 
 ---
 
@@ -28,15 +28,15 @@ Falta de progreso, malas inversiones, inmadurez financiera, gasto innecesario
 
 **Mots-clés (à l'endroit) :**
 
-Opportunité financière, nouvel investissement, apprendre une compétence, nouvelles positives, pratique, étudier, apprendre un métier, progrès graduel
+Bonnes nouvelles en affaires terrestres, débuts solides, fixer des objectifs, opportunité d'augmenter les revenus, livres, négociations. Une personne ouverte d'esprit. Érudits. Quelqu'un qui est disposé à apprendre. Quelqu'un sur qui on peut compter
 
 **Mots-clés (à l'envers) :**
 
-Manque de progrès, mauvais investissements, immaturité financière, dépense inutile
+Mauvaises nouvelles en affaires terrestres, problèmes d'argent, ignorance. Quelqu'un qui ne t'apprécie pas
 
 **Affirmation :**
 
-> CHAQUE PAS ME RAPPROCHE DE MON OBJECTIF FINANCIER
+> NOUVEL EMPLOI
 
 ---
 

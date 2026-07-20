@@ -8,15 +8,15 @@
 
 **Mots-clés (posición vertical) :**
 
-Ahorro, seguridad financiera, estabilidad, conservadurismo, protección, acumulación de riqueza, prudencia, control del gasto
+Aferrarse a personas/posesiones, asuntos profundos/pasados, acaparamiento, tacañería, control, posesividad, estabilidad financiera, seguridad financiera, ahorro para grandes compras o jubilación, codicia, materialismo, riqueza
 
 **Mots-clés (posición inversa) :**
 
-Avaricia, gasto excesivo, generosidad, inversiones arriesgadas, inseguridad financiera
+Deshacerse de lo viejo, dejar ir personas, posesiones o asuntos, generosidad, compartir
 
 **Afirmación :**
 
-> PROTEJO MIS RECURSOS Y LOS HAGO CRECER
+> PRESUPUESTO
 
 ---
 
@@ -28,15 +28,15 @@ Avaricia, gasto excesivo, generosidad, inversiones arriesgadas, inseguridad fina
 
 **Mots-clés (à l'endroit) :**
 
-Épargne, sécurité financière, stabilité, conservatisme, protection, accumulation de richesse, prudence, contrôle des dépenses
+S'accrocher aux personnes/possessions, affaires profondes/passées, thésaurisation, pingrerie, contrôle, possessivité, stabilité financière, sécurité financière, épargne pour gros achats ou retraite, avidité, matérialisme, richesse
 
 **Mots-clés (à l'envers) :**
 
-Avarice, dépenses excessives, générosité, investissements risqués, insécurité financière
+Se débarrasser de l'ancien, laisser partir les personnes, possessions ou affaires, générosité, partager
 
 **Affirmation :**
 
-> JE PROTÈGE MES RESSOURCES ET LES FAIS GRANDIR
+> BUDGET
 
 ---
 

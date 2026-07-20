@@ -4,19 +4,19 @@
 
 **Nombre :** DOS DE ESPADAS
 
-**RÉPONSE :** SÍ
+**RÉPONSE :** EL QUIZÁ
 
 **Mots-clés (posición vertical) :**
 
-Elección, decisión, equilibrio, indecisión, bloqueo mental, parálisis por análisis, dualidad, conflicto interno
+Estancamiento, tregua, nadar entre dos aguas, encrucijada, decisiones dificiles, elecciones dolorosas, decisiones estresantes, oposición, enfrentarse a tus miedos, estar dividido entre dos relaciones, lealtad dividida
 
 **Mots-clés (posición inversa) :**
 
-Resolución, claridad, nuevos datos, decisión tomada, liberación del bloqueo
+Indecisión, retrasos, aplazamientos, ver la verdad, mentiras que se exponen
 
 **Afirmación :**
 
-> BUSCO EL EQUILIBRIO ANTES DE TOMAR MI DECISIÓN
+> DECISIÓN
 
 ---
 
@@ -24,19 +24,19 @@ Resolución, claridad, nuevos datos, decisión tomada, liberación del bloqueo
 
 **Nom :** DEUX D'ÉPÉES
 
-**RÉPONSE :** OUI
+**RÉPONSE :** PEUT-ÊTRE
 
 **Mots-clés (à l'endroit) :**
 
-Choix, décision, équilibre, indécision, blocage mental, paralysie par analyse, dualité, conflit interne
+Stagnation, trêve, nager entre deux eaux, carrefour, décisions difficiles, choix douloureux, décisions stressantes, opposition, affronter ses peurs, être divisé entre deux relations, loyauté divisée
 
 **Mots-clés (à l'envers) :**
 
-Résolution, clarté, nouvelles données, décision prise, libération du blocage
+Indécision, retards, report, voir la vérité, mensonges qui sont exposés
 
 **Affirmation :**
 
-> JE RECHERCHE L'ÉQUILIBRE AVANT DE PRENDRE MA DÉCISION
+> DÉCISION
 
 ---
 

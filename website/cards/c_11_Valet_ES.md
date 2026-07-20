@@ -8,15 +8,15 @@
 
 **Mots-clés (posición vertical) :**
 
-Mensajes emocionales, ofertas románticas, citas, galantería, idealismo, sensibilidad, intuición, creatividad, fantasía
+Amor, consuelo, bondad, intuición, una buena idea. Un joven sensible, reflexivo, introvertido, cooperativo, tranquilo, soñador, imaginativo, psíquico, emocional o dependiente. Alguien interesado en aprender sobre temas emocionales
 
 **Mots-clés (posición inversa) :**
 
-Inmadurez emocional, fantasía excesiva, ilusión, immaturidad, dependencia emocional
+Problemas de la infancia, abusos sexuales, malas noticias, sueños rotos. Alguien que no hace planes para el mañana
 
 **Afirmación :**
 
-> ABRO MI CORAZÓN A LAS NUEVAS POSIBILIDADES EMOCIONALES
+> INTUICIÓN
 
 ---
 
@@ -28,15 +28,15 @@ Inmadurez emocional, fantasía excesiva, ilusión, immaturidad, dependencia emoc
 
 **Mots-clés (à l'endroit) :**
 
-Messages émotionnels, offres romantiques, rendez-vous, galanterie, idéalisme, sensibilité, intuition, créativité, fantaisie
+Amour, réconfort, bonté, intuition, une bonne idée. Un jeune sensible, réfléchi, introverti, coopératif, calme, rêveur, imaginatif, psychique, émotionnel ou dépendant. Quelqu'un intéressé à apprendre sur les sujets émotionnels
 
 **Mots-clés (à l'envers) :**
 
-Immaturité émotionnelle, fantaisie excessive, illusion, dépendance émotionnelle
+Problèmes d'enfance, abus sexuelles, mauvaises nouvelles, rêves brisés. Quelqu'un qui ne fait pas de plans pour demain
 
 **Affirmation :**
 
-> J'OUVRE MON CŒUR AUX NOUVELLES POSSIBILITÉS ÉMOTIONNELLES
+> INTUITION
 
 ---
 

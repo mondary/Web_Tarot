@@ -8,15 +8,15 @@
 
 **Mots-clés (posición vertical) :**
 
-Independiente, culminación, alguien que esté dispuesto a ayudar, alguien con quien se puede contar, determinación, enfoque, energía joven, curiosidad mental
+Noticias retrasadas, paciencia necesaria, ideas, inspiración, planificación, vigilancia, protección, guardia, equidad. Alguien calculador y despreocupado por los sentimientos de los demás. Comunicadores, científicos, matemáticos, aviadores, viajeros
 
 **Mots-clés (posición inversa) :**
 
-Inmadurez, impulsividad, crueldad verbal, gossip, falta de tacto, manipulación
+Malicia, hipocresía, sospecha, problemas. Alguien que se despreocupa de los sentimientos de los demás
 
 **Afirmación :**
 
-> MI DETERMINACIÓN ME LLEVA A MIS METAS
+> CURIOSIDAD
 
 ---
 
@@ -28,15 +28,15 @@ Inmadurez, impulsividad, crueldad verbal, gossip, falta de tacto, manipulación
 
 **Mots-clés (à l'endroit) :**
 
-Indépendant, accomplissement, quelqu'un de disposé à aider, quelqu'un sur qui on peut compter, détermination, concentration, énergie jeune, curiosité mentale
+Nouvelles retardées, patience nécessaire, idées, inspiration, planification, surveillance, protection, garde, équité. Quelqu'un de calculateur et indifférent aux sentiments des autres. Communicateurs, scientifiques, mathématiciens, aviateurs, voyageurs
 
 **Mots-clés (à l'envers) :**
 
-Immaturité, impulsivité, cruauté verbale, commérages, manque de tact, manipulation
+Malice, hypocrisie, suspicion, problèmes. Quelqu'un qui se désintéresse des sentiments des autres
 
 **Affirmation :**
 
-> MA DÉTERMINATION ME MÈNE À MES OBJECTIFS
+> CURIOSITÉ
 
 ---
 

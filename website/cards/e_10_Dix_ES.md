@@ -8,15 +8,15 @@
 
 **Mots-clés (posición vertical) :**
 
-Riqueza familiar, herencia, estabilidad a largo plazo, legado, seguridad, prosperidad duradera, hogar, tradiciones, éxito material, abundancia generacional
+Ganancia financiera inesperada, suma global, testamento, escrituras, fondos fiduciarios, herencia, fundamentos sólidos, privilegio, asuntos heredados, ascendencia, casa familiar/negocios/responsabilidades/valores/apoyo/asuntos/riquezas, dinero antiguo, afluencia
 
 **Mots-clés (posición inversa) :**
 
-Pérdida de estabilidad, problemas familiares con el dinero, herencias disputadas, inseguridad
+Cambios inesperados, desastre financiero, quiebra, grandes pérdidas
 
 **Afirmación :**
 
-> CONSTRUYO UN LEGADO DE ABUNDANCIA PARA LAS GENERACIONES VENIDERAS
+> CULMINACIÓN
 
 ---
 
@@ -28,15 +28,15 @@ Pérdida de estabilidad, problemas familiares con el dinero, herencias disputada
 
 **Mots-clés (à l'endroit) :**
 
-Richesse familiale, héritage, stabilité à long terme, héritage, sécurité, prospérité durable, foyer, traditions, succès matériel, abondance générationnelle
+Gain financier inattendu, somme globale, testament, actes, fonds fiduciaires, héritage, fondations solides, privilège, affaires héritées, ascendance, maison familiale/entreprises/responsabilités/valeurs/soutien/affaires/richesses, argent ancien, afflux
 
 **Mots-clés (à l'envers) :**
 
-Perte de stabilité, problèmes familiaux avec l'argent, héritages disputés, insécurité
+Changements inattendus, désastre financier, faillite, grandes pertes
 
 **Affirmation :**
 
-> JE CONSTRUIS UN HÉRITAGE D'ABONDANCE POUR LES GÉNÉRATIONS À VENIR
+> CULMINATION
 
 ---
 

@@ -8,15 +8,15 @@
 
 **Mots-clés (posición vertical) :**
 
-Responsabilidad, estabilidad, progreso gradual, trabajo constante, dedicación, confiabilidad, método, disciplina financiera
+Paciencia, perseverancia, fuentes inesperadas de dinero o ingresos. El tiempo cura todas las heridas. Personas fiables, pacientes, convencionales, dignas de confianza y trabajadoras. Alguien que persevera para alcanzar una meta
 
 **Mots-clés (posición inversa) :**
 
-Estancamiento, pereza, falta de ambición, riesgo financiero, inversones temerarias
+Avaricia, estar mal pagado, falta de inspiración, avaricia. Alguien que se precipita y comete errores. Una persona timida y sin inspiración
 
 **Afirmación :**
 
-> MI CONSTANCIA CONSTRUYE UN FUTURO SEGURO
+> RUTINA
 
 ---
 
@@ -28,15 +28,15 @@ Estancamiento, pereza, falta de ambición, riesgo financiero, inversones temerar
 
 **Mots-clés (à l'endroit) :**
 
-Responsabilité, stabilité, progrès graduel, travail constant, dévouement, fiabilité, méthode, discipline financière
+Patience, persévérance, sources inattendues d'argent ou de revenus. Le temps guérit toutes les blessures. Des personnes fiables, patients, conventionnelles, dignes de confiance et travailleuses. Quelqu'un qui persévère pour atteindre un objectif
 
 **Mots-clés (à l'envers) :**
 
-Stagnation, paresse, manque d'ambition, risque financier, investissements téméraires
+Avarice, être mal payé, manque d'inspiration, avarice. Quelqu'un qui se précipite et fait des erreurs. Une personne timide et sans inspiration
 
 **Affirmation :**
 
-> MA CONSTANCE CONSTRUIT UN AVENIR SÛR
+> ROUTINE
 
 ---
 

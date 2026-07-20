@@ -8,15 +8,15 @@
 
 **Mots-clés (posición vertical) :**
 
-Trabajo en equipo, colaboración, habilidades, craftsmanship, creación, construcción, planificación, aprendizaje, crecimiento profesional
+Aprendizaje, aprender, estudiar, crecer, trabajo duro, compromiso, construir sobre el éxito, colaboración, trabajo en equipo, determinación, objetivos, dedicación, calidad, atención al detalle, comerciante, logros, reconocimiento, recompensa
 
 **Mots-clés (posición inversa) :**
 
-Falta de colaboración, trabajo mediocre, retrasos, problemas de comunicación en el equipo
+Pérdida de tiempo, falta de ambición, retrasos, decepción, esfuerzo insignificante
 
 **Afirmación :**
 
-> MIS HABILIDADES CREAN VALOR Y ABUNDANCIA
+> TRABAJO EN EQUIPO
 
 ---
 
@@ -28,15 +28,15 @@ Falta de colaboración, trabajo mediocre, retrasos, problemas de comunicación e
 
 **Mots-clés (à l'endroit) :**
 
-Travail d'équipe, collaboration, compétences, artisanat, création, construction, planification, apprentissage, croissance professionnelle
+Apprentissage, apprendre, étudier, croître, travail acharné, engagement, construire sur le succès, collaboration, travail d'équipe, détermination, objectifs, dévouement, qualité, attention aux détails, commerçant, réalisations, reconnaissance, récompense
 
 **Mots-clés (à l'envers) :**
 
-Manque de collaboration, travail médiocre, retards, problèmes de communication dans l'équipe
+Perte de temps, manque d'ambition, retards, déception, effort insignifiant
 
 **Affirmation :**
 
-> MES COMPÉTENCES CRÉENT DE LA VALEUR ET DE L'ABONDANCE
+> TRAVAIL D'ÉQUIPE
 
 ---
 

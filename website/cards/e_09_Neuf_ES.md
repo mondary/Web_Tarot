@@ -8,15 +8,15 @@
 
 **Mots-clés (posición vertical) :**
 
-Lujo, comodidad, abundancia material, autosuficiencia, independencia financiera, logros, placer, satisfacción, bienestar, prosperidad
+Independencia, éxito, estabilidad/seguridad financiera, beneficios, prosperidad, riqueza, propiedades, abundancia, recompensas por el trabajo duro, cobro de las inversiones, negocios prósperos, estatus, libertad, sabiduría, madurez, indulgencia
 
 **Mots-clés (posición inversa) :**
 
-Derroche, materialismo excesivo, dependencia, inseguridad, gastos innecesarios
+Falta de independencia/estabilidad/seguridad, gasto imprudente, inversiones turbias
 
 **Afirmación :**
 
-> DISFRUTO DE LA ABUNDANCIA QUE HE CREADO CON MIS MANOS
+> RIQUEZA INDEPENDIENTE
 
 ---
 
@@ -28,15 +28,15 @@ Derroche, materialismo excesivo, dependencia, inseguridad, gastos innecesarios
 
 **Mots-clés (à l'endroit) :**
 
-Luxe, confort, abondance matérielle, autonomie, indépendance financière, réalisations, plaisir, satisfaction, bien-être, prospérité
+Indépendance, succès, stabilité/sécurité financière, bénéfices, prospérité, richesse, propriétés, abondance, récompenses pour le travail acharné, encaissement des investissements, entreprises prospères, statut, liberté, sagesse, maturité, indulgence
 
 **Mots-clés (à l'envers) :**
 
-Gaspillage, matérialisme excessif, dépendance, insécurité, dépenses inutiles
+Manque d'indépendance/stabilité/sécurité, dépense imprudente, investissements troubles
 
 **Affirmation :**
 
-> JE JOUIS DE L'ABONDANCE QUE J'AI CRÉÉE DE MES MAINS
+> RICHESSE INDÉPENDANTE
 
 ---
 

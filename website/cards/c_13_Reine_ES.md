@@ -8,15 +8,15 @@
 
 **Mots-clés (posición vertical) :**
 
-Amor, compasión, empatía, intuición, nutrición, creatividad, sensibilidad, calidez, comprensión, apoyo emocional, serenidad
+Una elección basada en sentimientos sinceros, imaginación, sueños, empatía, intereses ocultos, sentimientos profundos. Su madre o un sustituto de la madre puede desempeñar un papel importante en los acontecimientos del futuro próximo
 
 **Mots-clés (posición inversa) :**
 
-Codependencia, inestabilidad emocional, manipulación, victimismo, fragilidad
+Veleidad, vanidad, credulidad. Los que se sacrifican innecesariamente por los demás
 
 **Afirmación :**
 
-> MI COMPASIÓN ES UNA FUENTE DE PODER Y SANACIÓN
+> CRIANZA
 
 ---
 

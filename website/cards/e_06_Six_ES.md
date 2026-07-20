@@ -8,15 +8,15 @@
 
 **Mots-clés (posición vertical) :**
 
-Generosidad, caridad, dar y recibir, equilibrio financiero, equidad, justicia financiera, intercambio, reciprocidad
+Regalos, generosidad, caridad, donaciones, dinero, comunidad, asistencia, apoyo, empleo, compartir, amabilidad, riqueza, prosperidad, poder, autoridad, control, inversores, dar/recibir, gratitud, ser valorado, estar bien pagado
 
 **Mots-clés (posición inversa) :**
 
-Deudas, desequilibrio financiero, generosidad excesiva, dependencia, explotación
+Facturas impagadas, problemas de dinero, deudas incobrables, avaricia, egoísmo, tacañería
 
 **Afirmación :**
 
-> EL INTERCAMPIO GENEROSO CREA ABUNDANCIA PARA TODOS
+> GENEROSIDAD
 
 ---
 
@@ -28,15 +28,15 @@ Deudas, desequilibrio financiero, generosidad excesiva, dependencia, explotació
 
 **Mots-clés (à l'endroit) :**
 
-Générosité, charité, donner et recevoir, équilibre financier, équité, justice financière, échange, réciprocité
+Cadeaux, générosité, charité, dons, argent, communauté, assistance, soutien, emploi, partager, gentillesse, richesse, prospérité, pouvoir, autorité, contrôle, investisseurs, donner/recevoir, gratitude, être apprécié, être bien payé
 
 **Mots-clés (à l'envers) :**
 
-Dettes, déséquilibre financier, générosité excessive, dépendance, exploitation
+Factures impayées, problèmes d'argent, créances irrécouvrables, avidité, égoïsme, pingrerie
 
 **Affirmation :**
 
-> L'ÉCHANGE GÉNÉREUX CRÉE DE L'ABONDANCE POUR TOUS
+> GÉNÉROSITÉ
 
 ---
 

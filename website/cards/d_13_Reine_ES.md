@@ -8,15 +8,15 @@
 
 **Mots-clés (posición vertical) :**
 
-Percepción, claridad, intuición, perspicacia, inteligencia, independencia, fuerza interior, mujer ingeniosa, sabiduría, juicio imparcial, honestidad
+El pensamiento domina los sentimientos, la percepción, la perspicacia, el juicio justo, las decisiones correctas. Es el momento de defenderse y de tener claros sus deseos y necesidades. Una persona que ha sufrido pérdidas o dificultades. Una mujer inteligente, ingeniosa y analítica
 
 **Mots-clés (posición inversa) :**
 
-Crueldad, frialdad, malicia, manipulación, venganza, resentimiento
+Cotilleos, mentiras malintencionadas, prejuicios, pérdidas, desgracias. Alguien que menosprecia a la gente y en quien no se puede confiar
 
 **Afirmación :**
 
-> MI CLARIDAD MENTAL DISIPA LAS ILUSIONES
+> ASTUCIA
 
 ---
 
@@ -28,15 +28,15 @@ Crueldad, frialdad, malicia, manipulación, venganza, resentimiento
 
 **Mots-clés (à l'endroit) :**
 
-Perception, clarté, intuition, perspicacité, intelligence, indépendance, force intérieure, femme ingénieuse, sagesse, jugement impartial, honnêteté
+La pensée domine les sentiments, la perception, la perspicacité, le jugement juste, les décisions correctes. C'est le moment de se défendre et d'avoir clairement ses désirs et besoins. Une personne qui a subi des pertes ou des difficultés. Une femme intelligente, ingénieuse et analytique
 
 **Mots-clés (à l'envers) :**
 
-Cruauté, froideur, malice, manipulation, vengeance, ressentiment
+Commérages, mensonges malveillants, préjugés, pertes, malheurs. Quelqu'un qui méprise les gens et en qui on ne peut pas avoir confiance
 
 **Affirmation :**
 
-> MA CLARTÉ MENTALE DISSIP LES ILLUSIONS
+> ASTUCE
 
 ---
 

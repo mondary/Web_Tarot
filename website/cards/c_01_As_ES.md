@@ -12,11 +12,11 @@ Nuevos comienzos, nuevas relaciones, nuevos romances, amor, felicidad, alegría,
 
 **Mots-clés (posición inversa) :**
 
-Falta de amor, soledad, tristeza, infertilidad, problemas de relaciones
+Éxito, logro, realización, viaje, finalización, plenitud, sentido de pertenencia, plenitud
 
 **Afirmación :**
 
-> EL AMOR Y LA ABUNDANCIA FLUYEN NATURALMENTE EN MI VIDA
+> PROFUSIÓN
 
 ---
 
@@ -32,11 +32,11 @@ Nouveaux départs, nouvelles relations, nouvelles romances, amour, bonheur, joie
 
 **Mots-clés (à l'envers) :**
 
-Manque d'amour, solitude, tristesse, infertilité, problèmes de relations
+Succès, accomplissement, réalisation, voyage, finalisation, plénitude, sentiment d'appartenance, plénitude
 
 **Affirmation :**
 
-> L'AMOUR ET L'ABONDANCE COULENT NATURELLEMENT DANS MA VIE
+> PROFUSION
 
 ---
 

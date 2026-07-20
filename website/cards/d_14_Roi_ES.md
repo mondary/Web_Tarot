@@ -8,15 +8,15 @@
 
 **Mots-clés (posición vertical) :**
 
-Estructura, rutina, inteligente, racional, lógica, poder, autoridad, fuerza, comunicación, discernimiento, desprendimiento, cabeza sobre corazón, hombre de autoridad, analítico y sin emociones, emite juicios
+Estructura, rutina, inteligente, racional, lógica, poder, autoridad, fuerza, modales, conversación, discernimiento, desprendimiento, cabeza sobre corazón. Un hombre de autoridad, analítico y sin emociones, que emite juicios equilibrados y da excelentes consejos
 
 **Mots-clés (posición inversa) :**
 
-Tiranía, abuso de poder intelectual, frialdad extrema, desapego emocional, manipulación
+Egoísmo, despiadado, desviado. Malicia premeditada. Alguien que es demasiado precavido
 
 **Afirmación :**
 
-> MI RAZÓN Y MI JUSTICIA GOBIERNAN MIS DECISIONES
+> VERDAD
 
 ---
 
@@ -28,15 +28,15 @@ Tiranía, abuso de poder intelectual, frialdad extrema, desapego emocional, mani
 
 **Mots-clés (à l'endroit) :**
 
-Structure, routine, intelligent, rationnel, logique, pouvoir, autorité, force, communication, discernement, détachement, tête sur cœur, homme d'autorité, analytique et sans émotions, émet des jugements
+Structure, routine, intelligent, rationnel, logique, pouvoir, autorité, force, manières, conversation, discernement, détachement, tête sur cœur. Un homme d'autorité, analytique et sans émotions, qui émet des jugements équilibrés et donne d'excellents conseils
 
 **Mots-clés (à l'envers) :**
 
-Tyrannie, abus de pouvoir intellectuel, froideur extrême, détachement émotionnel, manipulation
+Égoïsme, impitoyable, déviant. Malice préméditée. Quelqu'un qui est trop prudent
 
 **Affirmation :**
 
-> MA RAISON ET MA JUSTICE GOUVERNENT MES DÉCISIONS
+> VÉRITÉ
 
 ---
 

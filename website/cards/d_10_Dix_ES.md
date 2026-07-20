@@ -4,19 +4,19 @@
 
 **Nombre :** DIEZ DE ESPADAS
 
-**RÉPONSE :** SÍ
+**RÉPONSE :** NO
 
 **Mots-clés (posición vertical) :**
 
-Puñalada por la espalda, traición, enemigos, quejas, maledicencia, amargura, fracaso, ruina, colapso, agotamiento, incapacidad para hacer frente a la situación, maldiciones, tocar fondo, tocar una pared
+Puñalada por la espalda, traición, enemigos, quejas, maledicencia, amargura, felpudo, fracaso, ruina, colapso, agotamiento, incapacidad para hacer frente a la situación, maldiciones, tocar fondo, tocar una pared
 
 **Mots-clés (posición inversa) :**
 
-Recuperación, renovación, nuevo amanecer, superar la crisis, renacimiento
+Escapar de la ruina, recomponerse, aprender de las dificultades del pasado, que los miedos se hagan realidad
 
 **Afirmación :**
 
-> DESPUÉS DE LA NOCHE MÁS LARGA, VIENE EL AMANECER
+> FINALES/DERROTA
 
 ---
 
@@ -24,19 +24,19 @@ Recuperación, renovación, nuevo amanecer, superar la crisis, renacimiento
 
 **Nom :** DIX D'ÉPÉES
 
-**RÉPONSE :** OUI
+**RÉPONSE :** NON
 
 **Mots-clés (à l'endroit) :**
 
-Coup de poignard dans le dos, trahison, ennemis, plaintes, médisance, amertume, échec, ruine, effondrement, épuisement, incapacité à faire face à la situation, malédictions, toucher le fond
+Coup de poignard dans le dos, trahison, ennemis, plaintes, médisance, amertume, paillasson, échec, ruine, effondrement, épuisement, incapacité à faire face à la situation, malédictions, toucher le fond, frapper un mur
 
 **Mots-clés (à l'envers) :**
 
-Récupération, renouveau, nouvel aube, dépassement de la crise, renaissance
+Échapper à la ruine, se recomposer, apprendre des difficultés du passé, que les peurs se réalisent
 
 **Affirmation :**
 
-> APRÈS LA NUIT LA PLUS LONGUE, VIENT L'AUBE
+> FINAUX/DÉFAITE
 
 ---
 

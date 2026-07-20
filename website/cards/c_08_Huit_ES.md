@@ -4,19 +4,19 @@
 
 **Nombre :** OCHO DE COPAS
 
-**RÉPONSE :** SÍ
+**RÉPONSE :** NO
 
 **Mots-clés (posición vertical) :**
 
-Intuición, búsqueda espiritual, retiro, meditación, alejarse, dejar atrás, transición, viaje interior
+Abandono, abandono de planes, alejarse, dejar ir, viajar, escapismo, llegar al límite, autoanálisis, autodescubrimiento, introspección, buscar más profundamente, retraimiento, decepción, buscar la verdad
 
 **Mots-clés (posición inversa) :**
 
-Regreso, estancamiento, miedo a cambiar, apego, incapacidad de irse
+Miedo a seguir adelante, estancamiento, monotonia, aceptar su suerte
 
 **Afirmación :**
 
-> SIGO MI INTUICIÓN HACIA UN CAMINO MÁS PROFUNDO
+> SEGUIR ADELANTE
 
 ---
 
@@ -24,19 +24,19 @@ Regreso, estancamiento, miedo a cambiar, apego, incapacidad de irse
 
 **Nom :** HUIT DE COUPES
 
-**RÉPONSE :** OUI
+**RÉPONSE :** NON
 
 **Mots-clés (à l'endroit) :**
 
-Intuition, quête spirituelle, retraite, méditation, s'éloigner, laisser derrière, transition, voyage intérieur
+Abandon, abandon de projets, s'éloigner, laisser partir, voyager, escapisme, atteindre la limite, auto-analyse, auto-découverte, introspection, chercher plus profondément, retrait, déception, chercher la vérité
 
 **Mots-clés (à l'envers) :**
 
-Retour, stagnation, peur de changement, attachement, incapacité de partir
+Peur d'aller de l'avant, stagnation, monotonie, accepter son sort
 
 **Affirmation :**
 
-> JE SUI MON INTUITION VERS UN CHEMIN PLUS PROFOND
+> ALLER DE L'AVANT
 
 ---
 

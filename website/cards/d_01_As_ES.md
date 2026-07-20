@@ -8,15 +8,15 @@
 
 **Mots-clés (posición vertical) :**
 
-Nuevas ideas, nuevos planes, capacidad intelectual, victoria, éxito, claridad mental, pensamiento claro, avances, capacidad de concentración, comunicación, darse cuenta de la verdad, visión, fuerza, enfoque, intensidad
+Nuevas ideas, nuevos planes, capacidad intelectual, victoria, éxito, claridad mental, pensamiento claro, avances, capacidad de concentración, comunicación, darse cuenta de la verdad, visión, fuerza, enfoque, intensidad, estimular a la gente
 
 **Mots-clés (posición inversa) :**
 
-Confusión mental, falta de claridad, malentendus, mentira, crueldad, agresión verbal
+Falta de ideas, incapacidad intelectual, fracaso, hostilidad
 
 **Afirmación :**
 
-> MI MENTE ES CLARA Y MIS IDEAS SON PODEROSAS
+> CLARIDAD
 
 ---
 
@@ -28,15 +28,15 @@ Confusión mental, falta de claridad, malentendus, mentira, crueldad, agresión 
 
 **Mots-clés (à l'endroit) :**
 
-Nouvelles idées, nouveaux projets, capacité intellectuelle, victoire, succès, clarté mentale, pensée claire, progrès, capacité de concentration, communication, prise de conscience de la vérité, vision, force, concentration, intensité
+Nouvelles idées, nouveaux projets, capacité intellectuelle, victoire, succès, clarté mentale, pensée claire, progrès, capacité de concentration, communication, prise de conscience de la vérité, vision, force, concentration, intensité, stimuler les gens
 
 **Mots-clés (à l'envers) :**
 
-Confusion mentale, manque de clarté, malentendus, mensonge, cruauté, agression verbale
+Manque d'idées, incapacité intellectuelle, échec, hostilité
 
 **Affirmation :**
 
-> MON ESPRIT EST CLAIR ET MES IDÉES SONT PUISSANTES
+> CLARTÉ
 
 ---
 

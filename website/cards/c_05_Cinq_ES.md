@@ -4,19 +4,19 @@
 
 **Nombre :** CINCO DE COPAS
 
-**RÉPONSE :** SÍ
+**RÉPONSE :** NO
 
 **Mots-clés (posición vertical) :**
 
-Pérdida, duelo, tristeza, decepción, arrepentimiento, falta, ausencia, lamento, enfoque en lo negativo
+Tristeza, pérdida, pena, desesperación, abandono, culpa, remordimiento, arrepentimiento, trauma, duelo, desamor, cambio no deseado, centrarse en las emociones negativas, aislamiento, soledad
 
 **Mots-clés (posición inversa) :**
 
-Recuperación, aceptación, seguir adelante, perdón, renovación, perspectiva
+Seguir adelante, aceptar ayuda, sanar, perdonar, reincorporarse al mundo
 
 **Afirmación :**
 
-> A TRAVÉS DEL DUELO ENCUENTRO LA FUERZA PARA SEGUIR ADELANTE
+> PÉRDIDA
 
 ---
 
@@ -24,19 +24,19 @@ Recuperación, aceptación, seguir adelante, perdón, renovación, perspectiva
 
 **Nom :** CINQ DE COUPES
 
-**RÉPONSE :** OUI
+**RÉPONSE :** NON
 
 **Mots-clés (à l'endroit) :**
 
-Perte, deuil, tristesse, déception, regret, manque, absence, lamentation, focalisation sur le négatif
+Tristesse, perte, chagrin, désespoir, abandon, culpabilité, remords, regret, trauma, deuil, désamour, changement non désiré, focalisation sur les émotions négatives, isolement, solitude
 
 **Mots-clés (à l'envers) :**
 
-Récupération, acceptation, aller de l'avant, pardon, renouveau, perspective
+Aller de l'avant, accepter l'aide, guérir, pardonner, se réintégrer au monde
 
 **Affirmation :**
 
-> À TRAVERS LE DEUIL, JE TROUVE LA FORCE D'ALLER DE L'AVANT
+> PERTE
 
 ---
 

@@ -8,15 +8,15 @@
 
 **Mots-clés (posición vertical) :**
 
-Romanticismo, idealismo, intuición, damas, sentimentales, enamoramiento, poesía, creatividad, ofrecimientos, propuestas, citas, galanteo, seducción, empatía, sueños, empatía, intereses ocultos, sentimientos profundos
+Propuestas románticas, ofertas, invitaciones, pasar a la acción, seguir tu corazón, atracción, citas, afecto. Su hombre o mujer ideal. Un joven amable, inteligente y lleno de nuevas ideas y propuestas
 
 **Mots-clés (posición inversa) :**
 
-Celos, posesividad, dependencia emocional, irrealismo, idealización excesiva
+El amor no correspondido, la ilusión, el escapismo, la mentira. Alguien con un frágil sentido de la identidad y pobres límites personales
 
 **Afirmación :**
 
-> SIGO MI CORAZÓN CON AUTENTICIDAD Y HONESTIDAD
+> EXPRESIÓN CREATIVA
 
 ---
 
@@ -28,15 +28,15 @@ Celos, posesividad, dependencia emocional, irrealismo, idealización excesiva
 
 **Mots-clés (à l'endroit) :**
 
-Romantisme, idéalisme, intuition, sentiments, amourette, poésie, créativité, offres, propositions, rendez-vous, galanterie, séduction, empathie, rêves, intérêts cachés, sentiments profonds
+Propositions romantiques, offres, invitations, passer à l'action, suivre son cœur, attraction, rendez-vous, affection. Son homme ou femme idéal. Un jeune gentil, intelligent et plein de nouvelles idées et propositions
 
 **Mots-clés (à l'envers) :**
 
-Jalousie, possessivité, dépendance émotionnelle, irréalisme, idéalisation excessive
+Amour non réciproque, illusion, escapisme, mensonge. Quelqu'un avec un sens fragile de l'identité et de faibles limites personnelles
 
 **Affirmation :**
 
-> JE SUI MON CŒUR AVEC AUTHENTICITÉ ET HONNÊTETÉ
+> EXPRESSION CRÉATIVE
 
 ---
 

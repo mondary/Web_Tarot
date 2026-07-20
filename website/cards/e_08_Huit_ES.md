@@ -8,15 +8,15 @@
 
 **Mots-clés (posición vertical) :**
 
-Trabajo duro, dedicación, habilidad, craftsmanship, perfeccionamiento, progreso gradual, compromiso con la excelencia, maestría
+Nuevo trabajo, autoempleo, creación de un negocio, oficio, reputación, artesanía, calidad, maestría, experiencia, trabajo duro, compromiso, dedicación, concentración, éxito, logro, ambición, confianza, resultados, recompensas
 
 **Mots-clés (posición inversa) :**
 
-Perfeccionismo excesivo, workaholism, falta de creatividad, monotonía, estancamiento
+Trabajo repetitivo o aburrido, el fracaso llegó, el exceso de gastos, la deuda, la pereza, la falta de cualificación
 
 **Afirmación :**
 
-> MI DEDICACIÓN PERFECCIONA MI ARTE Y CREA VALOR
+> PACIENCIA
 
 ---
 
@@ -28,15 +28,15 @@ Perfeccionismo excesivo, workaholism, falta de creatividad, monotonía, estancam
 
 **Mots-clés (à l'endroit) :**
 
-Travail acharné, dévouement, compétence, artisanat, perfectionnement, progrès graduel, engagement envers l'excellence, maîtrise
+Nouveau travail, auto-emploi, création d'une entreprise, métier, réputation, artisanat, qualité, maîtrise, expérience, travail acharné, engagement, dévouement, concentration, succès, accomplissement, ambition, confiance, résultats, récompenses
 
 **Mots-clés (à l'envers) :**
 
-Perfectionnisme excessif, workaholisme, manque de créativité, monotonie, stagnation
+Travail répétitif ou ennuyeux, l'échec est arrivé, le dépassement de dépenses, la dette, la paresse, le manque de qualification
 
 **Affirmation :**
 
-> MON DÉVOUEMENT PERFECTIONNE MON ART ET CRÉE DE LA VALEUR
+> PATIENCE
 
 ---
 

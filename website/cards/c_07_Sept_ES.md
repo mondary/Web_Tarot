@@ -4,19 +4,19 @@
 
 **Nombre :** SIETE DE COPAS
 
-**RÉPONSE :** SÍ
+**RÉPONSE :** NO
 
 **Mots-clés (posición vertical) :**
 
-Fantasía, ilusión, deseos, tentación, elección, oportunidades, fantasía, soñar despierto, distracción, tentaciones múltiples
+Muchas opciones, elecciones, múltiples posibilidades, oportunidades, escoger y elegir, decisiones, procrastinación, sueño, fantasía, ilusión, deseo, imaginación, alucinaciones, meditación
 
 **Mots-clés (posición inversa) :**
 
-Claridad, enfoque, decisiones tomadas, realidad, despertar, acción concreta
+Realidad, claridad, sobriedad, malas elecciones, falta de elección, oportunidades u opciones
 
 **Afirmación :**
 
-> ELIGO LOS SUEÑOS QUE MÁS RESUENAN CON MI VERDAD
+> SUEÑOS
 
 ---
 
@@ -24,19 +24,19 @@ Claridad, enfoque, decisiones tomadas, realidad, despertar, acción concreta
 
 **Nom :** SEPT DE COUPES
 
-**RÉPONSE :** OUI
+**RÉPONSE :** NON
 
 **Mots-clés (à l'endroit) :**
 
-Fantaisie, illusion, désirs, tentation, choix, opportunités, rêverie, distraction, tentations multiples
+Beaucoup d'options, choix, multiples possibilités, opportunités, choisir et sélectionner, décisions, procrastination, rêve, fantaisie, illusion, désir, imagination, hallucinations, méditation
 
 **Mots-clés (à l'envers) :**
 
-Clarté, concentration, décisions prises, réalité, réveil, action concrète
+Réalité, clarté, sobriété, mauvais choix, manque de choix, opportunités ou options
 
 **Affirmation :**
 
-> JE CHOISIS LES RÊVES QUI RÉSONNENT LE PLUS AVEC MA VÉRITÉ
+> RÊVES
 
 ---
 

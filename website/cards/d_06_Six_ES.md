@@ -4,19 +4,19 @@
 
 **Nombre :** SEIS DE ESPADAS
 
-**RÉPONSE :** SÍ
+**RÉPONSE :** EL QUIZÁ
 
 **Mots-clés (posición vertical) :**
 
-Transición, cambio, viaje, escapar, huir, mudanza, nueva dirección, movimiento, progreso, alejarse del pasado
+Aguas más tranquilas, curación, progreso, seguir adelante, que las cosas se calmen, calma después de una tormenta, superar las dificultades, alivio, estabilidad, escapar, huir, viajes, viajar, viajar al extranjero, ir de vacaciones, sentirse desinflado
 
 **Mots-clés (posición inversa) :**
 
-Estancamiento, resistencia al cambio, quedarse atrapado, volver al pasado, falta de progreso
+La llegada de los problemas, salir de la sartén para caer en el fuego, falta de progreso
 
 **Afirmación :**
 
-> AVANZO HACIA NUEVOS HORIZONTES CON ESPERANZA
+> TRANSICIÓN
 
 ---
 
@@ -24,19 +24,19 @@ Estancamiento, resistencia al cambio, quedarse atrapado, volver al pasado, falta
 
 **Nom :** SIX D'ÉPÉES
 
-**RÉPONSE :** OUI
+**RÉPONSE :** PEUT-ÊTRE
 
 **Mots-clés (à l'endroit) :**
 
-Transition, changement, voyage, s'échapper, fuir, déménagement, nouvelle direction, mouvement, progrès, s'éloigner du passé
+Eaux plus calmes, guérison, progrès, aller de laisser les choses se calmer, calme après une tempête, surmonter les difficultés, soulagement, stabilité, s'échapper, fuir, voyages, voyager, voyager à l'étranger, partir en vacances, se sentir dégonflé
 
 **Mots-clés (à l'envers) :**
 
-Stagnation, résistance au changement, rester bloqué, retour au passé, manque de progrès
+L'arrivée des problèmes, sortir de la poêle pour tomber dans le feu, manque de progrès
 
 **Affirmation :**
 
-> JE PROGRESSE VERS DE NOUVEAUX HORIZONS AVEC ESPOIR
+> TRANSITION
 
 ---
 

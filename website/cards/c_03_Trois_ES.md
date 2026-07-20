@@ -8,15 +8,15 @@
 
 **Mots-clés (posición vertical) :**
 
-Amor, unidad, compatibilidad, parejas felices, almas gemelas potenciales, relaciones, armonía, equilibrio, igualdad, atracción, conexión, propuestas, compromisos, matrimonio, respeto mutuo
+Reuniones, celebraciones, fiestas, socialización, encuentros, indulgencia, festivales, festividades, reuniones, felicidad, boda, fiesta de compromiso, graduación, baby shower, momentos felices
 
 **Mots-clés (posición inversa) :**
 
-Apatía, desilusión, rechazar ofertas, perder oportunidades, estancamiento, centrarse en lo negativo, aburrimiento, nostalgia, frustración, cansancio
+Exceso de indulgencia, chismes, amarguras, falta de vida social
 
 **Afirmación :**
 
-> CELEBRO LAS CONEXIONES QUE ENRIQUECEN MI VIDA
+> AMISTAD
 
 ---
 
@@ -28,15 +28,15 @@ Apatía, desilusión, rechazar ofertas, perder oportunidades, estancamiento, cen
 
 **Mots-clés (à l'endroit) :**
 
-Amour, unité, compatibilité, couples heureux, âmes sœurs potentielles, relations, harmonie, équilibre, égalité, attraction, connexion, propositions, engagements, mariage, respect mutuel
+Réunions, célébrations, fêtes, socialisation, rencontres, indulgence, festivals, festivités, réunions, bonheur, mariage, fête de fiançailles, diplôme, baby shower, moments heureux
 
 **Mots-clés (à l'envers) :**
 
-Apathie, désillusion, refuser des offres, perdre des opportunités, stagnation, se focaliser sur le négatif, ennui, nostalgie, frustration, fatigue
+Excès d'indulgence, ragots, amertumes, manque de vie sociale
 
 **Affirmation :**
 
-> JE CÉLÈBRE LES CONNEXIONS QUI ENRICHISSENT MA VIE
+> AMITIÉ
 
 ---
 

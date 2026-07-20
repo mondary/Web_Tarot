@@ -4,19 +4,19 @@
 
 **Nombre :** OCHO DE ESPADAS
 
-**RÉPONSE :** SÍ
+**RÉPONSE :** NO
 
 **Mots-clés (posición vertical) :**
 
-Curiosidad, percepción, intuición, perspicacia, juicio justo, decisiones correctas, defenderse, claridad de deseos y necesidades, persona que ha sufrido pérdidas, mujer ingeniosa
+Sentirse atrapado, restringido, acorralado, con las manos atadas, victimizado, paralizado por el miedo/terror, ansiedad, sentirse presionado, sin esperanza, impotente, silenciado, crisis, dilema, drama, encarcelamiento, castigo, esclavitud
 
 **Mots-clés (posición inversa) :**
 
-Liberación, nuevos conocimientos, apertura mental, superar restricciones, libertad
+Escapar, libertad, liberación, encontrar soluciones/opciones, alivio, tomar el control
 
 **Afirmación :**
 
-> MI CURIOSIDAD ABRE PUERTAS A NUEVOS ENTENDIMIENTOS
+> RESTRICCIÓN
 
 ---
 
@@ -24,19 +24,19 @@ Liberación, nuevos conocimientos, apertura mental, superar restricciones, liber
 
 **Nom :** HUIT D'ÉPÉES
 
-**RÉPONSE :** OUI
+**RÉPONSE :** NON
 
 **Mots-clés (à l'endroit) :**
 
-Curiosité, perception, intuition, perspicacité, jugement juste, décisions correctes, se défendre, clarté des désirs et besoins, personne qui a subi des pertes, femme ingénieuse
+Se sentir piégé, restreint, acculé, les mains liées, victimisé, paralysé par la peur/terreur, anxiété, se sentir pressé, sans espoir, impuissant, réduit au silence, crise, dilemme, drame, incarcération, punition, esclavage
 
 **Mots-clés (à l'envers) :**
 
-Libération, nouvelles connaissances, ouverture d'esprit, dépassement des restrictions, liberté
+S'échapper, liberté, libération, trouver des solutions/options, soulagement, prendre le contrôle
 
 **Affirmation :**
 
-> MA CURIOSITÉ OUVRE DES PORTES À DE NOUVELLES COMPRÉHENSIONS
+> RESTRICTION
 
 ---
 

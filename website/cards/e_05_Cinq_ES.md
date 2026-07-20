@@ -4,19 +4,19 @@
 
 **Nombre :** CINCO DE OROS
 
-**RÉPONSE :** SÍ
+**RÉPONSE :** NO
 
 **Mots-clés (posición vertical) :**
 
-Pobreza, pérdida financiera, dificultad, inseguridad, privación, soledad, aislamiento, desempleo, falta de apoyo
+Dificultades financieras temporales, cambio negativo de las circunstancias, sentirse abandonado en el frío, pérdida financiera, recesión, sentir que el mundo está en contra de uno, adversidad, lucha, dificultades, mala suerte, falta de hogar, pobreza, desempleo
 
 **Mots-clés (posición inversa) :**
 
-Recuperación financiera, nueva oportunidad, superación de la crisis, ayuda inesperada
+Desempleo, frustración, adversidad, conciencia espiritual, recuperación de la fe
 
 **Afirmación :**
 
-> A TRAVÉS DE LA DIFICULTAD ENCUENTRO MI RESILIENCIA
+> POBREZA
 
 ---
 

@@ -8,15 +8,15 @@
 
 **Mots-clés (posición vertical) :**
 
-Niños, recuerdos del pasado, influencias pasadas, inocencia, buena voluntad, sencillez, inflexibilidad, inmadurez, corrección, regalos, caridad, familia
+Arrepentirse, rechazar ofertas, perder oportunidades, estancamiento, desilusión, centrarse en lo negativo, ensimismamiento, depresión, aburrimiento, nostalgia, frustración, cansancio, meditación, soñar despierto, fantasear
 
 **Mots-clés (posición inversa) :**
 
-Nuevas perspectivas, apertura,接受 de ayuda, renovación, motovación renovada
+Aprovechar las oportunidades, dejar de lamentarse, fin del estancamiento, motivación, entusiasmo
 
 **Afirmación :**
 
-> VOLVER A LAS RAÍCES ME ENCUENTRA CON LO ESENCIAL
+> APATÍA
 
 ---
 
@@ -28,15 +28,15 @@ Nuevas perspectivas, apertura,接受 de ayuda, renovación, motovación renovada
 
 **Mots-clés (à l'endroit) :**
 
-Enfants, souvenirs du passé, influences passées, innocence, bonne volonté, simplicité, rigidité, immaturité, correction, cadeaux, charité, famille
+Se repentir, refuser des offres, perdre des opportunités, stagnation, désillusion, se focaliser sur le négatif, introspection, dépression, ennui, nostalgie, frustration, fatigue, méditation, rêver les yeux ouverts, fantasmer
 
 **Mots-clés (à l'envers) :**
 
-Nouvelles perspectives, ouverture, acceptation de l'aide, renouveau, motivation renouvelée
+Saisir les opportunités, arrêter de se lamenter, fin de la stagnation, motivation, enthousiasme
 
 **Affirmation :**
 
-> RETOURNER AUX RACINES ME RAMÈNE À L'ESSENTIEL
+> APATHIE
 
 ---
 

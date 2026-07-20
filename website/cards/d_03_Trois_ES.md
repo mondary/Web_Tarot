@@ -4,19 +4,19 @@
 
 **Nombre :** TRES DE ESPADAS
 
-**RÉPONSE :** SÍ
+**RÉPONSE :** NO
 
 **Mots-clés (posición vertical) :**
 
-Dolor, corazón roto, tristeza, pérdida, separación, duelo, angustia, sufrimiento, desamor, traición emocional
+Desgarro, traición, soledad, alejamiento, ausencia, división, depresión, separación, tristeza, angustia, infelicidad, trastorno, pena, tristeza, trastorno, confusión, alienación, pérdida, distracción, mala salud, conflicto, desilusión
 
 **Mots-clés (posición inversa) :**
 
-Recuperación, sanación, perdón, superación del dolor, nueva esperanza
+Liberación del dolor, superación de la depresión, optimismo, perdón
 
 **Afirmación :**
 
-> EL DOLOR ES TEMPORAL Y LA SANACIÓN VIENE CON EL TIEMPO
+> DOLOR
 
 ---
 
@@ -24,19 +24,19 @@ Recuperación, sanación, perdón, superación del dolor, nueva esperanza
 
 **Nom :** TROIS D'ÉPÉES
 
-**RÉPONSE :** OUI
+**RÉPONSE :** NON
 
 **Mots-clés (à l'endroit) :**
 
-Douleur, cœur brisé, tristesse, perte, séparation, deuil, angoisse, souffrance, chagrin d'amour, trahison émotionnelle
+Déchirure, trahison, solitude, éloignement, absence, division, dépression, séparation, tristesse, détresse, malheur, trouble, chagrin, tristesse, trouble, confusion, aliénation, perte, distraction, mauvaise santé, conflit, désillusion
 
 **Mots-clés (à l'envers) :**
 
-Récupération, guérison, pardon, dépassement de la douleur, nouvel espoir
+Libération de la douleur, surmontage de la dépression, optimisme, pardon
 
 **Affirmation :**
 
-> LA DOULEUR EST TEMPORAIRE ET LA GUÉRISON VIENT AVEC LE TEMPS
+> DOULEUR
 
 ---
 

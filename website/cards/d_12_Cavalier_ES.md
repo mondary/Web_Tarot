@@ -4,19 +4,19 @@
 
 **Nombre :** CABALLERO DE ESPADAS
 
-**RÉPONSE :** SÍ
+**RÉPONSE :** NO
 
 **Mots-clés (posición vertical) :**
 
-Inteligencia, ambición, velocidad, acción, determinación,沟通, asertividad, energía mental,双刃剑
+Grandes cambios/oportunidades, aprovechar el momento, lanzarse, llegada/salida, asertivo, directo, honesto, ingenio rápido, advierte contra el comportamiento impulsivo o precipitado. Una persona fuerte, asertiva y decidida. Una persona que consigue lo que quiere
 
 **Mots-clés (posición inversa) :**
 
-Agresividad, impulsividad, crueldad, frialdad, desapego, acción sin pensar
+Oportunidades perdidas, fuera de su alcance, fuera de control, cejado atrás, grosero, sin tacto, hiriente. Alguien que se opone y trastorna tus planes
 
 **Afirmación :**
 
-> MI INTELIGENCIA Y MI ACCIÓN CREAN CAMBIO REAL
+> PRISA
 
 ---
 
@@ -24,19 +24,19 @@ Agresividad, impulsividad, crueldad, frialdad, desapego, acción sin pensar
 
 **Nom :** CAVALIER D'ÉPÉES
 
-**RÉPONSE :** OUI
+**RÉPONSE :** NON
 
 **Mots-clés (à l'endroit) :**
 
-Intelligence, ambition, vitesse, action, détermination, communication, assertivité, énergie mentale
+Grands changements/opportunités, saisir le moment, se lancer, arrivée/départ, assertif, direct, honnête, esprit rapide, met en garde contre le comportement impulsif ou précipité. Une personne forte, assertive et décidée. Une personne qui obtient ce qu'elle veut
 
 **Mots-clés (à l'envers) :**
 
-Agressivité, impulsivité, cruauté, froideur, détachement, action sans réfléchir
+Opportunités perdues, hors de portée, hors de contrôle, recul, grossier, sans tact, blessant. Quelqu'un qui s'oppose et perturbe vos projets
 
 **Affirmation :**
 
-> MON INTELLIGENCE ET MON ACTION CRÉENT UN VRAI CHANGEMENT
+> HÂTE
 
 ---
 

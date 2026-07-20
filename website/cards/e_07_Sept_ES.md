@@ -8,15 +8,15 @@
 
 **Mots-clés (posición vertical) :**
 
-Paciencia, espera, crecimiento a largo plazo, inversiones, trabajo duro que da frutos, recompensa延迟 gratificación, cosechar lo sembrado
+Cosas que dan fruto, trabajo duro que da frutos, cosecha, recompensas, beneficios, resultados, pagos, manifestación de ideas o metas, herencia, cultivo, crecimiento, gestación, nutrición, perseverancia, paciencia, planificación
 
 **Mots-clés (posición inversa) :**
 
-Impaciencia, resultados lentos, frustración, falta de progreso, estancamiento
+Mala gestión empresarial/financiera, no terminar lo que se empezó
 
 **Afirmación :**
 
-> MI PACIENCIA ES RECOMPENSADA CON CRECIMIENTO DURADERO
+> HACER INVERSIONES
 
 ---
 
@@ -28,15 +28,15 @@ Impaciencia, resultados lentos, frustración, falta de progreso, estancamiento
 
 **Mots-clés (à l'endroit) :**
 
-Patience, attente, croissance à long terme, investissements, travail acharné qui porte ses fruits, récompense, satisfaction retardée, récolter ce qu'on a semé
+Choses qui portent des fruits, travail acharné qui porte ses fruits, récolte, récompenses, bénéfices, résultats, paiements, manifestation d'idées ou d'objectifs, héritage, culture, croissance, gestation, nutrition, persévérance, patience, planification
 
 **Mots-clés (à l'envers) :**
 
-Impatience, résultats lents, frustration, manque de progrès, stagnation
+Mauvaise gestion entreprise/financière, ne pas terminer ce qui a été commencé
 
 **Affirmation :**
 
-> MA PATIENCE EST RÉCOMPENSÉE PAR UNE CROISSANCE DURABLE
+> FAIRE DES INVESTISSEMENTS
 
 ---
 

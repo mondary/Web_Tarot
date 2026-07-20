@@ -4,19 +4,19 @@
 
 **Nombre :** NUEVE DE ESPADAS
 
-**RÉPONSE :** SÍ
+**RÉPONSE :** NO
 
 **Mots-clés (posición vertical) :**
 
-Angustia, ansiedad, pesadillas, culpa, preocupación, insomnio, tristeza profunda, miedo, pensamientos negativos, sufrimiento
+Miedo, ansiedad, terror, negatividad, infelicidad profunda, estrés, carga, abrumado, en el punto de ruptura, incapacidad para hacer frente o enfrentar la vida, angustia mental, culpa, arrepentimiento, remordimiento, centrarse en el pasado
 
 **Mots-clés (posición inversa) :**
 
-Esperanza, recuperación, alivio de la ansiedad, superar el miedo, nuevos comienzos
+Luz al final del túnel, recuperarse, mejorar, dejar de lado la negatividad/el estrés
 
 **Afirmación :**
 
-> A TRAVÉS DE LA OSCURIDAD ENCUENTRO LA LUZ INTERIOR
+> ANSIEDAD
 
 ---
 
@@ -24,19 +24,19 @@ Esperanza, recuperación, alivio de la ansiedad, superar el miedo, nuevos comien
 
 **Nom :** NEUF D'ÉPÉES
 
-**RÉPONSE :** OUI
+**RÉPONSE :** NON
 
 **Mots-clés (à l'endroit) :**
 
-Angoisse, anxiété, cauchemars, culpabilité, inquiétude, insomnie, tristesse profonde, peur, pensées négatives, souffrance
+Peur, anxiété, terreur, négativité, malheur profond, stress, charge, submergé, au point de rupture, incapacité à faire face ou affronter la vie, détresse mentale, culpabilité, regret, remords, focalisation sur le passé
 
 **Mots-clés (à l'envers) :**
 
-Espoir, récupération, soulagement de l'anxiété, dépassement de la peur, nouveaux départs
+Lumière au bout du tunnel, récupérer, s'améliorer, mettre de côté la négativité/le stress
 
 **Affirmation :**
 
-> À TRAVERS L'OBSCURITÉ, JE TROUVE LA LUMIÈRE INTÉRIEURE
+> ANXIÉTÉ
 
 ---
 

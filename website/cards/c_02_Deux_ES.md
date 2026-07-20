@@ -12,11 +12,11 @@ Pareja, unidad, amor, compatibilidad, parejas felices, almas gemelas potenciales
 
 **Mots-clés (posición inversa) :**
 
-Falta de armonía, problemas de relaciones, incompatibilidad, desequilibrio
+Desarmonía, desconexión, desequilibrio, desigualdad, incompatibilidad, parejas infelices
 
 **Afirmación :**
 
-> LA ARMONÍA Y EL PARTENARIADO ENRIQUECEN MI VIDA
+> AMOR
 
 ---
 
@@ -32,11 +32,11 @@ Couple, unité, amour, compatibilité, couples heureux, âmes sœurs potentielle
 
 **Mots-clés (à l'envers) :**
 
-Manque d'harmonie, problèmes de relations, incompatibilité, déséquilibre
+Disharmonie, déconnexion, déséquilibre, inégalité, incompatibilité, couples malheureux
 
 **Affirmation :**
 
-> L'HARMONIE ET LE PARTENARIAT ENRICHISSENT MA VIE
+> AMOUR
 
 ---
 

@@ -8,15 +8,15 @@
 
 **Mots-clés (posición vertical) :**
 
-Fertilidad, prosperidad, abundancia, responsabilidad, creatividad, riqueza, sentido común, nutrición, alguien que se preocupa por el bienestar de los demás, mujer capaz que es a la vez madre y empresaria
+Fertilidad, prosperidad, sensualidad, responsabilidad, creatividad, riqueza, sentido común, nutrición. Alguien que se preocupa por el bienestar de los demás. Una mujer capaz que es a la vez madre y empresaria
 
 **Mots-clés (posición inversa) :**
 
-Dependencia financiera, inseguridad, gasto excesivo, materialismo, inestabilidad
+Inseguridad, inestabilidad, miedo. Alguien perezoso, desconfiado, carente de motivación, que se siente inseguro y descuida sus responsabilidades
 
 **Afirmación :**
 
-> MI CREATIVIDAD Y MI SABIDURÍA GENERAN ABUNDANCIA
+> ABUNDANCIA
 
 ---
 
@@ -28,15 +28,15 @@ Dependencia financiera, inseguridad, gasto excesivo, materialismo, inestabilidad
 
 **Mots-clés (à l'endroit) :**
 
-Fertilité, prospérité, abondance, responsabilité, créativité, richesse, bon sens, nutrition, quelqu'un qui se préoccupe du bien-être des autres, femme capable qui est à la fois mère et entrepreneure
+Fertilité, prospérité, sensualité, responsabilité, créativité, richesse, bon sens, nutrition. Quelqu'un qui se préoccupe du bien-être des autres. Une femme capable qui est à la fois mère et entrepreneure
 
 **Mots-clés (à l'envers) :**
 
-Dépendance financière, insécurité, dépenses excessives, matérialisme, instabilité
+Insécurité, instabilité, peur. Quelqu'un de paresseux, méfiant, manquant de motivation, qui se sent insécuré et néglige ses responsabilités
 
 **Affirmation :**
 
-> MA CRÉATIVITÉ ET MA SAGESSE GÉNÈRENT DE L'ABONDANCE
+> ABONDANCE
 
 ---
 

@@ -12,11 +12,11 @@ Felicidad, familia, familias felices, reencuentros, reuniones familiares, matrim
 
 **Mots-clés (posición inversa) :**
 
-Dificultades familiares, desintegración, divorcio, conflictos domésticos, desarraigo
+Hogar/familia infeliz, familia disfuncional, hogar roto, falta de seguridad/estabilidad
 
 **Afirmación :**
 
-> LA FELICIDAD SE MANIFIESTA EN LAS CONEXIONES QUE AMO
+> MATRIMONIO
 
 ---
 
@@ -32,11 +32,11 @@ Bonheur, famille, familles heureuses, retrouvailles, réunions familiales, maria
 
 **Mots-clés (à l'envers) :**
 
-Difficultés familiales, désintégration, divorce, conflits domestiques, déracinement
+Maison/famille malheureuse, famille dysfonctionnelle, foyer brisé, manque de sécurité/stabilité
 
 **Affirmation :**
 
-> LE BONHEUR SE MANIFESTE DANS LES CONNEXIONS QUE J'AIME
+> MARIAGE
 
 ---
 

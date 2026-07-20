@@ -8,15 +8,15 @@
 
 **Mots-clés (posición vertical) :**
 
-Reuniones, celebraciones, fiestas, socialización, encuentros, indulgencia, festivales, felicidad, boda, fiesta de compromiso, graduación, momentos felices
+Niños, recuerdos de la infancia, influencias del pasado, nostalgia, reencuentros, alegría, juventud, inocencia, creatividad, amabilidad, buena voluntad, sencillez, infantilismo, inmadurez, compartir, regalos, caridad, familia, apoyo
 
 **Mots-clés (posición inversa) :**
 
-Apegos del pasado, nostalgia tóxica, idealización, resistencia al cambio, estancamiento emocional
+Dejar atrás el pasado, centrarse en el futuro, madurez, crecer, dejar el hogar
 
 **Afirmación :**
 
-> LOS RECUERDOS FELICES ALIMENTAN MI ALEGRÍA PRESENTE
+> VOLVER A LAS RAÍCES
 
 ---
 
@@ -28,15 +28,15 @@ Apegos del pasado, nostalgia tóxica, idealización, resistencia al cambio, esta
 
 **Mots-clés (à l'endroit) :**
 
-Réunions, célébrations, fêtes,社交ialisation, rencontres, indulgence, festivals, bonheur, mariage, fête de fiançailles, graduation, moments heureux
+Enfants, souvenirs d'enfance, influences du passé, nostalgie, retrouvailles, joie, jeunesse, innocence, créativité, gentillesse, bonne volonté, simplicité, infantilisme, immaturité, partage, cadeaux, charité, famille, soutien
 
 **Mots-clés (à l'envers) :**
 
-Attachements au passé, nostalgie toxique, idéalisation, résistance au changement, stagnation émotionnelle
+Laisser le passé derrière soi, se concentrer sur le futur, maturité, grandir, quitter le foyer
 
 **Affirmation :**
 
-> LES SOUVENIRS HEUREUX NOURRISSENT MA JOIE PRÉSENTE
+> RETOURNER AUX RACINES
 
 ---
 

@@ -4,19 +4,19 @@
 
 **Nombre :** CUATRO DE ESPADAS
 
-**RÉPONSE :** SÍ
+**RÉPONSE :** NO
 
 **Mots-clés (posición vertical) :**
 
-Descanso, recuperación, meditación, pausa, rejuvenecimiento, descanso mental, curación, retiro, reconstrucción
+Miedo, ansiedad, estrés, sensación de agobio, sobrecarga mental, necesidad de soledad, relajación, descanso, paz y tranquilidad, santuario, meditación, reagrupación, curación, hospitalización, introspección, planificación
 
 **Mots-clés (posición inversa) :**
 
-Inquietud, agitación, retomar la acción demasiado pronto, cansancio, burnout
+Encontrar la fuerza mental, despertar, reincorporarse al mundo, salir del aislamiento
 
 **Afirmación :**
 
-> EL DESCANSO ES NECESARIO PARA RENACE CON FUERZA
+> DESCANSO
 
 ---
 
@@ -24,19 +24,19 @@ Inquietud, agitación, retomar la acción demasiado pronto, cansancio, burnout
 
 **Nom :** QUATRE D'ÉPÉES
 
-**RÉPONSE :** OUI
+**RÉPONSE :** NON
 
 **Mots-clés (à l'endroit) :**
 
-Repos, récupération, méditation, pause, rajeunissement, repos mental, guérison, retraite, reconstruction
+Peur, anxiété, stress, sensation d'accablement, surcharge mentale, besoin de solitude, relaxation, repos, paix et tranquillité, sanctuaire, méditation, regroupement, guérison, hospitalisation, introspection, planification
 
 **Mots-clés (à l'envers) :**
 
-Inquiétude, agitation, reprise trop tôt, fatigue, burn-out
+Trouver la force mentale, se réveiller, se réintégrer au monde, sortir de l'isolement
 
 **Affirmation :**
 
-> LE REPOS EST NÉCESSAIRE POUR RENAITRE AVEC FORCE
+> REPOS
 
 ---
 

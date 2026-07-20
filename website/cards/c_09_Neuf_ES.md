@@ -8,15 +8,15 @@
 
 **Mots-clés (posición vertical) :**
 
-Deseos que se hacen realidad, realización de sueños, felicidad, alegría, cumplimiento, positividad, optimismo, satisfacción, éxito, abundancia, prosperidad, logros, recompensa, confianza, alta autoestima
+Deseos que se hacen realidad, realización de sueños, felicidad, alegría, cumplimiento, positividad, optimismo, satisfacción, éxito, abundancia, prosperidad, logros, recompensas, confianza, alta autoestima, triunfo
 
 **Mots-clés (posición inversa) :**
 
-Deseos insatisfechos, egoísmo, superficialidad, materialismo, falta de gratitud
+Sueños rotos, pesadillas, infelicidad, devastación, miseria, falta de realización
 
 **Afirmación :**
 
-> EL UNIVERSO ME MUESTRA QUE PUEDO TENER FE EN MIS SUEÑOS
+> REALIZACIÓN
 
 ---
 
@@ -28,15 +28,15 @@ Deseos insatisfechos, egoísmo, superficialidad, materialismo, falta de gratitud
 
 **Mots-clés (à l'endroit) :**
 
-Désirs qui se réalisent, accomplissement de rêves, bonheur, joie, réalisation, positivité, optimisme, satisfaction, succès, abondance, prospérité, réalisations, récompense, confiance, haute estime de soi
+Désirs qui se réalisent, accomplissement de rêves, bonheur, joie, accomplissement, positivité, optimisme, satisfaction, succès, abondance, prospérité, réalisations, récompenses, confiance, haute estime de soi, triomphe
 
 **Mots-clés (à l'envers) :**
 
-Désirs insatisfaits, égoïsme, superficialité, matérialisme, manque de gratitude
+Rêves brisés, cauchemars, malheur, dévastation, misère, manque d'accomplissement
 
 **Affirmation :**
 
-> L'UNIVERS ME MONTRE QUE JE PEUX AVOIR FOI MES RÊVES
+> RÉALISATION
 
 ---
 
