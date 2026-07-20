@@ -108,21 +108,19 @@ a{color:inherit;text-decoration:none}
 .d-name{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(3rem,6vw,5.5rem);line-height:.92;text-transform:uppercase;letter-spacing:-.01em;margin-bottom:.8rem}
 .d-name em{font-style:italic;color:var(--accent);font-weight:400}
 
-/* RÉPONSE — visible */
-.reponse-line{font-family:'DM Mono',monospace;font-size:.85rem;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);margin-bottom:2rem;font-weight:600}
-.reponse-line span{color:#fff;font-size:1.1rem;background:var(--accent);padding:.3rem .9rem;border-radius:50px;margin-left:.5rem}
+/* RÉPONSE — subtle */
+.reponse-line{font-family:'DM Mono',monospace;font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin-bottom:2.5rem;opacity:.7}
+.reponse-line span{color:var(--fg);opacity:1}
 
 /* Affirmation — HERO */
-.affirmation{font-family:'Cormorant Garamond',serif;font-weight:400;font-size:clamp(2.2rem,4.5vw,3.6rem);line-height:1.2;color:var(--fg);margin-bottom:3rem;max-width:780px;font-style:italic;border-left:3px solid var(--ac);padding-left:1.5rem}
+.affirmation{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(2rem,4vw,3.2rem);line-height:1.22;color:var(--fg);margin-bottom:3rem;max-width:780px;font-style:italic;opacity:.96}
 .affirmation::before{content:'« ';color:var(--accent);font-size:1.15em}
 .affirmation::after{content:' »';color:var(--accent);font-size:1.15em}
 
-/* Keywords — 2 columns */
-.kw-2col{display:grid;grid-template-columns:1fr 1fr;gap:2rem;margin-bottom:2rem}
-.kw-2col h3{font-family:'DM Mono',monospace;font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;color:var(--ac);margin-bottom:.8rem;padding-bottom:.5rem;border-bottom:1px solid var(--line)}
-.kw-2col ul{list-style:none;display:grid;gap:.4rem}
-.kw-2col li{position:relative;padding-left:1rem;color:#d8d2c5;font-size:.88rem;line-height:1.4}
-.kw-2col li::before{content:'◆';position:absolute;left:0;top:.32rem;color:var(--ac);font-size:.42rem}
+/* Keywords — cartouche style */
+.kw-list{display:flex;flex-wrap:wrap;gap:.5rem}
+.kw-tag{padding:.4rem 1rem;border-radius:50px;font-size:.82rem;font-weight:400;border:1px solid var(--line);color:var(--fg);background:rgba(241,237,228,.04);transition:.3s;letter-spacing:.02em}
+.kw-tag:hover{border-color:var(--accent);color:var(--accent)}
 
 /* Position indicator */
 .d-pos{position:absolute;bottom:1.5rem;left:50%;transform:translateX(-50%);z-index:60;font-family:'DM Mono',monospace;font-size:.66rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);display:flex;align-items:center;gap:1rem;padding:.5rem 1.2rem;background:rgba(5,5,5,.7);backdrop-filter:blur(10px);border:1px solid var(--line);border-radius:50px}
@@ -150,8 +148,8 @@ a{color:inherit;text-decoration:none}
   .d-card{flex:0 0 auto;padding:1rem;height:auto}
   .d-card img{height:auto;max-height:50vh}
   .d-content{padding:1.5rem 2rem 3rem;text-align:center;align-items:center}
-  .affirmation{max-width:100%;text-align:left}
-  .kw-2col{grid-template-columns:1fr;text-align:left}
+  .affirmation{max-width:100%}
+  .kw-list{justify-content:center}
 }
 </style>
 </head>
@@ -286,7 +284,6 @@ function openCard(id){
   const frKw=mdKeywords(card.md,'À L\'ENDROIT');
   const espKw=card.es&&card.es.espKeywords?card.es.espKeywords:[];
   const allKw=[...new Set([...frKw,...espKw])];
-  const reversedKw=mdKeywords(card.md,'À L\'ENVERS');
 
   const es=card.es;
   const reponseText=es&&es.reponse?es.reponse:'';
@@ -300,12 +297,9 @@ function openCard(id){
     <div class="d-card"><img src="${card.file}" alt="${card.name}"></div>
     <div class="d-content">
       <h1 class="d-name"><em>${card.name}</em></h1>
-      ${reponseText?`<div class="reponse-line">Réponse <span>${esc(reponseText)}</span></div>`:''}
+      ${reponseText?`<div class="reponse-line">Réponse · <span>${esc(reponseText)}</span></div>`:''}
       ${affirmText?`<div class="affirmation">${esc(affirmText)}</div>`:''}
-      <div class="kw-2col">
-        <div class="kw-col"><h3>À l'endroit</h3><ul>${allKw.map(k=>`<li>${esc(k)}</li>`).join('')}</ul></div>
-        <div class="kw-col"><h3>À l'envers</h3><ul>${reversedKw.map(k=>`<li>${esc(k)}</li>`).join('')}</ul></div>
-      </div>
+      <div class="kw-list">${allKw.map(k=>`<span class="kw-tag">${esc(k)}</span>`).join('')}</div>
     </div>`;
 
   $('#d-pos').innerHTML=`<button id="dp-prev">←</button><b>${String(globalIdx+1).padStart(2,'0')}</b> / ${ALL_CARDS.length}<button id="dp-next">→</button>`;
