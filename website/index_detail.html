@@ -338,7 +338,7 @@ a{color:inherit;text-decoration:none}
   .detailed-content section.primary,.detailed-content section.closing{grid-column:auto}
 }
 /* ES badges: Réponse + Affirmation */
-.es-badges{display:flex;flex-direction:column;gap:1rem;margin:1.5rem 0 2rem;align-items:flex-start}
+.es-badges{display:flex;flex-direction:column;gap:1rem;margin:2rem auto 2.5rem;align-items:center;text-align:center;max-width:700px}
 .es-badge{display:inline-flex;align-items:center;gap:.5rem;padding:.5rem 1.2rem;border-radius:999px;font-size:.85rem;font-weight:600;letter-spacing:.04em;text-transform:uppercase;line-height:1.2}
 .es-badge.resp{background:var(--ac,#c9a227);color:#fff;font-size:1rem;padding:.6rem 1.4rem}
 .es-badge.aff{font-family:'Cormorant Garamond',serif;font-weight:400;font-size:clamp(1.6rem,3vw,2.4rem);line-height:1.2;color:var(--fg);font-style:italic;border-left:3px solid var(--ac);border-radius:0;padding:.5rem 0 .5rem 1.5rem;text-transform:none;letter-spacing:0;display:block;max-width:600px}
@@ -1257,7 +1257,6 @@ function openCard(id){
       <div class="position"><b>${String(globalIdx+1).padStart(2,'0')}</b> / 78 · ${inFam+1}/${family.count}</div>
     </header>
     <h1 class="dossier-title"><em>${escHtml(card.name)}</em></h1>
-    ${esHtml}
     <div class="card-actions"></div>
     <section class="dossier-diptych">
       ${studyPlate}
@@ -1269,6 +1268,7 @@ function openCard(id){
         </div>
       </article>
     </section>
+    ${esHtml}
     <p class="dossier-intro">${escHtml(description)}</p>
     <div class="prose detailed-content" id="prose">${html}</div>`;
   decorateDetailedProse();
