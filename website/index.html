@@ -1291,7 +1291,8 @@ document.addEventListener('keydown',e=>{
 renderLanding();
 function syncModeLink(){
   document.querySelectorAll('.mode-switch a').forEach(link=>link.addEventListener('click',e=>{
-    if(location.hash){e.preventDefault();location.href=link.getAttribute('href')+location.hash;}
+    const href=link.getAttribute('href');
+    if(location.hash&&location.hash!=='#grid'&&location.hash!=='#grid#grid'){e.preventDefault();location.href=href+location.hash;}
   }));
 }
 function restoreRoute(){

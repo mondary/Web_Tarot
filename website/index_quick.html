@@ -75,7 +75,7 @@ a{color:inherit;text-decoration:none}
 .fam-card-cap{padding:.5rem .7rem;border-top:1px solid var(--ac);font-family:'DM Mono',monospace;font-size:.55rem;letter-spacing:.2em;text-transform:uppercase;color:var(--ac);text-align:center;background:rgba(201,162,39,.06)}
 
 /* Card mini */
-.mini{position:relative;border-radius:.9rem;overflow:hidden;background:var(--mat);border:1px solid var(--mat-line);cursor:pointer;transition:.5s var(--ease);display:flex;flex-direction:column;box-shadow:0 10px 28px rgba(0,0,0,.35)}
+.mini{position:relative;border-radius:.9rem;overflow:hidden;background:var(--mat);border:1px solid var(--mat-line);cursor:pointer;transition:.5s var(--ease);display:flex;flex-direction:column;aspect-ratio:2/3;box-shadow:0 10px 28px rgba(0,0,0,.35)}
 .mini:hover{transform:translateY(-6px);border-color:var(--ac);box-shadow:0 16px 40px rgba(0,0,0,.5)}
 .mini .ph{aspect-ratio:2/3;display:flex;align-items:center;justify-content:center;padding:.5rem;position:relative}
 .mini .ph img{height:100%;object-fit:contain;transition:transform .6s var(--ease)}
@@ -180,9 +180,9 @@ a{color:inherit;text-decoration:none}
 <!-- ============ LANDING — full grid ============ -->
 <section class="view active" id="view-landing">
   <div class="landing-head">
-    <h1>Lecture <em>Rapide</em></h1>
+    <h1 style="cursor:pointer" id="landing-title">Lecture <em>Rapide</em></h1>
     <p class="sub">78 lames · réponse · affirmation · mots-clés. Un parcours direct à travers le Tarot de Waite.</p>
-    <div class="hint-key">Recherche <kbd>F</kbd> ou <kbd>⌘F</kbd> · Navigation <kbd>←</kbd> <kbd>→</kbd> · Retour <kbd>Esc</kbd></div>
+    <div class="hint-key">Recherche (taper) · Navigation <kbd>←</kbd> <kbd>→</kbd> · Retour <kbd>Esc</kbd></div>
   </div>
   <div class="full-grid" id="full-grid"></div>
 </section>
@@ -360,6 +360,7 @@ function paintSearchSel(){
 
 /* ---- Events ---- */
 $('#back-btn').addEventListener('click',()=>{ if(state.view==='detail') goHome(); });
+$('#landing-title').addEventListener('click',()=>{ if(state.view==='detail') goHome(); });
 
 document.addEventListener('keydown',e=>{
   if(search.open){
