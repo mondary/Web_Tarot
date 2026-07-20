@@ -1,0 +1,7 @@
+# 17 — L'ÉTOILE
+
+**Nom :** L'ÉTOILE
+
+**Affirmation :**
+
+> HARMONIE RAYONNANTE ET ÉQUILIBRE ACTIF

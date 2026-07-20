@@ -1,0 +1,7 @@
+# 13 — LA MORT
+
+**Nom :** LA MORT
+
+**Affirmation :**
+
+> LA FIN D'UN CYCLE ET LA RÉAPPARITION D'UN AUTRE

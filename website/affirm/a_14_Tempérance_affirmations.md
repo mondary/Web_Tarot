@@ -1,0 +1,7 @@
+# 14 — LA TEMPÉRANCE
+
+**Nom :** LA TEMPÉRANCE
+
+**Affirmation :**
+
+> SPIRITUALITÉ ET PENSÉE POSITIVE

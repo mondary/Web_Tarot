@@ -12,6 +12,14 @@
   const esc = s=>String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
   const LOCAL_DATE_KEY = ()=>{const n=new Date();return[n.getFullYear(),String(n.getMonth()+1).padStart(2,'0'),String(n.getDate()).padStart(2,'0')].join('-');};
 
+  /* ---- Extraction mots-clés depuis le md ---- */
+  function extractKeywords(md){
+    if(!md) return [];
+    const m=md.match(/### À l['']endroit\s*\n([\s\S]*?)(?=^### |^## |(?![\s\S]))/i);
+    if(!m) return [];
+    return[...m[1].matchAll(/^-\s+(.+)$/gm)].map(([,v])=>v.trim());
+  }
+
   /* ---- Définitions des 7 tirages ---- */
   const SPREADS = [
     {
@@ -165,19 +173,21 @@
   padding:2rem 2rem 4rem;gap:1.5rem}
 
 /* Carte retournée */
-.sp-card{position:relative;border-radius:.8rem;overflow:hidden;cursor:pointer;
-  width:120px;aspect-ratio:2/3;perspective:800px;flex-shrink:0}
+.sp-card{position:relative;border-radius:.9rem;overflow:hidden;cursor:pointer;
+  width:170px;aspect-ratio:2/3;perspective:800px;flex-shrink:0}
 .sp-card-inner{position:relative;width:100%;height:100%;transition:transform .7s cubic-bezier(.16,1,.3,1);transform-style:preserve-3d}
 .sp-card.revealed .sp-card-inner{transform:rotateY(180deg)}
-.sp-card-face{position:absolute;inset:0;border-radius:.8rem;overflow:hidden;backface-visibility:hidden;-webkit-backface-visibility:hidden}
+.sp-card-face{position:absolute;inset:0;border-radius:.9rem;overflow:hidden;backface-visibility:hidden;-webkit-backface-visibility:hidden}
 .sp-card-back{background:linear-gradient(135deg,#0a0907,#15110d);border:1px solid rgba(201,162,39,.12);
   display:grid;place-items:center}
 .sp-card-back svg{width:40%;height:40%;color:rgba(201,162,39,.15)}
-.sp-card-front{transform:rotateY(180deg);background:#fff;padding:.4rem;display:flex;align-items:center;justify-content:center}
+.sp-card-front{transform:rotateY(180deg);background:#fff;display:flex;flex-direction:column}
+.sp-card-front .sp-card-imgwrap{flex:1;display:flex;align-items:center;justify-content:center;padding:.4rem;overflow:hidden}
 .sp-card-front img{height:100%;width:auto;object-fit:contain}
-.sp-card-front .sp-card-label{position:absolute;bottom:0;left:0;right:0;background:rgba(0,0,0,.8);color:#fff;
-  padding:.25rem .5rem;font-family:'DM Mono',monospace;font-size:.52rem;letter-spacing:.1em;text-transform:uppercase;
-  text-align:center;backdrop-filter:blur(4px)}
+.sp-card-front .sp-card-info{padding:.4rem .5rem .45rem;background:#fff;border-top:1px solid rgba(0,0,0,.06);text-align:center}
+.sp-card-front .sp-card-info .nm{font-family:'Cormorant Garamond',serif;font-size:.82rem;font-weight:600;color:#1c1814;line-height:1;display:block}
+.sp-card-front .sp-card-info .no{font-family:'DM Mono',monospace;font-size:.5rem;color:#a59c8e;letter-spacing:.08em}
+.sp-card-front .sp-card-info .kw{margin-top:.2rem;font-size:.55rem;color:#6f6a5f;line-height:1.2;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
 
 /* Position label */
 .sp-pos{display:flex;flex-direction:column;align-items:center;gap:.5rem}
@@ -234,10 +244,53 @@
 .sp-reveal-all:hover{background:rgba(201,162,39,.1);border-color:#c9a227}
 
 @media(max-width:600px){
-  .sp-card{width:85px}
+  .sp-card{width:130px}
   .sp-layout-row{gap:.8rem}
-  .sp-layout-celtic .sp-card{width:60px}
-  .sp-layout-celtic{transform:scale(.85)}
+  .sp-layout-celtic .sp-card{width:65px}
+  .sp-layout-celtic{transform:scale(.8)}
+}
+
+/* Drawer (monte du bas) — vue rapide */
+#sp-drawer{position:fixed;inset:0;z-index:8200;display:none}
+#sp-drawer.open{display:block}
+.sp-drawer-backdrop{position:absolute;inset:0;background:rgba(0,0,0,.6);opacity:0;transition:opacity .4s}
+#sp-drawer.open .sp-drawer-backdrop{opacity:1}
+.sp-drawer-panel{position:absolute;bottom:0;left:0;right:0;max-height:88vh;background:#0a0907;
+  border-radius:1.4rem 1.4rem 0 0;border-top:1px solid rgba(241,237,228,.1);
+  transform:translateY(100%);transition:transform .45s cubic-bezier(.16,1,.3,1);
+  overflow-y:auto;overscroll-behavior:contain;display:flex;flex-direction:column}
+#sp-drawer.open .sp-drawer-panel{transform:translateY(0)}
+.sp-drawer-handle{flex:0 0 auto;width:40px;height:4px;background:rgba(241,237,228,.15);border-radius:50px;margin:.8rem auto .4rem}
+.sp-drawer-close{position:absolute;top:1rem;right:1.2rem;z-index:5;background:none;border:none;color:#8a8378;cursor:pointer;padding:.3rem;transition:color .3s}
+.sp-drawer-close:hover{color:#f1ede4}
+.sp-drawer-close svg{width:20px;height:20px}
+.sp-drawer-body{padding:1rem 2rem 3rem;display:flex;gap:2rem;align-items:flex-start}
+.sp-drawer-card{flex:0 0 auto;width:200px}
+.sp-drawer-card img{width:100%;border-radius:.8rem}
+.sp-drawer-card .sp-drawer-num{font-family:'DM Mono',monospace;font-size:.58rem;letter-spacing:.16em;
+  text-transform:uppercase;color:#8a8378;margin-top:.5rem;text-align:center}
+.sp-drawer-content{flex:1;min-width:0}
+.sp-drawer-content h3{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(1.8rem,3vw,2.8rem);
+  line-height:.95;text-transform:uppercase;letter-spacing:-.01em;margin-bottom:.5rem}
+.sp-drawer-content h3 em{font-style:italic;color:var(--ac,#c9a227);font-weight:400}
+.sp-drawer-meta{font-family:'DM Mono',monospace;font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;
+  color:#8a8378;margin-bottom:.8rem}
+.sp-drawer-reponse{display:inline-block;padding:.4rem 1rem;border-radius:50px;font-size:.85rem;font-weight:700;
+  letter-spacing:.03em;text-transform:uppercase;background:var(--ac,#c9a227);color:#fff;margin-bottom:.6rem}
+.sp-drawer-affirm{font-family:'Cormorant Garamond',serif;font-weight:400;font-size:clamp(1.1rem,2vw,1.6rem);
+  line-height:1.2;color:#f1ede4;font-style:italic;border-left:3px solid var(--ac,#c9a227);
+  padding-left:1rem;margin-bottom:1.2rem}
+.sp-drawer-kw{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-bottom:1rem}
+.sp-drawer-kw h4{font-family:'DM Mono',monospace;font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--ac,#c9a227);margin-bottom:.5rem;padding-bottom:.4rem;border-bottom:1px solid rgba(241,237,228,.08)}
+.sp-drawer-kw ul{list-style:none;display:grid;gap:.35rem}
+.sp-drawer-kw li{position:relative;padding-left:.8rem;color:#d8d2c5;font-size:.82rem;line-height:1.3}
+.sp-drawer-kw li::before{content:'◆';position:absolute;left:0;top:.3rem;color:var(--ac,#c9a227);font-size:.35rem}
+@media(max-width:700px){
+  .sp-drawer-body{flex-direction:column;align-items:center;text-align:center}
+  .sp-drawer-card{width:160px}
+  .sp-drawer-affirm{text-align:left}
+  .sp-drawer-kw{text-align:left}
 }
 `;
 
@@ -407,6 +460,7 @@
 
     cards.forEach((card,i)=>{
       const pos=spreadDef.positions[i]||{label:'',desc:''};
+      const kw=extractKeywords(card.md).slice(0,3);
       positionsHtml+=`
         <div class="sp-pos" data-idx="${i}">
           ${spreadDef.layout==='name'?`<div class="sp-name-letter">${pos.label}</div>`:''}
@@ -416,8 +470,12 @@
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width=".5"><circle cx="12" cy="12" r="11"/><path d="M12 1v22M1 12h22M4 4l16 16M20 4 4 20"/></svg>
               </div>
               <div class="sp-card-face sp-card-front">
-                <img src="${card.file}" alt="${esc(card.name)}" loading="lazy">
-                <div class="sp-card-label">${esc(card.name)}</div>
+                <div class="sp-card-imgwrap"><img src="${card.file}" alt="${esc(card.name)}" loading="lazy"></div>
+                <div class="sp-card-info">
+                  <span class="nm">${esc(card.name)}</span>
+                  <span class="no">${String(card.num).padStart(2,'0')} · ${esc(card.familyName)}</span>
+                  ${kw.length?`<div class="kw">${kw.map(k=>esc(k)).join(' · ')}</div>`:''}
+                </div>
               </div>
             </div>
           </div>
@@ -483,18 +541,10 @@
 
   function revealCard(el){
     if(el.classList.contains('revealed')) {
-      // Si déjà révélée → ouvrir la fiche
+      // Si déjà révélée → ouvrir le drawer
       const id=el.dataset.id;
       const card=ALL_CARDS.find(c=>c.id===id);
-      if(card){
-        closeSpread();
-        // Utiliser le hash pour ouvrir la carte dans la vue courante
-        const suite=card.family;
-        location.hash=`suite=${suite}&lame=${id}`;
-        // Tenter d'appeler openCard si disponible
-        if(typeof openCard==='function'){setTimeout(()=>openCard(id),100);}
-        else if(typeof window.opener!=='undefined'&&window.opener.openCard){window.opener.openCard(id);}
-      }
+      if(card) openDrawer(card,el.dataset.idx);
       return;
     }
     el.classList.add('revealed');
@@ -513,7 +563,64 @@
   }
 
   function openSpread(){const s=$('#sp-spread');if(s)s.classList.add('open');document.body.style.overflow='hidden';}
-  function closeSpread(){const s=$('#sp-spread');if(s){s.classList.remove('open');s.innerHTML='';}document.body.style.overflow='';}
+  function closeSpread(){const s=$('#sp-spread');if(s){s.classList.remove('open');s.innerHTML='';}closeDrawer();document.body.style.overflow='';}
+
+  /* ---- Drawer (vue rapide) ---- */
+  function openDrawer(card,idx){
+    const posLabel = currentSpread && currentSpread.positions[idx] ? currentSpread.positions[idx].label : '';
+    const kw=extractKeywords(card.md);
+    const kwEndroit=kw.slice(0,4);
+    const kwEnvers=extractKeywordsReversed(card.md).slice(0,4);
+    const es=card.es||{};
+    const fam=TAROT.families.find(f=>f.key===card.family);
+    const ac=fam?fam.accent:'#c9a227';
+
+    let drawer=$('#sp-drawer');
+    if(!drawer){
+      drawer=document.createElement('div');
+      drawer.id='sp-drawer';
+      document.body.appendChild(drawer);
+    }
+    drawer.innerHTML=`
+      <div class="sp-drawer-backdrop" id="sp-drawer-bd"></div>
+      <button class="sp-drawer-close" id="sp-drawer-x"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 6 12 12M18 6 6 18"/></svg></button>
+      <div class="sp-drawer-panel">
+        <div class="sp-drawer-handle"></div>
+        <div class="sp-drawer-body" style="--ac:${ac}">
+          <div class="sp-drawer-card">
+            <img src="${card.file}" alt="${esc(card.name)}">
+            <div class="sp-drawer-num">${String(card.num).padStart(2,'0')} / 78 · ${esc(card.familyName)}</div>
+          </div>
+          <div class="sp-drawer-content">
+            ${posLabel?`<div class="sp-drawer-meta">${esc(posLabel)}</div>`:''}
+            <h3><em>${esc(card.name)}</em></h3>
+            <div class="sp-drawer-meta">${esc(card.element)} · ${esc(card.familyName)}</div>
+            ${es.reponse?`<div class="sp-drawer-reponse">${esc(es.reponse)}</div>`:''}
+            ${es.affirmation?`<div class="sp-drawer-affirm">« ${esc(es.affirmation)} »</div>`:''}
+            ${(kwEndroit.length||kwEnvers.length)?`<div class="sp-drawer-kw">
+              ${kwEndroit.length?`<div><h4>À l'endroit</h4><ul>${kwEndroit.map(k=>`<li>${esc(k)}</li>`).join('')}</ul></div>`:''}
+              ${kwEnvers.length?`<div><h4>À l'envers</h4><ul>${kwEnvers.map(k=>`<li>${esc(k)}</li>`).join('')}</ul></div>`:''}
+            </div>`:''}
+          </div>
+        </div>
+      </div>`;
+
+    drawer.classList.add('open');
+    $('#sp-drawer-bd').addEventListener('click',closeDrawer);
+    $('#sp-drawer-x').addEventListener('click',closeDrawer);
+  }
+
+  function closeDrawer(){
+    const d=$('#sp-drawer');
+    if(d){d.classList.remove('open');}
+  }
+
+  function extractKeywordsReversed(md){
+    if(!md) return [];
+    const m=md.match(/### À l['']envers\s*\n([\s\S]*?)(?=^### |^## |(?![\s\S]))/i);
+    if(!m) return [];
+    return[...m[1].matchAll(/^-\s+(.+)$/gm)].map(([,v])=>v.trim());
+  }
 
   /* ---- Init ---- */
   if(document.readyState==='loading'){

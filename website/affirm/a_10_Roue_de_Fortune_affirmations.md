@@ -1,0 +1,7 @@
+# 10 — LA ROUE DE FORTUNE
+
+**Nom :** LA ROUE DE FORTUNE
+
+**Affirmation :**
+
+> LE CYCLE PERPÉTUEL DE LA VIE

@@ -1,0 +1,7 @@
+# 0 — LE FOU / THE FOOL
+
+**Nom :** LE FOU
+
+**Affirmation :**
+
+> IL EST TEMPS DE S'EMBARQUER SUR UN NOUVEAU DÉPART
