@@ -394,7 +394,8 @@ if(location.hash && location.hash.length>1){
 document.querySelectorAll('#mode-switch a').forEach(link=>{
   link.addEventListener('click',e=>{
     e.preventDefault();
-    window.location.assign(link.href);
+    e.stopPropagation();
+    window.location.href = link.getAttribute('href');
   });
 });
 </script>
