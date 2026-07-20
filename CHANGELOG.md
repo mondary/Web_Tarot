@@ -6,7 +6,7 @@ Toutes les notes de release du projet Web Tarot. Le format de version suit `🔥
 
 ## TODO — Roadmap
 
-Statut : `2.2026.14` (Miroir des Lames et correction de la vue classique)
+Statut : `2.2026.15` (grille des associations, vocal et carte du jour personnalisés)
 
 ### Phase 1 — Fondations ✅
 - [x] Interface V2 unifiée (carousel d'accueil + grille par famille + vue détail)
@@ -30,6 +30,14 @@ Statut : `2.2026.14` (Miroir des Lames et correction de la vue classique)
 ---
 
 ## Releases
+
+### [2.2026.15] - 2026-07-20
+#### Changed
+- Remplacement du Miroir par une grille complète présentant toutes les associations dans une seule fenêtre, organisée par suite
+- Carte du jour tirée aléatoirement par navigateur puis conservée pour chaque date locale
+#### Fixed
+- Lecteur vocal : utilise désormais le parseur Markdown local dans les trois vues
+- Compteur de combinaisons fiable malgré les ponctuations atypiques de certaines sources
 
 ### [2.2026.14] - 2026-07-20
 #### Added

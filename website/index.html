@@ -494,7 +494,7 @@ a{color:inherit;text-decoration:none}
   <a href="index_detail.html">Détaillée</a>
 </nav>
 <div class="landing-foot" id="landing-foot">
-  <span class="ver">v<span id="lf-ver">2.2026.14</span></span>
+  <span class="ver">v<span id="lf-ver">2.2026.15</span></span>
   <a href="https://github.com/mondary/Web_Tarot" target="_blank" rel="noopener">GitHub</a>
   <a href="https://mondary.design" target="_blank" rel="noopener">mondary.design</a>
 </div>
@@ -1094,7 +1094,7 @@ function openDraws(){
   draws.open = true;
   $('#draws').classList.add('open');
   // Marquer la carte du jour si déjà tirée
-  const today = new Date().toISOString().slice(0,10);
+  const today = localDateKey();
   const drawn = localStorage.getItem('tarot_cjd_'+today);
   const item = $('#draw-today');
   item.classList.toggle('disabled', false);
@@ -1125,9 +1125,21 @@ function strSeed(str){
 }
 
 function cardOfTheDay(){
-  const today = new Date().toISOString().slice(0,10);
-  const rng = strSeed('cjd|'+today);
-  return ALL_CARDS[Math.floor(rng()*ALL_CARDS.length)];
+  const today = localDateKey();
+  const storageKey = 'tarot_cjd_'+today;
+  const saved = localStorage.getItem(storageKey);
+  const existing = saved && ALL_CARDS.find(card=>card.id===saved);
+  if(existing) return existing;
+  const random = new Uint32Array(1);
+  crypto.getRandomValues(random);
+  const card = ALL_CARDS[random[0] % ALL_CARDS.length];
+  localStorage.setItem(storageKey,card.id);
+  return card;
+}
+
+function localDateKey(){
+  const now = new Date();
+  return [now.getFullYear(),String(now.getMonth()+1).padStart(2,'0'),String(now.getDate()).padStart(2,'0')].join('-');
 }
 
 function revealCard(card, label){
@@ -1170,7 +1182,7 @@ $('#draws-close').addEventListener('click',closeDraws);
 $('#draws').addEventListener('click',e=>{ if(e.target===$('#draws')) closeDraws(); });
 $('#draw-today').addEventListener('click',()=>{
   const card = cardOfTheDay();
-  const today = new Date().toISOString().slice(0,10);
+  const today = localDateKey();
   localStorage.setItem('tarot_cjd_'+today, card.id);
   closeDraws();
   revealCard(card, 'Carte du jour · '+today.split('-').reverse().join('/'));

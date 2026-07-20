@@ -219,6 +219,35 @@
   .tf-mirror-trigger span:not(.glyph){display:none}
   .tf-mirror-trigger{padding:.55rem .7rem}
 }
+
+/* Grille complète : toutes les associations restent dans une seule lecture. */
+#tf-mirror{overflow:hidden;background:rgba(5,5,5,.97)}
+.tf-mirror-top{flex:0 0 auto;border-bottom:1px solid rgba(241,237,228,.08)}
+.tf-association-summary{flex:0 0 auto;padding:.85rem max(1rem,env(safe-area-inset-left));text-align:center;color:var(--muted,#8a8378);font-family:'DM Mono',monospace;font-size:.58rem;letter-spacing:.16em;text-transform:uppercase}
+.tf-mirror-grid{flex:1;overflow-y:auto;overscroll-behavior:contain;padding:0 max(1.4rem,env(safe-area-inset-left)) 3rem;scroll-behavior:smooth}
+.tf-assoc-section{max-width:1100px;margin:0 auto;padding:1.8rem 0;border-bottom:1px solid rgba(241,237,228,.08)}
+.tf-assoc-section:last-child{border-bottom:0}
+.tf-assoc-section h2{margin:0 0 1rem;color:var(--ac);font-family:'Cormorant Garamond',serif;font-size:clamp(1.45rem,2.4vw,2rem);font-weight:300;letter-spacing:.03em}
+.tf-assoc-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.7rem}
+.tf-assoc-item{display:grid;grid-template-columns:52px minmax(0,1fr);gap:.85rem;align-items:start;padding:.8rem;border:1px solid rgba(241,237,228,.08);background:rgba(241,237,228,.025);transition:border-color .18s ease,transform .18s ease}
+.tf-assoc-item:hover,.tf-assoc-item:focus-within{border-color:var(--ac);transform:translateY(-2px)}
+.tf-assoc-item img{width:52px;height:78px;object-fit:cover;border-radius:.25rem;background:#12100d}
+.tf-assoc-pair{display:flex;flex-wrap:wrap;gap:.25rem .4rem;align-items:baseline;margin-bottom:.4rem;font-family:'DM Mono',monospace;font-size:.58rem;line-height:1.4;letter-spacing:.06em;text-transform:uppercase;color:var(--muted,#8a8378)}
+.tf-assoc-pair strong{color:var(--fg,#f1ede4);font-weight:500}
+.tf-assoc-item p{margin:0;color:rgba(241,237,228,.78);font-family:'Cormorant Garamond',serif;font-size:1.05rem;line-height:1.38}
+@media (max-width:720px){
+  .tf-mirror-grid{padding:0 1rem 2rem}
+  .tf-association-summary{font-size:.52rem;letter-spacing:.1em}
+  .tf-assoc-section{padding:1.35rem 0}
+  .tf-assoc-list{grid-template-columns:1fr}
+  .tf-assoc-item{grid-template-columns:44px minmax(0,1fr);gap:.7rem;padding:.7rem}
+  .tf-assoc-item img{width:44px;height:66px}
+  .tf-assoc-item p{font-size:1rem}
+}
+@media (prefers-reduced-motion:reduce){
+  #tf-mirror,.tf-assoc-item{transition:none}
+  .tf-mirror-grid{scroll-behavior:auto}
+}
 `;
     const style = document.createElement('style');
     style.id = 'tf-styles';
@@ -292,23 +321,13 @@
   <div class="tf-mirror-top">
     <button class="tf-mirror-close" id="tf-mirror-close" aria-label="Fermer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 6 12 12M18 6 6 18"/></svg></button>
     <div class="tf-mirror-title-wrap">
-      <div class="tf-mirror-kicker">Miroir des Lames</div>
+      <div class="tf-mirror-kicker">Grille des associations</div>
       <div class="tf-mirror-title" id="tf-mirror-title"></div>
     </div>
     <div style="width:42px"></div>
   </div>
-  <div class="tf-mirror-filters" id="tf-mirror-filters"></div>
-  <div class="tf-mirror-stage">
-    <div class="tf-mirror-card left" id="tf-mirror-current"></div>
-    <div class="tf-mirror-divider"><span class="line"></span><span class="glyph">✦</span><span class="line"></span></div>
-    <div class="tf-mirror-card right" id="tf-mirror-partner"></div>
-  </div>
-  <div class="tf-mirror-text-wrap"><p class="tf-mirror-text" id="tf-mirror-text"></p></div>
-  <div class="tf-mirror-nav">
-    <button id="tf-mirror-prev" aria-label="Précédent"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M15 6l-6 6 6 6"/></svg></button>
-    <div class="tf-mirror-counter" id="tf-mirror-counter"></div>
-    <button id="tf-mirror-next" aria-label="Suivant"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 6l6 6-6 6"/></svg></button>
-  </div>
+  <div class="tf-association-summary" id="tf-association-summary"></div>
+  <div class="tf-mirror-grid" id="tf-mirror-grid"></div>
 </div>
 `);
   }
@@ -330,9 +349,21 @@
   }
 
   function cardOfTheDay(){
-    const today = new Date().toISOString().slice(0,10);
-    const rng = strSeed('cjd|'+today);
-    return ALL_CARDS[Math.floor(rng()*ALL_CARDS.length)];
+    const today = localDateKey();
+    const storageKey = 'tarot_cjd_'+today;
+    const saved = localStorage.getItem(storageKey);
+    const existing = saved && ALL_CARDS.find(card => card.id === saved);
+    if(existing) return existing;
+    const random = new Uint32Array(1);
+    crypto.getRandomValues(random);
+    const card = ALL_CARDS[random[0] % ALL_CARDS.length];
+    localStorage.setItem(storageKey, card.id);
+    return card;
+  }
+
+  function localDateKey(){
+    const now = new Date();
+    return [now.getFullYear(),String(now.getMonth()+1).padStart(2,'0'),String(now.getDate()).padStart(2,'0')].join('-');
   }
 
   const draws = { open:false };
@@ -342,7 +373,7 @@
     const d = document.getElementById('tf-draws');
     if(!d) return;
     d.classList.add('open');
-    const today = new Date().toISOString().slice(0,10);
+    const today = localDateKey();
     const drawn = localStorage.getItem('tarot_cjd_'+today);
     const item = document.getElementById('tf-draw-today');
     if(!item) return;
@@ -558,13 +589,13 @@
     if(!card||!card.md) return '';
     const md = card.md;
     // Extract interpretation sections (theme sections after Interprétation)
-    const interp = mdSection(md,'Interprétation') || '';
-    const amour = mdSection(md,/(Amour|Love)/i) || '';
-    const travail = mdSection(md,/Travail/i) || '';
-    const finances = mdSection(md,/Finance/i) || '';
-    const guidance = mdSection(md,/Guidance/i) || '';
-    const affirmation = mdSection(md,/Affirmation/i) || '';
-    const description = mdSection(md,'Description') || '';
+     const interp = mdSectionLocal(md,'Interprétation') || '';
+     const amour = mdSectionLocal(md,/(Amour|Love)/i) || '';
+     const travail = mdSectionLocal(md,/Travail/i) || '';
+     const finances = mdSectionLocal(md,/Finance/i) || '';
+     const guidance = mdSectionLocal(md,/Guidance/i) || '';
+     const affirmation = mdSectionLocal(md,/Affirmation/i) || '';
+     const description = mdSectionLocal(md,'Description') || '';
     // Build a clean reading text
     const parts = [];
     parts.push(card.name + '.');
@@ -725,9 +756,7 @@
   }
 
   function countCombos(md){
-    if(!md) return 0;
-    const m = md.match(/^- \*\*[^*]+\*\*\s*:/gm);
-    return m ? m.length : 0;
+    return parseAssociations(md).reduce((total,section) => total + section.items.length,0);
   }
 
   function resolvePartnerCard(pair){
@@ -746,6 +775,55 @@
     return sec ? sec.items : [];
   }
 
+  function renderAssociationGrid(card, sections){
+    const grid = document.getElementById('tf-mirror-grid');
+    const summary = document.getElementById('tf-association-summary');
+    if(!grid) return;
+    grid.innerHTML = '';
+    const total = sections.reduce((sum, section) => sum + section.items.length, 0);
+    if(summary) summary.textContent = `${total} associations · une lecture complète en cinq familles`;
+
+    sections.forEach(section => {
+      const sectionEl = document.createElement('section');
+      sectionEl.className = 'tf-assoc-section';
+      const heading = document.createElement('h2');
+      heading.textContent = section.title.replace(/^Associations avec les? /i,'');
+      sectionEl.appendChild(heading);
+      const list = document.createElement('div');
+      list.className = 'tf-assoc-list';
+
+      section.items.forEach(item => {
+        const partner = resolvePartnerCard(item.pair);
+        const article = document.createElement('article');
+        article.className = 'tf-assoc-item';
+        const image = document.createElement('img');
+        image.alt = partner ? partner.name : 'Carte partenaire';
+        image.loading = 'lazy';
+        if(partner) image.src = partner.file;
+        article.appendChild(image);
+
+        const content = document.createElement('div');
+        const pair = document.createElement('div');
+        pair.className = 'tf-assoc-pair';
+        const names = item.pair.split(' + ');
+        const currentName = document.createElement('span');
+        currentName.textContent = names[0] || card.name;
+        const plus = document.createElement('span');
+        plus.textContent = '+';
+        const partnerName = document.createElement('strong');
+        partnerName.textContent = names.slice(1).join(' + ') || (partner ? partner.name : 'Carte partenaire');
+        pair.append(currentName,plus,partnerName);
+        const text = document.createElement('p');
+        text.textContent = item.text;
+        content.append(pair,text);
+        article.appendChild(content);
+        list.appendChild(article);
+      });
+      sectionEl.appendChild(list);
+      grid.appendChild(sectionEl);
+    });
+  }
+
   function openMirror(card){
     if(!card || !card.associations) return;
     const sections = parseAssociations(card.associations);
@@ -762,12 +840,7 @@
     const titleEl = document.getElementById('tf-mirror-title');
     if(titleEl) titleEl.textContent = card.name;
 
-    // Carte courante (fixe pendant la session)
-    const currentEl = document.getElementById('tf-mirror-current');
-    currentEl.innerHTML = `<img src="${card.file}" alt="${card.name}"><div class="tf-mirror-card-tag">${card.name}</div>`;
-
-    renderMirrorFilters();
-    renderMirrorCombo(true);
+    renderAssociationGrid(card,sections);
     overlay.classList.add('open');
     document.addEventListener('keydown', mirrorKeyHandler);
   }
@@ -868,17 +941,15 @@
     drawsOverlay.addEventListener('click',e=>{ if(e.target===drawsOverlay) closeDraws(); });
     document.getElementById('tf-draw-today').addEventListener('click',()=>{
       const card=cardOfTheDay();
-      const today=new Date().toISOString().slice(0,10);
+      const today=localDateKey();
       localStorage.setItem('tarot_cjd_'+today,card.id);
       closeDraws();
       revealCard(card,'Carte du jour · '+today.split('-').reverse().join('/'));
     });
     document.getElementById('tf-reveal-card').addEventListener('click',flipReveal);
 
-    // Miroir des Lames
+    // Grille des associations
     document.getElementById('tf-mirror-close').addEventListener('click',closeMirror);
-    document.getElementById('tf-mirror-prev').addEventListener('click',()=>navigateMirror(-1));
-    document.getElementById('tf-mirror-next').addEventListener('click',()=>navigateMirror(1));
     const mirrorOverlay=document.getElementById('tf-mirror');
     mirrorOverlay.addEventListener('click',e=>{ if(e.target===mirrorOverlay) closeMirror(); });
 
