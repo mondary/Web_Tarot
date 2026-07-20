@@ -484,7 +484,7 @@ a{color:inherit;text-decoration:none}
 <div class="fx-vignette"></div>
 
 <a class="brand" id="home-link" href="#" aria-label="Retour à l'accueil"><img src="icon.png" alt=""><span><b>Tarot</b> · Divinatoire</span><span class="brand-version">v<span id="lf-ver">3.2026.0</span></span></a>
-<nav class="mode-switch" aria-label="Choisir une vue">
+<nav class="mode-switch" aria-label="Choisir une vue" id="mode-switch">
   <a class="active" href="index.html#grid">Classique</a>
   <a href="index_full.html#grid">Immersive</a>
   <a href="index_detail.html#grid">Détaillée</a>
@@ -1300,6 +1300,14 @@ function restoreRoute(){
   else if(suite) openFamily(suite);
 }
 restoreRoute();
+
+/* Force full navigation on mode-switch links (prevents hash accumulation) */
+document.querySelectorAll('#mode-switch a').forEach(link=>{
+  link.addEventListener('click',e=>{
+    e.preventDefault();
+    window.location.assign(link.href);
+  });
+});
 </script>
 </body>
 </html>
