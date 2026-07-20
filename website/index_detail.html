@@ -331,16 +331,16 @@ a{color:inherit;text-decoration:none}
    DETAILED view — editorial card dossier
    ===================================================== */
 #view-detail{overflow-y:auto;background:var(--bg-2)}
-.detail-wrap{max-width:1540px;margin:0 auto;padding:0 4vw 8rem;display:block}
-.detail-wrap > .tf-actions{margin:.6rem 0 2rem;gap:.4rem}
-.detail-wrap > .tf-actions .tf-voice-btn,.detail-wrap > .tf-actions .tf-mirror-trigger{height:1.6rem;padding:0 .65rem;font-size:.48rem;gap:.3rem;letter-spacing:.1em}
-.detail-wrap > .tf-actions .tf-voice-btn svg,.detail-wrap > .tf-actions .tf-mirror-trigger svg{width:10px;height:10px}
-.dossier-head{display:flex;align-items:end;justify-content:space-between;gap:2rem;margin-bottom:2rem;padding:0}
+.detail-wrap{max-width:1540px;margin:0 auto;padding:5.2rem 4vw 8rem;display:block}
+.dossier-head{display:grid;grid-template-columns:1fr auto;align-items:end;gap:1rem 2rem;margin:0;padding:0}
 .dossier-head .eyebrow{font-family:'DM Mono',monospace;font-size:.68rem;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);margin-bottom:.8rem}
-.dossier-head h1{position:sticky;top:0;z-index:20;font-family:'Cormorant Garamond',serif;font-size:clamp(3rem,6vw,6rem);font-weight:300;line-height:.85;text-transform:uppercase;padding:5rem 0 1rem;background:var(--bg-2);border-bottom:1px solid var(--line);margin:0}
-.dossier-head h1 em{color:var(--ac);font-style:italic;font-weight:400}
 .dossier-head .position{font-family:'DM Mono',monospace;font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);white-space:nowrap}
 .dossier-head .position b{color:var(--ac);font-weight:400}
+.dossier-title{position:sticky;top:0;z-index:20;font-family:'Cormorant Garamond',serif;font-size:clamp(3rem,6vw,6rem);font-weight:300;line-height:.85;text-align:center;text-transform:uppercase;padding:1.2rem 0 .9rem;background:var(--bg-2);border-bottom:1px solid var(--line);margin:0}
+.dossier-title em{color:var(--ac);font-style:italic;font-weight:400}
+.card-actions .tf-actions{margin:.7rem 0 2rem;gap:.4rem}
+.card-actions .tf-voice-btn,.card-actions .tf-mirror-trigger{height:1.6rem;padding:0 .65rem;font-size:.48rem;gap:.3rem;letter-spacing:.1em}
+.card-actions .tf-voice-btn svg,.card-actions .tf-mirror-trigger svg{width:10px;height:10px}
 .dossier-board{display:grid;grid-template-columns:minmax(250px,.8fr) minmax(320px,1.2fr) minmax(220px,.65fr);gap:0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);margin-bottom:4.5rem}
 .dossier-image{padding:2rem;border-right:1px solid var(--line);display:flex;align-items:center;justify-content:center;min-height:570px}
 .dossier-image .frame{width:min(100%,340px);padding:.7rem;background:var(--mat);box-shadow:0 24px 60px rgba(0,0,0,.35)}
@@ -367,7 +367,9 @@ a{color:inherit;text-decoration:none}
 
 @media (max-width:900px){
   .detail-wrap{padding:6rem 6vw 7rem}
-  .dossier-head{align-items:flex-start;flex-direction:column;gap:1rem}
+  .dossier-head{grid-template-columns:1fr;align-items:flex-start;gap:1rem}
+  .dossier-head .position{grid-row:2;justify-self:start}
+  .dossier-title{padding:1rem 0 .8rem}
   .dossier-board{grid-template-columns:1fr;gap:0}
   .dossier-image{min-height:0;border-right:none;border-bottom:1px solid var(--line);padding:2rem}
   .dossier-reading{padding:2rem 0}
@@ -524,8 +526,8 @@ a{color:inherit;text-decoration:none}
   <div class="s-scroll"><div class="s-grid" id="s-grid"></div></div>
 </div>
 
-<script src="data.js?v=2.2026.25"></script>
-<script src="tarot-features.js?v=2.2026.25"></script>
+<script src="data.js?v=2.2026.26"></script>
+<script src="tarot-features.js?v=2.2026.26"></script>
 <script>
 /* =========================================================
    State
@@ -1483,12 +1485,11 @@ function openCard(id){
   const wrap = $('#detail-wrap');
   wrap.innerHTML = `
     <header class="dossier-head">
-      <div>
-        <div class="eyebrow">Dossier de lame · ${escHtml(card.familyName)}</div>
-        <h1><em>${escHtml(card.name)}</em></h1>
-      </div>
+      <div class="eyebrow">Dossier de lame · ${escHtml(card.familyName)}</div>
       <div class="position"><b>${String(globalIdx+1).padStart(2,'0')}</b> / 78 · ${inFam+1}/${family.count}</div>
     </header>
+    <h1 class="dossier-title"><em>${escHtml(card.name)}</em></h1>
+    <div class="card-actions"></div>
     <section class="dossier-diptych">
       ${studyPlate}
       <article class="polarity-plate">
@@ -1503,8 +1504,8 @@ function openCard(id){
     <p class="dossier-intro">${escHtml(description)}</p>
     <div class="prose detailed-content" id="prose">${html}</div>`;
   decorateDetailedProse();
-  if(typeof injectVoiceButton==='function') injectVoiceButton($('#detail-wrap'), card);
-  if(typeof injectMirrorTrigger==='function') injectMirrorTrigger($('#detail-wrap'), card);
+  if(typeof injectVoiceButton==='function') injectVoiceButton($('#detail-wrap .card-actions'), card);
+  if(typeof injectMirrorTrigger==='function') injectMirrorTrigger($('#detail-wrap .card-actions'), card);
   updateLoopBar(globalIdx);
   $('#view-detail').scrollTop=0;
   switchView('detail');

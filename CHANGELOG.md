@@ -6,7 +6,7 @@ Toutes les notes de release du projet Web Tarot. Le format de version suit `🔥
 
 ## TODO — Roadmap
 
-Statut : `2.2026.22` (boutons carte unifiés + intégration propre)
+Statut : `2.2026.26` (headers unifiés sur le modèle immersif)
 
 ### Phase 1 — Fondations ✅
 - [x] Interface V2 unifiée (carousel d'accueil + grille par famille + vue détail)
@@ -30,6 +30,11 @@ Statut : `2.2026.22` (boutons carte unifiés + intégration propre)
 ---
 
 ## Releases
+
+### [2.2026.26] - 2026-07-20
+#### Changed
+- Vues classique et détaillée : titre de carte centré, opaque et sticky en haut de la fiche, sur le modèle de la vue immersive
+- Seul le titre reste fixe pendant la lecture ; métadonnées et actions défilent normalement, sans passer sous un header transparent
 
 ### [2.2026.22] - 2026-07-20
 #### Fixed
