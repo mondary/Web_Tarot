@@ -68,8 +68,10 @@ a{color:inherit;text-decoration:none}
 .fam-card{position:relative;border-radius:.9rem;overflow:hidden;cursor:pointer;transition:.5s var(--ease);display:flex;flex-direction:column;aspect-ratio:2/3;border:1px solid var(--ac);background:linear-gradient(160deg,rgba(241,237,228,.06),rgba(241,237,228,.02));box-shadow:0 10px 28px rgba(0,0,0,.35)}
 .fam-card:hover{transform:translateY(-6px);box-shadow:0 16px 40px rgba(0,0,0,.5),0 0 30px rgba(201,162,39,.15)}
 .fam-card-inner{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:1rem;text-align:center;position:relative}
-.fam-card-inner .glyph{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,4vw,3.5rem);color:var(--ac);line-height:1;margin-bottom:.6rem}
-.fam-card-inner .name{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(.85rem,1.3vw,1.1rem);line-height:1.1;text-transform:uppercase;letter-spacing:.02em;color:var(--fg)}
+.fam-card-inner .fam-card-img{flex:1;display:flex;align-items:center;justify-content:center;width:100%}
+.fam-card-inner .fam-card-elem{font-family:'DM Mono',monospace;font-size:.6rem;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);margin-top:.5rem;display:flex;align-items:center;gap:.4rem}
+.fam-card-inner .fam-card-sym{color:var(--ac);font-size:.8rem}
+.fam-card-inner .name{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(.85rem,1.3vw,1.1rem);line-height:1.1;text-transform:uppercase;letter-spacing:.02em;color:var(--fg);margin-top:.3rem}
 .fam-card-inner .name em{font-style:italic;color:var(--ac);font-weight:400}
 .fam-card-inner .count{position:absolute;bottom:.6rem;right:.7rem;font-family:'DM Mono',monospace;font-size:.55rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
 
@@ -231,9 +233,14 @@ function buildFullGrid(){
     const fc=el('div','fam-card','');
     fc.style.setProperty('--ac',fam.accent);
     fc.style.borderColor=fam.accent;
+    const isSvg = fam.key !== 'majors';
+    const imgHtml = isSvg
+      ? `<img src="img/${fam.key}.svg" alt="${fam.name}" style="width:60%;height:auto;filter:drop-shadow(0 4px 12px rgba(0,0,0,.4))">`
+      : `<span style="font-size:3.5rem;color:${fam.accent}">${fam.elementSym}</span>`;
     fc.innerHTML=`
       <div class="fam-card-inner">
-        <div class="glyph" style="color:${fam.accent}">${fam.elementSym}</div>
+        <div class="fam-card-img">${imgHtml}</div>
+        <div class="fam-card-elem"><span class="fam-card-sym">${fam.elementSym}</span> ${fam.element}</div>
         <div class="name"><em>${fam.short||fam.name}</em></div>
         <div class="count">${fam.cards.length} LAMES</div>
       </div>`;
