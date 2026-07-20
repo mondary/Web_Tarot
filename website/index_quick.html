@@ -72,7 +72,6 @@ a{color:inherit;text-decoration:none}
 .fam-card-inner .name{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(.85rem,1.3vw,1.1rem);line-height:1.1;text-transform:uppercase;letter-spacing:.02em;color:var(--fg)}
 .fam-card-inner .name em{font-style:italic;color:var(--ac);font-weight:400}
 .fam-card-inner .count{position:absolute;bottom:.6rem;right:.7rem;font-family:'DM Mono',monospace;font-size:.55rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
-.fam-card-cap{padding:.5rem .7rem;border-top:1px solid var(--ac);font-family:'DM Mono',monospace;font-size:.55rem;letter-spacing:.2em;text-transform:uppercase;color:var(--ac);text-align:center;background:rgba(201,162,39,.06)}
 
 /* Card mini */
 .mini{position:relative;border-radius:.9rem;overflow:hidden;background:var(--mat);border:1px solid var(--mat-line);cursor:pointer;transition:.5s var(--ease);display:flex;flex-direction:column;aspect-ratio:2/3;box-shadow:0 10px 28px rgba(0,0,0,.35)}
@@ -237,8 +236,7 @@ function buildFullGrid(){
         <div class="glyph" style="color:${fam.accent}">${fam.elementSym}</div>
         <div class="name"><em>${fam.short||fam.name}</em></div>
         <div class="count">${fam.cards.length} LAMES</div>
-      </div>
-      <div class="fam-card-cap" style="color:${fam.accent};border-color:${fam.accent};background:${fam.accent}11">${fam.name}</div>`;
+      </div>`;
     fc.addEventListener('click',()=>{
       const firstCard=fam.cards[0];
       if(firstCard) openCard(firstCard.id);
