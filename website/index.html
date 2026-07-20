@@ -1289,14 +1289,8 @@ document.addEventListener('keydown',e=>{
 
 /* init */
 renderLanding();
-function syncModeLink(){
-  document.querySelectorAll('.mode-switch a').forEach(link=>link.addEventListener('click',e=>{
-    const href=link.getAttribute('href');
-    if(location.hash&&location.hash!=='#grid'&&location.hash!=='#grid#grid'){e.preventDefault();location.href=href+location.hash;}
-  }));
-}
 function restoreRoute(){
-  if(location.hash==='#grid'||location.hash==='#grid'){
+  if(location.hash==='#grid'){
     openFamily(TAROT.families[0].key);return;
   }
   const params=new URLSearchParams(location.hash.slice(1));
@@ -1305,7 +1299,6 @@ function restoreRoute(){
   if(lame){if(suite) openFamily(suite);openCard(lame);}
   else if(suite) openFamily(suite);
 }
-syncModeLink();
 restoreRoute();
 </script>
 </body>

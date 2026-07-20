@@ -825,11 +825,6 @@ document.addEventListener('keydown',e=>{
 
 /* init */
 renderLanding();
-function syncModeLink(){
-  document.querySelectorAll('.mode-switch a').forEach(link=>link.addEventListener('click',e=>{
-    if(location.hash){e.preventDefault();location.href=link.getAttribute('href')+location.hash;}
-  }));
-}
 function restoreRoute(){
   if(location.hash==='#grid') return; // landing IS the grid now
   const params=new URLSearchParams(location.hash.slice(1));
@@ -838,7 +833,6 @@ function restoreRoute(){
   if(lame){if(suite) openFamily(suite);openCard(lame);}
   else if(suite) openFamily(suite);
 }
-syncModeLink();
 restoreRoute();
 </script>
 </body>

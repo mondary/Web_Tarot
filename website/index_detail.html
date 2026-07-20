@@ -1522,12 +1522,6 @@ document.addEventListener('keydown',e=>{
 
 /* init */
 buildFullGrid();
-function syncModeLink(){
-  document.querySelectorAll('.mode-switch a').forEach(link=>link.addEventListener('click',e=>{
-    const href=link.getAttribute('href');
-    if(location.hash&&location.hash!=='#grid'){e.preventDefault();location.href=href+location.hash;}
-  }));
-}
 function restoreRoute(){
   if(location.hash==='#grid') return;
   const params=new URLSearchParams(location.hash.slice(1));
@@ -1535,7 +1529,6 @@ function restoreRoute(){
   const lame=params.get('lame');
   if(lame) openCard(lame);
 }
-syncModeLink();
 restoreRoute();
 </script>
 </body>
