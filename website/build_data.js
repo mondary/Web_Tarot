@@ -85,7 +85,7 @@ ORDER.forEach(prefix => {
 });
 
 const mdFiles = fs.readdirSync(CARDS_DIR)
-  .filter(f => f.endsWith('.md') && !f.endsWith('_symbols.md') && !f.endsWith('_symboles_pcd.md'))
+  .filter(f => f.endsWith('.md') && !f.endsWith('_symbols.md') && !f.endsWith('_symboles_pcd.md') && !f.endsWith('_associations.md'))
   .sort();
 
 mdFiles.forEach(file => {
@@ -105,6 +105,13 @@ mdFiles.forEach(file => {
 
   const imgFile = path.join(CARDS_DIR, base + '.jpg');
 
+  // Contenu des associations (fichier `<base>_associations.md` s'il existe).
+  const assocFile = path.join(CARDS_DIR, base + '_associations.md');
+  let associations = null;
+  try {
+    associations = fs.readFileSync(assocFile, 'utf8');
+  } catch (e) { /* aucune association pour cette carte */ }
+
   families[meta.key].cards.push({
     id: base,
     file: imageDataUri(imgFile) || ('cards/' + base + '.jpg'),
@@ -115,6 +122,7 @@ mdFiles.forEach(file => {
     element: meta.element,
     num: parseInt(num, 10),
     md: content,
+    associations,
   });
 });
 

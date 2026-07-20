@@ -6,7 +6,7 @@ Toutes les notes de release du projet Web Tarot. Le format de version suit `🔥
 
 ## TODO — Roadmap
 
-Statut : `2.2026.12` (scanner amélioré, lecteur vocal, feedback visuel en temps réel)
+Statut : `2.2026.13` (associations de cartes pour les 78 lames)
 
 ### Phase 1 — Fondations ✅
 - [x] Interface V2 unifiée (carousel d'accueil + grille par famille + vue détail)
@@ -30,6 +30,12 @@ Statut : `2.2026.12` (scanner amélioré, lecteur vocal, feedback visuel en temp
 ---
 
 ## Releases
+
+### [2.2026.13] - 2026-07-20
+#### Added
+- 78 fichiers `_associations.md` (5904 combinaisons à 2 cartes) scrapés depuis guide-tarot.com, structurés en 5 sections (Arcanes majeurs, Bâtons, Coupes, Épées, Deniers)
+- Champ `associations` exposé sur chaque carte dans `data.js` (prêt pour intégration UI)
+- `build_data.js` : filtre `_associations.md` du scan de cartes, charge le contenu dans `card.associations`
 
 ### [2.2026.12] - 2026-07-19
 #### Added
