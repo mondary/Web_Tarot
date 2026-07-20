@@ -1,26 +1,5 @@
 # 4 — CUATRO DE ESPADAS / QUATRE D'ÉPÉES
 
-## ESP
-
-**Nombre :** CUATRO DE ESPADAS
-
-**RÉPONSE :** NO
-
-**Mots-clés (posición vertical) :**
-
-Miedo, ansiedad, estrés, sensación de agobio, sobrecarga mental, necesidad de soledad, relajación, descanso, paz y tranquilidad, santuario, meditación, reagrupación, curación, hospitalización, introspección, planificación
-
-**Mots-clés (posición inversa) :**
-
-Encontrar la fuerza mental, despertar, reincorporarse al mundo, salir del aislamiento
-
-**Afirmación :**
-
-> DESCANSO
-
----
-
-## FR
 
 **Nom :** QUATRE D'ÉPÉES
 
@@ -38,6 +17,3 @@ Trouver la force mentale, se réveiller, se réintégrer au monde, sortir de l'i
 
 > REPOS
 
----
-
-*Source : Application de tarot en espagnol (screenshots du benchmark)*

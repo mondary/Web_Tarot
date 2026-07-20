@@ -1,26 +1,5 @@
 # 9 — NUEVE DE BASTOS / NEUF DE BÂTONS
 
-## ESP
-
-**Nombre :** NUEVE DE BASTOS
-
-**RÉPONSE :** SÍ
-
-**Mots-clés (posición vertical) :**
-
-La batalla en curso, cansado de la batalla, fatiga, agotado de energía, casi allí, cerca del éxito, coraje, persistencia, perseverancia, columna vertebral, aprender de los fracasos pasados, reunir su fuerza, luchar por su esquina, última posición
-
-**Mots-clés (posición inversa) :**
-
-Negarse a ceder/ceder, terco, rígido, obstinado, último en pie
-
-**Afirmación :**
-
-> RESILIENCIA
-
----
-
-## FR
 
 **Nom :** NEUF DE BÂTONS
 
@@ -38,6 +17,3 @@ Refuser de céder, têtu, rigide, obstiné, debout en dernier
 
 > RÉSILIENCE
 
----
-
-*Source : Application de tarot en espagnol (screenshots du benchmark)*

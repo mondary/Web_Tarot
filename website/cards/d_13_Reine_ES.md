@@ -1,26 +1,5 @@
 # 13 — REINA DE ESPADAS / REINE D'ÉPÉES
 
-## ESP
-
-**Nombre :** REINA DE ESPADAS
-
-**RÉPONSE :** SÍ
-
-**Mots-clés (posición vertical) :**
-
-El pensamiento domina los sentimientos, la percepción, la perspicacia, el juicio justo, las decisiones correctas. Es el momento de defenderse y de tener claros sus deseos y necesidades. Una persona que ha sufrido pérdidas o dificultades. Una mujer inteligente, ingeniosa y analítica
-
-**Mots-clés (posición inversa) :**
-
-Cotilleos, mentiras malintencionadas, prejuicios, pérdidas, desgracias. Alguien que menosprecia a la gente y en quien no se puede confiar
-
-**Afirmación :**
-
-> ASTUCIA
-
----
-
-## FR
 
 **Nom :** REINE D'ÉPÉES
 
@@ -38,6 +17,3 @@ Commérages, mensonges malveillants, préjugés, pertes, malheurs. Quelqu'un qui
 
 > ASTUCE
 
----
-
-*Source : Application de tarot en espagnol (screenshots du benchmark)*

@@ -1,26 +1,5 @@
 # 6 — 6 DE BASTOS / 6 DE BATONS
 
-## ESP
-
-**Nombre :** 6 DE BASTOS
-
-**RÉPONSE :** SÍ
-
-**Mots-clés (posición vertical) :**
-
-Éxito, victoria, ganar, tener ventaja, triunfo, logro, alabanza, aclamación, premios, reconocimiento, aplauso, buena voluntad, fama, celebridad, admiradores, simpatizantes, multitudes, ser el centro de atención, estar en lo alto
-
-**Mots-clés (posición inversa) :**
-
-Fracaso, perder, desventaja, desgracia, ser perseguido, mala voluntad
-
-**Afirmación :**
-
-> RECONOCIMIENTO
-
----
-
-## FR
 
 **Nom :** 6 DE BATONS
 
@@ -38,6 +17,3 @@ Succès, victoire, gagner, avoir l'avantage, triomphe, accomplissement, louanges
 
 > RECONNAISSANCE
 
----
-
-*Source : Application de tarot en espagnol (screenshots du benchmark)*

@@ -1,26 +1,5 @@
 # 2 — DOS DE ESPADAS / DEUX D'ÉPÉES
 
-## ESP
-
-**Nombre :** DOS DE ESPADAS
-
-**RÉPONSE :** EL QUIZÁ
-
-**Mots-clés (posición vertical) :**
-
-Estancamiento, tregua, nadar entre dos aguas, encrucijada, decisiones dificiles, elecciones dolorosas, decisiones estresantes, oposición, enfrentarse a tus miedos, estar dividido entre dos relaciones, lealtad dividida
-
-**Mots-clés (posición inversa) :**
-
-Indecisión, retrasos, aplazamientos, ver la verdad, mentiras que se exponen
-
-**Afirmación :**
-
-> DECISIÓN
-
----
-
-## FR
 
 **Nom :** DEUX D'ÉPÉES
 
@@ -38,6 +17,3 @@ Indécision, retards, report, voir la vérité, mensonges qui sont exposés
 
 > DÉCISION
 
----
-
-*Source : Application de tarot en espagnol (screenshots du benchmark)*

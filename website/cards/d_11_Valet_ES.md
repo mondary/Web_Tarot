@@ -1,26 +1,5 @@
 # 11 — SOTA DE ESPADAS / VALET D'ÉPÉES
 
-## ESP
-
-**Nombre :** SOTA DE ESPADAS
-
-**RÉPONSE :** SÍ
-
-**Mots-clés (posición vertical) :**
-
-Noticias retrasadas, paciencia necesaria, ideas, inspiración, planificación, vigilancia, protección, guardia, equidad. Alguien calculador y despreocupado por los sentimientos de los demás. Comunicadores, científicos, matemáticos, aviadores, viajeros
-
-**Mots-clés (posición inversa) :**
-
-Malicia, hipocresía, sospecha, problemas. Alguien que se despreocupa de los sentimientos de los demás
-
-**Afirmación :**
-
-> CURIOSIDAD
-
----
-
-## FR
 
 **Nom :** VALET D'ÉPÉES
 
@@ -38,6 +17,3 @@ Malice, hypocrisie, suspicion, problèmes. Quelqu'un qui se désintéresse des s
 
 > CURIOSITÉ
 
----
-
-*Source : Application de tarot en espagnol (screenshots du benchmark)*

@@ -1,26 +1,5 @@
 # 2 — 2 DE COPAS / 2 DE COUPES
 
-## ESP
-
-**Nombre :** 2 DE COPAS
-
-**RÉPONSE :** SÍ
-
-**Mots-clés (posición vertical) :**
-
-Pareja, unidad, amor, compatibilidad, parejas felices, almas gemelas potenciales, relaciones, armonía, equilibrio, igualdad, atracción, conexión, propuestas, compromisos, matrimonio, respeto mutuo
-
-**Mots-clés (posición inversa) :**
-
-Desarmonía, desconexión, desequilibrio, desigualdad, incompatibilidad, parejas infelices
-
-**Afirmación :**
-
-> AMOR
-
----
-
-## FR
 
 **Nom :** 2 DE COUPES
 
@@ -38,6 +17,3 @@ Disharmonie, déconnexion, déséquilibre, inégalité, incompatibilité, couple
 
 > AMOUR
 
----
-
-*Source : Application de tarot en espagnol (screenshots du benchmark)*

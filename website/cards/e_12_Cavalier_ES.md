@@ -1,26 +1,5 @@
 # 12 — CABALLERO DE OROS / CAVALIER DE DENIERS
 
-## ESP
-
-**Nombre :** CABALLERO DE OROS
-
-**RÉPONSE :** SÍ
-
-**Mots-clés (posición vertical) :**
-
-Paciencia, perseverancia, fuentes inesperadas de dinero o ingresos. El tiempo cura todas las heridas. Personas fiables, pacientes, convencionales, dignas de confianza y trabajadoras. Alguien que persevera para alcanzar una meta
-
-**Mots-clés (posición inversa) :**
-
-Avaricia, estar mal pagado, falta de inspiración, avaricia. Alguien que se precipita y comete errores. Una persona timida y sin inspiración
-
-**Afirmación :**
-
-> RUTINA
-
----
-
-## FR
 
 **Nom :** CAVALIER DE DENIERS
 
@@ -38,6 +17,3 @@ Avarice, être mal payé, manque d'inspiration, avarice. Quelqu'un qui se préci
 
 > ROUTINE
 
----
-
-*Source : Application de tarot en espagnol (screenshots du benchmark)*

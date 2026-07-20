@@ -1,26 +1,5 @@
 # 10 — DIEZ DE COPAS / DIX DE COUPES
 
-## ESP
-
-**Nombre :** DIEZ DE COPAS
-
-**RÉPONSE :** SÍ
-
-**Mots-clés (posición vertical) :**
-
-Felicidad, familia, familias felices, reencuentros, reuniones familiares, matrimonio, relaciones duraderas, estabilidad, seguridad, armonía, abundancia, felicidad doméstica, felices para siempre, cuidado, niños, diversión
-
-**Mots-clés (posición inversa) :**
-
-Hogar/familia infeliz, familia disfuncional, hogar roto, falta de seguridad/estabilidad
-
-**Afirmación :**
-
-> MATRIMONIO
-
----
-
-## FR
 
 **Nom :** DIX DE COUPES
 
@@ -38,6 +17,3 @@ Maison/famille malheureuse, famille dysfonctionnelle, foyer brisé, manque de s�
 
 > MARIAGE
 
----
-
-*Source : Application de tarot en espagnol (screenshots du benchmark)*

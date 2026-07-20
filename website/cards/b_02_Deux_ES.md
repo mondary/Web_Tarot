@@ -1,26 +1,5 @@
 # 2 — 2 DE BASTONS / 2 DE BATONS
 
-## ESP
-
-**Nombre :** 2 DE BASTONS
-
-**RÉPONSE :** EL QUIZÁ
-
-**Mots-clés (posición vertical) :**
-
-Dos caminos, decisiones, opciones, planificación, la hierba siempre es más verde en el otro lado, emigrar de repente, decidir quedarse o irse, esperar, anticipación, inquietud, desapego, retraimiento, vagabundeo
-
-**Mots-clés (posición inversa) :**
-
-Miedo al cambio, indecisión, opciones restringidas, negociaciones fallidas, falta de actividad
-
-**Afirmación :**
-
-> ELECCIÓN
-
----
-
-## FR
 
 **Nom :** 2 DE BATONS
 
@@ -38,6 +17,3 @@ Peur du changement, indécision, options restreintes, négociations échouées, 
 
 > CHOIX
 
----
-
-*Source : Application de tarot en espagnol (screenshots du benchmark)*

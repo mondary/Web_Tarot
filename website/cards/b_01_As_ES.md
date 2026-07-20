@@ -1,26 +1,5 @@
 # 1 — AS DE BASTOS / AS DE BATONS
 
-## ESP
-
-**Nombre :** AS DE BASTOS
-
-**RÉPONSE :** SÍ
-
-**Mots-clés (posición vertical) :**
-
-Nuevos comienzos, buenas noticias, empezar algo fisicamente, chispa creativa, nueva iniciativa, encontrar una nueva pasión, entusiasmo, urgencia, aceptar un reto, potencial, talento, crecimiento, acción, viaje, emoción, entrar en el juego
-
-**Mots-clés (posición inversa) :**
-
-Vacilación, oportunidades perdidas, talento/potencial desperdiciado, infertilidad
-
-**Afirmación :**
-
-> INSPIRACIÓN
-
----
-
-## FR
 
 **Nom :** AS DE BATONS
 
@@ -38,6 +17,3 @@ Hésitation, opportunités perdues, talent/potentiel gaspillé, infertilité
 
 > INSPIRATION
 
----
-
-*Source : Application de tarot en espagnol (screenshots du benchmark)*

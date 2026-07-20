@@ -1,26 +1,5 @@
 # 2 — DOS DE OROS / DEUX DE DENIERS
 
-## ESP
-
-**Nombre :** DOS DE OROS
-
-**RÉPONSE :** EL QUIZÁ
-
-**Mots-clés (posición vertical) :**
-
-Equilibrio, ingenio, altibajos, adaptabilidad, flexibilidad, malabarismo en la vida, malabarismo con el dinero, transferencia de dinero, pérdidas y ganancias, ingresos y gastos, decisiones financieras, estrés financiero, asociación
-
-**Mots-clés (posición inversa) :**
-
-Falta de equilibrio, falta de organización, malas decisiones financieras, tomadura de pelo, engaño
-
-**Afirmación :**
-
-> BALANCE
-
----
-
-## FR
 
 **Nom :** DEUX DE DENIERS
 
@@ -38,6 +17,3 @@ Manque d'équilibre, manque d'organisation, mauvaises décisions financières, a
 
 > ÉQUILIBRE
 
----
-
-*Source : Application de tarot en espagnol (screenshots du benchmark)*

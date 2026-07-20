@@ -1,26 +1,5 @@
 # 4 — 4 DE BASTOS / 4 DE BATONS
 
-## ESP
-
-**Nombre :** 4 DE BASTOS
-
-**RÉPONSE :** SÍ
-
-**Mots-clés (posición vertical) :**
-
-Familias felices, reunión, regreso a casa, celebraciones, sorpresas, fiestas, bodas, eventos, sentirse bienvenido, comunidad o familia unida, espíritu de comunidad, trabajo en equipo, éxito, prosperidad
-
-**Mots-clés (posición inversa) :**
-
-Familias infelices, reunión pospuesta/cancelada, dejar el hogar
-
-**Afirmación :**
-
-> COMUNIDAD
-
----
-
-## FR
 
 **Nom :** 4 DE BATONS
 
@@ -38,6 +17,3 @@ Familles malheureuses, réunion reportée/annulée, quitter le foyer
 
 > COMMUNAUTÉ
 
----
-
-*Source : Application de tarot en espagnol (screenshots du benchmark)*

@@ -1,26 +1,5 @@
 # 13 — REINA DE OROS / REINE DE DENIERS
 
-## ESP
-
-**Nombre :** REINA DE OROS
-
-**RÉPONSE :** SÍ
-
-**Mots-clés (posición vertical) :**
-
-Fertilidad, prosperidad, sensualidad, responsabilidad, creatividad, riqueza, sentido común, nutrición. Alguien que se preocupa por el bienestar de los demás. Una mujer capaz que es a la vez madre y empresaria
-
-**Mots-clés (posición inversa) :**
-
-Inseguridad, inestabilidad, miedo. Alguien perezoso, desconfiado, carente de motivación, que se siente inseguro y descuida sus responsabilidades
-
-**Afirmación :**
-
-> ABUNDANCIA
-
----
-
-## FR
 
 **Nom :** REINE DE DENIERS
 
@@ -38,6 +17,3 @@ Insécurité, instabilité, peur. Quelqu'un de paresseux, méfiant, manquant de 
 
 > ABONDANCE
 
----
-
-*Source : Application de tarot en espagnol (screenshots du benchmark)*

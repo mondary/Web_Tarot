@@ -1,26 +1,5 @@
 # 3 — TRES DE BASTOS / TROIS DE BÂTONS
 
-## ESP
-
-**Nombre :** TRES DE BASTOS
-
-**RÉPONSE :** SÍ
-
-**Mots-clés (posición vertical) :**
-
-Viajar, mudarse al extranjero, tierra extranjera, previsión, planificación, avanzar, confianza en uno mismo, libertad, éxito, estar contento con las elecciones/resultados, el trabajo duro da sus frutos, experimentar la vida
-
-**Mots-clés (posición inversa) :**
-
-Volver a viajar, mudarse a casa, falta de previsión/planificación
-
-**Afirmación :**
-
-> PREVISIÓN
-
----
-
-## FR
 
 **Nom :** TROIS DE BÂTONS
 
@@ -38,6 +17,3 @@ Voyager à nouveau, déménager à la maison, manque de prévoyance/planificatio
 
 > PRÉVOYANCE
 
----
-
-*Source : Application de tarot en espagnol (screenshots du benchmark)*

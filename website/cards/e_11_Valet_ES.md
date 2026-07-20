@@ -1,26 +1,5 @@
 # 11 — SOTA DE OROS / VALET DE DENIERS
 
-## ESP
-
-**Nombre :** SOTA DE OROS
-
-**RÉPONSE :** SÍ
-
-**Mots-clés (posición vertical) :**
-
-Buenas noticias en asuntos terrenales, comienzos sólidos, fijación de objetivos, oportunidad de aumentar los ingresos, libros, negociaciones. Una persona de mente abierta. Estudiantes. Eruditos. Alguien que esté dispuesto a aprender. Alguien con quien se puede contar
-
-**Mots-clés (posición inversa) :**
-
-Malas noticias en asuntos terrenales, problemas de dinero, ignorancia. Alguien que no te aprecia
-
-**Afirmación :**
-
-> NUEVO EMPLEO
-
----
-
-## FR
 
 **Nom :** VALET DE DENIERS
 
@@ -38,6 +17,3 @@ Mauvaises nouvelles en affaires terrestres, problèmes d'argent, ignorance. Quel
 
 > NOUVEL EMPLOI
 
----
-
-*Source : Application de tarot en espagnol (screenshots du benchmark)*

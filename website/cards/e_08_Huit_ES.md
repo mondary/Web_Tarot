@@ -1,26 +1,5 @@
 # 8 — OCHO DE OROS / HUIT DE DENIERS
 
-## ESP
-
-**Nombre :** OCHO DE OROS
-
-**RÉPONSE :** SÍ
-
-**Mots-clés (posición vertical) :**
-
-Nuevo trabajo, autoempleo, creación de un negocio, oficio, reputación, artesanía, calidad, maestría, experiencia, trabajo duro, compromiso, dedicación, concentración, éxito, logro, ambición, confianza, resultados, recompensas
-
-**Mots-clés (posición inversa) :**
-
-Trabajo repetitivo o aburrido, el fracaso llegó, el exceso de gastos, la deuda, la pereza, la falta de cualificación
-
-**Afirmación :**
-
-> PACIENCIA
-
----
-
-## FR
 
 **Nom :** HUIT DE DENIERS
 
@@ -38,6 +17,3 @@ Travail répétitif ou ennuyeux, l'échec est arrivé, le dépassement de dépen
 
 > PATIENCE
 
----
-
-*Source : Application de tarot en espagnol (screenshots du benchmark)*

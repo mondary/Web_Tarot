@@ -1,26 +1,5 @@
 # 8 — LA FUERZA / LA FORCE
 
-## ESP
-
-**Nombre :** LA FUERZA
-
-**RÉPONSE :** SÍ
-
-**Mots-clés (posición vertical) :**
-
-Fuerza interior, coraje, valentía, confianza, compasión, doma, control, superación de las dudas, enfoque, persuasión, influencia
-
-**Mots-clés (posición inversa) :**
-
-Vulnerabilidad, dudar de uno mismo, debilidad, baja autoestima, falta de confianza, sensación de inadecuación
-
-**Afirmación :**
-
-> LA FUERZA COMIENZA CON LA ELECCIÓN DE SER AMABLE CON UNO MISMO
-
----
-
-## FR
 
 **Nom :** LA FORCE
 
@@ -38,6 +17,3 @@ Vulnérabilité, douter de soi, faiblesse, faible estime de soi, manque de confi
 
 > LA FORCE COMMENCE PAR LE CHOIX D'ÊTRE BIENVEILLANT ENVERS SOI-MÊME
 
----
-
-*Source : Application de tarot en espagnol (screenshots du benchmark)*

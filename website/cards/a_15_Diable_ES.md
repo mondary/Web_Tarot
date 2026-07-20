@@ -1,26 +1,5 @@
 # 15 — EL DIABLO / LE DIABLE
 
-## ESP
-
-**Nombre :** EL DIABLO
-
-**RÉPONSE :** NO
-
-**Mots-clés (posición vertical) :**
-
-Adicción, depresión, problemas de salud mental, ego, secretismo, obsesión, engaño, dependencia, esclavitud, materialismo, sexualidad, impotencia, desesperanza, abuso, violencia, agresión
-
-**Mots-clés (posición inversa) :**
-
-Liberación de la esclavitud. Quitar las cadenas. Ambición excesiva. Codicia inmoderada. Inestabilidad. Dependencia. Sentirse al límite
-
-**Afirmación :**
-
-> NO SOY UNA MARIONETA
-
----
-
-## FR
 
 **Nom :** LE DIABLE
 
@@ -38,6 +17,3 @@ Libération de l'esclavage. Enlever les chaînes. Ambition excessive. avidité d
 
 > JE RECONNAÎS LES CHAÎNES QUI M'ENCHAÎNENT ET JE CHOISIS DE ME LIBÉRER
 
----
-
-*Source : Application de tarot en espagnol (screenshots du benchmark)*

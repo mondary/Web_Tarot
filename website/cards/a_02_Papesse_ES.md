@@ -1,26 +1,5 @@
 # 2 — LA SACERDOTISA / LA PAPESSE
 
-## ESP
-
-**Nombre :** LA SACERDOTISA
-
-**RÉPONSE :** SÍ
-
-**Mots-clés (posición vertical) :**
-
-Misterio, intuición, conocimiento interior, confianza en uno mismo, perspicacia espiritual, estabilidad emocional, adivinación, sabiduría/conocimiento esotérico, cosas que aún no se han revelado, guías espirituales.
-
-**Mots-clés (posición inversa) :**
-
-Uso incorrecto de la intuición, actuación basada en prejuicios, manipulación, falta de control emocional.
-
-**Afirmación :**
-
-> MI CONOCIMIENTO INTERIOR ES MI MEJOR GUÍA EN TODO
-
----
-
-## FR
 
 **Nom :** LA PAPESSE
 
@@ -38,6 +17,3 @@ Mauvaise utilisation de l'intuition, action basée sur les préjugés, manipulat
 
 > MA CONNAISSANCE INTÉRIEURE EST MON MEILLEUR GUIDE DANS TOUT
 
----
-
-*Source : Application de tarot en espagnol (screenshots du benchmark)*

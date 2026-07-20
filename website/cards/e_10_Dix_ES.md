@@ -1,26 +1,5 @@
 # 10 — DIEZ DE OROS / DIX DE DENIERS
 
-## ESP
-
-**Nombre :** DIEZ DE OROS
-
-**RÉPONSE :** SÍ
-
-**Mots-clés (posición vertical) :**
-
-Ganancia financiera inesperada, suma global, testamento, escrituras, fondos fiduciarios, herencia, fundamentos sólidos, privilegio, asuntos heredados, ascendencia, casa familiar/negocios/responsabilidades/valores/apoyo/asuntos/riquezas, dinero antiguo, afluencia
-
-**Mots-clés (posición inversa) :**
-
-Cambios inesperados, desastre financiero, quiebra, grandes pérdidas
-
-**Afirmación :**
-
-> CULMINACIÓN
-
----
-
-## FR
 
 **Nom :** DIX DE DENIERS
 
@@ -38,6 +17,3 @@ Changements inattendus, désastre financier, faillite, grandes pertes
 
 > CULMINATION
 
----
-
-*Source : Application de tarot en espagnol (screenshots du benchmark)*

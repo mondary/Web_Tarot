@@ -1,26 +1,5 @@
 # 7 — SIETE DE OROS / SEPT DE DENIERS
 
-## ESP
-
-**Nombre :** SIETE DE OROS
-
-**RÉPONSE :** SÍ
-
-**Mots-clés (posición vertical) :**
-
-Cosas que dan fruto, trabajo duro que da frutos, cosecha, recompensas, beneficios, resultados, pagos, manifestación de ideas o metas, herencia, cultivo, crecimiento, gestación, nutrición, perseverancia, paciencia, planificación
-
-**Mots-clés (posición inversa) :**
-
-Mala gestión empresarial/financiera, no terminar lo que se empezó
-
-**Afirmación :**
-
-> HACER INVERSIONES
-
----
-
-## FR
 
 **Nom :** SEPT DE DENIERS
 
@@ -38,6 +17,3 @@ Mauvaise gestion entreprise/financière, ne pas terminer ce qui a été commenc�
 
 > FAIRE DES INVESTISSEMENTS
 
----
-
-*Source : Application de tarot en espagnol (screenshots du benchmark)*

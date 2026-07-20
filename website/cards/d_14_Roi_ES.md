@@ -1,26 +1,5 @@
 # 14 — REY DE ESPADAS / ROI D'ÉPÉES
 
-## ESP
-
-**Nombre :** REY DE ESPADAS
-
-**RÉPONSE :** SÍ
-
-**Mots-clés (posición vertical) :**
-
-Estructura, rutina, inteligente, racional, lógica, poder, autoridad, fuerza, modales, conversación, discernimiento, desprendimiento, cabeza sobre corazón. Un hombre de autoridad, analítico y sin emociones, que emite juicios equilibrados y da excelentes consejos
-
-**Mots-clés (posición inversa) :**
-
-Egoísmo, despiadado, desviado. Malicia premeditada. Alguien que es demasiado precavido
-
-**Afirmación :**
-
-> VERDAD
-
----
-
-## FR
 
 **Nom :** ROI D'ÉPÉES
 
@@ -38,6 +17,3 @@ Structure, routine, intelligent, rationnel, logique, pouvoir, autorité, force, 
 
 > VÉRITÉ
 
----
-
-*Source : Application de tarot en espagnol (screenshots du benchmark)*

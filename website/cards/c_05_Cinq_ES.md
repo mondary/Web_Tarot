@@ -1,26 +1,5 @@
 # 5 — CINCO DE COPAS / CINQ DE COUPES
 
-## ESP
-
-**Nombre :** CINCO DE COPAS
-
-**RÉPONSE :** NO
-
-**Mots-clés (posición vertical) :**
-
-Tristeza, pérdida, pena, desesperación, abandono, culpa, remordimiento, arrepentimiento, trauma, duelo, desamor, cambio no deseado, centrarse en las emociones negativas, aislamiento, soledad
-
-**Mots-clés (posición inversa) :**
-
-Seguir adelante, aceptar ayuda, sanar, perdonar, reincorporarse al mundo
-
-**Afirmación :**
-
-> PÉRDIDA
-
----
-
-## FR
 
 **Nom :** CINQ DE COUPES
 
@@ -38,6 +17,3 @@ Aller de l'avant, accepter l'aide, guérir, pardonner, se réintégrer au monde
 
 > PERTE
 
----
-
-*Source : Application de tarot en espagnol (screenshots du benchmark)*

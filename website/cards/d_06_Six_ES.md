@@ -1,26 +1,5 @@
 # 6 — SEIS DE ESPADAS / SIX D'ÉPÉES
 
-## ESP
-
-**Nombre :** SEIS DE ESPADAS
-
-**RÉPONSE :** EL QUIZÁ
-
-**Mots-clés (posición vertical) :**
-
-Aguas más tranquilas, curación, progreso, seguir adelante, que las cosas se calmen, calma después de una tormenta, superar las dificultades, alivio, estabilidad, escapar, huir, viajes, viajar, viajar al extranjero, ir de vacaciones, sentirse desinflado
-
-**Mots-clés (posición inversa) :**
-
-La llegada de los problemas, salir de la sartén para caer en el fuego, falta de progreso
-
-**Afirmación :**
-
-> TRANSICIÓN
-
----
-
-## FR
 
 **Nom :** SIX D'ÉPÉES
 
@@ -38,6 +17,3 @@ L'arrivée des problèmes, sortir de la poêle pour tomber dans le feu, manque d
 
 > TRANSITION
 
----
-
-*Source : Application de tarot en espagnol (screenshots du benchmark)*

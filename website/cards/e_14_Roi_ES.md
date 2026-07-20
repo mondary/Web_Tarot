@@ -1,26 +1,5 @@
 # 14 — REY DE OROS / ROI DE DENIERS
 
-## ESP
-
-**Nombre :** REY DE OROS
-
-**RÉPONSE :** SÍ
-
-**Mots-clés (posición vertical) :**
-
-Hombre maduro y con fundamento, exitoso, hombre de negocios rico, que se supera a sí mismo, que no se arriesga, que es un imperio, que prospera, que tiene un estatus alto, estabilidad, seguridad, emprendedor. Alguien preocupado por los asuntos financieros
-
-**Mots-clés (posición inversa) :**
-
-Materialismo, torpeza, preocupación por el dinero. Alguien que administra mal el dinero. Alguien que hace cualquier cosa por dinero
-
-**Afirmación :**
-
-> SEGURIDAD
-
----
-
-## FR
 
 **Nom :** ROI DE DENIERS
 
@@ -38,6 +17,3 @@ Matérialisme, maladresse, inquiétude pour l'argent. Quelqu'un qui administre m
 
 > SÉCURITÉ
 
----
-
-*Source : Application de tarot en espagnol (screenshots du benchmark)*

@@ -1,26 +1,5 @@
 # 10 — LA RUEDA DE LA FORTUNA / LA ROUE DE LA FORTUNE
 
-## ESP
-
-**Nombre :** LA RUEDA DE LA FORTUNA
-
-**RÉPONSE :** EL QUIZÁ
-
-**Mots-clés (posición vertical) :**
-
-Buena suerte, destino, casualidad, karma, almas gemelas, momentos decisivos, ciclos de la vida, destino, fortuna, agitación, azar
-
-**Mots-clés (posición inversa) :**
-
-La mala suerte, la agitación, el desorden, las fuerzas externas, la falta de control, los trastornos, los cambios no deseados, los retrasos
-
-**Afirmación :**
-
-> CABALGO SOBRE LAS OLAS DE LA VIDA
-
----
-
-## FR
 
 **Nom :** LA ROUE DE LA FORTUNE
 
@@ -38,6 +17,3 @@ La mauvaise chance, l'agitation, le désordre, les forces externes, le manque de
 
 > JE SURFE SUR LES VAGUES DE LA VIE
 
----
-
-*Source : Application de tarot en espagnol (screenshots du benchmark)*

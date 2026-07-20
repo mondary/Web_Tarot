@@ -1,26 +1,5 @@
 # 11 — SOTA DE COPAS / VALET DE COUPES
 
-## ESP
-
-**Nombre :** SOTA DE COPAS
-
-**RÉPONSE :** SÍ
-
-**Mots-clés (posición vertical) :**
-
-Amor, consuelo, bondad, intuición, una buena idea. Un joven sensible, reflexivo, introvertido, cooperativo, tranquilo, soñador, imaginativo, psíquico, emocional o dependiente. Alguien interesado en aprender sobre temas emocionales
-
-**Mots-clés (posición inversa) :**
-
-Problemas de la infancia, abusos sexuales, malas noticias, sueños rotos. Alguien que no hace planes para el mañana
-
-**Afirmación :**
-
-> INTUICIÓN
-
----
-
-## FR
 
 **Nom :** VALET DE COUPES
 
@@ -38,6 +17,3 @@ Problèmes d'enfance, abus sexuelles, mauvaises nouvelles, rêves brisés. Quelq
 
 > INTUITION
 
----
-
-*Source : Application de tarot en espagnol (screenshots du benchmark)*

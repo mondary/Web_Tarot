@@ -1,26 +1,5 @@
 # 7 — 7 DE BASTOS / 7 DE BATONS
 
-## ESP
-
-**Nombre :** 7 DE BASTOS
-
-**RÉPONSE :** SÍ
-
-**Mots-clés (posición vertical) :**
-
-Defender las creencias, luchar por tu rincón, protector, defensivo, decidido, desafiar, oponerse, aguantar, tomar el camino, mantener el control, territorial, asertivo
-
-**Mots-clés (posición inversa) :**
-
-Doblegarse en sus creencias, ceder/rendirse, admitir la derrota perseguido, mala voluntad
-
-**Afirmación :**
-
-> MANTENERSE FIRME
-
----
-
-## FR
 
 **Nom :** 7 DE BATONS
 
@@ -38,6 +17,3 @@ Céder sur ses croyances, se rendre, admettre la défaite, être poursuivi, mauv
 
 > TENIR FERME
 
----
-
-*Source : Application de tarot en espagnol (screenshots du benchmark)*

@@ -1,26 +1,5 @@
 # 6 — SEIS DE OROS / SIX DE DENIERS
 
-## ESP
-
-**Nombre :** SEIS DE OROS
-
-**RÉPONSE :** SÍ
-
-**Mots-clés (posición vertical) :**
-
-Regalos, generosidad, caridad, donaciones, dinero, comunidad, asistencia, apoyo, empleo, compartir, amabilidad, riqueza, prosperidad, poder, autoridad, control, inversores, dar/recibir, gratitud, ser valorado, estar bien pagado
-
-**Mots-clés (posición inversa) :**
-
-Facturas impagadas, problemas de dinero, deudas incobrables, avaricia, egoísmo, tacañería
-
-**Afirmación :**
-
-> GENEROSIDAD
-
----
-
-## FR
 
 **Nom :** SIX DE DENIERS
 
@@ -38,6 +17,3 @@ Factures impayées, problèmes d'argent, créances irrécouvrables, avidité, é
 
 > GÉNÉROSITÉ
 
----
-
-*Source : Application de tarot en espagnol (screenshots du benchmark)*

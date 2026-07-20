@@ -1,26 +1,5 @@
 # 1 — AS DE OROS / AS DE DENIERS
 
-## ESP
-
-**Nombre :** AS DE OROS
-
-**RÉPONSE :** SÍ
-
-**Mots-clés (posición vertical) :**
-
-Un nuevo comienzo financiero, nuevas oportunidades financieras, nuevo trabajo, nuevo negocio, dinero, inversiones, ahorros, prosperidad, seguridad, estabilidad, abundancia, manifestación
-
-**Mots-clés (posición inversa) :**
-
-Falta de dinero, mal control financiero, falta de oportunidades o pérdida de oportunidades
-
-**Afirmación :**
-
-> PROSPERIDAD
-
----
-
-## FR
 
 **Nom :** AS DE DENIERS
 
@@ -38,6 +17,3 @@ Manque d'argent, mauvaise gestion financière, manque d'opportunités ou perte d
 
 > PROSPÉRITÉ
 
----
-
-*Source : Application de tarot en espagnol (screenshots du benchmark)*

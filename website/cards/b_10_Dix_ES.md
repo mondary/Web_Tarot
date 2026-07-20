@@ -1,26 +1,5 @@
 # 10 — DIEZ DE BASTOS / DIX DE BÂTONS
 
-## ESP
-
-**Nombre :** DIEZ DE BASTOS
-
-**RÉPONSE :** NO
-
-**Mots-clés (posición vertical) :**
-
-Sobrecargado, sobrecarga, responsabilidades, estrés, problemas, peso sobre los hombros, deber, trabajo pesado, obligación, cargado, restringido, agotado, lucha cuesta arriba, dado por sentado, asumir demasiado, retrasos
-
-**Mots-clés (posición inversa) :**
-
-Problemas insuperables, azotar un caballo muerto, obligación, resignado al destino
-
-**Afirmación :**
-
-> CARGA
-
----
-
-## FR
 
 **Nom :** DIX DE BÂTONS
 
@@ -38,6 +17,3 @@ Problèmes insurmontables, fouetter un cheval mort, obligation, résigné au des
 
 > CHARGE
 
----
-
-*Source : Application de tarot en espagnol (screenshots du benchmark)*

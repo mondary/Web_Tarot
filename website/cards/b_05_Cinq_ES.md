@@ -1,26 +1,5 @@
 # 5 — CINCO DE BASTOS / CINQ DE BÂTONS
 
-## ESP
-
-**Nombre :** CINCO DE BASTOS
-
-**RÉPONSE :** NO
-
-**Mots-clés (posición vertical) :**
-
-Conflicto, peleas, discusiones, riñas, desacuerdos, lucha, oposición, batallas, agresividad, temperamento, personalidades/egos enfrentados, huelgas, caos, desobediencia, estar a la defensiva/ territorial, asertivo
-
-**Mots-clés (posición inversa) :**
-
-Compromiso, fin del conflicto/renido/lucha, llegar a acuerdos
-
-**Afirmación :**
-
-> CONFLICTO
-
----
-
-## FR
 
 **Nom :** CINQ DE BÂTONS
 
@@ -38,6 +17,3 @@ Compromis, fin du conflit/querelle/lutte, parvenir à des accords
 
 > CONFLIT
 
----
-
-*Source : Application de tarot en espagnol (screenshots du benchmark)*

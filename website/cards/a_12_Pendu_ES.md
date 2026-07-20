@@ -1,26 +1,5 @@
 # 12 — EL COLGADO / LE PENDU
 
-## ESP
-
-**Nombre :** EL COLGADO
-
-**RÉPONSE :** NO
-
-**Mots-clés (posición vertical) :**
-
-Sentirse atrapado, confinado, autolimitado, inseguro, falta de dirección, necesidad de liberación, dejar ir, sacrificio, espera, falta de dirección, perspectiva
-
-**Mots-clés (posición inversa) :**
-
-Descontento, apatía, desinterés, estancamiento, impulsividad, patrones negativos, desapego
-
-**Afirmación :**
-
-> ES HORA DE UNA PAUSA SAGRADA LA QUIETUD OTORGA PERSPECTIVA
-
----
-
-## FR
 
 **Nom :** LE PENDU
 
@@ -38,6 +17,3 @@ Mécontentement, apathie, désintérêt, stagnation, impulsivité, modèles nég
 
 > IL EST TEMPS D'UNE PAUSE SACRÉE LE CALME APPORTE DE LA PERSPECTIVE
 
----
-
-*Source : Application de tarot en espagnol (screenshots du benchmark)*

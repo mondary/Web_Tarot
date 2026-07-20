@@ -1,26 +1,5 @@
 # 4 — CUATRO DE COPAS / QUATRE DE COUPES
 
-## ESP
-
-**Nombre :** CUATRO DE COPAS
-
-**RÉPONSE :** SÍ
-
-**Mots-clés (posición vertical) :**
-
-Arrepentirse, rechazar ofertas, perder oportunidades, estancamiento, desilusión, centrarse en lo negativo, ensimismamiento, depresión, aburrimiento, nostalgia, frustración, cansancio, meditación, soñar despierto, fantasear
-
-**Mots-clés (posición inversa) :**
-
-Aprovechar las oportunidades, dejar de lamentarse, fin del estancamiento, motivación, entusiasmo
-
-**Afirmación :**
-
-> APATÍA
-
----
-
-## FR
 
 **Nom :** QUATRE DE COUPES
 
@@ -38,6 +17,3 @@ Saisir les opportunités, arrêter de se lamenter, fin de la stagnation, motivat
 
 > APATHIE
 
----
-
-*Source : Application de tarot en espagnol (screenshots du benchmark)*

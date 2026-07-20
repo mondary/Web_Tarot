@@ -1,26 +1,5 @@
 # 9 — NUEVE DE COPAS / NEUF DE COUPES
 
-## ESP
-
-**Nombre :** NUEVE DE COPAS
-
-**RÉPONSE :** SÍ
-
-**Mots-clés (posición vertical) :**
-
-Deseos que se hacen realidad, realización de sueños, felicidad, alegría, cumplimiento, positividad, optimismo, satisfacción, éxito, abundancia, prosperidad, logros, recompensas, confianza, alta autoestima, triunfo
-
-**Mots-clés (posición inversa) :**
-
-Sueños rotos, pesadillas, infelicidad, devastación, miseria, falta de realización
-
-**Afirmación :**
-
-> REALIZACIÓN
-
----
-
-## FR
 
 **Nom :** NEUF DE COUPES
 
@@ -38,6 +17,3 @@ Rêves brisés, cauchemars, malheur, dévastation, misère, manque d'accomplisse
 
 > RÉALISATION
 
----
-
-*Source : Application de tarot en espagnol (screenshots du benchmark)*

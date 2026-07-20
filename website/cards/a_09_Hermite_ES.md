@@ -1,26 +1,5 @@
 # 9 — EL ERMITAÑO / L'ERMITE
 
-## ESP
-
-**Nombre :** EL ERMITAÑO
-
-**RÉPONSE :** NO
-
-**Mots-clés (posición vertical) :**
-
-Búsqueda del alma, introspección, autorreflexión, iluminación espiritual, autorreflexión, introspección, contemplación, guía interior, soledad
-
-**Mots-clés (posición inversa) :**
-
-Soledad, paranoia, aislamiento, reclusión, retraimiento, antisocial, restrictivo, paralizado por el miedo
-
-**Afirmación :**
-
-> HONRO A MI YO ESPIRITUAL
-
----
-
-## FR
 
 **Nom :** L'ERMITE
 
@@ -38,6 +17,3 @@ Solitude, paranoïa, isolement, réclusion, retrait, antisocial, restrictif, par
 
 > J'HONORE MON MOI SPIRITUEL
 
----
-
-*Source : Application de tarot en espagnol (screenshots du benchmark)*

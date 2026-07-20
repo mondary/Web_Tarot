@@ -1,26 +1,5 @@
 # 8 — OCHO DE ESPADAS / HUIT D'ÉPÉES
 
-## ESP
-
-**Nombre :** OCHO DE ESPADAS
-
-**RÉPONSE :** NO
-
-**Mots-clés (posición vertical) :**
-
-Sentirse atrapado, restringido, acorralado, con las manos atadas, victimizado, paralizado por el miedo/terror, ansiedad, sentirse presionado, sin esperanza, impotente, silenciado, crisis, dilema, drama, encarcelamiento, castigo, esclavitud
-
-**Mots-clés (posición inversa) :**
-
-Escapar, libertad, liberación, encontrar soluciones/opciones, alivio, tomar el control
-
-**Afirmación :**
-
-> RESTRICCIÓN
-
----
-
-## FR
 
 **Nom :** HUIT D'ÉPÉES
 
@@ -38,6 +17,3 @@ S'échapper, liberté, libération, trouver des solutions/options, soulagement, 
 
 > RESTRICTION
 
----
-
-*Source : Application de tarot en espagnol (screenshots du benchmark)*

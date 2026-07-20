@@ -1,26 +1,5 @@
 # 3 — TRES DE ESPADAS / TROIS D'ÉPÉES
 
-## ESP
-
-**Nombre :** TRES DE ESPADAS
-
-**RÉPONSE :** NO
-
-**Mots-clés (posición vertical) :**
-
-Desgarro, traición, soledad, alejamiento, ausencia, división, depresión, separación, tristeza, angustia, infelicidad, trastorno, pena, tristeza, trastorno, confusión, alienación, pérdida, distracción, mala salud, conflicto, desilusión
-
-**Mots-clés (posición inversa) :**
-
-Liberación del dolor, superación de la depresión, optimismo, perdón
-
-**Afirmación :**
-
-> DOLOR
-
----
-
-## FR
 
 **Nom :** TROIS D'ÉPÉES
 
@@ -38,6 +17,3 @@ Libération de la douleur, surmontage de la dépression, optimisme, pardon
 
 > DOULEUR
 
----
-
-*Source : Application de tarot en espagnol (screenshots du benchmark)*
