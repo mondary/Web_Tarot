@@ -6,7 +6,7 @@ Toutes les notes de release du projet Web Tarot. Le format de version suit `🔥
 
 ## TODO — Roadmap
 
-Statut : `2.2026.26` (headers unifiés sur le modèle immersif)
+Statut : `2.2026.27` (vue Rapide + badges RÉPONSE/Affirmation FR sur les 4 vues)
 
 ### Phase 1 — Fondations ✅
 - [x] Interface V2 unifiée (carousel d'accueil + grille par famille + vue détail)
@@ -30,6 +30,23 @@ Statut : `2.2026.26` (headers unifiés sur le modèle immersif)
 ---
 
 ## Releases
+
+### [2.2026.27] - 2026-07-20
+#### Added
+- **Vue Rapide** (`index_quick.html`) : 4ᵉ vue du site — lecture express carte + Réponse + Affirmation + mots-clés
+  - Grille continue des 78 cartes avec séparateur CSS par famille (glyphe élément, nom, description, compteur)
+  - Fiche carte immersive : image plein écran (88vh), affirmation en grand (hero), Réponse subtile, mots-clés en cartouches
+  - Mots-clés positifs combinés FR + ES (depuis les fichiers `_ES.md`)
+  - Recherche plein écran identique aux autres vues (F / A-Z)
+  - Navigation clavier : ← → pour changer de carte, Échap pour revenir, F pour chercher
+- **Badges RÉPONSE + Affirmation** affichés en français sur les 4 vues (classique, immersive, détaillée, rapide)
+- **Mots-clés ESP** extraits des fichiers `_ES.md` et embarqués dans `data.js` (`es.espKeywords`)
+#### Changed
+- `build_data.js` lit désormais la section `## FR` des fichiers `_ES.md` pour les affirmations et réponses en français
+- Lien « Rapide » ajouté à la barre de navigation sur les 4 vues
+#### Fixed
+- 3 cartes sans données ES corrigées : `a_03_Impératrice`, `a_09_Hermite`, `b_11_Valet` (renommage des fichiers `_ES.md` pour correspondre au slug de la carte)
+- Vue immersive : `esc()` manquant causait un crash au clic sur une carte (fonction ajoutée au scope global)
 
 ### [2.2026.26] - 2026-07-20
 #### Changed

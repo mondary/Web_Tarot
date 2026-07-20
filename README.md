@@ -9,9 +9,12 @@ Un site statique immersif pour explorer les 78 lames du Tarot de Rider-Waite-Smi
 ## ✅ Fonctionnalités
 
 - **78 cartes** : 22 arcanes majeurs + 56 mineurs (Bâtons, Épées, Coupes, Deniers)
-- **Interface unifiée** en un seul fichier : vue d'accueil, grille par famille, vue détail
+- **4 vues** : Classique, Immersive (diaporama), Détaillée (éditoriale), Rapide (lecture express)
+- **Lecture Rapide** : carte plein écran + Réponse (Oui / Non / Peut-être) + Affirmation + mots-clés positifs (FR + ES)
+- **Badges bilingues** : RÉPONSE et Affirmation affichées sur les 4 vues, en français
 - **Fiches enrichies** : signification, mots-clés (endroit / envers), interprétation, amour, travail, finances, guidance
 - **Scanner mobile** : reconnaissance locale d'une lame Rider-Waite-Smith par caméra, puis ouverture directe de sa fiche
+- **Recherche plein écran** : filtrage instantané par nom de carte (touches A-Z ou F)
 - **Navigation continue** : les flèches traversent les 78 cartes en boucle, d'une famille à l'autre
 - **Cohérence visuelle** : couleur d'accent dédiée par famille, matelas blanc simulant la bordure des cartes réelles
 - **Hors-ligne** : contenu embarqué dans `website/data.js`, fonctionne en double-cliquant sur `website/index.html`
@@ -19,10 +22,11 @@ Un site statique immersif pour explorer les 78 lames du Tarot de Rider-Waite-Smi
 
 ## 🧠 Utilisation
 
-1. Ouvrez l'accueil : un carousel présente les 5 familles.
-2. Cliquez sur une carte d'entrée pour ouvrir la grille d'une famille (ex. Le Fou → Arcanes Majeurs).
-3. Cliquez sur une carte pour afficher sa fiche détaillée.
-4. Dans la fiche, naviguez avec les flèches ← / → ou la barre de boucle en bas : le parcours enchaîne toutes les familles sans rupture.
+1. Ouvrez l'accueil : choisissez l'une des 4 vues dans la barre de navigation (Classique, Immersive, Détaillée, Rapide).
+2. Cliquez sur une famille pour ouvrir sa grille, puis sur une carte pour afficher sa fiche.
+3. En vue Rapide : la grille continue affiche les 78 cartes avec un séparateur par famille. Cliquez une carte pour voir l'image plein écran, la Réponse, l'Affirmation et les mots-clés.
+4. Naviguez avec les flèches ← / → ou la barre de boucle en bas.
+5. Recherche : tapez une lettre (A-Z) ou `F` pour ouvrir la recherche plein écran.
 
 ## ⚙️ Régages
 
@@ -74,7 +78,7 @@ python3 -m http.server 8000
 
 ## 📋 Voir le [CHANGELOG](CHANGELOG.md) pour l'historique complet.
 
-Version courante : `🔥v2.2026.11`
+Version courante : `🔥v2.2026.27`
 
 ## 🔗 Liens
 

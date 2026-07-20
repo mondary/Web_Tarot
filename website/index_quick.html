@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tarot — Lecture Rapide</title>
+<link rel="icon" href="icon.png" type="image/png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#050505;--bg-2:#0a0907;--fg:#f1ede4;--muted:#8a8378;--line:rgba(241,237,228,.08);
+  --ease:cubic-bezier(.16,1,.3,1);--accent:#c9a227;--mat:#ffffff;--mat-line:rgba(255,255,255,.22);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{height:100%}
+body{background:var(--bg);color:var(--fg);font-family:'Plus Jakarta Sans',sans-serif;overflow:hidden;-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%}
+button{font-family:inherit;color:inherit;background:none;border:none;cursor:pointer}
+a{color:inherit;text-decoration:none}
+
+.fx-grain{position:fixed;inset:0;z-index:9000;pointer-events:none;opacity:.035;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+.fx-vignette{position:fixed;inset:0;z-index:8990;pointer-events:none;background:radial-gradient(120% 100% at 50% 50%,transparent 55%,rgba(0,0,0,.55) 100%)}
+
+.brand{position:fixed;top:1.8rem;left:2.2rem;z-index:200;display:flex;align-items:center;gap:.65rem;font-family:'DM Mono',monospace;font-size:.7rem;letter-spacing:.32em;text-transform:uppercase;color:var(--muted)}
+.brand b{color:var(--fg);font-weight:400}
+.brand img{width:1.25rem;height:1.25rem;object-fit:contain}
+.brand-version{margin-left:.25rem;padding-left:.65rem;border-left:1px solid var(--line);color:var(--accent);font-size:.56rem;letter-spacing:.16em;white-space:nowrap}
+
+.mode-switch{position:fixed;top:1.5rem;right:2.2rem;z-index:250;display:flex;align-items:center;font-family:'DM Mono',monospace;font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;padding:.25rem;border:1px solid var(--line);border-radius:50px;background:var(--bg)}
+.mode-switch a{color:var(--muted);padding:.42rem .62rem;border-radius:50px;transition:color .2s,background .2s}
+.mode-switch a:hover{color:var(--fg)}
+.mode-switch a.active{color:#050505;background:var(--accent)}
+
+.landing-foot{position:fixed;bottom:1.2rem;left:1.6rem;z-index:200;display:flex;align-items:center;gap:1.1rem;font-family:'DM Mono',monospace;font-size:.64rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
+.landing-foot a{color:var(--muted);transition:color .3s;text-decoration:none;border-bottom:1px solid transparent;padding-bottom:1px}
+.landing-foot a:hover{color:var(--fg);border-color:var(--ac)}
+
+/* Back button — standard */
+.back{position:fixed;top:1.6rem;left:2.2rem;z-index:300;display:flex;align-items:center;gap:.55rem;
+  font-family:'DM Mono',monospace;font-size:.66rem;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--fg);padding:.45rem .85rem;border-radius:50px;border:1px solid var(--line);
+  background:rgba(10,9,7,.5);backdrop-filter:blur(8px);transition:.3s var(--ease)}
+.back:hover{border-color:var(--ac);color:var(--ac)}
+.back svg{width:14px;height:14px}
+
+/* VIEWS */
+.view{position:fixed;inset:0;z-index:10;opacity:0;visibility:hidden;transition:opacity .6s var(--ease),visibility .6s}
+.view.active{opacity:1;visibility:visible;z-index:20}
+
+/* =====================================================
+   LANDING — full continuous grid with family separators
+   ===================================================== */
+#view-landing{overflow-y:auto;overflow-x:hidden;scrollbar-width:thin;scrollbar-color:rgba(241,237,228,.2) transparent}
+#view-landing::-webkit-scrollbar{width:6px}
+#view-landing::-webkit-scrollbar-thumb{background:rgba(241,237,228,.2);border-radius:3px}
+.landing-head{padding:6rem 4vw 2rem;border-bottom:1px solid var(--line)}
+.landing-head h1{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(3rem,7vw,5.5rem);line-height:.9;text-transform:uppercase;letter-spacing:-.02em}
+.landing-head h1 em{font-style:italic;color:var(--accent);font-weight:400}
+.landing-head .sub{color:var(--muted);font-size:.9rem;font-weight:300;margin-top:.7rem;max-width:40rem}
+.landing-head .hint-key{margin-top:1.2rem;font-family:'DM Mono',monospace;font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
+.landing-head .hint-key kbd{display:inline-block;padding:.2rem .5rem;border:1px solid var(--line);border-radius:4px;color:var(--fg);margin:0 .2rem}
+
+.full-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:1rem;padding:2rem 4vw 6rem;align-items:start}
+
+/* Family separator card — CSS designed */
+.fam-sep{grid-column:1/-1;display:flex;align-items:center;gap:1.5rem;padding:2.5rem 0 1rem;margin-top:1rem;border-bottom:1px solid var(--line)}
+.fam-sep-art{flex:0 0 auto;width:80px;height:120px;position:relative;display:grid;place-items:center}
+.fam-sep-art .glyph{font-family:'Cormorant Garamond',serif;font-size:3rem;color:var(--ac);line-height:1;text-align:center}
+.fam-sep-art .ring{position:absolute;inset:0;border:1.5px solid var(--ac);border-radius:.6rem;opacity:.3}
+.fam-sep-body{flex:1;min-width:0}
+.fam-sep-body .lbl{font-family:'DM Mono',monospace;font-size:.62rem;letter-spacing:.26em;text-transform:uppercase;color:var(--ac);margin-bottom:.4rem}
+.fam-sep-body .name{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(1.8rem,3.5vw,2.8rem);line-height:1;text-transform:uppercase;letter-spacing:-.01em}
+.fam-sep-body .name em{font-style:italic;color:var(--ac);font-weight:400}
+.fam-sep-body .desc{color:var(--muted);font-size:.82rem;line-height:1.5;font-weight:300;margin-top:.5rem;max-width:32rem}
+.fam-sep-count{flex:0 0 auto;font-family:'DM Mono',monospace;font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);text-align:right}
+.fam-sep-count b{display:block;font-family:'Cormorant Garamond',serif;font-size:2rem;color:var(--fg);letter-spacing:0;text-transform:none;font-weight:400}
+
+/* Card mini */
+.mini{position:relative;border-radius:.9rem;overflow:hidden;background:var(--mat);border:1px solid var(--mat-line);cursor:pointer;transition:.5s var(--ease);display:flex;flex-direction:column;box-shadow:0 10px 28px rgba(0,0,0,.35)}
+.mini:hover{transform:translateY(-6px);border-color:var(--ac);box-shadow:0 16px 40px rgba(0,0,0,.5)}
+.mini .ph{aspect-ratio:2/3;display:flex;align-items:center;justify-content:center;padding:.5rem;position:relative}
+.mini .ph img{height:100%;object-fit:contain;transition:transform .6s var(--ease)}
+.mini:hover .ph img{transform:scale(1.05)}
+.mini .cap{padding:.6rem .75rem .7rem;border-top:1px solid rgba(0,0,0,.06);font-size:.78rem;display:flex;justify-content:space-between;align-items:center;gap:.5rem;background:var(--mat)}
+.mini .cap .nm{font-family:'Cormorant Garamond',serif;font-size:1.02rem;line-height:1.1;font-weight:500;color:#1c1814;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.mini .cap .no{font-family:'DM Mono',monospace;font-size:.62rem;color:#a59c8e;letter-spacing:.1em;flex:0 0 auto}
+
+/* =====================================================
+   DETAIL — immersive card page
+   ===================================================== */
+#view-detail{overflow:hidden;background:#000}
+.d-stage{position:absolute;inset:0;overflow-y:auto;overflow-x:hidden;-webkit-overflow-scrolling:touch;scrollbar-width:thin;scrollbar-color:rgba(241,237,228,.25) transparent}
+.d-stage::-webkit-scrollbar{width:8px}
+.d-stage::-webkit-scrollbar-thumb{background:rgba(241,237,228,.22);border-radius:4px}
+
+.d-body{display:flex;min-height:100%;align-items:stretch}
+
+/* Card image — full height */
+.d-card{flex:0 0 44%;display:flex;align-items:center;justify-content:center;padding:4rem 2rem;position:relative;pointer-events:none}
+.d-card img{height:88vh;max-height:88vh;width:auto;max-width:100%;object-fit:contain;filter:drop-shadow(0 30px 60px rgba(0,0,0,.6))}
+
+/* Content panel */
+.d-content{flex:1;display:flex;flex-direction:column;justify-content:center;padding:4rem 5rem 4rem 2.5rem;min-width:0}
+
+/* Card name */
+.d-name{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(3rem,6vw,5.5rem);line-height:.92;text-transform:uppercase;letter-spacing:-.01em;margin-bottom:.8rem}
+.d-name em{font-style:italic;color:var(--accent);font-weight:400}
+
+/* RÉPONSE — subtle */
+.reponse-line{font-family:'DM Mono',monospace;font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin-bottom:2.5rem;opacity:.7}
+.reponse-line span{color:var(--fg);opacity:1}
+
+/* Affirmation — HERO */
+.affirmation{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(2rem,4vw,3.2rem);line-height:1.22;color:var(--fg);margin-bottom:3rem;max-width:780px;font-style:italic;opacity:.96}
+.affirmation::before{content:'« ';color:var(--accent);font-size:1.15em}
+.affirmation::after{content:' »';color:var(--accent);font-size:1.15em}
+
+/* Keywords — cartouche style */
+.kw-list{display:flex;flex-wrap:wrap;gap:.5rem}
+.kw-tag{padding:.4rem 1rem;border-radius:50px;font-size:.82rem;font-weight:400;border:1px solid var(--line);color:var(--fg);background:rgba(241,237,228,.04);transition:.3s;letter-spacing:.02em}
+.kw-tag:hover{border-color:var(--accent);color:var(--accent)}
+
+/* Position indicator */
+.d-pos{position:absolute;bottom:1.5rem;left:50%;transform:translateX(-50%);z-index:60;font-family:'DM Mono',monospace;font-size:.66rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);display:flex;align-items:center;gap:1rem;padding:.5rem 1.2rem;background:rgba(5,5,5,.7);backdrop-filter:blur(10px);border:1px solid var(--line);border-radius:50px}
+.d-pos b{color:var(--fg)}
+.d-pos button{cursor:pointer;color:var(--muted);transition:color .3s}
+.d-pos button:hover{color:var(--fg)}
+
+/* Search overlay — same as other modes */
+#search{position:fixed;inset:0;z-index:8000;background:rgba(5,5,5,.94);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);display:none;flex-direction:column;opacity:0;transition:opacity .3s var(--ease)}
+#search.open{display:flex;opacity:1;animation:search-in .35s var(--ease)}
+@keyframes search-in{from{opacity:0}to{opacity:1}}
+.s-query{flex:0 0 auto;text-align:center;padding:7vh 4vw 1vh;min-height:26vh;display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(4rem,17vw,17rem);line-height:.86;letter-spacing:-.02em;color:var(--fg);word-break:break-word;text-transform:uppercase}
+.s-query .ph{color:var(--muted);font-style:italic;font-weight:300;text-transform:none;font-size:.18em;letter-spacing:.04em}
+.s-query .caret{display:inline-block;width:.05em;min-height:.7em;background:var(--ac);margin-left:.05em;align-self:center;animation:s-blink 1s steps(2) infinite}
+@keyframes s-blink{50%{opacity:0}}
+.s-scroll{flex:1;overflow-y:auto;padding:0 4vw 6vh;min-height:0}
+.s-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(118px,1fr));gap:1rem;max-width:1500px;margin:0 auto}
+.s-grid .mini{cursor:pointer}
+.s-grid .mini.sel{border:2px solid var(--ac);box-shadow:0 0 0 1px var(--ac);transform:none}
+.s-empty{grid-column:1/-1;text-align:center;color:var(--muted);padding:3rem 0;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.4rem}
+
+@media(max-width:900px){
+  .full-grid{grid-template-columns:repeat(auto-fill,minmax(110px,1fr));gap:.7rem;padding:1.5rem 3vw 5rem}
+  .d-body{flex-direction:column}
+  .d-card{flex:0 0 auto;padding:1rem;height:auto}
+  .d-card img{height:auto;max-height:50vh}
+  .d-content{padding:1.5rem 2rem 3rem;text-align:center;align-items:center}
+  .affirmation{max-width:100%}
+  .kw-list{justify-content:center}
+  .fam-sep{flex-wrap:wrap;gap:1rem}
+  .fam-sep-count{text-align:left}
+}
+</style>
+</head>
+<body>
+<div class="fx-grain"></div>
+<div class="fx-vignette"></div>
+
+<div class="brand">
+  <img src="icon.png" alt="">
+  <span>TAROT <b>· DIVINATOIRE</b></span>
+  <span class="brand-version" id="brand-ver"></span>
+</div>
+
+<nav class="mode-switch" aria-label="Choisir une vue">
+  <a href="index.html">Classique</a>
+  <a href="index_full.html">Immersive</a>
+  <a href="index_detail.html">Détaillée</a>
+  <a href="index_quick.html" class="active">Rapide</a>
+</nav>
+
+<div class="landing-foot" id="landing-foot">
+  <a href="https://github.com/mondary/Web_Tarot" target="_blank" rel="noopener">GitHub</a>
+  <a href="https://mondary.design" target="_blank" rel="noopener">mondary.design</a>
+</div>
+
+<button class="back" id="back-btn" style="display:none">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+  Retour
+</button>
+
+<!-- ============ LANDING — full grid ============ -->
+<section class="view active" id="view-landing">
+  <div class="landing-head">
+    <h1>Lecture <em>Rapide</em></h1>
+    <p class="sub">78 lames · réponse · affirmation · mots-clés. Un parcours direct à travers le Tarot de Waite.</p>
+    <div class="hint-key">Recherche <kbd>F</kbd> ou <kbd>⌘F</kbd> · Navigation <kbd>←</kbd> <kbd>→</kbd> · Retour <kbd>Esc</kbd></div>
+  </div>
+  <div class="full-grid" id="full-grid"></div>
+</section>
+
+<!-- ============ DETAIL — immersive card ============ -->
+<section class="view" id="view-detail">
+  <div class="d-stage" id="d-stage">
+    <div class="d-body" id="d-body"></div>
+  </div>
+  <div class="d-pos" id="d-pos"></div>
+</section>
+
+<!-- ============ SEARCH ============ -->
+<div id="search" role="dialog" aria-modal="true" aria-label="Recherche">
+  <div class="s-query" id="s-query"></div>
+  <div class="s-scroll"><div class="s-grid" id="s-grid"></div></div>
+</div>
+
+<script src="data.js"></script>
+<script>
+/* ---- Helpers ---- */
+const $ = s => document.querySelector(s);
+const el = (tag,cls,txt) => { const e=document.createElement(tag); if(cls)e.className=cls; if(txt)e.textContent=txt; return e; };
+function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+
+const ALL_CARDS = [];
+TAROT.families.forEach(f => f.cards.forEach(c => ALL_CARDS.push(c)));
+
+const state = { view:'landing', cardId:null };
+
+/* ---- MD keyword extraction ---- */
+function mdKeywords(md,heading){
+  const match=md.match(new RegExp('^### '+heading.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')+'\\s*\\n([\\s\\S]*?)(?=^### |^## |(?![\\s\\S]))','mi'));
+  return match?[...match[1].matchAll(/^-\s+(.+)$/gm)].map(([,v])=>v.trim()):[];
+}
+
+function findCard(id){for(const f of TAROT.families){const c=f.cards.find(x=>x.id===id);if(c)return c;}return null;}
+
+/* =====================================================
+   LANDING — full grid with family separators
+   ===================================================== */
+function buildFullGrid(){
+  const g=$('#full-grid');
+  g.innerHTML='';
+  TAROT.families.forEach((fam,fi)=>{
+    // Family separator card
+    const sep=el('div','fam-sep','');
+    sep.style.setProperty('--ac',fam.accent);
+    sep.innerHTML=`
+      <div class="fam-sep-art" style="--ac:${fam.accent}"><div class="ring" style="border-color:${fam.accent}"></div><div class="glyph" style="color:${fam.accent}">${fam.elementSym}</div></div>
+      <div class="fam-sep-body">
+        <div class="lbl" style="color:${fam.accent}">${fam.elementLine}</div>
+        <div class="name">${fam.titleFull}</div>
+        <div class="desc">${fam.desc}</div>
+      </div>
+      <div class="fam-sep-count"><b>${fam.cards.length}</b>LAMES</div>`;
+    g.appendChild(sep);
+    // Family cards
+    fam.cards.forEach(c=>{
+      const m=el('div','mini','');
+      m.dataset.id=c.id;
+      m.innerHTML=`<div class="ph"><img src="${c.file}" alt="${c.name}" loading="lazy"></div><div class="cap"><span class="nm">${c.name}</span><span class="no">${String(c.num).padStart(2,'0')}</span></div>`;
+      m.addEventListener('click',()=>openCard(c.id));
+      g.appendChild(m);
+    });
+  });
+}
+
+/* =====================================================
+   DETAIL — immersive card page
+   ===================================================== */
+function openCard(id){
+  const card=findCard(id);
+  if(!card) return;
+  state.cardId=id;
+  const family=TAROT.families.find(f=>f.key===card.family);
+  history.replaceState(null,'','#lame='+encodeURIComponent(id));
+  document.documentElement.style.setProperty('--ac',family.accent);
+
+  // All positive keywords: French upright + Spanish upright (deduplicated)
+  const frKw=mdKeywords(card.md,'À L\'ENDROIT');
+  const espKw=card.es&&card.es.espKeywords?card.es.espKeywords:[];
+  const allKw=[...new Set([...frKw,...espKw])];
+
+  const es=card.es;
+  const reponseText=es&&es.reponse?es.reponse:'';
+  const affirmText=es&&es.affirmation?es.affirmation:'';
+
+  const globalIdx=ALL_CARDS.findIndex(c=>c.id===id);
+  const inFam=family.cards.findIndex(c=>c.id===id);
+
+  const body=$('#d-body');
+  body.innerHTML=`
+    <div class="d-card"><img src="${card.file}" alt="${card.name}"></div>
+    <div class="d-content">
+      <h1 class="d-name"><em>${card.name}</em></h1>
+      ${reponseText?`<div class="reponse-line">Réponse · <span>${esc(reponseText)}</span></div>`:''}
+      ${affirmText?`<div class="affirmation">${esc(affirmText)}</div>`:''}
+      <div class="kw-list">${allKw.map(k=>`<span class="kw-tag">${esc(k)}</span>`).join('')}</div>
+    </div>`;
+
+  $('#d-pos').innerHTML=`<button id="dp-prev">←</button><b>${String(globalIdx+1).padStart(2,'0')}</b> / ${ALL_CARDS.length}<button id="dp-next">→</button>`;
+  $('#dp-prev').addEventListener('click',e=>{e.stopPropagation();stepCard(-1);});
+  $('#dp-next').addEventListener('click',e=>{e.stopPropagation();stepCard(1);});
+
+  $('#d-stage').scrollTop=0;
+  switchView('detail');
+}
+
+function stepCard(dir){
+  const idx=ALL_CARDS.findIndex(c=>c.id===state.cardId);
+  if(idx<0) return;
+  const ni=(idx+dir+ALL_CARDS.length)%ALL_CARDS.length;
+  openCard(ALL_CARDS[ni].id);
+}
+
+/* ---- switchView ---- */
+function switchView(v){
+  document.querySelectorAll('.view').forEach(x=>x.classList.remove('active'));
+  $('#view-'+v).classList.add('active');
+  state.view=v;
+  const back=$('#back-btn');
+  back.style.display=v==='landing'?'none':'flex';
+  const foot=$('#landing-foot');
+  if(foot) foot.style.display=v==='landing'?'flex':'none';
+  if(v==='landing') document.documentElement.style.setProperty('--ac','#c9a227');
+}
+
+function goHome(){
+  history.replaceState(null,'',location.pathname);
+  switchView('landing');
+}
+
+/* =====================================================
+   SEARCH — fullscreen like other modes
+   ===================================================== */
+const search={open:false,q:'',sel:0,results:[]};
+
+function openSearch(initial){
+  search.open=true; search.q=initial||''; search.sel=0;
+  $('#search').classList.add('open');
+  renderSearch();
+}
+function closeSearch(){
+  search.open=false; search.q=''; search.sel=0; search.results=[];
+  $('#search').classList.remove('open');
+}
+function renderSearch(){
+  const q=search.q;
+  const query=$('#s-query');
+  query.innerHTML=q?esc(q)+'<span class="caret"></span>':'<span class="ph">Tapez pour rechercher…</span>';
+  const g=$('#s-grid');
+  if(!q){g.innerHTML='';search.results=[];return;}
+  const lq=q.toLowerCase();
+  const results=ALL_CARDS.filter(c=>c.name.toLowerCase().includes(lq));
+  search.results=results;
+  if(search.sel>=results.length) search.sel=Math.max(0,results.length-1);
+  if(!results.length){g.innerHTML='<div class="s-empty">Aucun résultat</div>';return;}
+  g.innerHTML='';
+  results.forEach((c,idx)=>{
+    const m=el('div','mini'+(idx===search.sel?' sel':''));
+    m.innerHTML=`<div class="ph"><img src="${c.file}" alt="${c.name}" loading="lazy"></div><div class="cap"><span class="nm">${c.name}</span><span class="no">${String(c.num).padStart(2,'0')}</span></div>`;
+    m.addEventListener('click',()=>{closeSearch();openCard(c.id);});
+    m.addEventListener('mouseenter',()=>{search.sel=idx;paintSearchSel();});
+    g.appendChild(m);
+  });
+}
+function paintSearchSel(){
+  document.querySelectorAll('#s-grid .mini').forEach((m,i)=>m.classList.toggle('sel',i===search.sel));
+}
+
+/* ---- Events ---- */
+$('#back-btn').addEventListener('click',()=>{ if(state.view==='detail') goHome(); });
+
+document.addEventListener('keydown',e=>{
+  if(search.open){
+    if(e.key==='Escape'){closeSearch();return;}
+    if(e.key==='Backspace'){search.q=search.q.slice(0,-1);search.sel=0;renderSearch();e.preventDefault();return;}
+    if(e.key==='Enter'){const c=search.results[search.sel];if(c){closeSearch();openCard(c.id);}e.preventDefault();return;}
+    if(e.key==='ArrowDown'){if(search.results.length){search.sel=(search.sel+1)%search.results.length;paintSearchSel();}e.preventDefault();return;}
+    if(e.key==='ArrowUp'){if(search.results.length){search.sel=(search.sel-1+search.results.length)%search.results.length;paintSearchSel();}e.preventDefault();return;}
+    if(e.key==='Tab'){if(search.results.length){search.sel=(search.sel+(e.shiftKey?-1:1)+search.results.length)%search.results.length;paintSearchSel();}e.preventDefault();return;}
+    if(/^\p{L}{1}$/u.test(e.key)){search.q+=e.key;search.sel=0;renderSearch();e.preventDefault();return;}
+    return;
+  }
+  if(e.key==='Escape'){if(state.view==='detail') goHome();return;}
+  if(e.key==='f'||e.key==='F'){if(e.ctrlKey||e.metaKey||state.view==='landing'){e.preventDefault();openSearch();}}
+  if(state.view==='detail'){
+    if(e.key==='ArrowLeft') stepCard(-1);
+    if(e.key==='ArrowRight') stepCard(1);
+  }
+});
+
+/* ---- Init ---- */
+$('#brand-ver').textContent='V'+TAROT.version;
+buildFullGrid();
+
+/* Deep link */
+if(location.hash && location.hash.length>1){
+  const params=new URLSearchParams(location.hash.slice(1));
+  const lame=params.get('lame');
+  if(lame) openCard(lame);
+}
+</script>
+</body>
+</html>

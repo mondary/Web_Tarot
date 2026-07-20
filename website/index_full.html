@@ -369,6 +369,12 @@ a{color:inherit;text-decoration:none}
   .mode-switch{right:1.2rem;top:.9rem}
   .back{left:1.2rem;top:3.7rem}
 }
+/* ES badges: Réponse + Affirmation */
+.es-badges{display:flex;gap:.6rem;flex-wrap:wrap;margin:.5rem 0 .3rem;align-items:center}
+.es-badge{display:inline-flex;align-items:center;gap:.35rem;padding:.25rem .65rem;border-radius:999px;font-size:.72rem;font-weight:600;letter-spacing:.03em;text-transform:uppercase;line-height:1.2}
+.es-badge.resp{background:var(--ac,#c9a227);color:#fff}
+.es-badge.aff{background:transparent;border:1.5px solid var(--ac,#c9a227);color:var(--ac,#c9a227);text-transform:none;font-weight:500;letter-spacing:0;font-size:.78rem}
+.es-badge .lbl{opacity:.7;font-size:.65rem;font-weight:400}
 </style>
 </head>
 <body>
@@ -380,6 +386,7 @@ a{color:inherit;text-decoration:none}
   <a href="index.html">Classique</a>
   <a class="active" href="index_full.html">Immersive</a>
   <a href="index_detail.html">Détaillée</a>
+  <a href="index_quick.html">Rapide</a>
 </nav>
 <div class="landing-foot" id="landing-foot">
   <a href="https://github.com/mondary/Web_Tarot" target="_blank" rel="noopener">GitHub</a>
@@ -603,6 +610,8 @@ function famStep(dir){
 /* =========================================================
    Detail view + lightweight MD renderer
    ========================================================= */
+function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+
 function openCard(id){
   const card = findCard(id);
   if(!card) return;
@@ -626,6 +635,13 @@ function openCard(id){
     <span class="sep">·</span>
     <span>${card.element}</span>`;
   $('#d-title').innerHTML = `<em>${card.name}</em>`;
+
+  // ES badges: Réponse + Affirmation
+  const es = card.es;
+  const esHtml = es ? `<div class="es-badges">${es.reponse ? `<span class="es-badge resp"><span class="lbl">Réponse</span> ${esc(es.reponse)}</span>` : ''}${es.affirmation ? `<span class="es-badge aff">« ${esc(es.affirmation)} »</span>` : ''}</div>` : '';
+  const existingBadges = $('#d-panel-inner .es-badges');
+  if(existingBadges) existingBadges.remove();
+  $('#d-title').insertAdjacentHTML('afterend', esHtml);
 
   // prose content
   $('#d-prose').innerHTML = reorderClassique(renderMd(card.md));

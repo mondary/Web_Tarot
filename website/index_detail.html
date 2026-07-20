@@ -464,6 +464,12 @@ a{color:inherit;text-decoration:none}
   .detailed-content{grid-template-columns:1fr;gap:1.2rem}
   .detailed-content section.primary,.detailed-content section.closing{grid-column:auto}
 }
+/* ES badges: Réponse + Affirmation */
+.es-badges{display:flex;gap:.6rem;flex-wrap:wrap;margin:.5rem 0 .3rem;align-items:center}
+.es-badge{display:inline-flex;align-items:center;gap:.35rem;padding:.25rem .65rem;border-radius:999px;font-size:.72rem;font-weight:600;letter-spacing:.03em;text-transform:uppercase;line-height:1.2}
+.es-badge.resp{background:var(--ac,#c9a227);color:#fff}
+.es-badge.aff{background:transparent;border:1.5px solid var(--ac,#c9a227);color:var(--ac,#c9a227);text-transform:none;font-weight:500;letter-spacing:0;font-size:.78rem}
+.es-badge .lbl{opacity:.7;font-size:.65rem;font-weight:400}
 </style>
 </head>
 <body>
@@ -475,6 +481,7 @@ a{color:inherit;text-decoration:none}
   <a href="index.html">Classique</a>
   <a href="index_full.html">Immersive</a>
   <a class="active" href="index_detail.html">Détaillée</a>
+  <a href="index_quick.html">Rapide</a>
 </nav>
 <div class="landing-foot" id="landing-foot">
   <a href="https://github.com/mondary/Web_Tarot" target="_blank" rel="noopener">GitHub</a>
@@ -1482,11 +1489,14 @@ function openCard(id){
     </article>`;
   }
   const wrap = $('#detail-wrap');
+  const es = card.es;
+  const esHtml = es ? `<div class="es-badges">${es.reponse ? `<span class="es-badge resp"><span class="lbl">Réponse</span> ${escHtml(es.reponse)}</span>` : ''}${es.affirmation ? `<span class="es-badge aff">« ${escHtml(es.affirmation)} »</span>` : ''}</div>` : '';
   wrap.innerHTML = `
     <header class="dossier-head">
       <div class="position"><b>${String(globalIdx+1).padStart(2,'0')}</b> / 78 · ${inFam+1}/${family.count}</div>
     </header>
     <h1 class="dossier-title"><em>${escHtml(card.name)}</em></h1>
+    ${esHtml}
     <div class="card-actions"></div>
     <section class="dossier-diptych">
       ${studyPlate}
