@@ -6,7 +6,7 @@ Toutes les notes de release du projet Web Tarot. Le format de version suit `🔥
 
 ## TODO — Roadmap
 
-Statut : `3.2026.0` (architecture restructurée, mots-clés 2 colonnes, affirmation hero)
+Statut : `3.2026.1` (FR-only, espagnol expurgé)
 
 ### Phase 1 — Fondations ✅
 - [x] Interface V2 unifiée (carousel d'accueil + grille par famille + vue détail)
@@ -30,6 +30,12 @@ Statut : `3.2026.0` (architecture restructurée, mots-clés 2 colonnes, affirmat
 ---
 
 ## Releases
+
+### [3.2026.1] - 2026-07-21
+#### Changed
+- **Fichiers _ES.md** : expurgés de l'espagnol, contenu FR-only dans `website/cards/`
+- Originaux ESP+FR sauvegardés dans `benchmarks/cards_ES_original/`
+- `data.js` reconstruit avec contenu français uniquement
 
 ### [3.2026.0] - 2026-07-21
 #### Added
