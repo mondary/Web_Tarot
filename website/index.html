@@ -848,7 +848,6 @@ function buildGrid(){
     const crumb = (f.key==='majors' ? 'Arcane · ' : 'Suite · ') + f.element;
     const head = el('header','grid-head',`
       <div class="left">
-        <div class="crumb"><span class="ac-dot"></span><span>${crumb}</span></div>
         <h2>${titleHtml}</h2>
         <p class="summary">${FAMILY_SUMMARY[f.key]}</p>
       </div>
@@ -1059,9 +1058,13 @@ function switchView(v){
   document.querySelectorAll('.view').forEach(x=>x.classList.remove('active'));
   $('#view-'+v).classList.add('active');
   const back=$('#back-btn');
-  back.style.display = v==='landing' ? 'none':'flex';
+  back.style.display = v==='detail' ? 'flex':'none';
   const foot=$('#landing-foot');
   if(foot) foot.style.display = v==='landing' ? 'flex':'none';
+  const draws=$('#draws-launch');
+  if(draws) draws.style.display = v==='detail' ? 'flex':'none';
+  const scan=$('#scan-launch');
+  if(scan) scan.style.display = v==='detail' ? 'flex':'none';
   if(v==='landing'){document.documentElement.style.setProperty('--ac','#c9a227');}
 }
 
