@@ -6,7 +6,7 @@ Toutes les notes de release du projet Web Tarot. Le format de version suit `🔥
 
 ## TODO — Roadmap
 
-Statut : `2.2026.19` (version visible dans l'en-tête)
+Statut : `2.2026.20` (barre d'actions carte + retrait du compteur)
 
 ### Phase 1 — Fondations ✅
 - [x] Interface V2 unifiée (carousel d'accueil + grille par famille + vue détail)
@@ -30,6 +30,11 @@ Statut : `2.2026.19` (version visible dans l'en-tête)
 ---
 
 ## Releases
+
+### [2.2026.20] - 2026-07-20
+#### Changed
+- Les boutons « Associations » et « Écouter la carte » regroupés dans une barre d'actions visible en haut de chaque fiche, sur les trois vues
+- Compteur « · 77 » retiré du libellé Associations (toujours 77 associations)
 
 ### [2.2026.19] - 2026-07-20
 #### Changed

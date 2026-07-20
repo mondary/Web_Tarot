@@ -102,13 +102,15 @@
 .tf-scan-close svg{width:18px;height:18px}
 .tf-scan-error{display:none;align-self:center;max-width:22rem;padding:1rem 1.2rem;background:#15130f;border:1px solid var(--accent,#c9a227);border-radius:.8rem;color:var(--fg,#f1ede4);font-size:.9rem;line-height:1.5;text-align:center;pointer-events:auto}
 .tf-scan-error.visible{display:block}
-/* voice reader button */
-.tf-voice-btn{display:inline-flex;align-items:center;gap:.5rem;padding:.55rem 1rem;border-radius:50px;
-  background:rgba(201,162,39,.12);border:1px solid rgba(201,162,39,.25);color:var(--accent,#c9a227);
+/* shared action bar : voice reader + associations */
+.tf-actions{display:flex;flex-wrap:wrap;gap:.7rem;margin:0 0 1.6rem}
+.tf-voice-btn,.tf-mirror-trigger{
+  display:inline-flex;align-items:center;gap:.5rem;padding:.72rem 1.2rem;border-radius:50px;
+  background:rgba(201,162,39,.14);border:1px solid rgba(201,162,39,.45);color:var(--accent,#c9a227);
   font-family:'DM Mono',monospace;font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;
-  cursor:pointer;transition:all .25s ease;margin-top:1rem}
-.tf-voice-btn:hover{background:rgba(201,162,39,.22);border-color:var(--accent,#c9a227)}
-.tf-voice-btn.speaking{background:rgba(201,162,39,.22);border-color:var(--accent,#c9a227);animation:tf-voice-pulse 1.4s ease-in-out infinite}
+  cursor:pointer;transition:all .25s ease-out}
+.tf-voice-btn:hover,.tf-mirror-trigger:hover{background:rgba(201,162,39,.28);border-color:var(--accent,#c9a227);transform:translateY(-1px)}
+.tf-voice-btn.speaking{background:rgba(201,162,39,.32);border-color:var(--accent,#c9a227);animation:tf-voice-pulse 1.4s ease-in-out infinite}
 @keyframes tf-voice-pulse{0%,100%{opacity:1}50%{opacity:.55}}
 .tf-voice-btn svg{width:16px;height:16px;flex:0 0 auto}
 
@@ -119,15 +121,8 @@
 }
 
 /* === Miroir des Lames (associations) === */
-.tf-mirror-trigger{
-  display:inline-flex;align-items:center;gap:.55rem;padding:.55rem .95rem;border-radius:50px;
-  border:1px solid var(--accent,#c9a227);background:rgba(201,162,39,.06);color:var(--accent,#c9a227);
-  font-family:'DM Mono',monospace;font-size:.58rem;letter-spacing:.22em;text-transform:uppercase;
-  cursor:pointer;transition:.25s ease-out;margin:0 0 1rem
-}
 .tf-mirror-trigger .glyph{font-size:.85rem;letter-spacing:0}
 .tf-mirror-trigger .glyph svg{width:14px;height:14px;display:block}
-.tf-mirror-trigger:hover{background:rgba(201,162,39,.16);transform:translateY(-1px)}
 
 #tf-mirror{
   position:fixed;inset:0;z-index:8800;display:none;flex-direction:column;
@@ -660,13 +655,24 @@
     });
   }
 
+  function getActionsBar(container){
+    if(!container) return null;
+    let bar = container.querySelector(':scope > .tf-actions');
+    if(!bar){ bar = document.createElement('div'); bar.className = 'tf-actions'; container.prepend(bar); }
+    return bar;
+  }
+
   function injectVoiceButton(container, card){
     if(!('speechSynthesis' in window)) return;
+    const bar = getActionsBar(container);
+    if(!bar) return;
+    const old = bar.querySelector('.tf-voice-btn');
+    if(old) old.remove();
     const btn = document.createElement('button');
     btn.className = 'tf-voice-btn';
     btn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M11 5L6 9H2v6h4l5 4V5Z"/><path d="M15.5 8.5a5 5 0 0 1 0 7M19 5a9 9 0 0 1 0 14"/></svg><span class="tf-voice-label">Écouter la carte</span>';
     btn.addEventListener('click',()=>toggleVoice(card));
-    container.prepend(btn);
+    bar.appendChild(btn);
   }
 
   /* =========================================================
@@ -938,16 +944,18 @@
 
   function injectMirrorTrigger(container, card){
     if(!card || !card.associations) return;
-    const old = container.querySelector('.tf-mirror-trigger');
-    if(old) old.remove();
     const n = countCombos(card.associations);
     if(!n) return;
+    const bar = getActionsBar(container);
+    if(!bar) return;
+    const old = bar.querySelector('.tf-mirror-trigger');
+    if(old) old.remove();
     const btn = document.createElement('button');
     btn.className = 'tf-mirror-trigger';
-    btn.innerHTML = `<span class="glyph" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="m12 2 2.35 7.65L22 12l-7.65 2.35L12 22l-2.35-7.65L2 12l7.65-2.35L12 2Z"/></svg></span><span>Associations · ${n}</span>`;
-    btn.setAttribute('aria-label', `Voir les ${n} associations de cette carte`);
+    btn.innerHTML = `<span class="glyph" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="m12 2 2.35 7.65L22 12l-7.65 2.35L12 22l-2.35-7.65L2 12l7.65-2.35L12 2Z"/></svg></span><span>Associations</span>`;
+    btn.setAttribute('aria-label', 'Voir les associations de cette carte');
     btn.addEventListener('click', () => openMirror(card));
-    container.prepend(btn);
+    bar.prepend(btn);
   }
 
   /* =========================================================
