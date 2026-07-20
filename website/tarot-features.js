@@ -232,6 +232,7 @@
 .tf-assoc-item{display:grid;grid-template-columns:148px minmax(0,1fr);gap:1rem;align-items:center;padding:.8rem;border:1px solid rgba(241,237,228,.08);background:rgba(241,237,228,.025);transition:border-color .18s ease,transform .18s ease}
 .tf-assoc-item:hover,.tf-assoc-item:focus-within{border-color:var(--ac);transform:translateY(-2px)}
 .tf-assoc-duo{display:flex;align-items:center;gap:.4rem}
+.tf-assoc-duo .plus{color:var(--ac);font-family:'Cormorant Garamond',serif;font-size:1.35rem;line-height:1}
 .tf-assoc-duo img{width:70px;height:105px;object-fit:cover;border-radius:.25rem;background:#12100d}
 .tf-assoc-pair{display:flex;flex-wrap:wrap;gap:.25rem .4rem;align-items:baseline;margin-bottom:.55rem;font-family:'DM Mono',monospace;font-size:.68rem;line-height:1.4;letter-spacing:.06em;text-transform:uppercase;color:var(--muted,#8a8378)}
 .tf-assoc-pair strong{color:var(--fg,#f1ede4);font-weight:500}
@@ -814,7 +815,11 @@
         partnerImage.alt = partner ? partner.name : 'Carte partenaire';
         partnerImage.loading = 'lazy';
         if(partner) partnerImage.src = partner.file;
-        duo.append(currentImage,partnerImage);
+        const plusMark = document.createElement('span');
+        plusMark.className = 'plus';
+        plusMark.textContent = '+';
+        plusMark.setAttribute('aria-hidden','true');
+        duo.append(currentImage,plusMark,partnerImage);
         article.appendChild(duo);
 
         const content = document.createElement('div');
