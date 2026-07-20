@@ -115,24 +115,16 @@ mdFiles.forEach(file => {
     associations = fs.readFileSync(assocFile, 'utf8');
   } catch (e) { /* aucune association pour cette carte */ }
 
-  // Données bilingual ESP/FR (fichier `<base>_ES.md` s'il existe).
-  // On lit la section FR pour avoir les réponses et affirmations en français.
-  // On lit aussi les mots-clés ESP pour les avoir en complément.
+  // Données FR (fichier `<base>_ES.md` s'il existe).
   let esData = null;
   const esFile = path.join(CARDS_DIR, base + '_ES.md');
   try {
     const esContent = fs.readFileSync(esFile, 'utf8');
-    const frSection = esContent.split(/## FR\s*\n/)[1] || '';
-    const espSection = esContent.split(/## ESP\s*\n/)[1]?.split(/---/)[0] || '';
-    const reponseMatch = frSection.match(/\*\*RÉPONSE\s*:\*\*\s*(.+)/i);
-    const affirmationMatch = frSection.match(/\*\*Affirmation\s*:\*\*\s*>?\s*(.+)/i);
-    // Mots-clés ESP (posición vertical) — format: ligne unique séparée par des virgules
-    const espKwMatch = espSection.match(/\*\*Mots-clés\s*\(posición vertical\)\s*:\*\*\s*\n\s*\n?\s*([^\n]+)/i);
-    const espKeywords = espKwMatch ? espKwMatch[1].split(',').map(s=>s.trim()).filter(Boolean) : [];
+    const reponseMatch = esContent.match(/\*\*RÉPONSE\s*:\*\*\s*(.+)/i);
+    const affirmationMatch = esContent.match(/\*\*Affirmation\s*:\*\*\s*>?\s*(.+)/i);
     esData = {
       reponse: reponseMatch ? reponseMatch[1].trim() : null,
       affirmation: affirmationMatch ? affirmationMatch[1].trim() : null,
-      espKeywords,
     };
   } catch (e) { /* pas de fichier ES pour cette carte */ }
 
