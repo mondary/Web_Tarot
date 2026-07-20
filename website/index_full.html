@@ -218,6 +218,13 @@ a{color:inherit;text-decoration:none}
   font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.2rem;line-height:1.6;color:var(--fg)}
 .prose blockquote p{color:var(--fg);font-family:inherit;font-style:italic;font-size:inherit;margin:0}
 .prose hr{border:none;height:1px;background:var(--line);margin:2.4rem 0}
+#sec-mots-cles{display:block}
+#sec-mots-cles h2{margin-bottom:1.2rem}
+#sec-mots-cles .kw-cols{display:grid;grid-template-columns:1fr 1fr;gap:2rem}
+#sec-mots-cles .kw-col h3{font-family:'DM Mono',monospace;font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;color:var(--ac);margin-bottom:.8rem;padding-bottom:.5rem;border-bottom:1px solid var(--line)}
+#sec-mots-cles .kw-col ul{list-style:none;display:grid;gap:.45rem}
+#sec-mots-cles .kw-col li{position:relative;padding-left:1rem;color:#d8d2c5;font-size:.92rem;line-height:1.4}
+#sec-mots-cles .kw-col li::before{content:'◆';position:absolute;left:0;top:.35rem;color:var(--ac);font-size:.42rem}
 
 /* family thumbnails strip */
 .d-thumbs{display:flex;gap:8px;overflow-x:auto;padding:1.4rem 0 4px;margin-top:2.6rem;
@@ -548,6 +555,7 @@ function openCard(id){
   // prose content
   $('#d-prose').innerHTML = reorderClassique(renderMd(card.md));
   decorateThemeIcons($('#d-prose'));
+  restructureKeywords($('#d-prose'));
   if(typeof injectVoiceButton==='function') injectVoiceButton($('#d-panel-inner'), card);
   if(typeof injectMirrorTrigger==='function') injectMirrorTrigger($('#d-panel-inner'), card);
 
@@ -674,6 +682,21 @@ function decorateThemeIcons(root){
     else if(title.includes('affirmation')) type='affirmation';
     if(type){ h2.innerHTML=icons[type]+'<span>'+h2.innerHTML+'</span>'; }
   });
+}
+
+function restructureKeywords(root){
+  const sec=root.querySelector('#sec-mots-cles');
+  if(!sec) return;
+  const h2=sec.querySelector('h2');
+  const h3s=sec.querySelectorAll('h3');
+  const uls=sec.querySelectorAll('ul');
+  if(h3s.length>=2&&uls.length>=2){
+    sec.innerHTML=h2.outerHTML+
+      '<div class="kw-cols">'+
+        '<div class="kw-col">'+h3s[0].outerHTML+uls[0].outerHTML+'</div>'+
+        '<div class="kw-col">'+h3s[1].outerHTML+uls[1].outerHTML+'</div>'+
+      '</div>';
+  }
 }
 
 /* prev / next */

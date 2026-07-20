@@ -343,6 +343,13 @@ a{color:inherit;text-decoration:none}
 .es-badge.resp{background:var(--ac,#c9a227);color:#fff}
 .es-badge.aff{background:transparent;border:1.5px solid var(--ac,#c9a227);color:var(--ac,#c9a227);text-transform:none;font-weight:500;letter-spacing:0;font-size:.78rem}
 .es-badge .lbl{opacity:.7;font-size:.65rem;font-weight:400}
+#sec-mots-cles{display:block}
+#sec-mots-cles h2{margin-bottom:1.2rem}
+#sec-mots-cles .kw-cols{display:grid;grid-template-columns:1fr 1fr;gap:2rem}
+#sec-mots-cles .kw-col h3{font-family:'DM Mono',monospace;font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;color:var(--ac);margin-bottom:.8rem;padding-bottom:.5rem;border-bottom:1px solid var(--line)}
+#sec-mots-cles .kw-col ul{list-style:none;display:grid;gap:.45rem}
+#sec-mots-cles .kw-col li{position:relative;padding-left:1rem;color:#d8d2c5;font-size:.92rem;line-height:1.4}
+#sec-mots-cles .kw-col li::before{content:'◆';position:absolute;left:0;top:.35rem;color:var(--ac);font-size:.42rem}
 </style>
 </head>
 <body>
@@ -1308,12 +1315,24 @@ function decorateDetailedProse(){
     guidance:'<span class="content-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="m15.8 8.2-2.2 5.4-5.4 2.2 2.2-5.4 5.4-2.2Z"/></svg></span>',
     affirmation:'<span class="content-icon"><svg viewBox="0 0 24 24"><path d="M5 18V6h10l4 4v8H5Z"/><path d="M8 12h8M8 15h5"/></svg></span>',
   };
-  const skip = new Set(['Signification','Description','Mots-clés']);
+  const skip = new Set(['Signification','Description']);
   document.querySelectorAll('#prose section').forEach(section=>{
     const heading=section.querySelector('h2');
     if(!heading) return;
     const title=heading.textContent.trim();
     if(skip.has(title)){section.remove();return;}
+    if(title==='Mots-clés'){
+      const h3s=section.querySelectorAll('h3');
+      const uls=section.querySelectorAll('ul');
+      if(h3s.length>=2&&uls.length>=2){
+        section.innerHTML=heading.outerHTML+
+          '<div class="kw-cols">'+
+            '<div class="kw-col">'+h3s[0].outerHTML+uls[0].outerHTML+'</div>'+
+            '<div class="kw-col">'+h3s[1].outerHTML+uls[1].outerHTML+'</div>'+
+          '</div>';
+      }
+      return;
+    }
     const lower=title.toLocaleLowerCase('fr');
     let type='';
     if(lower==='interprétation') type='interpretation';
