@@ -6,7 +6,7 @@ Toutes les notes de release du projet Web Tarot. Le format de version suit `🔥
 
 ## TODO — Roadmap
 
-Statut : `3.2026.1` (FR-only, espagnol expurgé)
+Statut : `3.2026.3` (mots-clés pleine largeur détail)
 
 ### Phase 1 — Fondations ✅
 - [x] Interface V2 unifiée (carousel d'accueil + grille par famille + vue détail)
@@ -30,6 +30,10 @@ Statut : `3.2026.1` (FR-only, espagnol expurgé)
 ---
 
 ## Releases
+
+### [3.2026.3] - 2026-07-21
+#### Fixed
+- Mots-clés dans vue détaillée : prennent toute la largeur (override `max-width:44rem` du `.prose`)
 
 ### [3.2026.1] - 2026-07-21
 #### Changed
