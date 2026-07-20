@@ -338,9 +338,8 @@ a{color:inherit;text-decoration:none}
 .dossier-head .position b{color:var(--ac);font-weight:400}
 .dossier-title{position:sticky;top:0;z-index:20;font-family:'Cormorant Garamond',serif;font-size:clamp(3rem,6vw,6rem);font-weight:300;line-height:.85;text-align:center;text-transform:uppercase;padding:1.2rem 0 .9rem;background:var(--bg-2);border-bottom:1px solid var(--line);margin:0}
 .dossier-title em{color:var(--ac);font-style:italic;font-weight:400}
-.card-actions .tf-actions{margin:.7rem 0 2rem;gap:.4rem}
-.card-actions .tf-voice-btn,.card-actions .tf-mirror-trigger{height:1.6rem;padding:0 .65rem;font-size:.48rem;gap:.3rem;letter-spacing:.1em}
-.card-actions .tf-voice-btn svg,.card-actions .tf-mirror-trigger svg{width:10px;height:10px}
+.card-actions{margin-top:1rem}
+.card-actions .tf-actions{margin:0 0 1.4rem;display:flex;justify-content:center}
 .dossier-board{display:grid;grid-template-columns:minmax(250px,.8fr) minmax(320px,1.2fr) minmax(220px,.65fr);gap:0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);margin-bottom:4.5rem}
 .dossier-image{padding:2rem;border-right:1px solid var(--line);display:flex;align-items:center;justify-content:center;min-height:570px}
 .dossier-image .frame{width:min(100%,340px);padding:.7rem;background:var(--mat);box-shadow:0 24px 60px rgba(0,0,0,.35)}
@@ -433,7 +432,7 @@ a{color:inherit;text-decoration:none}
 
 .polarity-plate{display:flex;flex-direction:column}
 .polarity-plate h2{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,3vw,3.2rem);font-weight:300;line-height:.95;margin:1.4rem 0 1.8rem}
-.polarity-cards{display:grid;grid-template-columns:1fr 1fr;gap:1rem;align-items:start}
+.polarity-cards{display:grid;grid-template-columns:1fr 1fr;gap:1rem;align-items:start;margin-top:2.8rem}
 .polarity-card{min-width:0}
 .polarity-card .image{padding:.4rem;background:var(--mat);box-shadow:0 12px 30px rgba(0,0,0,.3)}
 .polarity-card img{width:100%;height:auto}
@@ -471,7 +470,7 @@ a{color:inherit;text-decoration:none}
 <div class="fx-grain"></div>
 <div class="fx-vignette"></div>
 
-<a class="brand" id="home-link" href="#" aria-label="Retour à l'accueil"><img src="icon.png" alt=""><span><b>Tarot</b> · Divinatoire</span><span class="brand-version">v<span id="lf-ver">2.2026.18</span></span></a>
+<a class="brand" id="home-link" href="#" aria-label="Retour à l'accueil"><img src="icon.png" alt=""><span><b>Tarot</b> · Divinatoire</span><span class="brand-version">v<span id="lf-ver">3.2026.0</span></span></a>
 <nav class="mode-switch" aria-label="Choisir une vue">
   <a href="index.html">Classique</a>
   <a href="index_full.html">Immersive</a>
@@ -526,8 +525,8 @@ a{color:inherit;text-decoration:none}
   <div class="s-scroll"><div class="s-grid" id="s-grid"></div></div>
 </div>
 
-<script src="data.js?v=2.2026.26"></script>
-<script src="tarot-features.js?v=2.2026.26"></script>
+<script src="data.js?v=3.2026.0"></script>
+<script src="tarot-features.js?v=3.2026.0"></script>
 <script>
 /* =========================================================
    State
@@ -1485,7 +1484,6 @@ function openCard(id){
   const wrap = $('#detail-wrap');
   wrap.innerHTML = `
     <header class="dossier-head">
-      <div class="eyebrow">Dossier de lame · ${escHtml(card.familyName)}</div>
       <div class="position"><b>${String(globalIdx+1).padStart(2,'0')}</b> / 78 · ${inFam+1}/${family.count}</div>
     </header>
     <h1 class="dossier-title"><em>${escHtml(card.name)}</em></h1>
@@ -1494,7 +1492,6 @@ function openCard(id){
       ${studyPlate}
       <article class="polarity-plate">
         <div class="plate-label">Lecture comparative</div>
-        <h2>${escHtml(card.name)}</h2>
         <div class="polarity-cards">
           <div class="polarity-card"><div class="image"><img src="${card.file}" alt="${escHtml(card.name)} à l'endroit"></div><h3>À l'endroit</h3><ul>${keywordItems(upright)}</ul></div>
           <div class="polarity-card reverse"><div class="image"><img src="${card.file}" alt="${escHtml(card.name)} à l'envers"></div><h3>À l'envers</h3><ul>${keywordItems(reversed)}</ul></div>
