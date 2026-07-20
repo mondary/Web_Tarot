@@ -75,157 +75,30 @@ a{color:inherit;text-decoration:none}
 .landing-foot a:hover{color:var(--fg);border-color:var(--ac)}
 
 /* =====================================================
-   LANDING — horizontal carousel
+   LANDING — continuous grid (all 78 cards with family separators)
    ===================================================== */
-#view-landing{display:flex;align-items:center}
-.carousel{
-  display:flex;align-items:center;height:100vh;width:100%;
-  overflow-x:auto;overflow-y:hidden;
-  scroll-snap-type:x mandatory;scroll-behavior:smooth;
-  scrollbar-width:none;-ms-overflow-style:none;
-  padding:0 8vw 0 0;
-}
-.carousel::-webkit-scrollbar{display:none}
+#view-landing{display:block;overflow-y:auto;overflow-x:hidden;scrollbar-width:thin;scrollbar-color:rgba(241,237,228,.2) transparent}
+#view-landing::-webkit-scrollbar{width:6px}
+#view-landing::-webkit-scrollbar-thumb{background:rgba(241,237,228,.2);border-radius:3px}
+.full-grid-head{padding:6rem 4vw 2rem;border-bottom:1px solid var(--line)}
+.full-grid-head .overline{font-family:'DM Mono',monospace;font-size:.72rem;letter-spacing:.34em;text-transform:uppercase;color:var(--muted);margin-bottom:2.4rem;display:flex;align-items:center;gap:1rem}
+.full-grid-head .overline::before{content:'';width:46px;height:1px;background:var(--muted)}
+.full-grid-head h1{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(3rem,7vw,5.5rem);line-height:.9;text-transform:uppercase;letter-spacing:-.02em}
+.full-grid-head h1 em{font-style:italic;color:var(--accent);font-weight:400}
+.full-grid-head .sub{color:var(--muted);font-size:.9rem;font-weight:300;margin-top:.7rem;max-width:40rem}
+.full-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:1.2rem;padding:2rem 4vw 6rem;align-items:start}
 
-/* Title block — first scroll item, scrolls WITH the cards */
-.title-block{
-  flex:0 0 58vw;height:100vh;display:flex;flex-direction:column;justify-content:center;
-  padding:0 4vw 0 8vw;scroll-snap-align:start;position:relative;will-change:transform,opacity;
-  transform-origin:left center;
-}
-.title-block .overline{
-  font-family:'DM Mono',monospace;font-size:.72rem;letter-spacing:.34em;
-  text-transform:uppercase;color:var(--muted);margin-bottom:2.4rem;
-  display:flex;align-items:center;gap:1rem;
-}
-.title-block .overline::before{content:'';width:46px;height:1px;background:var(--muted)}
-.title-block h1{
-  font-family:'Cormorant Garamond',serif;font-weight:300;
-  font-size:clamp(4rem,11vw,11.5rem);line-height:.86;letter-spacing:-.02em;
-  text-transform:uppercase;
-}
-.title-block h1 em{font-style:italic;font-weight:400;color:var(--accent)}
-.title-block .lede{
-  margin-top:2.6rem;max-width:30rem;font-size:1.05rem;line-height:1.7;color:var(--muted);font-weight:300;
-}
-.title-block .stats{
-  margin-top:3rem;display:flex;gap:2.6rem;font-family:'DM Mono',monospace;
-  font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);
-}
-.title-block .stats b{display:block;color:var(--fg);font-family:'Cormorant Garamond',serif;
-  font-size:2rem;letter-spacing:0;text-transform:none;font-weight:400;margin-bottom:.2rem}
+/* family separator — full-width band */
+.fam-sep{grid-column:1/-1;display:grid;grid-template-columns:auto 1fr auto;gap:1.4rem;align-items:center;
+  padding:1.4rem 0;margin-top:1rem;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.fam-sep-glyph{font-family:'Cormorant Garamond',serif;font-size:2.6rem;color:var(--ac);line-height:1}
+.fam-sep-body{min-width:0}
+.fam-sep-body .name{font-family:'Cormorant Garamond',serif;font-size:clamp(1.6rem,3vw,2.4rem);font-weight:300;line-height:1;text-transform:uppercase;letter-spacing:-.01em}
+.fam-sep-body .name em{font-style:italic;color:var(--ac);font-weight:400}
+.fam-sep-body .desc{color:var(--muted);font-size:.82rem;line-height:1.5;font-weight:300;margin-top:.5rem;max-width:32rem}
+.fam-sep-count{flex:0 0 auto;font-family:'DM Mono',monospace;font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);text-align:right}
+.fam-sep-count b{display:block;font-family:'Cormorant Garamond',serif;font-size:2rem;color:var(--fg);letter-spacing:0;text-transform:none;font-weight:400}
 
-/* scroll hint */
-.hint{
-  position:fixed;bottom:2rem;left:50%;transform:translateX(-50%);z-index:50;
-  font-family:'DM Mono',monospace;font-size:.66rem;letter-spacing:.3em;text-transform:uppercase;
-  color:var(--muted);display:flex;align-items:center;gap:.8rem;transition:opacity .5s;
-}
-.hint .line{width:34px;height:1px;background:var(--muted);position:relative;overflow:hidden}
-.hint .line::after{content:'';position:absolute;inset:0;background:var(--fg);
-  transform:translateX(-100%);animation:slide 2.2s var(--ease) infinite}
-@keyframes slide{0%{transform:translateX(-100%)}55%,100%{transform:translateX(100%)}}
-
-/* progress rail */
-.rail{position:fixed;bottom:0;left:0;right:0;height:2px;background:rgba(241,237,228,.05);z-index:60}
-.rail span{display:block;height:100%;width:0;background:var(--fg);transition:width .15s linear}
-
-/* ---------- Family entry card ---------- */
-.entry{
-  flex:0 0 auto;height:88vh;aspect-ratio:2/3;min-width:240px;
-  scroll-snap-align:center;position:relative;border-radius:1.4rem;overflow:hidden;
-  background:var(--mat);border:1px solid var(--mat-line);
-  display:flex;flex-direction:column;
-  box-shadow:0 24px 60px rgba(0,0,0,.45);
-  transition:transform .7s var(--ease),border-color .5s,box-shadow .6s;
-  will-change:transform;
-}
-.entry:hover{transform:translateY(-10px);border-color:rgba(255,255,255,.45);box-shadow:0 34px 80px rgba(0,0,0,.6)}
-.entry .img-wrap{flex:1;display:flex;align-items:center;justify-content:center;padding:.6rem;min-height:58%;position:relative}
-.entry .img-wrap img{height:100%;width:auto;max-width:100%;object-fit:contain;transition:transform .9s var(--ease)}
-.entry:hover .img-wrap img{transform:scale(1.04)}
-.entry .meta{
-  padding:1.1rem 1.4rem 1.3rem;display:flex;align-items:flex-end;justify-content:space-between;gap:1rem;
-  border-top:1px solid rgba(0,0,0,.06);background:var(--mat);
-}
-.entry .meta-info{min-width:0;flex:1}
-.entry .meta-top{display:flex;align-items:center;justify-content:space-between;gap:.6rem;margin-bottom:.55rem}
-.entry .meta .lbl{font-size:.8rem;color:#6f6a5f;letter-spacing:.01em;font-style:italic;line-height:1.2}
-.entry .meta .lbl .esym{font-style:normal;font-size:1.05rem;margin-right:.4rem;color:var(--ac,#c9a227);vertical-align:-1px}
-.entry .signs{display:flex;gap:.4rem;flex:0 0 auto;font-size:1.1rem;color:#9a9388;line-height:1}
-.entry .meta .fam{font-family:'Cormorant Garamond',serif;font-size:1.7rem;line-height:1;font-weight:500;color:#1c1814;margin-bottom:.5rem}
-.entry .meta .first-card{font-family:'DM Mono',monospace;font-size:.56rem;letter-spacing:.15em;text-transform:uppercase;color:var(--ac,#c9a227);margin:0 0 .45rem}
-.entry .meta .desc{font-size:.83rem;line-height:1.5;color:#6f6a5f;font-weight:300;margin:0}
-.entry .go{
-  flex:0 0 auto;width:38px;height:38px;border-radius:50%;border:1px solid rgba(0,0,0,.12);
-  display:grid;place-items:center;transition:.4s var(--ease);color:#1c1814;background:rgba(0,0,0,.02);
-}
-.entry:hover .go{background:var(--ac,#c9a227);border-color:transparent;color:#fff;transform:rotate(-45deg)}
-.entry .go svg{width:14px;height:14px}
-.entry .num{
-  position:absolute;top:1rem;right:1.1rem;z-index:2;font-family:'DM Mono',monospace;
-  font-size:.64rem;letter-spacing:.2em;color:#a59c8e;
-}
-
-/* =====================================================
-   GRID view
-   ===================================================== */
-#view-grid{display:flex;flex-direction:column}
-.grid-head{
-  position:sticky;top:0;z-index:6;
-  display:flex;align-items:flex-end;justify-content:space-between;
-  padding:5rem 4vw 1.4rem;gap:2rem;flex-wrap:wrap;
-  background:var(--bg);box-shadow:0 12px 0 var(--bg);
-  border-bottom:1px solid var(--line);
-}
-.grid-head .left .crumb{font-family:'DM Mono',monospace;font-size:.7rem;letter-spacing:.28em;
-  text-transform:uppercase;color:var(--muted);margin-bottom:1rem;display:flex;gap:.7rem;align-items:center}
-.grid-head .left .crumb .ac-dot{width:8px;height:8px;border-radius:50%;background:var(--ac)}
-.grid-head h2{font-family:'Cormorant Garamond',serif;font-weight:300;
-   font-size:clamp(2.6rem,6vw,5rem);line-height:.9;text-transform:uppercase;letter-spacing:-.01em}
-.grid-head h2 em{font-style:italic;color:var(--ac);font-weight:400}
-.grid-head .summary{max-width:34rem;margin-top:.85rem;color:var(--muted);font-size:.9rem;line-height:1.5;font-weight:300}
-.grid-head .right{text-align:right;font-family:'DM Mono',monospace;font-size:.72rem;
-  letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
-.grid-head .right b{display:block;font-family:'Cormorant Garamond',serif;font-size:2.4rem;
-   color:var(--fg);letter-spacing:0;text-transform:none;font-weight:400}
-
-/* family band : horizontal carousel of families (swipe + buttons) */
-.family-band{
-  flex:1;display:flex;overflow-x:auto;overflow-y:hidden;
-  scroll-snap-type:x mandatory;scroll-behavior:smooth;
-  scrollbar-width:none;-ms-overflow-style:none;
-}
-.family-band::-webkit-scrollbar{display:none}
-.family-pane{
-  flex:0 0 100vw;min-width:100vw;height:100%;overflow-y:auto;overflow-x:hidden;
-  scroll-snap-align:start;scroll-snap-stop:always;
-}
-.family-pane::-webkit-scrollbar{width:6px}
-.family-pane::-webkit-scrollbar-thumb{background:rgba(241,237,228,.12);border-radius:3px}
-.grid{
-  display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:1.2rem;
-  padding:1.4rem 4vw 7rem;
-}
-
-/* family step buttons (desktop) */
-.fam-step{
-  position:fixed;top:50%;transform:translateY(-50%);z-index:150;width:48px;height:48px;border-radius:50%;
-  border:1px solid var(--line);display:grid;place-items:center;color:var(--muted);
-  background:rgba(10,9,7,.5);backdrop-filter:blur(8px);transition:.4s var(--ease)
-}
-.fam-step:hover{color:var(--fg);border-color:var(--ac);background:rgba(241,237,228,.06)}
-.fam-step.prev{left:1.2rem}.fam-step.next{right:1.2rem}
-.fam-step svg{width:18px;height:18px}
-.fam-step[hidden]{display:none}
-
-/* family dots indicator */
-.fam-dots{position:fixed;bottom:1.2rem;left:50%;transform:translateX(-50%);z-index:150;
-  display:flex;gap:.6rem;align-items:center;padding:.5rem 1rem;
-  background:rgba(10,9,7,.6);backdrop-filter:blur(10px);border:1px solid var(--line);border-radius:50px}
-.fam-dots button{width:7px;height:7px;border-radius:50%;background:rgba(241,237,228,.2);transition:.4s var(--ease);padding:0}
-.fam-dots button.active{width:22px;border-radius:50px;background:var(--ac)}
-.fam-dots[hidden]{display:none}
 .mini{
   position:relative;border-radius:.9rem;overflow:hidden;background:var(--mat);
   border:1px solid var(--mat-line);cursor:pointer;transition:.5s var(--ease);
@@ -492,26 +365,14 @@ a{color:inherit;text-decoration:none}
   Retour
 </button>
 
-<!-- ============ LANDING ============ -->
+<!-- ============ LANDING — full grid ============ -->
 <section class="view active" id="view-landing">
-  <div class="carousel" id="carousel"></div>
-  <div class="hint" id="hint">
-    <span class="line"></span> Faire défiler
-    <span class="line"></span>
+  <div class="full-grid-head">
+    <div class="overline">Lecture détaillée · 78 lames</div>
+    <h1>Tarot<br><em>Divinatoire</em></h1>
+    <p class="sub">Soixante-dix-huit lames réparties en quatre suites et vingt-deux arcanes majeurs. Chaque carte ouvre un dossier complet : lecture comparative, planche symbolique, interprétation.</p>
   </div>
-  <div class="rail"><span id="rail-fill"></span></div>
-</section>
-
-<!-- ============ GRID ============ -->
-<section class="view" id="view-grid">
-  <button class="fam-step prev" id="fam-prev" aria-label="Suite précédente">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
-  </button>
-  <button class="fam-step next" id="fam-next" aria-label="Famille suivante">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
-  </button>
-  <div class="family-band" id="family-band"></div>
-  <div class="fam-dots" id="fam-dots"></div>
+  <div class="full-grid" id="full-grid"></div>
 </section>
 
 <!-- ============ DETAIL ============ -->
@@ -1263,148 +1124,41 @@ const $ = s => document.querySelector(s);
 const el = (t,c,h)=>{const e=document.createElement(t); if(c)e.className=c; if(h!=null)e.innerHTML=h; return e;};
 
 /* =========================================================
-   Landing carousel : title scrolls WITH the cards
+   Landing continuous grid : 78 cards + family separators
    ========================================================= */
-function renderLanding(){
-  const c = $('#carousel');
+function buildFullGrid(){
+  const g = $('#full-grid');
   if(TAROT.version) $('#lf-ver').textContent = TAROT.version;
-  // Title block — first scroll child
-  const title = el('div','title-block',`
-    <span class="overline">Tirage · Étude · Réflexion</span>
-    <h1>Tarot<br><em>Divinatoire</em></h1>
-    <p class="lede">Soixante-dix-huit lames réparties en quatre suites et vingt-deux arcanes majeurs. Un voyage initiatique à travers le Tarot de Waite.</p>
-    <div class="stats">
-      <div><b>78</b>lames</div>
-      <div><b>4</b>suites</div>
-      <div><b>22</b>majeurs</div>
-      <div><b>56</b>mineurs</div>
-    </div>
-  `);
-  c.appendChild(title);
-
-  TAROT.families.forEach((f,i)=>{
-    const card = f.cards[0];
-    const entry = el('a','entry','');
-    entry.href='#';entry.dataset.family=f.key;
-    entry.style.setProperty('--ac',f.accent);
-    const signs = (f.signs||[]).map(s=>`<span title="${s.n}">${s.s}</span>`).join('');
-    entry.innerHTML = `
-      <span class="num">${String(i+1).padStart(2,'0')} / 05</span>
-      <div class="img-wrap"><img src="${card.file}" alt="${card.name}" loading="lazy"></div>
-      <div class="meta">
-        <div class="meta-info">
-          <div class="meta-top">
-            <span class="lbl"><span class="esym">${f.elementSym}</span>${f.elementLine}</span>
-            ${signs ? `<span class="signs">${signs}</span>` : ''}
-           </div>
-           <div class="fam">${f.titleFull}</div>
-           <p class="first-card">Première lame · ${card.name}</p>
-           <p class="desc">${f.desc}</p>
-        </div>
-        <span class="go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
-      </div>`;
-    entry.addEventListener('click',e=>{e.preventDefault();openFamily(f.key);});
-    c.appendChild(entry);
-  });
-
-  // Title scrolls naturally WITH the cards (same flow). Elegant fade + rail.
-  const onScroll = ()=>{
-    const max = c.scrollWidth - c.clientWidth;
-    const p = max>0 ? c.scrollLeft/max : 0;
-    // fade the title as the cards take over (first 25% of travel)
-    const titleP = Math.min(1, c.scrollLeft / (c.clientWidth*0.6));
-    title.style.opacity = 1 - titleP*0.85;
-    title.style.transform = `scale(${1 - titleP*0.04})`;
-    $('#rail-fill').style.width = (p*100)+'%';
-    $('#hint').style.opacity = c.scrollLeft>60 ? '0':'';
-  };
-  c.addEventListener('scroll',onScroll,{passive:true});
-  c.addEventListener('wheel',e=>{
-    if(Math.abs(e.deltaY)<=Math.abs(e.deltaX)) return;
-    e.preventDefault();
-    c.scrollLeft += e.deltaY;
-  },{passive:false});
-  onScroll();
-}
-
-/* =========================================================
-   Grid view — horizontal family carousel (swipe + buttons)
-   ========================================================= */
-let gridBuilt = false;
-function buildGrid(){
-  if(gridBuilt) return;
-  const band = $('#family-band');
-  const dots = $('#fam-dots');
-  TAROT.families.forEach((f,i)=>{
-    const pane = el('div','family-pane');
-    pane.dataset.key = f.key; pane.dataset.index = i;
-    const titleHtml = f.name.replace(/(.+ )?(.+)$/,(_,a,b)=>a?`${a}<em>${b}</em>`:`<em>${b}</em>`);
-    const crumb = (f.key==='majors' ? 'Arcane · ' : 'Suite · ') + f.element;
-    const head = el('header','grid-head',`
-      <div class="left">
-        <div class="crumb"><span class="ac-dot"></span><span>${crumb}</span></div>
-        <h2>${titleHtml}</h2>
-        <p class="summary">${FAMILY_SUMMARY[f.key]}</p>
+  g.innerHTML='';
+  TAROT.families.forEach((fam,fi)=>{
+    const titleHtml = fam.name.replace(/(.+ )?(.+)$/,(_,a,b)=>a?`${a}<em>${b}</em>`:`<em>${b}</em>`);
+    const sep=el('div','fam-sep');
+    sep.style.setProperty('--ac',fam.accent);
+    sep.innerHTML=`
+      <div class="fam-sep-glyph">${fam.elementSym}</div>
+      <div class="fam-sep-body">
+        <div class="name">${titleHtml}</div>
+        <div class="desc">${FAMILY_SUMMARY[fam.key]}</div>
       </div>
-      <div class="right"><b>${f.count}</b>lames<br>élément ${f.element}</div>`);
-    pane.appendChild(head);
-    const grid = el('div','grid');
-    f.cards.forEach(card=>{
+      <div class="fam-sep-count"><b>${fam.count}</b>lames</div>`;
+    g.appendChild(sep);
+    fam.cards.forEach(card=>{
       const upright=mdKeywords(card.md,/^À l['’]endroit$/i).slice(0,4);
-      const m = el('div','mini keyword-mini');
-      m.innerHTML = `
+      const m=el('div','mini keyword-mini');
+      m.innerHTML=`
         <div class="ph"><img src="${card.file}" alt="${card.name}" loading="lazy"></div>
         <div class="cap"><span class="nm">${card.name}</span><span class="no">${String(card.num).padStart(2,'0')}</span></div>
         <ul class="keyword-list">${upright.map(word=>`<li>${escHtml(word)}</li>`).join('')}</ul>`;
       m.addEventListener('click',()=>openCard(card.id));
-      grid.appendChild(m);
+      g.appendChild(m);
     });
-    pane.appendChild(grid);
-    band.appendChild(pane);
-
-    const dot = el('button',''); dot.dataset.index = i;
-    dot.setAttribute('aria-label', f.name);
-    dot.addEventListener('click',()=>scrollToFam(i));
-    dots.appendChild(dot);
   });
-  // update accent + dots as panes scroll into view
-  const io = new IntersectionObserver(es=>{
-    es.forEach(e=>{ if(e.isIntersecting && e.intersectionRatio>=0.5){
-      updateGridHeader(+e.target.dataset.index);
-    }});
-  },{root:band,threshold:[0.5,0.75]});
-  band.querySelectorAll('.family-pane').forEach(p=>io.observe(p));
-  gridBuilt = true;
 }
 
-function updateGridHeader(idx){
-  const f = TAROT.families[idx];
-  state.familyKey=f.key; state.familyCards=f.cards; state.gridIndex=idx;
-  document.documentElement.style.setProperty('--ac',f.accent);
-  $('#fam-dots').querySelectorAll('button').forEach((d,i)=>d.classList.toggle('active',i===idx));
-}
-
-function scrollToFam(idx){
-  const band = $('#family-band');
-  const pane = band.children[idx];
-  if(pane) pane.scrollIntoView({behavior:'smooth',inline:'start',block:'nearest'});
-}
-
-function openFamily(key){
-  buildGrid();
-  const idx = Math.max(0, TAROT.families.findIndex(f=>f.key===key));
-  updateGridHeader(idx);
-  history.replaceState(null,'','#suite='+encodeURIComponent(key));
-  // instant jump to the requested pane (no animation on open)
-  const band = $('#family-band');
-  requestAnimationFrame(()=>{ band.scrollTo({left: idx*band.clientWidth, behavior:'auto'}); });
-  switchView('grid');
-}
-
-function famStep(dir){
-  let idx = state.gridIndex || 0;
-  idx = (idx + dir + TAROT.families.length) % TAROT.families.length;
-  scrollToFam(idx);
+function goHome(){
+  history.replaceState(null,'',location.pathname);
+  $('#view-landing').scrollTo({top:0,behavior:'smooth'});
+  switchView('landing');
 }
 
 /* =========================================================
@@ -1670,31 +1424,19 @@ function switchView(v){
   if(v==='landing'){document.documentElement.style.setProperty('--ac','#c9a227');}
 }
 
-function goHome(){
-  history.replaceState(null,'',location.pathname);
-  $('#carousel').scrollTo({left:0,behavior:'smooth'});
-  switchView('landing');
-}
-
 $('#back-btn').addEventListener('click',()=>{
-  if(state.view==='detail') switchView('grid');
-  else if(state.view==='grid') goHome();
+  if(state.view==='detail') goHome();
 });
 $('#home-link').addEventListener('click',e=>{e.preventDefault();goHome();});
 $('#d-prev').addEventListener('click',()=>stepCard(-1));
 $('#d-next').addEventListener('click',()=>stepCard(1));
-$('#fam-prev').addEventListener('click',()=>famStep(-1));
-$('#fam-next').addEventListener('click',()=>famStep(1));
 
 document.addEventListener('keydown',e=>{
   if(search && search.open) return; // search overlay handles keys
-  if(e.key==='Escape'){if(state.view!=='landing')$('#back-btn').click();}
+  if(e.key==='Escape'){if(state.view!=='landing') goHome();}
   if(state.view==='detail'){
     if(e.key==='ArrowLeft')stepCard(-1);
     if(e.key==='ArrowRight')stepCard(1);
-  } else if(state.view==='grid'){
-    if(e.key==='ArrowLeft')famStep(-1);
-    if(e.key==='ArrowRight')famStep(1);
   }
 });
 
@@ -1779,21 +1521,19 @@ document.addEventListener('keydown',e=>{
 });
 
 /* init */
-renderLanding();
+buildFullGrid();
 function syncModeLink(){
   document.querySelectorAll('.mode-switch a').forEach(link=>link.addEventListener('click',e=>{
-    if(location.hash){e.preventDefault();location.href=link.getAttribute('href')+location.hash;}
+    const href=link.getAttribute('href');
+    if(location.hash&&location.hash!=='#grid'){e.preventDefault();location.href=href+location.hash;}
   }));
 }
 function restoreRoute(){
-  if(location.hash==='#grid'){
-    openFamily(TAROT.families[0].key);return;
-  }
+  if(location.hash==='#grid') return;
   const params=new URLSearchParams(location.hash.slice(1));
   const suite=params.get('suite');
   const lame=params.get('lame');
-  if(lame){if(suite) openFamily(suite);openCard(lame);}
-  else if(suite) openFamily(suite);
+  if(lame) openCard(lame);
 }
 syncModeLink();
 restoreRoute();
