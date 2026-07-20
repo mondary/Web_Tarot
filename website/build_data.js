@@ -122,9 +122,22 @@ mdFiles.forEach(file => {
     const esContent = fs.readFileSync(esFile, 'utf8');
     const reponseMatch = esContent.match(/\*\*RÉPONSE\s*:\*\*\s*(.+)/i);
     const affirmationMatch = esContent.match(/\*\*Affirmation\s*:\*\*\s*>?\s*(.+)/i);
+    
+    // Extraire les mots-clés depuis la section "Mots-clés (à l'endroit)"
+    const keywordsMatch = esContent.match(/\*\*Mots-clés\s*\(à l'endroit\)\s*:\*\*\s*\n([\s\S]*?)(?=\n\n|\n\*\*|$)/i);
+    let espKeywords = [];
+    if (keywordsMatch && keywordsMatch[1]) {
+      // Nettoyer et diviser par virgule
+      const keywordsText = keywordsMatch[1].trim();
+      if (keywordsText) {
+        espKeywords = keywordsText.split(',').map(k => k.trim()).filter(k => k.length > 0);
+      }
+    }
+    
     esData = {
       reponse: reponseMatch ? reponseMatch[1].trim() : null,
       affirmation: affirmationMatch ? affirmationMatch[1].trim() : null,
+      espKeywords: espKeywords,
     };
   } catch (e) { /* pas de fichier ES pour cette carte */ }
 

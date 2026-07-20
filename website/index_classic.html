@@ -353,11 +353,8 @@ a{color:inherit;text-decoration:none}
 }
 
 /* ---------- Draws (Tirages) ---------- */
-.draws-launch{
-  position:fixed;left:max(1.4rem,env(safe-area-inset-left));bottom:max(4.6rem,calc(env(safe-area-inset-bottom) + 3.2rem));z-index:500;
-  display:inline-flex;align-items:center;gap:.6rem;padding:.85rem 1.2rem;border-radius:50px;
-  background:var(--bg-2);border:1px solid var(--line);color:var(--fg);
-  font-family:'DM Mono',monospace;font-size:.66rem;letter-spacing:.18em;text-transform:uppercase;
+.draws-launch{display:none!important}
+.draws-launch-hidden{
   box-shadow:0 12px 28px rgba(0,0,0,.42);transition:transform .2s var(--ease),border-color .2s,background .2s
 }
 .draws-launch:hover{transform:translateY(-2px);border-color:var(--accent);color:var(--accent)}
@@ -490,7 +487,7 @@ a{color:inherit;text-decoration:none}
 <div class="fx-grain"></div>
 <div class="fx-vignette"></div>
 
-<a class="brand" id="home-link" href="#" aria-label="Retour à l'accueil"><img src="icon.png" alt=""><span><b>Tarot</b> · Divinatoire</span><span class="brand-version">v<span id="lf-ver">3.2026.4</span></span></a>
+<a class="brand" id="home-link" href="#" aria-label="Retour à l'accueil"><img src="icon.png" alt=""><span><b>Tarot</b> · Divinatoire</span><span class="brand-version">v<span id="lf-ver">3.2026.5</span></span></a>
 <nav class="mode-switch" aria-label="Choisir une vue" id="mode-switch">
   <a class="active" href="index.html#grid">Classique</a>
   <a href="index_full.html#grid">Immersive</a>
@@ -598,8 +595,8 @@ a{color:inherit;text-decoration:none}
   </div>
 </div>
 
-<script src="data.js?v=3.2026.4"></script>
-<script src="tarot-features.js?v=3.2026.4"></script>
+<script src="data.js?v=3.2026.5"></script>
+<script src="tarot-features.js?v=3.2026.5"></script>
 <script>
 /* =========================================================
    State
@@ -1323,5 +1320,6 @@ document.querySelectorAll('#mode-switch a').forEach(link=>{
   });
 });
 </script>
+<script src="tarot-spreads.js"></script>
 </body>
 </html>
