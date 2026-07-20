@@ -1278,17 +1278,14 @@ document.addEventListener('keydown',e=>{
   if(/^\p{L}{1}$/u.test(e.key)){ openSearch(e.key); e.preventDefault(); }
 });
 
-/* init */
-renderLanding();
+/* init — always open grid (no landing in this view) */
 function restoreRoute(){
-  if(location.hash==='#grid'){
-    openFamily(TAROT.families[0].key);return;
-  }
   const params=new URLSearchParams(location.hash.slice(1));
   const suite=params.get('suite');
   const lame=params.get('lame');
   if(lame){if(suite) openFamily(suite);openCard(lame);}
   else if(suite) openFamily(suite);
+  else openFamily(TAROT.families[0].key);
 }
 restoreRoute();
 
