@@ -6,7 +6,7 @@ Toutes les notes de release du projet Web Tarot. Le format de version suit `🔥
 
 ## TODO — Roadmap
 
-Statut : `2.2026.21` (boutons carte stylés au chargement + placement détaillé)
+Statut : `2.2026.22` (boutons carte unifiés + intégration propre)
 
 ### Phase 1 — Fondations ✅
 - [x] Interface V2 unifiée (carousel d'accueil + grille par famille + vue détail)
@@ -30,6 +30,12 @@ Statut : `2.2026.21` (boutons carte stylés au chargement + placement détaillé
 ---
 
 ## Releases
+
+### [2.2026.22] - 2026-07-20
+#### Fixed
+- Boutons « Associations » et « Écouter la carte » : même structure HTML (SVG direct, sans wrapper), même hauteur (2.4rem), même CSS — visuellement identiques
+- Suppression du CSS redondant `.tf-voice-btn` dans index.html (source unique : tarot-features.js)
+- Version détaillée : fond du header remplacé par `var(--bg-2)` solide (plus de gradient transparent qui cachait les boutons)
 
 ### [2.2026.21] - 2026-07-20
 #### Fixed

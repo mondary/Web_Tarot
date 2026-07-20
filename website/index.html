@@ -458,16 +458,6 @@ a{color:inherit;text-decoration:none}
   .scan-launch{right:max(1rem,env(safe-area-inset-right));bottom:max(1rem,env(safe-area-inset-bottom));width:52px;height:52px}
 }
 
-/* voice reader button */
-.tf-voice-btn{display:inline-flex;align-items:center;gap:.5rem;padding:.55rem 1rem;border-radius:50px;
-  background:rgba(201,162,39,.12);border:1px solid rgba(201,162,39,.25);color:var(--accent);
-  font-family:'DM Mono',monospace;font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;
-  cursor:pointer;transition:all .25s ease;margin-top:1rem}
-.tf-voice-btn:hover{background:rgba(201,162,39,.22);border-color:var(--accent)}
-.tf-voice-btn.speaking{background:rgba(201,162,39,.22);border-color:var(--accent);animation:tf-voice-pulse 1.4s ease-in-out infinite}
-@keyframes tf-voice-pulse{0%,100%{opacity:1}50%{opacity:.55}}
-.tf-voice-btn svg{width:16px;height:16px;flex:0 0 auto}
-
 @media (max-width:900px){
   .title-block{flex:0 0 52vw;padding:0 4vw 0 7vw}
   .title-block h1{font-size:clamp(2.6rem,13vw,4.4rem)}
@@ -609,8 +599,8 @@ a{color:inherit;text-decoration:none}
   </div>
 </div>
 
-<script src="data.js?v=2.2026.21"></script>
-<script src="tarot-features.js?v=2.2026.21"></script>
+<script src="data.js?v=2.2026.22"></script>
+<script src="tarot-features.js?v=2.2026.22"></script>
 <script>
 /* =========================================================
    State
