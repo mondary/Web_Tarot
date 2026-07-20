@@ -6,7 +6,7 @@ Toutes les notes de release du projet Web Tarot. Le format de version suit `🔥
 
 ## TODO — Roadmap
 
-Statut : `2.2026.27` (vue Rapide + badges RÉPONSE/Affirmation FR sur les 4 vues)
+Statut : `3.2026.0` (architecture restructurée, mots-clés 2 colonnes, affirmation hero)
 
 ### Phase 1 — Fondations ✅
 - [x] Interface V2 unifiée (carousel d'accueil + grille par famille + vue détail)
@@ -30,6 +30,23 @@ Statut : `2.2026.27` (vue Rapide + badges RÉPONSE/Affirmation FR sur les 4 vues
 ---
 
 ## Releases
+
+### [3.2026.0] - 2026-07-21
+#### Added
+- **Page d'accueil** (`index.html`) dédiée avec navigation vers les 4 vues (Classique, Immersive, Détaillée, Rapide)
+- **Mots-clés en 2 colonnes** (À l'endroit / À l'envers) sur les vues Immersive, Détaillée et Classique
+- **Affirmation + Réponse** en style hero au-dessus de l'Interprétation sur les 3 vues principales
+#### Changed
+- **Architecture restructurée** : `index.html` = home, `index_classic.html` = vue classique (grille directe sans carousel)
+- **Vue Immersive** : carousel remplacé par grille continue verticale (78 cartes + séparateurs famille)
+- **Vue Détaillée** : carousel horizontal remplacé par grille continue verticale
+- **SVG famille** inline avec couleur accent via `currentColor` dans la vue Rapide
+- Section "Affirmation" renommée "Citation" (c'est une citation, pas l'affirmation ES)
+#### Fixed
+- Navigation mode-switch : suppression de `syncModeLink` qui causait l'accumulation de `#grid#grid#grid`
+- Navigation force `window.location.href` pour éviter les hash accumulés
+- Vue classique : `goHome()` redirige vers la nouvelle home
+- Vue immersive : accolade manquante dans `decorateThemeIcons` causant un SyntaxError
 
 ### [2.2026.27] - 2026-07-20
 #### Added
