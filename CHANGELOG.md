@@ -6,7 +6,7 @@ Toutes les notes de release du projet Web Tarot. Le format de version suit `🔥
 
 ## TODO — Roadmap
 
-Statut : `2.2026.15` (grille des associations, vocal et carte du jour personnalisés)
+Statut : `2.2026.16` (lectures comparatives à deux cartes dans toutes les vues)
 
 ### Phase 1 — Fondations ✅
 - [x] Interface V2 unifiée (carousel d'accueil + grille par famille + vue détail)
@@ -30,6 +30,14 @@ Statut : `2.2026.15` (grille des associations, vocal et carte du jour personnali
 ---
 
 ## Releases
+
+### [2.2026.16] - 2026-07-20
+#### Changed
+- Associations : chaque comparaison affiche désormais la carte courante et sa partenaire côte à côte, avec la lecture à droite
+- Déclencheur Associations explicite sur desktop et mobile dans les vues classique, immersive et détaillée
+#### Fixed
+- Suppression des associations d'une carte avec elle-même
+- Suppression du bouton Tirages dupliqué dans la vue classique
 
 ### [2.2026.15] - 2026-07-20
 #### Changed

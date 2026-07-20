@@ -216,7 +216,6 @@
   .tf-mirror-filter{padding:.3rem .5rem;font-size:.5rem;gap:.25rem}
   .tf-mirror-text-wrap{padding:.5rem 1.2rem 1rem}
   .tf-mirror-nav{gap:1rem;padding-bottom:max(1.2rem,env(safe-area-inset-bottom))}
-  .tf-mirror-trigger span:not(.glyph){display:none}
   .tf-mirror-trigger{padding:.55rem .7rem}
 }
 
@@ -228,10 +227,11 @@
 .tf-assoc-section{max-width:1100px;margin:0 auto;padding:1.8rem 0;border-bottom:1px solid rgba(241,237,228,.08)}
 .tf-assoc-section:last-child{border-bottom:0}
 .tf-assoc-section h2{margin:0 0 1rem;color:var(--ac);font-family:'Cormorant Garamond',serif;font-size:clamp(1.45rem,2.4vw,2rem);font-weight:300;letter-spacing:.03em}
-.tf-assoc-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.7rem}
-.tf-assoc-item{display:grid;grid-template-columns:52px minmax(0,1fr);gap:.85rem;align-items:start;padding:.8rem;border:1px solid rgba(241,237,228,.08);background:rgba(241,237,228,.025);transition:border-color .18s ease,transform .18s ease}
+.tf-assoc-list{display:grid;gap:.7rem}
+.tf-assoc-item{display:grid;grid-template-columns:148px minmax(0,1fr);gap:1rem;align-items:center;padding:.8rem;border:1px solid rgba(241,237,228,.08);background:rgba(241,237,228,.025);transition:border-color .18s ease,transform .18s ease}
 .tf-assoc-item:hover,.tf-assoc-item:focus-within{border-color:var(--ac);transform:translateY(-2px)}
-.tf-assoc-item img{width:52px;height:78px;object-fit:cover;border-radius:.25rem;background:#12100d}
+.tf-assoc-duo{display:flex;align-items:center;gap:.4rem}
+.tf-assoc-duo img{width:70px;height:105px;object-fit:cover;border-radius:.25rem;background:#12100d}
 .tf-assoc-pair{display:flex;flex-wrap:wrap;gap:.25rem .4rem;align-items:baseline;margin-bottom:.4rem;font-family:'DM Mono',monospace;font-size:.58rem;line-height:1.4;letter-spacing:.06em;text-transform:uppercase;color:var(--muted,#8a8378)}
 .tf-assoc-pair strong{color:var(--fg,#f1ede4);font-weight:500}
 .tf-assoc-item p{margin:0;color:rgba(241,237,228,.78);font-family:'Cormorant Garamond',serif;font-size:1.05rem;line-height:1.38}
@@ -239,9 +239,9 @@
   .tf-mirror-grid{padding:0 1rem 2rem}
   .tf-association-summary{font-size:.52rem;letter-spacing:.1em}
   .tf-assoc-section{padding:1.35rem 0}
-  .tf-assoc-list{grid-template-columns:1fr}
-  .tf-assoc-item{grid-template-columns:44px minmax(0,1fr);gap:.7rem;padding:.7rem}
-  .tf-assoc-item img{width:44px;height:66px}
+  .tf-assoc-item{grid-template-columns:96px minmax(0,1fr);gap:.7rem;padding:.7rem;align-items:start}
+  .tf-assoc-duo{gap:.25rem}
+  .tf-assoc-duo img{width:46px;height:69px}
   .tf-assoc-item p{font-size:1rem}
 }
 @media (prefers-reduced-motion:reduce){
@@ -780,10 +780,15 @@
     const summary = document.getElementById('tf-association-summary');
     if(!grid) return;
     grid.innerHTML = '';
-    const total = sections.reduce((sum, section) => sum + section.items.length, 0);
-    if(summary) summary.textContent = `${total} associations · une lecture complète en cinq familles`;
+    let total = 0;
 
     sections.forEach(section => {
+      const visibleItems = section.items.filter(item => {
+        const partner = resolvePartnerCard(item.pair);
+        return !partner || partner.id !== card.id;
+      });
+      if(!visibleItems.length) return;
+      total += visibleItems.length;
       const sectionEl = document.createElement('section');
       sectionEl.className = 'tf-assoc-section';
       const heading = document.createElement('h2');
@@ -792,15 +797,22 @@
       const list = document.createElement('div');
       list.className = 'tf-assoc-list';
 
-      section.items.forEach(item => {
+      visibleItems.forEach(item => {
         const partner = resolvePartnerCard(item.pair);
         const article = document.createElement('article');
         article.className = 'tf-assoc-item';
-        const image = document.createElement('img');
-        image.alt = partner ? partner.name : 'Carte partenaire';
-        image.loading = 'lazy';
-        if(partner) image.src = partner.file;
-        article.appendChild(image);
+        const duo = document.createElement('div');
+        duo.className = 'tf-assoc-duo';
+        const currentImage = document.createElement('img');
+        currentImage.alt = card.name;
+        currentImage.loading = 'lazy';
+        currentImage.src = card.file;
+        const partnerImage = document.createElement('img');
+        partnerImage.alt = partner ? partner.name : 'Carte partenaire';
+        partnerImage.loading = 'lazy';
+        if(partner) partnerImage.src = partner.file;
+        duo.append(currentImage,partnerImage);
+        article.appendChild(duo);
 
         const content = document.createElement('div');
         const pair = document.createElement('div');
@@ -822,6 +834,7 @@
       sectionEl.appendChild(list);
       grid.appendChild(sectionEl);
     });
+    if(summary) summary.textContent = `${total} associations · une lecture complète en cinq familles`;
   }
 
   function openMirror(card){
@@ -923,7 +936,7 @@
     if(!n) return;
     const btn = document.createElement('button');
     btn.className = 'tf-mirror-trigger';
-    btn.innerHTML = `<span class="glyph">✦</span><span>${n} échos</span>`;
+    btn.innerHTML = `<span class="glyph">✦</span><span>Associations · ${n}</span>`;
     btn.setAttribute('aria-label', `Voir les ${n} associations de cette carte`);
     btn.addEventListener('click', () => openMirror(card));
     container.prepend(btn);
