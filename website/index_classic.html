@@ -485,7 +485,7 @@ a{color:inherit;text-decoration:none}
 
 <a class="brand" id="home-link" href="#" aria-label="Retour à l'accueil"><img src="icon.png" alt=""><span><b>Tarot</b> · Divinatoire</span><span class="brand-version">v<span id="lf-ver">3.2026.0</span></span></a>
 <nav class="mode-switch" aria-label="Choisir une vue" id="mode-switch">
-  <a class="active" href="index_classic.html#grid">Classique</a>
+  <a class="active" href="index.html#grid">Classique</a>
   <a href="index_full.html#grid">Immersive</a>
   <a href="index_detail.html#grid">Détaillée</a>
   <a href="index_quick.html#grid">Rapide</a>
@@ -547,18 +547,8 @@ a{color:inherit;text-decoration:none}
   </div>
 </div>
 
-<!-- ============ LANDING ============ -->
-<section class="view active" id="view-landing">
-  <div class="carousel" id="carousel"></div>
-  <div class="hint" id="hint">
-    <span class="line"></span> Faire défiler
-    <span class="line"></span>
-  </div>
-  <div class="rail"><span id="rail-fill"></span></div>
-</section>
-
 <!-- ============ GRID ============ -->
-<section class="view" id="view-grid">
+<section class="view active" id="view-grid">
   <button class="fam-step prev" id="fam-prev" aria-label="Suite précédente">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
   </button>
@@ -1069,16 +1059,14 @@ function switchView(v){
 }
 
 function goHome(){
-  history.replaceState(null,'',location.pathname);
-  $('#carousel').scrollTo({left:0,behavior:'smooth'});
-  switchView('landing');
+  window.location.href='index.html';
 }
 
 $('#back-btn').addEventListener('click',()=>{
   if(state.view==='detail') switchView('grid');
   else if(state.view==='grid') goHome();
 });
-$('#home-link').addEventListener('click',e=>{e.preventDefault();window.location.href='index.html';});
+$('#home-link').addEventListener('click',e=>{e.preventDefault();goHome();});
 $('#d-prev').addEventListener('click',()=>stepCard(-1));
 $('#d-next').addEventListener('click',()=>stepCard(1));
 $('#fam-prev').addEventListener('click',()=>famStep(-1));
