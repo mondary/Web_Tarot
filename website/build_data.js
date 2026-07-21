@@ -85,7 +85,7 @@ ORDER.forEach(prefix => {
 });
 
 const mdFiles = fs.readdirSync(CARDS_DIR)
-  .filter(f => f.endsWith('.md') && !f.endsWith('_symbols.md') && !f.endsWith('_symboles_pcd.md') && !f.endsWith('_associations.md') && !f.endsWith('_ES.md'))
+  .filter(f => f.endsWith('.md') && !f.endsWith('_symbols.md') && !f.endsWith('_symboles_pcd.md') && !f.endsWith('_associations.md') && !f.endsWith('_ES.md') && !f.endsWith('_affirmations.md'))
   .sort();
 
 mdFiles.forEach(file => {

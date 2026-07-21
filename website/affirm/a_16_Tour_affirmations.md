@@ -1,7 +1,0 @@
-# 16 — LA TOUR
-
-**Nom :** LA TOUR
-
-**Affirmation :**
-
-> ALLER DE L'AVANT SANS CONSIDÉRATION NI RÉFLEXION

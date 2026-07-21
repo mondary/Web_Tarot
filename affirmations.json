@@ -1,0 +1,548 @@
+[
+  {
+    "file_prefix": "a_00_Fou",
+    "english_name": "The Fool",
+    "title": "LE FOU / THE FOOL",
+    "number": "0",
+    "affirmation": null
+  },
+  {
+    "file_prefix": "a_01_Magicien",
+    "english_name": "The Magician",
+    "title": "LE MAGICIEN / THE MAGICIAN",
+    "number": "1",
+    "affirmation": null
+  },
+  {
+    "file_prefix": "a_02_Papesse",
+    "english_name": "The High Priestess",
+    "title": "LA PAPESSE / THE HIGH PRIESTESS",
+    "number": "2",
+    "affirmation": null
+  },
+  {
+    "file_prefix": "a_03_Impératrice",
+    "english_name": "The Empress",
+    "title": "L'IMPÉRATRICE / THE EMPRESS",
+    "number": "3",
+    "affirmation": null
+  },
+  {
+    "file_prefix": "a_04_Empereur",
+    "english_name": "The Emperor",
+    "title": "L'EMPEREUR / THE EMPEROR",
+    "number": "4",
+    "affirmation": null
+  },
+  {
+    "file_prefix": "a_05_Pape",
+    "english_name": "The Hierophant",
+    "title": "LE PAPE / THE HIEROPHANT",
+    "number": "5",
+    "affirmation": null
+  },
+  {
+    "file_prefix": "a_06_Amoureux",
+    "english_name": "The Lovers",
+    "title": "LES AMOUREUX / THE LOVERS",
+    "number": "6",
+    "affirmation": null
+  },
+  {
+    "file_prefix": "a_07_Chariot",
+    "english_name": "The Chariot",
+    "title": "LE CHARIOT / THE CHARIOT",
+    "number": "7",
+    "affirmation": null
+  },
+  {
+    "file_prefix": "a_08_Force",
+    "english_name": "Strength",
+    "title": "LA FORCE / STRENGTH",
+    "number": "8",
+    "affirmation": null
+  },
+  {
+    "file_prefix": "a_09_Ermite",
+    "english_name": "The Hermit",
+    "title": "L'ERMITE / THE HERMIT",
+    "number": "9",
+    "affirmation": null
+  },
+  {
+    "file_prefix": "a_10_Roue_de_Fortune",
+    "english_name": "Wheel of Fortune",
+    "title": "LA ROUE DE FORTUNE / WHEEL OF FORTUNE",
+    "number": "10",
+    "affirmation": null
+  },
+  {
+    "file_prefix": "a_11_Justice",
+    "english_name": "Justice",
+    "title": "LA JUSTICE / JUSTICE",
+    "number": "11",
+    "affirmation": null
+  },
+  {
+    "file_prefix": "a_12_Pendu",
+    "english_name": "The Hanged Man",
+    "title": "LE PENDU / THE HANGED MAN",
+    "number": "12",
+    "affirmation": null
+  },
+  {
+    "file_prefix": "a_13_Mort",
+    "english_name": "Death",
+    "title": "LA MORT / DEATH",
+    "number": "13",
+    "affirmation": null
+  },
+  {
+    "file_prefix": "a_14_Tempérance",
+    "english_name": "Temperance",
+    "title": "LA TEMPÉRANCE / TEMPERANCE",
+    "number": "14",
+    "affirmation": null
+  },
+  {
+    "file_prefix": "a_15_Diable",
+    "english_name": "The Devil",
+    "title": "LE DIABLE / THE DEVIL",
+    "number": "15",
+    "affirmation": null
+  },
+  {
+    "file_prefix": "a_16_Tour",
+    "english_name": "The Tower",
+    "title": "LA TOUR / THE TOWER",
+    "number": "16",
+    "affirmation": null
+  },
+  {
+    "file_prefix": "a_17_Étoile",
+    "english_name": "The Star",
+    "title": "L'ÉTOILE / THE STAR",
+    "number": "17",
+    "affirmation": null
+  },
+  {
+    "file_prefix": "a_18_Lune",
+    "english_name": "The Moon",
+    "title": "LA LUNE / THE MOON",
+    "number": "18",
+    "affirmation": null
+  },
+  {
+    "file_prefix": "a_19_Soleil",
+    "english_name": "The Sun",
+    "title": "LE SOLEIL / THE SUN",
+    "number": "19",
+    "affirmation": null
+  },
+  {
+    "file_prefix": "a_20_Jugement",
+    "english_name": "Judgment",
+    "title": "LE JUGEMENT / JUDGMENT",
+    "number": "20",
+    "affirmation": null
+  },
+  {
+    "file_prefix": "a_21_Monde",
+    "english_name": "The World",
+    "title": "LE MONDE / THE WORLD",
+    "number": "21",
+    "affirmation": null
+  },
+  {
+    "file_prefix": "b_01_de_Bâton",
+    "english_name": "Ace of Wands",
+    "title": "AS DE BÂTON / ACE OF WANDS",
+    "number": "01",
+    "affirmation": null
+  },
+  {
+    "file_prefix": "b_02_de_Bâton",
+    "english_name": "Two of Wands",
+    "title": "DEUX DE BÂTON / TWO OF WANDS",
+    "number": "02",
+    "affirmation": null
+  },
+  {
+    "file_prefix": "b_03_de_Bâton",
+    "english_name": "Three of Wands",
+    "title": "TROIS DE BÂTON / THREE OF WANDS",
+    "number": "03",
+    "affirmation": null
+  },
+  {
+    "file_prefix": "b_04_de_Bâton",
+    "english_name": "Four of Wands",
+    "title": "QUATRE DE BÂTON / FOUR OF WANDS",
+    "number": "04",
+    "affirmation": null
+  },
+  {
+    "file_prefix": "b_05_de_Bâton",
+    "english_name": "Five of Wands",
+    "title": "CINQ DE BÂTON / FIVE OF WANDS",
+    "number": "05",
+    "affirmation": null
+  },
+  {
+    "file_prefix": "b_06_de_Bâton",
+    "english_name": "Six of Wands",
+    "title": "SIX DE BÂTON / SIX OF WANDS",
+    "number": "06",
+    "affirmation": null
+  },
+  {
+    "file_prefix": "b_07_de_Bâton",
+    "english_name": "Seven of Wands",
+    "title": "SEPT DE BÂTON / SEVEN OF WANDS",
+    "number": "07",
+    "affirmation": null
+  },
+  {
+    "file_prefix": "b_08_de_Bâton",
+    "english_name": "Eight of Wands",
+    "title": "HUIT DE BÂTON / EIGHT OF WANDS",
+    "number": "08",
+    "affirmation": null
+  },
+  {
+    "file_prefix": "b_09_de_Bâton",
+    "english_name": "Nine of Wands",
+    "title": "NEUF DE BÂTON / NINE OF WANDS",
+    "number": "09",
+    "affirmation": null
+  },
+  {
+    "file_prefix": "b_10_de_Bâton",
+    "english_name": "Ten of Wands",
+    "title": "DIX DE BÂTON / TEN OF WANDS",
+    "number": "10",
+    "affirmation": null
+  },
+  {
+    "file_prefix": "b_11_de_Bâton",
+    "english_name": "Page of Wands",
+    "title": "VALET DE BÂTON / PAGE OF WANDS",
+    "number": "11",
+    "affirmation": null
+  },
+  {
+    "file_prefix": "b_12_de_Bâton",
+    "english_name": "Knight of Wands",
+    "title": "CAVALIER DE BÂTON / KNIGHT OF WANDS",
+    "number": "12",
+    "affirmation": null
+  },
+  {
+    "file_prefix": "b_13_de_Bâton",
+    "english_name": "Queen of Wands",
+    "title": "REINE DE BÂTON / QUEEN OF WANDS",
+    "number": "13",
+    "affirmation": null
+  },
+  {
+    "file_prefix": "b_14_de_Bâton",
+    "english_name": "King of Wands",
+    "title": "ROI DE BÂTON / KING OF WANDS",
+    "number": "14",
+    "affirmation": null
+  },
+  {
+    "file_prefix": "c_01_de_Coupe",
+    "english_name": "Ace of Cups",
+    "title": "AS DE COUPE / ACE OF CUPS",
+    "number": "01",
+    "affirmation": null
+  },
+  {
+    "file_prefix": "c_02_de_Coupe",
+    "english_name": "Two of Cups",
+    "title": "DEUX DE COUPE / TWO OF CUPS",
+    "number": "02",
+    "affirmation": null
+  },
+  {
+    "file_prefix": "c_03_de_Coupe",
+    "english_name": "Three of Cups",
+    "title": "TROIS DE COUPE / THREE OF CUPS",
+    "number": "03",
+    "affirmation": null
+  },
+  {
+    "file_prefix": "c_04_de_Coupe",
+    "english_name": "Four of Cups",
+    "title": "QUATRE DE COUPE / FOUR OF CUPS",
+    "number": "04",
+    "affirmation": null
+  },
+  {
+    "file_prefix": "c_05_de_Coupe",
+    "english_name": "Five of Cups",
+    "title": "CINQ DE COUPE / FIVE OF CUPS",
+    "number": "05",
+    "affirmation": null
+  },
+  {
+    "file_prefix": "c_06_de_Coupe",
+    "english_name": "Six of Cups",
+    "title": "SIX DE COUPE / SIX OF CUPS",
+    "number": "06",
+    "affirmation": null
+  },
+  {
+    "file_prefix": "c_07_de_Coupe",
+    "english_name": "Seven of Cups",
+    "title": "SEPT DE COUPE / SEVEN OF CUPS",
+    "number": "07",
+    "affirmation": null
+  },
+  {
+    "file_prefix": "c_08_de_Coupe",
+    "english_name": "Eight of Cups",
+    "title": "HUIT DE COUPE / EIGHT OF CUPS",
+    "number": "08",
+    "affirmation": null
+  },
+  {
+    "file_prefix": "c_09_de_Coupe",
+    "english_name": "Nine of Cups",
+    "title": "NEUF DE COUPE / NINE OF CUPS",
+    "number": "09",
+    "affirmation": null
+  },
+  {
+    "file_prefix": "c_10_de_Coupe",
+    "english_name": "Ten of Cups",
+    "title": "DIX DE COUPE / TEN OF CUPS",
+    "number": "10",
+    "affirmation": null
+  },
+  {
+    "file_prefix": "c_11_de_Coupe",
+    "english_name": "Page of Cups",
+    "title": "VALET DE COUPE / PAGE OF CUPS",
+    "number": "11",
+    "affirmation": null
+  },
+  {
+    "file_prefix": "c_12_de_Coupe",
+    "english_name": "Knight of Cups",
+    "title": "CAVALIER DE COUPE / KNIGHT OF CUPS",
+    "number": "12",
+    "affirmation": null
+  },
+  {
+    "file_prefix": "c_13_de_Coupe",
+    "english_name": "Queen of Cups",
+    "title": "REINE DE COUPE / QUEEN OF CUPS",
+    "number": "13",
+    "affirmation": null
+  },
+  {
+    "file_prefix": "c_14_de_Coupe",
+    "english_name": "King of Cups",
+    "title": "ROI DE COUPE / KING OF CUPS",
+    "number": "14",
+    "affirmation": null
+  },
+  {
+    "file_prefix": "d_01_de_Denier",
+    "english_name": "Ace of Pentacles",
+    "title": "AS DE DENIER / ACE OF PENTACLES",
+    "number": "01",
+    "affirmation": null
+  },
+  {
+    "file_prefix": "d_02_de_Denier",
+    "english_name": "Two of Pentacles",
+    "title": "DEUX DE DENIER / TWO OF PENTACLES",
+    "number": "02",
+    "affirmation": null
+  },
+  {
+    "file_prefix": "d_03_de_Denier",
+    "english_name": "Three of Pentacles",
+    "title": "TROIS DE DENIER / THREE OF PENTACLES",
+    "number": "03",
+    "affirmation": null
+  },
+  {
+    "file_prefix": "d_04_de_Denier",
+    "english_name": "Four of Pentacles",
+    "title": "QUATRE DE DENIER / FOUR OF PENTACLES",
+    "number": "04",
+    "affirmation": null
+  },
+  {
+    "file_prefix": "d_05_de_Denier",
+    "english_name": "Five of Pentacles",
+    "title": "CINQ DE DENIER / FIVE OF PENTACLES",
+    "number": "05",
+    "affirmation": null
+  },
+  {
+    "file_prefix": "d_06_de_Denier",
+    "english_name": "Six of Pentacles",
+    "title": "SIX DE DENIER / SIX OF PENTACLES",
+    "number": "06",
+    "affirmation": null
+  },
+  {
+    "file_prefix": "d_07_de_Denier",
+    "english_name": "Seven of Pentacles",
+    "title": "SEPT DE DENIER / SEVEN OF PENTACLES",
+    "number": "07",
+    "affirmation": null
+  },
+  {
+    "file_prefix": "d_08_de_Denier",
+    "english_name": "Eight of Pentacles",
+    "title": "HUIT DE DENIER / EIGHT OF PENTACLES",
+    "number": "08",
+    "affirmation": null
+  },
+  {
+    "file_prefix": "d_09_de_Denier",
+    "english_name": "Nine of Pentacles",
+    "title": "NEUF DE DENIER / NINE OF PENTACLES",
+    "number": "09",
+    "affirmation": null
+  },
+  {
+    "file_prefix": "d_10_de_Denier",
+    "english_name": "Ten of Pentacles",
+    "title": "DIX DE DENIER / TEN OF PENTACLES",
+    "number": "10",
+    "affirmation": null
+  },
+  {
+    "file_prefix": "d_11_de_Denier",
+    "english_name": "Page of Pentacles",
+    "title": "VALET DE DENIER / PAGE OF PENTACLES",
+    "number": "11",
+    "affirmation": null
+  },
+  {
+    "file_prefix": "d_12_de_Denier",
+    "english_name": "Knight of Pentacles",
+    "title": "CAVALIER DE DENIER / KNIGHT OF PENTACLES",
+    "number": "12",
+    "affirmation": null
+  },
+  {
+    "file_prefix": "d_13_de_Denier",
+    "english_name": "Queen of Pentacles",
+    "title": "REINE DE DENIER / QUEEN OF PENTACLES",
+    "number": "13",
+    "affirmation": null
+  },
+  {
+    "file_prefix": "d_14_de_Denier",
+    "english_name": "King of Pentacles",
+    "title": "ROI DE DENIER / KING OF PENTACLES",
+    "number": "14",
+    "affirmation": null
+  },
+  {
+    "file_prefix": "e_01_de_Épée",
+    "english_name": "Ace of Swords",
+    "title": "AS DE ÉPÉE / ACE OF SWORDS",
+    "number": "01",
+    "affirmation": null
+  },
+  {
+    "file_prefix": "e_02_de_Épée",
+    "english_name": "Two of Swords",
+    "title": "DEUX DE ÉPÉE / TWO OF SWORDS",
+    "number": "02",
+    "affirmation": null
+  },
+  {
+    "file_prefix": "e_03_de_Épée",
+    "english_name": "Three of Swords",
+    "title": "TROIS DE ÉPÉE / THREE OF SWORDS",
+    "number": "03",
+    "affirmation": null
+  },
+  {
+    "file_prefix": "e_04_de_Épée",
+    "english_name": "Four of Swords",
+    "title": "QUATRE DE ÉPÉE / FOUR OF SWORDS",
+    "number": "04",
+    "affirmation": null
+  },
+  {
+    "file_prefix": "e_05_de_Épée",
+    "english_name": "Five of Swords",
+    "title": "CINQ DE ÉPÉE / FIVE OF SWORDS",
+    "number": "05",
+    "affirmation": null
+  },
+  {
+    "file_prefix": "e_06_de_Épée",
+    "english_name": "Six of Swords",
+    "title": "SIX DE ÉPÉE / SIX OF SWORDS",
+    "number": "06",
+    "affirmation": null
+  },
+  {
+    "file_prefix": "e_07_de_Épée",
+    "english_name": "Seven of Swords",
+    "title": "SEPT DE ÉPÉE / SEVEN OF SWORDS",
+    "number": "07",
+    "affirmation": null
+  },
+  {
+    "file_prefix": "e_08_de_Épée",
+    "english_name": "Eight of Swords",
+    "title": "HUIT DE ÉPÉE / EIGHT OF SWORDS",
+    "number": "08",
+    "affirmation": null
+  },
+  {
+    "file_prefix": "e_09_de_Épée",
+    "english_name": "Nine of Swords",
+    "title": "NEUF DE ÉPÉE / NINE OF SWORDS",
+    "number": "09",
+    "affirmation": null
+  },
+  {
+    "file_prefix": "e_10_de_Épée",
+    "english_name": "Ten of Swords",
+    "title": "DIX DE ÉPÉE / TEN OF SWORDS",
+    "number": "10",
+    "affirmation": null
+  },
+  {
+    "file_prefix": "e_11_de_Épée",
+    "english_name": "Page of Swords",
+    "title": "VALET DE ÉPÉE / PAGE OF SWORDS",
+    "number": "11",
+    "affirmation": null
+  },
+  {
+    "file_prefix": "e_12_de_Épée",
+    "english_name": "Knight of Swords",
+    "title": "CAVALIER DE ÉPÉE / KNIGHT OF SWORDS",
+    "number": "12",
+    "affirmation": null
+  },
+  {
+    "file_prefix": "e_13_de_Épée",
+    "english_name": "Queen of Swords",
+    "title": "REINE DE ÉPÉE / QUEEN OF SWORDS",
+    "number": "13",
+    "affirmation": null
+  },
+  {
+    "file_prefix": "e_14_de_Épée",
+    "english_name": "King of Swords",
+    "title": "ROI DE ÉPÉE / KING OF SWORDS",
+    "number": "14",
+    "affirmation": null
+  }
+]

@@ -1,7 +1,0 @@
-# 4 — L'EMPEREUR
-
-**Nom :** L'EMPEREUR
-
-**Affirmation :**
-
-> J'AI L'INTELLIGENCE ET LE CONTRÔLE AUTORITAIRE

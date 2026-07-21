@@ -1,7 +1,0 @@
-# 5 — LE PAPE
-
-**Nom :** LE PAPE
-
-**Affirmation :**
-
-> TROUVER QUELQU'UN QUI VOUS GUIDE DANS VOTRE VIE

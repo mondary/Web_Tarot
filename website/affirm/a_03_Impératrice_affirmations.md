@@ -1,7 +1,0 @@
-# 3 — L'IMPÉRATRICE
-
-**Nom :** L'IMPÉRATRICE
-
-**Affirmation :**
-
-> J'AI LA RICHESSE ET L'ABONDANCE

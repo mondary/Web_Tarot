@@ -1,7 +1,0 @@
-# 2 — LA PAPESSE
-
-**Nom :** LA PAPESSE
-
-**Affirmation :**
-
-> J'AI LA CONNAISSANCE, LA SAGESSE ET L'INTELLIGENCE

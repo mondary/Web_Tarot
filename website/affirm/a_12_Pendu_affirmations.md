@@ -1,7 +1,0 @@
-# 12 — LE PENDU
-
-**Nom :** LE PENDU
-
-**Affirmation :**
-
-> SACRIFICE ET PATIENCE FACE À L'ADVERSITÉ
