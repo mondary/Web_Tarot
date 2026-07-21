@@ -115,6 +115,9 @@ mdFiles.forEach(file => {
   let frImg = path.join(CARDS_DIR, base + '_fr.jpg');
   if (!fs.existsSync(frImg)) frImg = path.join(CARDS_DIR, base + '_fr.png');
 
+  // Image Marseille (suffixe _marseille, jpg)
+  const marseilleImg = path.join(CARDS_DIR, base + '_marseille.jpg');
+
   // Contenu des associations (fichier `<base>_associations.md` s'il existe).
   const assocFile = path.join(CARDS_DIR, base + '_associations.md');
   let associations = null;
@@ -153,6 +156,7 @@ mdFiles.forEach(file => {
     file: imageDataUri(imgFile) || ('cards/' + base + '.jpg'),
     wiki: fs.existsSync(wikiImg) ? (imageDataUri(wikiImg) || ('cards/' + base + '_wiki.jpg')) : null,
     fr: fs.existsSync(frImg) ? (imageDataUri(frImg) || ('cards/' + base + '_fr.' + path.extname(frImg).slice(1))) : null,
+    marseille: fs.existsSync(marseilleImg) ? (imageDataUri(marseilleImg) || ('cards/' + base + '_marseille.jpg')) : null,
     scan: scanReference(imgFile),
     name,
     family: meta.key,
