@@ -108,6 +108,13 @@ mdFiles.forEach(file => {
 
   const imgFile = path.join(CARDS_DIR, base + '.jpg');
 
+  // Image wiki (suffixe _wiki, même extension)
+  const wikiImg = path.join(CARDS_DIR, base + '_wiki.jpg');
+
+  // Image FR (suffixe _fr, jpg ou png)
+  let frImg = path.join(CARDS_DIR, base + '_fr.jpg');
+  if (!fs.existsSync(frImg)) frImg = path.join(CARDS_DIR, base + '_fr.png');
+
   // Contenu des associations (fichier `<base>_associations.md` s'il existe).
   const assocFile = path.join(CARDS_DIR, base + '_associations.md');
   let associations = null;
@@ -144,6 +151,8 @@ mdFiles.forEach(file => {
   families[meta.key].cards.push({
     id: base,
     file: imageDataUri(imgFile) || ('cards/' + base + '.jpg'),
+    wiki: fs.existsSync(wikiImg) ? (imageDataUri(wikiImg) || ('cards/' + base + '_wiki.jpg')) : null,
+    fr: fs.existsSync(frImg) ? (imageDataUri(frImg) || ('cards/' + base + '_fr.' + path.extname(frImg).slice(1))) : null,
     scan: scanReference(imgFile),
     name,
     family: meta.key,
