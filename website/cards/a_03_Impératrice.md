@@ -75,5 +75,3 @@ L'Impératrice vous rappelle aussi que les plaisirs des sens sont aussi essentie
 
 ---
 
-*Source : [Vivre Intuitif](https://vivre-intuitif.com/apprendre-le-tarot/signification/majeures/l-imperatrice/)*
-*Illustration : Tarot de A.E. Waite — Domaine public*

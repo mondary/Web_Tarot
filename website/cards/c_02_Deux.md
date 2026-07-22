@@ -46,5 +46,3 @@ Le Deux de Coupe représente deux personnages qui s'apportent mutuellement le me
 
 ---
 
-*Source : [Vivre Intuitif](https://vivre-intuitif.com/apprendre-le-tarot/signification/coupes/deux-de-coupe/)*
-*Illustration : Tarot de A.E. Waite — Rider-Waite-Smith*

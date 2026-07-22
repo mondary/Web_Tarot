@@ -70,5 +70,3 @@ Le Cavalier de Bâton vous demande de traduire en actions concrètes, en "petits
 
 ---
 
-*Source : [Vivre Intuitif](https://vivre-intuitif.com/apprendre-le-tarot/signification/batons/cavalier-de-baton/)*
-*Illustration : Tarot de A.E. Waite — Rider-Waite-Smith*

@@ -54,5 +54,3 @@ Vous vivez une période difficile et douloureuse. Quelqu'un ou quelque chose vou
 
 ---
 
-*Source : [Vivre Intuitif](https://vivre-intuitif.com/apprendre-le-tarot/signification/epees/le-trois-epee/)*
-*Illustration : Tarot de A.E. Waite — Rider-Waite-Smith*

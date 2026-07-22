@@ -75,5 +75,3 @@ La Tour fait aussi référence aux bouleversements de votre passé et à la faç
 
 ---
 
-*Source : [Vivre Intuitif](https://vivre-intuitif.com/apprendre-le-tarot/signification/majeures/la-tour/)*
-*Illustration : Tarot de A.E. Waite — Domaine public*

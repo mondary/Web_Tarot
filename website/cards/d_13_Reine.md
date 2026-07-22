@@ -74,5 +74,3 @@ Comme la Reine de Denier, trouvez comment atteindre vos objectifs… mais sachez
 
 ---
 
-*Source : [Vivre Intuitif](https://vivre-intuitif.com/apprendre-le-tarot/signification/deniers/reine-de-denier/)*
-*Illustration : Tarot de A.E. Waite — Rider-Waite-Smith*

@@ -76,5 +76,3 @@ Gardez ce qui résonne profondément avec vos valeurs, votre idée du bonheur. S
 
 ---
 
-*Source : [Vivre Intuitif](https://vivre-intuitif.com/apprendre-le-tarot/signification/deniers/neuf-de-denier/)*
-*Illustration : Tarot de A.E. Waite — Rider-Waite-Smith*

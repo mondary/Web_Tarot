@@ -66,5 +66,3 @@ Ces plaisirs immatériels font les joies authentiques.
 
 ---
 
-*Source : [Vivre Intuitif](https://vivre-intuitif.com/apprendre-le-tarot/signification/deniers/dix-de-denier/)*
-*Illustration : Tarot de A.E. Waite — Rider-Waite-Smith*

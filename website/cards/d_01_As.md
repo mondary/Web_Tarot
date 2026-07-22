@@ -65,5 +65,3 @@ Qu'est-ce qui contenterait aujourd'hui votre coeur ? Etes-vous prêt(e) à accep
 
 ---
 
-*Source : [Vivre Intuitif](https://vivre-intuitif.com/apprendre-le-tarot/signification/deniers/as-de-denier/)*
-*Illustration : Tarot de A.E. Waite — Rider-Waite-Smith*

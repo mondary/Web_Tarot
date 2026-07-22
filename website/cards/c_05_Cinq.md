@@ -46,5 +46,3 @@ Le Cinq de Coupe est apparu pour vous accompagner vers la guérison émotionnell
 
 ---
 
-*Source : [Vivre Intuitif](https://vivre-intuitif.com/apprendre-le-tarot/signification/coupes/cinq-de-coupe/)*
-*Illustration : Tarot de A.E. Waite — Rider-Waite-Smith*

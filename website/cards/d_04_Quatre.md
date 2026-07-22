@@ -69,5 +69,3 @@ Alors, l'Univers veut que vous partagiez vos découvertes Intuitives. Partagez v
 
 ---
 
-*Source : [Vivre Intuitif](https://vivre-intuitif.com/apprendre-le-tarot/signification/deniers/quatre-de-denier/)*
-*Illustration : Tarot de A.E. Waite — Rider-Waite-Smith*

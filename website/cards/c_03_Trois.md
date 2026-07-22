@@ -47,5 +47,3 @@ Le Trois de Coupe vous invite à réfléchir aux sources de joie et de plaisir d
 
 ---
 
-*Source : [Vivre Intuitif](https://vivre-intuitif.com/apprendre-le-tarot/signification/coupes/trois-de-coupe/)*
-*Illustration : Tarot de A.E. Waite — Rider-Waite-Smith*

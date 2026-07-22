@@ -64,5 +64,3 @@ Le rôle de l'Intuitif n'est pas de donner des solutions. C'est d'aider le Consu
 
 ---
 
-*Source : [Vivre Intuitif](https://vivre-intuitif.com/apprendre-le-tarot/signification/epees/neuf-epee/)*
-*Illustration : Tarot de A.E. Waite — Rider-Waite-Smith*

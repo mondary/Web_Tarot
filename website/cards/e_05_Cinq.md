@@ -60,5 +60,3 @@ Le Cinq d'Épée vous rappelle à la difficile tâche de l'introspection : regar
 
 ---
 
-*Source : [Vivre Intuitif](https://vivre-intuitif.com/apprendre-le-tarot/signification/epees/le-cinq-depee/)*
-*Illustration : Tarot de A.E. Waite — Rider-Waite-Smith*

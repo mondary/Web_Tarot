@@ -86,5 +86,3 @@ L'Eveil n'est pas une fin en soi. Il s'agit d'un processus d'apprentissage, de d
 
 ---
 
-*Source : [Vivre Intuitif](https://vivre-intuitif.com/apprendre-le-tarot/signification/deniers/sept-de-denier/)*
-*Illustration : Tarot de A.E. Waite — Rider-Waite-Smith*

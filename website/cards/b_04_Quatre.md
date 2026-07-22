@@ -58,5 +58,3 @@ Le Quatre de Bâton vous interroge aussi sur le rôle de vos proches et de votre
 
 ---
 
-*Source : [Vivre Intuitif](https://vivre-intuitif.com/apprendre-le-tarot/signification/batons/quatre-de-baton/)*
-*Illustration : Tarot de A.E. Waite — Rider-Waite-Smith*

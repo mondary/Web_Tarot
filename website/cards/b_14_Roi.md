@@ -69,5 +69,3 @@ Vous aussi vous êtes un Roi de Bâton. Le saviez-vous ?
 
 ---
 
-*Source : [Vivre Intuitif](https://vivre-intuitif.com/apprendre-le-tarot/signification/batons/roi-de-baton/)*
-*Illustration : Tarot de A.E. Waite — Rider-Waite-Smith*

@@ -74,5 +74,3 @@ Le Huit de Denier vous invite donc à vivre votre Eveil comme le travail de tout
 
 ---
 
-*Source : [Vivre Intuitif](https://vivre-intuitif.com/apprendre-le-tarot/signification/deniers/huit-de-denier/)*
-*Illustration : Tarot de A.E. Waite — Rider-Waite-Smith*

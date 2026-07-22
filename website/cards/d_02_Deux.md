@@ -62,5 +62,3 @@ Vous avez peut-être le sentiment que votre cheminement Spirituel est "grignoté
 
 ---
 
-*Source : [Vivre Intuitif](https://vivre-intuitif.com/apprendre-le-tarot/signification/deniers/deux-de-denier/)*
-*Illustration : Tarot de A.E. Waite — Rider-Waite-Smith*

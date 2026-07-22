@@ -78,5 +78,3 @@ Le Tarot vous conseille de vous reconnecter à votre Spiritualité, si possible 
 
 ---
 
-*Source : [Vivre Intuitif](https://vivre-intuitif.com/apprendre-le-tarot/signification/deniers/cinq-de-denier/)*
-*Illustration : Tarot de A.E. Waite — Rider-Waite-Smith*

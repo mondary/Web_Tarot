@@ -46,5 +46,3 @@ Le Six de Coupe est apparu pour vous dire l'importance du Passé et de votre his
 
 ---
 
-*Source : [Vivre Intuitif](https://vivre-intuitif.com/apprendre-le-tarot/signification/coupes/six-de-coupe/)*
-*Illustration : Tarot de A.E. Waite — Rider-Waite-Smith*

@@ -84,5 +84,3 @@ Le Six de Denier explique ce qui peut sembler être à première vue un paradoxe
 
 ---
 
-*Source : [Vivre Intuitif](https://vivre-intuitif.com/apprendre-le-tarot/signification/deniers/signification-du-six-de-denier-dans-le-tarot/)*
-*Illustration : Tarot de A.E. Waite — Rider-Waite-Smith*

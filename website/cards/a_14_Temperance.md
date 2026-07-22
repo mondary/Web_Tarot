@@ -73,5 +73,3 @@ La Tempérance est une qualité unique : elle permet d'intégrer à soi les él�
 
 ---
 
-*Source : [Vivre Intuitif](https://vivre-intuitif.com/apprendre-le-tarot/signification/majeures/la-temperance/)*
-*Illustration : Tarot de A.E. Waite — Domaine public*

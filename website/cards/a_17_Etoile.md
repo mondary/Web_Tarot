@@ -75,5 +75,3 @@ L'Etoile vous indique aussi qu'il est temps de prendre en compte la SpiritualitÃ
 
 ---
 
-*Source : [Vivre Intuitif](https://vivre-intuitif.com/apprendre-le-tarot/signification/majeures/l-etoile/)*
-*Illustration : Tarot de A.E. Waite â€” Domaine public*

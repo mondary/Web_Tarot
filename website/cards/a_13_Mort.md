@@ -73,5 +73,3 @@ La Mort interroge sur le changement personnel, la transformation… Se départir
 
 ---
 
-*Source : [Vivre Intuitif](https://vivre-intuitif.com/apprendre-le-tarot/signification/majeures/la-mort-larcane-sans-nom/)*
-*Illustration : Tarot de A.E. Waite — Domaine public*

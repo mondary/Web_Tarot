@@ -75,5 +75,3 @@ Sous Le Soleil, comment avez-vous envie de vous amuser ? De passer du bon temps 
 
 ---
 
-*Source : [Vivre Intuitif](https://vivre-intuitif.com/apprendre-le-tarot/signification/majeures/le-soleil/)*
-*Illustration : Tarot de A.E. Waite — Domaine public*

@@ -64,5 +64,3 @@ Un aspect essentiel de la spiritualité et du cheminement vers votre Être Authe
 
 ---
 
-*Source : [Vivre Intuitif](https://vivre-intuitif.com/apprendre-le-tarot/signification/epees/sept-epee/)*
-*Illustration : Tarot de A.E. Waite — Rider-Waite-Smith*

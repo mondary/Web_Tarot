@@ -64,5 +64,3 @@ Utilisez l'Energie de la Carte pour visualiser le chemin qui va de Vous à l'att
 
 ---
 
-*Source : [Vivre Intuitif](https://vivre-intuitif.com/apprendre-le-tarot/signification/batons/trois-de-baton/)*
-*Illustration : Tarot de A.E. Waite — Rider-Waite-Smith*

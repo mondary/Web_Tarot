@@ -61,5 +61,3 @@ Le plus important est de découvrir vos valeurs et ce que veut votre Coeur. Quan
 
 ---
 
-*Source : [Vivre Intuitif](https://vivre-intuitif.com/apprendre-le-tarot/signification/batons/cinq-de-baton/)*
-*Illustration : Tarot de A.E. Waite — Rider-Waite-Smith*

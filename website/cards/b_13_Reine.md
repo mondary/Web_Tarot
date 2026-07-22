@@ -65,5 +65,3 @@ Certes, le voyage n'est pas fini. Pourtant, vous êtes déjà en position de par
 
 ---
 
-*Source : [Vivre Intuitif](https://vivre-intuitif.com/apprendre-le-tarot/signification/batons/reine-de-baton/)*
-*Illustration : Tarot de A.E. Waite — Rider-Waite-Smith*

@@ -73,5 +73,3 @@ Votre cheminement spirituel est guidé par votre Intuition. C'est elle qui conna
 
 ---
 
-*Source : [Vivre Intuitif](https://vivre-intuitif.com/apprendre-le-tarot/signification/majeures/la-papesse-la-grande-pretresse/)*
-*Illustration : Tarot de A.E. Waite — Domaine public*

@@ -69,5 +69,3 @@ Le Roi de Coupe vous interroge aussi sur votre relation à l'autre, notamment en
 
 ---
 
-*Source : [Vivre Intuitif](https://vivre-intuitif.com/apprendre-le-tarot/signification/coupes/roi-de-coupe/)*
-*Illustration : Tarot de A.E. Waite — Rider-Waite-Smith*

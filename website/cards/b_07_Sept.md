@@ -61,5 +61,3 @@ Vous n'êtes pas obligée de suivre une voie traditionnelle ou conventionnelle. 
 
 ---
 
-*Source : [Vivre Intuitif](https://vivre-intuitif.com/apprendre-le-tarot/signification/batons/sept-de-baton/)*
-*Illustration : Tarot de A.E. Waite — Rider-Waite-Smith*

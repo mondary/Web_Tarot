@@ -63,5 +63,3 @@ Le Magicien indique que ces réponses sont déjà en vous et que vous possédez 
 
 ---
 
-*Source : [Vivre Intuitif](https://vivre-intuitif.com/apprendre-le-tarot/signification/majeures/le-magicien-le-bateleur/)*
-*Illustration : Tarot de A.E. Waite — Domaine public*

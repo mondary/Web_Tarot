@@ -67,5 +67,3 @@ Cherchez, creusez, documentez-vous et explorez toutes les facettes de cette Magi
 
 ---
 
-*Source : [Vivre Intuitif](https://vivre-intuitif.com/apprendre-le-tarot/signification/epees/reine-epee/)*
-*Illustration : Tarot de A.E. Waite — Rider-Waite-Smith*

@@ -60,5 +60,3 @@ Ainsi, vous n'êtes pas seule dans votre quête spirituelle. Vous êtes accompag
 
 ---
 
-*Source : [Vivre Intuitif](https://vivre-intuitif.com/apprendre-le-tarot/signification/deniers/trois-de-denier/)*
-*Illustration : Tarot de A.E. Waite — Rider-Waite-Smith*

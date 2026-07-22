@@ -83,5 +83,3 @@ Dans votre quête spirituelle, qui est votre Guide ? Qu'est-ce qui aujourd'hui v
 
 ---
 
-*Source : [Vivre Intuitif](https://vivre-intuitif.com/apprendre-le-tarot/signification/majeures/le-hierophante/)*
-*Illustration : Tarot de A.E. Waite — Domaine public*

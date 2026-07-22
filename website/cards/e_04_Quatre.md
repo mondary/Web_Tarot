@@ -68,5 +68,3 @@ N'attendez pas de vous sentir à bout pour en profiter.
 
 ---
 
-*Source : [Vivre Intuitif](https://vivre-intuitif.com/apprendre-le-tarot/signification/epees/quatre-epee/)*
-*Illustration : Tarot de A.E. Waite — Rider-Waite-Smith*

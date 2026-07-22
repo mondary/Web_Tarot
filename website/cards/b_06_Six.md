@@ -58,5 +58,3 @@ Vous n'avez pas besoin de validation de la part des autres mais certains ont rem
 
 ---
 
-*Source : [Vivre Intuitif](https://vivre-intuitif.com/apprendre-le-tarot/signification/batons/six-de-baton/)*
-*Illustration : Tarot de A.E. Waite — Rider-Waite-Smith*

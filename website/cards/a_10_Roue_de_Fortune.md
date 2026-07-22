@@ -85,5 +85,3 @@ Pensez-vous avoir une part de responsabilité dans votre situation actuelle ? Pe
 
 ---
 
-*Source : [Vivre Intuitif](https://vivre-intuitif.com/apprendre-le-tarot/signification/majeures/la-roue-de-fortune/)*
-*Illustration : Tarot de A.E. Waite — Domaine public*

@@ -68,5 +68,3 @@ Le Pendu représente le besoin que nous avons tous de lâcher-prise et d'atteind
 
 ---
 
-*Source : [Vivre Intuitif](https://vivre-intuitif.com/apprendre-le-tarot/signification/majeures/le-pendu/)*
-*Illustration : Tarot de A.E. Waite — Domaine public*

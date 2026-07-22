@@ -45,5 +45,3 @@ L'As de Coupe symbolise l'Energie d'une personne qui est dans le "flow" avec les
 
 ---
 
-*Source : [Vivre Intuitif](https://vivre-intuitif.com/apprendre-le-tarot/signification/coupes/as-de-coupe/)*
-*Illustration : Tarot de A.E. Waite — Rider-Waite-Smith*

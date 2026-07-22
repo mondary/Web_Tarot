@@ -60,5 +60,3 @@ L'As d'Épée est aussi une Carte d'action. Profitez de son Énergie pour transf
 
 ---
 
-*Source : [Vivre Intuitif](https://vivre-intuitif.com/apprendre-le-tarot/signification/epees/as-epee/)*
-*Illustration : Tarot de A.E. Waite — Rider-Waite-Smith*

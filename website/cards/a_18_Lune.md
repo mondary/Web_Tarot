@@ -75,5 +75,3 @@ C'est aussi le moment de vous lancer si vous avez toujours eu envie d'apprendre 
 
 ---
 
-*Source : [Vivre Intuitif](https://vivre-intuitif.com/apprendre-le-tarot/signification/majeures/la-lune/)*
-*Illustration : Tarot de A.E. Waite — Domaine public*

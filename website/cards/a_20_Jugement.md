@@ -70,5 +70,3 @@ Et si cette période d'hésitation était terminée ? Une fois l'appel entendu, 
 
 ---
 
-*Source : [Vivre Intuitif](https://vivre-intuitif.com/apprendre-le-tarot/signification/majeures/le-jugement/)*
-*Illustration : Tarot de A.E. Waite — Domaine public*

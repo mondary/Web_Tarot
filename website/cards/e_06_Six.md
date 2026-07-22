@@ -74,5 +74,3 @@ En réalité, ce processus n'est pas brutal. Il s'agit d'une transition, d'un ch
 
 ---
 
-*Source : [Vivre Intuitif](https://vivre-intuitif.com/apprendre-le-tarot/signification/epees/six-epee/)*
-*Illustration : Tarot de A.E. Waite — Rider-Waite-Smith*

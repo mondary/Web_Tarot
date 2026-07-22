@@ -56,5 +56,3 @@ Le Dix d'Épée est un moment de grâce. La Carte invite le Consultant à accept
 
 ---
 
-*Source : [Vivre Intuitif](https://vivre-intuitif.com/apprendre-le-tarot/signification/epees/dix-epee/)*
-*Illustration : Tarot de A.E. Waite — Rider-Waite-Smith*

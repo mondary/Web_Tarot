@@ -71,5 +71,3 @@ Cet espace mental est essentiel pour cheminer spirituellement. Faites-vous ce ca
 
 ---
 
-*Source : [Vivre Intuitif](https://vivre-intuitif.com/apprendre-le-tarot/signification/epees/cavalier-d-epee/)*
-*Illustration : Tarot de A.E. Waite — Rider-Waite-Smith*

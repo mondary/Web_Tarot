@@ -79,5 +79,3 @@ Il est apparu également pour vous conforter dans les pratiques Spirituelles que
 
 ---
 
-*Source : [Vivre Intuitif](https://vivre-intuitif.com/apprendre-le-tarot/signification/deniers/cavalier-de-denier/)*
-*Illustration : Tarot de A.E. Waite — Rider-Waite-Smith*

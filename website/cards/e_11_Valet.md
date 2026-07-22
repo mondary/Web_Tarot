@@ -61,5 +61,3 @@ Parfois, cette personne, c'est vous, c'est moi. Quand le dialogue est difficile,
 
 ---
 
-*Source : [Vivre Intuitif](https://vivre-intuitif.com/apprendre-le-tarot/signification/epees/valet-d-epee/)*
-*Illustration : Tarot de A.E. Waite — Rider-Waite-Smith*

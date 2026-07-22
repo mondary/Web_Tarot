@@ -58,5 +58,3 @@ Ce Valet, c'est vous et son bâton, c'est votre Spiritualité. Vous vous êtes l
 
 ---
 
-*Source : [Vivre Intuitif](https://vivre-intuitif.com/apprendre-le-tarot/signification/batons/valet-de-baton/)*
-*Illustration : Tarot de A.E. Waite — Rider-Waite-Smith*

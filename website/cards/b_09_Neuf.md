@@ -62,5 +62,3 @@ Avec courage et persévérance, vous pouvez surmonter toutes les épreuves qui s
 
 ---
 
-*Source : [Vivre Intuitif](https://vivre-intuitif.com/apprendre-le-tarot/signification/batons/neuf-de-baton/)*
-*Illustration : Tarot de A.E. Waite — Rider-Waite-Smith*

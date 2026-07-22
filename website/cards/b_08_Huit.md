@@ -64,5 +64,3 @@ Utilisez ce moment de clarté d'esprit pour considérer votre cheminement et vot
 
 ---
 
-*Source : [Vivre Intuitif](https://vivre-intuitif.com/apprendre-le-tarot/signification/batons/huit-de-baton/)*
-*Illustration : Tarot de A.E. Waite — Rider-Waite-Smith*

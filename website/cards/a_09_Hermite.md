@@ -79,5 +79,3 @@ Il n'y a pas de bonnes ou de mauvaises réponses… il n'y a que les vôtres. Vo
 
 ---
 
-*Source : [Vivre Intuitif](https://vivre-intuitif.com/apprendre-le-tarot/signification/majeures/l-hermite/)*
-*Illustration : Tarot de A.E. Waite — Domaine public*

@@ -63,5 +63,3 @@ Cet As de Bâton n'arrive pas par hasard… Avez-vous un désir profond de comme
 
 ---
 
-*Source : [Vivre Intuitif](https://vivre-intuitif.com/apprendre-le-tarot/signification/batons/as-de-baton/)*
-*Illustration : Tarot de A.E. Waite — Rider-Waite-Smith*

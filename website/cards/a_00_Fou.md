@@ -76,5 +76,3 @@ L'Énergie du Fou vous invite à oser, l'essentiel est d'essayer, d'apprendre et
 
 ---
 
-*Source : [Vivre Intuitif](https://vivre-intuitif.com/apprendre-le-tarot/signification/majeures/le-fou-le-mat/)*
-*Illustration : Tarot de A.E. Waite — Domaine public*

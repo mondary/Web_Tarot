@@ -45,5 +45,3 @@ Le verre (ou la Coupe !) est-il à moitié vide ou à moitié plein ? Pour le Qu
 
 ---
 
-*Source : [Vivre Intuitif](https://vivre-intuitif.com/apprendre-le-tarot/signification/coupes/quatre-de-coupe/)*
-*Illustration : Tarot de A.E. Waite — Rider-Waite-Smith*

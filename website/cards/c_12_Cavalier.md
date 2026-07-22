@@ -65,5 +65,3 @@ Le Cavalier de Coupe est apparu pour vous questionner sur votre processus de dé
 
 ---
 
-*Source : [Vivre Intuitif](https://vivre-intuitif.com/apprendre-le-tarot/signification/coupes/cavalier-de-coupe/)*
-*Illustration : Tarot de A.E. Waite — Rider-Waite-Smith*

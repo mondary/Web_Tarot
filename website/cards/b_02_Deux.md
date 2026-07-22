@@ -60,5 +60,3 @@ En chemin, vous pourriez rencontrer une personne en recherche comme vous, un mod
 
 ---
 
-*Source : [Vivre Intuitif](https://vivre-intuitif.com/apprendre-le-tarot/signification/batons/deux-de-baton/)*
-*Illustration : Tarot de A.E. Waite — Rider-Waite-Smith*

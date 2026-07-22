@@ -68,5 +68,3 @@ Quels projets pensez-vous ne jamais être en mesure de réaliser ? Pourquoi ?
 
 ---
 
-*Source : [Vivre Intuitif](https://vivre-intuitif.com/apprendre-le-tarot/signification/epees/le-huit-epee/)*
-*Illustration : Tarot de A.E. Waite — Rider-Waite-Smith*

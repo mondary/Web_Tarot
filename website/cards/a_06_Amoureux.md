@@ -81,5 +81,3 @@ De quoi avez-vous envie ? Qu'est-ce qui vous ferait le plus de bien ? Méditatio
 
 ---
 
-*Source : [Vivre Intuitif](https://vivre-intuitif.com/apprendre-le-tarot/signification/majeures/les-amoureux/)*
-*Illustration : Tarot de A.E. Waite — Domaine public*

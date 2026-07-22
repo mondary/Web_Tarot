@@ -65,5 +65,3 @@ Comme La Grande Prêtresse, la Reine de Coupe est une Energie profondément intu
 
 ---
 
-*Source : [Vivre Intuitif](https://vivre-intuitif.com/apprendre-le-tarot/signification/coupes/reine-de-coupe/)*
-*Illustration : Tarot de A.E. Waite — Rider-Waite-Smith*

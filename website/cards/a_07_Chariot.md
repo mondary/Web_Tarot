@@ -83,5 +83,3 @@ Comment garder vos objectifs en ligne de mire ? Qu'est-ce qui vous aide à « ne
 
 ---
 
-*Source : [Vivre Intuitif](https://vivre-intuitif.com/apprendre-le-tarot/signification/majeures/le-chariot/)*
-*Illustration : Tarot de A.E. Waite — Domaine public*

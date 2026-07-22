@@ -67,5 +67,3 @@ Cette question n'est pas réaliste bien sûr, les obligations et les responsabil
 
 ---
 
-*Source : [Vivre Intuitif](https://vivre-intuitif.com/apprendre-le-tarot/signification/batons/dix-de-baton/)*
-*Illustration : Tarot de A.E. Waite — Rider-Waite-Smith*

@@ -68,5 +68,3 @@ Un signe pourrait venir conforter vos ressentis et vous amener dans la bonne dir
 
 ---
 
-*Source : [Vivre Intuitif](https://vivre-intuitif.com/apprendre-le-tarot/signification/epees/le-deux-epee/)*
-*Illustration : Tarot de A.E. Waite — Rider-Waite-Smith*

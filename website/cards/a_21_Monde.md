@@ -82,5 +82,3 @@ Quelle place occupez-vous dans le monde ? Vous sentez-vous à votre place ? Conn
 
 ---
 
-*Source : [Vivre Intuitif](https://vivre-intuitif.com/apprendre-le-tarot/signification/majeures/le-monde/)*
-*Illustration : Tarot de A.E. Waite — Domaine public*

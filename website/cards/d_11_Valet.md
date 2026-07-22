@@ -67,5 +67,3 @@ Vous devez allouer du temps et de l'Energie à ces moments, comme pour toutes vo
 
 ---
 
-*Source : [Vivre Intuitif](https://vivre-intuitif.com/apprendre-le-tarot/signification/deniers/valet-de-denier/)*
-*Illustration : Tarot de A.E. Waite — Rider-Waite-Smith*

@@ -72,5 +72,3 @@ Par exemple, si les mots "Partager avec mes proches" vous sont venus, rien ne vo
 
 ---
 
-*Source : [Vivre Intuitif](https://vivre-intuitif.com/apprendre-le-tarot/signification/deniers/roi-de-denier/)*
-*Illustration : Tarot de A.E. Waite — Rider-Waite-Smith*

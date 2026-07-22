@@ -64,5 +64,3 @@ Pour cela, vous êtes prêt(e) à faire ce cheminement intérieur vers la source
 
 ---
 
-*Source : [Vivre Intuitif](https://vivre-intuitif.com/apprendre-le-tarot/signification/coupes/huit-de-coupe/)*
-*Illustration : Tarot de A.E. Waite — Rider-Waite-Smith*

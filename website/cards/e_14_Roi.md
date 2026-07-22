@@ -62,5 +62,3 @@ Le Roi d'Epée vous signifie également que nouvelles idées, de nouvelles persp
 
 ---
 
-*Source : [Vivre Intuitif](https://vivre-intuitif.com/apprendre-le-tarot/signification/epees/roi-epee/)*
-*Illustration : Tarot de A.E. Waite — Rider-Waite-Smith*

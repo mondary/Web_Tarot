@@ -65,5 +65,3 @@ La Justice vous rappelle que vivre en ligne avec ses valeurs et son être authen
 
 ---
 
-*Source : [Vivre Intuitif](https://vivre-intuitif.com/apprendre-le-tarot/signification/majeures/la-justice/)*
-*Illustration : Tarot de A.E. Waite — Domaine public*

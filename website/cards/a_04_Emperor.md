@@ -85,5 +85,3 @@ L'Empereur indique également que vous avez une Spiritualité vibrante et intens
 
 ---
 
-*Source : [Vivre Intuitif](https://vivre-intuitif.com/apprendre-le-tarot/signification/majeures/l-empereur/)*
-*Illustration : Tarot de A.E. Waite — Domaine public*

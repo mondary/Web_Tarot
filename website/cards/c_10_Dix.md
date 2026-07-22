@@ -62,5 +62,3 @@ Vous possédez toutes ces qualités. Elles jaillissent de vous comme l'Eau jaill
 
 ---
 
-*Source : [Vivre Intuitif](https://vivre-intuitif.com/apprendre-le-tarot/signification/coupes/dix-de-coupe/)*
-*Illustration : Tarot de A.E. Waite — Rider-Waite-Smith*

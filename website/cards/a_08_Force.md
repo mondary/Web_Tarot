@@ -77,5 +77,3 @@ Intégrez Spiritualité et Intuition à votre quotidien pour vivre pleinement da
 
 ---
 
-*Source : [Vivre Intuitif](https://vivre-intuitif.com/apprendre-le-tarot/signification/majeures/la-force/)*
-*Illustration : Tarot de A.E. Waite — Domaine public*

@@ -78,5 +78,3 @@ La vie, elle, n'attend pas. Suivez votre route, assumez vos décisions et vos ch
 
 ---
 
-*Source : [Vivre Intuitif](https://vivre-intuitif.com/apprendre-le-tarot/signification/majeures/le-diable/)*
-*Illustration : Tarot de A.E. Waite — Domaine public*
