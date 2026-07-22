@@ -6,7 +6,7 @@ Toutes les notes de release du projet Web Tarot. Le format de version suit `🔥
 
 ## TODO — Roadmap
 
-Statut : `3.2026.12` (centralisation des sources)
+Statut : `3.2026.13` (navigation inter-mode préservant la carte)
 
 ### Phase 1 — Fondations ✅
 - [x] Interface V2 unifiée (carousel d'accueil + grille par famille + vue détail)
@@ -30,6 +30,10 @@ Statut : `3.2026.12` (centralisation des sources)
 ---
 
 ## Releases
+
+### [3.2026.13] - 2026-07-22
+#### Added
+- **Navigation inter-mode** : le sélecteur de vue (Classique / Immersive / Détaillée / Rapide) préserve la carte en cours de consultation au lieu de revenir à la grille
 
 ### [3.2026.12] - 2026-07-22
 #### Changed

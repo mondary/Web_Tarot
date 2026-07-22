@@ -1311,12 +1311,15 @@ function restoreRoute(){
 }
 restoreRoute();
 
-/* Force full navigation on mode-switch links (prevents hash accumulation) */
+/* Navigation mode-switch : préserve la carte courante si on en consulte une */
 document.querySelectorAll('#mode-switch a').forEach(link=>{
   link.addEventListener('click',e=>{
     e.preventDefault();
     e.stopPropagation();
-    window.location.href = link.getAttribute('href');
+    const p=new URLSearchParams(location.hash.slice(1));
+    const suite=p.get('suite'), lame=p.get('lame');
+    const base=link.getAttribute('href').split('#')[0];
+    window.location.href = lame ? base+'#suite='+encodeURIComponent(suite)+'&lame='+encodeURIComponent(lame) : link.getAttribute('href');
   });
 });
 </script>
