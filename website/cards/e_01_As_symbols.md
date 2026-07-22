@@ -7,16 +7,16 @@
 Confusion et neutralité, pas de direction et pas d'opinion.
 
 ### Main
-A hand emerges from the clouds to give you a  gift for yourself and the world - it is up to you to create something from it.
+Une main émerge des nuages pour vous donner un cadeau pour vous-même et le monde - il vous appartient de créer quelque chose à partir de cela.
 
-### Garden Lilies
-White lilies symbolise purity of spirit. - Being pure of heart as you go out into the world.
+### Lys du jardin
+Les lys blancs symbolisent la pureté de l'esprit. - Être pur de cœur en allant dans le monde.
 
-### Pentagram
-Pentagram on the pentacle is an ancient symbol of magic.
+### Pentagramme
+Le pentagramme sur le pentacle est un ancien symbole de magie.
 
-### Pentacles Double
-Edge Two sides to every coin, every story of every situation.
+### Pentacles double
+tranchant Deux côtés pour chaque pièce, chaque histoire de chaque situation.
 
 ---
 

@@ -3,14 +3,14 @@
 **Source :** Roebuck-Jones and Associates — connectwithyourdeck.com
 
 ## Symboles de la carte
-### Sarcophagus
-Lying on a coffin is symbolic of spiritual contemplation and life and death situations.
+### Sarcophage
+Être allongé sur un cercueil est symbolique de contemplation spirituelle et de situations de vie et de mort.
 
-### Stained Glass
-Window Stained glass window is symbolic of perception and how our perceptions can change depending upon our beliefs and values in any given moment.
+### Vitrail
+Fenêtre La fenêtre de vitrail est symbolique de perception et la façon dont nos perceptions peuvent changer en fonction de nos croyances et valeurs à tout moment donné.
 
-### Four Épées -
-One sword lies beneath the figure and this symbolises the one thing being thought about and concentrated on. The three swords above point to the head (intellect) heart (emotion) and gut (instinct) the three things we need to focus on whenever we contemplate what to do about a problem.
+### Quatre épées -
+Une épée se trouve sous la figure et cela symbolise la chose sur laquelle on réfléchit et que l'on concentre. Les trois épées au-dessus pointent vers la tête (intellect) le cœur (émotion) et l'intestin (instinct) les trois choses dont nous avons besoin de nous concentrer chaque fois que nous contemplons quoi faire face à un problème.
 
 ---
 

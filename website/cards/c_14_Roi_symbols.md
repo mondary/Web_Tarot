@@ -3,20 +3,20 @@
 **Source :** Roebuck-Jones and Associates — connectwithyourdeck.com
 
 ## Symboles de la carte
-### Elemental
-Correspondence Fire of Eau. Kings are fire, the suit is water.
+### Élémental
+Correspondance Feu de Eau. Les Rois sont le feu, la suite est l'eau.
 
-### Zodiac
-3rd Decan Aquarius – 2nd Decan Pisces
+### Zodiaque
+3e décan Verseau – 2e décan Poissons
 
-### Fish Pendant
-Ability to express feelings and deeply felt needs.
+### Pendentif poisson
+Capacité d'exprimer les sentiments et les besoins profondément ressentis.
 
 ### Coupe
-Alertness and the ability to understand the needs of others and of the self.
+Alerte et capacité à comprendre les besoins des autres et de soi.
 
-### King's Robes
-Red yellow and blue - keep your life uncomplicated with a clarity of purpose - being dressed in such bold colours being simplistic and structured.
+### Robes du Roi
+Rouge, jaune et bleu - gardez votre vie simple avec une clarté de but - être vêtu de couleurs aussi audacieuses étant simpliste et structuré.
 
 ---
 

@@ -3,17 +3,17 @@
 **Source :** Roebuck-Jones and Associates — connectwithyourdeck.com
 
 ## Symboles de la carte
-### Hoe
-The tools you may need to create something new.
+### Houe
+Les outils dont vous pourriez avoir besoin pour créer quelque chose de nouveau.
 
-### Blue/Orange
-Vêtements Blue indicates clarity of thought and orange passion and creativity.
+### Bleu/Orange
+Vêtements Le bleu indique la clarté de pensée et l'orange la passion et la créativité.
 
 ### Ciel gris
-Grey in the Tarot is an indication of confusion and stuckness.
+Le gris dans le Tarot est une indication de confusion et d'immobilisme.
 
 ### Pentacles
-The heap of pentacles represents how things have always been done so far. The pentacle at the figure's feet represents the new way of doing things. The single pentacle is a call to question life and the usual way of doing things..
+Le tas de pentacles représente la façon dont les choses ont toujours été faites jusqu'à présent. Le pentacle aux pieds de la figure représente la nouvelle façon de faire les choses. Le pentacle unique est un appel à remettre en question la vie et la façon habituelle de faire les choses..
 
 ---
 

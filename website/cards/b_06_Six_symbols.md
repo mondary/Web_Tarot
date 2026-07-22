@@ -10,13 +10,13 @@ Commandant ou leader victorieux - un symbole de notre volonté consciente.
 Passion positive. Vous avez la capacité de diriger et de mener votre vie dans la direction que vous choisissez. Prendre des décisions critiques.
 
 ### Cheval vert
-Cloth Growth, potential, and fertility in motion.
+Tissu Croissance, potentiel et fertilité en mouvement.
 
 ### Cheval gris
 Symbole de la volonté inconsciente qui nous pousse en avant et qui nous est inconnue.
 
 ### Couronnes de laurier
-Couronne on the riders head is symbolic of victory. The laurel crown on the wand - union of masculine and feminine aspects of  life energy.
+Couronne sur la tête du cavalier est symbolique de victoire. La couronne de laurier sur la baguette - union des aspects masculin et féminin de l'énergie vitale.
 
 ### Foule
 Suit volontairement représentant le soutien conscient de tout ce que vous faites.

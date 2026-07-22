@@ -3,26 +3,26 @@
 **Source :** Roebuck-Jones and Associates — connectwithyourdeck.com
 
 ## Symboles de la carte
-### Numeroloy
-Instability, exaggeration, over exertion, strife, changes, freedom, loss.
+### Numérologie
+Instabilité, exagération, effort excessif, conflit, changements, liberté, perte.
 
 ### Deux figures
-One blind one lame are walking in the snow, and they are poor. The main significance is in the cooperation - the way they work together to keep one another safe.
+L'un aveugle, l'autre boiteux, marchent dans la neige, et ils sont pauvres. La signification principale réside dans la coopération - la façon dont ils travaillent ensemble pour se protéger mutuellement.
 
-### White Neige
-Innocence and purity of spirit also cleansing of all that has gone before.
+### Neige blanche
+Innocence et pureté d'esprit, également purification de tout ce qui s'est passé auparavant.
 
-### Crutches
-The solution to any problem.
+### Béquilles
+La solution à tout problème.
 
-### Plague Bell
-Every outcast had to have a bell around their neck. But in the positive, the bell announces your arrival as someone special.
+### Cloche de peste
+Chaque exclu devait avoir une cloche autour du cou. Mais dans le positif, la cloche annonce votre arrivée en tant que quelqu'un de spécial.
 
-### Stained Glass
-Window Our perception and how our ideas beliefs values goals and dreams can change with our life experience.
+### Vitrail
+Fenêtre Notre perception et la façon dont nos idées, croyances, valeurs, objectifs et rêves peuvent changer avec notre expérience de vie.
 
-### Five Pentacles
-Pentacles are lit up in the stained glass window indicating help is there if you look for it.
+### Cinq pentacles
+Les pentacles sont allumés dans la fenêtre de vitrail indiquant que l'aide est là si vous la cherchez.
 
 ---
 

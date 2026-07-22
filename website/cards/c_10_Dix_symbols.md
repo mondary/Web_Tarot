@@ -3,20 +3,20 @@
 **Source :** Roebuck-Jones and Associates — connectwithyourdeck.com
 
 ## Symboles de la carte
-### Couples Position
-Partnership between a man and woman or symbolic of the masculine and feminine aspects between us all. Facing the view they are celebrating all they have achieved.
+### Position du couple
+Partenariat entre un homme et une femme ou symbolique des aspects masculin et féminin entre nous tous. Face à la vue, ils célèbrent tout ce qu'ils ont réalisé.
 
-### Countryside
-Symbolic green fertile countryside shows possibilities and growth. The river - represents the flow of life and abundance.
+### Campagne
+La campagne verte fertile symbolique montre des possibilités et une croissance. La rivière - représente le flux de la vie et l'abondance.
 
-### House
-Home and identity, fulfilment of security.
+### Maison
+Foyer et identité, accomplissement de la sécurité.
 
-### Enfantren
-Your immortality, a sense of family and completion.
+### Enfants
+Votre immortalité, un sens de famille et d'accomplissement.
 
 ### Ciel bleu
-Lightheartedness, clarity of thought and purpose, free will and clear mind. Can indicate wishful thinking and striving too much.
+Légèreté, clarté de pensée et de but, libre arbitre et esprit clair. Peut indiquer une pensée souhaitable et des efforts excessifs.
 
 ---
 

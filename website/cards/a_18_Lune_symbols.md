@@ -4,7 +4,7 @@
 
 ## Symboles de la carte
 ### Soleil et Lune
-Full Moon, Crescent Moon and Sun are as one Day and night  as one means confusion and dreaming. The Moon - unconscious, the Sun - consciousness.
+Pleine Lune, Lune croissante et Soleil sont un seul Jour et nuit un seul signifie confusion et rêverie. La Lune - l'inconscient, le Soleil - la conscience.
 
 ### Yod
 Le monde ou la transition entre le bien et le mal.

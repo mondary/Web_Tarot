@@ -4,22 +4,22 @@
 
 ## Symboles de la carte
 ### Couronne
-The ego and perhaps being boastful - believing you are a king?
+L'ego et peut-être être vantard - croyez-vous être un roi ?
 
-### Red Tunic
-Symbolises passion.
+### Tunique rouge
+Symbolise la passion.
 
-### Black Cape
-Black represents mystery fear and grief and in this case, is a symbol of locking others out.
+### Cape noire
+Le noir représente le mystère, la peur et le deuil et dans ce cas, est un symbole de fermer les autres dehors.
 
 ### Ciel gris
-Confusion and lack of neutrality.
+Confusion et manque de neutralité.
 
-### Four Pentacles
-The practical possessions this person is clinging to.
+### Quatre pentacles
+Les possessions pratiques auxquelles cette personne s'accroche.
 
-### Tours Behind
-Watchfulness and also isolation in a crowd.
+### Tours derrière
+Vigilance et aussi isolement dans une foule.
 
 ---
 

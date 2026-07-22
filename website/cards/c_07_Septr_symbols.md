@@ -3,35 +3,35 @@
 **Source :** Roebuck-Jones and Associates — connectwithyourdeck.com
 
 ## Symboles de la carte
-### Black Figure
-Making choices. .
+### Figure noire
+Faire des choix. .
 
 ### Coupe - Château
-Protection home and security .
+Protection, foyer et sécurité .
 
-### Coupe - Shrouded
-Figure The mystery within us all.
+### Coupe - Voilée
+Figure Le mystère en nous tous.
 
-### Coupe - Curly haired
-head Eternal youth and a warning against chasing youth and vanity.
+### Coupe - Cheveux bouclés
+tête Jeunesse éternelle et mise en garde contre la poursuite de la jeunesse et de la vanité.
 
-### Coupe with Serpent
-The snake is a symbol of deceit, betrayal, wisdom and transformation. .
+### Coupe avec serpent
+Le serpent est un symbole de tromperie, de trahison, de sagesse et de transformation. .
 
 ### Coupe -
-Dragon Power, strength luck and the power of the mind.
+Dragon Puissance, force, chance et pouvoir de l'esprit.
 
-### Coupe - Laurel
-Couronne Life and death. The skull reminds you to make life meaningful.
+### Coupe - Laurier
+Couronne Vie et mort. Le crâne vous rappelle de donner un sens à la vie.
 
 ### Coupe
-Treasure Inner and outer riches and greed.
+Trésor Richesses intérieures et extérieures et avidité.
 
 ### Ciel bleu
-Free will and clear mind.
+Libre arbitre et esprit clair.
 
 ### Nuages gris
-The confusion of choice.
+La confusion du choix.
 
 ---
 

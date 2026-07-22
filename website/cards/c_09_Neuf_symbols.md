@@ -3,20 +3,20 @@
 **Source :** Roebuck-Jones and Associates — connectwithyourdeck.com
 
 ## Symboles de la carte
-### Chapeau rouge And plume
-Passion purpose and accomplishment.
+### Chapeau rouge et plume
+Passion, but et accomplissement.
 
-### Blue Tablecloth
-Clarity of emotion and thought.
+### Nappe bleue
+Clarté d'émotion et de pensée.
 
 ### Robe blanche
-Beginnings and completion.
+Débuts et achèvement.
 
 ### Ciel jaune
 Confiance, énergie masculine.
 
-### Nine Coupes
-Coupes are behind the figure and suggest he either doesn't know they are there and so doesn't recognise all of the contributions to his success. Or that he has displayed his cups behind him as a demonstration of his wealth and success. His cups are raised meaning he is raising his happy emotions upwards as an expression of success.
+### Neuf coupes
+Les coupes sont derrière la figure et suggèrent soit qu'il ne sait pas qu'elles sont là et ne reconnaît donc pas toutes les contributions à son succès. Ou qu'il a exposé ses coupes derrière lui comme une démonstration de sa richesse et de son succès. Ses coupes sont levées signifiant qu'il élève ses émotions heureuses vers le haut comme une expression de succès.
 
 ---
 

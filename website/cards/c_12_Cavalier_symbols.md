@@ -3,38 +3,38 @@
 **Source :** Roebuck-Jones and Associates — connectwithyourdeck.com
 
 ## Symboles de la carte
-### Knight
-Riding with confidence and care to share his emotions with the world.
+### Cavalier
+Chevauchant avec confiance et soin pour partager ses émotions avec le monde.
 
 ### Armure
-Protection and security  - but can also mean keeping one's emotions protected and close.
+Protection et sécurité - mais peut aussi signifier garder ses émotions protégées et proches.
 
-### Wings On Helmet
-Wings of Hermes - symbolic of being attuned to love and emotion.
+### Ailes sur le casque
+Ailes d'Hermès - symbolique d'être en harmonie avec l'amour et l'émotion.
 
-### Elemental
-Correspondence Air of Eau. Knights are air, the suit is water.
+### Élémental
+Correspondance Air de Eau. Les Cavaliers sont l'air, la suite est l'eau.
 
-### Zodiac
-3rd Decan Libra – 2nd Decan Scorpio
+### Zodiaque
+3e décan Balance – 2e décan Scorpion
 
-### Fish On Cape
-Fish is a symbol of happiness and prosperity but also for coldness. Represents being focussed on dreams and emotions.
+### Poisson sur la cape
+Le poisson est un symbole de bonheur et de prospérité mais aussi de froideur. Représente être concentré sur les rêves et les émotions.
 
 ### Rivière
-The flow of life.
+Le flux de la vie.
 
 ### Coupe
-Represents the emotions carried out into the world.
+Représente les émotions portées dans le monde.
 
 ### Ciel bleu
-Lightheartedness, clarity of thought and purpose, free will and clear mind.
+Légèreté, clarté de pensée et de but, libre arbitre et esprit clair.
 
 ### Cheval gris
-Emotional confusion. The playful gait of the horse can express passion,.
+Confusion émotionnelle. L'allure ludique du cheval peut exprimer la passion,
 
 ### Montagnes
-represent the emotional obstacles in the world.
+représentent les obstacles émotionnels dans le monde.
 
 ---
 

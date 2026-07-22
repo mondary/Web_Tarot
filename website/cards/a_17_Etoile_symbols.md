@@ -4,7 +4,7 @@
 
 ## Symboles de la carte
 ### Ciel bleu clair
-Represents the will of spirit and the mind coming together.
+Représente la volonté de l'esprit et de l'esprit se réunissant.
 
 ### Étoile à 8 branches
 L'étoile centrale à huit branches représente le soi, et les sept étoiles autour représentent les sept chakras.
@@ -16,7 +16,7 @@ L'acte d'essayer de voir qui nous sommes dans le reflet de l'eau.
 Représente être vulnérable et authentique.
 
 ### Pied sur l'eau
-Emotions,  unconscious and the foot on the water support of the soul and emotional life.
+Émotions, inconscient et le pied sur l'eau soutien de l'âme et de la vie émotionnelle.
 
 ### Cruche
 Capacité spirituelle et cycle de la vie.

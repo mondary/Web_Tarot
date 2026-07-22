@@ -10,7 +10,7 @@ Fertilité, nouvelle croissance, symbolisant de nouvelles idées et de nouvelles
 Vos objectifs et rêves.
 
 ### Huit baguettes
-You are coordinating everything in motion. Action - things are happening quickly. Fence or barrier - the wands form a barrier stopping you from getting to the house on the far bank of the river - what is happening that is stopping you from reaching your goals?
+Vous coordonnez tout en mouvement. Action - les choses se passent rapidement. Clôture ou barrière - les baguettes forment une barrière vous empêchant d'atteindre la maison sur la rive lointaine de la rivière - qu'est-ce qui se passe qui vous empêche d'atteindre vos objectifs ?
 
 ### Rivière
 Continuité et changement, rester dans le flux, tout comme les baguettes sont figées dans un moment de mouvement.

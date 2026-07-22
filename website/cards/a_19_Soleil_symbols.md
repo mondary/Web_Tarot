@@ -10,7 +10,7 @@ Bonheur et force, la recherche constante de la lumière, ou l'illumination.
 Bonheur venant de limites claires et fermées dans nos vies.
 
 ### Soleil jaune
-The knowledge we have about the world in our consciousness. 21 rays of the sun - represent each of the elements of the Major Arcana,.
+La connaissance que nous avons sur le monde dans notre conscience. 21 rayons du soleil - représentent chacun des éléments des Arcanes Majeurs.
 
 ### Ciel bleu -
 Représente le bonheur et la clarté de pensée.
@@ -22,7 +22,7 @@ Exprime le bonheur et l'ouverture. Le désir d'être un enfant encore. La nudit�
 Ne pas être conscient de la force en nous.
 
 ### Plume/écharpe rouge
-Representing joy happiness and life energy .
+Représentant la joie, le bonheur et l'énergie vitale.
 
 ---
 

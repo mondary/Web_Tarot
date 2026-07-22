@@ -3,32 +3,32 @@
 **Source :** Roebuck-Jones and Associates — connectwithyourdeck.com
 
 ## Symboles de la carte
-### Generations
-Each of the figures represents a generation in your life - childhood midlife and old age.
+### Générations
+Chacune des figures représente une génération dans votre vie - enfance, âge mûr et vieillesse.
 
 ### Château
-A secure home and identity.
+Un foyer sécurisé et une identité.
 
-### Ten Pentacles
-Mark each of the stations of the Quaballah tree of life. It means you have come to the conclusion of your life and you have achieved everything you need to achieve.
+### Dix pentacles
+Marquent chacune des stations de l'arbre de vie du Quaballah. Cela signifie que vous êtes arrivé à la conclusion de votre vie et que vous avez réalisé tout ce que vous devez réaliser.
 
-### Two Coats
-Of Arms Family identity and continuity.
+### Deux blasons
+Identité familiale et continuité.
 
 ### Ciel bleu
-A clear way ahead, clarity of purpose and clarity of message.
+Un chemin clair devant, clarté de but et clarté de message.
 
 ### Chiens
-Hommes best friend a symbol of loyalty, truth, honesty, affection and stability.
+Le meilleur ami de l'homme, symbole de loyauté, vérité, honnêteté, affection et stabilité.
 
-### bridge/archway
-The emotional links that join everyone together.
+### Pont/arcade
+Les liens émotionnels qui relient tout le monde ensemble.
 
 ### Bâton
-Your goal has been reached deliberately and step by step.
+Votre objectif a été atteint délibérément et étape par étape.
 
-### Grapes
-Affluence maturity and success. You have worked hard for your abundance.
+### Raisins
+Richesse, maturité et succès. Vous avez travaillé dur pour votre abondance.
 
 ---
 

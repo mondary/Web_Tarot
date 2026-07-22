@@ -3,8 +3,8 @@
 **Source :** Roebuck-Jones and Associates — connectwithyourdeck.com
 
 ## Symboles de la carte
-### Downward Facing
-Pentagram A warning of all the negative energy that can hold you back.
+### Pentagramme orienté vers le bas
+Un avertissement de toute l'énergie négative qui peut vous retenir.
 
 ### Ailes de chauve-souris
 Utilisez vos sens pour voir au-delà de ce qui vous retient.

@@ -3,20 +3,20 @@
 **Source :** Roebuck-Jones and Associates — connectwithyourdeck.com
 
 ## Symboles de la carte
-### Blue Cap/Scarf/
-Tunic Blue represents the emotions and spirituality of a person of high passion.
+### Bonnet bleu/Écharpe/
+Tunique Le bleu représente les émotions et la spiritualité d'une personne de grande passion.
 
-### Wavy Eau
-The ebb and flow of emotions
+### Eau ondoyante
+Le flux et reflux des émotions.
 
-### Fish Coupe
-Fish is a symbol of happiness and prosperity,  also coldness. Being focussed on dreams and emotions.
+### Coupe avec poisson
+Le poisson est un symbole de bonheur et de prospérité, et aussi de froideur. Être concentré sur les rêves et les émotions.
 
 ### Ciel gris
-Confusion of emotions.
+Confusion des émotions.
 
-### Yellow Bottes
-Happiness within yourself, taking positive action.
+### Bottes jaunes
+Bonheur en soi, prendre une action positive.
 
 ---
 

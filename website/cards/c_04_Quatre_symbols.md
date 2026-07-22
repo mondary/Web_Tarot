@@ -3,29 +3,29 @@
 **Source :** Roebuck-Jones and Associates — connectwithyourdeck.com
 
 ## Symboles de la carte
-### Raised Ground
-Isolates the figure and sets him apart - shows a deliberate separation from the world and other people.
+### Sol surélevé
+Isole la figure et la met à part - montre une séparation délibérée du monde et des autres.
 
-### Red Shoes And Shirt
-Passion, but the figure being on the ground symbolises passion contained.
+### Chaussures rouges et chemise
+Passion, mais la figure étant au sol symbolise la passion contenue.
 
-### Three Coupes
-Shows that ideas and emotions that can be seen and known.
+### Trois coupes
+Montrent que les idées et émotions qui peuvent être vues et connues.
 
 ### Main
-The hand extending from the cloud is offering the cup. This represents new ideas that come from the confusion that the figure refuses to see.
+La main s'étendant du nuage offre la coupe. Cela représente de nouvelles idées qui viennent de la confusion que la figure refuse de voir.
 
-### Grey Cloud
-The colour grey represents lack of clarity and confusion.
+### Nuage gris
+La couleur grise représente le manque de clarté et la confusion.
 
-### Fourth Coupe
-Extended from the hand symbolises new ideas and emotions that are not known and acknowledged.
+### Quatrième coupe
+Tendue de la main symbolise de nouvelles idées et émotions qui ne sont pas connues et reconnues.
 
-### Tree
-Represents having our roots or feet on the ground but your head or the branches and leaves in the clouds. The figures position close to the tree could be symbolic of the figure being grounded - or even too closed.
+### Arbre
+Représente avoir nos racines ou nos pieds sur la terre mais votre tête ou les branches et les feuilles dans les nuages. La position de la figure proche de l'arbre pourrait être symbolique de la figure étant ancrée - ou même trop fermée.
 
 ### Ciel bleu
-Lightheartedness, clarity of thought and purpose, free will and clear mind. Can indicate wishful thinking and striving too much.
+Légèreté, clarté de pensée et de but, libre arbitre et esprit clair. Peut indiquer une pensée souhaitable et des efforts excessifs.
 
 ---
 

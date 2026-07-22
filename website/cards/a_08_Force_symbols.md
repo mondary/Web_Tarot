@@ -19,7 +19,7 @@ Pouvoir féminin douceur sur la force.
 L'innocence apprivoise la sauvagerie.
 
 ### Couronne de fleurs
-And belt Wisdom and power of nature.
+et ceinture Sagesse et pouvoir de la nature.
 
 ### Mains
 Confiance, calme et force face à l'agression.

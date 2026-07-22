@@ -3,26 +3,26 @@
 **Source :** Roebuck-Jones and Associates — connectwithyourdeck.com
 
 ## Symboles de la carte
-### Black Cape
-Symbolic of grieving and loss.
+### Cape noire
+Symbolique du deuil et de la perte.
 
-### Overturned Coupes
-Past emotional experiences that cannot be overcome.
+### Coupes renversées
+Expériences émotionnelles passées qui ne peuvent être surmontées.
 
-### Standing Coupes
-Something from the past that offers hope but has been overlooked.
+### Coupes debout
+Quelque chose du passé qui offre de l'espoir mais a été négligé.
 
 ### Rivière
-The continuity of emotion and life and can also represent constant change.
+La continuité de l'émotion et de la vie et peut aussi représenter le changement constant.
 
 ### Pont
-Having faith in yourself to cross the bridge to new opportunities.
+Avoir foi en soi pour traverser le pont vers de nouvelles opportunités.
 
-### Ruined Château
-Shows the passing of time and what will be left for you if you keep focussing on the overturned cups.
+### Château en ruine
+Montre le passage du temps et ce qui restera pour vous si vous continuez à vous concentrer sur les coupes renversées.
 
 ### Ciel gris
-Confusion and lack of focus.
+Confusion et manque de concentration.
 
 ---
 

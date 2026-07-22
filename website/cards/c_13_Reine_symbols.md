@@ -3,32 +3,32 @@
 **Source :** Roebuck-Jones and Associates — connectwithyourdeck.com
 
 ## Symboles de la carte
-### Elemental
-Correspondence Eau of Eau. Queens are water, the suit is Eau.
+### Élémental
+Correspondance Eau de Eau. Les Reines sont l'eau, la suite est l'Eau.
 
-### Zodiac
-3rd Decan Gemini – 2nd Decan Cancer
+### Zodiaque
+3e décan Gémeaux – 2e décan Cancer
 
-### Flowing Blue Robes
-Robes flow down to the stones and water at her feet the blending of the emotional consciousness of the world.
+### Robes bleues flottantes
+Les robes descendent jusqu'aux pierres et l'eau à ses pieds le mélange de la conscience émotionnelle du monde.
 
-### Stones At Her Feet
-The water can mould to emotions, and how we might stumble on those stones when emotions get in the way.
+### Pierres à ses pieds
+L'eau peut se mouler aux émotions, et comment nous pouvons trébucher sur ces pierres quand les émotions se mettent en travers.
 
-### Large cup
-Large sacred chalice stands for the collective spiritual wealth of the world and a warning against being caught up in self-importance.
+### Grande coupe
+Le grand calice sacré représente la richesse spirituelle collective du monde et un avertissement contre être pris dans l'auto-importance.
 
-### Gray Throne
-In the shape of a shell and symbolises spiritual openness and patience. In the negative it can represent personal preoccupation.
+### Trône gris
+En forme de coquillage et symbolise l'ouverture spirituelle et la patience. Dans le négatif, il peut représenter une préoccupation personnelle.
 
-### Throne Cherubs
-Being young at heart and innocence. The cherub holding a fish is symbolic of happiness and prosperity but also for coldness.
+### Chérubins sur le trône
+Être jeune de cœur et innocent. Le chérubin tenant un poisson est symbolique de bonheur et de prospérité mais aussi de froideur.
 
 ### Falaise
-Challenges of life.
+Défis de la vie.
 
 ### Ciel bleu
-Lightheartedness, clarity of thought and purpose, free will and clear mind.
+Légèreté, clarté de pensée et de but, libre arbitre et esprit clair.
 
 ---
 

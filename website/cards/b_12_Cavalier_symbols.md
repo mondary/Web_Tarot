@@ -3,29 +3,29 @@
 **Source :** Roebuck-Jones and Associates — connectwithyourdeck.com
 
 ## Symboles de la carte
-### Elemental
-Correspondence Air of Fire. Knights are air, the suit is Fire.
+### Élémental
+Correspondance Air de Feu. Les Cavaliers sont l'air, la suite est le Feu.
 
-### Zodiac
-3rd Decan Cancer – 2nd Decan Leo
+### Zodiaque
+3e décan Cancer – 2e décan Lion
 
-### Knight On Cheval
-Controlled energy - controlling the out of control horse.
+### Cavalier sur cheval
+Énergie contrôlée - contrôler le cheval incontrôlable.
 
-### Armure/Helmet
-Shows preparation and protection also stubbornness in the pursuit of your thoughts and ideas.
+### Armure/Casque
+Montre la préparation et la protection, aussi l'entêtement dans la poursuite de vos pensées et idées.
 
-### Red Plumes
-Helmet/Sleeves Fire and passion - indicating someone who cannot be restrained.
+### Plumes rouges
+Casque/Manches Feu et passion - indiquant quelqu'un qui ne peut être retenu.
 
-### Pyramids
-A sign of timeless age, wisdom and science. The pyramid symbolises energy and. transforming yourself through ideas.
+### Pyramides
+Un signe d'âge intemporel, de sagesse et de science. La pyramide symbolise l'énergie et. la transformation de soi à travers les idées.
 
-### Baguette In
-Desert Overcoming obstacles and personal hardship to achieve goals.
+### Baguette dans le
+Désert Surmonter les obstacles et les épreuves personnelles pour atteindre les objectifs.
 
-### Yellow Tunic
-Yellow indicates energy, drive, clarity of thought and wild enthusiasm.
+### Tunique jaune
+Le jaune indique l'énergie, l'élan, la clarté de pensée et l'enthousiasme sauvage.
 
 ---
 

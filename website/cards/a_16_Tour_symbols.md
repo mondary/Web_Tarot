@@ -4,7 +4,7 @@
 
 ## Symboles de la carte
 ### Ciel noir
-Confusion about which way to turn, the blackness that comes before enlightenment.
+Confusion sur la direction à prendre, le noir qui vient avant l'illumination.
 
 ### Deux figures tombant
 Tomber ou voler les deux peuvent être terrifiants mais tomber représente la négativité et voler représente la positivité.

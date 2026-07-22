@@ -7,7 +7,7 @@
 Les mystères de la vie.
 
 ### Chariot
-Our Karma  is shaped by our actions.
+Notre Karma est façonné par nos actions.
 
 ### Couronne
 Victoire et honneur dans la vie.

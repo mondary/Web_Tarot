@@ -7,10 +7,10 @@
 Bonheur - fleurs dans l'air - célébration familiale traditionnelle.
 
 ### Quatre baguettes
-Quatre baguettes forment un portail, les figures sont farewell ou vous accueillent. Les hautes baguettes créent une haute énergie.
+Quatre baguettes forment un portail, les figures sont adieu ou vous accueillent. Les hautes baguettes créent une haute énergie.
 
 ### Guirlande
-Un signe de succès célébration, plaisir, et fertilité.
+Un signe de succès, célébration, plaisir, et fertilité.
 
 ### Ciel jaune
 Confiance, énergie masculine.

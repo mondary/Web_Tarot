@@ -15,7 +15,7 @@ Innocence et expérience.
 ### Symbole triangulaire
 Un ancien symbole égyptien d'intelligence et de capacité d'amour.
 
-### Eau And Coupes
+### Eau Et Coupes
 Trouver la bonne mesure entre les coupes, représente tester les choses et trouver le bon équilibre.
 
 ### Pied droit
@@ -27,7 +27,7 @@ Réunir la volonté personnelle la volonté du destin dans la vie.
 ### Joyau frontal
 Ouvrir le troisième œil pour une sagesse spirituelle et perspicace.
 
-### Fire Wings
+### Ailes de feu
 Nouvelle possibilité pour nos vies est toujours là.
 
 ---

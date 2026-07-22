@@ -3,17 +3,17 @@
 **Source :** Roebuck-Jones and Associates — connectwithyourdeck.com
 
 ## Symboles de la carte
-### Three figures
-Working together.
+### Trois figures
+Travaillant ensemble.
 
 ### Plans
-Your life plan and what the universe has in store for you.
+Votre plan de vie et ce que l'univers vous réserve.
 
-### Bench
-Bench the sculptor is standing on elevates him and his work as something of importance.
+### Banc
+Le banc sur lequel le sculpteur est debout l'élève, lui et son œuvre comme quelque chose d'important.
 
-### Crypt/Cellar
-Where they are meeting symbolises fundamental values and groundwork required to work together. The three pentacles at the top represent the basic needs of working together.
+### Crypte/Cave
+Là où ils se rencontrent symbolise les valeurs fondamentales et les bases nécessaires pour travailler ensemble. Les trois pentacles au sommet représentent les besoins de base du travail ensemble.
 
 ---
 

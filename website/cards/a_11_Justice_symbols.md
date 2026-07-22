@@ -10,7 +10,7 @@ Gestion des émotions. Décisions, passion et action.
 Conscience, créativité, inspiration contrainte par des règles.
 
 ### Broche blanche
-Third eye higher wisdom and  intuition.
+Troisième œil, sagesse supérieure et intuition.
 
 ### Colonnes
 Contraintes de ce qui devrait arriver plutôt que l'équité.
@@ -18,11 +18,11 @@ Contraintes de ce qui devrait arriver plutôt que l'équité.
 ### Rideau
 Le besoin de clarté de pensée dans la justice qui va au-delà de ce qui est visible.
 
-### Scales And Épée
+### Balance et Épée
 Les balances représentent l'évaluation des options et l'équité. L'épée met en œuvre le jugement.
 
 ### Couronne
-The power of three,  the four-sided jewel represents masculine and feminine and the spiritual and material world.
+Le pouvoir de trois, le joyau à quatre faces représente le masculin et le féminin et le monde spirituel et matériel.
 
 ---
 

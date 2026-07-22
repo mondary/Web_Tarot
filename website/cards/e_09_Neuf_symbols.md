@@ -4,25 +4,25 @@
 
 ## Symboles de la carte
 ### Femme
-A beautiful woman in a garden it is symbolic of everything that is successful and right in your life.
+Une belle femme dans un jardin c'est symbolique de tout ce qui est réussi et juste dans votre vie.
 
-### Grapes
-Affluence maturity and success. Grapes are also one of the most labour intensive harvests symbolising that you have worked hard for your abundance.
+### Raisins
+Richesse, maturité et succès. Les raisins sont aussi l'une des récoltes les plus intensives en main-d'œuvre symbolisant que vous avez travaillé dur pour votre abondance.
 
-### Falcon
-Higher vision superiority and rising above mundane life. It is also a symbol of vibrancy and power. The falcon symbolises challenging you to live your life to your highest potential.
+### Faucon
+Vision supérieure, supériorité et s'élever au-dessus de la vie banale. C'est aussi un symbole de vibrance et de puissance. Le faucon symbolise vous défier de vivre votre vie à votre plus haut potentiel.
 
-### Flowers On Robe
-Feminine symbol or the symbol of Venus for fertility and nature.
+### Fleurs sur la robe
+Symbole féminin ou symbole de Vénus pour la fertilité et la nature.
 
 ### Ciel jaune
-Confidence, masculine energy
+Confiance, énergie masculine
 
-### Snail
-The cycle of life the spiral of its shell is representative of birth death and rebirth.
+### Escargot
+Le cycle de vie, la spirale de sa coquille est représentative de la naissance, de la mort et de la renaissance.
 
 ### Pentacles
-The woman is surrounded by the pentacles the symbol of her affluence.
+La femme est entourée par les pentacles le symbole de sa richesse.
 
 ---
 

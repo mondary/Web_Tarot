@@ -4,22 +4,22 @@
 
 ## Symboles de la carte
 ### Croix
-Resetting the difficult moments in our lives - going back to a point in time and experience both sides of the situation.
+Réinitialiser les moments difficiles dans nos vies - revenir à un moment donné et vivre les deux côtés de la situation.
 
 ### Deux figures
-The two figures depict our maturity when as an adult we can go back to our childhood experiences and understand them.
+Les deux figures dépeignent notre maturité quand en tant qu'adulte nous pouvons revenir à nos expériences d'enfance et les comprendre.
 
-### White Glove
-Suggesting innocence or not wanting to get your hands dirty - may indicate not wanting to face childhood truths.
+### Gant blanc
+Suggérant l'innocence ou ne pas vouloir se salir les mains - peut indiquer ne pas vouloir faire face aux vérités de l'enfance.
 
 ### Ciel bleu
-Lightheartedness, clarity of thought and purpose, free will and clear mind. Can indicate wishful thinking and striving too much.
+Légèreté, clarté de pensée et de but, libre arbitre et esprit clair. Peut indiquer une pensée souhaitable et des efforts excessifs.
 
-### Big House
-The childhood aspect of everything appearing bigger as a child. Symbolic of big experiences and emotions.
+### Grande maison
+L'aspect enfance de tout paraissant plus grand en tant qu'enfant. Symbolique d'expériences et d'émotions grandes.
 
-### Coupes With Flowers
-A blooming spiritual existence such as returning to childhood to explore where we came from and understand ourselves.
+### Coupes avec fleurs
+Une existence spirituelle florissante telle que retourner à l'enfance pour explorer d'où nous venons et nous comprendre nous-mêmes.
 
 ---
 

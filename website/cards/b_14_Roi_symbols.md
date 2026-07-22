@@ -3,32 +3,32 @@
 **Source :** Roebuck-Jones and Associates — connectwithyourdeck.com
 
 ## Symboles de la carte
-### Elemental
-Correspondence Fire of Fire. Kings are fire, the suit is Fire.
+### Élémental
+Correspondance Feu de Feu. Les Rois sont le feu, la suite est le Feu.
 
-### Zodiac
-3rd Decan Scorpio – 2nd Decan Sagittarius
+### Zodiaque
+3e décan Scorpion – 2e décan Sagittaire
 
-### Couronne of flames
-Symbolises strength of will and inner fire.
+### Couronne de flammes
+Symbolise la force de volonté et le feu intérieur.
 
-### Red/orange
-robes and hair Orange means clear vibrant passion and decisive action (think red and yellow blended together) .
+### Rouge/orange
+robes et cheveux L'orange signifie une passion vibrante claire et une action décisive (pensez au rouge et au jaune mélangés).
 
-### Yellow cape
-Happiness, peace, clarity of thought and energy - this energy if in over abundance can be described as being too energetic and too overbearing.
+### Cape jaune
+Bonheur, paix, clarté de pensée et énergie - cette énergie si en surabondance peut être décrite comme étant trop énergique et trop écrasante.
 
-### Green Shoes/Cape
-Shoes - the steps we take in life, and the shoulders represent the responsibility we bear. Green - fertility, growth and life,.
+### Chaussures vertes/Cape
+Chaussures - les pas que nous faisons dans la vie, et les épaules représentent la responsabilité que nous portons. Vert - fertilité, croissance et vie.
 
-### Black lion on the
-throne Strength of will and determination.
+### Lion noir sur le
+trône Force de volonté et détermination.
 
-### Throne
-Reaching the sky - symbolic of the connection between heaven and earth.
+### Trône
+Atteindre le ciel - symbolique de la connexion entre le ciel et la terre.
 
-### Salamanders
-cape/king's feet Folklore states that the salamander is an animal that can pass through fire without injury. Symbolising Magick, spirituality and the ability to withstand challenges. The circle indicates circularity of life.
+### Salamandres
+cape/pieds du roi Le folklore dit que la salamandre est un animal qui peut traverser le feu sans blessure. Symbolisant la magie, la spiritualité et la capacité de résister aux défis. Le cercle indique la circularité de la vie.
 
 ---
 

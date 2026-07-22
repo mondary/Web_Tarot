@@ -3,17 +3,17 @@
 **Source :** Roebuck-Jones and Associates — connectwithyourdeck.com
 
 ## Symboles de la carte
-### The Figures Pose
-The person is running ahead and glancing back at the same time. It is a sign of inner conflict. What are you sneaking around for and stealing?
+### La posture de la figure
+La personne court devant et regarde en arrière en même temps. C'est un signe de conflit intérieur. Pourquoi vous faufilez-vous et volez-vous ?
 
 ### Épées
-Figure carries five swords but leaves two behind. You have grabbed what you are taking in haste and have carelessly left something behind. Perhaps you leave with doubts about what you have done (the two swords left behind)
+La figure porte cinq épées mais en laisse deux derrière elle. Vous avez saisi ce que vous prenez à la hâte et avez négligemment laissé quelque chose derrière. Peut-être partez-vous avec des doutes sur ce que vous avez fait (les deux épées laissées derrière).
 
-### Tents
-Sneaking into the enemy camp  - you as an individual against many. Non-permanent housing - life is constantly moving and changing and you have to take constant action to move with it - even if it means being dishonest - to keep yourself safe.
+### Tentes
+S'infiltrer dans le camp ennemi - vous en tant qu'individu contre plusieurs. Logement non permanent - la vie bouge et change constamment et vous devez prendre une action constante pour bouger avec elle - même si cela signifie être malhonnête - pour vous garder en sécurité.
 
-### Red Shoes/ Hat
-Red is passion. Red hat passionate thoughts, Red shoes, passionate action.
+### Chaussures rouges/Chapeau
+Le rouge est la passion. Le chapeau rouge représente des pensées passionnées, les chaussures rouges, une action passionnée.
 
 ---
 

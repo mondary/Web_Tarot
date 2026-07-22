@@ -3,26 +3,26 @@
 **Source :** Roebuck-Jones and Associates — connectwithyourdeck.com
 
 ## Symboles de la carte
-### Elemental
-Correspondence Air of Earth. Knights are Air, the suit is Earth.
+### Élémental
+Correspondance Air de Terre. Les Cavaliers sont l'Air, la suite est la Terre.
 
-### Zodiac
-3rd Decan  Aries – 2nd Decan Taurus
+### Zodiaque
+3e décan Bélier – 2e décan Taureau
 
-### Knight
-Riding out into the world with confidence and care to carry his wealth, gifts and talents to share.
+### Cavalier
+Chevauchant dans le monde avec confiance et soin pour partager sa richesse, ses dons et ses talents.
 
 ### Cheval noir
-All that is unknown about the self whether it is suppressed, forgotten or unconscious.
+Tout ce qui est inconnu sur soi, qu'il soit réprimé, oublié ou inconscient.
 
 ### Armure
-Protection and security  - but can also mean keeping your emotions protected and close.
+Protection et sécurité - mais peut aussi signifier garder ses émotions protégées et proches.
 
-### Red Bridle
-Red stands for passion and invites you to find out more about where you need to go in your life and to have the confidence to search for new ideas and opportunities.
+### Bride rouge
+Le rouge représente la passion et vous invite à découvrir plus où vous devez aller dans votre vie et à avoir la confiance de chercher de nouvelles idées et opportunités.
 
-### Green Plumes
-Green represents fertility and abundance suggesting successful endeavours but also warns against immaturity.
+### Plumes vertes
+Le vert représente la fertilité et l'abondance, suggérant des entreprises réussies, mais avertissant aussi contre l'immaturité.
 
 ---
 

@@ -13,7 +13,7 @@ Croyances, valeurs et objectifs intérieurs.
 Un livre de connaissances pour le cours de votre vie.
 
 ### Palmiers
-Grenades Fertility, abundance of spiritual life.
+Grenades Fertilité, abondance de la vie spirituelle.
 
 ### Ciel jaune
 Confiance, énergie masculine.

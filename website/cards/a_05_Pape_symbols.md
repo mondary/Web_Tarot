@@ -7,7 +7,7 @@
 Autorité, structure, limites.
 
 ### Tête rasée
-(Tonsure) Spirituality, closeness to God.
+(Tonsure) Spiritualité, proximité avec Dieu.
 
 ### Couronne à trois étages
 Pont vers le Dieu unique en trois personnes : Père, Fils et Saint-Esprit.
@@ -22,7 +22,7 @@ Les clés du paradis.
 Roses rouges passion, lys blancs pureté amour et spiritualité.
 
 ### Bénédiction
-Acte de purification - rendre votre vie worthwhile.
+Acte de purification - rendre votre vie digne de valeur.
 
 ### Trinité
 Trois croix - symbolisent la divine trinité. Signifie aussi divine féminine, mère vierge et reine ou trois mondes ciel, terre et enfer ou les trois niveaux de conscience ça, moi et surmoi.

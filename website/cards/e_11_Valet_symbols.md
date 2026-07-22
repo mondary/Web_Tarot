@@ -4,25 +4,25 @@
 
 ## Symboles de la carte
 ### Mains
-The care you need to take with your talents and gifts.
+Le soin que vous devez prendre avec vos talents et vos dons.
 
-### Green Tunic
-Growth, nature and potential. Green can also symbolise immaturity.
+### Tunique verte
+Croissance, nature et potentiel. Le vert peut aussi symboliser l'immaturité.
 
-### Green Land
-New ideas and new possibilities.
+### Terre verte
+Nouvelles idées et nouvelles possibilités.
 
 ### Montagnes bleues
-Reaching for your goals.
+Atteindre vos objectifs.
 
 ### Arbres
-Nature, fertility and community.
+Nature, fertilité et communauté.
 
 ### Pentacle
-Practical ideas, goals and talents.
+Idées pratiques, objectifs et talents.
 
-### Chapeau rouge/Scarf
-Passion and positive thoughts.
+### Chapeau rouge/Écharpe
+Passion et pensées positives.
 
 ### Ciel jaune
 Confiance, énergie masculine.

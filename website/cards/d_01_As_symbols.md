@@ -7,22 +7,22 @@
 Confusion et neutralité, pas de direction et pas d'opinion.
 
 ### Main
-The hand emerges from the clouds to give you a gift for yourself -confident to show your true self!
+La main émerge des nuages pour vous donner un cadeau pour vous-même - confiante pour montrer votre vrai soi !
 
-### Epée
-The sword is upright and held with authority for whoever is brave enough to take it. The sword rules your emotions, spirituality and intellect.
+### Épée
+L'épée est droite et tenue avec autorité pour quiconque est assez courageux pour la prendre. L'épée régit vos émotions, votre spiritualité et votre intellect.
 
-### Couronne Plants
-Date palm and an olive branch. These are masculine- feminine symbols; symbols of victory (palm) and peace (olive); Fertility and balance.
+### Plantes de couronne
+Palmier dattier et une branche d'olivier. Ce sont des symboles masculin-féminin ; symboles de victoire (palmier) et de paix (olivier) ; Fertilité et équilibre.
 
-### The Couronne
-Our thoughts. The sword through the centre of the crown is calling us to be conscious of the clarity of our thinking.
+### La couronne
+Nos pensées. L'épée au centre de la couronne nous appelle à être conscients de la clarté de notre pensée.
 
 ### Ciel gris
-Grey in the Tarot refers to confusion - and is symbolic in this card of the sword cutting through and creating clarity.
+Le gris dans le Tarot fait référence à la confusion - et est symbolique dans cette carte de l'épée coupant à travers et créant la clarté.
 
-### Six Gold Drops
-Dew drops of yods (Hebrew symbolism) represent spiritualism and emotion.
+### Six gouttes dorées
+Gouttes de rosée de yods (symbolisme hébreu) représentent le spiritualisme et l'émotion.
 
 ---
 

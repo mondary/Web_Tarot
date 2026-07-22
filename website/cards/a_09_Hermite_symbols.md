@@ -3,10 +3,10 @@
 **Source :** Roebuck-Jones and Associates — connectwithyourdeck.com
 
 ## Symboles de la carte
-### Grise robe
-Uncertainty, personal development.
+### Robe grise
+Incertitude, développement personnel.
 
-### Lanterneeeee
+### Lanterne
 Vigilance et insomnie.
 
 ### Bâton
@@ -18,14 +18,13 @@ Le ciel sur terre et la lumière en nous.
 ### Barbe blanche
 Sagesse de l'âge et expérience.
 
-### Grey  Sky
+### Ciel gris
 Se retirer du monde, confusion.
 
 ### ATTRIBUTIONS
 
-
-### Zodiac Virgo
-Loyal, analytical, kind, critical.
+### Zodiaque Vierge
+Loyal, analytique, gentil, critique.
 
 ### Neige
 Oublier une partie de soi et laisser geler. Nouveaux débuts. Purification et pardon de soi.

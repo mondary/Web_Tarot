@@ -3,32 +3,32 @@
 **Source :** Roebuck-Jones and Associates — connectwithyourdeck.com
 
 ## Symboles de la carte
-### Elemental
-Correspondence Fire of Earth. Kings are Fire, the suit is Earth.
+### Élémental
+Correspondance Feu de Terre. Les Rois sont le Feu, la suite est la Terre.
 
-### Zodiac
-3rd Decan Leo – 2nd Decan Virgo
+### Zodiaque
+3e décan Lion – 2e décan Vierge
 
-### Orbeeee/Sceptre
-Sceptre left hand - symbolising power and authority. Pentacle symbolising the orb right hand - the power  to rule the world.
+### Orbe/Sceptre
+Sceptre main gauche - symbolisant le pouvoir et l'autorité. Pentacle symbolisant l'orbe main droite - le pouvoir de régner sur le monde.
 
-### Grapes
-Affluence maturity and success. working hard for your abundance.
+### Raisins
+Richesse, maturité et succès. Travailler dur pour votre abondance.
 
-### Kings Couronne
-Is ornate with flowers, it is a golden laurel wreath, symbolic of wealth affluence and power
+### Couronne du Roi
+Est ornée de fleurs, c'est une couronne de laurier dorée, symbolique de richesse, d'abondance et de pouvoir
 
-### Laurel Leaves
-symbolise clairvoyance, victory and immortality. The crown symbolises his victory and success.
+### Feuilles de laurier
+symbolisent clairvoyance, victoire et immortalité. La couronne symbolise sa victoire et son succès.
 
-### Bulls On Throne
-Symbol of Earth and fertility. They symbolise Taurus in Astrology and natural fixed power.
+### Taureaux sur le trône
+Symbole de Terre et de fertilité. Ils symbolisent le Taureau en astrologie et le pouvoir fixe naturel.
 
 ### Ciel jaune
 Confiance, énergie masculine.
 
 ### Château
-Protection and security.
+Protection et sécurité.
 
 ### Armure de pied
 Être bien préparé et courageux. Protecteur des autres et de soi. Attention à l'abus de pouvoir - faiblesse - pieds d'argile cachés.
@@ -36,22 +36,20 @@ Protection and security.
 ### connectwithyourdeck.com
 
 
-### All rights reserved.
+### Tous droits réservés.
 
+### Copyright - Aucune partie de cette publication ne peut être reproduite, revendue, distribuée, ou transmise sous quelque forme que ce soit ou par quelque moyen que ce soit, y compris la photocopie, l'enregistrement ou d'autres méthodes électroniques ou mécaniques ou à la main, sans l'autorisation écrite préalable de Roebuck-Jones and Associates Pty Ltd, sauf dans le cas de courtes citations incorporées dans des critiques critiques et certains autres usages non commerciaux et équitables personnels autorisés par la loi sur le droit d'auteur.
 
-### Copyright - No part of this publication may be reproduced, resold distributed,
-or transmitted in any form or by any means, including photocopying, recording, or other electronic or mechanical methods or by hand, without the prior written permission of Roebuck-Jones and Associates Pty Ltd, except in the case of brief quotations embodied in critical reviews and certain other non commercial and fair personal uses as permitted by copyright law.
+### Avertissement - Roebuck-Jones and Associates Pty Ltd ne garantit ni ne garantit
+la précision, la fiabilité ou la monnaie des informations contenues dans cette publication. Roebuck-Jones and Associates Pty Ltd tentera de corriger toute erreur dans toute information qui est portée à son attention dès que possible. Roebuck-Jones and Associates Pty Ltd a le droit de changer à tout moment sans préavis toute information contenue dans cette publication. En aucun cas Roebuck-Jones and Associates Pty Ltd ou les sociétés apparentées, les dirigeants, les agents ou les employés ne pourront être tenus responsables de toute décision prise ou action entreprise pour la confiance dans les informations de cette publication, même s'ils ont été avisés de la possibilité de tels dommages. Si des liens dans cette publication connectent à d'autres sites web entretenus par des tiers, Roebuck-Jones and Associates Pty Ltd ne fait aucune représentation quant à la précision ou à tout autre aspect des informations contenues dans de tels sites web.
 
-### Warning -  Roebuck-Jones and Associates Pty Ltd does not guarantee or warrant
-the accuracy, reliability or currency of the information contained in this publication. Roebuck-Jones and Associates Pty Ltd will attempt to correct any errors in any information that is brought to its attention as soon as practicable. Roebuck-Jones and Associates Pty Ltd has the right to change at any time without notice any information contained in this publication. In no event will Roebuck-Jones and Associates Pty Ltd or related corporations, officers, agents or employees be liable for any decisions made or action taken for the reliance on the information in this publication, even if advised of the possibility of such damages. If any links in this publication connect to other websites maintained by third parties, Roebuck-Jones and Associates Pty Ltd makes no representations as to the accuracy or any other aspect of information contained in such websites.
+### Copyright en anglais clair - Nous consacrons un temps et des ressources significatifs à créer
+ces matériaux. Vous pouvez utiliser et reproduire les pages de cette publication pour votre propre usage personnel autant de fois que vous le souhaitez - mais veuillez respecter notre droit d'auteur et ne pas distribuer cette publication à d'autres personnes. Si vous souhaitez photographier ou reproduire une petite partie de cette publication à des fins de médias sociaux, vous devez reconnaître notre travail et notre droit d'auteur en utilisant notre nom complet Roebuck-Jones and Associates Pty Ltd et @eroebuckjones dans la description. Merci d'avance pour votre soutien à ce travail.
 
-### Copyright in plain English - We spend significant time and resources creating
-these materials. You may use and reproduce the pages in this publication for your own personal use as many times as you like - but please respect our copyright and do not distribute this publication to other people. If you want to photograph or reproduce a small part of this publication for social media purposes, you must acknowledge our work and copyright using our full name Roebuck-Jones and Associates Pty Ltd and @eroebuckjones in the description. Hommey thanks in advance for your support of this work.
+### PERMISSIONS US GAMES
+Illustrations du jeu de tarot Rider-Waite, connu aussi sous le nom de Rider Tarot et Waite Tarot, reproduites avec la permission de U.S. Games Systems, Inc., Stamford, CT 06902. c. 1971 par U.S. Games Systems, Inc. Tous droits réservés. Le jeu de tarot Rider-Waite est une marque déposée de U.S. Games Systems, Inc. © Roebuck-Jones And Associates Pty Ltd 2020/2021 connectwithyourdeck.com
 
-### US GAMES PERMISSIONS
-Illustrations from the Rider-Waite Tarot Deck, known also as the Rider Tarot and the Waite Tarot, reproduced by permission of U.S. Games Systems, Inc., Stamford, CT 06902. c. 1971 by U.S. Games Systems, Inc. All rights reserved. The Rider-Waite Tarot deck is a registered trademark of U.S. Games Systems, Inc. © Roebuck-Jones And Associates Pty Ltd 2020/2021 connectwithyourdeck.com
-
-### ©  2020/2021 Roebuck-Jones And Associates connectwithyourdeck.com
+### © 2020/2021 Roebuck-Jones And Associates connectwithyourdeck.com
 
 
 ---

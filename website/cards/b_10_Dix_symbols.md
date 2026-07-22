@@ -3,23 +3,23 @@
 **Source :** Roebuck-Jones and Associates — connectwithyourdeck.com
 
 ## Symboles de la carte
-### Burden
-You are struggling to carry your responsibilities effectively. You are determined and learning from your failures You will push through anything.
+### Fardeau
+Vous luttez pour porter vos responsabilités efficacement. Vous êtes déterminé et apprenez de vos échecs. Vous surmonterez tout.
 
-### Orange Tunic
-Orange can mean clear vibrant passion and decisive action (think red and yellow blended together) or confusion and ambiguity (not red or yellow).
+### Tunique orange
+L'orange peut signifier une passion vibrante claire et une action décisive (pensez au rouge et au jaune mélangés) ou de la confusion et de l'ambiguïté (ni rouge ni jaune).
 
 ### Baguettes
-Work out what is important and bring everything together to create the one goal and solution. Don't let your problems get in the way - slow down!
+Déterminez ce qui est important et rassemblez tout pour créer l'objectif unique et la solution. Ne laissez pas vos problèmes vous faire obstacle - ralentissez !
 
-### Flat Ground
-You can reach your goal you just need to push forward. The dirty yellow of the ground can indicate a mixture of sun and darkness or confusion on your travels.
+### Sol plat
+Vous pouvez atteindre votre objectif, il vous suffit de continuer. Le jaune sale du sol peut indiquer un mélange de soleil et d'obscurité ou de confusion sur vos voyages.
 
-### House
-The goal you are trying to achieve. Your home is your castle and your identity.
+### Maison
+L'objectif que vous essayez d'atteindre. Votre foyer est votre château et votre identité.
 
 ### Ciel bleu
-Clarté de pensée et d'action. Peut indiquer le pensée désirative et trop d'efforts.
+Clarté de pensée et d'action. Peut indiquer la pensée désirative et trop d'efforts.
 
 ---
 

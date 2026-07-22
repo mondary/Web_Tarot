@@ -3,26 +3,26 @@
 **Source :** Roebuck-Jones and Associates — connectwithyourdeck.com
 
 ## Symboles de la carte
-### Swinging Épée
-The pages position - he is swinging the sword without looking - although his feet are firmly placed there is carelessness in his pose.the sword goes beyond the edge of the card, indicating everything we do does not just impact us immediately but impacts everyone around us.
+### Épée balançante
+La position du valet - il balance l'épée sans regarder - bien que ses pieds soient fermement plantés, il y a de l'inattention dans sa posture. L'épée dépasse le bord de la carte, indiquant que tout ce que nous faisons n'a pas seulement un impact immédiat sur nous, mais aussi sur tout le monde autour de nous.
 
-### Green Earth
-Symbolic of growth, nature and potential.
+### Terre verte
+Symbolique de la croissance, de la nature et du potentiel.
 
-### Red Bottes
-Red symbolises passion and the need to be grounded.
+### Bottes rouges
+Le rouge symbolise la passion et le besoin d'être ancré.
 
-### Red/Yellow
-Vêtements Red symbolises passion and yellow clarity of thought and action - the page needs to take care that he is not too passionate.
+### Rouge/Jaune
+Vêtements Le rouge symbolise la passion et le jaune la clarté de pensée et d'action - le valet doit prendre soin de ne pas être trop passionné.
 
 ### Ciel bleu
 Ciel bleu clair indique un chemin clair devant, clarté de but et clarté de message.
 
-### White Nuages
-Innocence and naivety.
+### Nuages blancs
+Innocence et naïveté.
 
-### Flock Of Oiseaus
-Positivity and creative thinking.
+### Volée d'oiseaux
+Positivité et pensée créative.
 
 ---
 

@@ -3,35 +3,35 @@
 **Source :** Roebuck-Jones and Associates — connectwithyourdeck.com
 
 ## Symboles de la carte
-### Elemental
-Correspondence Eau of Earth. Queens are Eau, the suit is Earth.
+### Élémental
+Correspondance Eau de Terre. Les Reines sont l'Eau, la suite est la Terre.
 
-### Zodiac
-3rd Decan Sagittarius – 2nd Decan Capricorn
+### Zodiaque
+3e décan Sagittaire – 2e décan Capricorne
 
 ### Pentacle
-Taking care of talents and personal needs.
+Prendre soin des talents et des besoins personnels.
 
-### Red Dress/While
-Undergarments Red robe represents passion - White under tunic naivety innocence and pureness of heart.
+### Robe rouge/Tunique
+blanche La robe rouge représente la passion - La tunique blanche naivité innocence et pureté de cœur.
 
-### Golden Couronne
-Winged goat's head indicating an association with Capricorn. The red wings indicate higher spiritual mental powers.
+### Couronne dorée
+Tête de chèvre ailée indiquant une association avec le Capricorne. Les ailes rouges indiquent des pouvoirs mentaux spirituels supérieurs.
 
 ### Ciel jaune
-Passion and creativity.
+Passion et créativité.
 
-### Rose Garden
-Roses are a sign of passion fertility and fruitfulness of nature. The fruits and flowers surrounding the queen symbolise productivity naturalness and creativity.
+### Jardin de roses
+Les roses sont un signe de passion, de fertilité et de fécondité de la nature. Les fruits et les fleurs entourant la reine symbolisent la productivité, le naturel et la créativité.
 
-### Green Cloak
-Fertility and love of nature.
+### Cape verte
+Fertilité et amour de la nature.
 
-### Rabbit
-Fertility and drives and instincts. It also shows the love of animals and new life.freedom.
+### Lapin
+Fertilité, pulsions et instincts. Il montre aussi l'amour des animaux et de la nouvelle vie. liberté.
 
 ### Trône gris
-Is covered in symbols of animals fruits indicating abundance fertility and love of nature.
+Est couvert de symboles d'animaux et de fruits indiquant l'abondance, la fertilité et l'amour de la nature.
 
 ---
 

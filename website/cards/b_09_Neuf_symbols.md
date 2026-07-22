@@ -4,7 +4,7 @@
 
 ## Symboles de la carte
 ### Neuf baguettes
-Upright forming a barrier of things in the past overcome, that you cannot go back to. Baguettes of differing heights represent differing degrees of challenge. Green leaves represent new hope.
+Droites formant une barrière de choses du passé surmontées, auxquelles vous ne pouvez pas retourner. Les baguettes de hauteurs différentes représentent des degrés de défi différents. Les feuilles vertes représentent le nouvel espoir.
 
 ### Bandage de tête
 Peut signifier que vous avez été blessé par les luttes de la vie, qu'il y a beaucoup à penser, ou que vous avez traversé le pire de vos défis et êtes maintenant préparé pour la guérison et ce qui vient ensuite.
@@ -13,7 +13,7 @@ Peut signifier que vous avez été blessé par les luttes de la vie, qu'il y a b
 Se tenant sur une surface plane neutre pour contempler la vie et où vous avez été. Le gris peut aussi symboliser la confusion et peut indiquer l'incertitude et l'inaction.
 
 ### Ciel bleu
-Clarté de pensée et d'action. Peut indiquer le pensée désirative et trop d'efforts.
+Clarté de pensée et d'action. Peut indiquer la pensée désirative et trop d'efforts.
 
 ---
 

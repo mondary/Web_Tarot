@@ -3,29 +3,29 @@
 **Source :** Roebuck-Jones and Associates — connectwithyourdeck.com
 
 ## Symboles de la carte
-### Blindfold
-She is unable to see what is going on - the blindfold stops her taking action for herself.
+### Bandeau
+Elle est incapable de voir ce qui se passe - le bandeau l'empêche de prendre action pour elle-même.
 
-### Red Vêtements
-Passion - what is this person passionately denying.
+### Vêtements rouges
+Passion - qu'est-ce que cette personne nie passionnément.
 
-### Figure's Position
-She is all tied up. Yet her feet are free and she isn't gagged - she could walk away and seek help at any time.
+### Position de la figure
+Elle est tout attachée. Pourtant ses pieds sont libres et elle n'est pas bâillonnée - elle pourrait s'en aller et chercher de l'aide à tout moment.
 
 ### Épées
-Eight Épées are forming a barrier - swords represent intellect - being bound and restricted by her thinking.
+Huit épées forment une barrière - les épées représentent l'intellect - être lié et restreint par sa pensée.
 
-### Eau/Muddy Feet
-Unconscious mind or symbolic of the mess and despair this person perceives they are in.
+### Eau/Pieds dans la boue
+Esprit inconscient ou symbolique du désordre et du désespoir que cette personne perçoit être dans.
 
 ### Montagne
-Represents overcoming difficulties you might be avoiding or denying..
+Représente surmonter les difficultés que vous pourriez éviter ou nier..
 
 ### Ciel gris
-Grey represents confusion. This person is confused about their restrictions and binds..
+Le gris représente la confusion. Cette personne est confuse quant à ses restrictions et ses liens..
 
 ### Château
-Isolated away the castle represents cutting yourself off from the world.
+Isolé, le château représente se couper du monde.
 
 ---
 

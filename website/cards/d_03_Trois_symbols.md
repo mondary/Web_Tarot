@@ -3,14 +3,14 @@
 **Source :** Roebuck-Jones and Associates — connectwithyourdeck.com
 
 ## Symboles de la carte
-### Grey Nuages/Grey
-Sky Confusion and heartbreak.
+### Nuages gris/Ciel
+gris Confusion et chagrin d'amour.
 
-### Heart
-Love, joy affection, truth, courage and our conscience. The heart is our centre where all our deepest values, fears, hopes, dreams, desires, wishes and deepest emotions come from. The centre of who we are both physically and emotionally.
+### Cœur
+Amour, joie, affection, vérité, courage et notre conscience. Le cœur est notre centre d'où viennent toutes nos valeurs les plus profondes, peurs, espoirs, rêves, désirs, souhaits et émotions les plus profondes. Le centre de qui nous sommes physiquement et émotionnellement.
 
-### Three swords Through The Heart
-Three swords pierce the heart or our very sense of self. The three swords represent cutting through difficult times. The strength that comes from great sorrow and the lessons we learn from life, hearts broken and hearts mended.
+### Trois épées à travers le cœur
+Trois épées percent le cœur ou notre sens même de soi. Les trois épées représentent couper à travers des moments difficiles. La force qui vient d'un grand chagrin et les leçons que nous apprenons de la vie, les cœurs brisés et les cœurs guéris.
 
 ---
 

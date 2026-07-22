@@ -3,32 +3,32 @@
 **Source :** Roebuck-Jones and Associates — connectwithyourdeck.com
 
 ## Symboles de la carte
-### Elemental
-Correspondence Eau of Fire. Queens are water, the suit is Fire.
+### Élémental
+Correspondance Eau de Feu. Les Reines sont l'eau, la suite est le Feu.
 
-### Zodiac
-3rd Decan Pisces – 2nd Decan Aries
+### Zodiaque
+3e décan Poissons – 2e décan Bélier
 
-### Leafy Couronne
-Abundance and prosperity the queen thrives in everything she does.
+### Couronne feuillue
+Abondance et prospérité, la reine prospère dans tout ce qu'elle fait.
 
-### Yellow Robe
-Indicates happiness, peace, clarity of thought and energy .
+### Robe jaune
+Indique le bonheur, la paix, la clarté de pensée et l'énergie.
 
-### White Cape
-The white cape balances her yellow gown and indicates purity of presence.
+### Cape blanche
+La cape blanche équilibre sa robe jaune et indique la pureté de présence.
 
-### Red Jewel
-The small red jewel indicates passion.
+### Joyau rouge
+Le petit joyau rouge indique la passion.
 
-### Red Shoe
-Represents grounding and passion devoting your whole heart and mind to the task at hand.
+### Chaussure rouge
+Représente l'ancrage et la passion, dévouant tout votre cœur et votre esprit à la tâche à accomplir.
 
-### Throne
-Reaching the sky - symbolic of the connection between heaven and earth.
+### Trône
+Atteindre le ciel - symbolique de la connexion entre le ciel et la terre.
 
 ### Tournesols
-Tournesols always turn to face the sun and so are symbolic of vitality.
+Les tournesols tournent toujours pour faire face au soleil et sont donc symboliques de vitalité.
 
 ---
 

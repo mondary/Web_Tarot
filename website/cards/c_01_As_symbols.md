@@ -12,10 +12,10 @@ Confusion et neutralité, pas de direction et pas d'opinion.
 ### Coupe
 Représente nos émotions prenant forme.
 
-### 26 gouttes d
+### 26 gouttes d'eau
 Comme les 26 lettres de l'alphabet, chaque goutte représente notre langage des sentiments.
 
-### Cinq jets d
+### Cinq jets d'eau
 Les jets d'eau représentent le lien entre nous-mêmes et le monde.
 
 ### Colombe blanche

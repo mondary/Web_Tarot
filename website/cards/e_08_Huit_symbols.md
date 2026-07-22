@@ -3,29 +3,29 @@
 **Source :** Roebuck-Jones and Associates — connectwithyourdeck.com
 
 ## Symboles de la carte
-### Blue/Red
-Vêtements Red stocking and shoes symbolise passionate grounding and the blue tunic clarity of thought and action.
+### Bleu/Rouge
+Vêtements Bas et chaussures rouges symbolisent un ancrage passionné et la tunique bleue la clarté de pensée et d'action.
 
-### Workbench
-Creating your benchmark of excellence in your work.
+### Établi
+Créer votre benchmark d'excellence dans votre travail.
 
 ### Ciel gris
-Confusion and lack of clarity.
+Confusion et manque de clarté.
 
-### Working On The
-Pentacles Skill is not perfected without practice.
+### Travailler sur les
+Pentacles La compétence n'est pas parfaite sans pratique.
 
-### Hammer And
-Chisel Your ability to make an impression.
+### Marteau et
+Ciseau Votre capacité de faire une impression.
 
-### Pentacles On The
-Pole Building one skill over and over. In the negative could also refer to the monotony of repetition.
+### Pentacles sur le
+Poteau Construire une compétence encore et encore. Dans le négatif, cela peut aussi faire référence à la monotonie de la répétition.
 
-### One Pentacle On The
-Ground Emphasises your personal situation and may even suggest finding a new approach to your situation.
+### Un pentacle sur le
+Sol Accentue votre situation personnelle et peut même suggérer de trouver une nouvelle approche de votre situation.
 
-### village
-Represents getting away from everyone to focus on your talents.
+### Village
+Représente s'éloigner de tout le monde pour se concentrer sur vos talents.
 
 ---
 

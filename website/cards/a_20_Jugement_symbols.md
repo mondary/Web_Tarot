@@ -9,8 +9,8 @@ Un appel à l'action et au pouvoir.
 ### Ciel bleu clair
 Clarté de pensée et esprit sain.
 
-### The Neige-Capped
-Montagnes The process of continual renewal and inspiration.
+### Les montagnes
+enneigées Le processus de renouvellement continu et d'inspiration.
 
 ### La corne du jugement
 Dit éveiller l'énergie réprimée et ramener les morts à la vie. L'appel à passer à l'action
@@ -19,13 +19,13 @@ Dit éveiller l'énergie réprimée et ramener les morts à la vie. L'appel à p
 Un appel à l'équité et à un jugement sain.
 
 ### Mains tendues
-Être ouvert à de nouvelles connaissances idées et défis leur permettant d'accepter des connaissances supérieures et de prendre une nouvelle direction.
+Être ouvert à de nouvelles connaissances, idées et défis leur permettant d'accepter des connaissances supérieures et de prendre une nouvelle direction.
 
 ### Personnes
-Coloured Grey Rising out of their confusion into enlightenment.
+Colorées en gris Sortant de leur confusion vers l'illumination.
 
 ### Cercueils ouverts
-Libération de l'oppression et de la confinement et de ce qui a été.
+Libération de l'oppression et du confinement et de ce qui a été.
 
 ---
 

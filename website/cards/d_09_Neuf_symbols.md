@@ -3,17 +3,17 @@
 **Source :** Roebuck-Jones and Associates — connectwithyourdeck.com
 
 ## Symboles de la carte
-### Figure's Pose
-Suddenly waking up from a nightmare. Their face is covered by the hands in despair.
+### Posture de la figure
+Se réveiller soudainement d'un cauchemar. Le visage est couvert par les mains dans le désespoir.
 
 ### Épées
-Nine swords on the wall tell us this is a complex nightmare and the swords are depicted here as enemies of the intellect and appear as overwhelming. The nine swords do not touch the person because the perceived threat is in their mind.
+Neuf épées sur le mur nous disent que c'est un cauchemar complexe et les épées sont représentées ici comme des ennemis de l'intellect et apparaissent comme écrasantes. Les neuf épées ne touchent pas la personne parce que la menace perçue est dans leur esprit.
 
-### Bed Carving
-Below the person's consciousness and represents what has just happened in the person's dream.
+### Sculpture de lit
+En dessous de la conscience de la personne et représente ce qui vient de se passer dans le rêve de la personne.
 
-### Quilt
-Red roses on the quilt symbolise passion, Zodiac and planetary symbols indicate that this is a dream full of meaningful symbolism. It also reminds us that no matter what is happening we are part of the solar system.
+### Couverture
+Les roses rouges sur la couverture symbolisent la passion, les symboles du zodiaque et planétaires indiquent que c'est un rêve plein de symbolisme significatif. Cela nous rappelle aussi que peu importe ce qui se passe, nous faisons partie du système solaire.
 
 ---
 

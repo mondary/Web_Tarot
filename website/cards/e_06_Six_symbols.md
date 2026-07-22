@@ -3,23 +3,23 @@
 **Source :** Roebuck-Jones and Associates — connectwithyourdeck.com
 
 ## Symboles de la carte
-### Rich Homme
-Your strength of character your experiences, talents and gifts. The man is showing that you have enough to share with those less fortunate than yourself.
+### Homme riche
+Votre force de caractère vos expériences, talents et dons. L'homme montre que vous avez assez pour partager avec ceux moins fortunés que vous.
 
-### Rouge robe
-Passion for life.
+### Robe rouge
+Passion pour la vie.
 
-### Two Beggars
-Those who would benefit from your generosity who are less fortunate than yourself.
+### Deux mendiants
+Ceux qui bénéficieraient de votre générosité qui sont moins fortunés que vous.
 
-### Scales
-Weighing up the pros and cons of life and the balancing out of give and take.
+### Balance
+Peser les pour et les contre de la vie et l'équilibre entre donner et recevoir.
 
-### Pentacles /Grey sky
-Represent that prosperity often fails to reach the people who need it most.
+### Pentacles /Ciel gris
+Représentent que la prospérité échoue souvent à atteindre les gens qui en ont le plus besoin.
 
-### City
-Taking yourself away from the daily routine to notice what needs to be done in your life around you.
+### Ville
+S'éloigner de la routine quotidienne pour remarquer ce qui doit être fait dans votre vie autour de vous.
 
 ---
 

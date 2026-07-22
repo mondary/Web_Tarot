@@ -3,20 +3,20 @@
 **Source :** Roebuck-Jones and Associates — connectwithyourdeck.com
 
 ## Symboles de la carte
-### Timing
-Unexpected, any time without notice. Nov 23 - Dec 21
+### Chronométrage
+Inattendu, n'importe quand sans préavis. 23 nov. - 21 déc.
 
 ### Sphinx
-Mystère et les quatre éléments Feau, Eau, Air et Terre.
+Mystère et les quatre éléments Feu, Eau, Air et Terre.
 
 ### Serpent
 Voie négative ou descendante de la roue.
 
 ### Anubis
-Egyptian god  - positive passages and the ups and downs of life.
+Dieu égyptien - passages positifs et les hauts et les bas de la vie.
 
-### I am ready to receive the
-emotion of others.
+### Je suis prêt à recevoir l'émotion
+des autres.
 
 ### Nuages
 Événements de notre vie évoluant dans une direction inattendue.
@@ -25,7 +25,7 @@ emotion of others.
 Sortir et découvrir le monde et aller en soi et se découvrir.
 
 ### Quatre signes fixes
-Les signes tiennent des livres de sagesse et leurs ailes symbolisent le potentiel. Ils sont estompés pour représenter que la connaissance est encore en cours d'acquisition. Ils représentent les 4 éléments Feau, Eau, Air et Terre.
+Les signes tiennent des livres de sagesse et leurs ailes symbolisent le potentiel. Ils sont estompés pour représenter que la connaissance est encore en cours d'acquisition. Ils représentent les 4 éléments Feu, Eau, Air et Terre.
 
 ---
 

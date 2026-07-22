@@ -3,20 +3,20 @@
 **Source :** Roebuck-Jones and Associates — connectwithyourdeck.com
 
 ## Symboles de la carte
-### Personnes In Barque
-Standing figure is the active part of you or the masculine side.  The figure bent over sitting in the boat represents your passive or feminine side. The child symbolises your inner child or your unconscious. The back view - represents grief or turning your back on something to move away from it and or your unconscious drives.
+### Personnes en barque
+La figure debout est la partie active de vous ou le côté masculin. La figure penchée assise dans le bateau représente votre côté passif ou féminin. L'enfant symbolise votre enfant intérieur ou votre inconscient. La vue de dos - représente le deuil ou tourner le dos à quelque chose pour s'en éloigner et ou vos pulsions inconscientes.
 
-### Black Pole
-Making progress one step at a time. Digging deep to get to the bottom of things through the (water) emotion.
+### Poteau noir
+Faire des progrès une étape à la fois. Creuser profondément pour aller au fond des choses à travers l'émotion (eau).
 
-### Six Épées
-The swords pierce the boat. They represent what you take with you. You have to take whatever it is that is troubling you with you on the journey.
+### Six épées
+Les épées percent le bateau. Elles représentent ce que vous emportez avec vous. Vous devez emporter ce qui vous tracasse avec vous dans le voyage.
 
 ### Ciel gris
-Confusion and lack of clarity.
+Confusion et manque de clarté.
 
-### Two different
-waters Rippled water and still water.  This represents consciously bringing about change in your life. Eau represents emotion.
+### Deux eaux
+différentes Eau ondée et eau calme. Cela représente apporter consciemment le changement dans votre vie. L'eau représente l'émotion.
 
 ---
 

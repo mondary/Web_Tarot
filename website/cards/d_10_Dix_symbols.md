@@ -3,17 +3,17 @@
 **Source :** Roebuck-Jones and Associates — connectwithyourdeck.com
 
 ## Symboles de la carte
-### Prone Figure
-The figure is lying as if dead with ten swords in the back .Murder or betrayal - the stab in the back.
+### Figure à terre
+La figure est couchée comme si elle était morte avec dix épées dans le dos. Meurtre ou trahison - le coup dans le dos.
 
-### Red Cloth
-Symbolises the lifeblood and passion that has flowed from this person in death.
+### Tissu rouge
+Symbolise le sang vital et la passion qui a coulé de cette personne à sa mort.
 
 ### Épées
-Ten swords symbolise endings but they also symbolise betrayal - the person has been stabbed in the back. It is as if all their secrets have been taken with them to the grave.
+Dix épées symbolisent des fins mais symbolisent aussi la trahison - la personne a été poignardée dans le dos. C'est comme si tous ses secrets avaient été emportés avec elle dans la tombe.
 
 ### Ciel noir
-The black stands for all that is unknown whether it is suppressed, forgotten or unconscious.
+Le noir représente tout ce qui est inconnu, qu'il soit réprimé, oublié ou inconscient.
 
 ---
 

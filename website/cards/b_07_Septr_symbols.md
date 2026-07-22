@@ -10,7 +10,7 @@ Le vert et le jaune représentent la fertilité, l'espoir et la positivité.
 Tous les obstacles que vous avez surmontés pour en être où vous êtes maintenant. Ce qui doit être accompli pour créer de la stabilité dans votre vie.
 
 ### Chaussures
-Boot and the shoe - being caught off balance and unprepared. The boot - working class. The shoe - being affluent. This shows the challenges of life. Confidence, action
+Bottes et chaussure - être pris au dépourvu et non préparé. La botte - classe ouvrière. La chaussure - être aisé. Cela montre les défis de la vie. Confiance, action.
 
 ### Ciel bleu
 Ciel bleu clair indique un chemin clair devant, clarté de but et clarté de message.

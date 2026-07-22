@@ -16,7 +16,7 @@ Le bleu est la couleur de l'intuition et de la clarté de pensée - écoutez-vou
 Le rouge est le symbole de la passion et de l'action - les jambes sont actives et pourraient descendre à tout moment.
 
 ### Pied
-The foot is simply tied and could be untied at any time. This represents- encouragement to consciously take a break - to take time out.
+Le pied est simplement attaché et pourrait être détaché à tout moment. Cela représente un encouragement à prendre consciemment une pause - à prendre du temps.
 
 ---
 

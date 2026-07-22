@@ -6,14 +6,14 @@
 ### Cinq figures
 Un concours équilibré où il n'y a pas de gagnants. Énergie juvénile et exubérance. Volonté consciente et inconsciente, la volonté des autres et la volonté du destin qui rivalisent ensemble.
 
-### Green/Yellow
-Ground Positive symbolism, a place where things can grow - a fertile place for an argument or conflict.
+### Sol vert/jaune
+Symbolisme positif, un endroit où les choses peuvent grandir - un endroit fertile pour un argument ou un conflit.
 
 ### Chapeau rouge
-Parler à travers votre chapeau - ou le garder sous votre chapeau - plutôt que d'être clair sur ce que vous voulez.
+Parler à travers son chapeau - ou le garder sous son chapeau - plutôt que d'être clair sur ce que vous voulez.
 
 ### Cinq baguettes
-5 flames within you - elements of spirit fire, air, water and earth, competing for attention.
+5 flammes en vous - éléments d'esprit, feu, air, eau et terre, rivalisant pour l'attention.
 
 ### Ciel bleu
 Ciel bleu clair indique travailler pour la clarté d'esprit et de pensée.

@@ -3,29 +3,29 @@
 **Source :** Roebuck-Jones and Associates — connectwithyourdeck.com
 
 ## Symboles de la carte
-### Elemental
-Correspondence Fire of Air. Kings are fire, the suit is air.
+### Élémental
+Correspondance Feu de Air. Les Rois sont le feu, la suite est l'air.
 
-### Zodiac
-3rd Decan Taurus – 2nd Decan Gemini
+### Zodiaque
+3e décan Taureau – 2e décan Gémeaux
 
-### Epée
-King holds his sword forward suggesting clarity of thought and words.
+### Épée
+Le Roi tient son épée vers l'avant suggérant la clarté de pensée et de mots.
 
 ### Couronne
-King's crown with butterflies and a cherub symbolising a childlike innocence lightness, but also the ability to have a softness in harsh decisions.
+La couronne du Roi avec papillons et un chérubin symbolisant une innocence enfantine légèreté, mais aussi la capacité d'avoir une douceur dans les décisions difficiles.
 
-### Two Oiseaus
-New Ideas and having a birds-eye view of the world.
+### Deux oiseaux
+Nouvelles idées et avoir une vue d'oiseau du monde.
 
-### Kings Throne
-Butterflies - lightness. The carved dancing women - feminine energy and happiness. The two crescent moons - the cycles of life and feminine energy. The throne extends beyond the top of the card connection heaven and earth.
+### Trône du Roi
+Papillons - légèreté. Les femmes dansantes sculptées - énergie féminine et bonheur. Les deux croissants de lune - les cycles de la vie et l'énergie féminine. Le trône s'étend au-delà du haut de la carte connexion ciel et terre.
 
 ### Nuages gris
-Grey clouds can symbolise confusion and clear blue sky clarity of thought.
+Les nuages gris peuvent symboliser la confusion et le ciel bleu clair la clarté de pensée.
 
 ### Ciel bleu
-Indicates lightheartedness, clarity of thought and purpose, free will and clear mind.
+Indique la légèreté, la clarté de pensée et de but, le libre arbitre et l'esprit clair.
 
 ---
 

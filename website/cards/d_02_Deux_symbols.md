@@ -3,17 +3,17 @@
 **Source :** Roebuck-Jones and Associates — connectwithyourdeck.com
 
 ## Symboles de la carte
-### Blindfold
-Blindfold can suggest taking a chance on a choice, or could suggest that there is lots of thinking going on and the person doesn't want to be distracted in their thoughts. Or it could suggest not being open to new ideas.
+### Bandeau
+Le bandeau peut suggérer de prendre une chance sur un choix, ou peut suggérer qu'il y a beaucoup de réflexion et que la personne ne veut pas être distraite dans ses pensées. Ou cela peut suggérer ne pas être ouvert à de nouvelles idées.
 
-### The Épée Croix
-the swords are crossed indicating two pathways or two choices.
+### La croix des épées
+les épées sont croisées indiquant deux voies ou deux choix.
 
-### Grey Vêtements
-Grey in the Tarot means confusion and so this outfit is reflective of the confusion about choice this person is feeling.
+### Vêtements gris
+Le gris dans le Tarot signifie la confusion et donc cette tenue est réfléchissante de la confusion sur le choix que cette personne ressent.
 
-### Crescent Moon
-Time passing and the cycles of time psychic power and moving from one phase to another.
+### Croissant de lune
+Le temps qui passe et les cycles du temps, pouvoir psychique et passer d'une phase à une autre.
 
 ---
 

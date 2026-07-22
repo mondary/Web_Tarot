@@ -3,7 +3,7 @@
 **Source :** Roebuck-Jones and Associates — connectwithyourdeck.com
 
 ## Symboles de la carte
-### Orbeeee
+### Orbe
 Pouvoir, royauté. Vie éternelle, fertilité, la croix représente le dirigeant divin.
 
 ### Barbe
@@ -13,7 +13,7 @@ Sagesse de l'âge et expérience.
 Idées, passion, créativité.
 
 ### Le pouvoir créatif de
-the universal energy.
+l'énergie universelle.
 
 ### Trône gris
 Gouverner avec respect pour soi et les autres.
@@ -28,7 +28,7 @@ Signe du zodiaque Bélier.
 Préparé, courageux, protecteur des autres et de soi.
 
 ### Rivière
-The flow of life and  change.
+Le flux de la vie et le changement.
 
 ### Clé de vie
 Organes reproducteurs masculins, fertilité. Vie éternelle, autorité de gouverner.

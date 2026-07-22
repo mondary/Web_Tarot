@@ -3,29 +3,29 @@
 **Source :** Roebuck-Jones and Associates — connectwithyourdeck.com
 
 ## Symboles de la carte
-### Elemental
-Correspondence Air of Air. Knights are Air, the suit is Air.
+### Élémental
+Correspondance Air de Air. Les Cavaliers sont l'Air, la suite est l'Air.
 
-### Zodiac
-3rd Decan Capricorn – 2nd Decan Aquarius
+### Zodiaque
+3e décan Capricorne – 2e décan Verseau
 
-### The knight's
-Position On The Cheval A highly energetic personality - he is riding with his sword held high ready to take on the world.
+### La position du
+cavalier sur le Cheval Une personnalité hautement énergique - il chevauche avec son épée tenue haut prêt à affronter le monde.
 
-### Armure And Helmet
-Shows preparation and protection but can also indicate being fixed in your ways and impenetrable - that you can be stubborn in the pursuit of your own thoughts and ideas.
+### Armure et casque
+Montre la préparation et la protection, mais peut aussi indiquer être fixé dans ses façons et impénétrable - que vous pouvez être têtu dans la poursuite de vos propres pensées et idées.
 
 ### Cheval gris
-Grey symbolises confusion and ambivalence - be mindful of your impact on others.
+Le gris symbolise la confusion et l'ambivalence - soyez conscient de votre impact sur les autres.
 
-### Butterflies Oiseaus
-Represent the lightness and flightiness of The Knight Of Épées.
+### Papillons oiseaux
+Représentent la légèreté et l'inconsistance du Cavalier d'Épées.
 
-### Red Plume/Cape
-Passion for life.
+### Plume rouge/Cape
+Passion pour la vie.
 
-### Wind In The Arbres
-Knight is charging against the wind in the trees - symbolic of being defiant of all the old ideas and creating his own new ideas.
+### Vent dans les arbres
+Le cavalier charge contre le vent dans les arbres - symbolique d'être défiant de toutes les vieilles idées et de créer ses propres nouvelles idées.
 
 ### Ciel bleu
 Ciel bleu clair indique un chemin clair devant, clarté de but et clarté de message.

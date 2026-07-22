@@ -13,7 +13,7 @@ Robe rouge - passion et désir, objectifs. Cape verte fertilité, succès de l'a
 Être prêt pour quoi que ce soit conscience de l'environnement.
 
 ### Ciel jaune
-Confidence, masculine energy
+Confiance, énergie masculine
 
 ### Deux rives
 D'où vous venez et où vous allez. Les conflits en vous. Mer dorée - aperçu de votre vie et résultats positifs.

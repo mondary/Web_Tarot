@@ -3,23 +3,23 @@
 **Source :** Roebuck-Jones and Associates — connectwithyourdeck.com
 
 ## Symboles de la carte
-### Salamanders On Tunic
-Folklore states that the salamander is an animal that can pass through fire without injury - symbolising Magick spirituality and the ability to withstand challenges.
+### Salamandres sur la tunique
+Le folklore dit que la salamandre est un animal qui peut traverser le feu sans blessure - symbolisant la magie, la spiritualité et la capacité de résister aux défis.
 
 ### Ciel bleu clair
-Lightheartednes s, clarity of thought and purpose, free will and clear mind. Can indicate wishful thinking and striving too much.
+Légèreté, clarté de pensée et de but, libre arbitre et esprit clair. Peut indiquer une pensée souhaitable et des efforts excessifs.
 
 ### Baguette
-Is taller than the page indicating big ideas and impulsivity. Green leaves indicate new ideas and possibilities but care that your immaturity doesn't cause you to take on too much.
+Est plus grande que le valet, indiquant de grandes idées et de l'impulsivité. Les feuilles vertes indiquent de nouvelles idées et possibilités, mais attention à ce que votre immaturité ne vous fasse pas prendre trop de choses.
 
-### Pyramids
-Are a sign of timeless age wisdom and science. The pyramid symbolises energy and transforming yourself through ideas.
+### Pyramides
+Sont un signe d'âge intemporel, de sagesse et de science. La pyramide symbolise l'énergie et la transformation de soi à travers les idées.
 
-### Red Plume
-Represents being positive, full of energy and prepared to set big goals.
+### Plume rouge
+Représente être positif, plein d'énergie et prêt à se fixer de grands objectifs.
 
-### Desert
-The heat and fire within us that if over emphasised can burn you out and cause us to wither away.
+### Désert
+La chaleur et le feu en nous qui, si on les accentue trop, peuvent vous épuiser et vous faire dépérir.
 
 ---
 

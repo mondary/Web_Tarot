@@ -3,32 +3,32 @@
 **Source :** Roebuck-Jones and Associates — connectwithyourdeck.com
 
 ## Symboles de la carte
-### Elemental
-Correspondence Eau of Air. Queens are water, the suit is air.
+### Élémental
+Correspondance Eau de Air. Les Reines sont l'eau, la suite est l'air.
 
-### Zodiac
-3rd Decan Virgo – 2nd Decan Libra
+### Zodiaque
+3e décan Vierge – 2e décan Balance
 
-### Queens Couronne
-Shows authority. The butterflies symbolise metamorphosis transformation and flight. Showing that although she is able to cut with her words she has a softness about her.
+### Couronne de la Reine
+Montre l'autorité. Les papillons symbolisent la métamorphose la transformation et le vol. Montrant que bien qu'elle soit capable de couper avec ses mots, elle a une douceur en elle.
 
-### Stone Throne
-Butterflies - lightness, cherubs head - children and maturity. The two crescent moons suggest the cycles of life and feminine energy.
+### Trône de pierre
+Papillons - légèreté, tête de chérubin - enfants et maturité. Les deux croissants de lune suggèrent les cycles de la vie et l'énergie féminine.
 
-### White Dress
-symbolic of the purity of thought.
+### Robe blanche
+symbolique de la pureté de pensée.
 
 ### Nuages gris
-Confusion but the queens head is above the clouds which indicates clarity of thought.
+Confusion mais la tête de la reine est au-dessus des nuages ce qui indique la clarté de pensée.
 
 ### Bracelet
-Victorian mourning bracelet suggesting that she has been widowed.  This suggests she has an understanding of life and emotion.
+Bracelet de deuil victorien suggérant qu'elle a été veuve. Cela suggère qu'elle a une compréhension de la vie et de l'émotion.
 
 ### Ciel bleu
-Lightheartedness, clarity of thought and purpose, free will and clear mind.
+Légèreté, clarté de pensée et de but, libre arbitre et esprit clair.
 
-### Epée
-Épée points upwards showing clarity of words and clear thinking.
+### Épée
+Épée pointe vers le haut montrant la clarté des mots et une pensée claire.
 
 ---
 

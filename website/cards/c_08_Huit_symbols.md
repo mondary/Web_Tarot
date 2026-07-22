@@ -4,28 +4,28 @@
 
 ## Symboles de la carte
 ### Figure
-Travelling from whatever is troubling you.
+Voyager loin de ce qui vous tracasse.
 
-### Rouge robe
-Red is passion and indicates that you will find a way despite set backs.
+### Robe rouge
+Le rouge est la passion et indique que vous trouverez un moyen malgré les revers.
 
 ### Bâton
-Deliberateness of step and consciousness.
+Délibération de pas et conscience.
 
-### Red Shoes
-Passion and grounding - you are purposeful in your travelling.
+### Chaussures rouges
+Passion et ancrage - vous êtes intentionnel dans votre voyage.
 
 ### Rivière
-Walking with the flow of life or is walking upstream against the flow of life.
+Marcher avec le flux de la vie ou marcher à contre-courant contre le flux de la vie.
 
-### Moon And Sun
-Sun and Moon compete for dominance in the sky - The Sun stands for our conscious will and the Moon our unconscious beliefs and values about life.
+### Lune et Soleil
+Le Soleil et la Lune rivalisent pour la dominance dans le ciel - Le Soleil représente notre volonté consciente et la Lune nos croyances et valeurs inconscientes sur la vie.
 
 ### Montagne
-Difficulties and blockages in your life journey and the goals you are working hard to reach.
+Difficultés et blocages dans votre voyage de vie et les objectifs que vous travaillez dur à atteindre.
 
 ### Ciel gris
-Confusion and lack of focus.
+Confusion et manque de concentration.
 
 ---
 

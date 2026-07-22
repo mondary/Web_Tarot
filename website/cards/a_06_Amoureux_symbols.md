@@ -3,7 +3,7 @@
 **Source :** Roebuck-Jones and Associates — connectwithyourdeck.com
 
 ## Symboles de la carte
-### Arbre de vie/Knowledge
+### Arbre de vie/Connaissance
 Arbre de vie et arbre de la tentation - innocence et expérience énergie masculine et féminine.
 
 ### Serpent

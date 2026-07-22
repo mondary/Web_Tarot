@@ -3,20 +3,20 @@
 **Source :** Roebuck-Jones and Associates — connectwithyourdeck.com
 
 ## Symboles de la carte
-### Three Women
-Dancing A round dance of spiritual power and emotion. The women dancing represent feminine power. Life is a celebration.
+### Trois femmes
+Dansant Une ronde de pouvoir spirituel et d'émotion. Les femmes dansantes représentent le pouvoir féminin. La vie est une célébration.
 
-### Red, Beige And
-White Vêtements Red represents soul white the mind and beige the body. The idea of the three aspects of self coming together in a positive way.
+### Rouge, beige et
+Vêtements blancs Le rouge représente l'âme, le blanc l'esprit et le beige le corps. L'idée des trois aspects de soi se réunissant de manière positive.
 
-### Raising Of The
-Coupes Traditional symbolism of celebration - raising the energy of emotion upwards.
+### Lever des
+Coupes Symbolisme traditionnel de célébration - élever l'énergie de l'émotion vers le haut.
 
-### Fruits Of Harvest
-Abundance and being thankful for all that is given to you.
+### Fruits de la récolte
+Abondance et être reconnaissant pour tout ce qui vous est donné.
 
 ### Ciel bleu clair
-Lightheartedness, clarity of thought and purpose, free will and clear mind. Can indicate wishful thinking and striving too much.
+Légèreté, clarté de pensée et de but, libre arbitre et esprit clair. Peut indiquer une pensée souhaitable et des efforts excessifs.
 
 ---
 

@@ -3,23 +3,23 @@
 **Source :** Roebuck-Jones and Associates — connectwithyourdeck.com
 
 ## Symboles de la carte
-### Figures In
-Half Profile Symbolise two halves to  make a whole.
+### Figures en
+demi-profil Symbolisent deux moitiés pour former un tout.
 
 ### Vêtements
-Figure in blue clothing - represents the feminine side of a relationship. Figure in black and yellow - represents the masculine side of a relationship. White tunic - represents the innocence and purity of love. Red shoes - represent grounding and passion.
+Figure en vêtements bleus - représente le côté féminin d'une relation. Figure en noir et jaune - représente le côté masculin d'une relation. Tunique blanche - représente l'innocence et la pureté de l'amour. Chaussures rouges - représentent l'ancrage et la passion.
 
-### Winged Lions
-Head And Bâton Of Hermes Inspired by Caduceus and Zurvan - energies of passion and the heart that must be overcome through communication and strength.
+### Lions ailés
+Tête et bâton d'Hermès Inspiré par le Caducée et Zurvan - énergies de passion et du cœur qui doivent être surmontées par la communication et la force.
 
-### Hills
-The ups and downs of life and relationships.
+### Collines
+Les hauts et les bas de la vie et des relations.
 
 ### Couronnes de laurier
-Symbolise a celebration of love and connection.
+Symbolisent une célébration de l'amour et de la connexion.
 
 ### Ciel bleu clair -
-Lightheartedness, clarity of thought and purpose, free will and clear mind. Can indicate wishful thinking and striving too much.
+Légèreté, clarté de pensée et de but, libre arbitre et esprit clair. Peut indiquer une pensée souhaitable et des efforts excessifs.
 
 ---
 

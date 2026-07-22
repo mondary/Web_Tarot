@@ -4,25 +4,25 @@
 
 ## Symboles de la carte
 ### Chapeau rouge
-Too much passion and eagerness of life.
+Trop de passion et empressement de vivre.
 
-### Green Band
-Forms an infinity sign, the never- ending sign,  which symbolises being restless and repetitive without progress.  Green is the colour of life, vitality and hope. Green can also symbolises immaturity and an inability to cope.
+### Bande verte
+Forme un signe d'infini, le signe sans fin, qui symbolise être agité et répétitif sans progrès. Le vert est la couleur de la vie, de la vitalité et de l'espoir. Le vert peut aussi symboliser l'immaturité et l'incapacité à faire face.
 
-### Orange Vêtements
-Orange a mixture between red passion and yellow creativity, enthusiasm and drive. The two colours mixed suggest an overabundance of these qualities.
+### Vêtements orange
+L'orange est un mélange entre le rouge passion et le jaune créativité, enthousiasme et élan. Les deux couleurs mélangées suggèrent un surabondance de ces qualités.
 
-### Two Pentacles
-Two issues presenting or trying to manage too many things at once.
+### Deux pentacles
+Deux problèmes se présentant ou essayant de gérer trop de choses à la fois.
 
-### Waves
-Rocky waters or life having lots of ups and downs.
+### Vagues
+Eaux agitées ou la vie ayant beaucoup de hauts et de bas.
 
-### Sailing Navires
-Your ability to handle changing winds and rocky waters of life.
+### Navires naviguant
+Votre capacité à gérer les vents changeants et les eaux agitées de la vie.
 
-### Clear Blue Sky
-Calls you to  clarity of thought and action that you need to take.
+### Ciel bleu clair
+Vous appelle à la clarté de pensée et d'action que vous devez prendre.
 
 ---
 
