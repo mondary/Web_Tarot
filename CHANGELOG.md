@@ -6,7 +6,7 @@ Toutes les notes de release du projet Web Tarot. Le format de version suit `🔥
 
 ## TODO — Roadmap
 
-Statut : `3.2026.3` (mots-clés pleine largeur détail)
+Statut : `3.2026.11` (traduction complète des symboles en français)
 
 ### Phase 1 — Fondations ✅
 - [x] Interface V2 unifiée (carousel d'accueil + grille par famille + vue détail)
@@ -30,6 +30,12 @@ Statut : `3.2026.3` (mots-clés pleine largeur détail)
 ---
 
 ## Releases
+
+### [3.2026.11] - 2026-07-22
+#### Fixed
+- Traduction complète du contenu anglais en français dans les 78 fichiers `*_symbols.md` (symboles des cartes Rider-Waite)
+- Régénération de `data.js` avec le contenu traduit
+- `data.js` version incrémentée à `3.2026.11`
 
 ### [3.2026.3] - 2026-07-21
 #### Fixed
