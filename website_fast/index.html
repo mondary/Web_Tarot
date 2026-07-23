@@ -54,15 +54,21 @@ a{color:inherit;text-decoration:none}
 }
 .brand b{color:var(--fg);font-weight:400}
 .brand img{width:1.25rem;height:1.25rem;object-fit:contain}
-.brand-version{margin-left:.25rem;padding-left:.65rem;border-left:1px solid var(--line);color:var(--accent);font-size:.56rem;letter-spacing:.16em;white-space:nowrap}
+.brand-version{
+  margin-left:.25rem;padding-left:.65rem;border-left:1px solid var(--line);
+  color:var(--accent);font-size:.62rem;letter-spacing:.16em;white-space:nowrap;
+  background:rgba(10,9,7,.7);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);
+  padding:.25rem .65rem .25rem .65rem;border-radius:4px;border:1px solid rgba(255,255,255,.05)
+}
 
 /* ---------- Settings (deck switch) ---------- */
 .mode-switch{display:flex;align-items:center;
   font-family:'DM Mono',monospace;font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;
   padding:.25rem;border:1px solid var(--line);border-radius:50px;background:var(--bg)}
-.mode-switch a{color:var(--muted);padding:.42rem .62rem;border-radius:50px;transition:color .2s,background .2s}
+.mode-switch a{color:var(--muted);padding:.42rem .62rem;border-radius:50px;transition:color .2s,background .2s;display:inline-flex;align-items:center;gap:.35rem}
 .mode-switch a:hover{color:var(--fg)}
 .mode-switch a.active{color:#050505;background:var(--accent)}
+.mode-switch .mode-label{white-space:nowrap}
 
 /* ---------- Top-right controls wrapper (settings + mode switch) ---------- */
 .top-right{
@@ -103,6 +109,8 @@ a{color:inherit;text-decoration:none}
   display:flex;align-items:center;gap:1.1rem;
   font-family:'DM Mono',monospace;font-size:.64rem;letter-spacing:.18em;
   text-transform:uppercase;color:var(--muted);
+  background:rgba(10,9,7,.75);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
+  padding:.45rem .9rem;border-radius:6px;border:1px solid rgba(255,255,255,.06);
 }
 .landing-foot .ver{opacity:.6}
 .landing-foot a{color:var(--muted);transition:color .3s;text-decoration:none;border-bottom:1px solid transparent;padding-bottom:1px}
@@ -409,7 +417,7 @@ a{color:inherit;text-decoration:none}
 .scan-launch:hover{transform:scale(1.06)}
 .scan-launch svg{width:18px;height:18px}
 /* Module partagé tarot-features : désactivé, on garde nos boutons locaux */
-#tf-scan-btn,#tf-draws-btn{display:none!important}
+#tf-scan-btn,#tf-draws-btn,#sp-fab{display:none!important}
 
 /* ---------- Draws overlay ---------- */
 #draws{position:fixed;inset:0;z-index:8400;display:none;align-items:center;justify-content:center;
@@ -469,6 +477,11 @@ a{color:inherit;text-decoration:none}
   .search-launch svg,.scan-launch svg{width:16px;height:16px}
   .draws-panel{padding:1.5rem}
   .draws-head h2{font-size:1.6rem}
+  .mode-switch .mode-label{display:none}
+  .mode-switch a{padding:.4rem}
+  .top-right{right:1rem;top:1rem}
+  .settings-btn{width:34px;height:34px}
+  .settings-btn svg{width:14px;height:14px}
 }
 .scan-launch:focus-visible,.scan-close:focus-visible{outline:2px solid var(--fg);outline-offset:3px}
 #scanner{position:fixed;inset:0;z-index:8500;display:none;align-items:center;justify-content:center;background:#050505}
@@ -512,7 +525,8 @@ a{color:inherit;text-decoration:none}
   .grid-head{position:static;padding:4.5rem 6vw 1rem;border-bottom:none}
   .grid{grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:.8rem;padding:.8rem 6vw 6rem}
   .brand{left:1.2rem;top:1.2rem}
-  .top-right{right:1.2rem;top:.9rem;gap:.4rem}
+  .brand-version{font-size:.58rem;padding:.2rem .5rem .2rem .5rem}
+  .top-right{right:1rem;top:1rem;gap:.4rem}
   .settings-pop{right:1.2rem;min-width:240px}
   .back{left:1.2rem;top:3.7rem}
 }
@@ -810,10 +824,10 @@ a{color:inherit;text-decoration:none}
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
   </button>
   <nav class="mode-switch" aria-label="Choisir une vue" id="mode-switch">
-    <a data-mode="classic" href="#grid">Classique</a>
-    <a class="active" data-mode="immersive" href="#grid">Immersive</a>
-    <a data-mode="detailed" href="#grid">Détaillée</a>
-    <a data-mode="quick" href="#grid">Rapide</a>
+    <a data-mode="classic" href="#grid" title="Classique"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg><span class="mode-label">Classique</span></a>
+    <a class="active" data-mode="immersive" href="#grid" title="Immersive"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8S1 12 1 12z"/><circle cx="12" cy="12" r="3"/></svg><span class="mode-label">Immersive</span></a>
+    <a data-mode="detailed" href="#grid" title="Détaillée"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M16 13H8M16 17H8M10 9H8"/></svg><span class="mode-label">Détaillée</span></a>
+    <a data-mode="quick" href="#grid" title="Rapide"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg><span class="mode-label">Rapide</span></a>
   </nav>
 </div>
 
@@ -833,6 +847,7 @@ a{color:inherit;text-decoration:none}
    </div>
  </div>
 <div class="landing-foot" id="landing-foot">
+  <span class="ver" id="foot-ver">v3.2026.6</span>
   <a href="https://github.com/mondary/Web_Tarot" target="_blank" rel="noopener">GitHub</a>
   <a href="https://mondary.design" target="_blank" rel="noopener">mondary.design</a>
 </div>
@@ -853,44 +868,6 @@ a{color:inherit;text-decoration:none}
   </button>
 </div>
 
-<!-- ============ DRAWS overlay ============ -->
-<div id="draws" role="dialog" aria-modal="true" aria-label="Modes de tirage">
-  <div class="draws-panel">
-    <div class="draws-head">
-      <h2><em>Tirages</em></h2>
-      <button class="draws-close" id="draws-close" aria-label="Fermer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 6 12 12M18 6 6 18"/></svg></button>
-    </div>
-    <div class="draws-list">
-      <div class="draw-item" id="draw-today" role="button" tabindex="0">
-        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/><circle cx="12" cy="15" r="2" fill="currentColor"/></svg></div>
-        <div class="copy">
-          <b>Carte du jour</b>
-          <span>Une lame pour vous guider aujourd'hui. À découvrir chaque matin.</span>
-        </div>
-        <span class="arrow"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- ============ REVEAL overlay ============ -->
-<div id="reveal" role="dialog" aria-modal="true" aria-label="Révélation de la carte">
-  <div class="reveal-stage">
-    <div class="reveal-label" id="reveal-label">Carte du jour</div>
-    <div class="reveal-card" id="reveal-card">
-      <div class="reveal-inner" id="reveal-inner">
-        <div class="reveal-face reveal-back">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><circle cx="12" cy="12" r="10"/><path d="M12 2v20M2 12h20M5 5l14 14M19 5L5 19"/></svg>
-        </div>
-        <div class="reveal-face reveal-front">
-          <img id="reveal-img" src="" alt="">
-        </div>
-      </div>
-    </div>
-    <div class="reveal-hint" id="reveal-hint">Touchez la carte pour la révéler</div>
-    <button class="reveal-open" id="reveal-open">Découvrir la lame</button>
-  </div>
-</div>
 
 <!-- ============ LANDING ============ -->
 <section class="view" id="view-landing">
@@ -1203,7 +1180,7 @@ function closeScanner(){
    ========================================================= */
 function renderLanding(){
   const c = $('#carousel');
-  if(TAROT.version) $('#lf-ver').textContent = TAROT.version;
+  if(TAROT.version){ $('#lf-ver').textContent = TAROT.version; $('#foot-ver').textContent = 'v'+TAROT.version; }
   // Title block — first scroll child
   const title = el('div','title-block',`
     <span class="overline">Tirage · Étude · Réflexion</span>
@@ -2705,7 +2682,7 @@ function switchView(v){
   const back=$('#back-btn');
   back.style.display = v==='detail' ? 'flex':'none';
   const foot=$('#landing-foot');
-  if(foot) foot.style.display = v==='landing' ? 'flex':'none';
+  if(foot) foot.style.display = 'flex';
   const draws=$('#draws-launch');
   if(draws) draws.style.display = 'flex';
   const scan=$('#scan-launch');
@@ -2738,114 +2715,12 @@ if('requestIdleCallback' in window) window.requestIdleCallback(prepareScanRefere
 else window.setTimeout(prepareScanReferences,0);
 
 /* =========================================================
-   Draws — Carte du Jour et autres tirages
+   Draws → TarotSpreads (7 spreads)
    ========================================================= */
-const draws = { open:false };
-
-function openDraws(){
-  draws.open = true;
-  $('#draws').classList.add('open');
-  // Marquer la carte du jour si déjà tirée
-  const today = localDateKey();
-  const drawn = localStorage.getItem('tarot_cjd_'+today);
-  const item = $('#draw-today');
-  item.classList.toggle('disabled', false);
-  let badge = item.querySelector('.badge');
-  if(drawn){
-    if(!badge){
-      badge = document.createElement('span'); badge.className='badge'; item.appendChild(badge);
-    }
-    badge.textContent = 'Tirée';
-  } else if(badge){
-    badge.remove();
-  }
-}
-function closeDraws(){ draws.open=false; $('#draws').classList.remove('open'); }
-
-// Hash déterministe (mulberry32) à partir d'une chaîne
-function strSeed(str){
-  let h = 1779033703 ^ str.length;
-  for(let i=0;i<str.length;i++){
-    h = Math.imul(h ^ str.charCodeAt(i), 3432918353);
-    h = (h << 13) | (h >>> 19);
-  }
-  return () => {
-    h = Math.imul(h ^ (h >>> 16), 2246822507);
-    h = Math.imul(h ^ (h >>> 13), 3266489909);
-    return ((h ^= h >>> 16) >>> 0) / 4294967296;
-  };
-}
-
-function cardOfTheDay(){
-  const today = localDateKey();
-  const storageKey = 'tarot_cjd_'+today;
-  const saved = localStorage.getItem(storageKey);
-  const existing = saved && ALL_CARDS.find(card=>card.id===saved);
-  if(existing) return existing;
-  const random = new Uint32Array(1);
-  crypto.getRandomValues(random);
-  const card = ALL_CARDS[random[0] % ALL_CARDS.length];
-  localStorage.setItem(storageKey,card.id);
-  return card;
-}
-
-function localDateKey(){
-  const now = new Date();
-  return [now.getFullYear(),String(now.getMonth()+1).padStart(2,'0'),String(now.getDate()).padStart(2,'0')].join('-');
-}
-
-function revealCard(card, label){
-  const reveal = $('#reveal');
-  $('#reveal-label').textContent = label || 'Votre lame';
-  $('#reveal-img').src = cardImg(card);
-  $('#reveal-img').alt = cardName(card);
-  const inner = $('#reveal-inner');
-  inner.classList.remove('flipped');
-  $('#reveal-open').classList.remove('show');
-  $('#reveal-hint').style.display = 'block';
-  reveal.classList.add('open');
-  reveal._cardId = card.id;
-}
-
-function flipReveal(){
-  const inner = $('#reveal-inner');
-  if(inner.classList.contains('flipped')) return;
-  inner.classList.add('flipped');
-  $('#reveal-hint').style.display = 'none';
-  // Ouvre directement la carte en mode immersif après le flip
-  const id = $('#reveal')._cardId;
-  setTimeout(()=>{
-    closeReveal();
-    if(id){
-      const card = typeof findCard==='function' ? findCard(id) : ALL_CARDS.find(c=>c.id===id);
-      if(card){
-        openCard(id);
-      }
-    }
-  }, 1600);
-}
-
-function closeReveal(){
-  $('#reveal').classList.remove('open');
-}
-
-$('#draws-launch').addEventListener('click',openDraws);
+$('#draws-launch').addEventListener('click',()=>{
+  if(window.TarotSpreads) window.TarotSpreads.open();
+});
 $('#search-launch').addEventListener('click',()=>openSearch());
-$('#draws-close').addEventListener('click',closeDraws);
-$('#draws').addEventListener('click',e=>{ if(e.target===$('#draws')) closeDraws(); });
-$('#draw-today').addEventListener('click',()=>{
-  const card = cardOfTheDay();
-  const today = localDateKey();
-  localStorage.setItem('tarot_cjd_'+today, card.id);
-  closeDraws();
-  revealCard(card, 'Carte du jour · '+today.split('-').reverse().join('/'));
-});
-$('#reveal-card').addEventListener('click',flipReveal);
-$('#reveal-open').addEventListener('click',()=>{
-  const id = $('#reveal')._cardId;
-  closeReveal();
-  if(id) openCard(id);
-});
 
 document.addEventListener('keydown',e=>{
   if(scanner.active){if(e.key==='Escape'){closeScanner();e.preventDefault();}return;}
