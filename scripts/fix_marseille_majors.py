@@ -15,10 +15,10 @@ MAJORS = {
     'a_05_Pape':           'T5 Tarot.png',
     'a_06_Amoureux':       'T6 Tarot.png',
     'a_07_Chariot':        'T7 Tarot.png',
-    'a_08_Force':          'T8 Tarot.png',
+    'a_08_Force':          'T11 Tarot.png',   # Force = T11 en Marseille
     'a_09_Hermite':        'T9 Tarot.png',
     'a_10_Roue_de_Fortune':'T10 Tarot.png',
-    'a_11_Justice':        'T11 Tarot.png',
+    'a_11_Justice':        'T8 Tarot.png',    # Justice = T8 en Marseille
     'a_12_Pendu':          'T12 Tarot.png',
     'a_13_Mort':           'T13 Tarot.png',
     'a_14_Temperance':     'T14 Tarot.png',
