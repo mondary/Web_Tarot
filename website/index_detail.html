@@ -401,6 +401,7 @@ a{color:inherit;text-decoration:none}
 </div>
 
 <script src="data.js?v=3.2026.6"></script>
+<script src="deck-mode.js"></script>
 <script src="tarot-features.js?v=3.2026.6"></script>
 <script>
 /* =========================================================
@@ -1153,8 +1154,8 @@ function buildFullGrid(){
       const upright=mdKeywords(card.md,/^À l['’]endroit$/i).slice(0,4);
       const m=el('div','mini keyword-mini');
       m.innerHTML=`
-        <div class="ph"><img src="${card.file}" alt="${card.name}" loading="lazy"></div>
-        <div class="cap"><span class="nm">${card.name}</span><span class="no">${String(card.num).padStart(2,'0')}</span></div>
+        <div class="ph"><img src="${cardImg(card)}" alt="${cardName(card)}" loading="lazy"></div>
+        <div class="cap"><span class="nm">${cardName(card)}</span><span class="no">${String(card.num).padStart(2,'0')}</span></div>
         <ul class="keyword-list">${upright.map(word=>`<li>${escHtml(word)}</li>`).join('')}</ul>`;
       m.addEventListener('click',()=>openCard(card.id));
       g.appendChild(m);
@@ -1222,7 +1223,7 @@ function openCard(id){
     studyPlate = `<article class="study-plate">
       <div class="plate-label">Planche symbolique · ${symbols.length} points</div>
       <div class="study-canvas has-symbols">
-        <div class="study-card"><img src="${card.file}" alt="${escHtml(card.name)}"></div>
+        <div class="study-card"><img src="${cardImg(card)}" alt="${escHtml(card.name)}"></div>
         <svg class="study-arrows" viewBox="0 0 100 100" preserveAspectRatio="none" fill="none" aria-hidden="true">
           <defs><marker id="arrow-head" markerWidth="5" markerHeight="5" refX="4" refY="2.5" orient="auto"><path d="M0,0 L5,2.5 L0,5" fill="none" stroke="currentColor" stroke-width="1.2"/></marker></defs>
           <g stroke="currentColor" stroke-width=".3" marker-end="url(#arrow-head)">
@@ -1237,7 +1238,7 @@ function openCard(id){
     studyPlate = `<article class="study-plate">
       <div class="plate-label">Planche symbolique</div>
       <div class="study-canvas">
-        <div class="study-card"><img src="${card.file}" alt="${escHtml(card.name)}"></div>
+        <div class="study-card"><img src="${cardImg(card)}" alt="${escHtml(card.name)}"></div>
         <svg class="study-arrows" viewBox="0 0 100 100" preserveAspectRatio="none" fill="none" aria-hidden="true">
           <defs><marker id="arrow-head" markerWidth="5" markerHeight="5" refX="4" refY="2.5" orient="auto"><path d="M0,0 L5,2.5 L0,5" fill="none" stroke="currentColor" stroke-width="1.2"/></marker></defs>
           <g stroke="currentColor" stroke-width=".35" marker-end="url(#arrow-head)">
@@ -1263,8 +1264,8 @@ function openCard(id){
       <article class="polarity-plate">
         <div class="plate-label">Lecture comparative</div>
         <div class="polarity-cards">
-          <div class="polarity-card"><div class="image"><img src="${card.file}" alt="${escHtml(card.name)} à l'endroit"></div><h3>À l'endroit</h3><ul>${keywordItems(upright)}</ul></div>
-          <div class="polarity-card reverse"><div class="image"><img src="${card.file}" alt="${escHtml(card.name)} à l'envers"></div><h3>À l'envers</h3><ul>${keywordItems(reversed)}</ul></div>
+          <div class="polarity-card"><div class="image"><img src="${cardImg(card)}" alt="${escHtml(card.name)} à l'endroit"></div><h3>À l'endroit</h3><ul>${keywordItems(upright)}</ul></div>
+          <div class="polarity-card reverse"><div class="image"><img src="${cardImg(card)}" alt="${escHtml(card.name)} à l'envers"></div><h3>À l'envers</h3><ul>${keywordItems(reversed)}</ul></div>
         </div>
       </article>
     </section>
@@ -1356,9 +1357,9 @@ function updateLoopBar(idx){
   const nxt = ALL_CARDS[(idx+1)%ALL_CARDS.length];
   const loop=$('#d-loop');
   loop.innerHTML=`
-    <button class="prev" id="loop-prev">← ${prev.name}</button>
+    <button class="prev" id="loop-prev">← ${cardName(prev)}</button>
     <span class="pos"><b>${String(idx+1).padStart(2,'0')}</b>/${ALL_CARDS.length}</span>
-    <button class="next" id="loop-next">${nxt.name} →</button>`;
+    <button class="next" id="loop-next">${cardName(nxt)} →</button>`;
   $('#loop-prev').addEventListener('click',()=>stepCard(-1));
   $('#loop-next').addEventListener('click',()=>stepCard(1));
 }
@@ -1466,7 +1467,7 @@ document.addEventListener('keydown',e=>{
    ========================================================= */
 const sNorm = s => (s||'').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');
 const sKeywords = md => { const m = md.match(/## Mots-clés[\s\S]*?(?=\n## )/i); return m ? m[0] : ''; };
-ALL_CARDS.forEach(c => { c._blob = sNorm(c.name+' '+c.familyName+' '+c.element+' '+sKeywords(c.md)); });
+ALL_CARDS.forEach(c => { c._blob = sNorm(cardName(c)+' '+c.nameM+' '+c.familyName+' '+c.element+' '+sKeywords(c.md)); });
 const search = { open:false, q:'', sel:0, results:[] };
 
 function openSearch(initial){
@@ -1487,10 +1488,10 @@ function renderSearch(){
   let results = q ? ALL_CARDS.filter(c => c._blob.includes(nq)) : ALL_CARDS.slice();
   if(q){
     results.sort((a,b)=>{
-      const an = sNorm(a.name).includes(nq) ? 0 : 1;
-      const bn = sNorm(b.name).includes(nq) ? 0 : 1;
+      const an = sNorm(cardName(a)).includes(nq) ? 0 : 1;
+      const bn = sNorm(cardName(b)).includes(nq) ? 0 : 1;
       if(an!==bn) return an-bn;
-      return a.name.localeCompare(b.name);
+      return cardName(a).localeCompare(cardName(b));
     });
   }
   search.results = results;
@@ -1504,8 +1505,8 @@ function renderSearch(){
   results.forEach((card,idx)=>{
     const m = el('div','mini' + (idx===search.sel ? ' sel':''));
     m.innerHTML = `
-      <div class="ph"><img src="${card.file}" alt="${card.name}" loading="lazy"></div>
-      <div class="cap"><span class="nm">${card.name}</span><span class="no">${String(card.num).padStart(2,'0')}</span></div>`;
+      <div class="ph"><img src="${cardImg(card)}" alt="${cardName(card)}" loading="lazy"></div>
+      <div class="cap"><span class="nm">${cardName(card)}</span><span class="no">${String(card.num).padStart(2,'0')}</span></div>`;
     m.addEventListener('click',()=>{ closeSearch(); openCard(card.id); });
     m.addEventListener('mouseenter',()=>{ search.sel=idx; paintSearchSel(); });
     g.appendChild(m);

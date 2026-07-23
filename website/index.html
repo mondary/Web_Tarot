@@ -57,17 +57,27 @@ a{color:inherit;text-decoration:none}
 .brand-version{margin-left:.25rem;padding-left:.65rem;border-left:1px solid var(--line);color:var(--accent);font-size:.56rem;letter-spacing:.16em;white-space:nowrap}
 
 /* ---------- Settings (deck switch) ---------- */
+.mode-switch{display:flex;align-items:center;
+  font-family:'DM Mono',monospace;font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;
+  padding:.25rem;border:1px solid var(--line);border-radius:50px;background:var(--bg)}
+.mode-switch a{color:var(--muted);padding:.42rem .62rem;border-radius:50px;transition:color .2s,background .2s}
+.mode-switch a:hover{color:var(--fg)}
+.mode-switch a.active{color:#050505;background:var(--accent)}
+
+/* ---------- Top-right controls wrapper (settings + mode switch) ---------- */
+.top-right{
+  position:fixed;top:1.5rem;right:2.2rem;z-index:250;display:flex;align-items:center;gap:.6rem
+}
 .settings-btn{
-  position:fixed;top:1.8rem;left:max(11rem,calc(2.2rem + 9rem));z-index:200;
   width:34px;height:34px;display:grid;place-items:center;border:1px solid var(--line);border-radius:50%;
-  background:var(--bg);color:var(--muted);transition:color .2s,border-color .2s,transform .4s var(--ease)
+  background:var(--bg);color:var(--muted);transition:color .2s,border-color .2s,transform .4s var(--ease);flex-shrink:0
 }
 .settings-btn:hover{color:var(--accent);border-color:var(--accent)}
 .settings-btn svg{width:16px;height:16px}
 .settings-btn[aria-expanded="true"]{transform:rotate(60deg);color:var(--accent);border-color:var(--accent)}
 
 .settings-pop{
-  position:fixed;top:5rem;left:2.2rem;z-index:240;min-width:260px;padding:1.4rem 1.4rem 1.2rem;
+  position:fixed;top:4.4rem;right:2.2rem;z-index:240;min-width:260px;padding:1.4rem 1.4rem 1.2rem;
   background:var(--bg-2);border:1px solid var(--line);border-radius:18px;box-shadow:0 20px 50px rgba(0,0,0,.5);
   opacity:0;visibility:hidden;transform:translateY(-8px);transition:opacity .2s var(--ease),transform .2s var(--ease),visibility .2s
 }
@@ -86,13 +96,6 @@ a{color:inherit;text-decoration:none}
 .deck-opt .lab span{font-size:.68rem;color:var(--muted)}
 .deck-opt .chk{margin-left:auto;color:var(--accent);opacity:0}
 .deck-opt.active .chk{opacity:1}
-
-.mode-switch{position:fixed;top:1.5rem;right:2.2rem;z-index:250;display:flex;align-items:center;
-  font-family:'DM Mono',monospace;font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;
-  padding:.25rem;border:1px solid var(--line);border-radius:50px;background:var(--bg)}
-.mode-switch a{color:var(--muted);padding:.42rem .62rem;border-radius:50px;transition:color .2s,background .2s}
-.mode-switch a:hover{color:var(--fg)}
-.mode-switch a.active{color:#050505;background:var(--accent)}
 
 /* landing footer : version + liens (GitHub, mondary.design) */
 .landing-foot{
@@ -499,7 +502,8 @@ a{color:inherit;text-decoration:none}
   .grid-head{position:static;padding:4.5rem 6vw 1rem;border-bottom:none}
   .grid{grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:.8rem;padding:.8rem 6vw 6rem}
   .brand{left:1.2rem;top:1.2rem}
-  .mode-switch{right:1.2rem;top:.9rem}
+  .top-right{right:1.2rem;top:.9rem;gap:.4rem}
+  .settings-pop{right:1.2rem;min-width:240px}
   .back{left:1.2rem;top:3.7rem}
 }
 /* ES badges: Réponse + Affirmation */
@@ -516,9 +520,18 @@ a{color:inherit;text-decoration:none}
 
 <a class="brand" id="home-link" href="#" aria-label="Retour à l'accueil"><img src="icon.png" alt=""><span><b>Tarot</b> · Divinatoire</span><span class="brand-version">v<span id="lf-ver">3.2026.6</span></span></a>
 
-<button class="settings-btn" id="settings-btn" aria-label="Réglages du deck" aria-expanded="false" title="Réglages du deck">
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
-</button>
+<div class="top-right">
+  <button class="settings-btn" id="settings-btn" aria-label="Réglages du deck" aria-expanded="false" title="Réglages du deck">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+  </button>
+  <nav class="mode-switch" aria-label="Choisir une vue" id="mode-switch">
+    <a class="active" href="index.html#grid">Classique</a>
+    <a href="index_full.html#grid">Immersive</a>
+    <a href="index_detail.html#grid">Détaillée</a>
+    <a href="index_quick.html#grid">Rapide</a>
+  </nav>
+</div>
+
 <div class="settings-pop" id="settings-pop" role="dialog" aria-label="Réglages du deck">
   <h3>Deck · Illustrations</h3>
   <div class="deck-options" id="deck-options">
@@ -532,14 +545,8 @@ a{color:inherit;text-decoration:none}
       <div class="lab"><b>Tarot de Marseille</b><span>Tradition ancienne</span></div>
       <span class="chk"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M20 6 9 17l-5-5"/></svg></span>
     </div>
-  </div>
-</div>
-<nav class="mode-switch" aria-label="Choisir une vue" id="mode-switch">
-  <a class="active" href="index.html#grid">Classique</a>
-  <a href="index_full.html#grid">Immersive</a>
-  <a href="index_detail.html#grid">Détaillée</a>
-  <a href="index_quick.html#grid">Rapide</a>
-</nav>
+   </div>
+ </div>
 <div class="landing-foot" id="landing-foot">
   <a href="https://github.com/mondary/Web_Tarot" target="_blank" rel="noopener">GitHub</a>
   <a href="https://mondary.design" target="_blank" rel="noopener">mondary.design</a>
