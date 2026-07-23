@@ -254,15 +254,6 @@
     if(document.getElementById('tf-draws')) return;
 
     document.body.insertAdjacentHTML('beforeend', `
-<button class="tf-scan-btn" id="tf-scan-btn" aria-label="Scanner une lame" title="Scanner une lame">
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 8V5a1 1 0 0 1 1-1h3M16 4h3a1 1 0 0 1 1 1v3M20 16v3a1 1 0 0 1-1 1h-3M8 20H5a1 1 0 0 1-1-1v-3"/><path d="M8 12h8"/></svg>
-</button>
-<button class="tf-draws-btn" id="tf-draws-btn" aria-label="Tirages" title="Tirages">
-  <span class="dot"></span>
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="9" width="18" height="6" rx="1"/><path d="M3 12h18"/></svg>
-  <span>Tirages</span>
-</button>
-
 <div id="tf-draws" role="dialog" aria-modal="true" aria-label="Modes de tirage">
   <div class="tf-draws-panel">
     <div class="tf-draws-head">
@@ -960,9 +951,11 @@
      Wire up
      ========================================================= */
   function wireUp(){
-    document.getElementById('tf-scan-btn').addEventListener('click',openScanner);
+    const scanBtn=document.getElementById('tf-scan-btn');
+    if(scanBtn) scanBtn.addEventListener('click',openScanner);
     document.getElementById('tf-scan-close').addEventListener('click',closeScanner);
-    document.getElementById('tf-draws-btn').addEventListener('click',openDraws);
+    const drawsBtn=document.getElementById('tf-draws-btn');
+    if(drawsBtn) drawsBtn.addEventListener('click',openDraws);
     document.getElementById('tf-draws-close').addEventListener('click',closeDraws);
     const drawsOverlay=document.getElementById('tf-draws');
     drawsOverlay.addEventListener('click',e=>{ if(e.target===drawsOverlay) closeDraws(); });
