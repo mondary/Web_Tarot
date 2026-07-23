@@ -672,6 +672,36 @@ a{color:inherit;text-decoration:none}
 .detailed-content p{font-size:1rem!important;line-height:1.8!important}
 .detailed-content strong{color:var(--ac)!important;font-weight:600!important}
 
+/* 2-column grid for theme sections (Amour/Travail/Finances/Guidance) in Immersive + Classic */
+.theme-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:2rem;margin:2.5rem 0;padding-top:1.5rem;border-top:1px solid var(--line)}
+.theme-grid section{margin:0!important;padding:0!important;border:none!important}
+.theme-grid section h2{font-family:'Cormorant Garamond',serif;font-size:clamp(1.6rem,2.4vw,2.2rem);font-weight:400;line-height:1;display:flex;align-items:center;gap:.7rem;margin-bottom:.8rem}
+.theme-grid section h2::before{display:none}
+.theme-grid section h2 .content-icon{display:inline-flex;width:1.05em;height:1.05em;color:var(--ac);vertical-align:-.12em;flex:0 0 auto}
+.theme-grid section h2 .content-icon svg{width:100%;height:100%;fill:none;stroke:currentColor;stroke-width:1.5}
+.theme-grid section p{font-size:.96rem;line-height:1.8;color:#d8d2c5;font-weight:300;margin-bottom:.7rem}
+.theme-grid section strong{color:var(--fg);font-weight:500}
+@media(max-width:900px){.theme-grid{grid-template-columns:1fr;gap:1.2rem}}
+
+/* Search button in FAB bar */
+.search-launch{
+  width:44px;height:44px;border-radius:50%;display:grid;place-items:center;
+  background:var(--bg-2);border:1px solid var(--line);color:var(--muted);
+  transition:color .2s,border-color .2s;flex-shrink:0}
+.search-launch:hover{color:var(--accent);border-color:var(--accent)}
+.search-launch svg{width:20px;height:20px}
+
+/* Mobile search input — hidden on desktop, shown on mobile */
+.s-input{display:none;width:min(86vw,500px);margin:0 auto 1rem;padding:.9rem 1.4rem;
+  background:var(--bg-2);border:1px solid var(--line);border-radius:50px;
+  color:var(--fg);font-family:'Plus Jakarta Sans',sans-serif;font-size:1.05rem;outline:none}
+.s-input:focus{border-color:var(--accent)}
+.s-input::placeholder{color:var(--muted)}
+@media(max-width:900px){
+  .s-input{display:block}
+  .s-query{display:none}
+}
+
 /* =====================================================
    QUICK landing — fam-card grid
    ===================================================== */
@@ -800,15 +830,18 @@ a{color:inherit;text-decoration:none}
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
   Retour
 </button>
-<button class="scan-launch" id="scan-launch" aria-label="Scanner une lame" title="Scanner une lame">
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 8V5a1 1 0 0 1 1-1h3M16 4h3a1 1 0 0 1 1 1v3M20 16v3a1 1 0 0 1-1 1h-3M8 20H5a1 1 0 0 1-1-1v-3"/><path d="M8 12h8"/></svg>
-</button>
-
-<button class="draws-launch" id="draws-launch" aria-label="Tirages" title="Tirages">
-  <span class="dot"></span>
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="3" y="9" width="18" height="6" rx="1"/><path d="M3 12h18"/></svg>
-  <span>Tirages</span>
-</button>
+<div class="fab-bar" id="fab-bar">
+  <button class="draws-launch" id="draws-launch" aria-label="Tirages" title="Tirages">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="3" y="9" width="18" height="6" rx="1"/><path d="M3 12h18"/></svg>
+    <span>Tirages</span>
+  </button>
+  <button class="search-launch" id="search-launch" aria-label="Rechercher une carte" title="Rechercher">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+  </button>
+  <button class="scan-launch" id="scan-launch" aria-label="Scanner une lame" title="Scanner une lame">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 8V5a1 1 0 0 1 1-1h3M16 4h3a1 1 0 0 1 1 1v3M20 16v3a1 1 0 0 1-1 1h-3M8 20H5a1 1 0 0 1-1-1v-3"/><path d="M8 12h8"/></svg>
+  </button>
+</div>
 
 <!-- ============ DRAWS overlay ============ -->
 <div id="draws" role="dialog" aria-modal="true" aria-label="Modes de tirage">
@@ -959,6 +992,7 @@ a{color:inherit;text-decoration:none}
 <!-- ============ SEARCH overlay ============ -->
 <div id="search" role="dialog" aria-modal="true" aria-label="Recherche">
   <div class="s-query" id="s-query"></div>
+  <input class="s-input" id="s-input" type="text" autocomplete="off" placeholder="Rechercher une lame…" enterkeyhint="go">
   <div class="s-scroll"><div class="s-grid" id="s-grid"></div></div>
 </div>
 
@@ -1388,10 +1422,26 @@ function updateLoopBarFull(idx){
 function renderLandingDetail(){
   const g=$('#full-grid-detailed');
   if(!g||g.children.length) return;
+  g.innerHTML='';
   TAROT.families.forEach(fam=>{
+    const titleHtml=fam.name.replace(/(.+ )?(.+)$/,(_,a,b)=>a?`${a}<em>${b}</em>`:`<em>${b}</em>`);
+    const sep=el('div','fam-sep');
+    sep.style.setProperty('--ac',fam.accent);
+    sep.innerHTML=`
+      <div class="fam-sep-glyph">${fam.elementSym}</div>
+      <div class="fam-sep-body">
+        <div class="name">${titleHtml}</div>
+        <div class="desc">${FAMILY_SUMMARY[fam.key]||fam.desc}</div>
+      </div>
+      <div class="fam-sep-count"><b>${fam.count}</b>lames</div>`;
+    g.appendChild(sep);
     fam.cards.forEach(card=>{
-      const m=el('div','mini','');
-      m.innerHTML=`<div class="ph"><img src="${cardImg(card)}" alt="${cardName(card)}" loading="lazy"></div><div class="cap"><span class="nm">${cardName(card)}</span><span class="no">${String(card.num).padStart(2,'0')}</span></div>`;
+      const upright=mdKeywords(card.md,/^À l['']endroit$/i).slice(0,4);
+      const m=el('div','mini keyword-mini');
+      m.innerHTML=`
+        <div class="ph"><img src="${cardImg(card)}" alt="${cardName(card)}" loading="lazy"></div>
+        <div class="cap"><span class="nm">${cardName(card)}</span><span class="no">${String(card.num).padStart(2,'0')}</span></div>
+        <ul class="keyword-list">${upright.map(word=>`<li>${escHtml(word)}</li>`).join('')}</ul>`;
       m.addEventListener('click',()=>openCardDetailed(card.id));
       g.appendChild(m);
     });
@@ -2256,8 +2306,8 @@ function decorateDetailedProse(){
 }
 
 function mdKeywords(md,heading){
-  const h=String(heading).replace(/[.*+?^${}()|[\]\\]/g,'\\$&').replace(/[''′]/g,"[''′]");
-  const match=md.match(new RegExp('^###\\s+'+h+'\\s*\\n([\\s\\S]*?)(?=^###\\s|^##\\s|$)','mi'));
+  const label=heading.source?heading.source.replace(/^\^/,'').replace(/\$$/,''):heading;
+  const match=md.match(new RegExp('^### '+label+'\\s*\\n([\\s\\S]*?)(?=^### |^## |(?![\\s\\S]))','mi'));
   return match?[...match[1].matchAll(/^-\s+(.+)$/gm)].map(([,value])=>value.trim()):[];
 }
 
@@ -2401,6 +2451,24 @@ function decorateThemeIcons(container){
       h2.innerHTML=icons[type]+'<span>'+label+'</span>';
     }
   });
+}
+
+function wrapThemeSections(container){
+  if(!container) return;
+  const themes=['amour','travail','finance','guidance'];
+  const sections=[...container.querySelectorAll('section')];
+  const themeSections=sections.filter(s=>{
+    const h=s.querySelector('h2');
+    if(!h) return false;
+    const t=h.textContent.trim().toLocaleLowerCase('fr');
+    return themes.some(th=>t.includes(th));
+  });
+  if(themeSections.length<2) return;
+  if(themeSections[0].previousElementSibling?.classList?.contains('theme-grid')) return;
+  const grid=document.createElement('div');
+  grid.className='theme-grid';
+  themeSections[0].parentNode.insertBefore(grid,themeSections[0]);
+  themeSections.forEach(s=>grid.appendChild(s));
 }
 
 function restructureKeywords(container){
@@ -2573,13 +2641,24 @@ function reorderClassique(html){
   return order.map(i=>sections[i].html).join('\n');
 }
 
-/* prev / next */
 /* prev / next — loops through ALL 78 cards continuously, crossing families */
 function stepCard(dir){
   let idx = ALL_CARDS.findIndex(c => c.id === state.cardId);
   if(idx === -1) idx = 0;
   const nxt = ALL_CARDS[(idx + dir + ALL_CARDS.length) % ALL_CARDS.length];
+  const newIdx = (idx + dir + ALL_CARDS.length) % ALL_CARDS.length;
   openCard(nxt.id);
+  flashCardNav(dir);
+}
+
+/* Visual flash + scroll thumbnail into view on keyboard navigation */
+function flashCardNav(dir){
+  document.body.classList.remove('nav-flash-left','nav-flash-right');
+  void document.body.offsetWidth;
+  document.body.classList.add(dir>0?'nav-flash-right':'nav-flash-left');
+  setTimeout(()=>document.body.classList.remove('nav-flash-left','nav-flash-right'),600);
+  const thumbs=document.querySelectorAll('.d-thumb.current');
+  thumbs.forEach(t=>t.scrollIntoView({block:'nearest',inline:'center',behavior:'smooth'}));
 }
 
 /* =========================================================
@@ -2739,6 +2818,7 @@ function closeReveal(){
 }
 
 $('#draws-launch').addEventListener('click',openDraws);
+$('#search-launch').addEventListener('click',()=>openSearch());
 $('#draws-close').addEventListener('click',closeDraws);
 $('#draws').addEventListener('click',e=>{ if(e.target===$('#draws')) closeDraws(); });
 $('#draw-today').addEventListener('click',()=>{
@@ -2780,12 +2860,31 @@ const search = { open:false, q:'', sel:0, results:[] };
 function openSearch(initial){
   search.open=true; search.q = initial || ''; search.sel=0;
   $('#search').classList.add('open');
+  const input=$('#s-input');
+  if(input){ input.value=search.q; setTimeout(()=>input.focus(),100); }
   renderSearch();
 }
 function closeSearch(){
   search.open=false; search.q=''; search.sel=0; search.results=[];
   $('#search').classList.remove('open');
+  const input=$('#s-input'); if(input) input.blur();
 }
+/* Mobile search input wiring */
+(function(){
+  const inp=$('#s-input'); if(!inp) return;
+  inp.addEventListener('input',()=>{
+    search.q=inp.value; search.sel=0; renderSearch();
+  });
+  inp.addEventListener('keydown',e=>{
+    if(e.key==='Enter'){
+      const c=search.results[search.sel]; if(c){ closeSearch(); openCard(c.id); }
+      e.preventDefault();
+    }
+    if(e.key==='ArrowDown'){ if(search.results.length){search.sel=(search.sel+1)%search.results.length;paintSearchSel();} e.preventDefault(); }
+    if(e.key==='ArrowUp'){ if(search.results.length){search.sel=(search.sel-1+search.results.length)%search.results.length;paintSearchSel();} e.preventDefault(); }
+  });
+})();
+
 function renderSearch(){
   const q = search.q;
   $('#s-query').innerHTML = q
