@@ -1010,8 +1010,8 @@ a{color:inherit;text-decoration:none}
   </div>
 </div>
 
-<script src="data.js?v=3.2026.17"></script>
-<script src="tarot-features.js?v=3.2026.17"></script>
+<script src="data.js?v=3.2026.18"></script>
+<script src="tarot-features.js?v=3.2026.18"></script>
 <script src="tarot-spreads.js"></script>
 <script src="deck-mode.js"></script>
 <script>
@@ -1384,6 +1384,7 @@ function openCardFull(id){
 
   $('#d-prose-full').innerHTML=reorderClassique(renderMd(card.md));
   if(typeof decorateThemeIcons==='function') decorateThemeIcons($('#d-prose-full'));
+  if(typeof wrapThemeSections==='function') wrapThemeSections($('#d-prose-full'));
   if(typeof restructureKeywords==='function') restructureKeywords($('#d-prose-full'));
 
   const interpSec=[...$('#d-prose-full').querySelectorAll('section')].find(s=>/interpr.tation/i.test(s.querySelector('h2')?.textContent||''));
@@ -2168,8 +2169,8 @@ function openCardDetailed(id){
   const html=renderMd(card.md);
   const fields=mdFields(card.md);
   const description=mdSection(card.md,'Description')||'Lecture descriptive à documenter.';
-  const upright=mdKeywords(card.md,"À l'endroit");
-  const reversed=mdKeywords(card.md,"À l'envers");
+  const upright=mdKeywords(card.md,/^À l['']endroit$/i);
+  const reversed=mdKeywords(card.md,/^À l['']envers$/i);
   const callouts=[
     ['Rang','Lame '+String(card.num).padStart(2,'0')],
     ['Élément',fields['Élément']||card.element],
@@ -2397,7 +2398,7 @@ function openCardQuick(id){
   history.replaceState(null,'','#lame='+encodeURIComponent(id));
   document.documentElement.style.setProperty('--ac',family.accent);
 
-  const frKw=mdKeywords(card.md,"À l'endroit");
+  const frKw=mdKeywords(card.md,/^À l['']endroit$/i);
   const espKw=card.es&&card.es.espKeywords?card.es.espKeywords:[];
   const allKw=[...new Set([...frKw,...espKw])];
 
@@ -2535,6 +2536,7 @@ function openCardClassic(id){
       <div class="prose" id="prose">${html}</div>
     </div>`;
   if(typeof decorateThemeIcons==='function') decorateThemeIcons($('#prose'));
+  if(typeof wrapThemeSections==='function') wrapThemeSections($('#prose'));
   if(typeof injectVoiceButton==='function') injectVoiceButton($('#view-detail .card-actions'), card);
   if(typeof injectMirrorTrigger==='function') injectMirrorTrigger($('#view-detail .card-actions'), card);
   updateLoopBar(globalIdx);
