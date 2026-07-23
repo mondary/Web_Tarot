@@ -56,6 +56,37 @@ a{color:inherit;text-decoration:none}
 .brand img{width:1.25rem;height:1.25rem;object-fit:contain}
 .brand-version{margin-left:.25rem;padding-left:.65rem;border-left:1px solid var(--line);color:var(--accent);font-size:.56rem;letter-spacing:.16em;white-space:nowrap}
 
+/* ---------- Settings (deck switch) ---------- */
+.settings-btn{
+  position:fixed;top:1.8rem;left:max(11rem,calc(2.2rem + 9rem));z-index:200;
+  width:34px;height:34px;display:grid;place-items:center;border:1px solid var(--line);border-radius:50%;
+  background:var(--bg);color:var(--muted);transition:color .2s,border-color .2s,transform .4s var(--ease)
+}
+.settings-btn:hover{color:var(--accent);border-color:var(--accent)}
+.settings-btn svg{width:16px;height:16px}
+.settings-btn[aria-expanded="true"]{transform:rotate(60deg);color:var(--accent);border-color:var(--accent)}
+
+.settings-pop{
+  position:fixed;top:5rem;left:2.2rem;z-index:240;min-width:260px;padding:1.4rem 1.4rem 1.2rem;
+  background:var(--bg-2);border:1px solid var(--line);border-radius:18px;box-shadow:0 20px 50px rgba(0,0,0,.5);
+  opacity:0;visibility:hidden;transform:translateY(-8px);transition:opacity .2s var(--ease),transform .2s var(--ease),visibility .2s
+}
+.settings-pop.open{opacity:1;visibility:visible;transform:none}
+.settings-pop h3{font-family:'DM Mono',monospace;font-size:.6rem;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);margin-bottom:.9rem}
+.deck-options{display:flex;flex-direction:column;gap:.5rem}
+.deck-opt{
+  display:flex;align-items:center;gap:.8rem;padding:.7rem .85rem;border:1px solid var(--line);border-radius:12px;
+  cursor:pointer;transition:border-color .2s,background .2s;font-family:'Plus Jakarta Sans',sans-serif;color:var(--fg)
+}
+.deck-opt:hover{border-color:var(--accent)}
+.deck-opt.active{border-color:var(--accent);background:rgba(201,162,39,.08)}
+.deck-opt .swatch{width:30px;height:42px;border-radius:4px;object-fit:cover;flex-shrink:0;box-shadow:0 2px 8px rgba(0,0,0,.4)}
+.deck-opt .lab{display:flex;flex-direction:column;gap:.15rem}
+.deck-opt .lab b{font-weight:500;font-size:.85rem}
+.deck-opt .lab span{font-size:.68rem;color:var(--muted)}
+.deck-opt .chk{margin-left:auto;color:var(--accent);opacity:0}
+.deck-opt.active .chk{opacity:1}
+
 .mode-switch{position:fixed;top:1.5rem;right:2.2rem;z-index:250;display:flex;align-items:center;
   font-family:'DM Mono',monospace;font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;
   padding:.25rem;border:1px solid var(--line);border-radius:50px;background:var(--bg)}
@@ -484,6 +515,25 @@ a{color:inherit;text-decoration:none}
 <div class="fx-vignette"></div>
 
 <a class="brand" id="home-link" href="#" aria-label="Retour à l'accueil"><img src="icon.png" alt=""><span><b>Tarot</b> · Divinatoire</span><span class="brand-version">v<span id="lf-ver">3.2026.6</span></span></a>
+
+<button class="settings-btn" id="settings-btn" aria-label="Réglages du deck" aria-expanded="false" title="Réglages du deck">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+</button>
+<div class="settings-pop" id="settings-pop" role="dialog" aria-label="Réglages du deck">
+  <h3>Deck · Illustrations</h3>
+  <div class="deck-options" id="deck-options">
+    <div class="deck-opt active" data-deck="rider" role="button" tabindex="0">
+      <img class="swatch" id="swatch-rider" alt="">
+      <div class="lab"><b>Rider-Waite-Smith</b><span>Illustrations modernes</span></div>
+      <span class="chk"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M20 6 9 17l-5-5"/></svg></span>
+    </div>
+    <div class="deck-opt" data-deck="marseille" role="button" tabindex="0">
+      <img class="swatch" id="swatch-marseille" alt="">
+      <div class="lab"><b>Tarot de Marseille</b><span>Tradition ancienne</span></div>
+      <span class="chk"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M20 6 9 17l-5-5"/></svg></span>
+    </div>
+  </div>
+</div>
 <nav class="mode-switch" aria-label="Choisir une vue" id="mode-switch">
   <a class="active" href="index.html#grid">Classique</a>
   <a href="index_full.html#grid">Immersive</a>
@@ -623,6 +673,14 @@ const $ = s => document.querySelector(s);
 const el = (t,c,h)=>{const e=document.createElement(t); if(c)e.className=c; if(h!=null)e.innerHTML=h; return e;};
 
 /* =========================================================
+   Deck mode — Rider-Waite (par défaut) ou Marseille.
+   Bascule l'image et le nom affichés partout via les helpers ci-dessous.
+   ========================================================= */
+let DECK_MODE = localStorage.getItem('tarot_deck') === 'marseille' ? 'marseille' : 'rider';
+const cardImg  = c => (DECK_MODE === 'marseille' && c.marseille) ? c.marseille : c.file;
+const cardName = c => (DECK_MODE === 'marseille' && c.nameM) ? c.nameM : c.name;
+
+/* =========================================================
    Scanner — local visual matching against the 78 embedded cards
    ========================================================= */
 const scanner = { stream:null, timer:null, refs:null, lastId:null, streak:0, trigger:null, active:false, canvas:null, ctx:null };
@@ -718,7 +776,7 @@ function scanFrame(){
   const pct = Math.round(best.score*100);
   if(status){
     if(best.score>=SCAN_THRESHOLD){
-      status.innerHTML = 'Carte détectée, confirmation...<span class="scan-card-name">'+(card?card.name:'')+'</span><span class="scan-score">'+pct+'% · '+scanner.streak+'/2</span>';
+      status.innerHTML = 'Carte détectée, confirmation...<span class="scan-card-name">'+(card?cardName(card):'')+'</span><span class="scan-score">'+pct+'% · '+scanner.streak+'/2</span>';
     } else {
       status.innerHTML = 'Recherche de la lame...';
     }
@@ -796,7 +854,7 @@ function renderLanding(){
     const signs = (f.signs||[]).map(s=>`<span title="${s.n}">${s.s}</span>`).join('');
     entry.innerHTML = `
       <span class="num">${String(i+1).padStart(2,'0')} / 05</span>
-      <div class="img-wrap"><img src="${card.file}" alt="${card.name}" loading="lazy"></div>
+      <div class="img-wrap"><img src="${cardImg(card)}" alt="${cardName(card)}" loading="lazy"></div>
       <div class="meta">
         <div class="meta-info">
           <div class="meta-top">
@@ -804,7 +862,7 @@ function renderLanding(){
             ${signs ? `<span class="signs">${signs}</span>` : ''}
            </div>
            <div class="fam">${f.titleFull}</div>
-           <p class="first-card">Première lame · ${card.name}</p>
+           <p class="first-card">Première lame · ${cardName(card)}</p>
            <p class="desc">${f.desc}</p>
         </div>
         <span class="go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
@@ -857,8 +915,8 @@ function buildGrid(){
     f.cards.forEach(card=>{
       const m = el('div','mini');
       m.innerHTML = `
-        <div class="ph"><img src="${card.file}" alt="${card.name}" loading="lazy"></div>
-        <div class="cap"><span class="nm">${card.name}</span><span class="no">${String(card.num).padStart(2,'0')}</span></div>`;
+        <div class="ph"><img src="${cardImg(card)}" alt="${cardName(card)}" loading="lazy"></div>
+        <div class="cap"><span class="nm">${cardName(card)}</span><span class="no">${String(card.num).padStart(2,'0')}</span></div>`;
       m.addEventListener('click',()=>openCard(card.id));
       grid.appendChild(m);
     });
@@ -928,9 +986,9 @@ function openCard(id){
   const esHtml = es ? `<div class="es-badges">${es.reponse ? `<span class="es-badge resp"><span class="lbl">Réponse</span> ${esc(es.reponse)}</span>` : ''}${es.affirmation ? `<span class="es-badge aff">« ${esc(es.affirmation)} »</span>` : ''}</div>` : '';
   const wrap = $('#detail-wrap');
   wrap.innerHTML = `
-    <h1 class="d-card-title"><em>${card.name}</em></h1>
+    <h1 class="d-card-title"><em>${cardName(card)}</em></h1>
     <aside class="d-card">
-      <div class="frame"><img src="${card.file}" alt="${card.name}"></div>
+      <div class="frame"><img src="${cardImg(card)}" alt="${cardName(card)}"></div>
       <div class="tag"><span>${card.familyName}</span><span class="el">${card.element}</span></div>
     </aside>
     <div class="d-content">
@@ -956,9 +1014,9 @@ function updateLoopBar(idx){
   const nxt = ALL_CARDS[(idx+1)%ALL_CARDS.length];
   const loop=$('#d-loop');
   loop.innerHTML=`
-    <button class="prev" id="loop-prev">← ${prev.name}</button>
+    <button class="prev" id="loop-prev">← ${cardName(prev)}</button>
     <span class="pos"><b>${String(idx+1).padStart(2,'0')}</b>/${ALL_CARDS.length}</span>
-    <button class="next" id="loop-next">${nxt.name} →</button>`;
+    <button class="next" id="loop-next">${cardName(nxt)} →</button>`;
   $('#loop-prev').addEventListener('click',()=>stepCard(-1));
   $('#loop-next').addEventListener('click',()=>stepCard(1));
 }
@@ -1148,8 +1206,8 @@ function localDateKey(){
 function revealCard(card, label){
   const reveal = $('#reveal');
   $('#reveal-label').textContent = label || 'Votre lame';
-  $('#reveal-img').src = card.file;
-  $('#reveal-img').alt = card.name;
+  $('#reveal-img').src = cardImg(card);
+  $('#reveal-img').alt = cardName(card);
   const inner = $('#reveal-inner');
   inner.classList.remove('flipped');
   $('#reveal-open').classList.remove('show');
@@ -1216,7 +1274,7 @@ document.addEventListener('keydown',e=>{
    ========================================================= */
 const sNorm = s => (s||'').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');
 const sKeywords = md => { const m = md.match(/## Mots-clés[\s\S]*?(?=\n## )/i); return m ? m[0] : ''; };
-ALL_CARDS.forEach(c => { c._blob = sNorm(c.name+' '+c.familyName+' '+c.element+' '+sKeywords(c.md)); });
+ALL_CARDS.forEach(c => { c._blob = sNorm(cardName(c)+' '+c.nameM+' '+c.familyName+' '+c.element+' '+sKeywords(c.md)); });
 const search = { open:false, q:'', sel:0, results:[] };
 
 function openSearch(initial){
@@ -1237,10 +1295,10 @@ function renderSearch(){
   let results = q ? ALL_CARDS.filter(c => c._blob.includes(nq)) : ALL_CARDS.slice();
   if(q){
     results.sort((a,b)=>{
-      const an = sNorm(a.name).includes(nq) ? 0 : 1;
-      const bn = sNorm(b.name).includes(nq) ? 0 : 1;
+      const an = sNorm(cardName(a)).includes(nq) ? 0 : 1;
+      const bn = sNorm(cardName(b)).includes(nq) ? 0 : 1;
       if(an!==bn) return an-bn;
-      return a.name.localeCompare(b.name);
+      return cardName(a).localeCompare(cardName(b));
     });
   }
   search.results = results;
@@ -1254,8 +1312,8 @@ function renderSearch(){
   results.forEach((card,idx)=>{
     const m = el('div','mini' + (idx===search.sel ? ' sel':''));
     m.innerHTML = `
-      <div class="ph"><img src="${card.file}" alt="${card.name}" loading="lazy"></div>
-      <div class="cap"><span class="nm">${card.name}</span><span class="no">${String(card.num).padStart(2,'0')}</span></div>`;
+      <div class="ph"><img src="${cardImg(card)}" alt="${cardName(card)}" loading="lazy"></div>
+      <div class="cap"><span class="nm">${cardName(card)}</span><span class="no">${String(card.num).padStart(2,'0')}</span></div>`;
     m.addEventListener('click',()=>{ closeSearch(); openCard(card.id); });
     m.addEventListener('mouseenter',()=>{ search.sel=idx; paintSearchSel(); });
     g.appendChild(m);
@@ -1312,6 +1370,55 @@ document.querySelectorAll('#mode-switch a').forEach(link=>{
     window.location.href = link.getAttribute('href');
   });
 });
+
+/* =========================================================
+   Settings panel — deck switch (Rider-Waite / Marseille)
+   ========================================================= */
+(function initSettings(){
+  const btn = $('#settings-btn');
+  const pop = $('#settings-pop');
+  const opts = document.querySelectorAll('#deck-options .deck-opt');
+
+  // Aperçus : on utilise une carte majeure emblématique (La Mort XIII) en swatch
+  const sample = ALL_CARDS.find(c => c.id.startsWith('a_13_'));
+  if(sample){
+    const r = $('#swatch-rider'), m = $('#swatch-marseille');
+    if(r) r.src = sample.file;
+    if(m) m.src = sample.marseille || sample.file;
+  }
+
+  function applyDeck(mode){
+    DECK_MODE = mode;
+    localStorage.setItem('tarot_deck', mode);
+    opts.forEach(o => o.classList.toggle('active', o.dataset.deck === mode));
+    // Réindexe la recherche avec les bons noms, puis repeint les vues.
+    ALL_CARDS.forEach(c => { c._blob = sNorm(cardName(c)+' '+c.nameM+' '+c.familyName+' '+c.element+' '+sKeywords(c.md)); });
+    renderLanding();
+    gridBuilt = false; if(state.view==='grid' || state.familyKey){ buildGrid(); }
+    if(state.cardId) openCard(state.cardId);
+    if(search.open) renderSearch();
+  }
+
+  btn.addEventListener('click', e => {
+    e.stopPropagation();
+    const open = pop.classList.toggle('open');
+    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+  opts.forEach(o => {
+    const handler = () => { if(!o.classList.contains('active')) applyDeck(o.dataset.deck); };
+    o.addEventListener('click', handler);
+    o.addEventListener('keydown', e => { if(e.key==='Enter'||e.key===' '){ e.preventDefault(); handler(); } });
+  });
+  // Ferme le panneau si on clique en dehors
+  document.addEventListener('click', e => {
+    if(pop.classList.contains('open') && !pop.contains(e.target) && e.target !== btn && !btn.contains(e.target)){
+      pop.classList.remove('open');
+      btn.setAttribute('aria-expanded','false');
+    }
+  });
+  // Initialise l'état actif selon localStorage
+  opts.forEach(o => o.classList.toggle('active', o.dataset.deck === DECK_MODE));
+})();
 </script>
 </body>
 </html>

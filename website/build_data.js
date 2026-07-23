@@ -65,9 +65,17 @@ const MAJOR_NAMES = {
   '00': 'Le Fou', '01': 'Le Bateleur', '02': 'La Papesse', '03': "L'Impératrice",
   '04': "L'Empereur", '05': 'Le Pape', '06': 'Les Amoureux', '07': 'Le Chariot',
   '08': 'La Force', '09': "L'Ermite", '10': 'La Roue de Fortune', '11': 'La Justice',
-  '12': 'Le Pendu', '13': "L'Arcane Sans Nom", '14': 'Tempérance', '15': 'Le Diable',
+  '12': 'Le Pendu', '13': 'La Mort', '14': 'Tempérance', '15': 'Le Diable',
   '16': 'La Maison Dieu', '17': "L'Étoile", '18': 'La Lune', '19': 'Le Soleil',
   '20': 'Le Jugement', '21': 'Le Monde',
+};
+
+// Noms traditionnels du Tarot de Marseille (différences notables vs Rider-Waite).
+const MAJOR_NAMES_MARSEILLE = {
+  ...MAJOR_NAMES,
+  '06': "L'Amoureux",      // singulier (Marseille) vs pluriel (Rider-Waite)
+  '09': "L'Hermite",       // orthographe ancienne avec H
+  '13': "L'Arcane sans nom", // tradition Marseille : carte laissée sans nom
 };
 
 const MINOR_NAMES = {
@@ -97,13 +105,16 @@ mdFiles.forEach(file => {
   const content = fs.readFileSync(path.join(CARDS_DIR, file), 'utf8');
 
   let name;
+  let nameM;
   if (prefix === 'a') {
     name = MAJOR_NAMES[num] || slug;
+    nameM = MAJOR_NAMES_MARSEILLE[num] || name;
   } else {
     // Élision : « d'Épées » (voyelle initiale), sinon « de Bâtons/Coupes/Deniers ».
     const suiteName = meta.name;
     const article = /^[AEIOUYÉÈÊÀ]/i.test(suiteName) ? 'd\'' : 'de ';
     name = `${MINOR_NAMES[num] || slug} ${article}${suiteName}`;
+    nameM = name; // noms de suites identiques entre RW et Marseille
   }
 
   const imgFile = path.join(CARDS_DIR, base + '.jpg');
@@ -159,6 +170,7 @@ mdFiles.forEach(file => {
     marseille: fs.existsSync(marseilleImg) ? (imageDataUri(marseilleImg) || ('cards/' + base + '_marseille.jpg')) : null,
     scan: scanReference(imgFile),
     name,
+    nameM,
     family: meta.key,
     familyName: meta.name,
     element: meta.element,
