@@ -220,9 +220,6 @@ a{color:inherit;text-decoration:none}
   background:var(--bg);box-shadow:0 12px 0 var(--bg);
   border-bottom:1px solid var(--line);
 }
-.grid-head .left .crumb{font-family:'DM Mono',monospace;font-size:.7rem;letter-spacing:.28em;
-  text-transform:uppercase;color:var(--muted);margin-bottom:1rem;display:flex;gap:.7rem;align-items:center}
-.grid-head .left .crumb .ac-dot{width:8px;height:8px;border-radius:50%;background:var(--ac)}
 .grid-head h2{font-family:'Cormorant Garamond',serif;font-weight:300;
    font-size:clamp(2.6rem,6vw,5rem);line-height:.9;text-transform:uppercase;letter-spacing:-.01em}
 .grid-head h2 em{font-style:italic;color:var(--ac);font-weight:400}
@@ -308,7 +305,6 @@ a{color:inherit;text-decoration:none}
   text-transform:uppercase;color:var(--muted);margin-bottom:1rem;display:flex;gap:.7rem;align-items:center;flex-wrap:wrap}
 .d-content .kicker .sep{opacity:.4}
 .card-actions .tf-actions{margin:0 0 1.4rem}
-.d-lede{color:var(--muted);font-size:1.02rem;line-height:1.7;margin-bottom:2.4rem;max-width:42rem}
 
 .prose{max-width:44rem}
 .prose section{margin-bottom:2.4rem;scroll-margin-top:7rem}
@@ -597,15 +593,6 @@ a{color:inherit;text-decoration:none}
 .d-thumb img{width:100%;height:100%;object-fit:contain}
 .d-thumb:hover{transform:translateY(-3px);border-color:rgba(241,237,228,.5)}
 .d-thumb.current{border-color:var(--ac)}
-.d-side{position:fixed;top:50%;transform:translateY(-50%);z-index:250;width:52px;height:52px;border-radius:50%;border:1px solid var(--line);display:grid;place-items:center;color:var(--fg);background:rgba(255,255,255,.08);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);transition:.3s var(--ease)}
-.d-side:hover{background:var(--ac);border-color:transparent;color:#050505;transform:translateY(-50%) scale(1.06)}
-.d-side.prev{left:1.4rem}.d-side.next{right:1.4rem}
-.d-side svg{width:20px;height:20px}
-.d-loop-immersive{position:fixed;bottom:1.4rem;left:50%;transform:translateX(-50%);z-index:250;display:flex;align-items:center;gap:1rem;padding:.5rem 1.1rem;background:rgba(10,9,7,.7);backdrop-filter:blur(14px);border:1px solid var(--line);border-radius:50px;font-family:'DM Mono',monospace;font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);max-width:calc(100vw - 130px)}
-.d-loop-immersive b{color:var(--ac);font-weight:400}
-.d-loop-immersive button{color:var(--muted);transition:.3s var(--ease);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:30vw}
-.d-loop-immersive button:hover{color:var(--fg)}
-.d-loop-immersive button.prev{text-align:right}
 
 /* =====================================================
    DETAILED landing — keyword mini grid
@@ -651,13 +638,6 @@ a{color:inherit;text-decoration:none}
 .dossier-fact:first-child{border-top:1px solid var(--line)}
 .dossier-fact span{display:block;font-family:'DM Mono',monospace;font-size:.61rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin-bottom:.4rem}
 .dossier-fact b{display:block;font-family:'Cormorant Garamond',serif;font-size:1.22rem;font-weight:400;line-height:1.1;color:var(--fg)}
-.polarity{display:grid;grid-template-columns:1fr 1fr;gap:3rem;max-width:1050px;margin:0 auto 4rem}
-.polarity article{padding-top:1.1rem;border-top:1px solid var(--line)}
-.polarity article.reverse{border-color:rgba(241,237,228,.24)}
-.polarity h2{font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:400;margin-bottom:1rem}
-.polarity ul{list-style:none;display:grid;gap:.5rem}
-.polarity li{color:#d8d2c5;font-size:.95rem;line-height:1.45;padding-left:1rem;position:relative}
-.polarity li::before{content:'◆';position:absolute;left:0;color:var(--ac);font-size:.5rem;top:.45rem}
 .dossier-sections{position:static!important;margin:0 auto 2.8rem!important;padding:0!important;background:transparent!important;backdrop-filter:none!important;border-radius:0!important;width:auto!important;max-width:1050px!important}
 .dossier-prose{max-width:1050px!important;margin:0 auto}
 .dossier-prose section{scroll-margin-top:2rem}
@@ -916,12 +896,6 @@ a{color:inherit;text-decoration:none}
 
 <!-- ============ IMMERSIVE detail ============ -->
 <section class="view" id="view-detail-full">
-  <button class="d-side prev" id="d-prev-full" aria-label="Carte précédente">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
-  </button>
-  <button class="d-side next" id="d-next-full" aria-label="Carte suivante">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
-  </button>
   <div class="d-loop" id="d-loop-full"></div>
   <div class="d-stage" id="d-stage-full">
     <div class="d-hero"><img class="d-hero-img" id="d-hero-img-full" src="" alt=""></div>
@@ -961,7 +935,7 @@ a{color:inherit;text-decoration:none}
 <!-- ============ QUICK landing ============ -->
 <section class="view" id="view-landing-quick">
   <div class="landing-head">
-    <h1 style="cursor:pointer" id="landing-title-quick">Lecture <em>Rapide</em></h1>
+    <h1 style="cursor:pointer">Lecture <em>Rapide</em></h1>
     <p class="sub">78 lames · réponse · affirmation · mots-clés. Un parcours direct à travers le Tarot de Waite.</p>
     <div class="hint-key">Recherche (taper) · Navigation <kbd>←</kbd> <kbd>→</kbd> · Retour <kbd>Esc</kbd></div>
   </div>
@@ -1252,7 +1226,6 @@ function buildGrid(){
     const pane = el('div','family-pane');
     pane.dataset.key = f.key; pane.dataset.index = i;
     const titleHtml = f.name.replace(/(.+ )?(.+)$/,(_,a,b)=>a?`${a}<em>${b}</em>`:`<em>${b}</em>`);
-    const crumb = (f.key==='majors' ? 'Arcane · ' : 'Suite · ') + f.element;
     const head = el('header','grid-head',`
       <div class="left">
         <h2>${titleHtml}</h2>
@@ -2476,19 +2449,6 @@ function restructureKeywords(container){
   });
 }
 
-function reorderImmersive(container){
-  if(!container) return;
-  const sections=[...container.querySelectorAll('section')];
-  const order=['Interprétation','Amour','Travail','Finances','Guidance','Affirmation'];
-  const ordered=[];
-  order.forEach(title=>{
-    const sec=sections.find(s=>(s.querySelector('h2')?.textContent||'').toLowerCase().includes(title.toLowerCase()));
-    if(sec) ordered.push(sec);
-  });
-  sections.forEach(s=>{if(!ordered.includes(s)) ordered.push(s);});
-  ordered.forEach(s=>container.appendChild(s));
-}
-
 /* =========================================================
    Detail view + lightweight MD renderer (Classic mode)
    ========================================================= */
@@ -2555,10 +2515,6 @@ function updateLoopBar(idx){
 function findCard(id){
   for(const f of TAROT.families){const c=f.cards.find(x=>x.id===id);if(c)return c;}
   return null;
-}
-
-function familyCardsOf(card){
-  return TAROT.families.find(f=>f.key===card.family).cards;
 }
 
 function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
