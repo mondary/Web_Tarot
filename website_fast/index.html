@@ -1010,8 +1010,8 @@ a{color:inherit;text-decoration:none}
   </div>
 </div>
 
-<script src="data.js?v=3.2026.18"></script>
-<script src="tarot-features.js?v=3.2026.18"></script>
+<script src="data.js?v=3.2026.19"></script>
+<script src="tarot-features.js?v=3.2026.19"></script>
 <script src="tarot-spreads.js"></script>
 <script src="deck-mode.js"></script>
 <script>
@@ -2966,7 +2966,11 @@ document.querySelectorAll('#mode-switch a').forEach(link=>{
       if(mode==='immersive') renderLandingFull();
       else if(mode==='detailed') renderLandingDetail();
       else if(mode==='quick') renderLandingQuick();
-      goHome();
+      if(state.cardId && state.view==='detail'){
+        openCard(state.cardId);
+      } else {
+        goHome();
+      }
     }
   });
 });
