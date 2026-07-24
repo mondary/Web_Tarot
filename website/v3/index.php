@@ -311,7 +311,7 @@ a{color:inherit;text-decoration:none}
 .chip .n{opacity:.55;font-size:.58rem;font-weight:400}
 .chip.active .n{opacity:.85}
 .s-grid .mini{cursor:pointer}
-.s-grid .mini.sel{border:2px solid var(--ac);box-shadow:0 0 0 1px var(--ac);transform:none}
+.s-grid .mini.sel{transform:translateY(-6px);border:2px solid var(--ac);box-shadow:0 0 0 1px var(--ac),0 16px 40px rgba(0,0,0,.5);z-index:2}
 .s-empty{grid-column:1/-1;text-align:center;color:var(--muted);padding:3rem 0;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.4rem}
 
 /* Mobile: bottom-sheet */
@@ -446,7 +446,7 @@ const PREFIX="{$basePath}";
   var sO=document.getElementById('search'),sI=document.getElementById('s-input'),
       sG=document.getElementById('s-grid'),sQ=document.getElementById('s-query'),
       sCount=document.getElementById('picker-count'),chips=document.getElementById('picker-chips');
-  var st={fam:'',q:''},io=null,last='';
+  var st={fam:'',q:'',selIdx:0},io=null;
   function card(c){
     return '<a class="mini" href="'+PREFIX+'/card/'+c.id+'" style="text-decoration:none;color:inherit">'+
       '<div class="ph"><img src="'+PREFIX+'/img/'+c.fk+'/'+c.id+'.jpg" alt="'+c.name+'" loading="lazy"></div>'+
@@ -465,6 +465,15 @@ const PREFIX="{$basePath}";
     var frag=document.createDocumentFragment(),tmp=document.createElement('div');
     for(var j=0;j<out.length;j++){tmp.innerHTML=card(out[j]);while(tmp.firstChild)frag.appendChild(tmp.firstChild);}
     sG.innerHTML='';sG.appendChild(frag);
+    st.selIdx=0;
+    paintSel();
+  }
+  function paintSel(){
+    var minis=sG.querySelectorAll('.mini');
+    for(var i=0;i<minis.length;i++){
+      minis[i].classList.toggle('sel',i===st.selIdx);
+    }
+    if(minis[st.selIdx])minis[st.selIdx].scrollIntoView({block:'nearest'});
   }
   function syncQuery(){
     if(!sQ) return;
@@ -512,16 +521,53 @@ const PREFIX="{$basePath}";
   });
   document.addEventListener('keydown',function(e){
     if(e.key==='Escape'){if(sO.classList.contains('open')){closeSearch();e.preventDefault();}return;}
-    if(e.target.tagName==='INPUT'||e.target.tagName==='TEXTAREA')return;
     if(sO.classList.contains('open')){
+      var minis;
       if(e.key==='Enter'){
-        var first=sG.querySelector('.mini');
-        if(first)window.location.href=first.getAttribute('href');
+        minis=sG.querySelectorAll('.mini');
+        if(minis[st.selIdx])window.location.href=minis[st.selIdx].getAttribute('href');
+        e.preventDefault();return;
+      }
+      if(e.key==='ArrowDown'){
+        minis=sG.querySelectorAll('.mini');
+        if(minis.length){st.selIdx=(st.selIdx+1)%minis.length;paintSel();}
+        e.preventDefault();return;
+      }
+      if(e.key==='ArrowUp'){
+        minis=sG.querySelectorAll('.mini');
+        if(minis.length){st.selIdx=(st.selIdx-1+minis.length)%minis.length;paintSel();}
+        e.preventDefault();return;
+      }
+      var inInput=e.target.tagName==='INPUT'||e.target.tagName==='TEXTAREA';
+      if(!inInput){
+        if(e.key==='Backspace'){
+          st.q=st.q.slice(0,-1);
+          sI.value=st.q;
+          syncQuery();
+          clearTimeout(io);
+          io=setTimeout(render,70);
+          e.preventDefault();return;
+        }
+        if(e.key.length===1&&/\p{L}|\p{N}/u.test(e.key)){
+          st.q+=e.key.toLowerCase();
+          sI.value=st.q;
+          syncQuery();
+          clearTimeout(io);
+          io=setTimeout(render,70);
+          e.preventDefault();return;
+        }
       }
       return;
     }
     if(typeof PREV_URL!=='undefined'&&e.key==='ArrowLeft'){e.preventDefault();window.location.href=PREV_URL;}
     if(typeof NEXT_URL!=='undefined'&&e.key==='ArrowRight'){e.preventDefault();window.location.href=NEXT_URL;}
+  });
+  sG.addEventListener('mouseover',function(e){
+    var m=e.target.closest('.mini');if(!m)return;
+    var minis=sG.querySelectorAll('.mini');
+    for(var i=0;i<minis.length;i++){
+      if(minis[i]===m){st.selIdx=i;paintSel();break;}
+    }
   });
 
   /* Grid keyboard navigation — landing + family pages */
