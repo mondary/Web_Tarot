@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Tarot Divinatoire — 78 Lames</title>
-<link rel="icon" href="icon.png" type="image/png">
+<link rel="icon" href="assets/img/icon.png" type="image/png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
@@ -271,6 +271,7 @@ a{color:inherit;text-decoration:none}
   display:flex;flex-direction:column;box-shadow:0 10px 28px rgba(0,0,0,.35);
 }
 .mini:hover{transform:translateY(-6px);border-color:var(--ac);box-shadow:0 16px 40px rgba(0,0,0,.5)}
+.mini.selected{transform:translateY(-6px);border-color:var(--ac);box-shadow:0 0 0 2px var(--ac),0 16px 40px rgba(0,0,0,.5);z-index:2;outline:none}
 .mini .ph{aspect-ratio:2/3;display:flex;align-items:center;justify-content:center;padding:.5rem;position:relative}
 .mini .ph img{height:100%;object-fit:contain;transition:transform .6s var(--ease)}
 .mini:hover .ph img{transform:scale(1.05)}
@@ -797,7 +798,7 @@ a{color:inherit;text-decoration:none}
 <div class="fx-grain"></div>
 <div class="fx-vignette"></div>
 
-<a class="brand" id="home-link" href="#" aria-label="Retour à l'accueil"><img src="icon.png" alt=""><span><b>Tarot</b> · Divinatoire</span><span class="brand-version">v<span id="lf-ver">3.2026.6</span></span></a>
+<a class="brand" id="home-link" href="#" aria-label="Retour à l'accueil"><img src="assets/img/icon.png" alt=""><span><b>Tarot</b> · Divinatoire</span><span class="brand-version">v<span id="lf-ver">3.2026.6</span></span></a>
 
 <div class="top-right">
   <button class="settings-btn" id="settings-btn" aria-label="Réglages du deck" aria-expanded="false" title="Réglages du deck">
@@ -971,16 +972,16 @@ a{color:inherit;text-decoration:none}
   </div>
 </div>
 
-<script src="data.js?v=3.2026.20"></script>
-<script src="tarot-features.js?v=3.2026.20"></script>
-<script src="tarot-spreads.js"></script>
-<script src="deck-mode.js"></script>
+<script src="assets/js/data.js?v=3.2026.20"></script>
+<script src="assets/js/tarot-features.js?v=3.2026.20"></script>
+<script src="assets/js/tarot-spreads.js"></script>
+<script src="assets/js/deck-mode.js"></script>
 <script>
 /* =========================================================
    State
    ========================================================= */
 let VIEW_MODE = 'immersive';
-const state = { view:'landing', familyKey:null, cardId:null, familyCards:[], gridIndex:0 };
+const state = { view:'landing', familyKey:null, cardId:null, familyCards:[], gridIndex:0, gridSel:-1 };
 
 // Flat ordered list of all 78 cards (majors → bâtons → épées → coupes → deniers) for continuous looping
 const ALL_CARDS = TAROT.families.flatMap(f => f.cards);
@@ -1262,7 +1263,7 @@ function buildGrid(){
 
 function updateGridHeader(idx){
   const f = TAROT.families[idx];
-  state.familyKey=f.key; state.familyCards=f.cards; state.gridIndex=idx;
+  state.familyKey=f.key; state.familyCards=f.cards; state.gridIndex=idx; state.gridSel=-1;
   document.documentElement.style.setProperty('--ac',f.accent);
   $('#fam-dots').querySelectorAll('button').forEach((d,i)=>d.classList.toggle('active',i===idx));
 }
@@ -1288,6 +1289,27 @@ function famStep(dir){
   let idx = state.gridIndex || 0;
   idx = (idx + dir + TAROT.families.length) % TAROT.families.length;
   scrollToFam(idx);
+}
+
+function gridCols(){
+  const pane=$('#family-band').children[state.gridIndex];
+  if(!pane)return 1;
+  const minis=pane.querySelectorAll('.grid .mini');
+  if(!minis.length)return 1;
+  const firstTop=minis[0].getBoundingClientRect().top;let cols=0;
+  for(let i=0;i<minis.length;i++){if(Math.abs(minis[i].getBoundingClientRect().top-firstTop)<2)cols++;else break;}
+  return cols||1;
+}
+function gridStep(delta){
+  const pane=$('#family-band').children[state.gridIndex];
+  if(!pane)return;
+  const minis=Array.from(pane.querySelectorAll('.grid .mini'));
+  if(!minis.length)return;
+  if(state.gridSel<0)state.gridSel=0;
+  else state.gridSel=Math.max(0,Math.min(minis.length-1,state.gridSel+delta));
+  minis.forEach(m=>m.classList.remove('selected'));
+  minis[state.gridSel].classList.add('selected');
+  minis[state.gridSel].scrollIntoView({block:'nearest',behavior:'smooth'});
 }
 
 /* =========================================================
@@ -2686,8 +2708,11 @@ document.addEventListener('keydown',e=>{
     if(e.key==='ArrowLeft')stepCard(-1);
     if(e.key==='ArrowRight')stepCard(1);
   } else if(state.view==='grid'){
-    if(e.key==='ArrowLeft')famStep(-1);
-    if(e.key==='ArrowRight')famStep(1);
+    if(e.key==='ArrowLeft'){gridStep(-1);e.preventDefault();}
+    if(e.key==='ArrowRight'){gridStep(1);e.preventDefault();}
+    if(e.key==='ArrowUp'){gridStep(-gridCols());e.preventDefault();}
+    if(e.key==='ArrowDown'){gridStep(gridCols());e.preventDefault();}
+    if(e.key==='Enter'&&state.gridSel>=0){openCard(state.familyCards[state.gridSel].id);e.preventDefault();}
   }
 });
 
