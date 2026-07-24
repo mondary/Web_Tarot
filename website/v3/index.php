@@ -4,7 +4,7 @@ declare(strict_types=1);
 // ----------------------------------------------------------
 // CONFIG
 // ----------------------------------------------------------
-$basePath = '/pk/tarot';
+$basePath = '/pk/tarot3';
 $dbPath   = __DIR__ . '/tarot.sqlite';
 
 // ----------------------------------------------------------
@@ -34,6 +34,7 @@ $path    = str_replace($basePath, '', $rawPath);
 $path    = parse_url($path, PHP_URL_PATH) ?: '/';
 if ($rParam) $path = $rParam;
 $path    = '/' . trim($path, '/');
+if ($path === '/index.php') $path = '/';
 if ($path === '/') $path = '/';
 
 switch (true) {
@@ -805,7 +806,7 @@ function restructure_html(string $html): string {
     );
 
     // 2. Wrap theme sections (Amour/Travail/Finances/Guidance) in .theme-grid
-    $themePattern = '#(<section[^>]*>\s*<h2[^>]*>[^<]*(?:et\s+l[\x27\x{2019}]amour|et\s+le\s+travail|et\s+les\s+finances|et\s+la\s+guidance)[^<]*</h2>[\s\S]*?</section>\s*)+#iu';
+    $themePattern = "#(<section[^>]*>\\s*<h2[^>]*>[^<]*(?:et\\s+l['\x{2019}]amour|et\\s+le\\s+travail|et\\s+les\\s+finances|et\\s+la\\s+guidance)[^<]*</h2>[\\s\\S]*?</section>\\s*)+#iu";
     $html = preg_replace_callback(
         $themePattern,
         function ($m) {
