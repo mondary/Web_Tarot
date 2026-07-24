@@ -17,10 +17,16 @@ __pycache__/
 *.log
 package-lock.json
 
-# Benchmarks + archives — local only, too large for GitHub (~800 MB)
-# Contains: card images (6 deck variants), original .md sources, archived website versions
-/benchmarks/
-/archives/
+# Sources et v3 — pas sur le FTP, pas dans git
+website/sources/
+website/v3/
+
+# Outils
+scripts/
+
+# Archives locales
+archives/
+benchmarks/
+
 /screenshots/
 screenshots/
-/website/

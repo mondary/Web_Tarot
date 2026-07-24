@@ -20,10 +20,3 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
----
-
-Note on content: This MIT license applies to the source code and design of the
-project only. The descriptive texts of the cards (the `.md` files in
-website/cards/) are adapted from https://vivre-intuitif.com and remain the
-property of their respective authors. The Rider-Waite-Smith Tarot illustrations
-are in the public domain.
