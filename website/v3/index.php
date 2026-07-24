@@ -978,7 +978,9 @@ const PREV_URL="{$prevUrl}", NEXT_URL="{$nextUrl}";
 (function(){
   window.scrollTo(0,0);
   var stage=document.querySelector('.d-stage');if(stage)stage.scrollTop=0;
-  var cur=document.querySelector('.d-thumb.current');if(cur)cur.scrollIntoView({behavior:'smooth',inline:'center',block:'nearest'});
+  var cur=document.querySelector('.d-thumb.current');
+  var thumbs=cur&&cur.parentElement;
+  if(thumbs)thumbs.scrollLeft=cur.offsetLeft-(thumbs.clientWidth-cur.offsetWidth)/2;
 })();
 document.addEventListener('keydown',function(e){
   if(e.target.tagName==='INPUT'||e.target.tagName==='TEXTAREA')return;
