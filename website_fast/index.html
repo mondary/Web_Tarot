@@ -1235,7 +1235,7 @@ function buildGrid(){
     pane.appendChild(head);
     const grid = el('div','grid');
     f.cards.forEach(card=>{
-      const m = el('div','mini');
+      const m = el('div','mini'); m.dataset.id = card.id;
       m.innerHTML = `
         <div class="ph"><img src="${cardImg(card)}" alt="${cardName(card)}" loading="lazy"></div>
         <div class="cap"><span class="nm">${cardName(card)}</span><span class="no">${String(card.num).padStart(2,'0')}</span></div>`;
@@ -2864,7 +2864,15 @@ restoreRoute();
     // Réindexe la recherche avec les bons noms, puis repeint les vues.
     ALL_CARDS.forEach(c => { c._blob = sNorm(cardName(c)+' '+c.nameM+' '+c.familyName+' '+c.element+' '+sKeywords(c.md)); });
     renderLanding();
-    gridBuilt = false; if(state.view==='grid' || state.familyKey){ buildGrid(); }
+    if(state.view==='grid' || state.familyKey){
+      const band = $('#family-band');
+      if(band) band.querySelectorAll('.mini img').forEach(img => {
+        const id = img.closest('.mini')?.dataset?.id;
+        if(!id) return;
+        const card = ALL_CARDS.find(c => c.id === id);
+        if(card) img.src = cardImg(card);
+      });
+    }
     if(state.cardId) openCard(state.cardId);
     if(search.open) renderSearch();
   }
