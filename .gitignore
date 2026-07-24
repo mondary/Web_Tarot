@@ -17,9 +17,9 @@ __pycache__/
 *.log
 package-lock.json
 
-# Reference / benchmark materials (working files, ~45 MB of binaries)
+# Benchmarks + archives — local only, too large for GitHub (~800 MB)
+# Contains: card images (6 deck variants), original .md sources, archived website versions
 /benchmarks/
 /archives/
-archives/
 /screenshots/
 screenshots/
