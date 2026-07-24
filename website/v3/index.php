@@ -621,36 +621,12 @@ HTML;
 function page_landing(PDO $pdo, string $basePath): void {
     $families = $pdo->query("SELECT * FROM families ORDER BY sort_order ASC")->fetchAll();
 
-    // Build grid with family separators
     $gridHtml = '';
     foreach ($families as $fam) {
         $cards = $pdo->prepare("SELECT * FROM cards WHERE family_key = ? ORDER BY sort_global ASC");
         $cards->execute([$fam['key']]);
         $cardsList = $cards->fetchAll();
-        $count = count($cardsList);
-        $accent = htmlspecialchars($fam['accent']);
-        $elementSym = htmlspecialchars($fam['element_sym']);
-        $elementLine = htmlspecialchars($fam['element_line']);
-        $titleFull = htmlspecialchars($fam['title_full']);
-        $desc = htmlspecialchars($fam['desc']);
 
-        // Family separator
-        $gridHtml .= <<<HTML
-<div class="fam-sep" style="--ac:{$accent}">
-  <div class="fam-sep-art">
-    <div class="ring" style="border-color:{$accent}"></div>
-    <div class="glyph" style="color:{$accent}">{$elementSym}</div>
-  </div>
-  <div class="fam-sep-body">
-    <div class="lbl" style="color:{$accent}">{$elementLine}</div>
-    <div class="name">{$titleFull}</div>
-    <div class="desc">{$desc}</div>
-  </div>
-  <div class="fam-sep-count"><b>{$count}</b>LAMES</div>
-</div>
-HTML;
-
-        // Cards
         foreach ($cardsList as $card) {
             $imgUrl = "{$basePath}/img/{$card['family_key']}/{$card['id']}.jpg";
             $cardUrl = "{$basePath}/card/{$card['id']}";
@@ -671,7 +647,7 @@ HTML;
     echo <<<HTML
 <div class="full-grid-head">
   <h1>Tarot <em>Divinatoire</em></h1>
-  <p class="sub">Soixante-dix-huit lames, cinq familles, un seul voyage initiatique à travers le Tarot de Waite.</p>
+  <p class="sub">78 lames · 5 familles · Rider-Waite</p>
 </div>
 <div class="full-grid">
 {$gridHtml}
@@ -909,7 +885,7 @@ HTML;
 
     echo layout_head($basePath, $name . ' — Tarot Divinatoire', $extraStyle);
     echo <<<HTML
-<a class="back" href="{$basePath}/suite/{$card['family_key']}">
+<a class="back" href="{$basePath}/">
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
   Retour
 </a>
@@ -945,6 +921,12 @@ HTML;
 <script>
 const PREV_URL="{$prevUrl}", NEXT_URL="{$nextUrl}";
 (function(){var cur=document.querySelector('.d-thumb.current');if(cur)cur.scrollIntoView({behavior:'smooth',inline:'center',block:'nearest'});})();
+document.addEventListener('keydown',function(e){
+  if(e.target.tagName==='INPUT'||e.target.tagName==='TEXTAREA')return;
+  if(e.key==='Escape'){window.location.href="{$basePath}/";e.preventDefault();}
+  if(e.key==='ArrowLeft'){window.location.href=PREV_URL;e.preventDefault();}
+  if(e.key==='ArrowRight'){window.location.href=NEXT_URL;e.preventDefault();}
+});
 </script>
 HTML;
     echo layout_search($pdo, $basePath);
