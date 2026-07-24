@@ -6,7 +6,7 @@ Toutes les notes de release du projet Web Tarot. Le format de version suit `🔥
 
 ## TODO — Roadmap
 
-Statut : `3.2026.13` (navigation inter-mode préservant la carte)
+Statut : `3.2026.22` (navigation clavier v3 + recherche mobile)
 
 ### Phase 1 — Fondations ✅
 - [x] Interface V2 unifiée (carousel d'accueil + grille par famille + vue détail)
@@ -30,6 +30,11 @@ Statut : `3.2026.13` (navigation inter-mode préservant la carte)
 ---
 
 ## Releases
+
+### [3.2026.22] - 2026-07-24
+#### Fixed
+- **Navigation clavier v3** : flèches ← → ↑ ↓ fonctionnent sur les grilles landing et famille, avec sélection visuelle (`.selected`) et Enter pour ouvrir
+- **Recherche mobile** : auto-focus de l'input de recherche sur toutes les tailles d'écran (suppression condition `min-width:901px`), ajout `inputmode="search"` + `autofocus`
 
 ### [3.2026.13] - 2026-07-22
 #### Added
