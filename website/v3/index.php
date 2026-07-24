@@ -637,7 +637,7 @@ function family_card_svg(string $key): string {
     static $symbols = null;
     if ($symbols === null) {
         $symbols = [];
-        $source = file_get_contents(dirname(__DIR__) . '/index.html');
+        $source = file_get_contents(dirname(__DIR__) . '/tarot/index_quick.html');
         if ($source !== false) {
             preg_match_all('/\s+(batons|epees|coupes|deniers):`(.*?)`(?=,|\n\s*};)/s', $source, $matches, PREG_SET_ORDER);
             foreach ($matches as $match) {
