@@ -920,7 +920,11 @@ HTML;
 </div>
 <script>
 const PREV_URL="{$prevUrl}", NEXT_URL="{$nextUrl}";
-(function(){var cur=document.querySelector('.d-thumb.current');if(cur)cur.scrollIntoView({behavior:'smooth',inline:'center',block:'nearest'});})();
+(function(){
+  window.scrollTo(0,0);
+  var stage=document.querySelector('.d-stage');if(stage)stage.scrollTop=0;
+  var cur=document.querySelector('.d-thumb.current');if(cur)cur.scrollIntoView({behavior:'smooth',inline:'center',block:'nearest'});
+})();
 document.addEventListener('keydown',function(e){
   if(e.target.tagName==='INPUT'||e.target.tagName==='TEXTAREA')return;
   if(e.key==='Escape'){window.location.href="{$basePath}/";e.preventDefault();}
