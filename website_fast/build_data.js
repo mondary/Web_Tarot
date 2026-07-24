@@ -76,7 +76,7 @@ ORDER.forEach(prefix => {
   families[meta.key] = { ...meta, cards: [] };
 });
 
-const SOURCE_DIR = path.join(__dirname, '..', 'website_opti', 'cards');
+const SOURCE_DIR = path.join(__dirname, '..', 'benchmarks', 'data', 'cards_original');
 
 const mdFiles = fs.readdirSync(SOURCE_DIR)
   .filter(f => f.endsWith('.md') && !f.endsWith('_symbols.md') && !f.endsWith('_symboles_pcd.md') && !f.endsWith('_associations.md') && !f.endsWith('_ES.md') && !f.endsWith('_affirmations.md'))

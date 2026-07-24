@@ -2658,7 +2658,7 @@ $('#back-btn').addEventListener('click',()=>{
     if(VIEW_MODE==='classic') switchView('grid');
     else goHome();
   }
-  else if(state.view==='grid') goHome();
+  else if(state.view==='grid'){ if(VIEW_MODE==='classic') switchView('grid'); else goHome(); }
 });
 $('#home-link').addEventListener('click',e=>{e.preventDefault();goHome();});
 $('#d-prev').addEventListener('click',()=>stepCard(-1));
@@ -2809,8 +2809,8 @@ document.querySelectorAll('#mode-switch a').forEach(link=>{
       else if(mode==='quick') renderLandingQuick();
       if(state.cardId && state.view==='detail'){
         openCard(state.cardId);
-      } else {
-        goHome();
+      } else if(state.view==='grid') {
+        gridBuilt = false; buildGrid();
       }
     }
   });
