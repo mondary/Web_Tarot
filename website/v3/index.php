@@ -140,6 +140,13 @@ a{color:inherit;text-decoration:none}
 .mini .cap{padding:.6rem .75rem .7rem;border-top:1px solid rgba(0,0,0,.06);font-size:.78rem;display:flex;justify-content:space-between;align-items:center;gap:.5rem;background:var(--mat)}
 .mini .cap .nm{font-family:'Cormorant Garamond',serif;font-size:1.02rem;line-height:1.1;font-weight:500;color:#1c1814;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .mini .cap .no{font-family:'DM Mono',monospace;font-size:.62rem;color:#a59c8e;letter-spacing:.1em;flex:0 0 auto}
+.keyword-mini{background:var(--bg-2);border-color:var(--line);box-shadow:none}
+.keyword-mini:hover{border-color:var(--ac);box-shadow:0 16px 40px rgba(0,0,0,.35)}
+.keyword-mini .cap{background:var(--bg-2);border-color:var(--line)}
+.keyword-mini .cap .nm{color:var(--fg)}
+.keyword-mini .keyword-list{list-style:none;display:grid;gap:.42rem;padding:0 .8rem 1rem}
+.keyword-mini .keyword-list li{position:relative;padding-left:.85rem;color:#d8d2c5;font-size:.76rem;line-height:1.3}
+.keyword-mini .keyword-list li::before{content:'◆';position:absolute;left:0;top:.32rem;color:var(--ac);font-size:.42rem}
 
 /* Grid head (family view) */
 .grid-head{position:sticky;top:0;z-index:6;display:flex;align-items:flex-end;justify-content:space-between;
@@ -626,37 +633,26 @@ function page_landing(PDO $pdo, string $basePath): void {
         $cards = $pdo->prepare("SELECT * FROM cards WHERE family_key = ? ORDER BY sort_global ASC");
         $cards->execute([$fam['key']]);
         $cardsList = $cards->fetchAll();
-        $count = count($cardsList);
-        $accent = htmlspecialchars($fam['accent']);
-        $elementSym = htmlspecialchars($fam['element_sym']);
-        $elementLine = htmlspecialchars($fam['element_line']);
-        $titleFull = htmlspecialchars($fam['title_full']);
-        $desc = htmlspecialchars($fam['desc']);
-
-        $gridHtml .= <<<HTML
-<div class="fam-sep" style="--ac:{$accent}">
-  <div class="fam-sep-art">
-    <div class="ring" style="border-color:{$accent}"></div>
-    <div class="glyph" style="color:{$accent}">{$elementSym}</div>
-  </div>
-  <div class="fam-sep-body">
-    <div class="lbl" style="color:{$accent}">{$elementLine}</div>
-    <div class="name">{$titleFull}</div>
-    <div class="desc">{$desc}</div>
-  </div>
-  <div class="fam-sep-count"><b>{$count}</b>LAMES</div>
-</div>
-HTML;
 
         foreach ($cardsList as $card) {
             $imgUrl = "{$basePath}/img/{$card['family_key']}/{$card['id']}.jpg";
             $cardUrl = "{$basePath}/card/{$card['id']}";
             $name = htmlspecialchars($card['name']);
             $num = str_pad((string)(int)$card['num'], 2, '0', STR_PAD_LEFT);
+            $keywords = [];
+            if (preg_match('/###\s+À l[\'’]endroit\s*\n([\s\S]*?)(?=\n###|\n##|\z)/iu', $card['md'] ?? '', $match)) {
+                preg_match_all('/^\s*[-*]\s+(.+)$/mu', $match[1], $items);
+                $keywords = array_slice($items[1] ?? [], 0, 4);
+            }
+            $keywordsHtml = '';
+            foreach ($keywords as $keyword) {
+                $keywordsHtml .= '<li>' . htmlspecialchars(trim($keyword)) . '</li>';
+            }
             $gridHtml .= <<<HTML
-<a class="mini" href="{$cardUrl}" style="text-decoration:none;color:inherit">
+<a class="mini keyword-mini" href="{$cardUrl}" style="text-decoration:none;color:inherit">
   <div class="ph"><img src="{$imgUrl}" alt="{$name}" loading="lazy"></div>
   <div class="cap"><span class="nm">{$name}</span><span class="no">{$num}</span></div>
+  <ul class="keyword-list">{$keywordsHtml}</ul>
 </a>
 HTML;
         }
@@ -668,7 +664,7 @@ HTML;
     echo <<<HTML
 <div class="full-grid-head">
   <h1>Tarot <em>Divinatoire</em></h1>
-  <p class="sub">78 lames · 5 familles · Rider-Waite. Les intercalaires présentent chaque famille dans la grille continue.</p>
+  <p class="sub">78 lames · 5 familles · Rider-Waite</p>
 </div>
 <div class="full-grid">
 {$gridHtml}
