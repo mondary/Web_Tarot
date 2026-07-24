@@ -143,8 +143,10 @@ a{color:inherit;text-decoration:none}
 .fam-card{position:relative;border-radius:.9rem;overflow:hidden;cursor:pointer;transition:.5s var(--ease);display:flex;flex-direction:column;aspect-ratio:2/3.6;border:1px solid var(--ac);background:var(--bg);box-shadow:0 10px 28px rgba(0,0,0,.35)}
 .fam-card:hover{transform:translateY(-6px);box-shadow:0 16px 40px rgba(0,0,0,.5),0 0 30px rgba(201,162,39,.15)}
 .fam-card-inner{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:1rem;text-align:center;position:relative;gap:.3rem}
-.fam-card-svg{flex:1;display:flex;align-items:center;justify-content:center;width:100%;max-height:55%}
-.fam-card-svg svg{height:80%;width:auto;max-width:80%;fill:none;stroke:currentColor;stroke-width:1.65;stroke-linecap:round;stroke-linejoin:round}
+.fam-card-img{flex:1;display:flex;align-items:center;justify-content:center;width:100%;max-height:55%}
+.fam-card-img .fam-card-svg{height:80%;width:auto;aspect-ratio:1;display:flex;align-items:center;justify-content:center}
+.fam-card-img .fam-card-svg svg{height:100%;width:auto;max-width:80%}
+.fam-card-img .glyph-uni{font-family:'Cormorant Garamond',serif;font-size:3.5rem;line-height:1}
 .fam-card-name{font-family:'Cormorant Garamond',serif;font-weight:400;font-size:clamp(.9rem,1.4vw,1.15rem);line-height:1.1;text-transform:uppercase;letter-spacing:.02em;color:var(--fg)}
 .fam-card-name em{font-style:italic;color:var(--ac);font-weight:400}
 .fam-card-elem{font-family:'DM Mono',monospace;font-size:.52rem;letter-spacing:.15em;text-transform:uppercase;color:var(--ac);display:flex;align-items:center;gap:.3rem;padding:.2rem .55rem;border:1px solid var(--ac);border-radius:50px;opacity:.7}
@@ -628,14 +630,23 @@ HTML;
 // ROUTE: LANDING — full immersive grid
 // ==========================================================
 function family_card_svg(string $key): string {
-    return match ($key) {
-        'majors' => '<svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="22"/><path d="m32 13 3.5 12 11.5-5.2-5.2 11.5 12 3.5-12 3.5 5.2 11.5-11.5-5.2L32 56l-3.5-12-11.5 5.2 5.2-11.5-12-3.5 12-3.5-5.2-11.5 11.5 5.2L32 13Z"/></svg>',
-        'batons' => '<svg viewBox="0 0 64 64" aria-hidden="true"><path d="M15 53 48 12"/><path d="M20 48c-5-1-7-5-7-9 5 0 9 3 9 8M28 38c-5 0-8-3-9-7 5-1 9 1 10 6M37 27c-1-5 2-9 6-10 1 5-1 9-5 11M44 18c4-3 8-2 11 1-3 3-7 4-10 1"/></svg>',
-        'epees' => '<svg viewBox="0 0 64 64" aria-hidden="true"><path d="M35 10 48 18 35 48 30 54 27 47 24 18l11-8Z"/><path d="m20 28 24 12M32 40v14M26 54h12"/></svg>',
-        'coupes' => '<svg viewBox="0 0 64 64" aria-hidden="true"><path d="M14 13h36c0 17-5 28-18 28S14 30 14 13Z"/><path d="M32 41v10M23 53h18"/><path d="M14 18c-5 0-7 4-5 8 2 4 5 5 9 4M50 18c5 0 7 4 5 8-2 4-5 5-9 4"/></svg>',
-        'deniers' => '<svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="22"/><path d="m32 17 4.4 9 10 .9-7.6 6.5 2.4 9.8-9.2-5.1-9.2 5.1 2.4-9.8-7.6-6.5 10-.9L32 17Z"/></svg>',
-        default => '',
-    };
+    if (!in_array($key, ['batons', 'epees', 'coupes', 'deniers'], true)) {
+        return '';
+    }
+
+    static $symbols = null;
+    if ($symbols === null) {
+        $symbols = [];
+        $source = file_get_contents(dirname(__DIR__) . '/index.html');
+        if ($source !== false) {
+            preg_match_all('/\s+(batons|epees|coupes|deniers):`(.*?)`(?=,|\n\s*};)/s', $source, $matches, PREG_SET_ORDER);
+            foreach ($matches as $match) {
+                $symbols[$match[1]] = $match[2];
+            }
+        }
+    }
+
+    return $symbols[$key] ?? '';
 }
 
 function page_landing(PDO $pdo, string $basePath): void {
@@ -653,13 +664,16 @@ function page_landing(PDO $pdo, string $basePath): void {
         $count = count($cardsList);
         $firstCard = $cardsList[0] ?? null;
         $svg = family_card_svg($fam['key']);
+        $familyArt = $svg !== ''
+            ? '<div class="fam-card-svg" style="color:' . $accent . '">' . $svg . '</div>'
+            : '<span class="glyph-uni" style="color:' . $accent . '">' . $elementSym . '</span>';
 
         if ($firstCard) {
             $firstUrl = "{$basePath}/card/{$firstCard['id']}";
             $gridHtml .= <<<HTML
 <a class="fam-card" href="{$firstUrl}" style="--ac:{$accent};border-color:{$accent}" aria-label="Ouvrir {$name}">
   <div class="fam-card-inner">
-    <div class="fam-card-svg" style="color:{$accent}">{$svg}</div>
+    <div class="fam-card-img">{$familyArt}</div>
     <div class="fam-card-name"><em>{$name}</em></div>
     <div class="fam-card-elem"><span>{$elementSym}</span>{$element}</div>
     <div class="fam-card-count">{$count} LAMES</div>
