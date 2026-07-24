@@ -140,7 +140,7 @@ a{color:inherit;text-decoration:none}
 .mini .cap{padding:.6rem .75rem .7rem;border-top:1px solid rgba(0,0,0,.06);font-size:.78rem;display:flex;justify-content:space-between;align-items:center;gap:.5rem;background:var(--mat)}
 .mini .cap .nm{font-family:'Cormorant Garamond',serif;font-size:1.02rem;line-height:1.1;font-weight:500;color:#1c1814;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .mini .cap .no{font-family:'DM Mono',monospace;font-size:.62rem;color:#a59c8e;letter-spacing:.1em;flex:0 0 auto}
-.fam-card{position:relative;border-radius:.9rem;overflow:hidden;cursor:pointer;transition:.5s var(--ease);display:flex;flex-direction:column;aspect-ratio:2/3;border:1px solid var(--ac);background:var(--bg);box-shadow:0 10px 28px rgba(0,0,0,.35)}
+.fam-card{position:relative;border-radius:.9rem;overflow:hidden;cursor:pointer;transition:.5s var(--ease);display:flex;flex-direction:column;aspect-ratio:2/3.6;border:1px solid var(--ac);background:var(--bg);box-shadow:0 10px 28px rgba(0,0,0,.35)}
 .fam-card:hover{transform:translateY(-6px);box-shadow:0 16px 40px rgba(0,0,0,.5),0 0 30px rgba(201,162,39,.15)}
 .fam-card-inner{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:1rem;text-align:center;position:relative;gap:.3rem}
 .fam-card-glyph{flex:1;display:flex;align-items:center;justify-content:center;width:100%;max-height:55%;font-family:'Cormorant Garamond',serif;font-size:4rem;line-height:1}
