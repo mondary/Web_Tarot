@@ -626,6 +626,27 @@ function page_landing(PDO $pdo, string $basePath): void {
         $cards = $pdo->prepare("SELECT * FROM cards WHERE family_key = ? ORDER BY sort_global ASC");
         $cards->execute([$fam['key']]);
         $cardsList = $cards->fetchAll();
+        $count = count($cardsList);
+        $accent = htmlspecialchars($fam['accent']);
+        $elementSym = htmlspecialchars($fam['element_sym']);
+        $elementLine = htmlspecialchars($fam['element_line']);
+        $titleFull = htmlspecialchars($fam['title_full']);
+        $desc = htmlspecialchars($fam['desc']);
+
+        $gridHtml .= <<<HTML
+<div class="fam-sep" style="--ac:{$accent}">
+  <div class="fam-sep-art">
+    <div class="ring" style="border-color:{$accent}"></div>
+    <div class="glyph" style="color:{$accent}">{$elementSym}</div>
+  </div>
+  <div class="fam-sep-body">
+    <div class="lbl" style="color:{$accent}">{$elementLine}</div>
+    <div class="name">{$titleFull}</div>
+    <div class="desc">{$desc}</div>
+  </div>
+  <div class="fam-sep-count"><b>{$count}</b>LAMES</div>
+</div>
+HTML;
 
         foreach ($cardsList as $card) {
             $imgUrl = "{$basePath}/img/{$card['family_key']}/{$card['id']}.jpg";
@@ -647,7 +668,7 @@ HTML;
     echo <<<HTML
 <div class="full-grid-head">
   <h1>Tarot <em>Divinatoire</em></h1>
-  <p class="sub">78 lames · 5 familles · Rider-Waite</p>
+  <p class="sub">78 lames · 5 familles · Rider-Waite. Les intercalaires présentent chaque famille dans la grille continue.</p>
 </div>
 <div class="full-grid">
 {$gridHtml}
