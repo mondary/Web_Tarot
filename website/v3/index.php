@@ -794,6 +794,8 @@ function restructure_html(string $html): string {
         'finances'     => '<span class="content-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M14.5 9.5c-.5-.7-1.4-1.1-2.5-1.1-1.5 0-2.5.8-2.5 1.9 0 2.9 5 1.3 5 4.1 0 1.1-1 1.9-2.5 1.9-1.1 0-2.1-.4-2.7-1.2M12 6.8v10.4"/></svg></span>',
         'guidance'     => '<span class="content-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="m15.8 8.2-2.2 5.4-5.4 2.2 2.2-5.4 5.4-2.2Z"/></svg></span>',
         'interpretation'=> '<span class="content-icon"><svg viewBox="0 0 24 24"><path d="M2 12s3.5-6 10-6 10 6 10 6-3.5 6-10 6S2 12 2 12Z"/><circle cx="12" cy="12" r="2.5"/></svg></span>',
+        'signification' => '<span class="content-icon"><svg viewBox="0 0 24 24"><path d="m12 3 1.7 5.3H19l-4.3 3.1 1.7 5.3-4.4-3.2-4.4 3.2 1.7-5.3L5 8.3h5.3L12 3Z"/><path d="M12 19v2M4 12H2M22 12h-2"/></svg></span>',
+        'description'  => '<span class="content-icon"><svg viewBox="0 0 24 24"><path d="M3 5.5c3.7-1.4 6.8-.8 9 1.2 2.2-2 5.3-2.6 9-1.2v13c-3.7-1.4-6.8-.8-9 1.2-2.2-2-5.3-2.6-9-1.2v-13Z"/><path d="M12 6.7v13"/></svg></span>',
         'affirmation'  => '<span class="content-icon"><svg viewBox="0 0 24 24"><path d="M3 6h18M3 12h18M3 18h12"/></svg></span>',
     ];
 
@@ -811,6 +813,8 @@ function restructure_html(string $html): string {
             elseif (mb_strpos($lower, 'finance') !== false)    $type = 'finances';
             elseif (mb_strpos($lower, 'guidance') !== false)   $type = 'guidance';
             elseif (mb_strpos($lower, 'interpr') !== false)    $type = 'interpretation';
+            elseif (mb_strpos($lower, 'signification') !== false) $type = 'signification';
+            elseif (mb_strpos($lower, 'description') !== false) $type = 'description';
             elseif (mb_strpos($lower, 'affirmation') !== false)$type = 'affirmation';
             if (!$type) return $m[0];
             return '<h2' . $attrs . '>' . $icons[$type] . '<span>' . $text . '</span></h2>';
