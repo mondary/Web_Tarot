@@ -6,7 +6,7 @@ Toutes les notes de release du projet Web Tarot. Le format de version suit `🔥
 
 ## TODO — Roadmap
 
-Statut : `3.2026.22` (navigation clavier v3 + recherche mobile)
+Statut : `3.2026.23` (V3 PHP live + grille plate + intercalaires)
 
 ### Phase 1 — Fondations ✅
 - [x] Interface V2 unifiée (carousel d'accueil + grille par famille + vue détail)
@@ -31,10 +31,25 @@ Statut : `3.2026.22` (navigation clavier v3 + recherche mobile)
 
 ## Releases
 
+### [3.2026.23] - 2026-07-24
+#### Added
+- **V3 PHP live** sur `mondary.design/pk/tarot3/` : architecture PHP+SQLite,路由 réécrit, navigation clavier complète
+- **Grille plate 78 cartes** : une seule grille continue sans pagination famille
+- **Cartes intercalaires `.fam-card`** : 5 tuiles verticales avec SVG originaux de la vue Rapide (bâtons, épées, coupes, deniers + glyphe majeurs), cliquables vers la première lame de chaque famille
+- **Navigation clavier dans la grille** : `↑↓←→` pour sélectionner, `Enter` pour ouvrir, `Escape` pour revenir à l'accueil
+- **Recherche mobile** : auto-focus de l'input + `inputmode="search"` sur toutes les tailles d'écran
+- **Pictogrammes SVG** pour Signification (étoile) et Description (livre ouvert) dans les fiches
+- **Scroll en haut** : les fiches s'ouvrent toujours au sommet de la page
+
+#### Fixed
+- **Regex `themePattern`** : compatibilité PHP o2switch (`\x{2019}` migré en double-quoted string)
+- **Bouton Retour** : pointe vers l'accueil V3 au lieu de la page famille
+- **Hauteur des intercalaires** : alignée sur les cartes normales de la grille (`aspect-ratio: 2/3.6`)
+
 ### [3.2026.22] - 2026-07-24
 #### Fixed
-- **Navigation clavier v3** : flèches ← → ↑ ↓ fonctionnent sur les grilles landing et famille, avec sélection visuelle (`.selected`) et Enter pour ouvrir
-- **Recherche mobile** : auto-focus de l'input de recherche sur toutes les tailles d'écran (suppression condition `min-width:901px`), ajout `inputmode="search"` + `autofocus`
+- Navigation clavier v3 (flèches sur grilles landing + famille, sélection visuelle)
+- Auto-focus recherche mobile (suppression condition `min-width:901px`)
 
 ### [3.2026.13] - 2026-07-22
 #### Added
