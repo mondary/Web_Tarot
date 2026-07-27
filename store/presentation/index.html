@@ -127,6 +127,20 @@ footer .cp{font-family:'Geist Mono',monospace;font-size:.58rem;color:var(--mist)
 .rv{opacity:0;transform:translateY(28px);transition:opacity .8s var(--ease),transform .8s var(--ease)}
 .rv.in{opacity:1;transform:none}
 @media(prefers-reduced-motion:reduce){.rv{opacity:1;transform:none}}
+
+/* ====== FEATURE GRID ====== */
+.fgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:.8rem;max-width:860px;margin:0 auto}
+.fcard{padding:1.5rem;border:1px solid var(--line);border-radius:1rem;background:rgba(18,19,42,.5);transition:.4s var(--ease)}
+.fcard:hover{border-color:rgba(201,162,39,.2);translate:0 -2px}
+.fcard .fi{width:34px;height:34px;border-radius:9px;background:rgba(201,162,39,.08);color:var(--gold);display:grid;place-items:center;margin-bottom:.9rem}
+.fcard .fi svg{width:16px;height:16px}
+.fcard h4{font-size:.95rem;font-weight:600;margin-bottom:.25rem;letter-spacing:-.01em}
+.fcard p{color:var(--mist);font-size:.78rem;line-height:1.5;font-weight:300}
+
+/* ====== TAG LIST ====== */
+.taglist{display:flex;flex-wrap:wrap;gap:.5rem;justify-content:center;max-width:600px;margin:1.5rem auto 0}
+.taglist span{padding:.35rem .8rem;border:1px solid var(--line);border-radius:100px;font-size:.74rem;color:var(--moon);background:rgba(18,19,42,.4);font-weight:400}
+.taglist span.gold{color:var(--gold);border-color:rgba(201,162,39,.2);background:rgba(201,162,39,.06)}
 </style>
 </head>
 <body>
@@ -175,6 +189,35 @@ footer .cp{font-family:'Geist Mono',monospace;font-size:.58rem;color:var(--mist)
   <p>78 lames dans une grille continue. Cartes intercalaires SVG par famille. Navigation clavier complète : flèches pour sélectionner, Entrée pour ouvrir.</p>
 </div>
 
+<!-- FEATURES: 4 VIEWS -->
+<div class="stext rv">
+  <div class="tag">Quatre façons de lire</div>
+  <h2>Du <em>premier regard</em><br>au voyage complet.</h2>
+  <p>Que vous découvriez le tarot ou que vous le pratiquiez depuis des années, il y a une vue faite pour vous.</p>
+</div>
+<div class="fgrid rv">
+  <div class="fcard">
+    <div class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg></div>
+    <h4>Classique</h4>
+    <p>Grille par famille + fiche structurée avec image, métadonnées et lecture guidée.</p>
+  </div>
+  <div class="fcard">
+    <div class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="4" width="20" height="14" rx="2"/><path d="M2 8h20"/></svg></div>
+    <h4>Immersive</h4>
+    <p>Diaporama plein écran. Hero image qui défile, panneau contenu qui remonte par-dessus.</p>
+  </div>
+  <div class="fcard">
+    <div class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 19V5a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v14l-4-2-4 2-4-2-4 2Z"/><path d="M8 8h8M8 12h8"/></svg></div>
+    <h4>Détaillée</h4>
+    <p>Dossier éditorial : planche symbolique annotée, mots-clés en deux colonnes, domaines de vie.</p>
+  </div>
+  <div class="fcard">
+    <div class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></div>
+    <h4>Rapide</h4>
+    <p>Lecture express : image plein écran, Réponse Oui/Non, Affirmation, mots-clés positifs.</p>
+  </div>
+</div>
+
 <!-- DIVIDER -->
 <div class="divider rv"><span>Les Arcanes Majeurs</span></div>
 
@@ -199,6 +242,45 @@ footer .cp{font-family:'Geist Mono',monospace;font-size:.58rem;color:var(--mist)
   <img src="../screenshots-presentation/desk-mort.png" alt="Fiche La Mort" loading="lazy">
 </div>
 
+<!-- FEATURES: CONTENT DEPTH -->
+<div class="stext rv">
+  <div class="tag">Bien plus que des mots-clés</div>
+  <h2>Chaque carte,<br>un <em>dossier complet.</em></h2>
+  <p>Pas juste un nom et une image. Chaque lame ouvre un univers de lecture pour comprendre, interpréter et appliquer.</p>
+</div>
+<div class="fgrid rv">
+  <div class="fcard">
+    <div class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 2"/></svg></div>
+    <h4>Description visuelle</h4>
+    <p>Les symboles, les couleurs, les personnages et les détails de l'illustration expliqués simplement.</p>
+  </div>
+  <div class="fcard">
+    <div class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2v20M2 12h20"/><circle cx="12" cy="12" r="4"/></svg></div>
+    <h4>Signification & interprétation</h4>
+    <p>Le sens général de la carte, son message et comment le lire dans un tirage.</p>
+  </div>
+  <div class="fcard">
+    <div class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 11l3 3 8-8"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></div>
+    <h4>Mots-clés endroit / envers</h4>
+    <p>Les essences de la lame, à l'endroit comme à l'envers, pour une lecture rapide et juste.</p>
+  </div>
+  <div class="fcard">
+    <div class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20.8 4.8a5.5 5.5 0 0 0-7.8 0L12 5.9l-1.1-1.1a5.5 5.5 0 0 0-7.8 7.8L12 21l8.9-8.4a5.5 5.5 0 0 0-.1-7.8Z"/></svg></div>
+    <h4>Amour · Travail · Finances</h4>
+    <p>La carte décortiquée domaine par domaine, avec des pictogrammes dédiés pour s'y retrouver.</p>
+  </div>
+  <div class="fcard">
+    <div class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><path d="m16 8-2 6-6 2 2-6 6-2Z"/></svg></div>
+    <h4>Guidance spirituelle</h4>
+    <p>Le conseil de la carte, sa direction, ce qu'elle vous invite à faire ou à lâcher.</p>
+  </div>
+  <div class="fcard">
+    <div class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 6h18M3 12h18M3 18h12"/></svg></div>
+    <h4>Affirmation</h4>
+    <p>Une phrase à méditer, à répéter, à intégrer. Bilingue français et espagnol.</p>
+  </div>
+</div>
+
 <!-- DIVIDER -->
 <div class="divider rv"><span>L'Étoile · La Lune · Le Soleil</span></div>
 
@@ -215,6 +297,45 @@ footer .cp{font-family:'Geist Mono',monospace;font-size:.58rem;color:var(--mist)
 <!-- FULL BLEED: L'Étoile screenshot -->
 <div class="bleed rv">
   <img src="../screenshots-presentation/desk-etoile.png" alt="Fiche L'Étoile" loading="lazy">
+</div>
+
+<!-- FEATURES: TIRAGES + SCANNER -->
+<div class="stext rv">
+  <div class="tag">Tirages & Outils</div>
+  <h2>Tirez les cartes.<br><em>Obtenez votre réponse.</em></h2>
+  <p>Le site n'est pas qu'une encyclopédie. C'est aussi un outil de tirage interactif et un scanner de reconnaissance.</p>
+</div>
+<div class="fgrid rv">
+  <div class="fcard">
+    <div class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/><circle cx="12" cy="15" r="2" fill="currentColor"/></svg></div>
+    <h4>Carte du jour</h4>
+    <p>Une lame tirée au hasard chaque matin pour guider votre journée.</p>
+  </div>
+  <div class="fcard">
+    <div class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2v20M2 12h20"/><path d="M5 5l14 14M19 5L5 19"/></svg></div>
+    <h4>Tirages en ligne</h4>
+    <p>7 spreads interactifs : croix, passé/présent/futur, tirage amoureux, et plus. Retournement de carte animé.</p>
+  </div>
+  <div class="fcard">
+    <div class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><path d="M8 12h8M12 8v8"/></svg></div>
+    <h4>Réponse Oui / Non</h4>
+    <p>Chaque carte donne une réponse claire : Oui, Non, ou Peut-être. Direct, sans détours.</p>
+  </div>
+  <div class="fcard">
+    <div class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 8V5a1 1 0 0 1 1-1h3M16 4h3a1 1 0 0 1 1 1v3M20 16v3a1 1 0 0 1-1 1h-3M8 20H5a1 1 0 0 1-1-1v-3"/><path d="M8 12h8"/></svg></div>
+    <h4>Scanner caméra</h4>
+    <p>Pointez votre caméra vers une carte physique. Le système la reconnaît en moins d'une seconde et ouvre sa fiche.</p>
+  </div>
+  <div class="fcard">
+    <div class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg></div>
+    <h4>Recherche instantanée</h4>
+    <p>Tapez une lettre pour filtrer les 78 cartes par nom. Flèches pour naviguer, Entrée pour ouvrir.</p>
+  </div>
+  <div class="fcard">
+    <div class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M6 10h.01M10 10h.01M14 10h.01M18 10h.01M8 14h8"/></svg></div>
+    <h4>Navigation clavier</h4>
+    <p>Flèches pour sélectionner. Entrée pour ouvrir. Échap pour revenir. Le site se pilote sans souris.</p>
+  </div>
 </div>
 
 <!-- STATS -->
