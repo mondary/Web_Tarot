@@ -3,431 +3,427 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Tarot Divinatoire — L'expérience tarot ultime</title>
+<title>Tarot Divinatoire — 78 lames, une expérience</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;500;600;700;800;900&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Outfit:wght@200;300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 :root{
-  --bg:#08070d;--fg:#f5f3ee;--muted:#99919f;--dim:#5a5560;
-  --gold:#d4a84b;--gold-bright:#f0c862;--amber:#e89846;
-  --glass:rgba(255,255,255,.04);--glass-border:rgba(255,255,255,.08);
-  --ease:cubic-bezier(.32,.72,0,1);--ease-out:cubic-bezier(.16,1,.3,1);
+  --cream:#f5f0e6;--cream-2:#ebe4d4;--paper:#fdfbf5;
+  --ink:#1a1714;--ink-soft:#4a443c;--muted:#8a8378;
+  --gold:#b8862e;--gold-light:#d4a84b;--gold-pale:rgba(184,134,46,.08);
+  --line:rgba(26,23,20,.08);--line-2:rgba(26,23,20,.04);
+  --ease:cubic-bezier(.16,1,.3,1);--spring:cubic-bezier(.32,.72,0,1);
 }
 html{scroll-behavior:smooth}
-body{background:var(--bg);color:var(--fg);font-family:'Outfit',sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body{background:var(--cream);color:var(--ink);font-family:'Outfit',sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden;font-weight:400}
 main{overflow-x:hidden;width:100%;max-width:100%}
 img{display:block;max-width:100%}
 a{color:inherit;text-decoration:none}
-::selection{background:var(--gold);color:#08070d}
+::selection{background:var(--gold);color:var(--paper)}
 
-/* ===== AMBIENT BACKGROUND ===== */
-.ambient{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
-.orb{position:absolute;border-radius:50%;filter:blur(120px);opacity:.35;will-change:transform}
-.orb-1{width:600px;height:600px;top:-200px;left:-100px;background:radial-gradient(circle,#d4a84b,transparent 70%)}
-.orb-2{width:500px;height:500px;top:30%;right:-150px;background:radial-gradient(circle,#8b5cf6,transparent 70%);opacity:.2}
-.orb-3{width:700px;height:700px;bottom:-300px;left:20%;background:radial-gradient(circle,#e89846,transparent 70%);opacity:.15}
-
-/* ===== NAV ===== */
-.nav{position:fixed;top:1.5rem;left:50%;transform:translateX(-50%);z-index:100;
-  display:flex;align-items:center;gap:.3rem;padding:.5rem .5rem .5rem 1.2rem;
-  background:rgba(8,7,13,.6);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
-  border:1px solid var(--glass-border);border-radius:100px;
-  transition:transform .4s var(--ease),background .3s}
-.nav.scrolled{background:rgba(8,7,13,.85)}
-.nav-brand{font-weight:600;font-size:.92rem;letter-spacing:-.01em;display:flex;align-items:center;gap:.55rem;margin-right:1rem}
-.nav-brand-dot{width:8px;height:8px;border-radius:50%;background:var(--gold);box-shadow:0 0 12px var(--gold)}
-.nav-links{display:flex;gap:.2rem}
-.nav-links a{padding:.5rem .9rem;border-radius:100px;font-size:.82rem;font-weight:400;color:var(--muted);transition:.25s var(--ease)}
-.nav-links a:hover{color:var(--fg);background:var(--glass)}
-.nav-cta{padding:.55rem 1.1rem;border-radius:100px;background:var(--fg);color:#08070d;font-size:.82rem;font-weight:600;transition:.3s var(--ease);display:flex;align-items:center;gap:.4rem}
+/* === NAV === */
+.nav{position:fixed;top:1.2rem;left:50%;transform:translateX(-50%);z-index:200;
+  display:flex;align-items:center;gap:.3rem;padding:.45rem .45rem .45rem 1.1rem;
+  background:rgba(245,240,230,.7);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
+  border:1px solid var(--line);border-radius:100px;
+  transition:all .4s var(--spring);box-shadow:0 4px 24px rgba(0,0,0,.04)}
+.nav.scrolled{background:rgba(253,251,245,.92);box-shadow:0 8px 32px rgba(0,0,0,.06)}
+.nav-brand{font-weight:600;font-size:.9rem;letter-spacing:-.01em;display:flex;align-items:center;gap:.5rem;margin-right:.8rem}
+.nav-dot{width:7px;height:7px;border-radius:50%;background:var(--gold)}
+.nav-links{display:flex;gap:.15rem}
+.nav-links a{padding:.45rem .85rem;border-radius:100px;font-size:.8rem;color:var(--ink-soft);transition:.25s var(--spring)}
+.nav-links a:hover{color:var(--ink);background:var(--gold-pale)}
+.nav-cta{padding:.5rem 1rem;border-radius:100px;background:var(--ink);color:var(--paper);font-size:.8rem;font-weight:500;transition:.3s var(--spring);display:flex;align-items:center;gap:.35rem}
 .nav-cta:hover{background:var(--gold);transform:scale(.97)}
 @media(max-width:640px){.nav-links{display:none}}
 
-/* ===== HERO ===== */
-.hero{position:relative;z-index:1;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:8rem 1.5rem 4rem}
-.hero-badge{display:inline-flex;align-items:center;gap:.5rem;padding:.4rem 1rem;border:1px solid var(--glass-border);border-radius:100px;font-family:'JetBrains Mono',monospace;font-size:.65rem;letter-spacing:.12em;text-transform:uppercase;color:var(--gold-bright);margin-bottom:2.5rem;background:var(--glass);backdrop-filter:blur(10px)}
-.hero-badge::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--gold-bright);animation:pulse 2s ease-in-out infinite}
-@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(.7)}}
-.hero h1{font-family:'Outfit',sans-serif;font-weight:800;font-size:clamp(3.2rem,8.5vw,7.5rem);line-height:.95;letter-spacing:-.045em;max-width:14ch;margin-bottom:1.8rem}
-.hero h1 .accent{font-family:'Instrument Serif',serif;font-style:italic;font-weight:400;background:linear-gradient(135deg,var(--gold-bright),var(--amber));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-.hero p{font-size:clamp(1.05rem,2vw,1.3rem);color:var(--muted);max-width:36rem;line-height:1.65;font-weight:300;margin-bottom:3rem}
-.hero-cta-row{display:flex;gap:.8rem;flex-wrap:wrap;justify-content:center}
-.btn-primary{display:inline-flex;align-items:center;gap:.6rem;padding:.85rem 1.6rem;border-radius:100px;background:var(--fg);color:#08070d;font-weight:600;font-size:.9rem;transition:.3s var(--ease);position:relative;overflow:hidden}
-.btn-primary:hover{transform:translateY(-2px);box-shadow:0 12px 40px rgba(245,243,238,.2)}
-.btn-primary .arrow{width:28px;height:28px;border-radius:50%;background:var(--gold);display:grid;place-items:center;transition:.3s var(--ease);margin-left:.2rem}
-.btn-primary:hover .arrow{transform:translate(2px,-1px) scale(1.05)}
-.btn-primary .arrow svg{width:14px;height:14px}
-.btn-ghost{display:inline-flex;align-items:center;gap:.5rem;padding:.85rem 1.6rem;border-radius:100px;border:1px solid var(--glass-border);color:var(--fg);font-weight:500;font-size:.9rem;transition:.3s var(--ease);background:var(--glass)}
-.btn-ghost:hover{border-color:var(--gold);color:var(--gold-bright);transform:translateY(-2px)}
+/* === HERO === */
+.hero{position:relative;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:7rem 1.5rem 0;text-align:center;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;background:
+  radial-gradient(ellipse 50% 40% at 50% 20%,rgba(212,168,75,.15),transparent 60%),
+  radial-gradient(ellipse 60% 50% at 50% 100%,rgba(184,134,46,.06),transparent 60%);
+  pointer-events:none}
+.hero-eyebrow{position:relative;font-family:'JetBrains Mono',monospace;font-size:.65rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:2rem;display:flex;align-items:center;gap:.6rem}
+.hero-eyebrow::before,.hero-eyebrow::after{content:'';width:30px;height:1px;background:var(--gold);opacity:.4}
+.hero h1{position:relative;font-family:'Instrument Serif',serif;font-weight:400;font-size:clamp(3.5rem,11vw,10rem);line-height:.88;letter-spacing:-.025em;max-width:11ch;margin-bottom:1.5rem}
+.hero h1 .gold{color:var(--gold);font-style:italic}
+.hero p{position:relative;font-size:clamp(1.05rem,1.8vw,1.25rem);color:var(--ink-soft);max-width:34rem;line-height:1.6;font-weight:300;margin-bottom:2.5rem}
+.hero-cta{position:relative;display:flex;gap:.6rem;flex-wrap:wrap;justify-content:center}
+.btn{display:inline-flex;align-items:center;gap:.5rem;padding:.8rem 1.5rem;border-radius:100px;font-weight:500;font-size:.88rem;transition:.3s var(--spring);cursor:pointer;border:none}
+.btn-dark{background:var(--ink);color:var(--paper)}
+.btn-dark:hover{background:var(--gold);transform:translateY(-2px);box-shadow:0 12px 32px rgba(184,134,46,.25)}
+.btn-dark .ic{width:26px;height:26px;border-radius:50%;background:var(--gold);display:grid;place-items:center;transition:.3s var(--spring)}
+.btn-dark:hover .ic{background:var(--ink);transform:translate(2px,-1px)}
+.btn-dark .ic svg{width:13px;height:13px}
+.btn-out{background:transparent;color:var(--ink);border:1px solid var(--line)}
+.btn-out:hover{border-color:var(--gold);color:var(--gold);transform:translateY(-2px)}
 
-/* ===== HERO MOCKUP ===== */
-.hero-mockup{position:relative;z-index:1;width:100%;max-width:1100px;margin:4rem auto 0;padding:0 1.5rem}
-.mockup-frame{position:relative;border-radius:1.5rem;overflow:hidden;border:1px solid var(--glass-border);background:var(--glass);backdrop-filter:blur(20px);box-shadow:0 40px 100px rgba(0,0,0,.5),0 0 0 1px rgba(255,255,255,.03)}
-.mockup-bar{display:flex;align-items:center;gap:.4rem;padding:.7rem 1rem;border-bottom:1px solid var(--glass-border);background:rgba(255,255,255,.02)}
-.mockup-bar .dot{width:10px;height:10px;border-radius:50%}
-.mockup-bar .dot.r{background:#ff5f57}.mockup-bar .dot.y{background:#febc2e}.mockup-bar .dot.g{background:#28c840}
-.mockup-bar .url{flex:1;text-align:center;font-family:'JetBrains Mono',monospace;font-size:.7rem;color:var(--dim)}
-.mockup-bar .url span{color:var(--gold)}
-.mockup-screen{position:relative;overflow:hidden}
-.mockup-screen img{width:100%;transition:transform 8s var(--ease-out)}
-.mockup-frame:hover .mockup-screen img{transform:scale(1.03)}
+/* === HERO IMAGE === */
+.hero-img{position:relative;width:100%;max-width:1000px;margin:4rem auto -8rem;padding:0 1.5rem;z-index:2}
+.hero-img-frame{border-radius:1rem 1rem 0 0;overflow:hidden;border:1px solid var(--line);border-bottom:none;
+  box-shadow:0 -20px 80px rgba(184,134,46,.08),0 40px 80px rgba(0,0,0,.12)}
+.hero-img-frame img{width:100%;aspect-ratio:16/10;object-fit:cover;object-position:top}
 
-/* ===== MARQUEE ===== */
-.marquee{position:relative;z-index:1;padding:2.5rem 0;border-top:1px solid var(--glass-border);border-bottom:1px solid var(--glass-border);overflow:hidden;background:rgba(255,255,255,.01)}
-.marquee-track{display:flex;gap:3rem;white-space:nowrap;animation:scroll 30s linear infinite;width:max-content}
-@keyframes scroll{to{transform:translateX(-50%)}}
-.marquee-item{font-family:'Instrument Serif',serif;font-style:italic;font-size:1.5rem;color:var(--dim);display:flex;align-items:center;gap:3rem}
-.marquee-item::after{content:'★';color:var(--gold);font-size:1rem}
+/* === WAVE === */
+.wave{position:relative;width:100%;height:8rem;background:var(--cream);z-index:1}
+.wave svg{position:absolute;bottom:0;left:0;width:100%;height:100%}
+.wave path{fill:var(--paper)}
 
-/* ===== SECTION ===== */
-section{position:relative;z-index:1;padding:7rem 1.5rem}
-.section-head{text-align:center;max-width:42rem;margin:0 auto 5rem}
-.section-eyebrow{font-family:'JetBrains Mono',monospace;font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:1.2rem;display:inline-flex;align-items:center;gap:.5rem}
-.section-eyebrow::before{content:'';width:24px;height:1px;background:var(--gold)}
-.section-eyebrow::after{content:'';width:24px;height:1px;background:var(--gold)}
-.section-head h2{font-size:clamp(2rem,5vw,3.8rem);font-weight:700;line-height:1.05;letter-spacing:-.03em;margin-bottom:1.2rem}
-.section-head h2 em{font-family:'Instrument Serif',serif;font-style:italic;font-weight:400;color:var(--gold-bright)}
-.section-head p{color:var(--muted);font-size:1.05rem;line-height:1.7;font-weight:300}
+/* === SECTION BASE === */
+.section{padding:6rem 1.5rem;position:relative}
+.section-head{text-align:center;max-width:40rem;margin:0 auto 4rem}
+.section-eyebrow{font-family:'JetBrains Mono',monospace;font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem}
+.section-head h2{font-family:'Instrument Serif',serif;font-weight:400;font-size:clamp(2.2rem,6vw,5rem);line-height:1;letter-spacing:-.02em;margin-bottom:1rem}
+.section-head h2 em{font-style:italic;color:var(--gold)}
+.section-head p{color:var(--ink-soft);font-size:1.05rem;line-height:1.65;font-weight:300}
 
-/* ===== BENTO GRID ===== */
-.bento{display:grid;grid-template-columns:repeat(12,1fr);gap:1rem;max-width:1100px;margin:0 auto}
-.bento-card{position:relative;border:1px solid var(--glass-border);border-radius:1.5rem;overflow:hidden;background:var(--glass);backdrop-filter:blur(10px);transition:.5s var(--ease);display:flex;flex-direction:column}
-.bento-card:hover{border-color:rgba(212,168,75,.3);transform:translateY(-4px)}
-.bento-card .bc-inner{padding:2rem;flex:1;display:flex;flex-direction:column}
-.bento-card .bc-icon{width:44px;height:44px;border-radius:14px;border:1px solid var(--glass-border);display:grid;place-items:center;color:var(--gold);background:rgba(212,168,75,.06);margin-bottom:1.5rem}
-.bento-card .bc-icon svg{width:20px;height:20px}
-.bento-card h3{font-size:1.25rem;font-weight:600;letter-spacing:-.01em;margin-bottom:.5rem}
-.bento-card p{color:var(--muted);font-size:.88rem;line-height:1.6;font-weight:300}
-.bento-card .bc-img{margin:auto -2rem -2rem;margin-top:1.5rem;border-radius:1rem 1rem 0 0;overflow:hidden;border-top:1px solid var(--glass-border)}
-.bento-card .bc-img img{width:100%;transition:transform 6s var(--ease-out)}
-.bento-card:hover .bc-img img{transform:scale(1.04)}
+/* === PAPER SECTIONS === */
+.paper{background:var(--paper)}
 
-.bento-large{grid-column:span 8;grid-row:span 2}
-.bento-med{grid-column:span 4}
-.bento-wide{grid-column:span 6}
-.bento-half{grid-column:span 4}
-.bento-full{grid-column:span 12}
+/* === BENTO === */
+.bento{display:grid;grid-template-columns:repeat(12,1fr);gap:1rem;max-width:1080px;margin:0 auto}
+.bento-card{background:var(--cream);border:1px solid var(--line);border-radius:1.25rem;overflow:hidden;transition:.5s var(--spring);display:flex;flex-direction:column}
+.bento-card:hover{transform:translateY(-3px);box-shadow:0 16px 48px rgba(0,0,0,.06);border-color:rgba(184,134,46,.2)}
+.bento-card .pad{padding:1.8rem;flex:1;display:flex;flex-direction:column}
+.bento-card .ic{width:40px;height:40px;border-radius:12px;background:var(--gold-pale);color:var(--gold);display:grid;place-items:center;margin-bottom:1.2rem}
+.bento-card .ic svg{width:18px;height:18px}
+.bento-card h3{font-size:1.15rem;font-weight:600;letter-spacing:-.015em;margin-bottom:.4rem}
+.bento-card p{color:var(--muted);font-size:.85rem;line-height:1.55;font-weight:300}
+.bento-card .shot{margin:auto -1.8rem -1.8rem;margin-top:auto;border-top:1px solid var(--line-2);overflow:hidden}
+.bento-card .shot img{width:100%;transition:transform 6s var(--ease)}
+.bento-card:hover .shot img{transform:scale(1.03)}
 
-@media(max-width:900px){
-  .bento-large,.bento-med,.bento-wide,.bento-half,.bento-full{grid-column:span 12}
-}
+.bc-1{grid-column:span 7;grid-row:span 2}
+.bc-2{grid-column:span 5}
+.bc-3{grid-column:span 5}
+.bc-4{grid-column:span 4}
+.bc-5{grid-column:span 4}
+.bc-6{grid-column:span 4}
+@media(max-width:900px){.bc-1,.bc-2,.bc-3,.bc-4,.bc-5,.bc-6{grid-column:span 12}}
 
-/* ===== DEVICE SHOWCASE ===== */
-.devices{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1.2fr .8fr;gap:3rem;align-items:center}
-@media(max-width:900px){.devices{grid-template-columns:1fr}}
-.devices-text .tag{font-family:'JetBrains Mono',monospace;font-size:.65rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem}
-.devices-text h3{font-size:clamp(1.8rem,3.5vw,3rem);font-weight:700;line-height:1;letter-spacing:-.025em;margin-bottom:1.2rem}
-.devices-text h3 em{font-family:'Instrument Serif',serif;font-style:italic;font-weight:400;color:var(--gold-bright)}
-.devices-text p{color:var(--muted);font-size:1rem;line-height:1.7;font-weight:300;margin-bottom:1.5rem}
-.devices-text ul{list-style:none;display:grid;gap:.6rem}
-.devices-text li{position:relative;padding-left:1.5rem;color:var(--fg);font-size:.9rem;font-weight:400}
-.devices-text li::before{content:'';position:absolute;left:0;top:.45rem;width:8px;height:8px;border-radius:2px;background:var(--gold);transform:rotate(45deg)}
+/* === DEVICE MOCKUP === */
+.showcase{max-width:1080px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center}
+@media(max-width:900px){.showcase{grid-template-columns:1fr;gap:2.5rem}}
+.showcase-text .tag{font-family:'JetBrains Mono',monospace;font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem}
+.showcase-text h3{font-family:'Instrument Serif',serif;font-weight:400;font-size:clamp(1.8rem,3.5vw,3rem);line-height:1.05;letter-spacing:-.02em;margin-bottom:1rem}
+.showcase-text h3 em{font-style:italic;color:var(--gold)}
+.showcase-text p{color:var(--ink-soft);font-size:.98rem;line-height:1.65;font-weight:300;margin-bottom:1.2rem}
+.showcase-text ul{list-style:none;display:grid;gap:.5rem}
+.showcase-text li{position:relative;padding-left:1.3rem;font-size:.88rem;font-weight:400;color:var(--ink-soft)}
+.showcase-text li::before{content:'';position:absolute;left:0;top:.5rem;width:6px;height:6px;border-radius:1px;background:var(--gold);transform:rotate(45deg)}
 
-.phone-mockup{position:relative;width:100%;max-width:320px;margin:0 auto;perspective:1000px}
-.phone-frame{position:relative;border-radius:2.5rem;padding:.6rem;background:linear-gradient(145deg,#1a1820,#0a0810);border:1px solid var(--glass-border);box-shadow:0 30px 80px rgba(0,0,0,.5),inset 0 1px 1px rgba(255,255,255,.05);transition:transform .6s var(--ease)}
-.phone-frame:hover{transform:translateY(-6px) rotateY(-3deg)}
-.phone-screen{border-radius:2rem;overflow:hidden;background:#000;position:relative;aspect-ratio:9/19.5}
-.phone-notch{position:absolute;top:0;left:50%;transform:translateX(-50%);width:40%;height:22px;background:#0a0810;border-radius:0 0 14px 14px;z-index:2}
+/* Browser frame */
+.browser{border-radius:1rem;overflow:hidden;border:1px solid var(--line);box-shadow:0 24px 64px rgba(0,0,0,.08);background:var(--paper);transition:.5s var(--spring)}
+.browser:hover{transform:translateY(-4px);box-shadow:0 32px 80px rgba(0,0,0,.1)}
+.browser-bar{display:flex;align-items:center;gap:.35rem;padding:.6rem .9rem;border-bottom:1px solid var(--line);background:var(--cream-2)}
+.browser-bar .d{width:9px;height:9px;border-radius:50%}
+.browser-bar .r{background:#ff5f57}.browser-bar .y{background:#febc2e}.browser-bar .g{background:#28c840}
+.browser-bar .url{flex:1;text-align:center;font-family:'JetBrains Mono',monospace;font-size:.65rem;color:var(--muted)}
+.browser-bar .url b{color:var(--gold);font-weight:500}
+.browser-screen{overflow:hidden;position:relative}
+.browser-screen img{width:100%;aspect-ratio:16/10;object-fit:cover;object-position:top}
+
+/* Phone frame */
+.phone{position:relative;width:100%;max-width:280px;margin:0 auto;border-radius:2.2rem;padding:.5rem;background:linear-gradient(145deg,#2a2730,#15131a);border:1px solid var(--line);box-shadow:0 24px 64px rgba(0,0,0,.15),inset 0 1px 1px rgba(255,255,255,.06);transition:.5s var(--spring)}
+.phone:hover{transform:translateY(-4px)}
+.phone-screen{border-radius:1.8rem;overflow:hidden;background:#000;aspect-ratio:9/19.5;position:relative}
 .phone-screen img{width:100%;height:100%;object-fit:cover}
+.phone-notch{position:absolute;top:0;left:50%;transform:translateX(-50%);width:38%;height:20px;background:#15131a;border-radius:0 0 12px 12px;z-index:2}
 
-/* ===== VIEW GALLERY ===== */
-.gallery{max-width:1100px;margin:0 auto;display:grid;gap:2rem}
+/* === GALLERY === */
+.gallery{max-width:1080px;margin:0 auto;display:grid;gap:4rem}
 .gallery-item{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center}
-.gallery-item.reverse{direction:rtl}
-.gallery-item.reverse > *{direction:ltr}
-.gallery-img{border-radius:1.2rem;overflow:hidden;border:1px solid var(--glass-border);box-shadow:0 20px 60px rgba(0,0,0,.4);transition:.5s var(--ease)}
-.gallery-img:hover{transform:translateY(-4px);border-color:rgba(212,168,75,.2)}
-.gallery-img img{width:100%;transition:transform 5s var(--ease-out)}
+.gallery-item.flip{direction:rtl}
+.gallery-item.flip>*{direction:ltr}
+.gallery-img{border-radius:1rem;overflow:hidden;border:1px solid var(--line);box-shadow:0 20px 60px rgba(0,0,0,.06);transition:.5s var(--spring)}
+.gallery-img:hover{transform:translateY(-3px);box-shadow:0 28px 72px rgba(0,0,0,.08)}
+.gallery-img img{width:100%;transition:transform 5s var(--ease)}
 .gallery-img:hover img{transform:scale(1.03)}
-.gallery-text .tag{font-family:'JetBrains Mono',monospace;font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:.8rem}
-.gallery-text h3{font-size:clamp(1.6rem,3vw,2.5rem);font-weight:700;letter-spacing:-.02em;line-height:1.05;margin-bottom:.8rem}
-.gallery-text h3 em{font-family:'Instrument Serif',serif;font-style:italic;font-weight:400;color:var(--gold-bright)}
-.gallery-text p{color:var(--muted);font-size:.92rem;line-height:1.65;font-weight:300;max-width:28rem}
-@media(max-width:768px){.gallery-item,.gallery-item.reverse{grid-template-columns:1fr;direction:ltr}}
+.gallery-text .tag{font-family:'JetBrains Mono',monospace;font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:.7rem}
+.gallery-text h3{font-family:'Instrument Serif',serif;font-weight:400;font-size:clamp(1.6rem,3vw,2.5rem);line-height:1.05;letter-spacing:-.015em;margin-bottom:.7rem}
+.gallery-text h3 em{font-style:italic;color:var(--gold)}
+.gallery-text p{color:var(--ink-soft);font-size:.92rem;line-height:1.6;font-weight:300;max-width:26rem}
+@media(max-width:768px){.gallery-item,.gallery-item.flip{grid-template-columns:1fr;direction:ltr;gap:1.5rem}}
 
-/* ===== STATS BAND ===== */
-.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:0;max-width:900px;margin:0 auto;border:1px solid var(--glass-border);border-radius:1.5rem;overflow:hidden;background:var(--glass);backdrop-filter:blur(10px)}
-.stat{text-align:center;padding:2.5rem 1rem;border-right:1px solid var(--glass-border)}
+/* === STATS === */
+.stats-band{display:flex;justify-content:center;gap:0;max-width:800px;margin:0 auto;border-radius:1.25rem;overflow:hidden;border:1px solid var(--line);background:var(--paper)}
+.stat{text-align:center;padding:2.2rem 1rem;flex:1;border-right:1px solid var(--line)}
 .stat:last-child{border-right:none}
-.stat .num{font-size:clamp(2rem,4vw,3.2rem);font-weight:800;letter-spacing:-.03em;background:linear-gradient(135deg,var(--gold-bright),var(--amber));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-.stat .lbl{font-family:'JetBrains Mono',monospace;font-size:.6rem;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);margin-top:.5rem}
-@media(max-width:640px){.stats{grid-template-columns:repeat(2,1fr)}.stat:nth-child(2){border-right:none}.stat:nth-child(1),.stat:nth-child(2){border-bottom:1px solid var(--glass-border)}}
+.stat .n{font-family:'Instrument Serif',serif;font-size:clamp(2.2rem,4vw,3.5rem);font-weight:400;color:var(--gold);line-height:1}
+.stat .l{font-family:'JetBrains Mono',monospace;font-size:.58rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-top:.4rem}
+@media(max-width:640px){.stats-band{flex-wrap:wrap}.stat{flex:1 0 50%;border-bottom:1px solid var(--line)}.stat:nth-child(3),.stat:nth-child(4){border-bottom:none}.stat:nth-child(2){border-right:none}}
 
-/* ===== CTA ===== */
-.cta-section{text-align:center;padding:8rem 1.5rem;position:relative;z-index:1}
-.cta-section h2{font-size:clamp(2.5rem,6vw,5rem);font-weight:800;letter-spacing:-.035em;line-height:1;margin-bottom:1.5rem}
-.cta-section h2 em{font-family:'Instrument Serif',serif;font-style:italic;font-weight:400;background:linear-gradient(135deg,var(--gold-bright),var(--amber));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-.cta-section p{color:var(--muted);font-size:1.1rem;font-weight:300;margin-bottom:2.5rem}
+/* === CTA === */
+.cta{text-align:center;padding:8rem 1.5rem;position:relative}
+.cta::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 50% 60% at 50% 50%,rgba(184,134,46,.1),transparent 70%);pointer-events:none}
+.cta h2{position:relative;font-family:'Instrument Serif',serif;font-weight:400;font-size:clamp(2.5rem,7vw,6rem);line-height:.95;letter-spacing:-.02em;margin-bottom:1.2rem}
+.cta h2 em{font-style:italic;color:var(--gold)}
+.cta p{position:relative;color:var(--ink-soft);font-size:1.1rem;font-weight:300;margin-bottom:2.5rem}
 
-/* ===== FOOTER ===== */
-footer{border-top:1px solid var(--glass-border);padding:3rem 1.5rem;text-align:center;position:relative;z-index:1}
-footer .links{display:flex;gap:2rem;justify-content:center;flex-wrap:wrap;margin-bottom:1.5rem}
-footer .links a{color:var(--muted);font-size:.85rem;font-weight:400;transition:.25s}
-footer .links a:hover{color:var(--gold)}
-footer .copy{font-family:'JetBrains Mono',monospace;font-size:.7rem;color:var(--dim)}
+/* === FOOTER === */
+footer{background:var(--ink);color:var(--cream);padding:3rem 1.5rem 2rem;text-align:center}
+footer .fl{display:flex;gap:1.5rem;justify-content:center;flex-wrap:wrap;margin-bottom:1.2rem}
+footer .fl a{color:var(--muted);font-size:.82rem;transition:.25s}
+footer .fl a:hover{color:var(--gold-light)}
+footer .cp{font-family:'JetBrains Mono',monospace;font-size:.65rem;color:var(--muted);opacity:.5}
 
-/* ===== SCROLL REVEAL ===== */
-.reveal{opacity:0;transform:translateY(40px);transition:opacity .8s var(--ease-out),transform .8s var(--ease-out)}
-.reveal.in{opacity:1;transform:none}
-.reveal-delay-1{transition-delay:.1s}
-.reveal-delay-2{transition-delay:.2s}
-.reveal-delay-3{transition-delay:.3s}
+/* === MARQUEE === */
+.marquee{overflow:hidden;padding:1.5rem 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.marquee-track{display:flex;gap:2.5rem;white-space:nowrap;width:max-content;animation:mq 25s linear infinite}
+@keyframes mq{to{transform:translateX(-50%)}}
+.mq-item{font-family:'Instrument Serif',serif;font-style:italic;font-size:1.3rem;color:var(--muted);display:flex;align-items:center;gap:2.5rem}
+.mq-item::after{content:'✦';color:var(--gold);font-size:.8rem;font-style:normal}
 
-@media(prefers-reduced-motion:reduce){
-  .reveal{opacity:1;transform:none;transition:none}
-  .marquee-track{animation:none}
-  .mockup-screen img{transition:none}
-}
+/* === REVEAL === */
+.r{opacity:0;transform:translateY(30px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
+.r.in{opacity:1;transform:none}
+.rd1{transition-delay:.08s}.rd2{transition-delay:.16s}.rd3{transition-delay:.24s}
+@media(prefers-reduced-motion:reduce){.r{opacity:1;transform:none;transition:none}.marquee-track{animation:none}}
 </style>
 </head>
 <body>
 
-<div class="ambient">
-  <div class="orb orb-1"></div>
-  <div class="orb orb-2"></div>
-  <div class="orb orb-3"></div>
-</div>
-
 <!-- NAV -->
 <nav class="nav" id="nav">
-  <div class="nav-brand"><span class="nav-brand-dot"></span>Tarot</div>
+  <div class="nav-brand"><span class="nav-dot"></span>Tarot Divinatoire</div>
   <div class="nav-links">
-    <a href="#features">Fonctionnalités</a>
+    <a href="#features">Features</a>
     <a href="#views">Vues</a>
     <a href="#mobile">Mobile</a>
   </div>
-  <a class="nav-cta" href="https://mondary.design/pk/tarot3/" target="_blank" rel="noopener">
-    Essayer
-    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-  </a>
+  <a class="nav-cta" href="https://mondary.design/pk/tarot3/" target="_blank" rel="noopener">Essayer</a>
 </nav>
 
 <main>
 
 <!-- HERO -->
 <section class="hero">
-  <div class="hero-badge">Disponible maintenant · v3.2026</div>
-  <h1>Tirez vos cartes.<br><span class="accent">Lisez votre destin.</span></h1>
-  <p>78 lames du Tarot de Rider-Waite. Recherche instantanée. Scanner par caméra. Fiches complètes. Le tout dans une interface immersive, élégante, ultra-rapide.</p>
-  <div class="hero-cta-row">
-    <a class="btn-primary" href="https://mondary.design/pk/tarot3/" target="_blank" rel="noopener">
-      Découvrir le site
-      <span class="arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+  <div class="hero-eyebrow r">Application Web · Gratuit · Sans Pub</div>
+  <h1 class="r rd1">Lisez les <span class="gold">cartes</span>.<br>Lisez votre <span class="gold">destin.</span></h1>
+  <p class="r rd2">78 lames du Tarot de Rider-Waite. Recherche éclair. Scanner par caméra. Fiches complètes avec interprétation, amour, travail et guidance.</p>
+  <div class="hero-cta r rd3">
+    <a class="btn btn-dark" href="https://mondary.design/pk/tarot3/" target="_blank" rel="noopener">
+      Ouvrir le site
+      <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
     </a>
-    <a class="btn-ghost" href="#features">
-      Voir les fonctionnalités
-    </a>
+    <a class="btn btn-out" href="#features">Voir les features</a>
   </div>
 </section>
 
-<!-- HERO MOCKUP -->
-<div class="hero-mockup reveal">
-  <div class="mockup-frame">
-    <div class="mockup-bar">
-      <span class="dot r"></span><span class="dot y"></span><span class="dot g"></span>
-      <span class="url">mondary.design/pk/<span>tarot3</span></span>
-    </div>
-    <div class="mockup-screen">
-      <img src="../screenshots-presentation/03-grid.png" alt="Tarot — Grille principale" loading="lazy">
-    </div>
+<!-- HERO IMAGE -->
+<div class="hero-img r rd2">
+  <div class="hero-img-frame">
+    <img src="../screenshots-presentation/v3-grid.png" alt="Tarot Divinatoire — Grille principale" loading="eager">
   </div>
 </div>
 
+<!-- WAVE -->
+<div class="wave">
+  <svg viewBox="0 0 1440 120" preserveAspectRatio="none"><path d="M0,120 C480,20 960,20 1440,120 L1440,120 L0,120 Z"/></svg>
+</div>
+
 <!-- MARQUEE -->
-<div class="marquee">
+<div class="marquee paper">
   <div class="marquee-track">
-    <span class="marquee-item">78 Lames</span>
-    <span class="marquee-item">5 Familles</span>
-    <span class="marquee-item">Scanner Caméra</span>
-    <span class="marquee-item">Recherche Instantanée</span>
-    <span class="marquee-item">4 Vues</span>
-    <span class="marquee-item">Hors-ligne</span>
-    <span class="marquee-item">78 Lames</span>
-    <span class="marquee-item">5 Familles</span>
-    <span class="marquee-item">Scanner Caméra</span>
-    <span class="marquee-item">Recherche Instantanée</span>
-    <span class="marquee-item">4 Vues</span>
-    <span class="marquee-item">Hors-ligne</span>
+    <span class="mq-item">78 Lames</span><span class="mq-item">5 Familles</span><span class="mq-item">Scanner Caméra</span><span class="mq-item">Recherche Éclair</span><span class="mq-item">4 Vues</span><span class="mq-item">100% Gratuit</span>
+    <span class="mq-item">78 Lames</span><span class="mq-item">5 Familles</span><span class="mq-item">Scanner Caméra</span><span class="mq-item">Recherche Éclair</span><span class="mq-item">4 Vues</span><span class="mq-item">100% Gratuit</span>
   </div>
 </div>
 
 <!-- BENTO FEATURES -->
-<section id="features">
-  <div class="section-head reveal">
+<section class="section paper" id="features">
+  <div class="section-head r">
     <div class="section-eyebrow">Fonctionnalités</div>
     <h2>Pensé pour <em>l'exploration</em></h2>
-    <p>Chaque interaction a été millimétrée pour offrir une lecture fluide, immersive et immédiate du Tarot.</p>
+    <p>Chaque détail a été calibré pour une lecture fluide, immersive et immédiate.</p>
   </div>
   <div class="bento">
-    <!-- Large: Grid -->
-    <div class="bento-card bento-large reveal">
-      <div class="bc-inner">
-        <div class="bc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg></div>
-        <h3>Grille continue</h3>
-        <p>Les 78 cartes dans une seule grille scrollable. Cartes intercalaires SVG par famille. Navigation totale au clavier.</p>
-        <div class="bc-img"><img src="../screenshots-presentation/02-landing-cards.png" alt="Grille continue" loading="lazy"></div>
+    <div class="bento-card bc-1 r">
+      <div class="pad">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg></div>
+        <h3>Grille continue de 78 cartes</h3>
+        <p>Toutes les lames dans une seule grille. Cartes intercalaires SVG par famille. Navigation totale au clavier : flèches pour sélectionner, Entrée pour ouvrir.</p>
+      </div>
+      <div class="shot"><img src="../screenshots-presentation/v3-grid.png" alt="Grille" loading="lazy"></div>
+    </div>
+    <div class="bento-card bc-2 r rd1">
+      <div class="pad">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg></div>
+        <h3>Recherche instantanée</h3>
+        <p>Tapez une lettre, la grille filtre en direct. Flèches pour naviguer, Entrée pour ouvrir.</p>
       </div>
     </div>
-    <!-- Med: Search -->
-    <div class="bento-card bento-med reveal reveal-delay-1">
-      <div class="bc-inner">
-        <div class="bc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg></div>
-        <h3>Recherche éclair</h3>
-        <p>Tapez une lettre. La grille filtre instantanément. Flèches pour naviguer, Entrée pour ouvrir.</p>
+    <div class="bento-card bc-3 r rd2">
+      <div class="pad">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M6 10h.01M10 10h.01M14 10h.01M18 10h.01M8 14h8"/></svg></div>
+        <h3>Navigation clavier</h3>
+        <p>↑↓←→ dans la grille. ←→ entre les fiches. Échap pour revenir. Zéro souris requise.</p>
       </div>
     </div>
-    <!-- Med: Keyboard -->
-    <div class="bento-card bento-med reveal reveal-delay-2">
-      <div class="bc-inner">
-        <div class="bc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M6 10h.01M10 10h.01M14 10h.01M18 10h.01M8 14h8"/></svg></div>
-        <h3>Piloté clavier</h3>
-        <p>↑↓←→ dans la grille. ← → entre les fiches. Échap pour revenir. Aucune souris nécessaire.</p>
+    <div class="bento-card bc-4 r">
+      <div class="pad">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 8V5a1 1 0 0 1 1-1h3M16 4h3a1 1 0 0 1 1 1v3M20 16v3a1 1 0 0 1-1 1h-3M8 20H5a1 1 0 0 1-1-1v-3"/><path d="M8 12h8"/></svg></div>
+        <h3>Scanner caméra</h3>
+        <p>Reconnaissance locale d'une lame. 100% client-side.</p>
       </div>
     </div>
-    <!-- Wide: Scanner -->
-    <div class="bento-card bento-wide reveal">
-      <div class="bc-inner">
-        <div class="bc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 8V5a1 1 0 0 1 1-1h3M16 4h3a1 1 0 0 1 1 1v3M20 16v3a1 1 0 0 1-1 1h-3M8 20H5a1 1 0 0 1-1-1v-3"/><path d="M8 12h8"/></svg></div>
-        <h3>Scanner une lame</h3>
-        <p>Pointez votre caméra vers une carte physique. Le système la reconnaît en moins d'une seconde et ouvre sa fiche. 100% local, aucune donnée envoyée.</p>
-        <div class="bc-img"><img src="../screenshots-presentation/06-scanner.png" alt="Scanner" loading="lazy"></div>
+    <div class="bento-card bc-5 r rd1">
+      <div class="pad">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M2 12s3.5-6 10-6 10 6 10 6-3.5 6-10 6S2 12 2 12Z"/><circle cx="12" cy="12" r="2.5"/></svg></div>
+        <h3>Fiches complètes</h3>
+        <p>Signification, mots-clés, interprétation, amour, travail, finances, guidance.</p>
       </div>
     </div>
-    <!-- Half: Offline -->
-    <div class="bento-card bento-half reveal reveal-delay-1">
-      <div class="bc-inner">
-        <div class="bc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2v20M2 12h20M5 5l14 14M19 5L5 19"/></svg></div>
-        <h3>Zéro dépendance</h3>
-        <p>Vanilla JS + PHP+SQLite. Aucun framework, aucun tracker. Rapide, léger, privacy-first.</p>
+    <div class="bento-card bc-6 r rd2">
+      <div class="pad">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2v20M2 12h20"/><circle cx="12" cy="12" r="4"/></svg></div>
+        <h3>Zéro tracker</h3>
+        <p>Vanilla JS + PHP. Aucun analytics, aucun cookie, aucune pub.</p>
       </div>
     </div>
   </div>
 </section>
 
 <!-- STATS -->
-<section style="padding-top:3rem;padding-bottom:7rem">
-  <div class="stats reveal">
-    <div class="stat"><div class="num">78</div><div class="lbl">Lames</div></div>
-    <div class="stat"><div class="num">5</div><div class="lbl">Familles</div></div>
-    <div class="stat"><div class="num">4</div><div class="lbl">Vues</div></div>
-    <div class="stat"><div class="num">0</div><div class="lbl">Tracker</div></div>
+<section class="section">
+  <div class="stats-band r">
+    <div class="stat"><div class="n">78</div><div class="l">Lames</div></div>
+    <div class="stat"><div class="n">5</div><div class="l">Familles</div></div>
+    <div class="stat"><div class="n">4</div><div class="l">Vues</div></div>
+    <div class="stat"><div class="n">0</div><div class="l">Tracker</div></div>
   </div>
 </section>
 
-<!-- VIEWS GALLERY -->
-<section id="views">
-  <div class="section-head reveal">
-    <div class="section-eyebrow">Les Vues</div>
-    <h2>Quatre façons de <em>lire</em></h2>
-    <p>Classique, Immersive, Détaillée ou Rapide. Chaque vue a son propre rythme de lecture.</p>
+<!-- VIEW 1: Card detail -->
+<section class="section paper" id="views">
+  <div class="showcase">
+    <div class="showcase-text r">
+      <div class="tag">Fiche Détaillée</div>
+      <h3>Tout ce qu'il faut <em>savoir</em></h3>
+      <p>Image plein écran, titre en hero, affirmation bilingue, mots-clés. Puis l'interprétation complète avec pictogrammes SVG pour chaque domaine de vie.</p>
+      <ul>
+        <li>Hero image sticky plein hauteur</li>
+        <li>Réponse + Affirmation FR/ES</li>
+        <li>Mots-clés endroit / envers</li>
+        <li>Pictogrammes : amour, travail, finances, guidance</li>
+        <li>Miniatures de navigation horizontale</li>
+      </ul>
+    </div>
+    <div class="browser r rd1">
+      <div class="browser-bar">
+        <span class="d r"></span><span class="d y"></span><span class="d g"></span>
+        <span class="url">mondary.design/pk/<b>tarot3</b>/card/a_13_Mort</span>
+      </div>
+      <div class="browser-screen"><img src="../screenshots-presentation/v3-card.png" alt="Fiche carte" loading="lazy"></div>
+    </div>
   </div>
+</section>
 
-  <div class="gallery">
-    <!-- Landing -->
-    <div class="gallery-item reveal">
-      <div class="gallery-img"><img src="../screenshots-presentation/01-landing.png" alt="Accueil" loading="lazy"></div>
-      <div class="gallery-text">
-        <div class="tag">Accueil</div>
-        <h3>Une entrée <em>cérémoniale</em></h3>
-        <p>Le carousel présente les 5 familles avec leur glyphe, leurs signes astrologiques et leur première lame. La navigation se fait par scroll horizontal ou molette.</p>
+<!-- VIEW 2: Card bateleur -->
+<section class="section">
+  <div class="showcase">
+    <div class="browser r" style="order:1">
+      <div class="browser-bar">
+        <span class="d r"></span><span class="d y"></span><span class="d g"></span>
+        <span class="url">mondary.design/pk/<b>tarot3</b>/card/a_01_Bateleur</span>
       </div>
+      <div class="browser-screen"><img src="../screenshots-presentation/v3-card-bateleur.png" alt="Le Bateleur" loading="lazy"></div>
     </div>
-    <!-- Detail -->
-    <div class="gallery-item reverse reveal">
-      <div class="gallery-img"><img src="../screenshots-presentation/04-detail.png" alt="Fiche détaillée" loading="lazy"></div>
-      <div class="gallery-text">
-        <div class="tag">Fiche</div>
-        <h3>Tout ce qu'il faut <em>savoir</em></h3>
-        <p>Image plein écran, titre en hero, réponse, affirmation, mots-clés. Puis l'interprétation complète : amour, travail, finances, guidance.</p>
-      </div>
-    </div>
-    <!-- Prose -->
-    <div class="gallery-item reveal">
-      <div class="gallery-img"><img src="../screenshots-presentation/04-detail-prose.png" alt="Lecture enrichie" loading="lazy"></div>
-      <div class="gallery-text">
-        <div class="tag">Contenu</div>
-        <h3>Sections <em>thématiques</em></h3>
-        <p>Chaque domaine de vie a son propre pictogramme SVG et sa mise en forme dédiée. Les mots-clés sont en cartouches, les badges bilingues FR+ES.</p>
-      </div>
+    <div class="showcase-text r rd1" style="order:0">
+      <div class="tag">Contenu enrichi</div>
+      <h3>Une lecture <em>complète</em></h3>
+      <p>Chaque carte ouvre un dossier : signification générale, mots-clés à l'endroit et à l'envers, interprétation, puis les thèmes de vie en grille deux colonnes.</p>
+      <ul>
+        <li>Sections avec icônes thématiques</li>
+        <li>Grille éditoriale 2 colonnes</li>
+        <li>Badges Réponse + Affirmation</li>
+        <li>Mots-clés en cartouches</li>
+      </ul>
     </div>
   </div>
 </section>
 
 <!-- MOBILE -->
-<section id="mobile">
-  <div class="devices">
-    <div class="devices-text reveal">
+<section class="section paper" id="mobile">
+  <div class="showcase">
+    <div class="showcase-text r">
       <div class="tag">Expérience Mobile</div>
-      <h3>Conçu pour le <em>touch</em></h3>
-      <p>Bottom-sheet animé pour la recherche, auto-focus du clavier, scanner caméra intégré, navigation par gestes. Tout est pensé pour le pouce.</p>
+      <h3>Pensé pour le <em>pouce</em></h3>
+      <p>Bottom-sheet animé pour la recherche. Auto-focus du clavier. Scanner caméra. Touch targets optimisés. Safe-area pour notch.</p>
       <ul>
-        <li>Auto-focus de l'input à l'ouverture</li>
+        <li>Auto-focus input à l'ouverture</li>
         <li>Bottom-sheet avec animation spring</li>
         <li>Scanner caméra rear-facing</li>
-        <li>Scroll natif, zero jank</li>
-        <li>Safe-area pour notch et home bar</li>
+        <li>Scroll natif sans jank</li>
       </ul>
     </div>
-    <div class="phone-mockup reveal reveal-delay-1">
-      <div class="phone-frame">
+    <div class="r rd1" style="display:flex;justify-content:center">
+      <div class="phone">
         <div class="phone-screen">
           <div class="phone-notch"></div>
-          <img src="../screenshots-presentation/05-mobile-landing.png" alt="Mobile" loading="lazy">
+          <img src="../screenshots-presentation/v3-mobile-grid.png" alt="Mobile grid" loading="lazy">
         </div>
       </div>
     </div>
   </div>
 </section>
 
+<!-- MOBILE CARD -->
+<section class="section">
+  <div class="showcase">
+    <div class="r" style="display:flex;justify-content:center;order:1">
+      <div class="phone">
+        <div class="phone-screen">
+          <div class="phone-notch"></div>
+          <img src="../screenshots-presentation/v3-mobile-card.png" alt="Mobile card" loading="lazy">
+        </div>
+      </div>
+    </div>
+    <div class="showcase-text r rd1" style="order:0">
+      <div class="tag">Fiche sur Mobile</div>
+      <h3>Le tarot <em>partout</em></h3>
+      <p>La fiche détaillée s'adapte parfaitement au mobile. Image, affirmation et mots-clés restent lisibles et élégants sur petit écran.</p>
+      <ul>
+        <li>Layout vertical optimisé</li>
+        <li>Image plein écran 88vh</li>
+        <li>Mots-clés centrés</li>
+        <li>Navigation par gestes</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
 <!-- CTA -->
-<section class="cta-section">
-  <h2 class="reveal">Prêt à <em>tirer les cartes ?</em></h2>
-  <p class="reveal reveal-delay-1">Le site est gratuit, sans inscription, sans tracker.</p>
-  <div class="hero-cta-row reveal reveal-delay-2">
-    <a class="btn-primary" href="https://mondary.design/pk/tarot3/" target="_blank" rel="noopener">
+<section class="cta">
+  <h2 class="r">Prêt à <em>tirer les cartes ?</em></h2>
+  <p class="r rd1">Gratuit. Sans inscription. Sans tracker.</p>
+  <div class="hero-cta r rd2">
+    <a class="btn btn-dark" href="https://mondary.design/pk/tarot3/" target="_blank" rel="noopener">
       Ouvrir le site
-      <span class="arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+      <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
     </a>
   </div>
 </section>
 
-<!-- FOOTER -->
+</main>
+
 <footer>
-  <div class="links">
+  <div class="fl">
     <a href="https://mondary.design/pk/tarot3/" target="_blank" rel="noopener">Live V3</a>
     <a href="https://mondary.design/pk/tarot/" target="_blank" rel="noopener">Live V1/V2</a>
     <a href="https://github.com/mondary/Web_Tarot" target="_blank" rel="noopener">GitHub</a>
     <a href="https://mondary.design" target="_blank" rel="noopener">mondary.design</a>
   </div>
-  <div class="copy">Tarot Divinatoire · v3.2026.23 · MIT License</div>
+  <div class="cp">Tarot Divinatoire · v3.2026.23 · MIT</div>
 </footer>
 
-</main>
-
 <script>
-// Nav scroll state
 const nav=document.getElementById('nav');
-window.addEventListener('scroll',()=>{nav.classList.toggle('scrolled',window.scrollY>40)},{passive:true});
-
-// Scroll reveal
-const io=new IntersectionObserver((entries)=>{
-  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});
-},{threshold:0.12,rootMargin:'0px 0px -50px 0px'});
-document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
-
-// Ambient orbs parallax
-const orbs=document.querySelectorAll('.orb');
-let mx=0,my=0;
-window.addEventListener('mousemove',e=>{
-  mx=(e.clientX/window.innerWidth-.5)*2;
-  my=(e.clientY/window.innerHeight-.5)*2;
-  orbs.forEach((o,i)=>{
-    const f=(i+1)*15;
-    o.style.transform=`translate(${mx*f}px,${my*f}px)`;
-  });
-},{passive:true});
+window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>40),{passive:true});
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}}),{threshold:.1,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.r').forEach(el=>io.observe(el));
 </script>
 </body>
 </html>
