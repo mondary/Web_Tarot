@@ -141,6 +141,39 @@ footer .cp{font-family:'Geist Mono',monospace;font-size:.58rem;color:var(--mist)
 .taglist{display:flex;flex-wrap:wrap;gap:.5rem;justify-content:center;max-width:600px;margin:1.5rem auto 0}
 .taglist span{padding:.35rem .8rem;border:1px solid var(--line);border-radius:100px;font-size:.74rem;color:var(--moon);background:rgba(18,19,42,.4);font-weight:400}
 .taglist span.gold{color:var(--gold);border-color:rgba(201,162,39,.2);background:rgba(201,162,39,.06)}
+
+/* ====== MOCKUPS ====== */
+.mockup-row{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;max-width:860px;margin:2.5rem auto 0}
+.mockup-col{display:grid;gap:2.5rem;max-width:860px;margin:2.5rem auto 0;grid-template-columns:1fr 1fr}
+@media(max-width:768px){.mockup-col{grid-template-columns:1fr}}
+
+/* MacBook */
+.laptop{position:relative;width:100%;max-width:480px}
+.laptop-lid{background:linear-gradient(145deg,#2a2a2e,#151518);border-radius:10px 10px 3px 3px;padding:7px 7px 5px;border:1px solid rgba(255,255,255,.05);box-shadow:0 1px 1px rgba(255,255,255,.04) inset}
+.laptop-screen{border-radius:3px;overflow:hidden;aspect-ratio:16/10;background:#000}
+.laptop-screen img{width:100%;height:100%;object-fit:cover;object-position:top}
+.laptop-base{height:7px;margin:0 -14px;border-radius:0 0 10px 10px;background:linear-gradient(180deg,#c9cacf 0%,#9a9ba0 45%,#75767c 100%);position:relative;box-shadow:0 8px 30px rgba(0,0,0,.35)}
+.laptop-base::before{content:'';position:absolute;top:0;left:50%;translate:-50% 0;width:70px;height:4px;background:#84858a;border-radius:0 0 4px 4px}
+
+/* iPhone */
+.iphone{position:relative;width:100%;max-width:200px;border-radius:2rem;padding:.35rem;background:linear-gradient(145deg,#3a3a3e 0%,#1c1c20 50%,#2a2a2e 100%);border:1px solid rgba(255,255,255,.06);box-shadow:0 20px 50px rgba(0,0,0,.4),inset 0 1px 1px rgba(255,255,255,.05)}
+.iphone::before{content:'';position:absolute;left:-2px;top:22%;width:3px;height:8%;border-radius:2px 0 0 2px;background:#2a2a2e}
+.iphone::after{content:'';position:absolute;right:-2px;top:18%;width:3px;height:14%;border-radius:0 2px 2px 0;background:#2a2a2e}
+.iphone-screen{border-radius:1.7rem;overflow:hidden;background:#000;aspect-ratio:9/19.5;position:relative}
+.iphone-screen img{width:100%;height:100%;object-fit:cover}
+.iphone-notch{position:absolute;top:8px;left:50%;translate:-50% 0;width:80px;height:22px;background:#0a0a0c;border-radius:100px;z-index:2}
+
+/* Browser */
+.browser-mock{width:100%;max-width:480px;border-radius:9px;overflow:hidden;border:1px solid rgba(255,255,255,.06);background:#2a2a2e;box-shadow:0 16px 50px rgba(0,0,0,.35)}
+.browser-mock-bar{display:flex;align-items:center;gap:.3rem;padding:.45rem .55rem;border-bottom:1px solid rgba(255,255,255,.05);background:rgba(0,0,0,.15)}
+.browser-mock-bar span{width:9px;height:9px;border-radius:50%}
+.browser-mock-bar .r{background:#ff5f57}.browser-mock-bar .y{background:#febc2e}.browser-mock-bar .g{background:#28c840}
+.browser-mock-bar .u{flex:1;text-align:center;font-family:'Geist Mono',monospace;font-size:.55rem;color:var(--mist)}
+.browser-mock-screen{overflow:hidden;aspect-ratio:16/10}
+.browser-mock-screen img{width:100%;height:100%;object-fit:cover;object-position:top}
+
+/* Mockup label */
+.mlabel{text-align:center;margin-top:.8rem;font-family:'Geist Mono',monospace;font-size:.56rem;letter-spacing:.12em;text-transform:uppercase;color:var(--gold)}
 </style>
 </head>
 <body>
@@ -218,6 +251,38 @@ footer .cp{font-family:'Geist Mono',monospace;font-size:.58rem;color:var(--mist)
   </div>
 </div>
 
+<!-- MOCKUPS: 4 views -->
+<div class="mockup-col rv">
+  <div>
+    <div class="browser-mock">
+      <div class="browser-mock-bar"><span class="r"></span><span class="y"></span><span class="g"></span><span class="u">Classique</span></div>
+      <div class="browser-mock-screen"><img src="../screenshots-presentation/feat-classique.png" alt="Vue Classique" loading="lazy"></div>
+    </div>
+    <div class="mlabel">Classique</div>
+  </div>
+  <div>
+    <div class="browser-mock">
+      <div class="browser-mock-bar"><span class="r"></span><span class="y"></span><span class="g"></span><span class="u">Immersive</span></div>
+      <div class="browser-mock-screen"><img src="../screenshots-presentation/feat-immersive.png" alt="Vue Immersive" loading="lazy"></div>
+    </div>
+    <div class="mlabel">Immersive</div>
+  </div>
+  <div>
+    <div class="browser-mock">
+      <div class="browser-mock-bar"><span class="r"></span><span class="y"></span><span class="g"></span><span class="u">Détaillée</span></div>
+      <div class="browser-mock-screen"><img src="../screenshots-presentation/feat-detail.png" alt="Vue Détaillée" loading="lazy"></div>
+    </div>
+    <div class="mlabel">Détaillée</div>
+  </div>
+  <div>
+    <div class="browser-mock">
+      <div class="browser-mock-bar"><span class="r"></span><span class="y"></span><span class="g"></span><span class="u">Rapide</span></div>
+      <div class="browser-mock-screen"><img src="../screenshots-presentation/feat-quick.png" alt="Vue Rapide" loading="lazy"></div>
+    </div>
+    <div class="mlabel">Rapide</div>
+  </div>
+</div>
+
 <!-- DIVIDER -->
 <div class="divider rv"><span>Les Arcanes Majeurs</span></div>
 
@@ -281,6 +346,17 @@ footer .cp{font-family:'Geist Mono',monospace;font-size:.58rem;color:var(--mist)
   </div>
 </div>
 
+<!-- MOCKUP: Content depth -->
+<div class="mockup-row rv">
+  <div>
+    <div class="laptop">
+      <div class="laptop-lid"><div class="laptop-screen"><img src="../screenshots-presentation/desk-mort.png" alt="Fiche complète" loading="lazy"></div></div>
+      <div class="laptop-base"></div>
+    </div>
+    <div class="mlabel">Fiche complète sur desktop</div>
+  </div>
+</div>
+
 <!-- DIVIDER -->
 <div class="divider rv"><span>L'Étoile · La Lune · Le Soleil</span></div>
 
@@ -335,6 +411,48 @@ footer .cp{font-family:'Geist Mono',monospace;font-size:.58rem;color:var(--mist)
     <div class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M6 10h.01M10 10h.01M14 10h.01M18 10h.01M8 14h8"/></svg></div>
     <h4>Navigation clavier</h4>
     <p>Flèches pour sélectionner. Entrée pour ouvrir. Échap pour revenir. Le site se pilote sans souris.</p>
+  </div>
+</div>
+
+<!-- MOCKUPS: Tirages + Scanner + Search -->
+<div class="mockup-col rv">
+  <div>
+    <div class="browser-mock">
+      <div class="browser-mock-bar"><span class="r"></span><span class="y"></span><span class="g"></span><span class="u">Tirages</span></div>
+      <div class="browser-mock-screen"><img src="../screenshots-presentation/feat-draws.png" alt="Tirages" loading="lazy"></div>
+    </div>
+    <div class="mlabel">7 tirages en ligne</div>
+  </div>
+  <div>
+    <div class="browser-mock">
+      <div class="browser-mock-bar"><span class="r"></span><span class="y"></span><span class="g"></span><span class="u">Recherche</span></div>
+      <div class="browser-mock-screen"><img src="../screenshots-presentation/feat-search.png" alt="Recherche" loading="lazy"></div>
+    </div>
+    <div class="mlabel">Recherche instantanée</div>
+  </div>
+  <div>
+    <div style="display:flex;gap:1.5rem;justify-content:center">
+      <div class="iphone">
+        <div class="iphone-screen">
+          <div class="iphone-notch"></div>
+          <img src="../screenshots-presentation/v3-mobile-grid.png" alt="Mobile" loading="lazy">
+        </div>
+      </div>
+      <div class="iphone" style="max-width:180px">
+        <div class="iphone-screen">
+          <div class="iphone-notch"></div>
+          <img src="../screenshots-presentation/feat-oui-non.png" alt="Oui/Non" loading="lazy">
+        </div>
+      </div>
+    </div>
+    <div class="mlabel">Mobile · Oui / Non</div>
+  </div>
+  <div>
+    <div class="browser-mock">
+      <div class="browser-mock-bar"><span class="r"></span><span class="y"></span><span class="g"></span><span class="u">Scanner</span></div>
+      <div class="browser-mock-screen"><img src="../screenshots-presentation/06-scanner.png" alt="Scanner" loading="lazy"></div>
+    </div>
+    <div class="mlabel">Scanner caméra</div>
   </div>
 </div>
 
