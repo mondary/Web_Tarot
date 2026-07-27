@@ -51,12 +51,12 @@ a{color:inherit;text-decoration:none}
 /* ════════════════════════════════════════════════════════════════
    PARAMÈTRES IMAGE HERO — MODIFIEZ ICI
    ════════════════════════════════════════════════════════════════
-   ZOOM         : changer width/height (ex: 115% = zoom 15%)
-   DÉCALAGE X   : modifier la 2e valeur de translate (ex: translate(-50%,-50%) → translate(-52%,-50%) = 2% à droite)
-   DÉCALAGE Y   : modifier la 2e valeur de translate (ex: translate(-50%,-52%) = 2% vers le bas)
-   POSITION     : object-position (center top | center | center 30% | 50% 30%)
+   ZOOM         : width/height (ex: 140% = zoom 40%, cache les bords blancs)
+   DÉCALAGE X   : 1ère valeur de translate (ex: translate(-50%,-50%))
+   DÉCALAGE Y   : 2e valeur de translate
+   POSITION     : object-position (center top | center | 50% 40%)
    ════════════════════════════════════════════════════════════════ */
-.hero-bg img{position:absolute;top:50%;left:50%;width:125%;height:125%;transform:translate(-50%,-50%);object-fit:cover;object-position:center top;opacity:0;transition:opacity 2s var(--ease)}
+.hero-bg img{position:absolute;top:50%;left:50%;width:140%;height:140%;transform:translate(-50%,-50%);object-fit:cover;object-position:center 35%;opacity:0;transition:opacity 2s var(--ease)}
 .hero-bg img.active{opacity:.35}
 .hero-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,11,30,.7) 0%,rgba(10,11,30,.5) 40%,rgba(10,11,30,.95) 100%)}
 .hero-content{position:relative;z-index:1;text-align:center;padding:2rem}
