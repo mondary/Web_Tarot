@@ -48,7 +48,7 @@ a{color:inherit;text-decoration:none}
 /* ====== HERO — full-bleed card ====== */
 .hero{position:relative;min-height:100vh;display:flex;align-items:center;justify-content:center;overflow:hidden}
 .hero-bg{position:absolute;inset:0;z-index:0}
-.hero-bg img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 2s var(--ease)}
+.hero-bg img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top;opacity:0;transition:opacity 2s var(--ease)}
 .hero-bg img.active{opacity:.35}
 .hero-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,11,30,.7) 0%,rgba(10,11,30,.5) 40%,rgba(10,11,30,.95) 100%)}
 .hero-content{position:relative;z-index:1;text-align:center;padding:2rem}
@@ -413,15 +413,19 @@ addEventListener('scroll',()=>{document.getElementById('nav').classList.toggle('
 const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}}),{threshold:.08,rootMargin:'0px 0px -40px 0px'});
 document.querySelectorAll('.rv').forEach(el=>io.observe(el));
 
-// Hero card slideshow
+// Hero card slideshow — random order
 (function(){
-  const slides=document.querySelectorAll('.hero-bg img');
+  const slides=Array.from(document.querySelectorAll('.hero-bg img'));
   if(slides.length<2)return;
-  let cur=0;
+  slides.forEach(s=>s.classList.remove('active'));
+  let order=slides.map((_,i)=>i);
+  for(let i=order.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[order[i],order[j]]=[order[j],order[i]];}
+  let idx=0;
+  slides[order[0]].classList.add('active');
   setInterval(()=>{
-    slides[cur].classList.remove('active');
-    cur=(cur+1)%slides.length;
-    slides[cur].classList.add('active');
+    slides[order[idx]].classList.remove('active');
+    idx=(idx+1)%order.length;
+    slides[order[idx]].classList.add('active');
   },4000);
 })();
 </script>
