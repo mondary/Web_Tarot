@@ -3,394 +3,308 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Tarot Divinatoire — 78 lames, une expérience</title>
+<title>Tarot Divinatoire — Explorez les 78 lames</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Outfit:wght@200;300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist:wght@300;400;500;600;700;800&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 :root{
-  --cream:#f5f0e6;--cream-2:#ebe4d4;--paper:#fdfbf5;
-  --ink:#1a1714;--ink-soft:#4a443c;--muted:#8a8378;
-  --gold:#b8862e;--gold-light:#d4a84b;--gold-pale:rgba(184,134,46,.08);
-  --line:rgba(26,23,20,.08);--line-2:rgba(26,23,20,.04);
-  --ease:cubic-bezier(.16,1,.3,1);--spring:cubic-bezier(.32,.72,0,1);
+  --bg:#1a1815;--bg-2:#221f1b;--bg-3:#2a2722;
+  --fg:#f0ede5;--fg-soft:#c4bfb2;--muted:#7a7568;
+  --accent:#c9a227;--accent-soft:rgba(201,162,39,.12);
+  --line:rgba(255,255,255,.06);--line-2:rgba(255,255,255,.03);
+  --radius:1.5rem;--ease:cubic-bezier(.16,1,.3,1);
 }
 html{scroll-behavior:smooth}
-body{background:var(--cream);color:var(--ink);font-family:'Outfit',sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden;font-weight:400}
-main{overflow-x:hidden;width:100%;max-width:100%}
+body{background:var(--bg);color:var(--fg);font-family:'Geist',sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden;font-weight:400}
 img{display:block;max-width:100%}
 a{color:inherit;text-decoration:none}
-::selection{background:var(--gold);color:var(--paper)}
+::selection{background:var(--accent);color:var(--bg)}
+.wrap{max-width:1200px;margin:0 auto;padding:0 1.5rem}
 
 /* === NAV === */
-.nav{position:fixed;top:1.2rem;left:50%;transform:translateX(-50%);z-index:200;
-  display:flex;align-items:center;gap:.3rem;padding:.45rem .45rem .45rem 1.1rem;
-  background:rgba(245,240,230,.7);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
+.nav{position:fixed;top:1rem;left:50%;transform:translateX(-50%);z-index:200;
+  display:flex;align-items:center;gap:.3rem;padding:.4rem .4rem .4rem 1rem;
+  background:rgba(34,31,27,.7);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);
   border:1px solid var(--line);border-radius:100px;
-  transition:all .4s var(--spring);box-shadow:0 4px 24px rgba(0,0,0,.04)}
-.nav.scrolled{background:rgba(253,251,245,.92);box-shadow:0 8px 32px rgba(0,0,0,.06)}
-.nav-brand{font-weight:600;font-size:.9rem;letter-spacing:-.01em;display:flex;align-items:center;gap:.5rem;margin-right:.8rem}
-.nav-dot{width:7px;height:7px;border-radius:50%;background:var(--gold)}
-.nav-links{display:flex;gap:.15rem}
-.nav-links a{padding:.45rem .85rem;border-radius:100px;font-size:.8rem;color:var(--ink-soft);transition:.25s var(--spring)}
-.nav-links a:hover{color:var(--ink);background:var(--gold-pale)}
-.nav-cta{padding:.5rem 1rem;border-radius:100px;background:var(--ink);color:var(--paper);font-size:.8rem;font-weight:500;transition:.3s var(--spring);display:flex;align-items:center;gap:.35rem}
-.nav-cta:hover{background:var(--gold);transform:scale(.97)}
+  transition:all .4s var(--ease);box-shadow:0 4px 24px rgba(0,0,0,.12)}
+.nav.scrolled{background:rgba(26,24,21,.92)}
+.nav-brand{font-weight:600;font-size:.88rem;display:flex;align-items:center;gap:.5rem;margin-right:.6rem}
+.nav-dot{width:7px;height:7px;border-radius:50%;background:var(--accent)}
+.nav-links{display:flex;gap:.1rem}
+.nav-links a{padding:.42rem .8rem;border-radius:100px;font-size:.78rem;color:var(--fg-soft);transition:.2s}
+.nav-links a:hover{color:var(--fg);background:var(--accent-soft)}
+.nav-cta{padding:.48rem 1rem;border-radius:100px;background:var(--fg);color:var(--bg);font-size:.78rem;font-weight:600;transition:.25s;display:flex;align-items:center;gap:.3rem}
+.nav-cta:hover{background:var(--accent);transform:scale(.97)}
 @media(max-width:640px){.nav-links{display:none}}
 
 /* === HERO === */
-.hero{position:relative;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:7rem 1.5rem 0;text-align:center;overflow:hidden}
-.hero::before{content:'';position:absolute;inset:0;background:
-  radial-gradient(ellipse 50% 40% at 50% 20%,rgba(212,168,75,.15),transparent 60%),
-  radial-gradient(ellipse 60% 50% at 50% 100%,rgba(184,134,46,.06),transparent 60%);
-  pointer-events:none}
-.hero-eyebrow{position:relative;font-family:'JetBrains Mono',monospace;font-size:.65rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:2rem;display:flex;align-items:center;gap:.6rem}
-.hero-eyebrow::before,.hero-eyebrow::after{content:'';width:30px;height:1px;background:var(--gold);opacity:.4}
-.hero h1{position:relative;font-family:'Instrument Serif',serif;font-weight:400;font-size:clamp(3.5rem,11vw,10rem);line-height:.88;letter-spacing:-.025em;max-width:11ch;margin-bottom:1.5rem}
-.hero h1 .gold{color:var(--gold);font-style:italic}
-.hero p{position:relative;font-size:clamp(1.05rem,1.8vw,1.25rem);color:var(--ink-soft);max-width:34rem;line-height:1.6;font-weight:300;margin-bottom:2.5rem}
-.hero-cta{position:relative;display:flex;gap:.6rem;flex-wrap:wrap;justify-content:center}
-.btn{display:inline-flex;align-items:center;gap:.5rem;padding:.8rem 1.5rem;border-radius:100px;font-weight:500;font-size:.88rem;transition:.3s var(--spring);cursor:pointer;border:none}
-.btn-dark{background:var(--ink);color:var(--paper)}
-.btn-dark:hover{background:var(--gold);transform:translateY(-2px);box-shadow:0 12px 32px rgba(184,134,46,.25)}
-.btn-dark .ic{width:26px;height:26px;border-radius:50%;background:var(--gold);display:grid;place-items:center;transition:.3s var(--spring)}
-.btn-dark:hover .ic{background:var(--ink);transform:translate(2px,-1px)}
-.btn-dark .ic svg{width:13px;height:13px}
-.btn-out{background:transparent;color:var(--ink);border:1px solid var(--line)}
-.btn-out:hover{border-color:var(--gold);color:var(--gold);transform:translateY(-2px)}
+.hero{text-align:center;padding:7rem 1.5rem 2rem;position:relative}
+.hero-badge{display:inline-flex;align-items:center;gap:.45rem;padding:.32rem .9rem;border:1px solid var(--line);border-radius:100px;font-family:'Geist Mono',monospace;font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin-bottom:1.8rem;background:rgba(34,31,27,.5)}
+.hero-badge::before{content:'';width:5px;height:5px;border-radius:50%;background:var(--accent);box-shadow:0 0 8px var(--accent)}
+.hero h1{font-family:'Instrument Serif',serif;font-weight:400;font-size:clamp(3rem,8vw,6.5rem);line-height:.95;letter-spacing:-.025em;max-width:14ch;margin:0 auto 1.2rem}
+.hero h1 em{font-style:italic;color:var(--accent)}
+.hero p{font-size:clamp(1rem,1.6vw,1.2rem);color:var(--fg-soft);max-width:32rem;margin:0 auto 2.2rem;line-height:1.6;font-weight:300}
+.hero-cta{display:inline-flex;align-items:center;gap:.5rem;padding:.7rem 1.4rem;border-radius:100px;background:var(--fg);color:var(--bg);font-weight:600;font-size:.88rem;transition:.3s var(--ease)}
+.hero-cta:hover{background:var(--accent);transform:translateY(-2px);box-shadow:0 12px 32px rgba(201,162,39,.2)}
+.hero-cta svg{width:16px;height:16px}
 
-/* === HERO IMAGE === */
-.hero-img{position:relative;width:100%;max-width:1000px;margin:4rem auto -8rem;padding:0 1.5rem;z-index:2}
-.hero-img-frame{border-radius:1rem 1rem 0 0;overflow:hidden;border:1px solid var(--line);border-bottom:none;
-  box-shadow:0 -20px 80px rgba(184,134,46,.08),0 40px 80px rgba(0,0,0,.12)}
-.hero-img-frame img{width:100%;aspect-ratio:16/10;object-fit:cover;object-position:top}
-
-/* === WAVE === */
-.wave{position:relative;width:100%;height:8rem;background:var(--cream);z-index:1}
-.wave svg{position:absolute;bottom:0;left:0;width:100%;height:100%}
-.wave path{fill:var(--paper)}
-
-/* === SECTION BASE === */
-.section{padding:6rem 1.5rem;position:relative}
-.section-head{text-align:center;max-width:40rem;margin:0 auto 4rem}
-.section-eyebrow{font-family:'JetBrains Mono',monospace;font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem}
-.section-head h2{font-family:'Instrument Serif',serif;font-weight:400;font-size:clamp(2.2rem,6vw,5rem);line-height:1;letter-spacing:-.02em;margin-bottom:1rem}
-.section-head h2 em{font-style:italic;color:var(--gold)}
-.section-head p{color:var(--ink-soft);font-size:1.05rem;line-height:1.65;font-weight:300}
-
-/* === PAPER SECTIONS === */
-.paper{background:var(--paper)}
-
-/* === BENTO === */
-.bento{display:grid;grid-template-columns:repeat(12,1fr);gap:1rem;max-width:1080px;margin:0 auto}
-.bento-card{background:var(--cream);border:1px solid var(--line);border-radius:1.25rem;overflow:hidden;transition:.5s var(--spring);display:flex;flex-direction:column}
-.bento-card:hover{transform:translateY(-3px);box-shadow:0 16px 48px rgba(0,0,0,.06);border-color:rgba(184,134,46,.2)}
-.bento-card .pad{padding:1.8rem;flex:1;display:flex;flex-direction:column}
-.bento-card .ic{width:40px;height:40px;border-radius:12px;background:var(--gold-pale);color:var(--gold);display:grid;place-items:center;margin-bottom:1.2rem}
-.bento-card .ic svg{width:18px;height:18px}
-.bento-card h3{font-size:1.15rem;font-weight:600;letter-spacing:-.015em;margin-bottom:.4rem}
-.bento-card p{color:var(--muted);font-size:.85rem;line-height:1.55;font-weight:300}
-.bento-card .shot{margin:auto -1.8rem -1.8rem;margin-top:auto;border-top:1px solid var(--line-2);overflow:hidden}
-.bento-card .shot img{width:100%;transition:transform 6s var(--ease)}
-.bento-card:hover .shot img{transform:scale(1.03)}
-
-.bc-1{grid-column:span 7;grid-row:span 2}
-.bc-2{grid-column:span 5}
-.bc-3{grid-column:span 5}
-.bc-4{grid-column:span 4}
-.bc-5{grid-column:span 4}
-.bc-6{grid-column:span 4}
-@media(max-width:900px){.bc-1,.bc-2,.bc-3,.bc-4,.bc-5,.bc-6{grid-column:span 12}}
-
-/* === DEVICE MOCKUP === */
-.showcase{max-width:1080px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center}
-@media(max-width:900px){.showcase{grid-template-columns:1fr;gap:2.5rem}}
-.showcase-text .tag{font-family:'JetBrains Mono',monospace;font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem}
-.showcase-text h3{font-family:'Instrument Serif',serif;font-weight:400;font-size:clamp(1.8rem,3.5vw,3rem);line-height:1.05;letter-spacing:-.02em;margin-bottom:1rem}
-.showcase-text h3 em{font-style:italic;color:var(--gold)}
-.showcase-text p{color:var(--ink-soft);font-size:.98rem;line-height:1.65;font-weight:300;margin-bottom:1.2rem}
-.showcase-text ul{list-style:none;display:grid;gap:.5rem}
-.showcase-text li{position:relative;padding-left:1.3rem;font-size:.88rem;font-weight:400;color:var(--ink-soft)}
-.showcase-text li::before{content:'';position:absolute;left:0;top:.5rem;width:6px;height:6px;border-radius:1px;background:var(--gold);transform:rotate(45deg)}
-
-/* Browser frame */
-.browser{border-radius:1rem;overflow:hidden;border:1px solid var(--line);box-shadow:0 24px 64px rgba(0,0,0,.08);background:var(--paper);transition:.5s var(--spring)}
-.browser:hover{transform:translateY(-4px);box-shadow:0 32px 80px rgba(0,0,0,.1)}
-.browser-bar{display:flex;align-items:center;gap:.35rem;padding:.6rem .9rem;border-bottom:1px solid var(--line);background:var(--cream-2)}
-.browser-bar .d{width:9px;height:9px;border-radius:50%}
+/* === BROWSER MOCKUP === */
+.browser-wrap{max-width:1100px;margin:1rem auto 0;padding:0 1.5rem}
+.browser{border-radius:14px;overflow:hidden;border:1px solid var(--line);
+  background:var(--bg-2);box-shadow:0 40px 100px rgba(0,0,0,.4);
+  transition:transform .5s var(--ease)}
+.browser:hover{transform:translateY(-3px)}
+.browser-bar{display:flex;align-items:center;gap:.35rem;padding:.55rem .75rem;border-bottom:1px solid var(--line);background:var(--bg-3)}
+.browser-bar .tl{width:11px;height:11px;border-radius:50%}
 .browser-bar .r{background:#ff5f57}.browser-bar .y{background:#febc2e}.browser-bar .g{background:#28c840}
-.browser-bar .url{flex:1;text-align:center;font-family:'JetBrains Mono',monospace;font-size:.65rem;color:var(--muted)}
-.browser-bar .url b{color:var(--gold);font-weight:500}
-.browser-screen{overflow:hidden;position:relative}
-.browser-screen img{width:100%;aspect-ratio:16/10;object-fit:cover;object-position:top}
+.browser-bar .url{flex:1;text-align:center;font-family:'Geist Mono',monospace;font-size:.68rem;color:var(--muted);margin-left:.5rem}
+.browser-bar .url b{color:var(--accent);font-weight:500}
+.browser-bar .url .lock{display:inline-block;width:9px;height:9px;margin-right:.3rem;opacity:.4}
+.browser-screen{overflow:hidden;position:relative;aspect-ratio:16/9.5}
+.browser-screen img{width:100%;height:100%;object-fit:cover;object-position:top center}
 
-/* Phone frame */
-.phone{position:relative;width:100%;max-width:280px;margin:0 auto;border-radius:2.2rem;padding:.5rem;background:linear-gradient(145deg,#2a2730,#15131a);border:1px solid var(--line);box-shadow:0 24px 64px rgba(0,0,0,.15),inset 0 1px 1px rgba(255,255,255,.06);transition:.5s var(--spring)}
+/* === SECTION === */
+.section{padding:6rem 0}
+.section-head{text-align:center;margin-bottom:4rem}
+.section-eyebrow{font-family:'Geist Mono',monospace;font-size:.6rem;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin-bottom:.8rem}
+.section-head h2{font-family:'Instrument Serif',serif;font-weight:400;font-size:clamp(2rem,5vw,3.8rem);line-height:1;letter-spacing:-.02em;margin-bottom:.8rem}
+.section-head h2 em{font-style:italic;color:var(--accent)}
+.section-head p{color:var(--fg-soft);font-size:1rem;max-width:32rem;margin:0 auto;line-height:1.6;font-weight:300}
+
+/* === FEATURES === */
+.features{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
+@media(max-width:768px){.features{grid-template-columns:1fr}}
+.feature{padding:1.8rem;border:1px solid var(--line);border-radius:1rem;background:var(--bg-2);transition:.4s var(--ease)}
+.feature:hover{border-color:rgba(201,162,39,.2);transform:translateY(-2px)}
+.feature .fi{width:38px;height:38px;border-radius:10px;background:var(--accent-soft);color:var(--accent);display:grid;place-items:center;margin-bottom:1.1rem}
+.feature .fi svg{width:18px;height:18px}
+.feature h3{font-size:1.05rem;font-weight:600;margin-bottom:.35rem;letter-spacing:-.01em}
+.feature p{color:var(--muted);font-size:.82rem;line-height:1.55;font-weight:300}
+
+/* === SHOWCASE ROW === */
+.showcase{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center}
+@media(max-width:900px){.showcase{grid-template-columns:1fr;gap:2rem}}
+.showcase.flip{direction:rtl}.showcase.flip>*{direction:ltr}
+.showcase-text .tag{font-family:'Geist Mono',monospace;font-size:.58rem;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin-bottom:.7rem}
+.showcase-text h3{font-family:'Instrument Serif',serif;font-weight:400;font-size:clamp(1.6rem,3vw,2.6rem);line-height:1.05;letter-spacing:-.015em;margin-bottom:.8rem}
+.showcase-text h3 em{font-style:italic;color:var(--accent)}
+.showcase-text p{color:var(--fg-soft);font-size:.92rem;line-height:1.6;font-weight:300;margin-bottom:1rem}
+.showcase-text ul{list-style:none;display:grid;gap:.4rem}
+.showcase-text li{position:relative;padding-left:1.2rem;font-size:.84rem;color:var(--fg-soft)}
+.showcase-text li::before{content:'';position:absolute;left:0;top:.5rem;width:5px;height:5px;border-radius:1px;background:var(--accent)}
+
+/* === PHONE MOCKUP === */
+.phone-wrap{display:flex;justify-content:center}
+.phone{position:relative;width:100%;max-width:260px;border-radius:2rem;padding:.45rem;
+  background:linear-gradient(145deg,#33302a,#1a1815);border:1px solid var(--line);
+  box-shadow:0 30px 70px rgba(0,0,0,.3);transition:transform .5s var(--ease)}
 .phone:hover{transform:translateY(-4px)}
-.phone-screen{border-radius:1.8rem;overflow:hidden;background:#000;aspect-ratio:9/19.5;position:relative}
+.phone-screen{border-radius:1.6rem;overflow:hidden;background:#000;aspect-ratio:9/19.5;position:relative}
 .phone-screen img{width:100%;height:100%;object-fit:cover}
-.phone-notch{position:absolute;top:0;left:50%;transform:translateX(-50%);width:38%;height:20px;background:#15131a;border-radius:0 0 12px 12px;z-index:2}
-
-/* === GALLERY === */
-.gallery{max-width:1080px;margin:0 auto;display:grid;gap:4rem}
-.gallery-item{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center}
-.gallery-item.flip{direction:rtl}
-.gallery-item.flip>*{direction:ltr}
-.gallery-img{border-radius:1rem;overflow:hidden;border:1px solid var(--line);box-shadow:0 20px 60px rgba(0,0,0,.06);transition:.5s var(--spring)}
-.gallery-img:hover{transform:translateY(-3px);box-shadow:0 28px 72px rgba(0,0,0,.08)}
-.gallery-img img{width:100%;transition:transform 5s var(--ease)}
-.gallery-img:hover img{transform:scale(1.03)}
-.gallery-text .tag{font-family:'JetBrains Mono',monospace;font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:.7rem}
-.gallery-text h3{font-family:'Instrument Serif',serif;font-weight:400;font-size:clamp(1.6rem,3vw,2.5rem);line-height:1.05;letter-spacing:-.015em;margin-bottom:.7rem}
-.gallery-text h3 em{font-style:italic;color:var(--gold)}
-.gallery-text p{color:var(--ink-soft);font-size:.92rem;line-height:1.6;font-weight:300;max-width:26rem}
-@media(max-width:768px){.gallery-item,.gallery-item.flip{grid-template-columns:1fr;direction:ltr;gap:1.5rem}}
-
-/* === STATS === */
-.stats-band{display:flex;justify-content:center;gap:0;max-width:800px;margin:0 auto;border-radius:1.25rem;overflow:hidden;border:1px solid var(--line);background:var(--paper)}
-.stat{text-align:center;padding:2.2rem 1rem;flex:1;border-right:1px solid var(--line)}
-.stat:last-child{border-right:none}
-.stat .n{font-family:'Instrument Serif',serif;font-size:clamp(2.2rem,4vw,3.5rem);font-weight:400;color:var(--gold);line-height:1}
-.stat .l{font-family:'JetBrains Mono',monospace;font-size:.58rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-top:.4rem}
-@media(max-width:640px){.stats-band{flex-wrap:wrap}.stat{flex:1 0 50%;border-bottom:1px solid var(--line)}.stat:nth-child(3),.stat:nth-child(4){border-bottom:none}.stat:nth-child(2){border-right:none}}
+.phone-notch{position:absolute;top:0;left:50%;transform:translateX(-50%);width:36%;height:18px;background:#1a1815;border-radius:0 0 11px 11px;z-index:2}
 
 /* === CTA === */
-.cta{text-align:center;padding:8rem 1.5rem;position:relative}
-.cta::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 50% 60% at 50% 50%,rgba(184,134,46,.1),transparent 70%);pointer-events:none}
-.cta h2{position:relative;font-family:'Instrument Serif',serif;font-weight:400;font-size:clamp(2.5rem,7vw,6rem);line-height:.95;letter-spacing:-.02em;margin-bottom:1.2rem}
-.cta h2 em{font-style:italic;color:var(--gold)}
-.cta p{position:relative;color:var(--ink-soft);font-size:1.1rem;font-weight:300;margin-bottom:2.5rem}
+.cta{text-align:center;padding:7rem 1.5rem 5rem}
+.cta h2{font-family:'Instrument Serif',serif;font-weight:400;font-size:clamp(2.2rem,6vw,4.5rem);line-height:1;letter-spacing:-.02em;margin-bottom:1rem}
+.cta h2 em{font-style:italic;color:var(--accent)}
+.cta p{color:var(--fg-soft);font-size:1rem;font-weight:300;margin-bottom:2rem}
 
 /* === FOOTER === */
-footer{background:var(--ink);color:var(--cream);padding:3rem 1.5rem 2rem;text-align:center}
-footer .fl{display:flex;gap:1.5rem;justify-content:center;flex-wrap:wrap;margin-bottom:1.2rem}
-footer .fl a{color:var(--muted);font-size:.82rem;transition:.25s}
-footer .fl a:hover{color:var(--gold-light)}
-footer .cp{font-family:'JetBrains Mono',monospace;font-size:.65rem;color:var(--muted);opacity:.5}
-
-/* === MARQUEE === */
-.marquee{overflow:hidden;padding:1.5rem 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
-.marquee-track{display:flex;gap:2.5rem;white-space:nowrap;width:max-content;animation:mq 25s linear infinite}
-@keyframes mq{to{transform:translateX(-50%)}}
-.mq-item{font-family:'Instrument Serif',serif;font-style:italic;font-size:1.3rem;color:var(--muted);display:flex;align-items:center;gap:2.5rem}
-.mq-item::after{content:'✦';color:var(--gold);font-size:.8rem;font-style:normal}
+footer{border-top:1px solid var(--line);padding:2.5rem 1.5rem;text-align:center}
+footer .fl{display:flex;gap:1.5rem;justify-content:center;flex-wrap:wrap;margin-bottom:1rem}
+footer .fl a{color:var(--muted);font-size:.8rem;transition:.2s}
+footer .fl a:hover{color:var(--accent)}
+footer .cp{font-family:'Geist Mono',monospace;font-size:.62rem;color:var(--muted);opacity:.5}
 
 /* === REVEAL === */
-.r{opacity:0;transform:translateY(30px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
+.r{opacity:0;transform:translateY(28px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
 .r.in{opacity:1;transform:none}
 .rd1{transition-delay:.08s}.rd2{transition-delay:.16s}.rd3{transition-delay:.24s}
-@media(prefers-reduced-motion:reduce){.r{opacity:1;transform:none;transition:none}.marquee-track{animation:none}}
+@media(prefers-reduced-motion:reduce){.r{opacity:1;transform:none}}
 </style>
 </head>
 <body>
 
 <!-- NAV -->
 <nav class="nav" id="nav">
-  <div class="nav-brand"><span class="nav-dot"></span>Tarot Divinatoire</div>
+  <div class="nav-brand"><span class="nav-dot"></span>Tarot</div>
   <div class="nav-links">
     <a href="#features">Features</a>
     <a href="#views">Vues</a>
     <a href="#mobile">Mobile</a>
   </div>
-  <a class="nav-cta" href="https://mondary.design/pk/tarot3/" target="_blank" rel="noopener">Essayer</a>
+  <a class="nav-cta" href="https://mondary.design/pk/tarot3/" target="_blank" rel="noopener">Essayer →</a>
 </nav>
 
-<main>
-
 <!-- HERO -->
-<section class="hero">
-  <div class="hero-eyebrow r">Application Web · Gratuit · Sans Pub</div>
-  <h1 class="r rd1">Lisez les <span class="gold">cartes</span>.<br>Lisez votre <span class="gold">destin.</span></h1>
-  <p class="r rd2">78 lames du Tarot de Rider-Waite. Recherche éclair. Scanner par caméra. Fiches complètes avec interprétation, amour, travail et guidance.</p>
-  <div class="hero-cta r rd3">
-    <a class="btn btn-dark" href="https://mondary.design/pk/tarot3/" target="_blank" rel="noopener">
-      Ouvrir le site
-      <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
-    </a>
-    <a class="btn btn-out" href="#features">Voir les features</a>
-  </div>
-</section>
+<header class="hero">
+  <div class="hero-badge r">78 lames · Rider-Waite-Smith</div>
+  <h1 class="r rd1">Explorez les <em>78 lames</em><br>du Tarot de Waite</h1>
+  <p class="r rd2">Recherche instantanée, scanner par caméra, fiches complètes avec interprétation, amour, travail et guidance. Le tout dans une interface immersive.</p>
+  <a class="hero-cta r rd3" href="https://mondary.design/pk/tarot3/" target="_blank" rel="noopener">
+    Ouvrir le site
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+  </a>
+</header>
 
-<!-- HERO IMAGE -->
-<div class="hero-img r rd2">
-  <div class="hero-img-frame">
-    <img src="../screenshots-presentation/v3-grid.png" alt="Tarot Divinatoire — Grille principale" loading="eager">
+<!-- HERO MOCKUP -->
+<div class="browser-wrap r rd2">
+  <div class="browser">
+    <div class="browser-bar">
+      <span class="tl r"></span><span class="tl y"></span><span class="tl g"></span>
+      <span class="url"><svg class="lock" viewBox="0 0 24 24" fill="currentColor"><path d="M12 1a5 5 0 0 0-5 5v3H6a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-9a2 2 0 0 0-2-2h-1V6a5 5 0 0 0-5-5zm-3 8V6a3 3 0 0 1 6 0v3H9z"/></svg>mondary.design/pk/<b>tarot3</b>/</span>
+    </div>
+    <div class="browser-screen">
+      <img src="../screenshots-presentation/desk-grid.png" alt="Grille principale" loading="eager">
+    </div>
   </div>
 </div>
 
-<!-- WAVE -->
-<div class="wave">
-  <svg viewBox="0 0 1440 120" preserveAspectRatio="none"><path d="M0,120 C480,20 960,20 1440,120 L1440,120 L0,120 Z"/></svg>
-</div>
-
-<!-- MARQUEE -->
-<div class="marquee paper">
-  <div class="marquee-track">
-    <span class="mq-item">78 Lames</span><span class="mq-item">5 Familles</span><span class="mq-item">Scanner Caméra</span><span class="mq-item">Recherche Éclair</span><span class="mq-item">4 Vues</span><span class="mq-item">100% Gratuit</span>
-    <span class="mq-item">78 Lames</span><span class="mq-item">5 Familles</span><span class="mq-item">Scanner Caméra</span><span class="mq-item">Recherche Éclair</span><span class="mq-item">4 Vues</span><span class="mq-item">100% Gratuit</span>
-  </div>
-</div>
-
-<!-- BENTO FEATURES -->
-<section class="section paper" id="features">
-  <div class="section-head r">
-    <div class="section-eyebrow">Fonctionnalités</div>
-    <h2>Pensé pour <em>l'exploration</em></h2>
-    <p>Chaque détail a été calibré pour une lecture fluide, immersive et immédiate.</p>
-  </div>
-  <div class="bento">
-    <div class="bento-card bc-1 r">
-      <div class="pad">
-        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg></div>
-        <h3>Grille continue de 78 cartes</h3>
-        <p>Toutes les lames dans une seule grille. Cartes intercalaires SVG par famille. Navigation totale au clavier : flèches pour sélectionner, Entrée pour ouvrir.</p>
-      </div>
-      <div class="shot"><img src="../screenshots-presentation/v3-grid.png" alt="Grille" loading="lazy"></div>
+<!-- FEATURES -->
+<section class="section" id="features">
+  <div class="wrap">
+    <div class="section-head r">
+      <div class="section-eyebrow">Fonctionnalités</div>
+      <h2>Tout pour <em>explorer</em></h2>
+      <p>Chaque interaction a été pensée pour une lecture fluide et immédiate.</p>
     </div>
-    <div class="bento-card bc-2 r rd1">
-      <div class="pad">
-        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg></div>
-        <h3>Recherche instantanée</h3>
-        <p>Tapez une lettre, la grille filtre en direct. Flèches pour naviguer, Entrée pour ouvrir.</p>
+    <div class="features">
+      <div class="feature r">
+        <div class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg></div>
+        <h3>Grille continue</h3>
+        <p>78 cartes dans une seule grille. Cartes intercalaires SVG par famille.</p>
       </div>
-    </div>
-    <div class="bento-card bc-3 r rd2">
-      <div class="pad">
-        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M6 10h.01M10 10h.01M14 10h.01M18 10h.01M8 14h8"/></svg></div>
-        <h3>Navigation clavier</h3>
-        <p>↑↓←→ dans la grille. ←→ entre les fiches. Échap pour revenir. Zéro souris requise.</p>
+      <div class="feature r rd1">
+        <div class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg></div>
+        <h3>Recherche éclair</h3>
+        <p>Tapez une lettre, la grille filtre instantanément. Entrée pour ouvrir.</p>
       </div>
-    </div>
-    <div class="bento-card bc-4 r">
-      <div class="pad">
-        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 8V5a1 1 0 0 1 1-1h3M16 4h3a1 1 0 0 1 1 1v3M20 16v3a1 1 0 0 1-1 1h-3M8 20H5a1 1 0 0 1-1-1v-3"/><path d="M8 12h8"/></svg></div>
+      <div class="feature r rd2">
+        <div class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M6 10h.01M10 10h.01M14 10h.01M18 10h.01M8 14h8"/></svg></div>
+        <h3>Clavier complet</h3>
+        <p>Flèches pour naviguer, Entrée pour ouvrir, Échap pour revenir.</p>
+      </div>
+      <div class="feature r">
+        <div class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 8V5a1 1 0 0 1 1-1h3M16 4h3a1 1 0 0 1 1 1v3M20 16v3a1 1 0 0 1-1 1h-3M8 20H5a1 1 0 0 1-1-1v-3"/><path d="M8 12h8"/></svg></div>
         <h3>Scanner caméra</h3>
-        <p>Reconnaissance locale d'une lame. 100% client-side.</p>
+        <p>Reconnaissance locale d'une lame par caméra. 100% client-side.</p>
       </div>
-    </div>
-    <div class="bento-card bc-5 r rd1">
-      <div class="pad">
-        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M2 12s3.5-6 10-6 10 6 10 6-3.5 6-10 6S2 12 2 12Z"/><circle cx="12" cy="12" r="2.5"/></svg></div>
+      <div class="feature r rd1">
+        <div class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M2 12s3.5-6 10-6 10 6 10 6-3.5 6-10 6S2 12 2 12Z"/><circle cx="12" cy="12" r="2.5"/></svg></div>
         <h3>Fiches complètes</h3>
         <p>Signification, mots-clés, interprétation, amour, travail, finances, guidance.</p>
       </div>
-    </div>
-    <div class="bento-card bc-6 r rd2">
-      <div class="pad">
-        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2v20M2 12h20"/><circle cx="12" cy="12" r="4"/></svg></div>
+      <div class="feature r rd2">
+        <div class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2v20M2 12h20"/><circle cx="12" cy="12" r="4"/></svg></div>
         <h3>Zéro tracker</h3>
-        <p>Vanilla JS + PHP. Aucun analytics, aucun cookie, aucune pub.</p>
+        <p>Aucun cookie, aucune pub, aucun analytics. Privacy-first.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- STATS -->
+<!-- VIEW: Card detail -->
+<section class="section" id="views" style="background:var(--bg-2)">
+  <div class="wrap">
+    <div class="showcase">
+      <div class="showcase-text r">
+        <div class="tag">Fiche détaillée</div>
+        <h3>Tout ce qu'il faut <em>savoir</em></h3>
+        <p>Image plein écran, affirmation bilingue, mots-clés. Puis l'interprétation complète avec pictogrammes pour chaque domaine de vie.</p>
+        <ul>
+          <li>Hero image sticky</li>
+          <li>Réponse + Affirmation FR/ES</li>
+          <li>Mots-clés endroit / envers</li>
+          <li>Amour · Travail · Finances · Guidance</li>
+        </ul>
+      </div>
+      <div class="r rd1">
+        <div class="browser">
+          <div class="browser-bar">
+            <span class="tl r"></span><span class="tl y"></span><span class="tl g"></span>
+            <span class="url">mondary.design/pk/<b>tarot3</b>/card/a_13_Mort</span>
+          </div>
+          <div class="browser-screen"><img src="../screenshots-presentation/desk-mort.png" alt="La Mort" loading="lazy"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VIEW: Other card -->
 <section class="section">
-  <div class="stats-band r">
-    <div class="stat"><div class="n">78</div><div class="l">Lames</div></div>
-    <div class="stat"><div class="n">5</div><div class="l">Familles</div></div>
-    <div class="stat"><div class="n">4</div><div class="l">Vues</div></div>
-    <div class="stat"><div class="n">0</div><div class="l">Tracker</div></div>
-  </div>
-</section>
-
-<!-- VIEW 1: Card detail -->
-<section class="section paper" id="views">
-  <div class="showcase">
-    <div class="showcase-text r">
-      <div class="tag">Fiche Détaillée</div>
-      <h3>Tout ce qu'il faut <em>savoir</em></h3>
-      <p>Image plein écran, titre en hero, affirmation bilingue, mots-clés. Puis l'interprétation complète avec pictogrammes SVG pour chaque domaine de vie.</p>
-      <ul>
-        <li>Hero image sticky plein hauteur</li>
-        <li>Réponse + Affirmation FR/ES</li>
-        <li>Mots-clés endroit / envers</li>
-        <li>Pictogrammes : amour, travail, finances, guidance</li>
-        <li>Miniatures de navigation horizontale</li>
-      </ul>
-    </div>
-    <div class="browser r rd1">
-      <div class="browser-bar">
-        <span class="d r"></span><span class="d y"></span><span class="d g"></span>
-        <span class="url">mondary.design/pk/<b>tarot3</b>/card/a_13_Mort</span>
+  <div class="wrap">
+    <div class="showcase flip">
+      <div class="showcase-text r">
+        <div class="tag">Contenu enrichi</div>
+        <h3>Une lecture <em>complète</em></h3>
+        <p>Chaque carte ouvre un dossier avec signification, mots-clés et thèmes de vie en grille éditoriale.</p>
+        <ul>
+          <li>Pictogrammes SVG par thème</li>
+          <li>Grille éditoriale 2 colonnes</li>
+          <li>Badges Réponse + Affirmation</li>
+        </ul>
       </div>
-      <div class="browser-screen"><img src="../screenshots-presentation/v3-card.png" alt="Fiche carte" loading="lazy"></div>
+      <div class="r rd1">
+        <div class="browser">
+          <div class="browser-bar">
+            <span class="tl r"></span><span class="tl y"></span><span class="tl g"></span>
+            <span class="url">mondary.design/pk/<b>tarot3</b>/card/a_01_Bateleur</span>
+          </div>
+          <div class="browser-screen"><img src="../screenshots-presentation/desk-bateleur.png" alt="Le Bateleur" loading="lazy"></div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- VIEW 2: Card bateleur -->
-<section class="section">
-  <div class="showcase">
-    <div class="browser r" style="order:1">
-      <div class="browser-bar">
-        <span class="d r"></span><span class="d y"></span><span class="d g"></span>
-        <span class="url">mondary.design/pk/<b>tarot3</b>/card/a_01_Bateleur</span>
+<!-- VIEW: Star -->
+<section class="section" style="background:var(--bg-2)">
+  <div class="wrap">
+    <div class="showcase">
+      <div class="showcase-text r">
+        <div class="tag">Cartes emblématiques</div>
+        <h3>L'Étoile, <em>La Lune</em>, Le Soleil</h3>
+        <p>Chaque carte majeure bénéficie d'un traitement éditorial complet, avec ses symboles, ses associations et sa guidance.</p>
       </div>
-      <div class="browser-screen"><img src="../screenshots-presentation/v3-card-bateleur.png" alt="Le Bateleur" loading="lazy"></div>
-    </div>
-    <div class="showcase-text r rd1" style="order:0">
-      <div class="tag">Contenu enrichi</div>
-      <h3>Une lecture <em>complète</em></h3>
-      <p>Chaque carte ouvre un dossier : signification générale, mots-clés à l'endroit et à l'envers, interprétation, puis les thèmes de vie en grille deux colonnes.</p>
-      <ul>
-        <li>Sections avec icônes thématiques</li>
-        <li>Grille éditoriale 2 colonnes</li>
-        <li>Badges Réponse + Affirmation</li>
-        <li>Mots-clés en cartouches</li>
-      </ul>
+      <div class="r rd1">
+        <div class="browser">
+          <div class="browser-bar">
+            <span class="tl r"></span><span class="tl y"></span><span class="tl g"></span>
+            <span class="url">mondary.design/pk/<b>tarot3</b>/card/a_17_Etoile</span>
+          </div>
+          <div class="browser-screen"><img src="../screenshots-presentation/desk-etoile.png" alt="L'Étoile" loading="lazy"></div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
 
 <!-- MOBILE -->
-<section class="section paper" id="mobile">
-  <div class="showcase">
-    <div class="showcase-text r">
-      <div class="tag">Expérience Mobile</div>
-      <h3>Pensé pour le <em>pouce</em></h3>
-      <p>Bottom-sheet animé pour la recherche. Auto-focus du clavier. Scanner caméra. Touch targets optimisés. Safe-area pour notch.</p>
-      <ul>
-        <li>Auto-focus input à l'ouverture</li>
-        <li>Bottom-sheet avec animation spring</li>
-        <li>Scanner caméra rear-facing</li>
-        <li>Scroll natif sans jank</li>
-      </ul>
-    </div>
-    <div class="r rd1" style="display:flex;justify-content:center">
-      <div class="phone">
-        <div class="phone-screen">
-          <div class="phone-notch"></div>
-          <img src="../screenshots-presentation/v3-mobile-grid.png" alt="Mobile grid" loading="lazy">
+<section class="section" id="mobile">
+  <div class="wrap">
+    <div class="showcase flip">
+      <div class="showcase-text r">
+        <div class="tag">Expérience Mobile</div>
+        <h3>Pensé pour le <em>pouce</em></h3>
+        <p>Bottom-sheet animé pour la recherche. Auto-focus du clavier. Scanner caméra. Touch targets optimisés.</p>
+        <ul>
+          <li>Auto-focus input</li>
+          <li>Bottom-sheet spring</li>
+          <li>Scanner rear-facing</li>
+          <li>Safe-area notch</li>
+        </ul>
+      </div>
+      <div class="phone-wrap r rd1">
+        <div class="phone">
+          <div class="phone-screen">
+            <div class="phone-notch"></div>
+            <img src="../screenshots-presentation/v3-mobile-grid.png" alt="Mobile" loading="lazy">
+          </div>
         </div>
       </div>
-    </div>
-  </div>
-</section>
-
-<!-- MOBILE CARD -->
-<section class="section">
-  <div class="showcase">
-    <div class="r" style="display:flex;justify-content:center;order:1">
-      <div class="phone">
-        <div class="phone-screen">
-          <div class="phone-notch"></div>
-          <img src="../screenshots-presentation/v3-mobile-card.png" alt="Mobile card" loading="lazy">
-        </div>
-      </div>
-    </div>
-    <div class="showcase-text r rd1" style="order:0">
-      <div class="tag">Fiche sur Mobile</div>
-      <h3>Le tarot <em>partout</em></h3>
-      <p>La fiche détaillée s'adapte parfaitement au mobile. Image, affirmation et mots-clés restent lisibles et élégants sur petit écran.</p>
-      <ul>
-        <li>Layout vertical optimisé</li>
-        <li>Image plein écran 88vh</li>
-        <li>Mots-clés centrés</li>
-        <li>Navigation par gestes</li>
-      </ul>
     </div>
   </div>
 </section>
@@ -399,20 +313,15 @@ footer .cp{font-family:'JetBrains Mono',monospace;font-size:.65rem;color:var(--m
 <section class="cta">
   <h2 class="r">Prêt à <em>tirer les cartes ?</em></h2>
   <p class="r rd1">Gratuit. Sans inscription. Sans tracker.</p>
-  <div class="hero-cta r rd2">
-    <a class="btn btn-dark" href="https://mondary.design/pk/tarot3/" target="_blank" rel="noopener">
-      Ouvrir le site
-      <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
-    </a>
-  </div>
+  <a class="hero-cta r rd2" href="https://mondary.design/pk/tarot3/" target="_blank" rel="noopener">
+    Ouvrir le site
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+  </a>
 </section>
-
-</main>
 
 <footer>
   <div class="fl">
-    <a href="https://mondary.design/pk/tarot3/" target="_blank" rel="noopener">Live V3</a>
-    <a href="https://mondary.design/pk/tarot/" target="_blank" rel="noopener">Live V1/V2</a>
+    <a href="https://mondary.design/pk/tarot3/" target="_blank" rel="noopener">Live</a>
     <a href="https://github.com/mondary/Web_Tarot" target="_blank" rel="noopener">GitHub</a>
     <a href="https://mondary.design" target="_blank" rel="noopener">mondary.design</a>
   </div>
@@ -421,7 +330,7 @@ footer .cp{font-family:'JetBrains Mono',monospace;font-size:.65rem;color:var(--m
 
 <script>
 const nav=document.getElementById('nav');
-window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>40),{passive:true});
+addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>40),{passive:true});
 const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}}),{threshold:.1,rootMargin:'0px 0px -40px 0px'});
 document.querySelectorAll('.r').forEach(el=>io.observe(el));
 </script>
