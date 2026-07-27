@@ -48,7 +48,8 @@ a{color:inherit;text-decoration:none}
 /* ====== HERO — full-bleed card ====== */
 .hero{position:relative;min-height:100vh;display:flex;align-items:center;justify-content:center;overflow:hidden}
 .hero-bg{position:absolute;inset:0;z-index:0}
-.hero-bg img{width:100%;height:100%;object-fit:cover;opacity:.35}
+.hero-bg img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 2s var(--ease)}
+.hero-bg img.active{opacity:.35}
 .hero-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,11,30,.7) 0%,rgba(10,11,30,.5) 40%,rgba(10,11,30,.95) 100%)}
 .hero-content{position:relative;z-index:1;text-align:center;padding:2rem}
 .hero h1{font-family:'Instrument Serif',serif;font-weight:400;font-size:clamp(3rem,10vw,8rem);line-height:.9;letter-spacing:-.03em;margin-bottom:1rem}
@@ -141,7 +142,14 @@ footer .cp{font-family:'Geist Mono',monospace;font-size:.58rem;color:var(--mist)
 
 <!-- HERO -->
 <div class="hero">
-  <div class="hero-bg"><img src="card-a_17_Etoile.jpg" alt=""></div>
+  <div class="hero-bg">
+    <img src="card-a_17_Etoile.jpg" alt="" class="active">
+    <img src="card-a_13_Mort.jpg" alt="">
+    <img src="card-a_19_Soleil.jpg" alt="">
+    <img src="card-a_18_Lune.jpg" alt="">
+    <img src="card-a_01_Bateleur.jpg" alt="">
+    <img src="card-a_00_Fou.jpg" alt="">
+  </div>
   <div class="hero-content">
     <h1 class="rv">Tirez vos <em>cartes.</em><span class="break">Lisez votre <em>destin.</em></span></h1>
     <p class="rv d1">78 lames du Tarot de Rider-Waite. Recherche instantanée. Scanner par caméra. Fiches complètes. Gratuit.</p>
@@ -283,6 +291,18 @@ footer .cp{font-family:'Geist Mono',monospace;font-size:.58rem;color:var(--mist)
 addEventListener('scroll',()=>{document.getElementById('nav').classList.toggle('s',scrollY>30)},{passive:true});
 const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}}),{threshold:.08,rootMargin:'0px 0px -40px 0px'});
 document.querySelectorAll('.rv').forEach(el=>io.observe(el));
+
+// Hero card slideshow
+(function(){
+  const slides=document.querySelectorAll('.hero-bg img');
+  if(slides.length<2)return;
+  let cur=0;
+  setInterval(()=>{
+    slides[cur].classList.remove('active');
+    cur=(cur+1)%slides.length;
+    slides[cur].classList.add('active');
+  },4000);
+})();
 </script>
 </body>
 </html>
