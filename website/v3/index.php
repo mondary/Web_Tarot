@@ -194,6 +194,15 @@ a{color:inherit;text-decoration:none}
 .prose blockquote{margin:1.6rem 0;padding:1.2rem 1.6rem;border-left:2px solid var(--ac);background:rgba(241,237,228,.03);border-radius:0 .6rem .6rem 0;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.2rem;line-height:1.6;color:var(--fg)}
 .prose blockquote p{color:var(--fg);font-family:inherit;font-style:italic;font-size:inherit;margin:0}
 .prose hr{border:none;height:1px;background:var(--line);margin:2.4rem 0}
+.associations{margin:2.8rem 0;padding:1.5rem;border:1px solid var(--line);background:rgba(241,237,228,.025)}
+.associations h2{font-family:'Cormorant Garamond',serif;font-size:1.8rem;font-weight:400;color:var(--ac);margin-bottom:.4rem}
+.associations .association-intro{color:var(--muted);font-family:'DM Mono',monospace;font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;margin-bottom:1.4rem}
+.association-section{padding:1.1rem 0;border-top:1px solid var(--line)}
+.association-section h3{font-family:'DM Mono',monospace;font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:var(--fg);margin-bottom:.7rem}
+.association-section ul{list-style:none;margin:0;padding:0}
+.association-section li{padding:.55rem 0;border-bottom:1px solid rgba(241,237,228,.05);font-size:.95rem;line-height:1.65;color:#cfc8ba}
+.association-section li:last-child{border-bottom:0}
+.association-section strong{color:var(--fg);font-weight:500}
 
 /* ES badges */
 .es-badges{display:flex;flex-direction:column;gap:1rem;margin:2rem auto 2.5rem;align-items:center;text-align:center;max-width:700px}
@@ -908,6 +917,7 @@ function page_card(PDO $pdo, string $cardId, string $basePath): void {
     $familyName = htmlspecialchars($card['family_name']);
     $element = htmlspecialchars($card['element']);
     $html = restructure_html($card['html'] ?? '<p>Pas de description disponible.</p>');
+    $associationsHtml = render_associations($cardId);
     $globalNum = str_pad((string)($globalIdx + 1), 2, '0', STR_PAD_LEFT);
     $inFamNum = $inFam + 1;
     $famCount = count($famCards);
@@ -971,6 +981,7 @@ HTML;
       <div class="prose">
         {$html}
       </div>
+      {$associationsHtml}
       <div class="d-thumbs">
         {$thumbsHtml}
       </div>
@@ -996,6 +1007,41 @@ document.addEventListener('keydown',function(e){
 HTML;
     echo layout_search($pdo, $basePath);
     echo '</body></html>';
+}
+
+function render_associations(string $cardId): string {
+    static $all = null;
+    if ($all === null) {
+        $source = __DIR__ . '/../associations.js';
+        $raw = is_file($source) ? (string)file_get_contents($source) : '';
+        $json = preg_match('/const CARD_ASSOCIATIONS=(.*);\nfor/s', $raw, $match) ? $match[1] : '';
+        $all = $json ? (json_decode($json, true) ?: []) : [];
+    }
+    $markdown = $all[$cardId] ?? '';
+    if (!$markdown) return '';
+
+    $sections = [];
+    $current = null;
+    foreach (preg_split('/\R/', $markdown) as $line) {
+        if (preg_match('/^##\s+(.+)$/', trim($line), $match)) {
+            $current = ['title' => trim($match[1]), 'items' => []];
+            $sections[] = &$current;
+        } elseif ($current !== null && preg_match('/^-\s+\*\*([^*]+)\*\*\s*:\s*(.+)$/', trim($line), $match)) {
+            $current['items'][] = '<strong>' . htmlspecialchars(trim($match[1])) . '</strong> : ' . htmlspecialchars(trim($match[2]));
+        }
+    }
+    unset($current);
+    $sectionsHtml = '';
+    $total = 0;
+    foreach ($sections as $section) {
+        if (!$section['items']) continue;
+        $total += count($section['items']);
+        $sectionsHtml .= '<section class="association-section"><h3>' . htmlspecialchars($section['title']) . '</h3><ul>';
+        foreach ($section['items'] as $item) $sectionsHtml .= '<li>' . $item . '</li>';
+        $sectionsHtml .= '</ul></section>';
+    }
+    if (!$sectionsHtml) return '';
+    return '<section class="associations"><h2>Associations</h2><p class="association-intro">' . $total . ' combinaisons avec cette lame</p>' . $sectionsHtml . '</section>';
 }
 
 // ==========================================================
