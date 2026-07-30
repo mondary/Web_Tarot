@@ -100,6 +100,34 @@ a{color:inherit;text-decoration:none}
 .landing-foot a{color:var(--muted);transition:color .3s;border-bottom:1px solid transparent;padding-bottom:1px}
 .landing-foot a:hover{color:var(--fg);border-color:var(--ac)}
 
+/* Card of the Day */
+.card-of-day{
+  margin:1.8rem 0 2.4rem;padding:1.4rem 1.6rem;
+  background:linear-gradient(135deg,rgba(201,162,39,.12),rgba(201,162,39,.06));
+  border:1px solid rgba(201,162,39,.22);border-radius:.9rem;
+  backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)
+}
+.card-of-day-label{
+  display:flex;align-items:center;gap:.5rem;
+  font-family:'DM Mono',monospace;font-size:.62rem;
+  letter-spacing:.22em;text-transform:uppercase;
+  color:var(--ac);margin-bottom:.9rem
+}
+.card-of-day-label .icon{
+  width:1.6rem;height:1.6rem;display:grid;place-items:center;
+  background:rgba(201,162,39,.18);border-radius:50%;font-size:1rem
+}
+.card-of-day-content p{
+  font-family:'Cormorant Garamond',serif;font-size:1.1rem;
+  line-height:1.7;color:var(--fg);margin:0
+}
+@media(max-width:900px){
+  .card-of-day{margin:1.4rem 0 1.8rem;padding:1.2rem 1.3rem}
+  .card-of-day-label{font-size:.58rem;gap:.4rem;margin-bottom:.7rem}
+  .card-of-day-label .icon{width:1.4rem;height:1.4rem;font-size:.9rem}
+  .card-of-day-content p{font-size:1rem;line-height:1.6}
+}
+
 /* Back button */
 .back{position:fixed;top:1.8rem;left:2.2rem;z-index:300;display:flex;align-items:center;gap:.6rem;
   font-family:'DM Mono',monospace;font-size:.7rem;letter-spacing:.24em;text-transform:uppercase;color:var(--muted);
@@ -938,6 +966,22 @@ function page_card(PDO $pdo, string $cardId, string $basePath): void {
         if ($esHtml) $esHtml = '<div class="es-badges">' . $esHtml . '</div>';
     }
 
+    // Card of the Day section
+    $cardOfDayHtml = '';
+    if (!empty($card['card_of_day'])) {
+        $cardOfDayHtml = <<<HTML
+<div class="card-of-day">
+  <div class="card-of-day-label">
+    <span class="icon">☀</span>
+    <span>Carte du Jour</span>
+  </div>
+  <div class="card-of-day-content">
+    <p>{$card['card_of_day']}</p>
+  </div>
+</div>
+HTML;
+    }
+
     // Thumbnails
     $thumbsHtml = '';
     foreach ($famCards as $fc) {
@@ -982,8 +1026,9 @@ HTML;
         <span class="sep">·</span>
         <span>{$element}</span>
       </div>
-      <h1 class="d-title"><em>{$name}</em></h1>
+       <h1 class="d-title"><em>{$name}</em></h1>
       {$esHtml}
+      {$cardOfDayHtml}
       <div class="prose">
         {$html}
       </div>
