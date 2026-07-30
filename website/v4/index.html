@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+<title>Tarot Divinatoire</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔮</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#050505; --bg-2:#0a0907;
+  --fg:#f1ede4; --muted:#8a8378;
+  --line:rgba(241,237,228,.08);
+  --ac:#c9a227;
+  --mat:#ffffff;
+  --ease:cubic-bezier(.16,1,.3,1);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{height:100%;overflow-x:hidden}
+body{background:var(--bg);color:var(--fg);font-family:'Plus Jakarta Sans',sans-serif;-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+
+/* Load state */
+#loader{position:fixed;inset:0;z-index:9999;display:grid;place-items:center;background:var(--bg);transition:opacity .6s var(--ease)}
+#loader.gone{opacity:0;pointer-events:none}
+#loader .pulse{width:60px;height:60px;border-radius:50%;border:2px solid var(--ac);animation:lp 1.6s ease-in-out infinite}
+@keyframes lp{0%,100%{transform:scale(.8);opacity:.3}50%{transform:scale(1.1);opacity:1}}
+
+/* Grain */
+.grain{position:fixed;inset:0;z-index:9000;pointer-events:none;opacity:.035;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+
+/* Header */
+.hdr{position:sticky;top:0;z-index:400;display:flex;align-items:center;justify-content:space-between;padding:1rem 1.5rem;background:rgba(5,5,5,.82);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.hdr .brand{display:flex;align-items:center;gap:.6rem;font-family:'DM Mono',monospace;font-size:.65rem;letter-spacing:.3em;text-transform:uppercase;color:var(--muted)}
+.hdr .brand b{color:var(--fg);font-weight:400}
+.hdr .brand em{color:var(--ac);font-style:normal}
+.hdr .ver{font-family:'DM Mono',monospace;font-size:.55rem;color:var(--muted);letter-spacing:.1em}
+
+/* Grid */
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(110px,1fr));gap:.5rem;padding:1.5rem;max-width:1600px;margin:0 auto}
+@media(min-width:901px){.grid{grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:.7rem;padding:2rem 2.5rem}}
+.card-tile{position:relative;aspect-ratio:2/3.4;border-radius:.4rem;overflow:hidden;cursor:pointer;background:var(--bg-2);border:1px solid var(--line);transition:transform .4s var(--ease),border-color .3s}
+.card-tile:hover{transform:translateY(-3px);border-color:var(--ac)}
+.card-tile img{width:100%;height:100%;object-fit:cover}
+.card-tile .nm{position:absolute;bottom:0;left:0;right:0;padding:.35rem .5rem;background:linear-gradient(transparent,rgba(0,0,0,.85));font-size:.6rem;font-family:'DM Mono',monospace;letter-spacing:.04em;text-align:center;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+
+/* Family separators */
+.fam-sep{grid-column:1/-1;display:flex;align-items:center;gap:1rem;padding:1.2rem 0 .4rem}
+.fam-sep .glyph{font-size:1.4rem;color:var(--ac)}
+.fam-sep h2{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:1.4rem;font-style:italic}
+.fam-sep .meta{font-family:'DM Mono',monospace;font-size:.55rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-left:auto}
+
+/* Detail view */
+#detail{position:fixed;inset:0;z-index:5000;display:none;overflow-y:auto;background:var(--bg)}
+#detail.open{display:block}
+.d-bar{position:sticky;top:0;z-index:10;display:flex;align-items:center;justify-content:space-between;padding:.8rem 1.5rem;background:rgba(5,5,5,.85);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.d-bar .nav-btns{display:flex;gap:.5rem}
+.d-bar button,.d-bar a{background:none;border:1px solid var(--line);color:var(--muted);padding:.5rem .8rem;border-radius:.4rem;cursor:pointer;font-family:'DM Mono',monospace;font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;transition:.3s}
+.d-bar button:hover,.d-bar a:hover{color:var(--fg);border-color:var(--ac)}
+.d-content{max-width:42rem;margin:0 auto;padding:2rem 1.5rem 4rem}
+.d-hero{text-align:center;margin-bottom:2rem}
+.d-hero img{width:auto;height:auto;max-height:60vh;margin:0 auto;border-radius:.4rem;box-shadow:0 20px 60px rgba(0,0,0,.5)}
+.d-title{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:2.2rem;font-style:italic;text-align:center;margin:1.5rem 0 .3rem}
+.d-meta{text-align:center;font-family:'DM Mono',monospace;font-size:.58rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:2rem}
+
+/* Badges */
+.es-badges{display:flex;flex-wrap:wrap;justify-content:center;gap:.5rem;margin-bottom:1.5rem}
+.es-badge{padding:.4rem .7rem;border-radius:50px;font-size:.65rem;border:1px solid var(--line)}
+.es-badge.aff{font-family:'Cormorant Garamond',serif;font-size:.85rem;font-style:italic;color:var(--ac);border-color:var(--ac)}
+.es-badge.resp{font-family:'DM Mono',monospace;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+
+/* Card of the Day */
+.cod{margin:1.5rem 0 2rem;padding:1.2rem 1.4rem;background:linear-gradient(135deg,rgba(201,162,39,.1),rgba(201,162,39,.04));border:1px solid rgba(201,162,39,.2);border-radius:.8rem}
+.cod-label{display:flex;align-items:center;gap:.4rem;font-family:'DM Mono',monospace;font-size:.58rem;letter-spacing:.2em;text-transform:uppercase;color:var(--ac);margin-bottom:.7rem}
+.cod-label .ic{width:1.3rem;height:1.3rem;display:grid;place-items:center;background:rgba(201,162,39,.15);border-radius:50%;font-size:.8rem}
+.cod-content p{font-family:'Cormorant Garamond',serif;font-size:1.05rem;line-height:1.65;color:var(--fg)}
+
+/* Prose */
+.prose{font-family:'Plus Jakarta Sans',sans-serif;font-size:.92rem;line-height:1.75;color:var(--fg)}
+.prose h2{font-family:'Cormorant Garamond',serif;font-weight:400;font-size:1.5rem;font-style:italic;margin:2rem 0 .8rem;color:var(--ac)}
+.prose p{margin-bottom:1rem}
+.prose strong{color:var(--fg);font-weight:500}
+
+/* Footer */
+.d-foot{max-width:42rem;margin:0 auto;padding:0 1.5rem 3rem;text-align:center}
+.d-foot .thumbs{display:flex;gap:.4rem;overflow-x:auto;padding:.5rem 0;scrollbar-width:none}
+.d-foot .thumbs::-webkit-scrollbar{display:none}
+.d-foot .thumbs a{flex:0 0 auto;width:48px;aspect-ratio:2/3;border-radius:.3rem;overflow:hidden;opacity:.4;transition:.3s}
+.d-foot .thumbs a:hover,.d-foot .thumbs a.cur{opacity:1}
+.d-foot .thumbs img{width:100%;height:100%;object-fit:cover}
+
+/* Error */
+#err{position:fixed;inset:0;z-index:9998;display:none;place-items:center;background:var(--bg);text-align:center;padding:2rem}
+#err.show{display:grid}
+#err h1{font-family:'Cormorant Garamond',serif;font-size:1.8rem;margin-bottom:1rem;color:var(--ac)}
+#err p{color:var(--muted);font-size:.85rem;line-height:1.6;max-width:28rem}
+#err input{margin-top:1.5rem}
+</style>
+</head>
+<body>
+
+<div id="loader"><div class="pulse"></div></div>
+<div class="grain"></div>
+
+<div id="err">
+  <div>
+    <h1>🔮 Tarot</h1>
+    <p>Sélectionnez le fichier <code>tarot.sqlite</code> pour charger la base de données.</p>
+    <input type="file" id="filepick" accept=".sqlite,.db">
+  </div>
+</div>
+
+<header class="hdr" style="display:none" id="hdr">
+  <div class="brand"><b>TAROT</b> <em>DIVINATOIRE</em></div>
+  <span class="ver" id="verTag"></span>
+</header>
+
+<div id="grid-view" style="display:none">
+  <div class="grid" id="grid"></div>
+</div>
+
+<div id="detail">
+  <div class="d-bar">
+    <button onclick="closeDetail()">← Retour</button>
+    <div class="nav-btns">
+      <button id="prevBtn">← Préc.</button>
+      <button id="nextBtn">Suiv. →</button>
+    </div>
+  </div>
+  <div class="d-content" id="dContent"></div>
+  <div class="d-foot">
+    <div class="thumbs" id="thumbs"></div>
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.10.3/sql-wasm.js"></script>
+<script>
+let SQL, db, ALL_CARDS = [], FAMILIES = [], ES_DATA = {};
+const blobCache = {};
+
+async function initSQL() {
+  SQL = await initSqlJs({ locateFile: f => `https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.10.3/${f}` });
+}
+
+async function loadDB() {
+  try {
+    const resp = await fetch('tarot.sqlite');
+    if (!resp.ok) throw new Error('fetch failed');
+    const buf = new Uint8Array(await resp.arrayBuffer());
+    db = new SQL.Database(buf);
+    return true;
+  } catch(e) {
+    return false;
+  }
+}
+
+function loadDBFromFile(file) {
+  const reader = new FileReader();
+  return new Promise((resolve, reject) => {
+    reader.onload = e => {
+      db = new SQL.Database(new Uint8Array(e.target.result));
+      resolve(true);
+    };
+    reader.onerror = reject;
+    reader.readAsArrayBuffer(file);
+  });
+}
+
+function blobUrl(cardId) {
+  if (blobCache[cardId]) return blobCache[cardId];
+  const r = db.exec("SELECT img FROM cards WHERE id = '" + cardId.replace(/'/g,"''") + "' LIMIT 1");
+  if (!r.length || !r[0].values.length) return '';
+  const data = r[0].values[0][0];
+  if (!data || data.length < 100) return '';
+  const blob = new Blob([data], { type: 'image/jpeg' });
+  const url = URL.createObjectURL(blob);
+  blobCache[cardId] = url;
+  return url;
+}
+
+function loadAll() {
+  // Families
+  const fams = db.exec("SELECT key,name,short,element,element_sym,element_line,accent,sort_order FROM families ORDER BY sort_order");
+  if (fams.length) {
+    FAMILIES = fams[0].values.map(r => ({ key:r[0],name:r[1],short:r[2],element:r[3],sym:r[4],line:r[5],accent:r[6],sort:r[7] }));
+  }
+
+  // Cards
+  const cards = db.exec("SELECT id,family_key,name,num,sort_global,html,card_of_day FROM cards ORDER BY sort_global");
+  if (cards.length) {
+    ALL_CARDS = cards[0].values.map(r => ({ id:r[0],family:r[1],name:r[2],num:r[3],sort:r[4],html:r[5],cod:r[6] }));
+  }
+
+  // ES data
+  const es = db.exec("SELECT card_id,affirmation,reponse FROM card_es");
+  if (es.length) {
+    es[0].values.forEach(r => { ES_DATA[r[0]] = { aff:r[1],rep:r[2] }; });
+  }
+
+  // Version
+  const ver = db.exec("SELECT value FROM meta WHERE key='version'");
+  if (ver.length) document.getElementById('verTag').textContent = 'v' + ver[0].values[0][0];
+}
+
+function renderGrid() {
+  const grid = document.getElementById('grid');
+  let html = '';
+  let lastFam = null;
+
+  for (const c of ALL_CARDS) {
+    if (c.family !== lastFam) {
+      const fam = FAMILIES.find(f => f.key === c.family);
+      if (fam) {
+        const count = ALL_CARDS.filter(x => x.family === c.family).length;
+        html += `<div class="fam-sep" style="--ac:${fam.accent}">
+          <span class="glyph">${fam.sym||''}</span>
+          <h2>${fam.name}</h2>
+          <span class="meta">${fam.element} · ${count} cartes</span>
+        </div>`;
+      }
+      lastFam = c.family;
+    }
+    const url = blobUrl(c.id);
+    html += `<div class="card-tile" onclick="openDetail('${c.id}')" style="--ac:${(FAMILIES.find(f=>f.key===c.family)||{}).accent||'var(--ac)'}">
+      ${url ? `<img src="${url}" alt="${c.name}" loading="lazy">` : ''}
+      <div class="nm">${c.name}</div>
+    </div>`;
+  }
+
+  grid.innerHTML = html;
+}
+
+function openDetail(id) {
+  const idx = ALL_CARDS.findIndex(c => c.id === id);
+  if (idx < 0) return;
+  const c = ALL_CARDS[idx];
+  const fam = FAMILIES.find(f => f.key === c.family) || {};
+  const es = ES_DATA[id] || {};
+  const url = blobUrl(id);
+  const globalNum = String(idx + 1).padStart(2, '0');
+
+  let badges = '';
+  if (es.aff) badges += `<span class="es-badge aff">« ${es.aff} »</span>`;
+  if (es.rep) badges += `<span class="es-badge resp">${es.rep}</span>`;
+  if (badges) badges = `<div class="es-badges">${badges}</div>`;
+
+  let cod = '';
+  if (c.cod) {
+    cod = `<div class="cod" style="--ac:${fam.accent||'var(--ac)'}">
+      <div class="cod-label"><span class="ic">☀</span> Carte du Jour</div>
+      <div class="cod-content"><p>${c.cod}</p></div>
+    </div>`;
+  }
+
+  document.getElementById('dContent').innerHTML = `
+    <div class="d-hero">
+      ${url ? `<img src="${url}" alt="${c.name}">` : ''}
+    </div>
+    <h1 class="d-title" style="--ac:${fam.accent||'var(--ac)'}"><em>${c.name}</em></h1>
+    <div class="d-meta">${globalNum} / ${ALL_CARDS.length} · ${fam.name||c.family} · ${fam.element||''}</div>
+    ${badges}
+    ${cod}
+    <div class="prose">${c.html || '<p>Pas de description disponible.</p>'}</div>
+  `;
+
+  // Thumbnails
+  const famCards = ALL_CARDS.filter(x => x.family === c.family);
+  const thumbs = document.getElementById('thumbs');
+  thumbs.innerHTML = famCards.map(fc => {
+    const turl = blobUrl(fc.id);
+    return `<a class="${fc.id===id?'cur':''}" onclick="openDetail('${fc.id}')">${turl?`<img src="${turl}">`:''}</a>`;
+  }).join('');
+
+  // Nav buttons
+  const prev = ALL_CARDS[(idx - 1 + ALL_CARDS.length) % ALL_CARDS.length];
+  const next = ALL_CARDS[(idx + 1) % ALL_CARDS.length];
+  document.getElementById('prevBtn').onclick = () => openDetail(prev.id);
+  document.getElementById('nextBtn').onclick = () => openDetail(next.id);
+
+  document.getElementById('detail').classList.add('open');
+  document.getElementById('detail').scrollTop = 0;
+}
+
+function closeDetail() {
+  document.getElementById('detail').classList.remove('open');
+}
+
+// Keyboard nav
+document.addEventListener('keydown', e => {
+  if (e.target.tagName === 'INPUT') return;
+  if (e.key === 'Escape') closeDetail();
+  if (!document.getElementById('detail').classList.contains('open')) return;
+  const idx = ALL_CARDS.findIndex(c => c.id === (document.querySelector('.d-title em')||{}).textContent);
+  // Simpler: just use current card
+});
+
+// Boot
+(async () => {
+  await initSQL();
+
+  let loaded = await loadDB();
+  if (!loaded) {
+    // file:// fallback
+    document.getElementById('err').classList.add('show');
+    document.getElementById('loader').classList.add('gone');
+    document.getElementById('filepick').onchange = async (e) => {
+      const f = e.target.files[0];
+      if (!f) return;
+      await loadDBFromFile(f);
+      document.getElementById('err').classList.remove('show');
+      boot();
+    };
+    return;
+  }
+  boot();
+})();
+
+function boot() {
+  loadAll();
+  renderGrid();
+  document.getElementById('loader').classList.add('gone');
+  document.getElementById('hdr').style.display = '';
+  document.getElementById('grid-view').style.display = '';
+}
+</script>
+</body>
+</html>
