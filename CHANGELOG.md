@@ -6,7 +6,7 @@ Toutes les notes de release du projet Web Tarot. Le format de version suit `🔥
 
 ## TODO — Roadmap
 
-Statut : `3.2026.23` (V3 PHP live + grille plate + intercalaires)
+Statut : `3.2026.24` (Traductions complètes FR + spreads)
 
 ### Phase 1 — Fondations ✅
 - [x] Interface V2 unifiée (carousel d'accueil + grille par famille + vue détail)
@@ -30,6 +30,14 @@ Statut : `3.2026.23` (V3 PHP live + grille plate + intercalaires)
 ---
 
 ## Releases
+
+### [3.2026.24] - 2026-07-30
+#### Added
+- **Traductions FR complètes** : 78 cartes + 10 spreads en français dans `benchmarks/cards_alt/`
+- **Fichiers bilingues** : `_unlimitedENG.md` (anglais) et `_unlimitedFR.md` (français) pour chaque carte et spread
+- **Sections enrichies** : headers Markdown `##` adaptés (The Card's Plot → L'Intrigue de la Carte, etc.)
+- **Contenu structuré** : plot, description, qualités personnelles, relations, travail, carte du jour, conclusion
+- **Corrections de traduction** : élimination du Franglais, traductions par IA humaines de qualité
 
 ### [3.2026.23] - 2026-07-24
 #### Added

@@ -63,7 +63,8 @@ Ce script lit `website/assets/md/*.md` et `website/assets/img/cards/*.jpg`, rég
 ```bash
 git clone <repo-url>
 cd Web_Tarot
-# V3 PHP : déployer website/v3/ sur un serveur PHP+SQLite
+# V3 PHP : déployer website/v3/ sur un serveur PHP+SQLite, avec website/associations.js
+# Associations V3 : cp website/associations.js website/v3/associations.js avant l'envoi FTP
 # V1/V2 : déployer website/index.html + website/assets/ sur n'importe quel serveur statique
 open website/index.html
 ```
@@ -79,7 +80,7 @@ python3 -m http.server 8000
 
 ## 📋 Voir le [CHANGELOG](CHANGELOG.md) pour l'historique complet.
 
-Version courante : `🔥v3.2026.23`
+Version courante : `🔥v3.2026.24`
 
 ## 🔗 Liens
 
