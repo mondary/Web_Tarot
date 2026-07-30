@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Atlas des majeurs — prototype</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=DM+Mono:wght@400;500&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#171513;--paper:#f2eee5;--paper-2:#e8e1d3;--quiet:#746c61;--rule:#cfc5b5;--gold:#ad7b2e;--red:#934f43;--white:#fffdf8}
+*{box-sizing:border-box}html,body{margin:0;min-height:100%;background:var(--paper);color:var(--ink)}body{font-family:'Plus Jakarta Sans',sans-serif}button,input{font:inherit}button{cursor:pointer}.shell{max-width:1500px;margin:auto;padding:28px 4vw 60px}
+.topbar{display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--rule);padding-bottom:18px}.brand,.eyebrow,.mono{font:500 .67rem 'DM Mono',monospace;letter-spacing:.16em;text-transform:uppercase}.brand b{color:var(--gold);font-weight:500}.topbar a{color:var(--quiet);text-decoration:none;font:500 .68rem 'DM Mono',monospace;letter-spacing:.1em;text-transform:uppercase}
+.intro{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(280px,.8fr);gap:5vw;padding:68px 0 46px;align-items:end}.eyebrow{color:var(--gold);margin-bottom:18px}.intro h1{font:400 clamp(3.7rem,8vw,8.8rem)/.82 'Cormorant Garamond',serif;letter-spacing:-.045em;margin:0;max-width:780px}.intro h1 em{color:var(--red);font-style:italic}.intro-copy{color:var(--quiet);line-height:1.7;max-width:450px;font-size:.92rem}.intro-copy strong{color:var(--ink);font-weight:600}.stats{display:flex;gap:26px;margin-top:25px;color:var(--quiet)}.stats b{display:block;color:var(--ink);font:400 2rem 'Cormorant Garamond',serif}.stats span{font:500 .59rem 'DM Mono',monospace;letter-spacing:.1em;text-transform:uppercase}
+.workspace{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(360px,.7fr);gap:18px;align-items:start}.catalog,.inspector{border:1px solid var(--rule);background:rgba(255,253,248,.52)}.catalog-head{display:flex;justify-content:space-between;gap:20px;align-items:center;padding:20px 22px;border-bottom:1px solid var(--rule)}.catalog-head h2{font:500 1.7rem 'Cormorant Garamond',serif;margin:0}.search{border:1px solid var(--rule);background:var(--white);padding:10px 13px;color:var(--ink);min-width:180px}.search:focus{outline:2px solid var(--gold);outline-offset:2px}.cards{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:8px;padding:14px}.card{border:1px solid transparent;background:transparent;padding:7px;text-align:left;color:var(--ink);min-width:0}.card:hover,.card:focus-visible,.card.selected{border-color:var(--gold);outline:none;background:var(--white)}.card img{width:100%;aspect-ratio:2/3;object-fit:contain;background:#fff}.card-name{font:500 .86rem/1.05 'Cormorant Garamond',serif;margin-top:8px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.card-num{color:var(--gold);font:500 .57rem 'DM Mono',monospace;margin-top:5px}
+.inspector{position:sticky;top:18px;background:var(--ink);color:var(--paper);border-color:var(--ink);min-height:590px}.inspector-top{display:flex;gap:18px;padding:20px;border-bottom:1px solid rgba(242,238,229,.18)}.portrait{width:98px;flex:0 0 98px}.portrait img{width:100%;aspect-ratio:2/3;object-fit:contain;background:#fff}.inspector h2{font:400 clamp(2rem,4vw,3.3rem)/.85 'Cormorant Garamond',serif;margin:15px 0 9px}.inspector .number{color:#d3a657;font:500 .62rem 'DM Mono',monospace;letter-spacing:.14em;text-transform:uppercase}.panel{padding:22px}.panel-label{color:#d3a657;font:500 .6rem 'DM Mono',monospace;letter-spacing:.16em;text-transform:uppercase}.panel h3{font:400 1.55rem 'Cormorant Garamond',serif;margin:9px 0}.quote{border-left:2px solid #d3a657;padding-left:14px;color:#d8d0c3;line-height:1.6;font:italic 1.08rem/1.55 'Cormorant Garamond',serif}.terms{display:flex;flex-wrap:wrap;gap:7px;margin-top:13px}.term{border:1px solid rgba(242,238,229,.28);padding:7px 9px;color:#e7ddce;background:transparent;font-size:.68rem}.term.active{border-color:#d3a657;background:#d3a657;color:var(--ink)}.term:focus-visible{outline:2px solid #fff;outline-offset:2px}.source-row{display:flex;justify-content:space-between;align-items:center;margin-top:25px;padding-top:16px;border-top:1px solid rgba(242,238,229,.18);color:#a9a094;font-size:.72rem}.source-row button{border:1px solid rgba(242,238,229,.3);background:transparent;color:var(--paper);padding:8px 10px;font-size:.68rem}.source-row button:hover{border-color:#d3a657;color:#d3a657}.viewbar{display:flex;gap:8px;align-items:center;margin:13px 14px 0;border-top:1px solid var(--rule);padding-top:13px}.viewbar button{border:1px solid var(--rule);background:transparent;color:var(--quiet);padding:8px 10px;font:500 .6rem 'DM Mono',monospace;letter-spacing:.08em;text-transform:uppercase}.viewbar button.active{background:var(--ink);border-color:var(--ink);color:var(--paper)}.viewbar span{margin-left:auto;color:var(--quiet);font-size:.72rem}
+.empty{grid-column:1/-1;padding:40px;color:var(--quiet);text-align:center}.hint{margin-top:12px;color:var(--quiet);font-size:.72rem}.hidden{display:none!important}@media(max-width:1050px){.workspace{grid-template-columns:1fr}.inspector{position:relative;top:auto}.cards{grid-template-columns:repeat(5,minmax(0,1fr))}}@media(max-width:650px){.shell{padding:18px 16px 40px}.intro{grid-template-columns:1fr;padding:48px 0 30px;gap:28px}.intro h1{font-size:4.5rem}.catalog-head{align-items:flex-start;flex-direction:column}.search{width:100%}.cards{grid-template-columns:repeat(3,minmax(0,1fr));padding:8px}.inspector-top{padding:14px}.panel{padding:16px}.topbar a{font-size:.57rem}.stats{gap:18px}}
+@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<main class="shell">
+  <header class="topbar"><div class="brand">Tarot <b>/ Atlas éditorial</b></div><a href="index.html">← Retour aux 78 lames</a></header>
+  <section class="intro">
+    <div><div class="eyebrow">Prototype de bibliothèque</div><h1>Les <em>majeurs</em><br>en mémoire.</h1></div>
+    <div class="intro-copy"><p><strong>Une lame, plusieurs voix.</strong> Cette vue rassemble les sources, les mots-clés et les formulations que tu veux retenir. Sélectionne les termes qui composent ta lecture personnelle.</p><div class="stats"><div><b>22</b><span>arcanes</span></div><div><b>3</b><span>sources</span></div><div><b id="selected-count">0</b><span>termes choisis</span></div></div></div>
+  </section>
+  <section class="workspace" aria-label="Bibliothèque des arcanes majeurs">
+    <div class="catalog">
+      <div class="catalog-head"><div><div class="eyebrow">Collection active</div><h2>Arcanes majeurs</h2></div><label><span class="hidden">Rechercher une lame</span><input class="search" id="search" type="search" placeholder="Rechercher une lame…"></label></div>
+      <div class="cards" id="cards" aria-live="polite"></div>
+      <div class="viewbar"><button class="active" type="button">Vue catalogue</button><button type="button" id="memory-view">Vue mémoire</button><span>Cliquer une lame pour comparer</span></div>
+    </div>
+    <aside class="inspector" id="inspector" aria-live="polite"></aside>
+  </section>
+</main>
+<script src="data.js"></script><script src="associations.js"></script>
+<script>
+(() => {
+  const family = TAROT.families.find(item => item.key === 'majors');
+  const cards = family.cards;
+  const root = document.getElementById('cards');
+  const inspector = document.getElementById('inspector');
+  const search = document.getElementById('search');
+  const selected = new Set(JSON.parse(localStorage.getItem('tarot_major_terms') || '[]'));
+  let current = cards[1] || cards[0];
+  const escape = value => String(value || '').replace(/[&<>"']/g, char => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[char]));
+  const keywords = card => {
+    const text = card.md || '';
+    const match = text.match(/mots-clés[^\n]*\n([\s\S]*?)(?:\n##|\n#|$)/i);
+    return (match ? match[1] : text).split(/[,\n•]/).map(value => value.replace(/[*\-]/g,'').trim()).filter(value => value.length > 2 && value.length < 38).slice(0, 8);
+  };
+  const associationCount = card => (window.CARD_ASSOCIATIONS && CARD_ASSOCIATIONS[card.id]) ? (CARD_ASSOCIATIONS[card.id].match(/^-/gm) || []).length : 0;
+  function renderCards() {
+    const query = search.value.trim().toLowerCase();
+    const visible = cards.filter(card => card.name.toLowerCase().includes(query));
+    root.innerHTML = visible.length ? visible.map(card => `<button class="card ${card.id === current.id ? 'selected' : ''}" type="button" data-id="${escape(card.id)}" aria-label="Afficher ${escape(card.name)}"><img src="${escape(card.file)}" alt=""><span class="card-name">${escape(card.name)}</span><span class="card-num">${String(card.num).padStart(2,'0')}</span></button>`).join('') : '<p class="empty">Aucune lame ne correspond à cette recherche.</p>';
+    root.querySelectorAll('.card').forEach(button => button.addEventListener('click', () => select(button.dataset.id)));
+  }
+  function select(id) { current = cards.find(card => card.id === id) || current; renderCards(); renderInspector(); }
+  function renderInspector() {
+    const terms = keywords(current);
+    const assoc = associationCount(current);
+    inspector.innerHTML = `<div class="inspector-top"><div class="portrait"><img src="${escape(current.file)}" alt="${escape(current.name)}"></div><div><div class="number">${String(current.num).padStart(2,'0')} · Arcane majeur</div><h2>${escape(current.name)}</h2><div class="number">${assoc || '0'} associations enregistrées</div></div></div><div class="panel"><div class="panel-label">Vue mémoire · formulation personnelle</div><h3>Ce que je retiens</h3><p class="quote">« ${escape(terms[0] || 'Ajoute une formulation courte pour cette lame.')} »</p><div class="terms" aria-label="Mots-clés sélectionnables">${terms.map(term => `<button class="term ${selected.has(current.id + ':' + term) ? 'active' : ''}" type="button" data-term="${escape(term)}" aria-pressed="${selected.has(current.id + ':' + term)}">${escape(term)}</button>`).join('')}</div><div class="source-row"><span>Sources comparées<br><strong>Corpus · notes · associations</strong></span><button type="button" id="show-associations">Voir les associations</button></div><p class="hint" id="panel-hint">Les termes sélectionnés sont conservés localement pour cette démonstration.</p></div>`;
+    inspector.querySelectorAll('.term').forEach(button => button.addEventListener('click', () => { const key = current.id + ':' + button.dataset.term; selected.has(key) ? selected.delete(key) : selected.add(key); localStorage.setItem('tarot_major_terms', JSON.stringify([...selected])); renderInspector(); updateCount(); }));
+    inspector.querySelector('#show-associations').addEventListener('click', () => { const hint = inspector.querySelector('#panel-hint'); hint.textContent = assoc ? assoc + ' associations disponibles dans le corpus.' : 'Aucune association importée pour cette lame.'; });
+  }
+  function updateCount() { document.getElementById('selected-count').textContent = selected.size; }
+  search.addEventListener('input', renderCards); document.getElementById('memory-view').addEventListener('click', () => inspector.scrollIntoView({behavior:'smooth',block:'center'}));
+  renderCards(); renderInspector(); updateCount();
+})();
+</script>
+</body>
+</html>

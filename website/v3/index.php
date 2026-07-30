@@ -199,10 +199,16 @@ a{color:inherit;text-decoration:none}
 .associations .association-intro{color:var(--muted);font-family:'DM Mono',monospace;font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;margin-bottom:1.4rem}
 .association-section{padding:1.1rem 0;border-top:1px solid var(--line)}
 .association-section h3{font-family:'DM Mono',monospace;font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:var(--fg);margin-bottom:.7rem}
-.association-section ul{list-style:none;margin:0;padding:0}
-.association-section li{padding:.55rem 0;border-bottom:1px solid rgba(241,237,228,.05);font-size:.95rem;line-height:1.65;color:#cfc8ba}
-.association-section li:last-child{border-bottom:0}
-.association-section strong{color:var(--fg);font-weight:500}
+.association-section ul{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:.6rem}
+.association-section li{display:flex;gap:.7rem;align-items:flex-start;padding:.6rem;border:1px solid rgba(241,237,228,.06);border-radius:.5rem;background:rgba(241,237,228,.02);transition:border-color .3s,background .3s}
+.association-section li:hover{border-color:rgba(201,162,39,.4);background:rgba(201,162,39,.04)}
+.assoc-thumb{flex:0 0 auto;width:42px;aspect-ratio:2/3;border-radius:4px;overflow:hidden;background:var(--mat);display:block;border:1px solid rgba(255,255,255,.1)}
+.assoc-thumb img{width:100%;height:100%;object-fit:contain;display:block}
+.assoc-thumb-empty{background:rgba(241,237,228,.04)}
+.assoc-text{min-width:0;flex:1}
+.assoc-link{font-family:'Cormorant Garamond',serif;font-size:1rem;font-weight:500;color:var(--fg);line-height:1.1;display:block;margin-bottom:.3rem}
+.assoc-link:hover{color:var(--ac)}
+.assoc-text p{font-size:.82rem;line-height:1.45;color:#b8b0a2;font-weight:300;margin:0}
 
 /* ES badges */
 .es-badges{display:flex;flex-direction:column;gap:1rem;margin:2rem auto 2.5rem;align-items:center;text-align:center;max-width:700px}
@@ -917,7 +923,7 @@ function page_card(PDO $pdo, string $cardId, string $basePath): void {
     $familyName = htmlspecialchars($card['family_name']);
     $element = htmlspecialchars($card['element']);
     $html = restructure_html($card['html'] ?? '<p>Pas de description disponible.</p>');
-    $associationsHtml = render_associations($cardId);
+    $associationsHtml = render_associations($cardId, $pdo, $basePath);
     $globalNum = str_pad((string)($globalIdx + 1), 2, '0', STR_PAD_LEFT);
     $inFamNum = $inFam + 1;
     $famCount = count($famCards);
@@ -1009,35 +1015,113 @@ HTML;
     echo '</body></html>';
 }
 
-function render_associations(string $cardId): string {
+function normalize_card_name(string $s): string {
+    $s = trim($s);
+    $s = str_replace(["\u{2018}", "\u{2019}"], "'", $s);
+    return mb_strtolower($s, 'UTF-8');
+}
+
+function build_card_lookup(PDO $pdo): array {
+    static $lookup = null;
+    if ($lookup !== null) return $lookup;
+    $rows = $pdo->query("SELECT id, family_key, name FROM cards")->fetchAll();
+    $lookup = [];
+    foreach ($rows as $r) {
+        $lookup[normalize_card_name($r['name'])] = $r;
+    }
+    // Marseille aliases not always in DB name field
+    $aliases = [
+        "l'arcane sans nom" => 'a_13_Mort',
+        'la tour' => 'a_16_Tour',
+        'le mat' => 'a_00_Fou',
+        'la tempérance' => 'a_14_Temperance',
+    ];
+    foreach ($aliases as $k => $id) {
+        if (!isset($lookup[$k])) {
+            foreach ($rows as $r) {
+                if ($r['id'] === $id) { $lookup[$k] = $r; break; }
+            }
+        }
+    }
+    return $lookup;
+}
+
+function match_assoc_card(string $targetName, array $lookup): ?array {
+    $candidates = [$targetName];
+    if (strpos($targetName, '/') !== false) {
+        $parts = array_map('trim', explode('/', $targetName));
+        $candidates = array_merge($candidates, $parts);
+    }
+    foreach ($candidates as $c) {
+        $norm = normalize_card_name($c);
+        if (isset($lookup[$norm])) return $lookup[$norm];
+    }
+    return null;
+}
+
+function render_associations(string $cardId, PDO $pdo, string $basePath): string {
     static $all = null;
     if ($all === null) {
-        $source = __DIR__ . '/../associations.js';
-        $raw = is_file($source) ? (string)file_get_contents($source) : '';
-        $json = preg_match('/const CARD_ASSOCIATIONS=(.*);\nfor/s', $raw, $match) ? $match[1] : '';
+        // V3 is often deployed alone; prefer a local copy, then use the source corpus in development.
+        $sources = [__DIR__ . '/associations.js', __DIR__ . '/../associations.js'];
+        $raw = '';
+        foreach ($sources as $source) {
+            if (is_file($source)) {
+                $raw = (string)file_get_contents($source);
+                break;
+            }
+        }
+        $json = preg_match('/const\s+CARD_ASSOCIATIONS\s*=\s*(\{.*\})\s*;\s*\nfor/s', $raw, $match) ? $match[1] : '';
         $all = $json ? (json_decode($json, true) ?: []) : [];
     }
     $markdown = $all[$cardId] ?? '';
     if (!$markdown) return '';
 
+    $lookup = build_card_lookup($pdo);
+
     $sections = [];
-    $current = null;
+    $currentIndex = null;
     foreach (preg_split('/\R/', $markdown) as $line) {
-        if (preg_match('/^##\s+(.+)$/', trim($line), $match)) {
-            $current = ['title' => trim($match[1]), 'items' => []];
-            $sections[] = &$current;
-        } elseif ($current !== null && preg_match('/^-\s+\*\*([^*]+)\*\*\s*:\s*(.+)$/', trim($line), $match)) {
-            $current['items'][] = '<strong>' . htmlspecialchars(trim($match[1])) . '</strong> : ' . htmlspecialchars(trim($match[2]));
+        $line = trim($line);
+        if (preg_match('/^##\s+(.+)$/', $line, $match)) {
+            $sections[] = ['title' => trim($match[1]), 'items' => []];
+            $currentIndex = count($sections) - 1;
+        } elseif ($currentIndex !== null && preg_match('/^-\s+\*\*([^*]+)\*\*\s*:\s*(.+)$/', $line, $match)) {
+            $pairName = trim($match[1]);
+            $desc = trim($match[2]);
+            // Extract target card (second part after " + ")
+            $target = strpos($pairName, ' + ') !== false ? trim(explode(' + ', $pairName, 2)[1]) : '';
+            $card = $target ? match_assoc_card($target, $lookup) : null;
+            $sections[$currentIndex]['items'][] = [
+                'name' => $pairName,
+                'desc' => $desc,
+                'card' => $card,
+            ];
         }
     }
-    unset($current);
     $sectionsHtml = '';
     $total = 0;
     foreach ($sections as $section) {
         if (!$section['items']) continue;
         $total += count($section['items']);
         $sectionsHtml .= '<section class="association-section"><h3>' . htmlspecialchars($section['title']) . '</h3><ul>';
-        foreach ($section['items'] as $item) $sectionsHtml .= '<li>' . $item . '</li>';
+        foreach ($section['items'] as $item) {
+            $thumb = '';
+            if ($item['card']) {
+                $c = $item['card'];
+                $imgUrl = "{$basePath}/img/{$c['family_key']}/{$c['id']}.jpg";
+                $cardUrl = "{$basePath}/card/{$c['id']}";
+                $cname = htmlspecialchars($c['name']);
+                $thumb = "<a class=\"assoc-thumb\" href=\"{$cardUrl}\"><img src=\"{$imgUrl}\" alt=\"{$cname}\" loading=\"lazy\"></a>";
+            } else {
+                $thumb = '<span class="assoc-thumb assoc-thumb-empty" aria-hidden="true"></span>';
+            }
+            // Keep only target label (after " + ") for readability
+            $label = strpos($item['name'], ' + ') !== false ? trim(explode(' + ', $item['name'], 2)[1]) : $item['name'];
+            $sectionsHtml .= '<li>' . $thumb . '<div class="assoc-text"><a class="assoc-link" href="'
+                . ($item['card'] ? "{$basePath}/card/{$item['card']['id']}" : '#') . '">'
+                . htmlspecialchars($label) . '</a><p>' . htmlspecialchars($item['desc']) . '</p></div></li>';
+        }
         $sectionsHtml .= '</ul></section>';
     }
     if (!$sectionsHtml) return '';
