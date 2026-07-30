@@ -107,7 +107,7 @@ a{color:inherit;text-decoration:none}
 <div id="err">
   <div>
     <h1>🔮 Tarot</h1>
-    <p>Sélectionnez le fichier <code>tarot.sqlite</code> pour charger la base de données.</p>
+    <p id="errP">Sélectionnez le fichier <code>tarot.sqlite</code> pour charger la base de données.</p>
     <input type="file" id="filepick" accept=".sqlite,.db">
   </div>
 </div>
@@ -141,17 +141,25 @@ let SQL, db, ALL_CARDS = [], FAMILIES = [], ES_DATA = {};
 const blobCache = {};
 
 async function initSQL() {
+  if (typeof initSqlJs === 'undefined') throw new Error('sql.js non chargé');
   SQL = await initSqlJs({ locateFile: f => `https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.10.3/${f}` });
 }
 
 async function loadDB() {
   try {
-    const resp = await fetch('tarot.sqlite');
-    if (!resp.ok) throw new Error('fetch failed');
+    const resp = await fetch('./tarot.sqlite');
+    if (!resp.ok) throw new Error('HTTP ' + resp.status);
     const buf = new Uint8Array(await resp.arrayBuffer());
+    if (buf.length < 1000) throw new Error('DB trop petite: ' + buf.length);
     db = new SQL.Database(buf);
+    // Test query
+    const test = db.exec("SELECT COUNT(*) FROM cards");
+    if (!test.length) throw new Error('DB vide');
+    console.log('DB loaded:', test[0].values[0][0], 'cartes');
     return true;
   } catch(e) {
+    console.error('loadDB error:', e.message);
+    document.getElementById('errP').textContent = 'Erreur: ' + e.message;
     return false;
   }
 }
