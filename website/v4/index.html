@@ -194,27 +194,22 @@ function restructureHtml(html){
     if(type&&PICTOS[type]){h2.innerHTML=PICTOS[type]+'<span>'+h2.innerHTML+'</span>';}
   });
 
-  // 2. Mots-clés en 2 colonnes
+  // 2. Mots-clés en 2 colonnes (À l'endroit | À l'envers)
   const mk=div.querySelector('#sec-mots-cles, section[id*="mots"]');
   if(mk){
-    const cols=mk.querySelectorAll('h3');
-    if(cols.length>=2){
+    const h3s=mk.querySelectorAll('h3');
+    if(h3s.length>=2){
       const wrap=document.createElement('div');wrap.className='kw-cols';
-      cols.forEach(h3=>{
+      h3s.forEach(h3=>{
         const col=document.createElement('div');col.className='kw-col';
-        let el=h3;
-        while(el&&el.tagName!=='H3'){el=el.nextElementSibling;}
         col.appendChild(h3.cloneNode(true));
         let sib=h3.nextElementSibling;
-        while(sib&&sib.tagName==='LI'){col.appendChild(sib.cloneNode(true));sib=sib.nextElementSibling;}
+        while(sib&&(sib.tagName==='UL'||sib.tagName==='LI')){col.appendChild(sib.cloneNode(true));sib=sib.nextElementSibling;}
         if(col.querySelector('ul'))wrap.appendChild(col);
       });
       if(wrap.children.length>=2){
-        // Remove old h3+ul, add wrap
-        const oldH3s=mk.querySelectorAll('h3');
-        oldH3s.forEach(h3=>{let sib=h3.nextElementSibling;while(sib&&sib.tagName==='LI'){const n=sib.nextElementSibling;sib.remove();sib=n;}h3.remove();});
-        // Remove empty ul
-        mk.querySelectorAll('ul').forEach(ul=>{if(!ul.children.length)ul.remove();});
+        // Supprime les anciens h3 + ul
+        h3s.forEach(h3=>{let sib=h3.nextElementSibling;while(sib&&(sib.tagName==='UL'||sib.tagName==='LI')){const n=sib.nextElementSibling;sib.remove();sib=n;}h3.remove();});
         mk.appendChild(wrap);
       }
     }
@@ -227,9 +222,8 @@ function restructureHtml(html){
   sections.forEach(s=>{const h2=s.querySelector('h2');if(h2&&themeNames.some(t=>h2.textContent.toLowerCase().includes(t)))themeSecs.push(s);});
   if(themeSecs.length>=2){
     const grid=document.createElement('div');grid.className='theme-grid';
-    const parent=themeSecs[0].parentNode;
+    themeSecs[0].replaceWith(grid);
     themeSecs.forEach(s=>grid.appendChild(s));
-    parent.insertBefore(grid,themeSecs[0]);
   }
 
   return div.innerHTML;
@@ -253,7 +247,7 @@ function preloadImages(){
   stmt.free();console.log('Images:',n);
 }
 function loadAll(){
-  const fr=db.exec('SELECT key,name,short,element,element_sym,element_line,desc,accent,sort_order FROM families ORDER BY sort_order');
+  const fr=db.exec('SELECT key,name,short,element,element_sym,element_line,"desc",accent,sort_order FROM families ORDER BY sort_order');
   if(fr.length)FAMILIES=fr[0].values.map(r=>({key:r[0],name:r[1],short:r[2],el:r[3],sym:r[4],line:r[5],desc:r[6],ac:r[7],sort:r[8]}));
   const cr=db.exec('SELECT id,family_key,name,num,sort_global,html,card_of_day FROM cards ORDER BY sort_global');
   if(cr.length)CARDS=cr[0].values.map(r=>({id:r[0],fam:r[1],name:r[2],num:r[3],sort:r[4],html:r[5],cod:r[6]}));
@@ -312,14 +306,28 @@ function searchRender(){
   searchState.selIdx=0;
 }
 document.addEventListener('keydown',e=>{
+  const searchOpen=document.getElementById('search').classList.contains('open');
+  // Si focus dans l'input de recherche
   if(e.target.tagName==='INPUT'&&e.target.id==='sInput'){
     if(e.key==='Enter'){const s=document.querySelector('.s-grid .mini.sel');if(s)s.click();e.preventDefault();}
-    if(e.key==='ArrowDown'){const ms=document.querySelectorAll('.s-grid .mini');if(ms.length){searchState.selIdx=(searchState.selIdx+1)%ms.length;searchRender();}}return;}
-  if(e.target.tagName==='INPUT')return;
-  if(e.key==='Escape'){if(document.getElementById('search').classList.contains('open')){closeSearch();return;}closeDetail();return;}
+    if(e.key==='ArrowDown'){const ms=document.querySelectorAll('.s-grid .mini');if(ms.length){searchState.selIdx=(searchState.selIdx+1)%ms.length;searchRender();}}
+    if(e.key==='ArrowUp'){const ms=document.querySelectorAll('.s-grid .mini');if(ms.length){searchState.selIdx=(searchState.selIdx-1+ms.length)%ms.length;searchRender();}}
+    return;
+  }
+  if(e.key==='Escape'){if(searchOpen)closeSearch();else closeDetail();return;}
+  // Si recherche ouverte: taper filtre (desktop n'a pas d'input visible)
+  if(searchOpen){
+    if(e.key==='Backspace'){searchState.q=searchState.q.slice(0,-1);document.getElementById('sInput').value=searchState.q;syncQuery();searchRender();e.preventDefault();return;}
+    if(e.key==='Enter'){const s=document.querySelector('.s-grid .mini.sel');if(s)s.click();e.preventDefault();return;}
+    if(e.key==='ArrowDown'){const ms=document.querySelectorAll('.s-grid .mini');if(ms.length){searchState.selIdx=(searchState.selIdx+1)%ms.length;searchRender();}e.preventDefault();return;}
+    if(e.key==='ArrowUp'){const ms=document.querySelectorAll('.s-grid .mini');if(ms.length){searchState.selIdx=(searchState.selIdx-1+ms.length)%ms.length;searchRender();}e.preventDefault();return;}
+    if(e.key.length===1&&/\p{L}|\p{N}/u.test(e.key)){searchState.q+=e.key.toLowerCase();document.getElementById('sInput').value=searchState.q;syncQuery();searchRender();e.preventDefault();return;}
+    return;
+  }
+  // Navigation carte ouverte
   if(currentIdx>=0){if(e.key==='ArrowLeft'){const p=CARDS[(currentIdx-1+CARDS.length)%CARDS.length];openDetail(p.sort);}if(e.key==='ArrowRight'){const n=CARDS[(currentIdx+1)%CARDS.length];openDetail(n.sort);}return;}
-  // Type-to-search from landing
-  if(!document.getElementById('search').classList.contains('open')&&e.key.length===1&&/\p{L}|\p{N}/u.test(e.key)){openSearch();setTimeout(()=>{const i=document.getElementById('sInput');i.value=e.key;searchState.q=e.key.toLowerCase();syncQuery();searchRender();},50);}
+  // Type-to-search depuis le landing
+  if(e.key.length===1&&/\p{L}|\p{N}/u.test(e.key)){openSearch();searchState.q=e.key.toLowerCase();document.getElementById('sInput').value=e.key;syncQuery();searchRender();}
 });
 document.getElementById('sInput').addEventListener('input',function(){searchState.q=this.value.trim().toLowerCase();syncQuery();searchRender();});
 document.getElementById('search').addEventListener('click',e=>{if(e.target.id==='search')closeSearch();});

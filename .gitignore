@@ -17,9 +17,8 @@ __pycache__/
 *.log
 package-lock.json
 
-# Sources et v3 — pas sur le FTP, pas dans git
+# Sources
 website/sources/
-website/v3/
 
 # Outils
 scripts/
