@@ -230,6 +230,10 @@ img{display:block;max-width:100%}a{color:inherit;text-decoration:none}
 .s-empty{grid-column:1/-1;text-align:center;color:var(--muted);padding:3rem 0;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.4rem}
 @media(max-width:900px){
 #search.open{align-items:flex-end}
+.s-query{display:none}
+.picker-search svg{width:20px;height:20px;flex:0 0 auto}
+.s-close svg{width:16px;height:16px}
+.search-launch svg{width:16px;height:16px}
 .picker-sheet{height:92vh;max-height:92vh;background:var(--bg-2);border-top:1px solid var(--line);border-radius:22px 22px 0 0;overflow:hidden;animation:su .38s var(--ease);padding-bottom:env(safe-area-inset-bottom)}
 @keyframes su{from{transform:translateY(100%)}to{transform:translateY(0)}}
 .picker-grip{width:38px;height:4px;border-radius:2px;background:rgba(241,237,228,.22);margin:.55rem auto .25rem}
@@ -413,15 +417,14 @@ function searchRender(){
 }
 document.addEventListener('keydown',e=>{
   const searchOpen=document.getElementById('search').classList.contains('open');
-  // Si focus dans l'input de recherche
-  if(e.target.tagName==='INPUT'&&e.target.id==='sInput'){
+  const tag=e.target&&e.target.tagName;
+  if(tag&&/INPUT|TEXTAREA|SELECT/i.test(tag)){
     if(e.key==='Enter'){const s=document.querySelector('.s-grid .mini.sel');if(s)s.click();e.preventDefault();}
     if(e.key==='ArrowDown'){const ms=document.querySelectorAll('.s-grid .mini');if(ms.length){searchState.selIdx=(searchState.selIdx+1)%ms.length;searchRender();}}
     if(e.key==='ArrowUp'){const ms=document.querySelectorAll('.s-grid .mini');if(ms.length){searchState.selIdx=(searchState.selIdx-1+ms.length)%ms.length;searchRender();}}
     return;
   }
   if(e.key==='Escape'){if(searchOpen)closeSearch();else closeDetail();return;}
-  // Si recherche ouverte: taper filtre (desktop n'a pas d'input visible)
   if(searchOpen){
     if(e.key==='Backspace'){searchState.q=searchState.q.slice(0,-1);document.getElementById('sInput').value=searchState.q;syncQuery();searchRender();e.preventDefault();return;}
     if(e.key==='Enter'){const s=document.querySelector('.s-grid .mini.sel');if(s)s.click();e.preventDefault();return;}
@@ -430,10 +433,9 @@ document.addEventListener('keydown',e=>{
     if(e.key.length===1&&/\p{L}|\p{N}/u.test(e.key)){searchState.q+=e.key.toLowerCase();document.getElementById('sInput').value=searchState.q;syncQuery();searchRender();e.preventDefault();return;}
     return;
   }
-  // Navigation carte ouverte
+  // Une première lettre ouvre la recherche depuis n'importe quel écran.
+  if(e.key.length===1&&/\p{L}|\p{N}/u.test(e.key)){openSearch();searchState.q=e.key.toLowerCase();document.getElementById('sInput').value=e.key;syncQuery();searchRender();e.preventDefault();return;}
   if(currentIdx>=0){if(e.key==='ArrowLeft'){const p=CARDS[(currentIdx-1+CARDS.length)%CARDS.length];openDetail(p.sort);}if(e.key==='ArrowRight'){const n=CARDS[(currentIdx+1)%CARDS.length];openDetail(n.sort);}return;}
-  // Type-to-search depuis le landing
-  if(e.key.length===1&&/\p{L}|\p{N}/u.test(e.key)){openSearch();searchState.q=e.key.toLowerCase();document.getElementById('sInput').value=e.key;syncQuery();searchRender();}
 });
 document.getElementById('sInput').addEventListener('input',function(){searchState.q=this.value.trim().toLowerCase();syncQuery();searchRender();});
 document.getElementById('search').addEventListener('click',e=>{if(e.target.id==='search')closeSearch();});

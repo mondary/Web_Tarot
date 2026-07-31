@@ -58,24 +58,19 @@ node scripts/build_data.js
 
 This reads `website/assets/md/*.md` and `website/assets/img/cards/*.jpg`, regenerates `website/assets/js/data.js` (~7 MB, 420px WebP images included), and logs a confirmation. Requires [ImageMagick](https://imagemagick.org/) (`magick`). Run after editing any `.md` file or image.
 
-## 🧪 Installation
+## 🧪 Local test
+
+A single PHP server serves all three versions (V2 static, V3 PHP+SQLite, V4
+static SQLite/WASM). The port is picked automatically:
 
 ```bash
-git clone <repo-url>
-cd Web_Tarot
-# V3 PHP: deploy website/v3/ on a PHP+SQLite server
-# V1/V2: deploy website/index.html + website/assets/ on any static server
-open website/index.html
+./start-local.sh
 ```
 
-Local server:
-
-```bash
-# V3 PHP
-php -S localhost:8000 -t website/v3/
-# V1/V2
-python3 -m http.server 8000
-```
+It prints the available URLs (`/website/v2/`, `/website/v3/`, `/website/v4/`)
+on the first free port starting at 8765. Only requires PHP CLI. Do not open
+`website/v4/index.html` via `file://`: the browser blocks `fetch()` to SQLite
+and WebAssembly loading.
 
 ## 📋 See the [CHANGELOG](CHANGELOG.md) for full history.
 

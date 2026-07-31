@@ -4,7 +4,11 @@ declare(strict_types=1);
 // ----------------------------------------------------------
 // CONFIG
 // ----------------------------------------------------------
-$basePath = '/pk/-Games-cards/tarot3';
+$basePath = $_SERVER['TAROT_LOCAL_BASE_PATH'] ?? null;
+if ($basePath === null) {
+    $scriptDir = str_replace('\\', '/', dirname($_SERVER['SCRIPT_NAME'] ?? '/'));
+    $basePath = ($scriptDir === '/' || $scriptDir === '.') ? '' : $scriptDir;
+}
 $dbPath   = __DIR__ . '/tarot.sqlite';
 
 // ----------------------------------------------------------
@@ -249,7 +253,7 @@ a{color:inherit;text-decoration:none}
 .full-grid-head .sub{color:var(--muted);font-size:.9rem;font-weight:300;margin-top:.7rem;max-width:40rem}
 
 /* Full grid */
-.full-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:1.2rem;padding:2rem 4vw 6rem;align-items:start}
+.full-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:1.2rem;padding:2rem 4vw 6rem;align-items:start;min-width:0}
 
 /* Family separator */
 .fam-sep{grid-column:1/-1;display:flex;align-items:center;gap:1.5rem;padding:2.5rem 0 1rem;margin-top:1rem;border-bottom:1px solid var(--line)}
@@ -275,12 +279,12 @@ a{color:inherit;text-decoration:none}
 .mini .cap{padding:.6rem .75rem .7rem;border-top:1px solid rgba(0,0,0,.06);font-size:.78rem;display:flex;justify-content:space-between;align-items:center;gap:.5rem;background:var(--mat)}
 .mini .cap .nm{font-family:'Cormorant Garamond',serif;font-size:1.02rem;line-height:1.1;font-weight:500;color:#1c1814;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .mini .cap .no{font-family:'DM Mono',monospace;font-size:.62rem;color:#a59c8e;letter-spacing:.1em;flex:0 0 auto}
-.fam-card{position:relative;border-radius:.9rem;overflow:hidden;cursor:pointer;transition:.5s var(--ease);display:flex;flex-direction:column;aspect-ratio:2/3.6;border:1px solid var(--ac);background:var(--bg);box-shadow:0 10px 28px rgba(0,0,0,.35)}
+.fam-card{position:relative;min-width:0;min-height:0;border-radius:.9rem;overflow:hidden;cursor:pointer;transition:.5s var(--ease);display:flex;flex-direction:column;aspect-ratio:2/3.6;border:1px solid var(--ac);background:var(--bg);box-shadow:0 10px 28px rgba(0,0,0,.35)}
 .fam-card:hover{transform:translateY(-6px);box-shadow:0 16px 40px rgba(0,0,0,.5),0 0 30px rgba(201,162,39,.15)}
-.fam-card-inner{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:1rem;text-align:center;position:relative;gap:.3rem}
-.fam-card-img{flex:1;display:flex;align-items:center;justify-content:center;width:100%;max-height:55%}
-.fam-card-img .fam-card-svg{height:80%;width:auto;aspect-ratio:1;display:flex;align-items:center;justify-content:center}
-.fam-card-img .fam-card-svg svg{height:100%;width:auto;max-width:80%}
+.fam-card-inner{flex:1;min-width:0;min-height:0;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:1rem;text-align:center;position:relative;gap:.3rem}
+.fam-card-img{flex:1;min-width:0;min-height:0;display:flex;align-items:center;justify-content:center;width:100%;max-height:55%;overflow:hidden}
+.fam-card-img .fam-card-svg{height:80%;width:100%;max-width:100%;aspect-ratio:1;display:flex;align-items:center;justify-content:center;min-width:0}
+.fam-card-img .fam-card-svg svg{height:100%;width:auto;max-width:100%;min-width:0}
 .fam-card-img .glyph-uni{font-family:'Cormorant Garamond',serif;font-size:3.5rem;line-height:1}
 .fam-card-name{font-family:'Cormorant Garamond',serif;font-weight:400;font-size:clamp(.9rem,1.4vw,1.15rem);line-height:1.1;text-transform:uppercase;letter-spacing:.02em;color:var(--fg)}
 .fam-card-name em{font-style:italic;color:var(--ac);font-weight:400}
@@ -479,6 +483,7 @@ a{color:inherit;text-decoration:none}
 /* Mobile: bottom-sheet */
 @media(max-width:900px){
   #search.open{align-items:flex-end}
+  .s-query{display:none}
   .picker-sheet{height:92vh;max-height:92vh;
     background:var(--bg-2);border-top:1px solid var(--line);
     border-radius:22px 22px 0 0;overflow:hidden;
@@ -719,6 +724,16 @@ const PREFIX="{$basePath}";
       }
       return;
     }
+    var outsideInput=e.target.tagName==='INPUT'||e.target.tagName==='TEXTAREA';
+    if(!outsideInput&&e.key.length===1&&/\p{L}|\p{N}/u.test(e.key)){
+      openSearch();
+      st.q=e.key.toLowerCase();
+      sI.value=e.key;
+      syncQuery();
+      clearTimeout(io);
+      io=setTimeout(render,70);
+      e.preventDefault();return;
+    }
     if(typeof PREV_URL!=='undefined'&&e.key==='ArrowLeft'){e.preventDefault();window.location.href=PREV_URL;}
     if(typeof NEXT_URL!=='undefined'&&e.key==='ArrowRight'){e.preventDefault();window.location.href=NEXT_URL;}
   });
@@ -784,7 +799,9 @@ function family_card_svg(string $key): string {
         'coupes' => '<svg viewBox="0 0 46 80" xmlns="http://www.w3.org/2000/svg"><path fill="currentColor" d="M17.751.201C2.732 1.038.095 2.941.457 12.682c.477 12.813 6.931 21.993 17.109 24.331 2.979.685 2.866.511 3.248 4.987.376 4.417-.131 10.883-1.125 14.326-1.593 5.52-5.926 11.023-9.567 12.153-7.386 2.291-5.885 7.841 2.678 9.9 9.178 2.208 23.459.668 26.56-2.864 2.636-3.002.698-5.65-5.16-7.048-2.39-.571-2.67-.773-4.933-3.567-2.704-3.338-3.249-6.12-3.261-16.666-.011-9.342.227-10.392 2.457-10.83 8.802-1.729 14.448-7.637 16.44-17.203.753-3.617 1.319-11.668.956-13.596-.788-4.184-13.985-7.19-28.108-6.404m6.088 1.203c7.344.37 15.05 2.027 19.234 4.136l.973.49-.086 1.186c-.184 2.544-2.959 4.746-8.459 6.712-1.959.7-1.361.903 1.071.364 2.921-.648 5.318-1.687 6.996-3.034l.667-.535-.13 2.388c-.464 8.536-1.674 12.778-4.749 16.644-6.519 8.199-23.109 8.694-30.585.913-4.398-4.578-7.093-11.438-6.939-17.663.085-3.445-.012-3.603 1.305-2.319 2.36 2.299 6.032 3.302 12.114 3.31 4.734.006 4.187-.296-2.167-1.194-7.04-.998-10.483-2.901-10.483-5.796 0-2.735 2.918-4.133 10.47-5.017 1.996-.234 3.99-.497 4.43-.584 1.141-.227 1.607-.227 6.139 0m-5.239 1.533c-6.422.477-13.411 2.147-13.567 3.243-.516 3.607 4.725 5.544 16.275 6.01 12.621.508 19.417-.849 19.832-3.962.427-3.2-7.867-6.09-18.54-5.294m5.61.172c1.259.175 3.791.628 5.625 1.005 1.835.377 3.508.686 3.719.686 1.258 0 1.361 1.656.14 2.341-2.548 1.435-6.309 1.727-16.499 1.281-9.309-.408-13.837-1.32-15.324-3.087-.632-.751-.599-.771 2.124-1.308 7.052-1.393 14.397-1.726 20.214-.918m-5.61 9.713c-.477.21-.482.228-.1.385.989.408 3.607.13 2.898-.308-.395-.245-2.3-.297-2.798-.077m11.433 1.19c-.588.236-.466.669.212.749.603.072 1.955-.447 1.955-.751 0-.257-1.524-.255-2.167.002m4.667.601c-1.703.672-4.529 1.365-6.13 1.505-1.879.164-2.213.325-1.712.825.844.844 4.96.323 7.806-.987 2.561-1.179 2.592-2.351.036-1.343m-2.5 3.667c-1.034.301-3.837 1.028-4.65 1.207-.809.177-.671.634.263.871.983.249 3.835-.433 5.423-1.297 1.53-.832.864-1.334-1.036-.781m-3.673 3.228c-.427.3-...',
         'deniers' => '<svg viewBox="0 0 73 73" xmlns="http://www.w3.org/2000/svg"><path fill="currentColor" d="M33.315.165C5.724 2.419-9.213 33.422 6.195 56.454 20.95 78.511 54.315 77.391 67.473 54.398c13.307-23.254-2.087-52.296-28.754-54.248-2.781-.203-2.732-.203-5.404.015m9.905 1.667c29.61 6.277 38.131 44.409 13.978 62.547-21.166 15.896-51.979 3.165-55.791-21.052-3.486-23.975 18.136-44.398 41.813-39.5m-11.936 2.217c-26.449 4.299-36.938 36.334-17.986 55.204 17.123 17.133 46.225 10.205 53.889-12.828 7.574-22.765-12.233-46.208-35.903-42.376m9.063.999c3.018.402 5.351 1.053 5.351 1.493 0 .189-.229 1.011-.509 1.828-.711 2.074-2.535 9.157-2.432 9.446.117.329 2.163-6.05 2.862-8.926l.574-2.364.699.131c1.392.262 1.684.738 1.214 1.976-.347.911.143.743.522-.184.383-.93.659-1.095 1.047-.628.17.205.151.452-.076.994-.558 1.339-.064 1.418.618.199.161-.311.382-.565.491-.565.534 0 5.791 4.346 5.791 4.717 0 .052-1.299 1.508-2.888 3.235-4.044 4.397-3.307 4.184 1.418-.41 2.226-2.164 3.456-2.738 1.588-.735-.505.54-.918 1.031-.918 1.09 0 .284.414.032 1.315-.797l.985-.91.67.761c4.475 5.083 7.145 11.294 7.837 18.231.262 2.634.178 3.225-.461 3.238-.245.005-.716.14-1.046.3-.596.289-.593.292.45.222 1.394-.093 1.338.162-.102.448-1.834.366-2.01.675-.302.526l1.45-.127v.896c0 1.23-.151 1.529-.771 1.524-1.1-.007-6.229.685-6.229.841 0 .206 3.254.194 5.1.018 1.79-.207 1.719-.117 1.288 1.811-.841 3.761-2.33 7.277-4.488 10.596l-1.134 1.744-.976-.494c-.537-.272-1.076-.495-1.197-.495-.338 0 .564 1.159 1.012 1.302 1.934.613-5.949 7.04-11.702 9.539-2.74 1.19-2.815 1.191-3.304.048-.469-1.093-1.541-2.69-1.806-2.69-.56 0 .227 1.774 1.326 2.991 1.1 1.217 1.019 1.257-1.304 1.414-4.574.312-13.017-1.202-12.589-2.258.202-.503.656-2.135.559-2.247-.135-.157-3.367 2.526-5.902 4.966-2.526 2.432-4.621 3.523-7.019 3.652-1.705.092-1.774.06-2.175-1.002-.379-.996-1.451-2.593-1.597-2.387-.204.284 1.22 3.164 2.087 4.198.621.743.54.783-.668.324-1.394-.527-2.634-1.527-3.158-2.43l-.362-.622.636c.762.687 1.145.644 1.878-.093.927-.904 1.0...',
     ];
-    return $symbols[$key] ?? '';
+    // Les anciens SVG inline sont tronqués dans plusieurs chemins d'origine.
+    // Le glyphe de la famille est utilisé par le fallback ci-dessous.
+    return '';
 }
 
 function page_landing(PDO $pdo, string $basePath): void {
@@ -1311,6 +1328,7 @@ function api_search(PDO $pdo, string $basePath): void {
 // ROUTE: IMAGE
 // ==========================================================
 function serve_image(string $imagePath, PDO $pdo): void {
+    $imagePath = urldecode($imagePath);
     // Format: {family_key}/{card_id} or {family_key}/{card_id}.jpg
     $parts = explode('/', $imagePath);
     if (count($parts) !== 2) {
