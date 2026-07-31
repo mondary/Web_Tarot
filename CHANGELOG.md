@@ -6,7 +6,7 @@ Toutes les notes de release du projet Web Tarot. Le format de version suit `🔥
 
 ## TODO — Roadmap
 
-Statut : `3.2026.24` (Traductions complètes FR + spreads)
+Statut : `3.2026.25` (Zero dependances externes)
 
 ### Phase 1 — Fondations ✅
 - [x] Interface V2 unifiée (carousel d'accueil + grille par famille + vue détail)
@@ -30,6 +30,10 @@ Statut : `3.2026.24` (Traductions complètes FR + spreads)
 ---
 
 ## Releases
+
+### [3.2026.25] - 2026-07-31
+#### Changed
+- **Zero dependances externes** : Google Fonts auto-hebergées en base64, sql.js en local (v4), SVG de familles inlinés (v3), fichiers racines retirés
 
 ### [3.2026.24] - 2026-07-30
 #### Added
