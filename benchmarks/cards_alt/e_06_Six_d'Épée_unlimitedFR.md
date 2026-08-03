@@ -24,7 +24,7 @@ Dans milieux professionnels, le Six d'Épées peut signifier transition vers nou
 
 ## Carte du Jour
 
-Si le Six d'Épées apparaît comme carte du jour, il implique que voies changement et nouvelles opportunités attendent. C'est moment de se débarrasser négativité passé et d'aventurer courageusement dans inconnu, croyant en résilience et potentiel.
+Si le Six d'Épées apparaît comme carte du jour, il implique que des voies de changement et de nouvelles opportunités vous attendent. C'est le moment de vous débarrasser de la négativité du passé et d'avancer courageusement vers l'inconnu, en croyant en votre résilience et votre potentiel.
 
 ## Conclusion
 

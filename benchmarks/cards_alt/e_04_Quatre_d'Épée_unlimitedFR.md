@@ -24,7 +24,7 @@ Dans milieu professionnel, le Quatre d'Épées peut symboliser intervalle de rep
 
 ## Carte du Jour
 
-Si le Quatre d'Épées se manifeste comme carte du jour, il signale besoin de pause. La journée doit être consacrée à repos, méditation ou simplement solitude. C'est période pour soins de soi et régénération intérieure.
+Si le Quatre d'Épées se manifeste comme carte du jour, il signale un besoin de pause. La journée doit être consacrée au repos, à la méditation ou à la solitude. C'est une période pour prendre soin de vous et vous régénérer intérieurement.
 
 ## Conclusion
 

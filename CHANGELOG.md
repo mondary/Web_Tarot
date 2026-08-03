@@ -6,7 +6,7 @@ Toutes les notes de release du projet Web Tarot. Le format de version suit `🔥
 
 ## TODO — Roadmap
 
-Statut : `3.2026.25` (Zero dependances externes)
+Statut : `3.2026.26` (Zero dependances externes)
 
 ### Phase 1 — Fondations ✅
 - [x] Interface V2 unifiée (carousel d'accueil + grille par famille + vue détail)
@@ -30,6 +30,13 @@ Statut : `3.2026.25` (Zero dependances externes)
 ---
 
 ## Releases
+
+### [3.2026.26] - 2026-08-03
+#### Fixed
+- **Images Reine/Roi d'Épées inversées** dans v3/v4/v5 : les variantes `_fr.jpg` de `e_13_Reine` et `e_14_Roi` étaient échangées, corrigées et propagées aux bases SQLite
+- **Textes "Carte du Jour" des 14 Épées en français cassé** : réécrits en français correct dans `benchmarks/cards_alt/` et `benchmarks/card_of_day_data.json`
+- **Ordre d'affichage des familles** : Épées avant Deniers (Bâtons, Coupes, Épées, Deniers), désynchronisation `sort_global` corrigée dans v3/v4/v5
+- **Cache navigateur persistant** : cache-buster `&v=` ajouté aux URLs d'images v5 pour forcer le rechargement après mise à jour du vault
 
 ### [3.2026.25] - 2026-07-31
 #### Changed

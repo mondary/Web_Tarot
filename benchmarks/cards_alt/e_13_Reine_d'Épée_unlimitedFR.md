@@ -24,7 +24,7 @@ Dans milieux professionnels, cette carte incarne entité prévoyance perspicace 
 
 ## Carte du Jour
 
-Si Reine d'Épées apparaît comme carte du jour, elle annonce sommation intégrité lucidité transparence toutes sphères. C'est jour arriver jugements cœur esprit limpidement, dénué distractions émotionnelles.
+Si la Reine d'Épées apparaît comme carte du jour, elle annonce un appel à l'intégrité, à la lucidité et à la transparence dans tous les domaines. C'est une journée pour juger avec un cœur et un esprit limpides, sans se laisser distraire par les émotions.
 
 ## Conclusion
 

@@ -24,7 +24,7 @@ Dans setting professionnel, cette carte symbolise professionnalisme planificatio
 
 ## Carte du Jour
 
-Si Roi d'Épées apparaît comme carte du jour, il appelle logique objectivité honnêteté tous aspects vie. C'est moment idéal résoudre problèmes complexes utilisant pensée analytique stratégie claire.
+Si le Roi d'Épées apparaît comme carte du jour, il appelle à la logique, à l'objectivité et à l'honnêteté dans tous les aspects de la vie. C'est le moment idéal pour résoudre des problèmes complexes grâce à une pensée analytique et une stratégie claire.
 
 ## Conclusion
 

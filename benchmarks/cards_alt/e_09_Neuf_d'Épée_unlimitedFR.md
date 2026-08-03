@@ -24,7 +24,7 @@ Dans environnement travail, Neuf d'Épées peut signifier moments tension, effro
 
 ## Carte du Jour
 
-Lorsque Neuf d'Épées apparaît comme carte du jour, il pointe impératif d'aborder préoccupations les plus intimes et chercher moyens atténuer accumulation stress. Cette période est marquée introspection et recherche soutien.
+Lorsque le Neuf d'Épées apparaît comme carte du jour, il pointe la nécessité d'affronter vos préoccupations les plus intimes et de chercher des moyens d'atténuer le stress accumulé. Cette période est marquée par l'introspection et la recherche de soutien.
 
 ## Conclusion
 

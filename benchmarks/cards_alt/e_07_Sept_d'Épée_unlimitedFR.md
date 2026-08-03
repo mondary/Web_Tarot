@@ -24,7 +24,7 @@ Dans milieux professionnels, le Sept d'Épées peut impliquer nécessité d'empl
 
 ## Carte du Jour
 
-Si le Sept d'Épées apparaît comme carte du jour, il peut fonctionner comme rappel exercer vigilance et prudence dans actes et paroles. C'est jour pour planification méticuleuse, réflexion stratégique et introspection concernant méthodologies atteinte objectifs.
+Si le Sept d'Épées apparaît comme carte du jour, il vous rappelle d'exercer vigilance et prudence dans vos actes et vos paroles. C'est une journée propice à la planification méticuleuse, à la réflexion stratégique et à l'introspection sur les moyens d'atteindre vos objectifs.
 
 ## Conclusion
 

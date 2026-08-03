@@ -24,7 +24,7 @@ Dans domaine emploi, Dix d'Épées peut signifier aboutissement phase carrière 
 
 ## Carte du Jour
 
-Si Dix d'Épées apparaît comme carte du jour, il peut suggérer journée actuelle apportera épreuves notablement ardues, bien qu'aussi ouverture transformation radicale. Directive principale est éviter appréhension dans conclure chapitre atteint aboutissement.
+Si le Dix d'Épées apparaît comme carte du jour, il peut suggérer que la journée apportera des épreuves particulièrement ardues, mais aussi une ouverture vers une transformation radicale. L'essentiel est d'éviter l'appréhension et d'accepter de tourner la page de ce chapitre qui a atteint son terme.
 
 ## Conclusion
 

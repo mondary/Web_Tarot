@@ -94,7 +94,7 @@ $baseJson = json_encode($base, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
 <div class="d-stage" id="detail"><div class="back-btn" id="backBtn">← Retour</div><div class="d-hero"><img class="d-hero-img" id="heroImg" alt=""></div><div class="d-panel"><div class="d-panel-inner" id="dInner"></div></div><div class="d-loop" id="loopBar"></div></div>
 <script>
 const B=<?= $baseJson ?>, CARDS=<?= $cardsJson ?>, FAMILIES=<?= $familiesJson ?>, ES_MAP=<?= $esJson ?>, IMG_MAP={};
-for(const c of CARDS) IMG_MAP[c.id]=B+'/index.php?img='+encodeURIComponent(c.id+'.jpg');
+for(const c of CARDS) IMG_MAP[c.id]=B+'/index.php?img='+encodeURIComponent(c.id+'.jpg')+'&v='+<?= (string)@filemtime(__DIR__.'/vault.sqlite') ?>;
 let currentIdx=-1, searchState={fam:'',q:'',selIdx:0};
 const PICTOS={
  amour:'<span class="content-icon"><svg viewBox="0 0 24 24"><path d="M20.8 4.8a5.5 5.5 0 0 0-7.8 0L12 5.9l-1.1-1.1a5.5 5.5 0 0 0-7.8 7.8L12 21l8.9-8.4a5.5 5.5 0 0 0-.1-7.8Z"/></svg></span>',

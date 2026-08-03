@@ -24,7 +24,7 @@ Professionnellement, Cavalier d'Épées signale phase entreprise vigoureuse avan
 
 ## Carte du Jour
 
-Si Cavalier d'Épées apparaît comme carte du jour, il plaide efforts affirmés et choix résolus. Cette journée est mûre pour saisir initiative et avancer vers objectifs bravoure et assurance.
+Si le Cavalier d'Épées apparaît comme carte du jour, il prône des efforts déterminés et des choix résolus. Cette journée est mûre pour prendre l'initiative et avancer vers vos objectifs avec courage et assurance.
 
 ## Conclusion
 

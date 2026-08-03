@@ -24,7 +24,7 @@ Dans arène professionnelle, Valet d'Épées annonce aube nouvelles idées et en
 
 ## Carte du Jour
 
-Si Valet d'Épées vient à paraître comme carte du jour, il pourrait annoncer poursuite active information, voies apprentissage et dévoilement nouveaux horizons. C'est moment propice commencer exploration nouveaux sujets ou compétences, ainsi qu'engager conversations et délibérations cruciales.
+Si le Valet d'Épées apparaît comme carte du jour, il annonce une quête active d'informations, des opportunités d'apprentissage et l'ouverture de nouveaux horizons. C'est un moment propice pour explorer de nouveaux sujets ou compétences, et pour engager des conversations et des délibérations importantes.
 
 ## Conclusion
 

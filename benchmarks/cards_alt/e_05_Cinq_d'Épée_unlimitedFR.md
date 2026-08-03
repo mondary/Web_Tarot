@@ -24,7 +24,7 @@ Dans milieu de travail, le Cinq d'Épées peut indiquer rivalités malsaines, di
 
 ## Carte du Jour
 
-Si le Cinq d'Épées apparaît comme carte du jour, il peut prévenir conflits potentiels ou possibilité que triomphe s'avère superficiel. Exercer prudence et retenue devient crucial pour trouver résolution la plus harmonieuse pour toutes parties concernées.
+Si le Cinq d'Épées apparaît comme carte du jour, il peut prévenir de conflits potentiels ou révéler qu'un triomphe s'avère superficiel. La prudence et la retenue deviennent essentielles pour trouver la résolution la plus harmonieuse pour toutes les parties concernées.
 
 ## Conclusion
 

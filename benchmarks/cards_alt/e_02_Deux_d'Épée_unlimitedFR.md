@@ -24,7 +24,7 @@ Dans la sphère professionnelle, le Deux d'Épées peut signifier nécessité de
 
 ## Carte du Jour
 
-Lorsque tiré comme carte du jour, le Deux d'Épées conseille pause d'introspection avant toute décision significative. Il plaide pour réflexion interne et recherche d'équilibre.
+Lorsque le Deux d'Épées apparaît comme carte du jour, il vous conseille de marquer une pause et de réfléchir avant toute décision importante. C'est le moment de l'introspection et de la recherche d'un équilibre intérieur.
 
 ## Conclusion
 

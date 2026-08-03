@@ -24,7 +24,7 @@ Dans domaine professionnel, cette carte peut refléter sentiment piège, appréh
 
 ## Carte du Jour
 
-Si le Huit d'Épées se matérialise comme carte du jour, il peut fonctionner comme rappel que limitations résident principalement esprit plutôt que réalité. Aujourd'hui marque moment propice pour commencer aborder impediments intérieurs et progresser graduellement vers libération.
+Si le Huit d'Épées se matérialise comme carte du jour, il vous rappelle que vos limites résident principalement dans votre esprit plutôt que dans la réalité. C'est aujourd'hui un moment opportun pour commencer à affronter vos blocages intérieurs et progresser peu à peu vers la libération.
 
 ## Conclusion
 

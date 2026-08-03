@@ -24,7 +24,7 @@ Dans l'arène professionnelle, le Trois d'Épées peut symboliser discorde, pres
 
 ## Carte du Jour
 
-Si le Trois d'Épées apparaît comme carte du jour, il peut signaler avertissement d'épreuves potentielles à venir. Pourtant, il sert simultanément d'appel à pleine conscience et acceptation de circonstances hors contrôle. La journée pourrait évoluer vers période propice à évolution personnelle et convalescence émotionnelle.
+Si le Trois d'Épées apparaît comme carte du jour, il peut annoncer des épreuves potentielles à venir. Il sert cependant d'appel à la pleine conscience et à l'acceptation des circonstances hors de votre contrôle. Cette journée pourrait évoluer vers une période propice à la croissance personnelle et à la guérison émotionnelle.
 
 ## Conclusion
 

@@ -24,7 +24,7 @@ Dans le domaine professionnel, l'As d'Épées signale l'émergence de nouvelles 
 
 ## Carte du Jour
 
-En tant que carte du jour, l'As d'Épées suggère des opportunités pour clarifier des situations ou initier de nouvelles entreprises. C'est un jour favorable pour prendre des décisions et exécuter des plans nécessitant clarté mentale et assurance.
+En tant que carte du jour, l'As d'Épées vous invite à saisir les opportunités de clarifier une situation ou de lancer de nouveaux projets. C'est une journée propice aux décisions et à l'exécution de plans exigeant clarté d'esprit et assurance.
 
 ## Conclusion
 
