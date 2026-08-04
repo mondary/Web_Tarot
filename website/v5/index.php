@@ -86,7 +86,7 @@ $mdMap = [];
 foreach ($cards as $c) { $mdMap[$c['id']] = (string) Vault::read('/cards/' . $c['id'] . '.md'); }
 $mdJson = json_encode($mdMap, JSON_UNESCAPED_UNICODE | JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT);
 $baseJson = json_encode($base, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
-$ver = trim((string)@file_get_contents(__DIR__.'/../../VERSION')) ?: '3.2026.26';
+$ver = trim((string)@file_get_contents(__DIR__.'/../../VERSION')) ?: '2026.08.01';
 ?>
 <!DOCTYPE html>
 <html lang="fr">

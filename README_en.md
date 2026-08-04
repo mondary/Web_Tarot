@@ -74,7 +74,7 @@ and WebAssembly loading.
 
 ## 📋 See the [CHANGELOG](CHANGELOG.md) for full history.
 
-Current version: `🔥v3.2026.26`
+Current version: `v2026.08.01`
 
 ## 🔗 Links
 

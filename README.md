@@ -74,7 +74,7 @@ bloque alors `fetch()` vers SQLite et le chargement de WebAssembly.
 
 ## 📋 Voir le [CHANGELOG](CHANGELOG.md) pour l'historique complet.
 
-Version courante : `🔥v3.2026.26`
+Version courante : `v2026.08.01`
 
 ## 🔗 Liens
 

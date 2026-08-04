@@ -1,12 +1,12 @@
 # Changelog
 
-Toutes les notes de release du projet Web Tarot. Le format de version suit `🔥vMAJOR.YY.PATCH`.
+Toutes les notes de release du projet Web Tarot. Le format de version suit `vYYYY.MM.PATCH`.
 
 ---
 
 ## TODO — Roadmap
 
-Statut : `3.2026.26` (Zero dependances externes)
+Statut : `2026.08.01` (Zero dependances externes)
 
 ### Phase 1 — Fondations ✅
 - [x] Interface V2 unifiée (carousel d'accueil + grille par famille + vue détail)
@@ -30,6 +30,10 @@ Statut : `3.2026.26` (Zero dependances externes)
 ---
 
 ## Releases
+
+### [2026.08.01] - 2026-08-04
+#### Changed
+- Passage au format de version `vYYYY.MM.PATCH` (convention `-pk-COMMIT`), l'ancien `3.2026.26` devient `2026.08.01`
 
 ### [3.2026.26] - 2026-08-03
 #### Fixed
