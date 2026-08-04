@@ -31,6 +31,11 @@ Statut : `2026.08.01` (Zero dependances externes)
 
 ## Releases
 
+### [2026.08.02] - 2026-08-04
+#### Changed
+- Restructuration : tout le contenu dans `src/` (`src/website`, `src/store`, `src/archives`), création de `release/`, suppression de `start-local.sh` au profit de `src/website/v5/launch.command`
+- Fusion de `tools/` dans `scripts/` (`tester-server.py` + `tester.command`)
+
 ### [2026.08.01] - 2026-08-04
 #### Changed
 - Passage au format de version `vYYYY.MM.PATCH` (convention `-pk-COMMIT`), l'ancien `3.2026.26` devient `2026.08.01`

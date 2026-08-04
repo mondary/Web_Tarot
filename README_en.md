@@ -1,4 +1,4 @@
-![Project icon](website/assets/img/icon.png)
+![Project icon](icon.png)
 
 # Tarot Divinatoire
 
@@ -60,21 +60,20 @@ This reads `website/assets/md/*.md` and `website/assets/img/cards/*.jpg`, regene
 
 ## 🧪 Local test
 
-A single PHP server serves all three versions (V2 static, V3 PHP+SQLite, V4
-static SQLite/WASM). The port is picked automatically:
+The site (V5) runs from `src/website/v5/` with `launch.command` (macOS
+double-click: free port, PHP, opens the browser), or from the CLI:
 
 ```bash
-./start-local.sh
+php -S 127.0.0.1:8765 -t src/website/v5 src/website/v5/index.php
 ```
 
-It prints the available URLs (`/website/v2/`, `/website/v3/`, `/website/v4/`)
-on the first free port starting at 8765. Only requires PHP CLI. Do not open
-`website/v4/index.html` via `file://`: the browser blocks `fetch()` to SQLite
-and WebAssembly loading.
+To test the archived versions (V2/V3/V4, extracted from the git branches), use
+`scripts/tester-server.py`. Do not open an `index.html` via `file://`: the
+browser blocks `fetch()` to SQLite and WebAssembly loading.
 
 ## 📋 See the [CHANGELOG](CHANGELOG.md) for full history.
 
-Current version: `v2026.08.01`
+Current version: `v2026.08.02`
 
 ## 🔗 Links
 
