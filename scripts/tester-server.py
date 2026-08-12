@@ -25,7 +25,8 @@ VERSIONS = [
     {'ver': 'v3', 'name': 'V3', 'desc': 'PHP + tarot.sqlite relationnel', 'static': False, 'branch': 'archive/legacy', 'src': 'website/v3'},
     {'ver': 'v4', 'name': 'V4', 'desc': 'Coffre fort (sql.js + tarot.sqlite)', 'static': True, 'branch': 'archive/legacy', 'src': 'website/v4'},
     {'ver': 'v5', 'name': 'V5', 'desc': 'Vault SQLite côté serveur', 'static': False, 'branch': 'v5', 'src': 'src/website/v5'},
-    {'ver': 'v6', 'name': 'V6', 'desc': 'Portraits des 78 lames + nuances', 'static': False, 'branch': 'main', 'src': 'src/website/v6'},
+    {'ver': 'v6', 'name': 'V6', 'desc': 'Portraits des 78 lames', 'static': False, 'branch': 'v6', 'src': 'src/website/v6'},
+    {'ver': 'v7', 'name': 'V7', 'desc': 'Essences des 78 lames', 'static': False, 'branch': 'main', 'src': 'src/website/v7'},
 ]
 
 running = {}

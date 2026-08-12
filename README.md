@@ -60,24 +60,24 @@ Ce script lit `website/assets/md/*.md` et `website/assets/img/cards/*.jpg`, rég
 
 ## 🧪 Test local
 
-Le site (V6) se lance depuis `src/website/v6/` avec `launch.command` (double-clic
+Le site (V7) se lance depuis `src/website/v7/` avec `launch.command` (double-clic
 macOS : port libre, PHP, ouvre le navigateur), ou en CLI :
 
 ```bash
-php -S 127.0.0.1:8765 -t src/website/v6 src/website/v6/index.php
+php -S 127.0.0.1:8765 -t src/website/v7 src/website/v7/index.php
 ```
 
-Pour tester les versions archivées (V2/V3/V4/V5, extraites depuis les branches git),
+Pour tester les versions archivées (V2/V3/V4/V5/V6, extraites depuis les branches git),
 utiliser `scripts/tester-server.py`. Ne pas ouvrir un `index.html` en `file://` :
 le navigateur bloque alors `fetch()` vers SQLite et le chargement de WebAssembly.
 
 ## 📋 Voir le [CHANGELOG](CHANGELOG.md) pour l'historique complet.
 
-Version courante : `v2026.08.05`
+Version courante : `v2026.08.06`
 
 ## 🔗 Liens
 
-- **Live V6** : [mondary.design/pk/-Games-cards/tarot6](https://mondary.design/pk/-Games-cards/tarot6/)
+- **Live V7** : [mondary.design/pk/-Games-cards/tarot6](https://mondary.design/pk/-Games-cards/tarot6/)
 - Anciens sites : [V3](https://mondary.design/pk/tarot3/) · [V1/V2](https://mondary.design/pk/tarot/)
 - **Source du contenu des fiches** : [Vivre Intuitif](https://vivre-intuitif.com/apprendre-le-tarot/)
 - **Illustrations** : Tarot Rider-Waite-Smith — domaine public

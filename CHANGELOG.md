@@ -6,7 +6,7 @@ Toutes les notes de release du projet Web Tarot. Le format de version suit `vYYY
 
 ## TODO — Roadmap
 
-Statut : `2026.08.05` (V6 - essences des 78 lames)
+Statut : `2026.08.06` (V7 - essences remplacent les anciennes descriptions)
 
 ### Phase 1 — Fondations ✅
 - [x] Interface V2 unifiée (carousel d'accueil + grille par famille + vue détail)
@@ -33,6 +33,11 @@ Statut : `2026.08.05` (V6 - essences des 78 lames)
 ---
 
 ## Releases
+
+### [2026.08.06] - 2026-08-12
+#### Changed
+- **V7** : les anciennes descriptions (mots-clés, interprétation, description) sont remplacées par les `_essence.md` dans le vault. Chaque carte affiche désormais : mots-clés endroit/envers, idée centrale, interprétation concise
+- **V6 archivée** : préservée sur la branche `v6`; V7 devient l'application canonique dans `src/website/v7/`
 
 ### [2026.08.05] - 2026-08-12
 #### Added
