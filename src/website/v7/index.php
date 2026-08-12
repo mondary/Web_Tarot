@@ -89,7 +89,7 @@ $mdMap = [];
 foreach ($cards as $c) { $mdMap[$c['id']] = (string) Vault::read('/cards/' . $c['id'] . '.md'); }
 $mdJson = json_encode($mdMap, JSON_UNESCAPED_UNICODE | JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT);
 $baseJson = json_encode($base, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
-$ver = trim((string)@file_get_contents(__DIR__.'/../../../VERSION')) ?: '2026.08.04';
+$ver = trim((string)@file_get_contents(__DIR__.'/../../../VERSION')) ?: '2026.08.06';
 
 // Portraits embarques pour conserver l'autonomie de V5 en production.
 $portraits = json_decode((string) @file_get_contents(__DIR__ . '/portraits.json'), true) ?: [];
