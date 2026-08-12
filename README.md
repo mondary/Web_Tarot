@@ -77,7 +77,8 @@ Version courante : `v2026.08.06`
 
 ## 🔗 Liens
 
-- **Live V7** : [mondary.design/pk/-Games-cards/tarot6](https://mondary.design/pk/-Games-cards/tarot6/)
+- **Live V7** : [mondary.design/pk/-Games-cards/tarot7](https://mondary.design/pk/-Games-cards/tarot7/)
+- **V6** : [mondary.design/pk/-Games-cards/tarot6](https://mondary.design/pk/-Games-cards/tarot6/)
 - Anciens sites : [V3](https://mondary.design/pk/tarot3/) · [V1/V2](https://mondary.design/pk/tarot/)
 - **Source du contenu des fiches** : [Vivre Intuitif](https://vivre-intuitif.com/apprendre-le-tarot/)
 - **Illustrations** : Tarot Rider-Waite-Smith — domaine public
