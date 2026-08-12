@@ -6,7 +6,7 @@ Toutes les notes de release du projet Web Tarot. Le format de version suit `vYYY
 
 ## TODO — Roadmap
 
-Statut : `2026.08.04` (V6 - portraits des 78 lames)
+Statut : `2026.08.05` (V6 - essences des 78 lames)
 
 ### Phase 1 — Fondations ✅
 - [x] Interface V2 unifiée (carousel d'accueil + grille par famille + vue détail)
@@ -24,12 +24,19 @@ Statut : `2026.08.04` (V6 - portraits des 78 lames)
 - [ ] Mode diaporama plein écran avec lecture auto
 - [x] Recherche et filtrage des cartes par mot-clé
 - [x] Scanner mobile de lames par caméra
+- [x] Portraits des 78 lames (_portrait.md)
+- [x] Nuances entre cartes (pense-bête thématique)
+- [x] Essences des 78 lames (_essence.md)
 - [ ] Animations d'entrée et transitions entre vues
 - [ ] Sélecteur de thème / palette
 
 ---
 
 ## Releases
+
+### [2026.08.05] - 2026-08-12
+#### Added
+- **Format `_essence.md`** : 78 fichiers (22 Majeurs + 14 Bâtons + 14 Coupes + 14 Épées + 14 Deniers). Mots-clés endroit/envers, idée centrale, interprétation concise en 3 paragraphes partant du visuel RWS
 
 ### [2026.08.04] - 2026-08-12
 #### Added

@@ -73,13 +73,12 @@ browser blocks `fetch()` to SQLite and WebAssembly loading.
 
 ## 📋 See the [CHANGELOG](CHANGELOG.md) for full history.
 
-Current version: `v2026.08.04`
+Current version: `v2026.08.05`
 
 ## 🔗 Links
 
-- **Live V3**: [mondary.design/pk/tarot3](https://mondary.design/pk/tarot3/)
 - **Live V6**: [mondary.design/pk/-Games-cards/tarot6](https://mondary.design/pk/-Games-cards/tarot6/)
-- **Live V1/V2**: [mondary.design/pk/tarot](https://mondary.design/pk/tarot/)
+- Older sites: [V3](https://mondary.design/pk/tarot3/) · [V1/V2](https://mondary.design/pk/tarot/)
 - **Card content source**: [Vivre Intuitif](https://vivre-intuitif.com/apprendre-le-tarot/)
 - **Illustrations**: Rider-Waite-Smith Tarot — public domain
 - **Typography**: [Cormorant Garamond](https://fonts.google.com/specimen/Cormorant+Garamond), [Plus Jakarta Sans](https://fonts.google.com/specimen/Plus+Jakarta+Sans), [DM Mono](https://fonts.google.com/specimen/DM+Mono)
