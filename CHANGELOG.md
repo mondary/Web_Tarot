@@ -6,7 +6,7 @@ Toutes les notes de release du projet Web Tarot. Le format de version suit `vYYY
 
 ## TODO — Roadmap
 
-Statut : `2026.08.03` (Portraits des 78 lames)
+Statut : `2026.08.04` (V6 - portraits des 78 lames)
 
 ### Phase 1 — Fondations ✅
 - [x] Interface V2 unifiée (carousel d'accueil + grille par famille + vue détail)
@@ -30,6 +30,15 @@ Statut : `2026.08.03` (Portraits des 78 lames)
 ---
 
 ## Releases
+
+### [2026.08.04] - 2026-08-12
+#### Added
+- **V6** : portraits des 78 lames embarqués dans l'application, avec mot-clé principal, réponse Oui/Non/Peut-être, lecture visuelle et citation
+- **Nuances entre cartes** : pense-bête illustré depuis le bouton FAB, avec miniatures cliquables
+
+#### Changed
+- **V5 archivée** : préservée sur la branche `v5`; V6 devient l'application canonique dans `src/website/v6/`
+- **Tester local** : prise en charge des branches et chemins propres à V2 à V6
 
 ### [2026.08.03] - 2026-08-11
 #### Added

@@ -16,16 +16,16 @@ import webbrowser
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
-BRANCH = 'archive/legacy'
 INSTALL_ROOT = Path.home() / 'tarot-testers'
 UI_PORT_START = 9900
 APP_PORT_START = 8765
 
 VERSIONS = [
-    {'ver': 'v2', 'name': 'V2', 'desc': 'HTML/JS autonome', 'static': True},
-    {'ver': 'v3', 'name': 'V3', 'desc': 'PHP + tarot.sqlite relationnel', 'static': False},
-    {'ver': 'v4', 'name': 'V4', 'desc': 'Coffre fort (sql.js + tarot.sqlite)', 'static': False},
-    {'ver': 'v5', 'name': 'V5', 'desc': 'Vault SQLite côté serveur', 'static': False},
+    {'ver': 'v2', 'name': 'V2', 'desc': 'HTML/JS autonome', 'static': True, 'branch': 'archive/legacy', 'src': 'website/v2'},
+    {'ver': 'v3', 'name': 'V3', 'desc': 'PHP + tarot.sqlite relationnel', 'static': False, 'branch': 'archive/legacy', 'src': 'website/v3'},
+    {'ver': 'v4', 'name': 'V4', 'desc': 'Coffre fort (sql.js + tarot.sqlite)', 'static': True, 'branch': 'archive/legacy', 'src': 'website/v4'},
+    {'ver': 'v5', 'name': 'V5', 'desc': 'Vault SQLite côté serveur', 'static': False, 'branch': 'v5', 'src': 'src/website/v5'},
+    {'ver': 'v6', 'name': 'V6', 'desc': 'Portraits des 78 lames + nuances', 'static': False, 'branch': 'main', 'src': 'src/website/v6'},
 ]
 
 running = {}
@@ -106,14 +106,15 @@ def ensure_installed(ver):
     if is_installed(ver):
         return d
     d.mkdir(parents=True, exist_ok=True)
-    src = f'website/{ver}'
-    with subprocess.Popen(['git', 'archive', BRANCH, src], cwd=ROOT, stdout=subprocess.PIPE) as p, \
-         subprocess.Popen(['tar', '-x', '-C', str(d), '--strip-components=2'], stdin=p.stdout) as t:
+    meta = next(v for v in VERSIONS if v['ver'] == ver)
+    src = meta['src']
+    with subprocess.Popen(['git', 'archive', meta['branch'], src], cwd=ROOT, stdout=subprocess.PIPE) as p, \
+         subprocess.Popen(['tar', '-x', '-C', str(d), '--strip-components=' + str(len(Path(src).parts))], stdin=p.stdout) as t:
         p.stdout.close()
         t.wait()
         p.wait()
     if not is_installed(ver):
-        raise RuntimeError(f"Extraction impossible depuis la branche {BRANCH}")
+        raise RuntimeError(f"Extraction impossible depuis la branche {meta['branch']}")
     return d
 
 
@@ -136,7 +137,7 @@ def launch(ver):
     d = ensure_installed(ver)
     port = free_port(APP_PORT_START)
     meta = next(v for v in VERSIONS if v['ver'] == ver)
-    cmd = ['php', '-S', f'127.0.0.1:{port}', '-t', '.']
+    cmd = ['php', '-n', '-d', 'auto_prepend_file=', '-S', f'127.0.0.1:{port}', '-t', '.']
     if not meta['static']:
         cmd.append('index.php')
     p = subprocess.Popen(cmd, cwd=str(d), start_new_session=True,

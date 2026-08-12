@@ -60,24 +60,25 @@ This reads `website/assets/md/*.md` and `website/assets/img/cards/*.jpg`, regene
 
 ## 🧪 Local test
 
-The site (V5) runs from `src/website/v5/` with `launch.command` (macOS
+The site (V6) runs from `src/website/v6/` with `launch.command` (macOS
 double-click: free port, PHP, opens the browser), or from the CLI:
 
 ```bash
-php -S 127.0.0.1:8765 -t src/website/v5 src/website/v5/index.php
+php -S 127.0.0.1:8765 -t src/website/v6 src/website/v6/index.php
 ```
 
-To test the archived versions (V2/V3/V4, extracted from the git branches), use
+To test the archived versions (V2/V3/V4/V5, extracted from the git branches), use
 `scripts/tester-server.py`. Do not open an `index.html` via `file://`: the
 browser blocks `fetch()` to SQLite and WebAssembly loading.
 
 ## 📋 See the [CHANGELOG](CHANGELOG.md) for full history.
 
-Current version: `v2026.08.03`
+Current version: `v2026.08.04`
 
 ## 🔗 Links
 
 - **Live V3**: [mondary.design/pk/tarot3](https://mondary.design/pk/tarot3/)
+- **Live V6**: [mondary.design/pk/-Games-cards/tarot6](https://mondary.design/pk/-Games-cards/tarot6/)
 - **Live V1/V2**: [mondary.design/pk/tarot](https://mondary.design/pk/tarot/)
 - **Card content source**: [Vivre Intuitif](https://vivre-intuitif.com/apprendre-le-tarot/)
 - **Illustrations**: Rider-Waite-Smith Tarot — public domain
