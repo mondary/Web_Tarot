@@ -68,6 +68,8 @@ $css .= '.landing-foot{position:fixed;bottom:1.2rem;left:1.6rem;z-index:200;disp
 $css .= '.associations{margin:2.8rem 0;padding:1.5rem;border:1px solid var(--line);background:rgba(241,237,228,.025)}.associations h2{font-family:"Cormorant Garamond",serif;font-size:1.8rem;font-weight:400;color:var(--ac);margin-bottom:.4rem}.associations .association-intro{color:var(--muted);font-family:"DM Mono",monospace;font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;margin-bottom:1.4rem}.association-section{padding:1.1rem 0;border-top:1px solid var(--line)}.association-section h3{font-family:"DM Mono",monospace;font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:var(--fg);margin-bottom:.7rem}.association-section ul{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:.6rem}.association-section li{display:flex;gap:.7rem;align-items:flex-start;padding:.6rem;border:1px solid rgba(241,237,228,.06);border-radius:.5rem;background:rgba(241,237,228,.02);transition:border-color .3s,background .3s}.association-section li:hover{border-color:rgba(201,162,39,.4);background:rgba(201,162,39,.04)}.assoc-thumb{flex:0 0 auto;width:42px;aspect-ratio:2/3;border-radius:4px;overflow:hidden;background:var(--mat);display:block;border:1px solid rgba(255,255,255,.1);cursor:pointer}.assoc-thumb img{width:100%;height:100%;object-fit:contain;display:block}.assoc-thumb-empty{background:rgba(241,237,228,.04);cursor:default}.assoc-text{min-width:0;flex:1}.assoc-link{font-family:"Cormorant Garamond",serif;font-size:1rem;font-weight:500;color:var(--fg);line-height:1.1;display:block;margin-bottom:.3rem;cursor:pointer}.assoc-link:hover{color:var(--ac)}.assoc-text p{font-size:.82rem;line-height:1.45;color:#b8b0a2;font-weight:300;margin:0}';
 $css .= '.fab-bar{display:flex;gap:.6rem}';
 $css .= '.fam-glyph{height:3.4rem;width:auto;display:block;margin:0 auto}';
+$css .= '.portrait.card-of-day{margin:2.4rem 0}.portrait .card-of-day-label{gap:.5rem}.portrait .card-of-day-label .portrait-label-icon{display:inline-flex;width:1rem;height:1rem;color:var(--ac)}.portrait .card-of-day-label svg{width:100%;height:100%;stroke:currentColor}.portrait-content{padding-top:1.25rem}.portrait .prt-hero{display:grid;grid-template-columns:2.4rem minmax(0,1fr) auto;gap:.85rem;align-items:start;margin:0 0 1rem}.portrait .prt-icon{display:flex;align-items:center;justify-content:center;width:2rem;height:2rem;border:1px solid rgba(201,162,39,.32);border-radius:50%;color:var(--ac);background:rgba(201,162,39,.07)}.portrait .prt-icon svg{width:1rem;height:1rem;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}.portrait .prt-idee{font-family:"Cormorant Garamond",serif;font-size:clamp(1.9rem,4.7vw,2.7rem);font-style:italic;font-weight:400;line-height:1.06;color:var(--fg);margin:.1rem 0 0}.portrait .prt-keyline{align-self:center;margin:0}.portrait .prt-key-badge{display:block;font-family:"Plus Jakarta Sans",system-ui,sans-serif;font-size:clamp(1rem,2.2vw,1.35rem);font-weight:600;letter-spacing:.08em;line-height:1;color:var(--ac);text-transform:uppercase;padding:.42rem .05rem .5rem;border-bottom:2px solid var(--ac)}.portrait .prt-row{display:grid;grid-template-columns:2.4rem minmax(0,1fr);gap:.85rem;align-items:start;margin-top:1rem}.portrait .prt-realite{font-family:"Plus Jakarta Sans",system-ui,sans-serif;font-size:.96rem;line-height:1.7;color:#e0d8ca;margin:.15rem 0 0;max-width:47rem}.portrait .prt-image{display:grid;gap:.58rem;list-style:none;margin:0;padding:0}.portrait .prt-image li{font-family:"Plus Jakarta Sans",system-ui,sans-serif;font-size:.88rem;line-height:1.58;color:#c9c1b2;margin:0;padding-left:1rem;position:relative}.portrait .prt-image li::before{content:"";position:absolute;left:0;top:.76em;width:.38rem;height:1px;background:var(--ac)}.portrait .prt-image-single{font-family:"Plus Jakarta Sans",system-ui,sans-serif;font-size:.92rem;line-height:1.65;color:#c9c1b2;margin:.1rem 0 0;padding-left:.1rem}.portrait .prt-cite{display:grid;grid-template-columns:2.4rem minmax(0,1fr);gap:.85rem;align-items:start;margin:1.25rem 0 0;padding-top:1rem;border-top:1px solid rgba(241,237,228,.12)}.portrait .prt-cite p{font-family:"Cormorant Garamond",serif;font-size:1.45rem;font-style:italic;line-height:1.28;color:var(--ac);margin:.1rem 0 0}@media(max-width:540px){.portrait-content{padding-top:1rem}.portrait .prt-hero{grid-template-columns:2rem minmax(0,1fr);gap:.65rem}.portrait .prt-hero .prt-keyline{grid-column:2;justify-self:start;margin-top:.1rem}.portrait .prt-row,.portrait .prt-cite{grid-template-columns:2rem minmax(0,1fr);gap:.65rem}.portrait .prt-icon{width:1.75rem;height:1.75rem}.portrait .prt-idee{font-size:2rem}.portrait .prt-key-badge{font-size:1.05rem}.portrait .prt-realite{font-size:.96rem}.portrait .prt-image li,.portrait .prt-image-single{font-size:.88rem}.portrait .prt-cite p{font-size:1.3rem}}';
+$css .= '#nuances{position:fixed;inset:0;background:rgba(5,5,5,.85);backdrop-filter:blur(8px);display:none;z-index:1000;overflow-y:auto}#nuances.open{display:flex}.nuances-sheet{background:var(--bg);max-width:780px;margin:auto;width:calc(100% - 2rem);max-height:90vh;overflow-y:auto;border:1px solid var(--line);border-radius:1rem;padding:1.8rem;position:relative}.nuances-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:1.5rem}.nuances-title{font-family:"Cormorant Garamond",serif;font-size:1.8rem;color:var(--ac);font-weight:400}.nuances-body .nuc-cat{margin-bottom:1.6rem}.nuances-body .nuc-cat h3{font-family:"DM Mono",monospace;font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:var(--fg);margin-bottom:.7rem;padding-bottom:.4rem;border-bottom:1px solid var(--line)}.nuances-body .nuc-cat ul{list-style:none;padding:0;margin:0}.nuances-body .nuc-cat li{padding:.4rem 0;font-size:.84rem;line-height:1.5;color:#b8b0a2;border-bottom:1px solid rgba(241,237,228,.04)}.nuances-body .nuc-cat li:last-child{border-bottom:none}.nuc-card{color:var(--fg);font-weight:500}.nuc-key{color:var(--ac);font-weight:600;letter-spacing:.03em}.nuc-desc{color:var(--muted)}';
 if (!$data) { http_response_code(500); exit('Vault incomplet'); }
 
 $cards = $data['cards'];
@@ -87,6 +89,24 @@ foreach ($cards as $c) { $mdMap[$c['id']] = (string) Vault::read('/cards/' . $c[
 $mdJson = json_encode($mdMap, JSON_UNESCAPED_UNICODE | JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT);
 $baseJson = json_encode($base, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
 $ver = trim((string)@file_get_contents(__DIR__.'/../../VERSION')) ?: '2026.08.01';
+
+// Portraits (lecture dev depuis benchmarks/cards_alt/)
+$portraits = [];
+$portraitCandidates = [
+    __DIR__ . '/benchmarks/cards_alt',
+    __DIR__ . '/../../../benchmarks/cards_alt',
+];
+foreach ($portraitCandidates as $c) {
+    $rp = realpath($c);
+    if ($rp && is_dir($rp)) {
+        foreach (glob($rp . '/*_portrait.md') as $f) {
+            $slug = basename($f, '_portrait.md');
+            $portraits[$slug] = file_get_contents($f);
+        }
+        break;
+    }
+}
+$portraitsJson = json_encode($portraits, JSON_UNESCAPED_UNICODE);
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -107,7 +127,7 @@ $ver = trim((string)@file_get_contents(__DIR__.'/../../VERSION')) ?: '2026.08.01
   <div class="full-grid-head"><h1>Tarot <em>Divinatoire</em></h1><div class="sub">78 lames du Tarot de Rider-Waite-Smith — cliquez une carte pour découvrir sa signification.</div></div>
   <div class="full-grid" id="grid"></div>
 </div>
-<div class="fab-bar" id="fabBar"><button class="search-launch" id="tirages-launch" aria-label="Tirages" onclick="TarotSpreads&&TarotSpreads.open()"><svg viewBox="0 0 162 154" fill="currentColor"><path d="M41.3 12.5C16 18.4 13.9 19.2 10.5 23.2c-3.4 4.1-3.9 8.4-2 17.9 3 14.8 17.5 80.3 18.6 83.6.6 1.8 2.7 4.6 4.6 6.4l3.7 3.2 9.5-.8c16.9-1.3 17.3-1.2 38.1 6 28.4 9.9 35.9 10 43.3.3 5.3-6.9 28.7-72.8 28.7-80.7q0-8.5-7.5-11.7c-2.9-1.2-3.3-1.8-3.3-5.3q-.2-8.3-6.7-11.5a81 81 0 0 0-19-4.6c-1.2 0-2.7-1.3-3.7-3-2.5-4.5-7.3-6-21.5-6.9-12.2-.7-12.6-.8-14.6-3.6a15 15 0 0 0-11.9-5.4c-1.8.1-13.3 2.5-25.5 5.4m32.8 2.6c1 1.3 2 3.5 2.3 4.9 10.5 48.8 18.6 90.1 18.1 92.7a10 10 0 0 1-3.1 5.2C87.5 121 51.2 129 41.3 129c-6.7 0-8.5-2.5-11.7-16.1C21.4 78 12 34.4 12 31.2c0-1.3 1.2-3.6 2.8-5.1 2.3-2.3 5.5-3.4 20.2-6.9l23.5-5.7c7.9-1.9 13.4-1.3 15.6 1.6m22.6 6.3c10.5.6 12.8 1.7 14.4 6.4 1.1 3.5.1 31.1-2.7 72.5-1.5 22.5-2.4 26.5-6.3 28.7a71 71 0 0 1-22.2.3l-6.4-.6 9.5-2.3c8.1-2 10-2.9 12.7-5.8 5.6-6 5.5-6.6-4.6-55.1L82 20.7c0-.3 1.2-.5 2.8-.2zm29.7 11.1c13.6 2.9 14.7 5 11.1 22.4-2.8 13.5-14.1 58.7-17.5 70.1-3.3 10.9-8.5 13.8-20.5 11.1l-3-.7 3.6-.7c4.4-.9 8.4-3.9 10.4-7.7 1-1.9 2-10.1 3-25.7 1.7-26.2 3.5-59.8 3.5-66.1 0-4.8-.2-4.7 9.4-2.7"/></svg></button><button class="search-launch" id="search-launch" aria-label="Parcourir les cartes"><svg viewBox="0 0 135 131" fill="currentColor"><path d="M39.8 8.9A47.5 47.5 0 0 0 7 54c0 13.1 4.3 23.5 13.4 32.5A46 46 0 0 0 54.1 100c11.4 0 21.4-3.6 31.3-11.4.8-.5 7.4 5.5 18.6 16.9 9.6 9.7 18.3 18 19.3 18.6 2.4 1.4 5.9-.7 5.5-3.2-.2-1.1-8.6-10.2-18.8-20.4L91.6 82l1.7-3a58 58 0 0 0 6.4-21.6 46.5 46.5 0 0 0-34.1-49 55 55 0 0 0-25.8.5m29.7 8.9a39 39 0 0 1 22.1 44.1c-6.4 30.8-42.2 41.4-65.7 19.4-18.2-17-13.6-48.8 9-62.1a37 37 0 0 1 34.6-1.4"/></svg></button></div>
+<div class="fab-bar" id="fabBar"><button class="search-launch" id="tirages-launch" aria-label="Tirages" onclick="TarotSpreads&&TarotSpreads.open()"><svg viewBox="0 0 162 154" fill="currentColor"><path d="M41.3 12.5C16 18.4 13.9 19.2 10.5 23.2c-3.4 4.1-3.9 8.4-2 17.9 3 14.8 17.5 80.3 18.6 83.6.6 1.8 2.7 4.6 4.6 6.4l3.7 3.2 9.5-.8c16.9-1.3 17.3-1.2 38.1 6 28.4 9.9 35.9 10 43.3.3 5.3-6.9 28.7-72.8 28.7-80.7q0-8.5-7.5-11.7c-2.9-1.2-3.3-1.8-3.3-5.3q-.2-8.3-6.7-11.5a81 81 0 0 0-19-4.6c-1.2 0-2.7-1.3-3.7-3-2.5-4.5-7.3-6-21.5-6.9-12.2-.7-12.6-.8-14.6-3.6a15 15 0 0 0-11.9-5.4c-1.8.1-13.3 2.5-25.5 5.4m32.8 2.6c1 1.3 2 3.5 2.3 4.9 10.5 48.8 18.6 90.1 18.1 92.7a10 10 0 0 1-3.1 5.2C87.5 121 51.2 129 41.3 129c-6.7 0-8.5-2.5-11.7-16.1C21.4 78 12 34.4 12 31.2c0-1.3 1.2-3.6 2.8-5.1 2.3-2.3 5.5-3.4 20.2-6.9l23.5-5.7c7.9-1.9 13.4-1.3 15.6 1.6m22.6 6.3c10.5.6 12.8 1.7 14.4 6.4 1.1 3.5.1 31.1-2.7 72.5-1.5 22.5-2.4 26.5-6.3 28.7a71 71 0 0 1-22.2.3l-6.4-.6 9.5-2.3c8.1-2 10-2.9 12.7-5.8 5.6-6 5.5-6.6-4.6-55.1L82 20.7c0-.3 1.2-.5 2.8-.2zm29.7 11.1c13.6 2.9 14.7 5 11.1 22.4-2.8 13.5-14.1 58.7-17.5 70.1-3.3 10.9-8.5 13.8-20.5 11.1l-3-.7 3.6-.7c4.4-.9 8.4-3.9 10.4-7.7 1-1.9 2-10.1 3-25.7 1.7-26.2 3.5-59.8 3.5-66.1 0-4.8-.2-4.7 9.4-2.7"/></svg></button><button class="search-launch" id="search-launch" aria-label="Parcourir les cartes"><svg viewBox="0 0 135 131" fill="currentColor"><path d="M39.8 8.9A47.5 47.5 0 0 0 7 54c0 13.1 4.3 23.5 13.4 32.5A46 46 0 0 0 54.1 100c11.4 0 21.4-3.6 31.3-11.4.8-.5 7.4 5.5 18.6 16.9 9.6 9.7 18.3 18 19.3 18.6 2.4 1.4 5.9-.7 5.5-3.2-.2-1.1-8.6-10.2-18.8-20.4L91.6 82l1.7-3a58 58 0 0 0 6.4-21.6 46.5 46.5 0 0 0-34.1-49 55 55 0 0 0-25.8.5m29.7 8.9a39 39 0 0 1 22.1 44.1c-6.4 30.8-42.2 41.4-65.7 19.4-18.2-17-13.6-48.8 9-62.1a37 37 0 0 1 34.6-1.4"/></svg></button><button class="search-launch" id="nuances-launch" aria-label="Nuances entre cartes" onclick="openNuances()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 6h16M4 12h10M4 18h7"/></svg></button></div>
 <div id="search" role="dialog" aria-modal="true" aria-label="Sélecteur de cartes">
   <div class="picker-sheet"><div class="picker-grip"></div><div class="picker-top"><span class="picker-count" id="pickerCount"></span><button class="s-close" id="s-close" aria-label="Fermer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 6 12 12M18 6 6 18"/></svg></button></div>
     <div class="s-query" id="sQuery"><span class="ph">Tapez une lame…</span></div>
@@ -115,10 +135,13 @@ $ver = trim((string)@file_get_contents(__DIR__.'/../../VERSION')) ?: '2026.08.01
     <div class="picker-chips" id="pickerChips"></div><div class="picker-body"><div class="s-grid" id="sGrid"></div></div>
   </div>
 </div>
+<div id="nuances" role="dialog" aria-modal="true" aria-label="Nuances entre cartes">
+  <div class="nuances-sheet"><div class="picker-grip"></div><div class="nuances-top"><span class="nuances-title">Nuances entre cartes</span><button class="s-close" id="n-close" aria-label="Fermer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 6 12 12M18 6 6 18"/></svg></button></div><div class="nuances-body" id="nuancesBody"></div></div>
+</div>
 <div class="d-stage" id="detail"><div class="back-btn" id="backBtn">← Retour</div><div class="d-hero"><img class="d-hero-img" id="heroImg" alt=""></div><div class="d-panel"><div class="d-panel-inner" id="dInner"></div></div><div class="d-loop" id="loopBar"></div></div>
 <script src="<?= $base ?>/index.php?js=spreads"></script>
 <script>
-const B=<?= $baseJson ?>, CARDS=<?= $cardsJson ?>, FAMILIES=<?= $familiesJson ?>, ES_MAP=<?= $esJson ?>, ASSOCS=<?= $assocsJson ?>, MD_MAP=<?= $mdJson ?>, IMG_MAP={};
+const B=<?= $baseJson ?>, CARDS=<?= $cardsJson ?>, FAMILIES=<?= $familiesJson ?>, ES_MAP=<?= $esJson ?>, ASSOCS=<?= $assocsJson ?>, MD_MAP=<?= $mdJson ?>, PORTRAITS=<?= $portraitsJson ?>, IMG_MAP={};
 for(const c of CARDS) IMG_MAP[c.id]=B+'/index.php?img='+encodeURIComponent(c.id+'.jpg')+'&v='+<?= (string)@filemtime(__DIR__.'/vault.sqlite') ?>;
 let currentIdx=-1, searchState={fam:'',q:'',selIdx:0};
 const PICTOS={
@@ -139,18 +162,147 @@ function restructureHtml(html){
  return div.innerHTML;
 }
 function fam(k){return FAMILIES.find(f=>f.key===k)||{};}
+function escapeHtml(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
+const PORTRAIT_ICONS={
+  label:'<svg viewBox="0 0 24 24" fill="none"><path d="M12 3 4.5 7.2v9.6L12 21l7.5-4.2V7.2L12 3Z"/><path d="m8.5 12 2.2 2.2 4.8-4.8"/></svg>',
+  idea:'<svg viewBox="0 0 24 24"><path d="M9 18h6M10 21h4M8.3 14.8A6 6 0 1 1 15.7 14.8c-.7.6-1.2 1.4-1.4 2.2h-4.6c-.2-.8-.7-1.6-1.4-2.2Z"/></svg>',
+  reality:'<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><path d="m12 8 2.5 4-2.5 4-2.5-4L12 8Z"/></svg>',
+  image:'<svg viewBox="0 0 24 24"><rect x="3.5" y="5" width="17" height="14" rx="1.5"/><circle cx="9" cy="10" r="1.4"/><path d="m5.5 17 4.5-4 3 2.5 2.5-2 3 3.5"/></svg>',
+  quote:'<svg viewBox="0 0 24 24"><path d="M9.2 8.2C6.5 9.4 5.5 11 5.5 13.5c0 1.7 1.1 3 2.7 3 1.5 0 2.6-1 2.6-2.5 0-1.4-1-2.4-2.4-2.4.2-1.2.9-2.1 2.3-2.8L9.2 8.2Zm7.2 0c-2.7 1.2-3.7 2.8-3.7 5.3 0 1.7 1.1 3 2.7 3 1.5 0 2.6-1 2.6-2.5 0-1.4-1-2.4-2.4-2.4.2-1.2.9-2.1 2.3-2.8l-1.5-.6Z"/></svg>'
+};
+function renderPortrait(md){
+  if(!md)return '';
+  const lines=md.split('\n').map(l=>l.trim());
+  let key='',idee='',realite='',cite='',started=false,inImage=false,imageItems=[];
+  for(const line of lines){
+    if(!line)continue;
+    if(!started){started=true;continue;}
+    const m=line.match(/^(🧠|💭|🔑|🖼️|✨)/);
+    if(m){
+      const emoji=m[1];
+      const rest=line.substring(line.indexOf(emoji)+emoji.length).replace(/^[\s:]+/,'').trim();
+      if(emoji==='🧠')idee=rest.replace(/^Idée centrale\s*:\s*/i,'');
+      else if(emoji==='💭')realite=rest.replace(/^Ce qui se passe réellement\s*:\s*/i,'');
+      else if(emoji==='🔑')key=rest.replace(/^Mot-clé(?: distinctif)?\s*:\s*/i,'');
+      else if(emoji==='🖼️'){
+        inImage=true;
+        const imageText=rest.replace(/^(?:Ce que me raconte l'image|L'image)\s*:\s*/i,'');
+        if(imageText)imageItems.push(imageText);
+      }
+      else if(emoji==='✨')cite=rest.replace(/^L'image me dit\s*:\s*/i,'');
+    } else if(inImage){
+      imageItems.push(line);
+    }
+  }
+  let html='<section class="card-of-day portrait"><div class="card-of-day-label"><span class="portrait-label-icon">'+PORTRAIT_ICONS.label+'</span>Portrait de la lame</div><div class="card-of-day-content portrait-content">';
+  if(idee||key){html+='<div class="prt-hero"><span class="prt-icon">'+PORTRAIT_ICONS.idea+'</span>';if(idee)html+='<p class="prt-idee">'+escapeHtml(idee)+'</p>';if(key)html+='<div class="prt-keyline"><span class="prt-key-badge">'+escapeHtml(key)+'</span></div>';html+='</div>';}
+  if(realite)html+='<div class="prt-row"><span class="prt-icon">'+PORTRAIT_ICONS.reality+'</span><p class="prt-realite">'+escapeHtml(realite)+'</p></div>';
+  if(imageItems.length){
+    const imageContent=imageItems.length===1?'<p class="prt-image-single">'+escapeHtml(imageItems[0])+'</p>':'<ul class="prt-image">'+imageItems.map(item=>'<li>'+escapeHtml(item)+'</li>').join('')+'</ul>';
+    html+='<div class="prt-row"><span class="prt-icon">'+PORTRAIT_ICONS.image+'</span>'+imageContent+'</div>';
+  }
+  if(cite)html+='<div class="prt-cite"><span class="prt-icon">'+PORTRAIT_ICONS.quote+'</span><p>'+escapeHtml(cite)+'</p></div>';
+  return html+'</div></section>';
+}
+const NUANCES=[
+ {e:'🚶',t:'Partir / changer / aller ailleurs',i:[
+  {id:'e_06_Six',c:'⚔️ 6 Épées',k:'TRANSITION',d:'je quitte une difficulté pour aller vers plus calme.'},
+  {id:'c_08_Huit',c:'🏆 8 Coupes',k:'RENONCEMENT',d:'je quitte volontairement quelque chose qui ne me satisfait plus.'},
+  {id:'b_03_Trois',c:'🪾 3 Bâtons',k:'EXPANSION',d:'je m\'ouvre à de nouveaux horizons.'},
+  {id:'a_10_Roue',c:'🎡 Roue',k:'CHANGEMENT',d:'les circonstances changent, indépendamment de moi.'},
+  {id:'a_13_Mort',c:'💀 Mort',k:'FIN',d:'quelque chose doit réellement se terminer pour laisser place à autre chose.'}
+ ]},
+ {e:'🛡️',t:'Difficulté / lutte / tenir',i:[
+  {id:'b_05_Cinq',c:'🪾 5 Bâtons',k:'COMPÉTITION',d:'plusieurs volontés s\'affrontent.'},
+  {id:'b_07_Sept',c:'🪾 7 Bâtons',k:'DÉFENSE',d:'ma position est attaquée, je la défends.'},
+  {id:'b_09_Neuf',c:'🪾 9 Bâtons',k:'RÉSISTANCE',d:'j\'ai déjà pris des coups, mais je tiens.'},
+  {id:'a_08_Force',c:'🦁 Force',k:'MAÎTRISE',d:'je domine une difficulté sans brutalité.'},
+  {id:'e_05_Cinq',c:'⚔️ 5 Épées',k:'VICTOIRE AMÈRE',d:'je gagne le conflit mais j\'y laisse quelque chose.'}
+ ]},
+ {e:'😣',t:'Souffrance / difficulté',i:[
+  {id:'e_08_Huit',c:'⚔️ 8 Épées',k:'ENFERMEMENT',d:'je me crois sans issue.'},
+  {id:'e_09_Neuf',c:'⚔️ 9 Épées',k:'ANGOISSE',d:'je me torture avec mes pensées.'},
+  {id:'e_10_Dix',c:'⚔️ 10 Épées',k:'FOND',d:'le pire est arrivé.'},
+  {id:'d_05_Cinq',c:'🪙 5 Deniers',k:'MANQUE',d:'je suis dans le besoin et me sens laissé dehors.'},
+  {id:'b_10_Dix',c:'🪾 10 Bâtons',k:'SURCHARGE',d:'j\'en porte tellement que je m\'épuise.'},
+  {id:'c_05_Cinq',c:'🏆 5 Coupes',k:'REGRET',d:'je souffre de ce que j\'ai perdu.'}
+ ]},
+ {e:'🎉',t:'Bonheur / réussite / accomplissement',i:[
+  {id:'c_03_Trois',c:'🏆 3 Coupes',k:'AMITIÉ',d:'je profite d\'être avec mes proches.'},
+  {id:'b_04_Quatre',c:'🪾 4 Bâtons',k:'JALON',d:'une étape est franchie.'},
+  {id:'b_06_Six',c:'🪾 6 Bâtons',k:'RECONNAISSANCE',d:'ma réussite est reconnue par les autres.'},
+  {id:'c_09_Neuf',c:'🏆 9 Coupes',k:'SATISFACTION',d:'j\'ai obtenu ce que je désirais.'},
+  {id:'c_10_Dix',c:'🏆 10 Coupes',k:'BONHEUR PARTAGÉ',d:'nous sommes heureux ensemble.'},
+  {id:'d_09_Neuf',c:'🪙 9 Deniers',k:'INDÉPENDANCE',d:'je profite de ce que j\'ai construit.'},
+  {id:'d_10_Dix',c:'🪙 10 Deniers',k:'HÉRITAGE',d:'ma réussite devient durable et transmissible.'},
+  {id:'a_19_Soleil',c:'☀️ Soleil',k:'CLARTÉ',d:'tout est ouvert, lumineux, évident.'},
+  {id:'a_21_Monde',c:'🌍 Monde',k:'ACCOMPLISSEMENT',d:'le parcours est arrivé à complétude.'}
+ ]},
+ {e:'👁️',t:'Comprendre / voir / savoir',i:[
+  {id:'e_01_As',c:'⚔️ As Épées',k:'RÉVÉLATION',d:'je comprends soudainement.'},
+  {id:'e_13_Reine',c:'⚔️ Reine Épées',k:'LUCIDITÉ',d:'je vois la situation telle qu\'elle est.'},
+  {id:'e_14_Roi',c:'⚔️ Roi Épées',k:'JUGEMENT',d:'je tranche à partir de ce que je sais.'},
+  {id:'a_02_Papesse',c:'📖 Papesse',k:'SAVOIR CACHÉ',d:'quelque chose est là mais n\'est pas encore révélé.'},
+  {id:'a_18_Lune',c:'🌕 Lune',k:'CONFUSION',d:'je ne sais pas distinguer clairement ce qui est réel.'},
+  {id:'a_19_Soleil',c:'☀️ Soleil',k:'CLARTÉ',d:'tout est visible, il n\'y a plus d\'ambiguïté.'},
+  {id:'a_09_Hermite',c:'🕯️ Hermite',k:'RECHERCHE',d:'je cherche moi-même la réponse.'}
+ ]},
+ {e:'💞',t:'Lien / relation aux autres',i:[
+  {id:'c_02_Deux',c:'🏆 2 Coupes',k:'RÉCIPROCITÉ',d:'toi et moi échangeons quelque chose mutuellement.'},
+  {id:'a_06_Amoureux',c:'❤️ Amoureux',k:'UNION',d:'deux êtres s\'unissent.'},
+  {id:'c_03_Trois',c:'🏆 3 Coupes',k:'AMITIÉ',d:'j\'appartiens à un cercle affectif.'},
+  {id:'c_10_Dix',c:'🏆 10 Coupes',k:'BONHEUR PARTAGÉ',d:'le lien devient foyer/bonheur collectif.'},
+  {id:'d_03_Trois',c:'🪙 3 Deniers',k:'COLLABORATION',d:'nous réunissons nos compétences.'},
+  {id:'d_06_Six',c:'🪙 6 Deniers',k:'AIDE',d:'l\'un donne ce dont l\'autre a besoin.'}
+ ]},
+ {e:'🧱',t:'Construire / avoir / sécuriser',i:[
+  {id:'d_01_As',c:'🪙 As Deniers',k:'OPPORTUNITÉ',d:'une possibilité concrète apparaît.'},
+  {id:'d_04_Quatre',c:'🪙 4 Deniers',k:'RÉTENTION',d:'je m\'accroche à ce que j\'ai.'},
+  {id:'d_07_Sept',c:'🪙 7 Deniers',k:'PATIENCE',d:'j\'ai semé, j\'attends que ça mûrisse.'},
+  {id:'d_08_Huit',c:'🪙 8 Deniers',k:'PERFECTIONNEMENT',d:'je développe mon savoir-faire.'},
+  {id:'d_09_Neuf',c:'🪙 9 Deniers',k:'INDÉPENDANCE',d:'je profite personnellement de mes acquis.'},
+  {id:'d_10_Dix',c:'🪙 10 Deniers',k:'HÉRITAGE',d:'mes acquis deviennent patrimoine.'},
+  {id:'d_13_Reine',c:'🪙 Reine Deniers',k:'ENTRETIEN',d:'je prends soin de mes ressources.'},
+  {id:'d_14_Roi',c:'🪙 Roi Deniers',k:'PROSPÉRITÉ',d:'mes ressources sont solidement établies.'}
+ ]},
+ {e:'🔥',t:'Se lancer / vouloir / entreprendre',i:[
+  {id:'b_01_As',c:'🪾 As Bâtons',k:'IMPULSION',d:'l\'envie surgit.'},
+  {id:'b_11_Valet',c:'🪾 Valet Bâtons',k:'CURIOSITÉ',d:'ça m\'intéresse, je veux découvrir.'},
+  {id:'b_12_Cavalier',c:'🪾 Cavalier Bâtons',k:'AVENTURE',d:'je veux le vivre, j\'y vais.'},
+  {id:'b_02_Deux',c:'🪾 2 Bâtons',k:'PLANIFICATION',d:'j\'envisage ce que je pourrais faire.'},
+  {id:'b_03_Trois',c:'🪾 3 Bâtons',k:'EXPANSION',d:'je veux aller plus loin.'},
+  {id:'b_13_Reine',c:'🪾 Reine Bâtons',k:'CHARISME',d:'je sais qui je suis et ça se voit.'},
+  {id:'b_14_Roi',c:'🪾 Roi Bâtons',k:'LEADERSHIP',d:'je veux accomplir et j\'embarque les autres.'},
+  {id:'a_07_Chariot',c:'🛒 Chariot',k:'CONQUÊTE',d:'je prends les rênes et avance vers mon objectif.'}
+ ]}
+];
+function renderNuances(){
+  let h='';
+  for(const cat of NUANCES){
+    h+='<div class="nuc-cat"><h3><span style="margin-right:.5rem">'+cat.e+'</span>'+cat.t+'</h3><ul>';
+    for(const it of cat.i){
+      const thumb=IMG_MAP[it.id]?'<a class="nuc-thumb" onclick="openNuanceCard(\''+it.id+'\')"><img src="'+IMG_MAP[it.id]+'" alt=""></a>':'';
+      h+='<li>'+thumb+'<div class="nuc-text"><span class="nuc-card">'+it.c+'</span> = <span class="nuc-key">'+it.k+'</span> → <span class="nuc-desc">'+it.d+'</span></div></li>';
+    }
+    h+='</ul></div>';
+  }
+  return h;
+}
+function openNuanceCard(id){const c=CARDS.find(x=>x.id===id);if(c){closeNuances();openDetail(c.sort);}}
+function openNuances(){const el=document.getElementById('nuances');if(!el.querySelector('.nuances-body').innerHTML)el.querySelector('.nuances-body').innerHTML=renderNuances();el.classList.add('open');document.body.style.overflow='hidden';}
+function closeNuances(){document.getElementById('nuances').classList.remove('open');document.body.style.overflow='';}
 function assocCard(t){if(!t)return null;let cs=[t];if(t.indexOf('/')>=0)cs=cs.concat(t.split('/').map(s=>s.trim()));for(const cand of cs){const n=cand.toLowerCase().replace(/[\u2018\u2019]/g,"'");for(const c of CARDS){if(c.name.toLowerCase()===n)return c;}}return null;}
 function renderAssociations(rows){if(!rows||!rows.length)return '';const secs={},order=[];let total=0;for(const r of rows){if(!secs[r.section]){secs[r.section]={t:r.section,it:[]};order.push(r.section);}secs[r.section].it.push(r);total++;}let h='<section class="associations"><h2>Associations</h2><p class="association-intro">'+total+' combinaisons avec cette lame</p>';for(const k of order){const s=secs[k];h+='<div class="association-section"><h3>'+s.t+'</h3><ul>';for(const r of s.it){const target=(r.pair||'').indexOf(' + ')>=0?(r.pair.split(' + ')[1]||'').trim():(r.pair||'');const card=assocCard(target);const thumb=card?'<a class="assoc-thumb" onclick="openDetail('+card.sort+')">'+(IMG_MAP[card.id]?'<img src="'+IMG_MAP[card.id]+'">':'')+'</a>':'<span class="assoc-thumb assoc-thumb-empty"></span>';const link=card?'<a class="assoc-link" onclick="openDetail('+card.sort+')">'+target+'</a>':'<span class="assoc-link">'+target+'</span>';h+='<li>'+thumb+'<div class="assoc-text">'+link+'<p>'+(r.descr||'')+'</p></div></li>';}h+='</ul></div>';}return h+'</section>';}
 function renderGrid(){let h='',last=null;for(const c of CARDS){if(c.fam!==last){const f=fam(c.fam),group=CARDS.filter(x=>x.fam===c.fam),first=group[0],n=group.length;h+='<div class="fam-card" style="--ac:'+(f.ac||'#c9a227')+'" onclick="openDetail('+first.sort+')"><div class="fam-card-inner"><div class="fam-card-img"><span class="glyph-uni">'+(f.key!=='majors'?'<img class="fam-glyph" src="'+B+'/index.php?svg='+f.key+'">':(f.sym||'✦'))+'</span></div><div class="fam-card-name"><em>'+((f.short||f.name||c.fam))+'</em></div><div class="fam-card-elem"><span>'+(f.sym||'✦')+'</span>'+(f.el||'')+'</div><div class="fam-card-count">'+n+' LAMES</div></div></div>';last=c.fam;}const num=String(c.sort+1).padStart(2,'0');h+='<div class="mini" data-sort="'+c.sort+'" onclick="openDetail('+c.sort+')"><div class="ph"><img src="'+IMG_MAP[c.id]+'" alt="'+c.name+'" loading="lazy"></div><div class="cap"><span class="nm">'+c.name+'</span><span class="no">'+num+'</span></div></div>';}document.getElementById('grid').innerHTML=h;renderChips();}
 function renderChips(){let h='<button class="chip active" data-fam="" onclick="setFam(\'\')">Tout<span class="n">'+CARDS.length+'</span></button>';for(const f of FAMILIES){const n=CARDS.filter(c=>c.fam===f.key).length;h+='<button class="chip" data-fam="'+f.key+'" style="--ac:'+f.ac+'" onclick="setFam(\''+f.key+'\')"><span class="sym">'+f.sym+'</span>'+f.short+'<span class="n">'+n+'</span></button>';}document.getElementById('pickerChips').innerHTML=h;}
-function openDetail(sort){const i=CARDS.findIndex(c=>c.sort===sort);if(i<0)return;currentIdx=i;const c=CARDS[i],f=fam(c.fam),es=ES_MAP[c.id]||{},inFam=CARDS.filter(x=>x.fam===c.fam),fi=inFam.findIndex(x=>x.id===c.id),num=String(i+1).padStart(2,'0');document.getElementById('heroImg').src=IMG_MAP[c.id];let badges='';if(es.aff)badges+='<span class="es-badge aff">« '+es.aff+' »</span>';if(es.rep)badges+='<span class="es-badge resp">'+es.rep+'</span>';if(badges)badges='<div class="es-badges">'+badges+'</div>';let cod=c.cod?'<div class="card-of-day"><div class="card-of-day-label"><span class="icon">☀</span>Carte du Jour</div><div class="card-of-day-content"><p>'+c.cod+'</p></div></div>':'';let thumbs=inFam.map(x=>'<div class="d-thumb'+(x.id===c.id?' current':'')+'" onclick="openDetail('+x.sort+')"><img src="'+IMG_MAP[x.id]+'"></div>').join('');document.getElementById('dInner').innerHTML='<div class="d-meta"><b>'+num+'</b> / '+CARDS.length+'<span class="sep">·</span>'+f.name+' '+(fi+1)+'/'+inFam.length+'<span class="sep">·</span>'+f.el+'</div><h1 class="d-title"><em>'+c.name+'</em></h1>'+badges+cod+'<div class="prose">'+restructureHtml(c.html||'<p>Pas de description.</p>')+'</div>'+renderAssociations(ASSOCS[c.id])+'<div class="d-thumbs">'+thumbs+'</div>';const p=CARDS[(i-1+CARDS.length)%CARDS.length],n=CARDS[(i+1)%CARDS.length];document.getElementById('loopBar').innerHTML='<a onclick="openDetail('+p.sort+')">← '+p.name+'</a><span class="pos"><b>'+num+'</b> / '+CARDS.length+'</span><a onclick="openDetail('+n.sort+')">'+n.name+' →</a>';document.getElementById('detail').classList.add('open');document.getElementById('detail').scrollTop=0;}
+function openDetail(sort){const i=CARDS.findIndex(c=>c.sort===sort);if(i<0)return;currentIdx=i;const c=CARDS[i],f=fam(c.fam),es=ES_MAP[c.id]||{},inFam=CARDS.filter(x=>x.fam===c.fam),fi=inFam.findIndex(x=>x.id===c.id),num=String(i+1).padStart(2,'0');document.getElementById('heroImg').src=IMG_MAP[c.id];let badges='';if(es.aff)badges+='<span class="es-badge aff">« '+es.aff+' »</span>';if(es.rep)badges+='<span class="es-badge resp">'+es.rep+'</span>';if(badges)badges='<div class="es-badges">'+badges+'</div>';let cod=c.cod?'<div class="card-of-day"><div class="card-of-day-label"><span class="icon">☀</span>Carte du Jour</div><div class="card-of-day-content"><p>'+c.cod+'</p></div></div>':'';let portrait=PORTRAITS[c.id]?renderPortrait(PORTRAITS[c.id]):'';let thumbs=inFam.map(x=>'<div class="d-thumb'+(x.id===c.id?' current':'')+'" onclick="openDetail('+x.sort+')"><img src="'+IMG_MAP[x.id]+'"></div>').join('');document.getElementById('dInner').innerHTML='<div class="d-meta"><b>'+num+'</b> / '+CARDS.length+'<span class="sep">·</span>'+f.name+' '+(fi+1)+'/'+inFam.length+'<span class="sep">·</span>'+f.el+'</div><h1 class="d-title"><em>'+c.name+'</em></h1>'+badges+cod+portrait+'<div class="prose">'+restructureHtml(c.html||'<p>Pas de description.</p>')+'</div>'+renderAssociations(ASSOCS[c.id])+'<div class="d-thumbs">'+thumbs+'</div>';const p=CARDS[(i-1+CARDS.length)%CARDS.length],n=CARDS[(i+1)%CARDS.length];document.getElementById('loopBar').innerHTML='<a onclick="openDetail('+p.sort+')">← '+p.name+'</a><span class="pos"><b>'+num+'</b> / '+CARDS.length+'</span><a onclick="openDetail('+n.sort+')">'+n.name+' →</a>';document.getElementById('detail').classList.add('open');document.getElementById('detail').scrollTop=0;}
 function closeDetail(){document.getElementById('detail').classList.remove('open');currentIdx=-1;}
 function setFam(f){searchState.fam=f;document.querySelectorAll('.chip').forEach(c=>c.classList.toggle('active',c.dataset.fam===f));searchRender();}
 function syncQuery(){const q=document.getElementById('sQuery');if(!searchState.q)q.innerHTML='<span class="ph">Tapez une lame…</span>';else q.textContent=searchState.q;}
 function searchRender(){const out=CARDS.filter(c=>(!searchState.fam||c.fam===searchState.fam)&&(!searchState.q||c.name.toLowerCase().includes(searchState.q)||String(c.num).padStart(2,'0').includes(searchState.q)));document.getElementById('pickerCount').innerHTML='<b>'+out.length+'</b> <span class="ac">'+(out.length>1?'lames':'lame')+'</span>';document.getElementById('sGrid').innerHTML=out.length?out.map((c,i)=>'<div class="mini '+(i===searchState.selIdx?'sel':'')+'" onclick="openDetail('+c.sort+');closeSearch()"><div class="ph"><img src="'+IMG_MAP[c.id]+'"></div><div class="cap"><span class="nm">'+c.name+'</span><span class="no">'+String(c.sort+1).padStart(2,'0')+'</span></div></div>').join(''):'<div class="s-empty">Aucune lame</div>';}
 function openSearch(){document.getElementById('search').classList.add('open');document.body.style.overflow='hidden';searchRender();setTimeout(()=>document.getElementById('sInput').focus(),100);}
 function closeSearch(){document.getElementById('search').classList.remove('open');document.body.style.overflow='';document.getElementById('sInput').value='';searchState={fam:'',q:'',selIdx:0};syncQuery();setFam('');}
-document.getElementById('search-launch').onclick=openSearch;document.getElementById('s-close').onclick=closeSearch;document.getElementById('backBtn').onclick=closeDetail;document.getElementById('search').onclick=e=>{if(e.target.id==='search')closeSearch();};
+document.getElementById('search-launch').onclick=openSearch;document.getElementById('s-close').onclick=closeSearch;document.getElementById('backBtn').onclick=closeDetail;document.getElementById('search').onclick=e=>{if(e.target.id==='search')closeSearch();};document.getElementById('n-close').onclick=closeNuances;document.getElementById('nuances').onclick=e=>{if(e.target.id==='nuances')closeNuances();};
 document.getElementById('sInput').oninput=e=>{searchState.q=e.target.value.trim().toLowerCase();syncQuery();searchRender();};
 document.addEventListener('keydown',e=>{if(e.metaKey||e.ctrlKey||e.altKey)return;const tag=e.target?.tagName;if(tag&&/INPUT|TEXTAREA|SELECT/i.test(tag))return;const so=document.getElementById('search').classList.contains('open');if(e.key==='Escape'){if(so)closeSearch();else closeDetail();return;}if(so){if(e.key==='ArrowDown'){searchState.selIdx++;searchRender();}if(e.key==='ArrowUp'){searchState.selIdx=Math.max(0,searchState.selIdx-1);searchRender();}if(e.key==='Backspace'){searchState.q=searchState.q.slice(0,-1);document.getElementById('sInput').value=searchState.q;syncQuery();searchRender();e.preventDefault();return;}if(e.key==='Enter'){document.querySelector('#sGrid .mini.sel')?.click();}if(e.key.length===1&&/\p{L}|\p{N}/u.test(e.key)){searchState.q+=e.key.toLowerCase();document.getElementById('sInput').value=searchState.q;syncQuery();searchRender();e.preventDefault();}return;}if(e.key.length===1&&/\p{L}|\p{N}/u.test(e.key)){openSearch();searchState.q=e.key.toLowerCase();document.getElementById('sInput').value=e.key;syncQuery();searchRender();e.preventDefault();return;}if(currentIdx>=0){if(e.key==='ArrowLeft')openDetail(CARDS[(currentIdx-1+CARDS.length)%CARDS.length].sort);if(e.key==='ArrowRight')openDetail(CARDS[(currentIdx+1)%CARDS.length].sort);return;}});
 renderGrid();document.getElementById('loader').classList.add('gone');

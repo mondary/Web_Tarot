@@ -6,7 +6,7 @@ Toutes les notes de release du projet Web Tarot. Le format de version suit `vYYY
 
 ## TODO — Roadmap
 
-Statut : `2026.08.01` (Zero dependances externes)
+Statut : `2026.08.03` (Portraits des 78 lames)
 
 ### Phase 1 — Fondations ✅
 - [x] Interface V2 unifiée (carousel d'accueil + grille par famille + vue détail)
@@ -30,6 +30,19 @@ Statut : `2026.08.01` (Zero dependances externes)
 ---
 
 ## Releases
+
+### [2026.08.03] - 2026-08-11
+#### Added
+- **Format `_portrait.md`** : lecture incarnée d'une carte (idée centrale 1re personne, mot-clé distinctif court, lecture visuelle, citation de clôture). 78 portraits pour les 22 Majeurs et les 56 Mineures
+- **Charte `_PORTRAIT_FORMAT.md`** : règles du format (5 blocs, visuel d'abord, trait court 1 à 3 mots, format hybride paragraphe/puces selon la richesse visuelle)
+- **Référence globale `_ALL_portraits.md`** : les 78 portraits et un pense-bête thématique des cartes à nuances proches
+
+#### Changed
+- **V5** : portrait de la lame ajouté à la fiche détail, avec pictos SVG et hiérarchie typographique dédiée
+- **V5** : bouton FAB « Nuances entre cartes » ouvrant le pense-bête illustré et navigable
+
+#### Fixed
+- `scripts/tester-server.py` : V4 traitée en statique, flags `php -n -d auto_prepend_file=` pour neutraliser les directives serveur
 
 ### [2026.08.02] - 2026-08-04
 #### Changed

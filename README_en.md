@@ -73,7 +73,7 @@ browser blocks `fetch()` to SQLite and WebAssembly loading.
 
 ## 📋 See the [CHANGELOG](CHANGELOG.md) for full history.
 
-Current version: `v2026.08.02`
+Current version: `v2026.08.03`
 
 ## 🔗 Links
 
