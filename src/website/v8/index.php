@@ -427,9 +427,10 @@ document.getElementById('backBtn').onclick=closeDetail;
 document.getElementById('sInput').oninput=e=>{searchState.q=e.target.value.trim().toLowerCase();searchState.selIdx=0;syncQuery();searchRender()};
 document.getElementById('search').onclick=e=>{if(e.target.id==='search')closeSearch()};
 document.getElementById('nuances').onclick=e=>{if(e.target.id==='nuances')closeNuances()};
-document.addEventListener('keydown',e=>{if(e.metaKey||e.ctrlKey||e.altKey)return;const tag=e.target?.tagName;if(tag&&/INPUT|TEXTAREA|SELECT/i.test(tag))return;
+document.addEventListener('keydown',e=>{if(e.metaKey||e.ctrlKey||e.altKey)return;const tag=e.target?.tagName;
   const sg=document.getElementById('search').classList.contains('open');
   if(e.key==='Escape'){if(sg)closeSearch();else if(document.getElementById('nuances').classList.contains('open'))closeNuances();else closeDetail();return}
+  if(tag&&/INPUT|TEXTAREA|SELECT/i.test(tag))return;
   if(sg){if(e.key==='ArrowDown'){searchState.selIdx++;searchRender()}if(e.key==='ArrowUp'){searchState.selIdx=Math.max(0,searchState.selIdx-1);searchRender()}if(e.key==='Enter'){document.querySelector('#sGrid .mini.sel')?.click()}return}
   if(e.key.length===1&&/^[\p{L}\p{N}]$/u.test(e.key)){e.preventDefault();openSearch(e.key);return}
   if(currentIdx>=0){if(e.key==='ArrowLeft')openDetail(CARDS[(currentIdx-1+CARDS.length)%CARDS.length].sort);if(e.key==='ArrowRight')openDetail(CARDS[(currentIdx+1)%CARDS.length].sort)}
