@@ -6,7 +6,7 @@ Toutes les notes de release du projet Web Tarot. Le format de version suit `vYYY
 
 ## TODO — Roadmap
 
-Statut : `2026.08.06` (V7 - essences remplacent les anciennes descriptions)
+Statut : `2026.08.07` (V8 - refonte éditoriale)
 
 ### Phase 1 — Fondations ✅
 - [x] Interface V2 unifiée (carousel d'accueil + grille par famille + vue détail)
@@ -20,7 +20,7 @@ Statut : `2026.08.06` (V7 - essences remplacent les anciennes descriptions)
 - [x] Matelas blanc simulant la bordure réelle des cartes
 
 ### Phase 2 — Expérience
-- [ ] Tirages (spreads) interactifs (croix, past, présent, futur…)
+- [x] Tirages (spreads) interactifs
 - [ ] Mode diaporama plein écran avec lecture auto
 - [x] Recherche et filtrage des cartes par mot-clé
 - [x] Scanner mobile de lames par caméra
@@ -33,6 +33,16 @@ Statut : `2026.08.06` (V7 - essences remplacent les anciennes descriptions)
 ---
 
 ## Releases
+
+### [2026.08.07] - 2026-08-13
+#### Added
+- **V8 éditoriale** : accueil réunissant les 78 lames, cinq intercalaires de famille et fiches détaillées dans une interface PHP+SQLite autonome
+- **Fiches restructurées** : identité de la lame, carte du jour, domaines Amour/Travail/Finances/Guidance, repères, citation et associations repliables
+- **Recherche globale** : ouverture et préremplissage à la saisie d'une lettre ou d'un chiffre
+
+#### Changed
+- **Hero V7 conservé** : illustration, loupe et panneau de lecture chevauchant repris dans la nouvelle mise en page
+- **Déploiement** : V8 devient la version courante sur `tarot8`; V7 reste disponible sur `tarot7`
 
 ### [2026.08.06] - 2026-08-12
 #### Changed
