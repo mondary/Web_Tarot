@@ -27,6 +27,7 @@ VERSIONS = [
     {'ver': 'v5', 'name': 'V5', 'desc': 'Vault SQLite côté serveur', 'static': False, 'branch': 'v5', 'src': 'src/website/v5'},
     {'ver': 'v6', 'name': 'V6', 'desc': 'Portraits des 78 lames', 'static': False, 'branch': 'v6', 'src': 'src/website/v6'},
     {'ver': 'v7', 'name': 'V7', 'desc': 'Essences des 78 lames', 'static': False, 'branch': 'v7', 'src': 'src/website/v7'},
+    {'ver': 'v8', 'name': 'V8', 'desc': 'Refonte éditoriale', 'static': False, 'branch': 'v8', 'src': 'src/website/v8'},
 ]
 
 running = {}
