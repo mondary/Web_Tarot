@@ -115,7 +115,8 @@ a{color:inherit}
 .brand{position:fixed;top:1.2rem;left:1.5rem;z-index:1600;font-family:"DM Mono",monospace;font-size:.7rem;letter-spacing:.22em;text-transform:uppercase;color:var(--muted)}
 .brand b{color:var(--fg);font-weight:500} .brand em{font-style:italic;color:var(--ac);letter-spacing:.04em}
 .topnav{position:fixed;top:1rem;right:1.5rem;z-index:1600;display:flex;gap:.4rem}
-.topnav button{background:transparent;border:1px solid var(--line);color:var(--muted);font-family:"DM Mono",monospace;font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;padding:.5rem .8rem;border-radius:40px;cursor:pointer;transition:.3s var(--ease)}
+.topnav button{display:inline-flex;align-items:center;gap:.4rem;background:rgba(10,9,7,.85);backdrop-filter:blur(8px);border:1px solid var(--line);color:var(--muted);font-family:"DM Mono",monospace;font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;padding:.5rem .8rem;border-radius:40px;cursor:pointer;transition:.3s var(--ease)}
+.topnav button svg{width:14px;height:14px;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
 .topnav button:hover{color:var(--ac);border-color:var(--ac)}
 
 /* ===== LANDING : les 78 lames directement ===== */
@@ -172,8 +173,9 @@ a{color:inherit}
 .nuances-body .nuc-cat{margin-bottom:1.8rem}
 .nuances-body h3{font-family:"DM Mono",monospace;font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ac);margin:0 0 .8rem;padding-bottom:.4rem;border-bottom:1px solid var(--line)}
 .nuances-body ul{list-style:none;padding:0;margin:0}
-.nuances-body li{display:flex;gap:.7rem;align-items:center;padding:.5rem 0;border-bottom:1px solid rgba(241,237,228,.04)}
-.nuc-thumb{flex:0 0 auto;width:30px;aspect-ratio:2/3;border-radius:3px;overflow:hidden;border:1px solid var(--line);cursor:pointer}
+.nuances-body li{display:flex;gap:.8rem;align-items:center;padding:.6rem 0;border-bottom:1px solid rgba(241,237,228,.04)}
+.nuc-thumb{flex:0 0 auto;width:52px;aspect-ratio:2/3;border-radius:5px;overflow:hidden;border:1px solid var(--line);cursor:pointer;transition:.3s var(--ease)}
+.nuc-thumb:hover{border-color:var(--ac);transform:translateY(-2px)}
 .nuc-thumb img{width:100%;height:100%;object-fit:contain}
 .nuc-card{color:var(--fg);font-weight:500} .nuc-key{color:var(--ac);font-family:"DM Mono",monospace;font-size:.7rem;letter-spacing:.06em}
 .nuc-desc{color:var(--muted);font-size:.92rem}
@@ -278,9 +280,9 @@ body:has(.d-stage.open) .brand{opacity:0;pointer-events:none}
 <div class="fx-grain"></div><div class="fx-vignette"></div>
 <div class="brand"><b>TAROT</b> <em>DIVINATOIRE</em></div>
 <nav class="topnav">
-  <button onclick="TarotSpreads&&TarotSpreads.open()">Tirages</button>
-  <button onclick="openSearch()">Recherche</button>
-  <button onclick="openNuances()">Nuances</button>
+  <button onclick="TarotSpreads&&TarotSpreads.open()"><svg viewBox="0 0 24 24"><rect x="3" y="6" width="11" height="15" rx="1"/><path d="M18 6v15M21 6v15"/></svg>Tirages</button>
+  <button onclick="openSearch()"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>Recherche</button>
+  <button onclick="openNuances()"><svg viewBox="0 0 24 24"><path d="M12 3a9 9 0 1 0 9 9"/><path d="M12 3v18M3 12h18"/></svg>Nuances</button>
 </nav>
 
 <div id="landing">
@@ -325,7 +327,7 @@ let currentIdx=-1, searchState={fam:'',q:'',selIdx:0};
 const PICTOS={
  amour:'<svg viewBox="0 0 24 24"><path d="M20.8 4.8a5.5 5.5 0 0 0-7.8 0L12 5.9l-1.1-1.1a5.5 5.5 0 0 0-7.8 7.8L12 21l8.9-8.4a5.5 5.5 0 0 0-.1-7.8Z"/></svg>',
  travail:'<svg viewBox="0 0 24 24"><rect x="3" y="7" width="18" height="13" rx="1"/><path d="M8 7V4h8v3M3 12h18M10 12v2h4v-2"/></svg>',
- finances:'<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M14.5 9.5c-.5-.7-1.4-1.1-2.5-1.1-1.5 0-2.5.8-2.5 1.9 0 2.9 5 1.3 5 4.1 0 1.1-1 1.9-2.5 1.9-1.1 0-2.1-.4-2.7-1.2M12 6.8v10.4"/></svg>',
+ finance:'<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M14.5 9.5c-.5-.7-1.4-1.1-2.5-1.1-1.5 0-2.5.8-2.5 1.9 0 2.9 5 1.3 5 4.1 0 1.1-1 1.9-2.5 1.9-1.1 0-2.1-.4-2.7-1.2M12 6.8v10.4"/></svg>',
  guidance:'<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="m15.8 8.2-2.2 5.4-5.4 2.2 2.2-5.4 5.4-2.2Z"/></svg>',
  signification:'<svg viewBox="0 0 24 24"><path d="m12 3 1.7 5.3H19l-4.3 3.1 1.7 5.3-4.4-3.2-4.4 3.2 1.7-5.3L5 8.3h5.3L12 3Z"/></svg>',
  description:'<svg viewBox="0 0 24 24"><path d="M3 5.5c3.7-1.4 6.8-.8 9 1.2 2.2-2 5.3-2.6 9-1.2v13c-3.7-1.4-6.8-.8-9 1.2-2.2-2-5.3-2.6-9-1.2v-13Z"/><path d="M12 6.7v13"/></svg>'
@@ -401,10 +403,76 @@ function assocCard(t){if(!t)return null;let cs=[t];if(t.indexOf('/')>=0)cs=cs.co
 function renderAssociations(rows){if(!rows||!rows.length)return'';const secs={},order=[];for(const r of rows){if(!secs[r.section]){secs[r.section]={it:[]};order.push(r.section)}secs[r.section].it.push(r)}let h='';for(const k of order){const s=secs[k];h+='<div class="association-section"><h3>'+k+'</h3><ul>';for(const r of s.it){const target=(r.pair||'').indexOf(' + ')>=0?(r.pair.split(' + ')[1]||'').trim():(r.pair||'');const card=assocCard(target);const thumb=card?'<a class="assoc-thumb" onclick="openDetail('+card.sort+')">'+(IMG_MAP[card.id]?'<img src="'+IMG_MAP[card.id]+'">':'')+'</a>':'';const link=card?'<a class="assoc-link" onclick="openDetail('+card.sort+')">'+target+'</a>':'<span class="assoc-link">'+target+'</span>';h+='<li>'+thumb+'<div class="assoc-text">'+link+'<p>'+(r.descr||'')+'</p></div></li>'}h+='</ul></div>'}return h}
 
 const NUANCES=[
- {e:'🚶',t:'Partir / changer',i:[{id:'e_06_Six',c:'6 Épées',k:'TRANSITION',d:'je quitte une difficulté pour aller vers plus calme.'},{id:'c_08_Huit',c:'8 Coupes',k:'RENONCEMENT',d:'je quitte ce qui ne me satisfait plus.'},{id:'a_10_Roue',c:'Roue',k:'CHANGEMENT',d:'les circonstances changent.'},{id:'a_13_Mort',c:'Mort',k:'FIN',d:'quelque chose se termine.'}]},
- {e:'🛡️',t:'Lutte / tenir',i:[{id:'b_05_Cinq',c:'5 Bâtons',k:'COMPÉTITION',d:'les volontés s\'affrontent.'},{id:'b_07_Sept',c:'7 Bâtons',k:'DÉFENSE',d:'je défends ma position.'},{id:'b_09_Neuf',c:'9 Bâtons',k:'RÉSISTANCE',d:'je tiens malgré les coups.'},{id:'a_08_Force',c:'Force',k:'MAÎTRISE',d:'je domine sans brutalité.'}]},
- {e:'💞',t:'Lien / relation',i:[{id:'c_02_Deux',c:'2 Coupes',k:'RÉCIPROCITÉ',d:'échange mutuel.'},{id:'a_06_Amoureux',c:'Amoureux',k:'UNION',d:'deux êtres s\'unissent.'},{id:'d_03_Trois',c:'3 Deniers',k:'COLLABORATION',d:'compétences réunies.'},{id:'d_06_Six',c:'6 Deniers',k:'AIDE',d:'l\'un donne ce dont l\'autre a besoin.'}]},
- {e:'🔥',t:'Se lancer',i:[{id:'b_01_As',c:'As Bâtons',k:'IMPULSION',d:'l\'envie surgit.'},{id:'b_12_Cavalier',c:'Cavalier Bâtons',k:'AUDACE',d:'j\'y vais.'},{id:'b_14_Roi',c:'Roi Bâtons',k:'LEADERSHIP',d:'j\'embarque les autres.'},{id:'a_07_Chariot',c:'Chariot',k:'CONQUÊTE',d:'j\'avance vers mon objectif.'}]}
+ {e:'🚶',t:'Partir / changer / aller ailleurs',i:[
+  {id:'e_06_Six',c:'⚔️ 6 Épées',k:'TRANSITION',d:'je quitte une difficulté pour aller vers plus calme.'},
+  {id:'c_08_Huit',c:'🏆 8 Coupes',k:'RENONCEMENT',d:'je quitte volontairement quelque chose qui ne me satisfait plus.'},
+  {id:'b_03_Trois',c:'🪾 3 Bâtons',k:'EXPANSION',d:'je m\'ouvre à de nouveaux horizons.'},
+  {id:'a_10_Roue_de_Fortune',c:'🎡 Roue',k:'CHANGEMENT',d:'les circonstances changent, indépendamment de moi.'},
+  {id:'a_13_Mort',c:'💀 Mort',k:'FIN',d:'quelque chose doit réellement se terminer pour laisser place à autre chose.'}
+ ]},
+ {e:'🛡️',t:'Difficulté / lutte / tenir',i:[
+  {id:'b_05_Cinq',c:'🪾 5 Bâtons',k:'COMPÉTITION',d:'plusieurs volontés s\'affrontent.'},
+  {id:'b_07_Sept',c:'🪾 7 Bâtons',k:'DÉFENSE',d:'ma position est attaquée, je la défends.'},
+  {id:'b_09_Neuf',c:'🪾 9 Bâtons',k:'RÉSISTANCE',d:'j\'ai déjà pris des coups, mais je tiens.'},
+  {id:'a_08_Force',c:'🦁 Force',k:'MAÎTRISE',d:'je domine une difficulté sans brutalité.'},
+  {id:'e_05_Cinq',c:'⚔️ 5 Épées',k:'VICTOIRE AMÈRE',d:'je gagne le conflit mais j\'y laisse quelque chose.'}
+ ]},
+ {e:'😣',t:'Souffrance / difficulté',i:[
+  {id:'e_08_Huit',c:'⚔️ 8 Épées',k:'ENFERMEMENT',d:'je me crois sans issue.'},
+  {id:'e_09_Neuf',c:'⚔️ 9 Épées',k:'ANGOISSE',d:'je me torture avec mes pensées.'},
+  {id:'e_10_Dix',c:'⚔️ 10 Épées',k:'FOND',d:'le pire est arrivé.'},
+  {id:'d_05_Cinq',c:'🪙 5 Deniers',k:'MANQUE',d:'je suis dans le besoin et me sens laissé dehors.'},
+  {id:'b_10_Dix',c:'🪾 10 Bâtons',k:'SURCHARGE',d:'j\'en porte tellement que je m\'épuise.'},
+  {id:'c_05_Cinq',c:'🏆 5 Coupes',k:'REGRET',d:'je souffre de ce que j\'ai perdu.'}
+ ]},
+ {e:'🎉',t:'Bonheur / réussite / accomplissement',i:[
+  {id:'c_03_Trois',c:'🏆 3 Coupes',k:'AMITIÉ',d:'je profite d\'être avec mes proches.'},
+  {id:'b_04_Quatre',c:'🪾 4 Bâtons',k:'JALON',d:'une étape est franchie.'},
+  {id:'b_06_Six',c:'🪾 6 Bâtons',k:'RECONNAISSANCE',d:'ma réussite est reconnue par les autres.'},
+  {id:'c_09_Neuf',c:'🏆 9 Coupes',k:'SATISFACTION',d:'j\'ai obtenu ce que je désirais.'},
+  {id:'c_10_Dix',c:'🏆 10 Coupes',k:'BONHEUR PARTAGÉ',d:'nous sommes heureux ensemble.'},
+  {id:'d_09_Neuf',c:'🪙 9 Deniers',k:'INDÉPENDANCE',d:'je profite de ce que j\'ai construit.'},
+  {id:'d_10_Dix',c:'🪙 10 Deniers',k:'HÉRITAGE',d:'ma réussite devient durable et transmissible.'},
+  {id:'a_19_Soleil',c:'☀️ Soleil',k:'CLARTÉ',d:'tout est ouvert, lumineux, évident.'},
+  {id:'a_21_Monde',c:'🌍 Monde',k:'ACCOMPLISSEMENT',d:'le parcours est arrivé à complétude.'}
+ ]},
+ {e:'👁️',t:'Comprendre / voir / savoir',i:[
+  {id:'e_01_As',c:'⚔️ As Épées',k:'RÉVÉLATION',d:'je comprends soudainement.'},
+  {id:'e_13_Reine',c:'⚔️ Reine Épées',k:'LUCIDITÉ',d:'je vois la situation telle qu\'elle est.'},
+  {id:'e_14_Roi',c:'⚔️ Roi Épées',k:'JUGEMENT',d:'je tranche à partir de ce que je sais.'},
+  {id:'a_02_Papesse',c:'📖 Papesse',k:'SAVOIR CACHÉ',d:'quelque chose est là mais n\'est pas encore révélé.'},
+  {id:'a_18_Lune',c:'🌕 Lune',k:'CONFUSION',d:'je ne sais pas distinguer clairement ce qui est réel.'},
+  {id:'a_19_Soleil',c:'☀️ Soleil',k:'CLARTÉ',d:'tout est visible, il n\'y a plus d\'ambiguïté.'},
+  {id:'a_09_Hermite',c:'🕯️ Hermite',k:'RECHERCHE',d:'je cherche moi-même la réponse.'}
+ ]},
+ {e:'💞',t:'Lien / relation aux autres',i:[
+  {id:'c_02_Deux',c:'🏆 2 Coupes',k:'RÉCIPROCITÉ',d:'toi et moi échangeons quelque chose mutuellement.'},
+  {id:'a_06_Amoureux',c:'❤️ Amoureux',k:'UNION',d:'deux êtres s\'unissent.'},
+  {id:'c_03_Trois',c:'🏆 3 Coupes',k:'AMITIÉ',d:'j\'appartiens à un cercle affectif.'},
+  {id:'c_10_Dix',c:'🏆 10 Coupes',k:'BONHEUR PARTAGÉ',d:'le lien devient foyer/bonheur collectif.'},
+  {id:'d_03_Trois',c:'🪙 3 Deniers',k:'COLLABORATION',d:'nous réunissons nos compétences.'},
+  {id:'d_06_Six',c:'🪙 6 Deniers',k:'AIDE',d:'l\'un donne ce dont l\'autre a besoin.'}
+ ]},
+ {e:'🧱',t:'Construire / avoir / sécuriser',i:[
+  {id:'d_01_As',c:'🪙 As Deniers',k:'OPPORTUNITÉ',d:'une possibilité concrète apparaît.'},
+  {id:'d_04_Quatre',c:'🪙 4 Deniers',k:'RÉTENTION',d:'je m\'accroche à ce que j\'ai.'},
+  {id:'d_07_Sept',c:'🪙 7 Deniers',k:'PATIENCE',d:'j\'ai semé, j\'attends que ça mûrisse.'},
+  {id:'d_08_Huit',c:'🪙 8 Deniers',k:'PERFECTIONNEMENT',d:'je développe mon savoir-faire.'},
+  {id:'d_09_Neuf',c:'🪙 9 Deniers',k:'INDÉPENDANCE',d:'je profite personnellement de mes acquis.'},
+  {id:'d_10_Dix',c:'🪙 10 Deniers',k:'HÉRITAGE',d:'mes acquis deviennent patrimoine.'},
+  {id:'d_13_Reine',c:'🪙 Reine Deniers',k:'ENTRETIEN',d:'je prends soin de mes ressources.'},
+  {id:'d_14_Roi',c:'🪙 Roi Deniers',k:'PROSPÉRITÉ',d:'mes ressources sont solidement établies.'}
+ ]},
+ {e:'🔥',t:'Se lancer / vouloir / entreprendre',i:[
+  {id:'b_01_As',c:'🪾 As Bâtons',k:'IMPULSION',d:'l\'envie surgit.'},
+  {id:'b_11_Valet',c:'🪾 Valet Bâtons',k:'CURIOSITÉ',d:'ça m\'intéresse, je veux découvrir.'},
+  {id:'b_12_Cavalier',c:'🪾 Cavalier Bâtons',k:'AVENTURE',d:'je veux le vivre, j\'y vais.'},
+  {id:'b_02_Deux',c:'🪾 2 Bâtons',k:'PLANIFICATION',d:'j\'envisage ce que je pourrais faire.'},
+  {id:'b_03_Trois',c:'🪾 3 Bâtons',k:'EXPANSION',d:'je veux aller plus loin.'},
+  {id:'b_13_Reine',c:'🪾 Reine Bâtons',k:'CHARISME',d:'je sais qui je suis et ça se voit.'},
+  {id:'b_14_Roi',c:'🪾 Roi Bâtons',k:'LEADERSHIP',d:'je veux accomplir et j\'embarque les autres.'},
+  {id:'a_07_Chariot',c:'🛒 Chariot',k:'CONQUÊTE',d:'je prends les rênes et avance vers mon objectif.'}
+ ]}
 ];
 function renderNuances(){let h='';for(const cat of NUANCES){h+='<div class="nuc-cat"><h3><span style="margin-right:.5rem">'+cat.e+'</span>'+cat.t+'</h3><ul>';for(const it of cat.i){const thumb=IMG_MAP[it.id]?'<a class="nuc-thumb" onclick="openDetailById(\''+it.id+'\')"><img src="'+IMG_MAP[it.id]+'"></a>':'';h+='<li>'+thumb+'<div><span class="nuc-card">'+it.c+'</span> = <span class="nuc-key">'+it.k+'</span> → <span class="nuc-desc">'+it.d+'</span></div></li>'}h+='</ul></div>'}return h}
 function openDetailById(id){const c=CARDS.find(x=>x.id===id);if(c){closeNuances();closeSearch();openDetail(c.sort)}}
