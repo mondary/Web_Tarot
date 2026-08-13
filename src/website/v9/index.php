@@ -142,7 +142,9 @@ a{color:inherit}
 .mini{display:block;width:100%;padding:0;color:inherit;font:inherit;text-align:left;cursor:pointer;border-radius:.95rem;overflow:hidden;background:var(--mat);border:1px solid rgba(255,255,255,.35);box-shadow:0 10px 28px rgba(0,0,0,.38);transition:transform .5s var(--spring),box-shadow .5s var(--spring),border-color .35s var(--ease)}
 .mini .ph{aspect-ratio:2/3;overflow:hidden;background:var(--mat);padding:.65rem .65rem .35rem}
 .mini .ph img{width:100%;height:100%;object-fit:contain;border-radius:.55rem;transition:transform .6s var(--ease)}
-.mini:hover,.mini:focus-visible,.mini.sel{transform:translateY(-10px);border-color:var(--ac);box-shadow:0 18px 40px -12px rgba(0,0,0,.7),0 0 30px var(--ac-dim);outline:none}
+.mini:hover{transform:translateY(-10px);border-color:var(--ac);box-shadow:0 18px 40px -12px rgba(0,0,0,.7),0 0 30px var(--ac-dim)}
+.mini:focus-visible{outline:2px solid var(--ac);outline-offset:2px}
+.mini.sel{border-color:var(--ac);box-shadow:0 0 0 2px var(--ac)}
 .mini:hover .ph img{transform:scale(1.035)}
 .mini .cap{display:flex;justify-content:space-between;align-items:center;gap:.5rem;padding:.65rem .8rem .75rem;border-top:1px solid rgba(0,0,0,.08);background:var(--mat);font-family:"DM Mono",monospace;font-size:.58rem;letter-spacing:.08em;text-transform:uppercase}
 .mini .cap .nm{color:#1c1814;font-family:"Cormorant Garamond",serif;font-size:1.05rem;font-weight:600;text-transform:none;letter-spacing:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
@@ -267,7 +269,7 @@ a{color:inherit}
 .content-icon{display:inline-flex;width:20px;height:20px;vertical-align:middle;margin-right:.4rem}
 .content-icon svg{width:100%;height:100%;fill:none;stroke:var(--ac);stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
 @media(max-width:640px){.full-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:.8rem}.mini .ph{padding:.45rem .45rem .25rem}.mini .cap{padding:.5rem .55rem .6rem}.mini .cap .nm{font-size:.9rem}}
-@media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}.seuil-title .split-word span{transform:none}.mini:hover,.mini:focus-visible,.mini.sel{transform:none}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}.seuil-title .split-word span{transform:none}.mini:hover{transform:none}}
 </style>
 </head>
 <body>
