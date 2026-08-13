@@ -1,0 +1,1 @@
+Aujourd'hui, le Cinq de Coupes vous confronte à un manque. Une perte occupe tout le champ, et le regret l'emporte sur le reste. C'est une carte de deuil émotionnel, et il est légitime. Mais regardez derrière vous : deux coupes restent debout. Attention à ne pas vous enfermer dans ce qui s'est renversé. Le deuil a sa place, il ne doit pas effacer ce qui reste debout.

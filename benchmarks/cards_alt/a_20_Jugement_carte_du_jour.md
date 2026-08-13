@@ -1,0 +1,1 @@
+Aujourd'hui, Le Jugement vous annonce un réveil. Quelque chose vous rappelle — un signal, une prise de conscience, un appel que vous ne pouvez plus ignorer. C'est une carte de décision assumée : il est temps de sortir de l'entre-deux. Méfiez-vous seulement des appels que vous prenez pour des ordres. Le Jugement vous invite à vous lever, pas à obéir sans comprendre pourquoi.

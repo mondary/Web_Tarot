@@ -1,0 +1,1 @@
+Aujourd'hui, Le Diable vous invite à regarder ce qui vous tient. Une dépendance, une obsession, un lien qui vous consume. C'est une carte de lucidité difficile : les chaînes sont réelles, mais regardez le Diable de plus près — les cornes sont à hauteur de main, et la serrure est assez grande pour qu'on s'en libère. Nommez ce qui vous enferme, c'est le premier pas de la sortie.

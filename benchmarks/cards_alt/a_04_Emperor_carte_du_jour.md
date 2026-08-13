@@ -1,0 +1,1 @@
+Aujourd'hui, L'Empereur vous invite à poser un cadre et à reprendre les commandes. Si une situation part dans tous les sens, c'est le moment de structurer : règles, priorités, cap. C'est une carte de volonté et d'autorité. Veillez simplement à ce que la structure serve le réel et pas votre besoin de contrôle — un cadre existe pour soutenir, pas pour enfermer.

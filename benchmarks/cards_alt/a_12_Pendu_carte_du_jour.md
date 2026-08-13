@@ -1,0 +1,1 @@
+Aujourd'hui, Le Pendu vous invite à lâcher prise et à changer d'angle. Forcer ne sert plus : suspendu, vous ne progresserez qu'en acceptant de ne pas bouger. C'est une carte de renversement de perspective. Méfiez-vous seulement de l'attente passive — le Pendu ne fait rien, mais il ne subit pas non plus. Il choisit de voir autrement jusqu'à ce que la voie se dégage.

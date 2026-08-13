@@ -1,0 +1,1 @@
+Aujourd'hui, Les Amoureux vous invitent à choisir selon vos valeurs. Un choix se présente, et il engage plus que la raison. C'est une carte de connexion : écoutez ce qui vous attire vraiment, pas seulement ce qui vous arrange. Méfiance toutefois : la tentation peut se déguiser en évidence. Prenez le temps de démêler le désir profond de l'envie passagère avant de vous engager.

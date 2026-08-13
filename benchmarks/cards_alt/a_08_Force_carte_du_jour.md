@@ -1,0 +1,1 @@
+Aujourd'hui, La Force vous invite à maîtriser par le calme plutôt que par la puissance. Une situation tendue ne se résoudra pas en forçant, mais en douceur et en patience. C'est une carte de sang-froid : respirez, désamorcez, laissez faire le temps. Attention toutefois à ne pas confondre douceur et refoulement — la vraie Force reconnaît l'intensité au lieu de la nier.

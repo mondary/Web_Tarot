@@ -1,0 +1,1 @@
+Aujourd'hui, le Huit de Coupes vous invite à quitter ce qui ne nourrit plus. Vous laissez derrière vous quelque chose de stable mais incomplet, pour chercher un sens plus profond. C'est une carte de départ volontaire, parfois douloureuse. Méfiez-vous seulement de la fuite : partez parce que vous cherchez mieux, pas pour échapper à ce qui demande simplement à être regardé en face.
