@@ -281,8 +281,8 @@ body:has(.d-stage.open) .brand{opacity:0;pointer-events:none}
 <div class="brand"><b>TAROT</b> <em>DIVINATOIRE</em></div>
 <nav class="topnav">
   <button onclick="TarotSpreads&&TarotSpreads.open()"><svg viewBox="0 0 24 24"><rect x="3" y="6" width="11" height="15" rx="1"/><path d="M18 6v15M21 6v15"/></svg>Tirages</button>
-  <button onclick="openSearch()"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>Recherche</button>
   <button onclick="openNuances()"><svg viewBox="0 0 24 24"><path d="M12 3a9 9 0 1 0 9 9"/><path d="M12 3v18M3 12h18"/></svg>Nuances</button>
+  <button onclick="openSearch()"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>Recherche</button>
 </nav>
 
 <div id="landing">
