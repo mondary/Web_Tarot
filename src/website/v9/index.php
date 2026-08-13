@@ -140,7 +140,7 @@ a{color:inherit}
 .chip:hover{color:var(--fg);border-color:var(--ac)} .chip.active{color:var(--fg);border-color:var(--ac);background:var(--ac-dim)}
 .full-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:1.4rem;align-items:start}
 .mini{display:block;width:100%;padding:0;color:inherit;font:inherit;text-align:left;cursor:pointer;border-radius:.95rem;overflow:hidden;background:var(--mat);border:1px solid rgba(255,255,255,.35);box-shadow:0 10px 28px rgba(0,0,0,.38);transition:transform .5s var(--spring),box-shadow .5s var(--spring),border-color .35s var(--ease)}
-.mini .ph{aspect-ratio:2/3;overflow:hidden;background:var(--mat);padding:.65rem .65rem .35rem}
+.mini .ph{display:block;aspect-ratio:2/3;overflow:hidden;background:var(--mat);padding:.65rem .65rem .35rem}
 .mini .ph img{width:100%;height:100%;object-fit:contain;border-radius:.55rem;transition:transform .6s var(--ease)}
 .mini:hover{transform:translateY(-10px);border-color:var(--ac);box-shadow:0 18px 40px -12px rgba(0,0,0,.7),0 0 30px var(--ac-dim)}
 .mini:focus-visible{outline:2px solid var(--ac);outline-offset:2px}
@@ -149,7 +149,7 @@ a{color:inherit}
 .mini .cap{display:flex;justify-content:space-between;align-items:center;gap:.5rem;padding:.65rem .8rem .75rem;border-top:1px solid rgba(0,0,0,.08);background:var(--mat);font-family:"DM Mono",monospace;font-size:.58rem;letter-spacing:.08em;text-transform:uppercase}
 .mini .cap .nm{color:#1c1814;font-family:"Cormorant Garamond",serif;font-size:1.05rem;font-weight:600;text-transform:none;letter-spacing:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .mini .cap .no{color:#8b8175}
-.family-intro{background:var(--panel);border-color:color-mix(in srgb,var(--family) 55%,var(--line))}.family-intro .ph{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.55rem;padding:1rem;text-align:center;background:var(--panel)}
+.family-intro{background:var(--panel);border-color:color-mix(in srgb,var(--family) 55%,var(--line))}.family-intro .ph{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.55rem;padding:1rem;text-align:center;background:var(--panel);aspect-ratio:2/3}
 .family-intro .family-glyph{font-family:"Cormorant Garamond",serif;font-size:clamp(2rem,5vw,3.6rem);line-height:1;color:var(--family)}
 .family-intro .family-name{font-family:"Cormorant Garamond",serif;font-style:italic;font-size:clamp(.9rem,2vw,1.2rem);line-height:1;color:var(--fg)}
 .family-intro .family-element{font-family:"DM Mono",monospace;font-size:.48rem;letter-spacing:.14em;text-transform:uppercase;color:var(--family)}
@@ -181,8 +181,9 @@ a{color:inherit}
 /* ===== DETAIL ===== */
 .d-stage{position:fixed;inset:0;z-index:900;background:var(--bg);overflow-y:auto;overflow-x:hidden;display:none}
 .d-stage.open{display:block}
-.back-btn{position:fixed;top:1.2rem;left:1.5rem;z-index:950;font-family:"DM Mono",monospace;font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);cursor:pointer;background:rgba(10,9,7,.7);backdrop-filter:blur(8px);padding:.5rem .9rem;border-radius:40px;border:1px solid var(--line);transition:.3s}
+.back-btn{position:fixed;top:1.2rem;left:1.5rem;z-index:1650;font-family:"DM Mono",monospace;font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);cursor:pointer;background:rgba(10,9,7,.7);backdrop-filter:blur(8px);padding:.5rem .9rem;border-radius:40px;border:1px solid var(--line);transition:.3s}
 .back-btn:hover{color:var(--ac);border-color:var(--ac)}
+body:has(.d-stage.open) .brand{opacity:0;pointer-events:none}
 
 /* HERO conservé */
 .d-hero{position:relative;height:70vh;min-height:420px;width:100%;overflow:hidden;background:#0a0a0a}
