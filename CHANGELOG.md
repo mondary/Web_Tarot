@@ -6,7 +6,7 @@ Toutes les notes de release du projet Web Tarot. Le format de version suit `vYYY
 
 ## TODO — Roadmap
 
-Statut : `2026.08.07` (V8 - refonte éditoriale)
+Statut : `2026.08.08` (V9 - grand format + animations)
 
 ### Phase 1 — Fondations ✅
 - [x] Interface V2 unifiée (carousel d'accueil + grille par famille + vue détail)
@@ -27,12 +27,22 @@ Statut : `2026.08.07` (V8 - refonte éditoriale)
 - [x] Portraits des 78 lames (_portrait.md)
 - [x] Nuances entre cartes (pense-bête thématique)
 - [x] Essences des 78 lames (_essence.md)
-- [ ] Animations d'entrée et transitions entre vues
+- [x] Animations d'entrée et transitions entre vues
 - [ ] Sélecteur de thème / palette
 
 ---
 
 ## Releases
+
+### [2026.08.08] - 2026-08-13
+#### Added
+- **V9 grand format** : cartes grandement agrandies reprenant l'esprit visuel de V3, support blanc arrondi simulant la carte physique, image encadrée et légende intégrée au support
+- **Animations Colorion** : effet Hover Lift (translation verticale avec ombre portée et ressort) et révélation typographique en cascade sur le titre d'accueil
+- **Accessibilité** : cartes en `<button>` sémantiques, navigation clavier, `prefers-reduced-motion` respecté
+
+#### Changed
+- **Grille** : 5 colonnes desktop (min 180px), 2 colonnes mobile, gap 1.4rem
+- **Déploiement** : V9 devient la version courante sur `/tarot/`; V8 archivée sur `/tarot8/`
 
 ### [2026.08.07] - 2026-08-13
 #### Added

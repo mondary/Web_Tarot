@@ -57,11 +57,12 @@ le navigateur bloque alors `fetch()` vers SQLite et le chargement de WebAssembly
 
 ## 📋 Voir le [CHANGELOG](CHANGELOG.md) pour l'historique complet.
 
-Version courante : `v2026.08.07`
+Version courante : `v2026.08.08`
 
 ## 🔗 Liens
 
 - **Dernière version** : [mondary.design/pk/-Games-cards/tarot](https://mondary.design/pk/-Games-cards/tarot/)
+- **V9** : [mondary.design/pk/-Games-cards/tarot9](https://mondary.design/pk/-Games-cards/tarot9/)
 - **V8** : [mondary.design/pk/-Games-cards/tarot8](https://mondary.design/pk/-Games-cards/tarot8/)
 - **V7** : [mondary.design/pk/-Games-cards/tarot7](https://mondary.design/pk/-Games-cards/tarot7/)
 - Anciens sites : [V3](https://mondary.design/pk/tarot3/) · [V1/V2](https://mondary.design/pk/tarot/)
