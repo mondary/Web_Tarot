@@ -52,6 +52,9 @@ $path = '/' . trim($path, '/');
 
 if (isset($_GET['img'])) Vault::image('/img/' . urldecode((string)$_GET['img']));
 if (preg_match('#^/img/(.+)$#', $path, $m)) Vault::image('/img/' . $m[1]);
+if (isset($_GET['font']) && preg_match('/^[a-z0-9-]+\.woff2$/', (string)$_GET['font'])) {
+    Vault::image('/fonts/' . $_GET['font']);
+}
 if (isset($_GET['js']) && $_GET['js'] === 'spreads') {
     header('Content-Type: application/javascript; charset=utf-8');
     header('Cache-Control: public, max-age=86400');
@@ -90,9 +93,7 @@ $portraitsJson = json_encode($portraits, JSON_UNESCAPED_UNICODE);
 <title>Tarot Divinatoire</title>
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔮</text></svg>">
 <meta name="theme-color" content="#0a0907">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style id="ff">@font-face{font-family:"Cormorant Garamond";font-style:normal;font-weight:400 600;src:url("<?= $base ?>/index.php?font=cormorant-garamond.woff2") format("woff2");font-display:swap}@font-face{font-family:"Cormorant Garamond";font-style:italic;font-weight:400 500;src:url("<?= $base ?>/index.php?font=cormorant-garamond-i.woff2") format("woff2");font-display:swap}@font-face{font-family:"DM Mono";font-style:normal;font-weight:400;src:url("<?= $base ?>/index.php?font=dm-mono-400.woff2") format("woff2");font-display:swap}@font-face{font-family:"DM Mono";font-style:normal;font-weight:500;src:url("<?= $base ?>/index.php?font=dm-mono-500.woff2") format("woff2");font-display:swap}</style>
 <style>
 :root{--bg:#0a0907;--panel:#14120e;--panel2:#1a1712;--line:#2a2620;--fg:#f1ede4;--muted:#8a8174;--ac:#c9a227;--ac-dim:rgba(201,162,39,.18);--mat:#fff;--ease:cubic-bezier(.22,1,.36,1);--spring:cubic-bezier(.34,1.56,.64,1)}
 *{box-sizing:border-box}
@@ -125,7 +126,7 @@ a{color:inherit}
 .seuil-title{font-family:"Cormorant Garamond",serif;font-weight:400;font-size:clamp(3rem,11vw,8rem);line-height:.95;letter-spacing:-.01em;margin:0}
 .seuil-title em{font-style:italic}.seuil-title .split-word{display:inline-flex;overflow:hidden;padding-bottom:.08em}.seuil-title .split-word span{display:inline-block;transform:translateY(110%);transition:transform .55s var(--spring);transition-delay:calc(var(--i)*45ms)}.seuil-title.revealed .split-word span{transform:translateY(0)}
 .seuil-sub{color:var(--muted);font-family:"DM Mono",monospace;font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;margin:1.4rem 0 0}
-@media(max-width:640px){#landing{padding:7.4rem .8rem 4rem}.landing-head{margin-bottom:2rem}.seuil-title{font-size:clamp(2.8rem,14vw,4.4rem)}.seuil-title em{display:block}.full-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:.8rem}.mini .cap .nm{font-size:.9rem}.topnav{top:2.8rem;left:.7rem;right:.7rem;justify-content:flex-start}.topnav button{font-size:.52rem;padding:.45rem .58rem}.brand{top:.8rem;left:.8rem}}
+@media(max-width:640px){#landing{padding:7.4rem .8rem 4rem}.landing-head{margin-bottom:2rem}.seuil-title{font-size:clamp(2.8rem,14vw,4.4rem)}.seuil-title em{display:block}.full-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:.8rem}.mini .cap .nm{font-size:.9rem}.topnav{right:1rem}.topnav .tl{display:none}.topnav button{padding:.48rem}.brand{top:.8rem;left:.8rem}}
 
 /* ===== overlays génériques ===== */
 .overlay{position:fixed;inset:0;z-index:1700;background:rgba(5,5,5,.92);backdrop-filter:blur(10px);display:none;overflow-y:auto}
@@ -217,6 +218,12 @@ body:has(.d-stage.open) .brand{opacity:0;pointer-events:none}
 .d-cod{display:flex;gap:.7rem;align-items:flex-start;margin-top:1.4rem;padding-top:1.4rem;border-top:1px solid var(--line)}
 .d-cod-ic{flex:0 0 auto;color:var(--ac);font-size:1rem;line-height:1.5}
 .d-cod p{margin:0;color:#b8b0a2;font-size:.96rem;line-height:1.5}
+.d-keys{display:grid;grid-template-columns:auto 1fr;gap:.55rem .9rem;margin-top:1.4rem;align-items:start}
+.d-keys .kl{font-family:"DM Mono",monospace;font-size:.56rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);padding-top:.32rem;white-space:nowrap}
+.d-keys .kv{display:flex;flex-wrap:wrap;gap:.35rem}
+.d-keys .kt{font-family:"DM Mono",monospace;font-size:.58rem;letter-spacing:.04em;padding:.28rem .6rem;border-radius:40px;border:1px solid var(--line);color:#bdb5a4;background:var(--panel)}
+.d-keys .up .kt{color:#cde8ce;border-color:rgba(129,199,132,.3);background:rgba(102,187,106,.07)}
+.d-keys .dn .kt{color:#f0c3c3;border-color:rgba(229,115,115,.3);background:rgba(239,83,80,.07)}
 
 /* domaines 2×2 */
 .d-section-label{font-family:"DM Mono",monospace;font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin:2.6rem 0 1rem;display:flex;align-items:center;gap:.6rem}
@@ -280,9 +287,9 @@ body:has(.d-stage.open) .brand{opacity:0;pointer-events:none}
 <div class="fx-grain"></div><div class="fx-vignette"></div>
 <div class="brand"><b>TAROT</b> <em>DIVINATOIRE</em></div>
 <nav class="topnav">
-  <button onclick="TarotSpreads&&TarotSpreads.open()"><svg viewBox="0 0 24 24"><rect x="3" y="6" width="11" height="15" rx="1"/><path d="M18 6v15M21 6v15"/></svg>Tirages</button>
-  <button onclick="openNuances()"><svg viewBox="0 0 24 24"><path d="M12 3a9 9 0 1 0 9 9"/><path d="M12 3v18M3 12h18"/></svg>Nuances</button>
-  <button onclick="openSearch()"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>Recherche</button>
+  <button aria-label="Tirages" onclick="TarotSpreads&&TarotSpreads.open()"><svg viewBox="0 0 24 24"><rect x="3" y="6" width="11" height="15" rx="1"/><path d="M18 6v15M21 6v15"/></svg><span class="tl">Tirages</span></button>
+  <button aria-label="Nuances" onclick="openNuances()"><svg viewBox="0 0 24 24"><path d="M12 3a9 9 0 1 0 9 9"/><path d="M12 3v18M3 12h18"/></svg><span class="tl">Nuances</span></button>
+  <button aria-label="Recherche" onclick="openSearch()"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg><span class="tl">Recherche</span></button>
 </nav>
 
 <div id="landing">
@@ -334,6 +341,7 @@ const PICTOS={
 };
 function fam(k){return FAMILIES.find(f=>f.key===k)||{}}
 function escapeHtml(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+function splitKw(s){return String(s||'').split(',').map(x=>x.trim()).filter(Boolean)}
 function parseDoc(h){const d=document.createElement('div');d.innerHTML=h;return d}
 function secBy(doc,kw){for(const s of doc.querySelectorAll('section')){const t=(s.querySelector('h2')?.textContent||'').toLowerCase();if(t.includes(kw))return s}return null}
 function secParas(s){return s?Array.from(s.querySelectorAll('p')).map(p=>'<p>'+p.innerHTML+'</p>').join(''):''}
@@ -358,6 +366,11 @@ function openDetail(sort){
   if(p.idee)ident+='<p class="d-idee">'+escapeHtml(p.idee)+'</p>';
   if(p.realite)ident+='<p class="d-realite">'+escapeHtml(p.realite)+'</p>';
   if(p.key||answer){ident+='<div class="d-badges">';if(p.key)ident+='<span class="d-key">'+escapeHtml(p.key)+'</span>';if(answer)ident+='<span class="d-answer '+ansClass+'">'+escapeHtml(answer)+'</span>';ident+='</div>'}
+  const up=splitKw(c.keywords_up),dn=splitKw(c.keywords_down);
+  if(up.length||dn.length){ident+='<div class="d-keys">';
+    if(up.length)ident+='<span class="kl">Endroit</span><span class="kv up">'+up.map(k=>'<span class="kt">'+escapeHtml(k)+'</span>').join('')+'</span>';
+    if(dn.length)ident+='<span class="kl">Envers</span><span class="kv dn">'+dn.map(k=>'<span class="kt">'+escapeHtml(k)+'</span>').join('')+'</span>';
+    ident+='</div>'}
   if(c.cod)ident+='<div class="d-cod"><span class="d-cod-ic">☀</span><p>'+escapeHtml(c.cod)+'</p></div>';
   ident+='</section>';
 

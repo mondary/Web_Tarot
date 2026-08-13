@@ -6,7 +6,7 @@ Toutes les notes de release du projet Web Tarot. Le format de version suit `vYYY
 
 ## TODO — Roadmap
 
-Statut : `2026.08.08` (V9 - grand format + animations)
+Statut : `2026.08.09` (V9 - grand format + animations)
 
 ### Phase 1 — Fondations ✅
 - [x] Interface V2 unifiée (carousel d'accueil + grille par famille + vue détail)
@@ -33,6 +33,14 @@ Statut : `2026.08.08` (V9 - grand format + animations)
 ---
 
 ## Releases
+
+### [2026.08.09] - 2026-08-13
+#### Added
+- **Mots-clés endroit / envers** : restauration des mots-clés (à l'endroit et à l'envers) sur chaque fiche lame, présentés en pastilles dans le bandeau d'identité (vert = endroit, rouge = envers). Données cablées depuis le vault (`/cards/{id}.json` → `app-data.json`) pour les 78 lames
+
+#### Changed
+- **Site pleinement autonome** : polices Cormorant Garamond et DM Mono embarquées localement dans le vault (woff2) et servies via `index.php?font=` ; suppression de la dépendance CDN Google Fonts. Zéro requête réseau externe
+- **Top-nav mobile** : les 3 boutons (Tirages, Nuances, Recherche) passent en pastilles icônes sans libellé en haut à droite, fin du chevauchement avec le bouton Retour
 
 ### [2026.08.08] - 2026-08-13
 #### Added
