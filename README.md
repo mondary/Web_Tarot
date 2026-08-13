@@ -61,7 +61,8 @@ Version courante : `v2026.08.07`
 
 ## 🔗 Liens
 
-- **Live V8** : [mondary.design/pk/-Games-cards/tarot8](https://mondary.design/pk/-Games-cards/tarot8/)
+- **Dernière version** : [mondary.design/pk/-Games-cards/tarot](https://mondary.design/pk/-Games-cards/tarot/)
+- **V8** : [mondary.design/pk/-Games-cards/tarot8](https://mondary.design/pk/-Games-cards/tarot8/)
 - **V7** : [mondary.design/pk/-Games-cards/tarot7](https://mondary.design/pk/-Games-cards/tarot7/)
 - Anciens sites : [V3](https://mondary.design/pk/tarot3/) · [V1/V2](https://mondary.design/pk/tarot/)
 - **Illustrations** : Tarot Rider-Waite-Smith — domaine public
