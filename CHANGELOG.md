@@ -6,7 +6,7 @@ Toutes les notes de release du projet Web Tarot. Le format de version suit `vYYY
 
 ## TODO — Roadmap
 
-Statut : `2026.08.10` (V9 - grand format + animations)
+Statut : `2026.08.11` (V9 - grand format + animations)
 
 ### Phase 1 — Fondations ✅
 - [x] Interface V2 unifiée (carousel d'accueil + grille par famille + vue détail)
@@ -33,6 +33,11 @@ Statut : `2026.08.10` (V9 - grand format + animations)
 ---
 
 ## Releases
+
+### [2026.08.11] - 2026-08-14
+#### Changed
+- **Intercalaires** : glyphes SVG dessinés (Bâtons, Coupes, Épées, Deniers) restaurés dans les intercalaires de familles, comme en V5 ; les Arcanes majeurs gardent le symbole ✦
+
 
 ### [2026.08.10] - 2026-08-13
 #### Changed

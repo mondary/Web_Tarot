@@ -154,6 +154,7 @@ a{color:inherit}
 .mini .cap .no{color:#8b8175}
 .family-intro{background:var(--panel);border-color:color-mix(in srgb,var(--family) 55%,var(--line))}.family-intro .ph{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.55rem;padding:1rem;text-align:center;background:var(--panel);aspect-ratio:2/3}
 .family-intro .family-glyph{font-family:"Cormorant Garamond",serif;font-size:clamp(2rem,5vw,3.6rem);line-height:1;color:var(--family)}
+.family-intro img.family-glyph{font-size:0;width:auto;height:clamp(3.6rem,8vw,5.2rem);object-fit:contain}
 .family-intro .family-name{font-family:"Cormorant Garamond",serif;font-style:italic;font-size:clamp(.9rem,2vw,1.2rem);line-height:1;color:var(--fg)}
 .family-intro .family-element{font-family:"DM Mono",monospace;font-size:.48rem;letter-spacing:.14em;text-transform:uppercase;color:var(--family)}
 .family-intro .cap{background:var(--panel);border-top-color:var(--line)}.family-intro .cap .nm{color:var(--family)}.family-intro .cap .no{color:var(--muted)}
@@ -495,7 +496,7 @@ function openNuances(){const el=document.getElementById('nuances');if(!el.queryS
 function closeNuances(){document.getElementById('nuances').classList.remove('open');document.body.style.overflow=''}
 
 // Grille principale : les 78 lames sont visibles sans saisie.
-function familyIntro(f,n){return '<button type="button" class="mini family-intro" style="--family:'+(f.ac||'#c9a227')+'" onclick="openFamily(\''+f.key+'\')"><span class="ph"><span class="family-glyph">'+(f.sym||'✦')+'</span><span class="family-name">'+f.name+'</span><span class="family-element">'+(f.el||'')+'</span></span><span class="cap"><span class="nm">Famille</span><span class="no">00</span></span></button>'}
+function familyIntro(f,n){const glyph=f.key&&f.key!=='majors'?'<img class="family-glyph" src="'+B+'/index.php?svg='+f.key+'" alt="">':'<span class="family-glyph">'+(f.sym||'✦')+'</span>';return '<button type="button" class="mini family-intro" style="--family:'+(f.ac||'#c9a227')+'" onclick="openFamily(\''+f.key+'\')"><span class="ph">'+glyph+'<span class="family-name">'+f.name+'</span><span class="family-element">'+(f.el||'')+'</span></span><span class="cap"><span class="nm">Famille</span><span class="no">00</span></span></button>'}
 function renderGrid(){let h='',last=null;for(const c of CARDS){if(c.fam!==last){const f=fam(c.fam),group=CARDS.filter(x=>x.fam===c.fam);h+='<div class="fam-card"><span class="g">'+(f.sym||'✦')+'</span><span class="fn">'+f.name+'</span><span class="fc">'+group.length+' lames</span></div>'+familyIntro(f,group.length);last=c.fam}h+=mini(c)}document.getElementById('grid').innerHTML=h}
 function mini(c){return '<button type="button" class="mini" onclick="openDetail('+c.sort+')"><span class="ph"><img src="'+IMG_MAP[c.id]+'" alt="'+c.name+'" loading="lazy"></span><span class="cap"><span class="nm">'+c.name+'</span><span class="no">'+String(c.sort+1).padStart(2,'0')+'</span></span></button>'}
 
