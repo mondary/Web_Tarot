@@ -1,18 +1,18 @@
-# 12 — CABALLERO DE ESPADAS / CAVALIER D'ÉPÉES
+# 12 — CABALLERO DE OROS / CAVALIER DE DENIERS
 
 
-**Nom :** CAVALIER D'ÉPÉES
+**Nom :** CAVALIER DE DENIERS
 
-**RÉPONSE :** NON
+**RÉPONSE :** OUI
 
 **Mots-clés (à l'endroit) :**
 
-Grands changements ou opportunités, saisir l'instant, se lancer, arrivée ou départ, affirmé, direct, franc, esprit vif, met en garde contre les comportements impulsifs ou précipités. Une personne forte, affirmée et décidée. Quelqu'un qui obtient ce qu'elle veut
+Patience, persévérance, sources inattendues d'argent ou de revenus. Le temps guérit toutes les blessures. Des personnes fiables, patients, conventionnelles, dignes de confiance et travailleuses. Quelqu'un qui persévère pour atteindre un objectif
 
 **Mots-clés (à l'envers) :**
 
-Opportunités manquées, hors de portée, hors de contrôle, recul, grossier, sans tact, blessant. Quelqu'un qui s'oppose et perturbe vos projets
+Avarice, être mal payé, manque d'inspiration, avarice. Quelqu'un qui se précipite et fait des erreurs. Une personne timide et sans inspiration
 
 **Affirmation :**
 
-> PRÉCIPITATION
+> ROUTINE

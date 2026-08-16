@@ -1,18 +1,18 @@
-# 11 — SOTA DE OROS / VALET DE DENIERS
+# 11 — SOTA DE ESPADAS / VALET D'ÉPÉES
 
 
-**Nom :** VALET DE DENIERS
+**Nom :** VALET D'ÉPÉES
 
 **RÉPONSE :** OUI
 
 **Mots-clés (à l'endroit) :**
 
-Bonnes nouvelles en affaires terrestres, débuts solides, fixer des objectifs, opportunité d'augmenter les revenus, livres, négociations. Une personne ouverte d'esprit. Érudits. Quelqu'un qui est disposé à apprendre. Quelqu'un sur qui on peut compter
+Nouvelles différées, patience requise, idées, inspiration, planification, surveillance, protection, garde, équité. Une personne calculatrice et indifférente aux sentiments d'autrui. Communicants, scientifiques, mathématiciens, aviateurs, voyageurs
 
 **Mots-clés (à l'envers) :**
 
-Mauvaises nouvelles en affaires terrestres, problèmes d'argent, ignorance. Quelqu'un qui ne t'apprécie pas
+Malice, hypocrisie, suspicion, problèmes. Quelqu'un qui se désintéresse des sentiments des autres
 
 **Affirmation :**
 
-> NOUVEL EMPLOI
+> VIGILANCE

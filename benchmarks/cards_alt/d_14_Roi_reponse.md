@@ -1,18 +1,18 @@
-# 14 — REY DE ESPADAS / ROI D'ÉPÉES
+# 14 — REY DE OROS / ROI DE DENIERS
 
 
-**Nom :** ROI D'ÉPÉES
+**Nom :** ROI DE DENIERS
 
 **RÉPONSE :** OUI
 
 **Mots-clés (à l'endroit) :**
 
-Structure, routine, intelligent, rationnel, logique, pouvoir, autorité, force, manières, conversation, discernement, détachement, tête sur cœur. Un homme d'autorité, analytique et sans émotions, qui émet des jugements équilibrés et donne d'excellents conseils
+Homme mature et fondé, réussi, homme d'affaires riche, qui se dépasse, qui ne prend pas de risques, qui est un empire, qui prospère, qui a un statut élevé, stabilité, sécurité, entrepreneur. Quelqu'un préoccupé par les affaires financières
 
 **Mots-clés (à l'envers) :**
 
-Égoïsme, impitoyable, déviant. Malice préméditée. Quelqu'un qui est trop prudent
+Matérialisme, maladresse, inquiétude pour l'argent. Quelqu'un qui administre mal l'argent. Quelqu'un qui ferait n'importe quoi pour de l'argent
 
 **Affirmation :**
 
-> VÉRITÉ
+> SÉCURITÉ

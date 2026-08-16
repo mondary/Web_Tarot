@@ -1,18 +1,18 @@
-# 5 — CINCO DE OROS / CINQ DE DENIERS
+# 5 — CINCO DE ESPADAS / CINQ D'ÉPÉES
 
 
-**Nom :** CINQ DE DENIERS
+**Nom :** CINQ D'ÉPÉES
 
-**RÉPONSE :** OUI
+**RÉPONSE :** NON
 
 **Mots-clés (à l'endroit) :**
 
-Pauvreté, perte financière, difficulté, insécurité, privation, solitude, isolement, chômage, manque de soutien
+Capitulation, mutation, éloignement, sacrifice de soi, auto-sabotage, agissement sournois, tromperie, défaut de communication, agression, harcèlement, intimidation, abus, violence, crime, viol, meurtre, voies de fait
 
 **Mots-clés (à l'envers) :**
 
-Récupération financière, nouvelle opportunité, dépassement de la crise, aide inattendue
+Issue pacifique, avancer, compromis, dialogue, fin du conflit
 
 **Affirmation :**
 
-> À TRAVERS LA DIFFICULTÉ, JE TROUVE MA RÉSILIENCE
+> CATASTROPHE

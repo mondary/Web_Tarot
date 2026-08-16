@@ -1,18 +1,19 @@
-# 4 — CUATRO DE ESPADAS / QUATRE D'ÉPÉES
+# 4 — CUATRO DE OROS / QUATRE DE DENIERS
 
 
-**Nom :** QUATRE D'ÉPÉES
+**Nom :** QUATRE DE DENIERS
 
-**RÉPONSE :** NON
+**RÉPONSE :** OUI
 
 **Mots-clés (à l'endroit) :**
 
-Crainte, anxiété, tension, sentiment d'accablement, surcharge mentale, besoin de solitude, détente, repos, paix et quiétude, sanctuaire, méditation, recentrage, guérison, hospitalisation, introspection, organisation
+S'accrocher aux personnes/possessions, affaires profondes/passées, thésaurisation, pingrerie, contrôle, possessivité, stabilité financière, sécurité financière, épargne pour gros achats ou retraite, avidité, matérialisme, richesse
 
 **Mots-clés (à l'envers) :**
 
-Retrouver la vigueur mentale, s'éveiller, réintégrer le monde, sortir de l'isolement
+Se débarrasser de l'ancien, laisser partir les personnes, possessions ou affaires, générosité, partager
 
 **Affirmation :**
 
-> REPOS
+> BUDGET
+

@@ -1,18 +1,18 @@
-# 6 — SEIS DE ESPADAS / SIX D'ÉPÉES
+# 6 — SEIS DE OROS / SIX DE DENIERS
 
 
-**Nom :** SIX D'ÉPÉES
+**Nom :** SIX DE DENIERS
 
-**RÉPONSE :** PEUT-ÊTRE
+**RÉPONSE :** OUI
 
 **Mots-clés (à l'endroit) :**
 
-Eaux plus calmes, guérison, progression, laisser les choses s'apaiser, accalmie après la tempête, surmonter les épreuves, soulagement, stabilité, s'évader, fuir, voyages, partir, voyager à l'étranger, prendre des vacances, se sentir vidé
+Cadeaux, générosité, charité, dons, argent, communauté, assistance, soutien, emploi, partager, gentillesse, richesse, prospérité, pouvoir, autorité, contrôle, investisseurs, donner/recevoir, gratitude, être apprécié, être bien payé
 
 **Mots-clés (à l'envers) :**
 
-Arrivée des problèmes, tomber de Charybde en Scylla, stagnation
+Factures impayées, problèmes d'argent, créances irrécouvrables, avidité, égoïsme, pingrerie
 
 **Affirmation :**
 
-> TRAVERSER
+> GÉNÉROSITÉ

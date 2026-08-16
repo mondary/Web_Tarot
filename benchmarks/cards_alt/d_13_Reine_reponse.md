@@ -1,18 +1,18 @@
-# 13 — REINA DE ESPADAS / REINE D'ÉPÉES
+# 13 — REINA DE OROS / REINE DE DENIERS
 
 
-**Nom :** REINE D'ÉPÉES
+**Nom :** REINE DE DENIERS
 
 **RÉPONSE :** OUI
 
 **Mots-clés (à l'endroit) :**
 
-La pensée domine les sentiments, la perception, la perspicacité, le jugement juste, les décisions correctes. C'est le moment de se défendre et d'avoir clairement ses désirs et besoins. Une personne qui a subi des pertes ou des difficultés. Une femme intelligente, ingénieuse et analytique
+Fertilité, prospérité, sensualité, responsabilité, créativité, richesse, bon sens, nutrition. Quelqu'un qui se préoccupe du bien-être des autres. Une femme capable qui est à la fois mère et entrepreneure
 
 **Mots-clés (à l'envers) :**
 
-Commérages, mensonges malveillants, préjugés, pertes, malheurs. Quelqu'un qui méprise les gens et en qui on ne peut pas avoir confiance
+Insécurité, instabilité, peur. Quelqu'un de paresseux, méfiant, manquant de motivation, qui se sent insécuré et néglige ses responsabilités
 
 **Affirmation :**
 
-> ASTUCE
+> ABONDANCE

@@ -1,18 +1,18 @@
-# 8 — OCHO DE ESPADAS / HUIT D'ÉPÉES
+# 8 — OCHO DE OROS / HUIT DE DENIERS
 
 
-**Nom :** HUIT D'ÉPÉES
+**Nom :** HUIT DE DENIERS
 
-**RÉPONSE :** NON
+**RÉPONSE :** OUI
 
 **Mots-clés (à l'endroit) :**
 
-Sensation d'être coincé·e, à l'étroit, acculé·e, les mains liées, victime d'une situation, paralysé·e par la crainte ou la terreur, angoisse, pression ressentie, sans issue apparente, démuni·e, réduit·e au silence, crise, dilemme, drame, incarcération, punition, asservissement
+Emploi nouveau, activité indépendante, création d'entreprise, métier, réputation, artisanat, qualité, maîtrise, expérience, labeur assidu, engagement, dévouement, concentration, succès, accomplissement, ambition, confiance, résultats, récompenses
 
 **Mots-clés (à l'envers) :**
 
-S'échapper, retrouver liberté, délivrance, découvrir des solutions ou des options, soulagement, reprendre le contrôle de la situation
+Tâche monotone ou fastidieux, l'échec est survenu, dépassement des dépenses, endettement, paresse, absence de qualification
 
 **Affirmation :**
 
-> ENFERMEMENT
+> PATIENCE

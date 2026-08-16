@@ -1,18 +1,18 @@
-# 9 — NUEVE DE ESPADAS / NEUF D'ÉPÉES
+# 9 — NUEVE DE OROS / NEUF DE DENIERS
 
 
-**Nom :** NEUF D'ÉPÉES
+**Nom :** NEUF DE DENIERS
 
-**RÉPONSE :** NON
+**RÉPONSE :** OUI
 
 **Mots-clés (à l'endroit) :**
 
-Crainte, angoisse, terreur, négativité, profonde affliction, tension, fardeau, submergé·e, au bord du gouffre, incapacité à affronter la vie, détresse mentale, culpabilité, regret, remords, fixation sur le passé
+Autonomie, réussite, stabilité/sécurité financière, bénéfices, prospérité, richesse, propriétés, abondance, fruits du travail acharné, encaissement des investissements, entreprises florissantes, statut, liberté, sagesse, maturité, indulgence
 
 **Mots-clés (à l'envers) :**
 
-Lumière au bout du tunnel, rétablissement, aller mieux, écarter la négativité et le stress
+Manque d'autonomie/stabilité/sécurité, dépense imprudente, investissements douteux
 
 **Affirmation :**
 
-> ANGOISSE
+> RICHESSE INDÉPENDANTE

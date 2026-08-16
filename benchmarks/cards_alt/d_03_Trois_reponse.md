@@ -1,18 +1,18 @@
-# 3 — TRES DE ESPADAS / TROIS D'ÉPÉES
+# 3 — TRES DE OROS / TROIS DE DENIERS
 
 
-**Nom :** TROIS D'ÉPÉES
+**Nom :** TROIS DE DENIERS
 
-**RÉPONSE :** NON
+**RÉPONSE :** OUI
 
 **Mots-clés (à l'endroit) :**
 
-Rupture, trahison, isolement, éloignement, absence, division, mélancolie, séparation, peine, détresse, malheur, bouleversement, chagrin, affliction, trouble, confusion, aliénation, perte, égarement, santé chancelante, conflit, désenchantement
+Collaboration, travail d'équipe, édifier sur la réussite, dévouement, détermination, engagement, application, souci du détail, qualité, artisanat, étude, apprentissage, croissance, labeur acharné, reconnaissance, récompense, accomplissements, objectifs
 
 **Mots-clés (à l'envers) :**
 
-Libération de la douleur, sortie de la dépression, optimisme, pardon
+Perte de temps, manque d'ambition, retards, déception, effort dérisoire
 
 **Affirmation :**
 
-> DEUIL
+> COOPÉRATION

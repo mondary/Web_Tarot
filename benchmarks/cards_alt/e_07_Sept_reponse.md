@@ -1,18 +1,18 @@
-# 7 — SIETE DE OROS / SEPT DE DENIERS
+# 7 — SIETE DE ESPADAS / SEPT D'ÉPÉES
 
 
-**Nom :** SEPT DE DENIERS
+**Nom :** SEPT D'ÉPÉES
 
 **RÉPONSE :** OUI
 
 **Mots-clés (à l'endroit) :**
 
-Choses qui portent des fruits, travail acharné qui porte ses fruits, récolte, récompenses, bénéfices, résultats, paiements, manifestation d'idées ou d'objectifs, héritage, culture, croissance, gestation, nutrition, persévérance, patience, planification
+Tactique, tromperie, habileté, finesse, manipulation, secrets, espionnage, trahison, discrétion, action dissimulée
 
 **Mots-clés (à l'envers) :**
 
-Mauvaise gestion entreprise/financière, ne pas terminer ce qui a été commencé
+Confession, vérité dévoilée, repentir, franchise, redressement
 
 **Affirmation :**
 
-> FAIRE DES INVESTISSEMENTS
+> MA CAPACITÉ À M'ADAPTER ME PERMET DE TRIUMPHER EN TOUTE SITUATION

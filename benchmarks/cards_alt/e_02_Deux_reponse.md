@@ -1,18 +1,18 @@
-# 2 — DOS DE OROS / DEUX DE DENIERS
+# 2 — DOS DE ESPADAS / DEUX D'ÉPÉES
 
 
-**Nom :** DEUX DE DENIERS
+**Nom :** DEUX D'ÉPÉES
 
 **RÉPONSE :** PEUT-ÊTRE
 
 **Mots-clés (à l'endroit) :**
 
-Souplesse, sens de l'adaptation, hauts et bas, jonglerie quotidienne, jonglerie financière, flux et reflux d'argent, pertes et gains, revenus et dépenses, arbitrages monétaires, stress financier, association, équilibre
+Immobilisme, trêve, naviguer entre deux eaux, carrefour, choix délicat, dilemme, arbitrages éprouvants, opposition, regarder ses peurs en face, cœur partagé entre deux loyautés, loyauté divisée
 
 **Mots-clés (à l'envers) :**
 
-Déséquilibre, manque d'organisation, décisions financières hasardeuses, arnaque, tromperie
+Indécision, atermoiements, ajournement, vérité qui éclate, mensonges mis au jour
 
 **Affirmation :**
 
-> ÉQUILIBRE
+> DÉCIDER

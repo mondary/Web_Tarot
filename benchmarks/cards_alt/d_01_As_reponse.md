@@ -1,18 +1,18 @@
-# 1 — AS DE ESPADAS / AS D'ÉPÉES
+# 1 — AS DE OROS / AS DE DENIERS
 
 
-**Nom :** AS D'ÉPÉES
+**Nom :** AS DE DENIERS
 
 **RÉPONSE :** OUI
 
 **Mots-clés (à l'endroit) :**
 
-Idées neuves, projets inédits, acuité intellectuelle, triomphe, réussite, lucidité mentale, pensée limpide, avancée, faculté de concentration, communication, prise de conscience de la vérité, vision, vigueur, focalisation, intensité, capacité à stimuler les autres
+Prospérité, abondance, sécurité, stabilité, manifestation, nouveau départ financier, opportunités monétaires inédites, nouvel emploi, nouveau commerce, argent, économies, épargne
 
 **Mots-clés (à l'envers) :**
 
-Manque d'idées, faiblesse intellectuelle, échec, hostilité
+Pénurie d'argent, mauvaise gestion financière, opportunités manquées ou perdues
 
 **Affirmation :**
 
-> CLARTÉ D'ESPRIT
+> ABONDANCE

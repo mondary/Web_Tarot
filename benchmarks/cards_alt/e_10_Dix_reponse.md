@@ -1,18 +1,18 @@
-# 10 — DIEZ DE OROS / DIX DE DENIERS
+# 10 — DIEZ DE ESPADAS / DIX D'ÉPÉES
 
 
-**Nom :** DIX DE DENIERS
+**Nom :** DIX D'ÉPÉES
 
-**RÉPONSE :** OUI
+**RÉPONSE :** NON
 
 **Mots-clés (à l'endroit) :**
 
-Gain financier inattendu, somme globale, testament, actes, fonds fiduciaires, héritage, fondations solides, privilège, affaires héritées, ascendance, maison familiale/entreprises/responsabilités/valeurs/soutien/affaires/richesses, argent ancien, afflux
+Traîtrise, coups de couteau dans le dos, ennemis, plaintes, médisance, amertume, être piétiné·e, échec, ruine, effondrement, épuisement, incapacité à affronter la situation, malédictions, toucher le fond, se heurter à un mur
 
 **Mots-clés (à l'envers) :**
 
-Changements imprévus, désastre financier, faillite, grandes pertes
+Échapper à la ruine, se reconstruire, tirer les leçons des épreuves passées, voir ses craintes se matérialiser
 
 **Affirmation :**
 
-> CULMINATION
+> EFFONDREMENT

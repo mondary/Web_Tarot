@@ -6,7 +6,7 @@ Toutes les notes de release du projet Web Tarot. Le format de version suit `vYYY
 
 ## TODO — Roadmap
 
-Statut : `2026.08.12` (V9 - grand format + animations)
+Statut : `2026.08.13` (V9 - grand format + animations)
 
 ### Phase 1 — Fondations ✅
 - [x] Interface V2 unifiée (carousel d'accueil + grille par famille + vue détail)
@@ -38,6 +38,10 @@ Statut : `2026.08.12` (V9 - grand format + animations)
 #### Fixed
 - **Intercalaires** : glyphes SVG noirs invisibles sur fond sombre — `filter:invert(1)` les rend clairs
 
+
+### [2026.08.13] - 2026-08-16
+#### Fixed
+- **Corruption des données Deniers ↔ Épées** : les 14 paires de mineures (As → Roi) avaient leurs mots-clés endroit/envers, affirmations et réponses OUI/NON intégralement échangés entre Deniers et Épées. Correction dans les sources (`*_reponse.md`), le vault v9 (`/cards/*.json` + `app-data.json` recâblé 78/78). Audit complet des 78 lames validé (familles, numéros, recouvrement lexical, synchro app-data)
 
 ### [2026.08.11] - 2026-08-14
 #### Changed
