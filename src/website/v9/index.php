@@ -280,6 +280,41 @@ body:has(.d-stage.open) .brand{opacity:0;pointer-events:none}
 .d-loop .pos b{color:var(--ac)}
 .content-icon{display:inline-flex;width:20px;height:20px;vertical-align:middle;margin-right:.4rem}
 .content-icon svg{width:100%;height:100%;fill:none;stroke:var(--ac);stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+/* Mode apprentissage (Leitner QCM) */
+.learn-head{display:flex;justify-content:space-between;align-items:baseline;gap:1rem;flex-wrap:wrap;font-family:"DM Mono",monospace;font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin:0 0 1rem}
+.learn-head b{color:var(--ac)}
+.learn-bar{height:2px;background:var(--line);border-radius:2px;overflow:hidden;margin:0 0 2rem}
+.learn-bar i{display:block;height:100%;background:var(--ac);width:0;transition:width .4s var(--ease)}
+.learn-card{max-width:340px;margin:0 auto 1.6rem}
+.learn-card img{width:100%;display:block;background:var(--mat);border-radius:6px;box-shadow:0 18px 40px rgba(0,0,0,.5)}
+.learn-opts{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:.6rem;max-width:620px;margin:0 auto 1.4rem}
+.learn-opt{font-family:"DM Mono",monospace;font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;color:var(--fg);background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:.85rem .6rem;cursor:pointer;transition:.25s var(--ease)}
+.learn-opt:hover:not(:disabled){border-color:var(--ac);color:var(--ac);transform:translateY(-2px)}
+.learn-opt:disabled{cursor:default}
+.learn-opt.right{border-color:rgba(129,199,132,.6);background:rgba(102,187,106,.12);color:#cde8ce}
+.learn-opt.wrong{border-color:rgba(229,115,115,.6);background:rgba(239,83,80,.12);color:#f0c3c3}
+.learn-opt .n{display:none}
+@media(max-width:640px){
+  .learn-card{max-width:min(72vw,300px);margin:0 auto 1.3rem}
+  .learn-opts{grid-template-columns:1fr;gap:.55rem;max-width:420px}
+  .learn-opt{font-size:.72rem;padding:.95rem .9rem;text-align:left;min-height:44px}
+  .learn-opt .n{display:inline;color:var(--muted);margin-right:.5rem}
+  .learn-reveal h3{font-size:1.45rem}
+  .learn-reveal p{font-size:.95rem}
+  .learn-next{font-size:.68rem;padding:.85rem 1.8rem}
+}
+.learn-reveal{max-width:620px;margin:0 auto;text-align:center;display:none}
+.learn-reveal.show{display:block}
+.learn-reveal h3{font-family:'Cormorant Garamond',serif;font-size:1.7rem;font-weight:500;margin:0 0 .6rem}
+.learn-reveal p{color:var(--muted);font-size:.92rem;line-height:1.55;margin:0 0 1.2rem}
+.learn-next{font-family:"DM Mono",monospace;font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ac);background:var(--ac-dim);border:1px solid var(--ac);border-radius:40px;padding:.7rem 1.6rem;cursor:pointer;transition:.25s}
+.learn-next:hover{background:var(--ac);color:var(--bg)}
+.learn-end{max-width:620px;margin:1rem auto 0;text-align:center;display:none}
+.learn-end.show{display:block}
+.learn-end h3{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:2.2rem;color:var(--ac);margin:0 0 .8rem;font-weight:500}
+.learn-end .score{font-family:"DM Mono",monospace;font-size:.7rem;letter-spacing:.12em;color:var(--fg);margin-bottom:1.4rem}
+.learn-end .missed{color:var(--muted);font-size:.85rem;line-height:1.7;margin:0 0 1.6rem}
+.learn-end .missed b{color:#f0c3c3;font-weight:400}
 @media(max-width:640px){.full-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:.8rem}.mini .ph{padding:.45rem .45rem .25rem}.mini .cap{padding:.5rem .55rem .6rem}.mini .cap .nm{font-size:.9rem}}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}.seuil-title .split-word span{transform:none}.mini:hover{transform:none}}
 </style>
@@ -292,6 +327,7 @@ body:has(.d-stage.open) .brand{opacity:0;pointer-events:none}
   <button aria-label="Tirages" onclick="TarotSpreads&&TarotSpreads.open()"><svg viewBox="0 0 162 154" fill="currentColor"><path d="M41.3 12.5C16 18.4 13.9 19.2 10.5 23.2c-3.4 4.1-3.9 8.4-2 17.9 3 14.8 17.5 80.3 18.6 83.6.6 1.8 2.7 4.6 4.6 6.4l3.7 3.2 9.5-.8c16.9-1.3 17.3-1.2 38.1 6 28.4 9.9 35.9 10 43.3.3 5.3-6.9 28.7-72.8 28.7-80.7q0-8.5-7.5-11.7c-2.9-1.2-3.3-1.8-3.3-5.3q-.2-8.3-6.7-11.5a81 81 0 0 0-19-4.6c-1.2 0-2.7-1.3-3.7-3-2.5-4.5-7.3-6-21.5-6.9-12.2-.7-12.6-.8-14.6-3.6a15 15 0 0 0-11.9-5.4c-1.8.1-13.3 2.5-25.5 5.4m32.8 2.6c1 1.3 2 3.5 2.3 4.9 10.5 48.8 18.6 90.1 18.1 92.7a10 10 0 0 1-3.1 5.2C87.5 121 51.2 129 41.3 129c-6.7 0-8.5-2.5-11.7-16.1C21.4 78 12 34.4 12 31.2c0-1.3 1.2-3.6 2.8-5.1 2.3-2.3 5.5-3.4 20.2-6.9l23.5-5.7c7.9-1.9 13.4-1.3 15.6 1.6m22.6 6.3c10.5.6 12.8 1.7 14.4 6.4 1.1 3.5.1 31.1-2.7 72.5-1.5 22.5-2.4 26.5-6.3 28.7a71 71 0 0 1-22.2.3l-6.4-.6 9.5-2.3c8.1-2 10-2.9 12.7-5.8 5.6-6 5.5-6.6-4.6-55.1L82 20.7c0-.3 1.2-.5 2.8-.2zm29.7 11.1c13.6 2.9 14.7 5 11.1 22.4-2.8 13.5-14.1 58.7-17.5 70.1-3.3 10.9-8.5 13.8-20.5 11.1l-3-.7 3.6-.7c4.4-.9 8.4-3.9 10.4-7.7 1-1.9 2-10.1 3-25.7 1.7-26.2 3.5-59.8 3.5-66.1 0-4.8-.2-4.7 9.4-2.7"/></svg><span class="tl">Tirages</span></button>
   <button aria-label="Nuances" onclick="openNuances()"><svg viewBox="0 0 100 132" fill="currentColor"><path fill-rule="evenodd" d="M55.3 5.8C51.1 17.2 42.9 31.7 27.9 53.2 16.5 69.6 11.2 81.8 11.2 92.1c0 18.3 15.4 31.8 35.7 32.3 21 .5 38.2-12.8 38.2-33 0-11.2-5.7-24-16.2-39.9C60.9 39.6 57.7 24.4 55.3 5.8m-.1 16.7c-4.6 10.2-11.8 22.9-22.1 37.8-8.5 12.3-13 22.2-13 31 0 14.9 12.3 25.1 26.9 25.5 15.3.4 29.2-10.9 29.2-26.1 0-9.6-4.9-20.3-13.7-34-5.6-9.3-6.3-21.2-7.3-34.2M44 100a5.2 5.2 0 1 0 .1 0z"/></svg><span class="tl">Nuances</span></button>
   <button aria-label="Recherche" onclick="openSearch()"><svg viewBox="0 0 135 131" fill="currentColor"><path d="M39.8 8.9A47.5 47.5 0 0 0 7 54c0 13.1 4.3 23.5 13.4 32.5A46 46 0 0 0 54.1 100c11.4 0 21.4-3.6 31.3-11.4.8-.5 7.4 5.5 18.6 16.9 9.6 9.7 18.3 18 19.3 18.6 2.4 1.4 5.9-.7 5.5-3.2-.2-1.1-8.6-10.2-18.8-20.4L91.6 82l1.7-3a58 58 0 0 0 6.4-21.6 46.5 46.5 0 0 0-34.1-49 55 55 0 0 0-25.8.5m29.7 8.9a39 39 0 0 1 22.1 44.1c-6.4 30.8-42.2 41.4-65.7 19.4-18.2-17-13.6-48.8 9-62.1a37 37 0 0 1 34.6-1.4"/></svg><span class="tl">Recherche</span></button>
+  <button aria-label="Apprendre" onclick="openLearn()"><svg viewBox="0 0 132 108" fill="currentColor"><path d="M66 4 2 30l64 26 64-26zM38 40v13.5C38 62 50.3 67.5 66 67.5S94 62 94 53.5V40l-11.5 4.7v8.6c0 4.6-7.2 8.2-16.5 8.2s-16.5-3.6-16.5-8.2v-8.6zm87.6-7.5-2.2 22.3c3.4 1 5.8 3.9 5.8 7.2a6.5 6.5 0 1 1-13 0c0-3.3 2.4-6.2 5.8-7.2l-2.2-20.9z"/></svg><span class="tl">Apprendre</span></button>
 </nav>
 
 <div id="landing">
@@ -317,6 +353,21 @@ body:has(.d-stage.open) .brand{opacity:0;pointer-events:none}
     <button class="overlay-close" onclick="closeNuances()">×</button>
     <h2 style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:2rem;color:var(--ac);margin:0 0 1.6rem">Nuances entre cartes</h2>
     <div class="nuances-body" id="nuancesBody"></div>
+  </div>
+</div>
+
+<div id="learn" class="overlay">
+  <div class="overlay-sheet" style="max-width:760px">
+    <button class="overlay-close" onclick="closeLearn()">×</button>
+    <h2 style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:2rem;color:var(--ac);margin:0 0 1.4rem">Mode apprentissage</h2>
+    <div class="learn-head"><span>Quelle est cette lame&nbsp;?</span><span><b id="learnDone">0</b>/<span id="learnTotal">78</span> · <span id="learnHits">0</span> ✓</span></div>
+    <div class="learn-bar"><i id="learnBar"></i></div>
+    <div class="learn-stage" id="learnStage">
+      <div class="learn-card"><img id="learnImg" alt="Lame à identifier"></div>
+      <div class="learn-opts" id="learnOpts"></div>
+      <div class="learn-reveal" id="learnReveal"></div>
+    </div>
+    <div class="learn-end" id="learnEnd"></div>
   </div>
 </div>
 
@@ -495,6 +546,72 @@ function openDetailById(id){const c=CARDS.find(x=>x.id===id);if(c){closeNuances(
 function openNuances(){const el=document.getElementById('nuances');if(!el.querySelector('.nuances-body').innerHTML)el.querySelector('.nuances-body').innerHTML=renderNuances();el.classList.add('open');document.body.style.overflow='hidden'}
 function closeNuances(){document.getElementById('nuances').classList.remove('open');document.body.style.overflow=''}
 
+// Mode apprentissage — Leitner simplifié : QCM sur le mot-clé distinctif.
+// Lame sue → niveau +1 et fond de pile ; lame ratée → niveau -1 et revient 4 positions plus loin.
+const LEARN_KEY='tarotLearnV1';
+let LEARN=null;
+function learnLvls(){try{return JSON.parse(localStorage.getItem(LEARN_KEY))||{}}catch(e){return{}}}
+function learnSave(l){try{localStorage.setItem(LEARN_KEY,JSON.stringify(l))}catch(e){}}
+function learnShuffle(a){for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a}
+function learnDeck(){return CARDS.map(c=>({c,kw:(parsePortrait(PORTRAITS[c.id]||'').key||'').trim()})).filter(x=>x.kw)}
+function openLearn(){
+  const lv=learnLvls();
+  const q=learnShuffle(learnDeck().map(x=>({c:x.c,kw:x.kw,lvl:lv[x.c.id]||0}))).sort((a,b)=>a.lvl-b.lvl);
+  LEARN={queue:q,total:q.length,hits:0,missed:{},cur:null,curOpts:[],answered:false};
+  document.getElementById('learnTotal').textContent=LEARN.total;
+  const stage=document.getElementById('learnStage'),end=document.getElementById('learnEnd');
+  stage.style.display='';end.classList.remove('show');
+  document.getElementById('learn').classList.add('open');document.body.style.overflow='hidden';
+  learnNext();
+}
+function closeLearn(){document.getElementById('learn').classList.remove('open');document.body.style.overflow='';LEARN=null}
+function learnProgress(){const d=LEARN.total-LEARN.queue.length;document.getElementById('learnDone').textContent=d;document.getElementById('learnHits').textContent=LEARN.hits;document.getElementById('learnBar').style.width=(100*d/LEARN.total)+'%'}
+function learnNext(){
+  if(!LEARN)return;
+  const stage=document.getElementById('learnStage'),end=document.getElementById('learnEnd');
+  if(!LEARN.queue.length){
+    const lv=learnLvls(),mastered=learnDeck().filter(x=>(lv[x.c.id]||0)>=3).length,miss=Object.values(LEARN.missed);
+    stage.style.display='none';end.classList.add('show');
+    end.innerHTML='<h3>Session terminée</h3><div class="score">'+LEARN.hits+' ✓ · '+miss.length+' ratée'+(miss.length>1?'s':'')+' · '+mastered+'/'+LEARN.total+' maîtrisées (niveau ≥ 3)</div>'
+      +(miss.length?'<div class="missed"><b>À revoir :</b> '+miss.map(m=>escapeHtml(m.c.name)+' ('+escapeHtml(m.kw)+')').join(' · ')+'</div>':'')
+      +'<button class="learn-next" onclick="openLearn()">Recommencer</button> <button class="learn-next" style="background:none;border-color:var(--line);color:var(--muted)" onclick="learnReset()">Réinitialiser la progression</button>';
+    return;
+  }
+  LEARN.cur=LEARN.queue[0];LEARN.answered=false;
+  stage.style.display='';end.classList.remove('show');
+  document.getElementById('learnImg').src=IMG_MAP[LEARN.cur.c.id];
+  // 4 distracteurs, puisés dans la même famille en priorité
+  const pool=learnDeck().filter(x=>x.c.id!==LEARN.cur.c.id);
+  const dis=learnShuffle(pool.filter(x=>x.c.fam===LEARN.cur.c.fam)).slice(0,4);
+  if(dis.length<4)dis.push(...learnShuffle(pool.filter(x=>x.c.fam!==LEARN.cur.c.fam)).slice(0,4-dis.length));
+  LEARN.curOpts=learnShuffle(dis.concat([LEARN.cur]));
+  document.getElementById('learnOpts').innerHTML=LEARN.curOpts.map((o,i)=>'<button class="learn-opt" onclick="learnAnswer('+i+')"><span class="n">'+(i+1)+'</span>'+escapeHtml(o.kw)+'</button>').join('');
+  document.getElementById('learnReveal').classList.remove('show');
+  learnProgress();
+}
+function learnAnswer(i){
+  if(!LEARN||LEARN.answered)return;LEARN.answered=true;
+  const cur=LEARN.cur,ok=LEARN.curOpts[i].c.id===cur.c.id;
+  document.querySelectorAll('#learnOpts .learn-opt').forEach((b,j)=>{
+    b.disabled=true;
+    const isRight=LEARN.curOpts[j].c.id===cur.c.id;
+    if(ok){b.style.display=isRight?'':'none';if(isRight)b.classList.add('right')}
+    else{if(isRight)b.classList.add('right');else if(j===i){b.classList.add('wrong')}else b.style.display='none'}
+  });
+  const lv=learnLvls();
+  LEARN.queue.shift();
+  if(ok){LEARN.hits++;lv[cur.c.id]=Math.min(5,(lv[cur.c.id]||0)+1)}
+  else{LEARN.missed[cur.c.id]={c:cur.c,kw:cur.kw};lv[cur.c.id]=Math.max(0,(lv[cur.c.id]||0)-1);LEARN.queue.splice(Math.min(LEARN.queue.length,4),0,cur)}
+  learnSave(lv);
+  const p=parsePortrait(PORTRAITS[cur.c.id]||'');
+  document.getElementById('learnReveal').innerHTML='<h3>'+escapeHtml(cur.c.name)+' — <em>'+escapeHtml(cur.kw)+'</em></h3>'
+    +(p.idee?'<p>'+escapeHtml(p.idee)+'</p>':'')+(p.realite?'<p>'+escapeHtml(p.realite)+'</p>':'')
+    +'<button class="learn-next" onclick="learnNext()">Suivante →</button>';
+  document.getElementById('learnReveal').classList.add('show');
+  learnProgress();
+}
+function learnReset(){learnSave({});openLearn()}
+
 // Grille principale : les 78 lames sont visibles sans saisie.
 function familyIntro(f,n){const glyph=f.key&&f.key!=='majors'?'<img class="family-glyph" src="'+B+'/index.php?svg='+f.key+'" alt="">':'<span class="family-glyph">'+(f.sym||'✦')+'</span>';return '<button type="button" class="mini family-intro" style="--family:'+(f.ac||'#c9a227')+'" onclick="openFamily(\''+f.key+'\')"><span class="ph">'+glyph+'<span class="family-name">'+f.name+'</span><span class="family-element">'+(f.el||'')+'</span></span><span class="cap"><span class="nm">Famille</span><span class="no">00</span></span></button>'}
 function renderGrid(){let h='',last=null;for(const c of CARDS){if(c.fam!==last){const f=fam(c.fam),group=CARDS.filter(x=>x.fam===c.fam);h+='<div class="fam-card"><span class="g">'+(f.sym||'✦')+'</span><span class="fn">'+f.name+'</span><span class="fc">'+group.length+' lames</span></div>'+familyIntro(f,group.length);last=c.fam}h+=mini(c)}document.getElementById('grid').innerHTML=h}
@@ -517,7 +634,9 @@ document.getElementById('search').onclick=e=>{if(e.target.id==='search')closeSea
 document.getElementById('nuances').onclick=e=>{if(e.target.id==='nuances')closeNuances()};
 document.addEventListener('keydown',e=>{if(e.metaKey||e.ctrlKey||e.altKey)return;const tag=e.target?.tagName;
   const sg=document.getElementById('search').classList.contains('open');
-  if(e.key==='Escape'){if(sg)closeSearch();else if(document.getElementById('nuances').classList.contains('open'))closeNuances();else closeDetail();return}
+  const lg=document.getElementById('learn').classList.contains('open');
+  if(e.key==='Escape'){if(lg)closeLearn();else if(sg)closeSearch();else if(document.getElementById('nuances').classList.contains('open'))closeNuances();else closeDetail();return}
+  if(lg){if(/^[1-5]$/.test(e.key))learnAnswer(+e.key-1);else if(LEARN&&LEARN.answered&&(e.key==='Enter'||e.key===' '||e.key==='ArrowRight')){e.preventDefault();learnNext()}return}
   if(tag&&/INPUT|TEXTAREA|SELECT/i.test(tag))return;
   if(sg){if(e.key==='ArrowDown'){searchState.selIdx++;searchRender()}if(e.key==='ArrowUp'){searchState.selIdx=Math.max(0,searchState.selIdx-1);searchRender()}if(e.key==='Enter'){document.querySelector('#sGrid .mini.sel')?.click()}return}
   if(e.key.length===1&&/^[\p{L}\p{N}]$/u.test(e.key)){e.preventDefault();openSearch(e.key);return}

@@ -6,7 +6,7 @@ Toutes les notes de release du projet Web Tarot. Le format de version suit `vYYY
 
 ## TODO — Roadmap
 
-Statut : `2026.08.13` (V9 - grand format + animations)
+Statut : `2026.08.14` (V9 - grand format + animations)
 
 ### Phase 1 — Fondations ✅
 - [x] Interface V2 unifiée (carousel d'accueil + grille par famille + vue détail)
@@ -38,6 +38,10 @@ Statut : `2026.08.13` (V9 - grand format + animations)
 #### Fixed
 - **Intercalaires** : glyphes SVG noirs invisibles sur fond sombre — `filter:invert(1)` les rend clairs
 
+
+### [2026.08.14] - 2026-08-17
+#### Added
+- **Mode apprentissage** : quiz QCM type flashcards (système de Leitner simplifié) — une lame est montrée sans son nom, 5 propositions de mots-clés distinctifs (distracteurs pris dans la même famille) ; réponse correcte → fond de pile et niveau +1, erreur → réinsertion 4 positions plus loin et niveau -1. Progression persistée en localStorage, écran de fin avec score, lames maîtrisées (niveau ≥ 3) et liste à revoir. Clavier : 1-5 pour répondre, Entrée pour enchaîner. Bouton « Apprendre » (tocque) dans la top-nav, responsive mobile (options empilées, mauvaises propositions masquées après réponse)
 
 ### [2026.08.13] - 2026-08-16
 #### Fixed
