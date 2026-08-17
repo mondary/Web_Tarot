@@ -34,6 +34,14 @@ Statut : `2026.08.18` (V9 - apprentissage mobile)
 
 ## Releases
 
+### [2026.08.19] - 2026-08-17
+#### Added
+- **Swipe mobile** : glissement horizontal sur la fiche d'une lame pour passer à la précédente/suivante (seuil 60 px, geste dominant horizontal, <800 ms) ; le scroll vertical et les zones scrollables (miniatures de famille, liens, boutons) sont exclus
+
+#### Fixed
+- **Mots-clés envers de l'As de Coupes** : ils étaient un copié-collé des mots-clés endroit du Monde (« succès, accomplissement, plénitude »…) — remplacés par « émotions refoulées ou bloquées, déception sentimentale »
+- **Doublons de mots-clés** : 13 doublons supprimés sur 9 lames (Empereur, Ermite, Roue de Fortune, Justice, Pendu, Mort, Monde, 3 de Coupes, 3 d'Épées), dédoublonnage insensible à la casse
+
 ### [2026.08.18] - 2026-08-17
 #### Added
 - **Choix d’apprentissage** : le QCM peut maintenant porter sur les mots-clés ou sur les phrases d’idée centrale des lames.
