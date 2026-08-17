@@ -6,7 +6,7 @@ Toutes les notes de release du projet Web Tarot. Le format de version suit `vYYY
 
 ## TODO — Roadmap
 
-Statut : `2026.08.17` (V9 - grand format + animations)
+Statut : `2026.08.18` (V9 - apprentissage mobile)
 
 ### Phase 1 — Fondations ✅
 - [x] Interface V2 unifiée (carousel d'accueil + grille par famille + vue détail)
@@ -33,6 +33,14 @@ Statut : `2026.08.17` (V9 - grand format + animations)
 ---
 
 ## Releases
+
+### [2026.08.18] - 2026-08-17
+#### Added
+- **Choix d’apprentissage** : le QCM peut maintenant porter sur les mots-clés ou sur les phrases d’idée centrale des lames.
+
+#### Changed
+- **Apprentissage mobile** : carte mise au premier plan, en-tête compact sur une ligne et dock de réponses ancré en bas de l’écran ; la correction s’affiche dans un tiroir bas.
+- **Icône Apprendre** : la flamme est remplacée par une toque universitaire plus explicite.
 
 ### [2026.08.12] - 2026-08-14
 #### Fixed

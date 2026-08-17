@@ -13,7 +13,7 @@ Un site éditorial pour explorer les 78 lames du Tarot de Rider-Waite-Smith, leu
 - **Fiches éditoriales** : identité, carte du jour, Amour, Travail, Finances, Guidance, signification et description
 - **Associations** : combinaisons entre lames accessibles dans un panneau repliable
 - **Tirages interactifs** : plusieurs dispositions de tirage intégrées
-- **Mode apprentissage** : quiz QCM type flashcards (Leitner simplifié) sur le mot-clé distinctif de chaque lame — les lames sues partent au fond de la pile, les ratées reviennent vite ; progression conservée localement
+- **Mode apprentissage** : quiz QCM type flashcards (Leitner simplifié) au choix sur le mot-clé ou la phrase centrale de chaque lame — les lames sues partent au fond de la pile, les ratées reviennent vite ; progression conservée localement
 - **Recherche plein écran** : filtrage instantané par nom ou numéro, avec filtres par famille
 - **Nuances** : pense-bête comparant les lames aux thèmes proches
 - **Navigation clavier** : saisie directe pour chercher, `←`/`→` entre les fiches et `Échap` pour revenir
@@ -60,7 +60,7 @@ le navigateur bloque alors `fetch()` vers SQLite et le chargement de WebAssembly
 
 ## 📋 Voir le [CHANGELOG](CHANGELOG.md) pour l'historique complet.
 
-Version courante : `v2026.08.15`
+Version courante : `v2026.08.18`
 
 ## 🔗 Liens
 

@@ -13,7 +13,7 @@ An editorial website for exploring the 78 Rider-Waite-Smith Tarot cards, their m
 - **Editorial card sheets**: identity, card of the day, Love, Work, Finances, Guidance, meaning, and description
 - **Associations**: card combinations available in a collapsible panel
 - **Interactive spreads**: several integrated spread layouts
-- **Learning mode**: multiple-choice flashcard quiz (simplified Leitner) on each card's distinctive keyword — known cards go to the bottom of the deck, missed ones come back quickly; progress is saved locally
+- **Learning mode**: multiple-choice flashcard quiz (simplified Leitner) using either each card's distinctive keyword or central description phrase — known cards go to the bottom of the deck, missed ones come back quickly; progress is saved locally
 - **Fullscreen search**: instant filtering by name or number, with family filters
 - **Nuances**: a reference comparing cards with closely related themes
 - **Keyboard navigation**: type to search, use `←`/`→` between card sheets, and `Esc` to return
@@ -60,7 +60,7 @@ browser blocks `fetch()` to SQLite and WebAssembly loading.
 
 ## 📋 See [CHANGELOG](CHANGELOG.md) for full history.
 
-Current version: `v2026.08.15`
+Current version: `v2026.08.18`
 
 ## 🔗 Links
 
