@@ -6,7 +6,7 @@ Toutes les notes de release du projet Web Tarot. Le format de version suit `vYYY
 
 ## TODO — Roadmap
 
-Statut : `2026.08.15` (V9 - grand format + animations)
+Statut : `2026.08.16` (V9 - grand format + animations)
 
 ### Phase 1 — Fondations ✅
 - [x] Interface V2 unifiée (carousel d'accueil + grille par famille + vue détail)
@@ -38,6 +38,10 @@ Statut : `2026.08.15` (V9 - grand format + animations)
 #### Fixed
 - **Intercalaires** : glyphes SVG noirs invisibles sur fond sombre — `filter:invert(1)` les rend clairs
 
+
+### [2026.08.16] - 2026-08-17
+#### Changed
+- **README FR/EN resynchronisés** : passage de V8 à V9 (fonctionnalités, réglages, commandes clavier, test local, liens), ajout du mode apprentissage, version courante actualisée
 
 ### [2026.08.15] - 2026-08-17
 #### Changed
