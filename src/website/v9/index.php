@@ -659,6 +659,13 @@ document.getElementById('backBtn').onclick=closeDetail;
 document.getElementById('sInput').oninput=e=>{searchState.q=e.target.value.trim().toLowerCase();searchState.selIdx=0;syncQuery();searchRender()};
 document.getElementById('search').onclick=e=>{if(e.target.id==='search')closeSearch()};
 document.getElementById('nuances').onclick=e=>{if(e.target.id==='nuances')closeNuances()};
+// swipe horizontal mobile : carte précédente/suivante
+(function(){let sx=0,sy=0,st=0;const el=document.getElementById('detail');
+el.addEventListener('touchstart',e=>{const t=e.changedTouches[0];sx=t.clientX;sy=t.clientY;st=Date.now()},{passive:true});
+el.addEventListener('touchend',e=>{if(currentIdx<0)return;const t=e.changedTouches[0],dx=t.clientX-sx,dy=t.clientY-sy;
+if(e.target.closest('.d-thumbs,.d-assocs-toggle,a,button'))return;
+if(Math.abs(dx)>60&&Math.abs(dx)>Math.abs(dy)*1.5&&Date.now()-st<800){e.preventDefault();openDetail(CARDS[(currentIdx+(dx<0?1:-1)+CARDS.length)%CARDS.length].sort)}},{passive:false});})();
+
 document.addEventListener('keydown',e=>{if(e.metaKey||e.ctrlKey||e.altKey)return;const tag=e.target?.tagName;
   const sg=document.getElementById('search').classList.contains('open');
   const lg=document.getElementById('learn').classList.contains('open');
