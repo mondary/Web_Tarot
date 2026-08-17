@@ -6,7 +6,7 @@ Toutes les notes de release du projet Web Tarot. Le format de version suit `vYYY
 
 ## TODO — Roadmap
 
-Statut : `2026.08.16` (V9 - grand format + animations)
+Statut : `2026.08.17` (V9 - grand format + animations)
 
 ### Phase 1 — Fondations ✅
 - [x] Interface V2 unifiée (carousel d'accueil + grille par famille + vue détail)
@@ -38,6 +38,11 @@ Statut : `2026.08.16` (V9 - grand format + animations)
 #### Fixed
 - **Intercalaires** : glyphes SVG noirs invisibles sur fond sombre — `filter:invert(1)` les rend clairs
 
+
+### [2026.08.17] - 2026-08-17
+#### Changed
+- **Mode apprentissage mobile** : layout compact repensé pour tenir au-dessus du fold — en-tête une ligne (titre + compteur), image 46vw, options empilées 42px, marges réduites ; sur desktop l'image et la question sont côte à côte
+- **Icône Apprendre** : l'œil est remplacé par une flamme (étincelle de connaissance), trait cohérent avec les autres pictos
 
 ### [2026.08.16] - 2026-08-17
 #### Changed
