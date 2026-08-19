@@ -6,7 +6,7 @@ Toutes les notes de release du projet Web Tarot. Le format de version suit `vYYY
 
 ## TODO — Roadmap
 
-Statut : `2026.08.18` (V9 - apprentissage mobile)
+Statut : `2026.08.20` (V9 - toggle mots-clés)
 
 ### Phase 1 — Fondations ✅
 - [x] Interface V2 unifiée (carousel d'accueil + grille par famille + vue détail)
@@ -33,6 +33,14 @@ Statut : `2026.08.18` (V9 - apprentissage mobile)
 ---
 
 ## Releases
+
+### [2026.08.20] - 2026-08-19
+#### Added
+- **Toggle mots-clés au survol** : pill flottante en bas à gauche (desktop uniquement), badge plein cadre sur l'image au survol de chaque lame — mot-clé distinctif en gros, dégradé sombre + filets dorés, persisté en localStorage
+- **Version visible** : le numéro de version s'affiche dans le brand (`TAROT DIVINATOIRE · v2026.08.20`)
+
+#### Changed
+- **Mot-clé Cavalier d'Épées** : « Impulsivité » remplacée par « Précipitation » pour lever l'ambiguïté avec l'As de Bâtons (« Impulsion ») — sources (_portrait.md, _ALL) + portraits.json
 
 ### [2026.08.19] - 2026-08-17
 #### Added

@@ -26,5 +26,8 @@ scripts/
 # Archives locales
 archives/
 
+# Assets poids lourd (images cartes sans bordure)
+clm_borderless/
+
 /screenshots/
 screenshots/
