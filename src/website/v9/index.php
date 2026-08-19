@@ -84,7 +84,7 @@ $assocsJson = json_encode($assocsMap, JSON_UNESCAPED_UNICODE | JSON_HEX_TAG | JS
 $baseJson = json_encode($base, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
 $portraits = json_decode((string) @file_get_contents(__DIR__ . '/portraits.json'), true) ?: [];
 $portraitsJson = json_encode($portraits, JSON_UNESCAPED_UNICODE);
-$ver = '2026.08.20';
+$ver = '2026.08.21';
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -143,7 +143,7 @@ a{color:inherit}
 .chip .sym{color:var(--ac)} .chip .n{opacity:.5}
 .chip:hover{color:var(--fg);border-color:var(--ac)} .chip.active{color:var(--fg);border-color:var(--ac);background:var(--ac-dim)}
 .full-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:1.4rem;align-items:start}
-.mini{display:block;width:100%;padding:0;color:inherit;font:inherit;text-align:left;cursor:pointer;border-radius:.95rem;overflow:hidden;background:var(--mat);border:1px solid rgba(255,255,255,.35);box-shadow:0 10px 28px rgba(0,0,0,.38);transition:transform .5s var(--spring),box-shadow .5s var(--spring),border-color .35s var(--ease)}
+.mini{display:block;width:100%;padding:0;color:inherit;font:inherit;text-align:left;cursor:pointer;border-radius:.95rem;overflow:hidden;position:relative;background:var(--mat);border:1px solid rgba(255,255,255,.35);box-shadow:0 10px 28px rgba(0,0,0,.38);transition:transform .5s var(--spring),box-shadow .5s var(--spring),border-color .35s var(--ease)}
 .mini .ph{display:block;aspect-ratio:2/3;overflow:hidden;background:var(--mat);padding:.65rem .65rem .35rem;position:relative}
 /* mots-clés au survol (desktop, activable) — pill flottante bas-gauche */
 #kwFab{position:fixed;left:1.5rem;bottom:1.4rem;z-index:1600;display:inline-flex;align-items:center;gap:.5rem;background:rgba(10,9,7,.85);backdrop-filter:blur(8px);border:1px solid var(--line);border-left:3px solid var(--line);color:var(--muted);font-family:"DM Mono",monospace;font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;padding:.62rem 1rem;border-radius:3px;cursor:pointer;transition:.3s var(--ease)}
@@ -151,8 +151,10 @@ a{color:inherit}
 #kwFab:hover{color:var(--ac);border-color:var(--ac);border-left-color:var(--ac)}
 #kwFab.on{color:var(--ac);border-color:var(--ac);border-left-color:var(--ac);background:var(--ac-dim);box-shadow:0 0 24px var(--ac-dim)}
 @media(hover:none){#kwFab{display:none}}
-body.kw .mini .ph[data-kw]:not([data-kw=""])::after{content:attr(data-kw);position:absolute;inset:0;display:flex;align-items:center;justify-content:center;text-align:center;padding:.5rem;font-family:"DM Mono",monospace;font-size:1.18rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--ac);text-shadow:0 2px 14px rgba(0,0,0,.9);background:linear-gradient(180deg,rgba(10,9,7,.5),rgba(10,9,7,.88) 42%,rgba(10,9,7,.88) 58%,rgba(10,9,7,.5));border-top:1px solid rgba(201,162,39,.55);border-bottom:1px solid rgba(201,162,39,.55);opacity:0;transform:scale(.92);transition:.25s var(--ease);pointer-events:none;white-space:normal}
-body.kw .mini:hover .ph[data-kw]:not([data-kw=""])::after,body.kw .mini:focus-visible .ph[data-kw]:not([data-kw=""])::after{opacity:1;transform:scale(1)}
+body.kw .kw-overlay{position:absolute;inset:0;z-index:2;display:flex;align-items:center;justify-content:center;text-align:center;padding:1rem;background:linear-gradient(180deg,rgba(10,9,7,.7),rgba(10,9,7,.94));opacity:0;transform:scale(.92);transition:.25s var(--ease);pointer-events:none}
+body.kw .mini:hover .kw-overlay,body.kw .mini:focus-visible .kw-overlay{opacity:1;transform:scale(1)}
+.kw-overlay .kw{font-family:"DM Mono",monospace;font-size:1.18rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--ac);text-shadow:0 2px 14px rgba(0,0,0,.9)}
+.kw-overlay .kn{position:absolute;right:1rem;bottom:1rem;left:1rem;font-family:"Cormorant Garamond",serif;font-size:1.35rem;font-weight:600;color:var(--ac);line-height:1.05}
 .mini .ph img{width:100%;height:100%;object-fit:contain;border-radius:.55rem;transition:transform .6s var(--ease)}
 .mini:hover{transform:translateY(-10px);border-color:var(--ac);box-shadow:0 18px 40px -12px rgba(0,0,0,.7),0 0 30px var(--ac-dim)}
 .mini:focus-visible{outline:2px solid var(--ac);outline-offset:2px}
@@ -657,11 +659,12 @@ function learnReset(){learnSave({});openLearn()}
 // Grille principale : les 78 lames sont visibles sans saisie.
 function familyIntro(f,n){const glyph=f.key&&f.key!=='majors'?'<img class="family-glyph" src="'+B+'/index.php?svg='+f.key+'" alt="">':'<span class="family-glyph">'+(f.sym||'✦')+'</span>';return '<button type="button" class="mini family-intro" style="--family:'+(f.ac||'#c9a227')+'" onclick="openFamily(\''+f.key+'\')"><span class="ph">'+glyph+'<span class="family-name">'+f.name+'</span><span class="family-element">'+(f.el||'')+'</span></span><span class="cap"><span class="nm">Famille</span><span class="no">00</span></span></button>'}
 function renderGrid(){let h='',last=null;for(const c of CARDS){if(c.fam!==last){const f=fam(c.fam),group=CARDS.filter(x=>x.fam===c.fam);h+='<div class="fam-card"><span class="g">'+(f.sym||'✦')+'</span><span class="fn">'+f.name+'</span><span class="fc">'+group.length+' lames</span></div>'+familyIntro(f,group.length);last=c.fam}h+=mini(c)}document.getElementById('grid').innerHTML=h}
-function mini(c){return '<button type="button" class="mini" onclick="openDetail('+c.sort+')"><span class="ph" data-kw="'+escapeHtml(KW[c.id]||'')+'"><img src="'+IMG_MAP[c.id]+'" alt="'+c.name+'" loading="lazy"></span><span class="cap"><span class="nm">'+c.name+'</span><span class="no">'+String(c.sort+1).padStart(2,'0')+'</span></span></button>'}
+function kwOverlay(c){const k=KW[c.id]||'';return k?'<span class="kw-overlay"><span class="kw">'+escapeHtml(k)+'</span><span class="kn">'+escapeHtml(c.name)+'</span></span>':''}
+function mini(c){return '<button type="button" class="mini" onclick="openDetail('+c.sort+')"><span class="ph"><img src="'+IMG_MAP[c.id]+'" alt="'+c.name+'" loading="lazy"></span><span class="cap"><span class="nm">'+c.name+'</span><span class="no">'+String(c.sort+1).padStart(2,'0')+'</span></span>'+kwOverlay(c)+'</button>'}
 
 // Recherche
 function syncQuery(){const q=document.getElementById('sQuery');q.innerHTML=searchState.q?'<span>'+escapeHtml(searchState.q)+'</span>':'<span class="ph">Tapez une lame…</span>'}
-function searchRender(){const out=CARDS.filter(c=>(!searchState.fam||c.fam===searchState.fam)&&(!searchState.q||c.name.toLowerCase().includes(searchState.q)||String(c.num).padStart(2,'0').includes(searchState.q)));document.getElementById('sGrid').innerHTML=out.length?out.map((c,i)=>'<div class="mini '+(i===searchState.selIdx?'sel':'')+'" onclick="openDetail('+c.sort+');closeSearch()"><div class="ph" data-kw="'+escapeHtml(KW[c.id]||'')+'"><img src="'+IMG_MAP[c.id]+'"></div><div class="cap"><span class="nm">'+c.name+'</span><span class="no">'+String(c.sort+1).padStart(2,'0')+'</span></div></div>').join(''):'<div class="s-empty">Aucune lame</div>'}
+function searchRender(){const out=CARDS.filter(c=>(!searchState.fam||c.fam===searchState.fam)&&(!searchState.q||c.name.toLowerCase().includes(searchState.q)||String(c.num).padStart(2,'0').includes(searchState.q)));document.getElementById('sGrid').innerHTML=out.length?out.map((c,i)=>'<div class="mini '+(i===searchState.selIdx?'sel':'')+'" onclick="openDetail('+c.sort+');closeSearch()"><div class="ph"><img src="'+IMG_MAP[c.id]+'"></div><div class="cap"><span class="nm">'+c.name+'</span><span class="no">'+String(c.sort+1).padStart(2,'0')+'</span></div>'+kwOverlay(c)+'</div>').join(''):'<div class="s-empty">Aucune lame</div>'}
 function openSearch(initial=''){if(initial){searchState.q=initial.toLowerCase();searchState.selIdx=0;document.getElementById('sInput').value=initial}document.getElementById('search').classList.add('open');document.body.style.overflow='hidden';syncQuery();renderChips();searchRender();setTimeout(()=>document.getElementById('sInput').focus(),100)}
 function closeSearch(){document.getElementById('search').classList.remove('open');document.body.style.overflow='';document.getElementById('sInput').value='';searchState={fam:'',q:'',selIdx:0};syncQuery();renderChips()}
 function setFam(f){searchState.fam=f;searchState.selIdx=0;renderChips();searchRender()}
