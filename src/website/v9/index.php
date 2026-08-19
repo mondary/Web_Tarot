@@ -84,7 +84,7 @@ $assocsJson = json_encode($assocsMap, JSON_UNESCAPED_UNICODE | JSON_HEX_TAG | JS
 $baseJson = json_encode($base, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
 $portraits = json_decode((string) @file_get_contents(__DIR__ . '/portraits.json'), true) ?: [];
 $portraitsJson = json_encode($portraits, JSON_UNESCAPED_UNICODE);
-$ver = '2026.08.22';
+$ver = '2026.08.23';
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -298,7 +298,7 @@ body:has(.d-stage.open) .brand{opacity:0;pointer-events:none}
 #learn .overlay-close{top:.55rem;right:.7rem;left:auto;width:32px;height:32px;font-size:1rem}
 .learn-head{display:flex;justify-content:center;gap:.7rem;align-items:baseline;white-space:nowrap;font-family:"DM Mono",monospace;font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);padding:.72rem 3.1rem .42rem}
 .learn-title{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1rem;text-transform:none;letter-spacing:0;color:var(--fg)}
-.learn-title b{color:var(--ac);font-style:normal;font-family:"DM Mono",monospace;font-size:.68rem}
+.learn-count b,.learn-hits b{color:var(--ac);font-weight:500}
 .learn-hits{color:var(--ac)}
 .learn-bar{height:2px;background:var(--line);flex:0 0 auto}
 .learn-bar i{display:block;height:100%;background:var(--ac);width:0;transition:width .4s var(--ease)}
@@ -339,7 +339,7 @@ body:has(.d-stage.open) .brand{opacity:0;pointer-events:none}
   .learn-title{font-size:.92rem}
   .learn-mode{margin-bottom:.38rem}
 }
-@media(max-width:640px){.full-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:.8rem}.mini .ph{padding:.45rem .45rem .25rem}.mini .cap{padding:.5rem .55rem .6rem}.mini .cap .nm{font-size:.9rem}}
+@media(max-width:640px){.brand .v{display:none}.full-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:.8rem}.mini .ph{padding:.45rem .45rem .25rem}.mini .cap{padding:.5rem .55rem .6rem}.mini .cap .nm{font-size:.9rem}}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}.seuil-title .split-word span{transform:none}.mini:hover{transform:none}}
 </style>
 </head>
@@ -384,7 +384,7 @@ body:has(.d-stage.open) .brand{opacity:0;pointer-events:none}
 <div id="learn" class="overlay">
   <div class="learn-sheet">
     <button class="overlay-close" onclick="closeLearn()">×</button>
-    <div class="learn-head"><span class="learn-title">Apprendre · <b id="learnDone">0</b>/<span id="learnTotal">78</span></span><span class="learn-hits"><span id="learnHits">0</span> ✓</span></div>
+    <div class="learn-head"><span class="learn-title">Apprendre</span><span class="learn-count"><b id="learnDone">0</b>/<span id="learnTotal">78</span> étudiées</span><span class="learn-hits"><b id="learnHits">0</b> bonnes</span></div>
     <div class="learn-bar"><i id="learnBar"></i></div>
     <div class="learn-stage" id="learnStage"><div class="learn-card"><img id="learnImg" alt="Lame à identifier"></div></div>
     <div class="learn-dock" id="learnDock">
@@ -601,7 +601,7 @@ function setLearnMode(mode){
 function openLearn(){
   const lv=learnLvls();
   const q=learnShuffle(learnDeck().map(x=>({...x,lvl:lv[x.c.id]||0}))).sort((a,b)=>a.lvl-b.lvl);
-  LEARN={queue:q,total:q.length,hits:0,missed:{},cur:null,curOpts:[],answered:false};
+  LEARN={queue:q,total:q.length,hits:0,missed:{},seen:{},cur:null,curOpts:[],answered:false};
   document.getElementById('learnTotal').textContent=LEARN.total;
   const stage=document.getElementById('learnStage'),end=document.getElementById('learnEnd'),dock=document.getElementById('learnDock');
   stage.style.display='';dock.style.display='';end.classList.remove('show');
@@ -610,7 +610,7 @@ function openLearn(){
   learnNext();
 }
 function closeLearn(){document.getElementById('learn').classList.remove('open');document.body.style.overflow='';LEARN=null}
-function learnProgress(){const d=LEARN.total-LEARN.queue.length;document.getElementById('learnDone').textContent=d;document.getElementById('learnHits').textContent=LEARN.hits;document.getElementById('learnBar').style.width=(100*d/LEARN.total)+'%'}
+function learnProgress(){const studied=Object.keys(LEARN.seen).length;document.getElementById('learnDone').textContent=studied;document.getElementById('learnHits').textContent=LEARN.hits;document.getElementById('learnBar').style.width=(100*studied/LEARN.total)+'%'}
 function learnNext(){
   if(!LEARN)return;
   const stage=document.getElementById('learnStage'),end=document.getElementById('learnEnd'),dock=document.getElementById('learnDock');
@@ -643,7 +643,7 @@ function learnAnswer(i){
     if(ok){b.style.display=isRight?'':'none';if(isRight)b.classList.add('right')}
     else{if(isRight)b.classList.add('right');else if(j===i){b.classList.add('wrong')}else b.style.display='none'}
   });
-  const lv=learnLvls();
+  const lv=learnLvls();LEARN.seen[cur.c.id]=true;
   LEARN.queue.shift();
   if(ok){LEARN.hits++;lv[cur.c.id]=Math.min(5,(lv[cur.c.id]||0)+1)}
   else{LEARN.missed[cur.c.id]={c:cur.c,answer:cur.answer};lv[cur.c.id]=Math.max(0,(lv[cur.c.id]||0)-1);LEARN.queue.splice(Math.min(LEARN.queue.length,4),0,cur)}

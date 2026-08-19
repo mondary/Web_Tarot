@@ -6,7 +6,7 @@ Toutes les notes de release du projet Web Tarot. Le format de version suit `vYYY
 
 ## TODO — Roadmap
 
-Statut : `2026.08.22` (V9 - toggle mots-clés)
+Statut : `2026.08.23` (V9 - apprentissage et mobile)
 
 ### Phase 1 — Fondations ✅
 - [x] Interface V2 unifiée (carousel d'accueil + grille par famille + vue détail)
@@ -33,6 +33,11 @@ Statut : `2026.08.22` (V9 - toggle mots-clés)
 ---
 
 ## Releases
+
+### [2026.08.23] - 2026-08-19
+#### Changed
+- **Mode apprentissage** : compteurs séparés pour les cartes distinctes étudiées et les bonnes réponses ; la barre suit désormais les cartes étudiées.
+- **Mobile** : numéro de version masqué afin d'éviter son chevauchement avec la navigation.
 
 ### [2026.08.22] - 2026-08-19
 #### Fixed
