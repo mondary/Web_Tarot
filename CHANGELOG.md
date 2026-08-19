@@ -6,7 +6,7 @@ Toutes les notes de release du projet Web Tarot. Le format de version suit `vYYY
 
 ## TODO — Roadmap
 
-Statut : `2026.08.23` (V9 - apprentissage et mobile)
+Statut : `2026.08.24` (V9 - navigation animée)
 
 ### Phase 1 — Fondations ✅
 - [x] Interface V2 unifiée (carousel d'accueil + grille par famille + vue détail)
@@ -33,6 +33,13 @@ Statut : `2026.08.23` (V9 - apprentissage et mobile)
 ---
 
 ## Releases
+
+### [2026.08.24] - 2026-08-19
+#### Added
+- **Navigation animée des fiches** : à chaque navigation précédente/suivante, la nouvelle lame glisse depuis la gauche ou la droite ; fonctionne au clavier, au swipe mobile et avec les liens de navigation.
+
+#### Changed
+- **Mots-clés distinctifs** : As de Coupes (« Ouverture du cœur ») et Roi d'Épées (« Arbitrage ») précisés pour mieux distinguer les deux lames.
 
 ### [2026.08.23] - 2026-08-19
 #### Changed

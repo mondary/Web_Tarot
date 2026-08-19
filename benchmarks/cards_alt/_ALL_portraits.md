@@ -593,7 +593,7 @@ Contrairement à la Mort, ce n'est pas seulement quelque chose qui finit : quelq
 🏆 AS DE COUPES
 🧠 Idée centrale : Une émotion naît en moi
 💭 Ce qui se passe réellement : Un sentiment nouveau apparaît et commence à m'envahir : amour, affection, joie, ouverture émotionnelle. C'est la naissance brute du sentiment, avant même de savoir ce que je vais en faire.
-🔑 Mot-clé : ÉMOTION
+🔑 Mot-clé : OUVERTURE DU CŒUR
 🖼️ Une main surgit des nuages et offre une coupe → quelque chose de nouveau apparaît. La coupe déborde d'eau → le sentiment naît et ne demande qu'à s'exprimer.
 ✨ « Je sens quelque chose naître en moi. »
 
@@ -839,7 +839,7 @@ Contrairement à la Mort, ce n'est pas seulement quelque chose qui finit : quelq
 ⚔️ ROI D'ÉPÉES
 🧠 Idée centrale : Je tranche avec raison
 💭 Ce qui se passe réellement : Les faits sont établis et j'utilise mon intelligence, mon expérience et mon impartialité pour prendre une décision et fixer une direction. Contrairement à la Reine qui discerne, le Roi statue.
-🔑 Mot-clé : JUGEMENT
+🔑 Mot-clé : ARBITRAGE
 🖼️ Il est frontal et installé sur son trône → autorité. Il ne tend pas la main comme la Reine : il est en position de décider. Son épée dressée devient l'instrument de son autorité rationnelle.
 ✨ « J'ai les faits. Maintenant, je tranche. »
 

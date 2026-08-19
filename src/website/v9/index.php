@@ -84,7 +84,7 @@ $assocsJson = json_encode($assocsMap, JSON_UNESCAPED_UNICODE | JSON_HEX_TAG | JS
 $baseJson = json_encode($base, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
 $portraits = json_decode((string) @file_get_contents(__DIR__ . '/portraits.json'), true) ?: [];
 $portraitsJson = json_encode($portraits, JSON_UNESCAPED_UNICODE);
-$ver = '2026.08.23';
+$ver = '2026.08.24';
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -198,6 +198,10 @@ body.kw .mini:hover .kw-overlay,body.kw .mini:focus-visible .kw-overlay{opacity:
 /* ===== DETAIL ===== */
 .d-stage{position:fixed;inset:0;z-index:900;background:var(--bg);overflow-y:auto;overflow-x:hidden;display:none}
 .d-stage.open{display:block}
+.d-stage.slide-next .d-hero,.d-stage.slide-next .d-panel,.d-stage.slide-next .d-loop{animation:detail-next .34s var(--ease)}
+.d-stage.slide-prev .d-hero,.d-stage.slide-prev .d-panel,.d-stage.slide-prev .d-loop{animation:detail-prev .34s var(--ease)}
+@keyframes detail-next{from{opacity:0;transform:translateX(9vw)}to{opacity:1;transform:translateX(0)}}
+@keyframes detail-prev{from{opacity:0;transform:translateX(-9vw)}to{opacity:1;transform:translateX(0)}}
 .back-btn{position:fixed;top:1.2rem;left:1.5rem;z-index:1650;font-family:"DM Mono",monospace;font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);cursor:pointer;background:rgba(10,9,7,.7);backdrop-filter:blur(8px);padding:.5rem .9rem;border-radius:40px;border:1px solid var(--line);transition:.3s}
 .back-btn:hover{color:var(--ac);border-color:var(--ac)}
 body:has(.d-stage.open) .brand{opacity:0;pointer-events:none}
@@ -410,7 +414,7 @@ body:has(.d-stage.open) .brand{opacity:0;pointer-events:none}
 <script>
 const B=<?= $baseJson ?>,CARDS=<?= $cardsJson ?>,FAMILIES=<?= $familiesJson ?>,ES_MAP=<?= $esJson ?>,ASSOCS=<?= $assocsJson ?>,PORTRAITS=<?= $portraitsJson ?>,IMG_MAP={};
 for(const c of CARDS) IMG_MAP[c.id]=B+'/index.php?img='+encodeURIComponent(c.id+'.jpg')+'&v='+<?= (string)@filemtime(__DIR__.'/vault.sqlite') ?>;
-let currentIdx=-1, searchState={fam:'',q:'',selIdx:0};
+let currentIdx=-1,detailSlideTimer=0,searchState={fam:'',q:'',selIdx:0};
 
 const PICTOS={
  amour:'<svg viewBox="0 0 24 24"><path d="M20.8 4.8a5.5 5.5 0 0 0-7.8 0L12 5.9l-1.1-1.1a5.5 5.5 0 0 0-7.8 7.8L12 21l8.9-8.4a5.5 5.5 0 0 0-.1-7.8Z"/></svg>',
@@ -437,8 +441,8 @@ if(localStorage.getItem('tarotKw')==='1')toggleKw();
 
 const DOMAINS=[{kw:'amour',label:'Amour'},{kw:'travail',label:'Travail'},{kw:'finance',label:'Finances'},{kw:'guidance',label:'Guidance'}];
 
-function openDetail(sort){
-  const i=CARDS.findIndex(c=>c.sort===sort);if(i<0)return;currentIdx=i;
+function openDetail(sort,dir=0){
+  const i=CARDS.findIndex(c=>c.sort===sort);if(i<0)return;const detail=document.getElementById('detail'),wasOpen=detail.classList.contains('open');currentIdx=i;
   const c=CARDS[i],f=fam(c.fam),es=ES_MAP[c.id]||{},inFam=CARDS.filter(x=>x.fam===c.fam),fi=inFam.findIndex(x=>x.id===c.id);
   const num=String(i+1).padStart(2,'0'),response=String(es.rep||'').trim().toUpperCase(),answer=['OUI','NON','PEUT-ÊTRE','PAS ENCORE'].includes(response)?response:'';
   const p=parsePortrait(PORTRAITS[c.id]||'');
@@ -492,9 +496,9 @@ function openDetail(sort){
   if(assocs){const n=(ASSOCS[c.id]||[]).length;const el=document.getElementById('assocsCount');if(el)el.textContent=n+' combinaison'+(n>1?'s':'')}
 
   const prev=CARDS[(i-1+CARDS.length)%CARDS.length],next=CARDS[(i+1)%CARDS.length];
-  document.getElementById('loopBar').innerHTML='<a onclick="openDetail('+prev.sort+')">← '+prev.name+'</a><span class="pos"><b>'+num+'</b> / '+CARDS.length+'</span><a onclick="openDetail('+next.sort+')">'+next.name+' →</a>';
-  document.getElementById('detail').classList.add('open');
-  document.getElementById('detail').scrollTop=0;
+  document.getElementById('loopBar').innerHTML='<a onclick="openDetail('+prev.sort+',-1)">← '+prev.name+'</a><span class="pos"><b>'+num+'</b> / '+CARDS.length+'</span><a onclick="openDetail('+next.sort+',1)">'+next.name+' →</a>';
+  detail.classList.add('open');detail.scrollTop=0;
+  if(dir&&wasOpen){clearTimeout(detailSlideTimer);detail.classList.remove('slide-next','slide-prev');void detail.offsetWidth;detail.classList.add(dir>0?'slide-next':'slide-prev');detailSlideTimer=setTimeout(()=>detail.classList.remove('slide-next','slide-prev'),340)}
 }
 function closeDetail(){document.getElementById('detail').classList.remove('open');currentIdx=-1}
 
@@ -683,7 +687,7 @@ document.getElementById('nuances').onclick=e=>{if(e.target.id==='nuances')closeN
 el.addEventListener('touchstart',e=>{const t=e.changedTouches[0];sx=t.clientX;sy=t.clientY;st=Date.now()},{passive:true});
 el.addEventListener('touchend',e=>{if(currentIdx<0)return;const t=e.changedTouches[0],dx=t.clientX-sx,dy=t.clientY-sy;
 if(e.target.closest('.d-thumbs,.d-assocs-toggle,a,button'))return;
-if(Math.abs(dx)>60&&Math.abs(dx)>Math.abs(dy)*1.5&&Date.now()-st<800){e.preventDefault();openDetail(CARDS[(currentIdx+(dx<0?1:-1)+CARDS.length)%CARDS.length].sort)}},{passive:false});})();
+if(Math.abs(dx)>60&&Math.abs(dx)>Math.abs(dy)*1.5&&Date.now()-st<800){e.preventDefault();openDetail(CARDS[(currentIdx+(dx<0?1:-1)+CARDS.length)%CARDS.length].sort,dx<0?1:-1)}},{passive:false});})();
 
 document.addEventListener('keydown',e=>{if(e.metaKey||e.ctrlKey||e.altKey)return;const tag=e.target?.tagName;
   const sg=document.getElementById('search').classList.contains('open');
@@ -693,7 +697,7 @@ document.addEventListener('keydown',e=>{if(e.metaKey||e.ctrlKey||e.altKey)return
   if(tag&&/INPUT|TEXTAREA|SELECT/i.test(tag))return;
   if(sg){if(e.key==='ArrowDown'){searchState.selIdx++;searchRender()}if(e.key==='ArrowUp'){searchState.selIdx=Math.max(0,searchState.selIdx-1);searchRender()}if(e.key==='Enter'){document.querySelector('#sGrid .mini.sel')?.click()}return}
   if(e.key.length===1&&/^[\p{L}\p{N}]$/u.test(e.key)){e.preventDefault();openSearch(e.key);return}
-  if(currentIdx>=0){if(e.key==='ArrowLeft')openDetail(CARDS[(currentIdx-1+CARDS.length)%CARDS.length].sort);if(e.key==='ArrowRight')openDetail(CARDS[(currentIdx+1)%CARDS.length].sort)}
+  if(currentIdx>=0){if(e.key==='ArrowLeft')openDetail(CARDS[(currentIdx-1+CARDS.length)%CARDS.length].sort,-1);if(e.key==='ArrowRight')openDetail(CARDS[(currentIdx+1)%CARDS.length].sort,1)}
 });
 
 renderGrid();renderChips();requestAnimationFrame(()=>document.querySelector('.seuil-title').classList.add('revealed'));
