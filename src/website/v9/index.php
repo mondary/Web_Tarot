@@ -146,10 +146,10 @@ a{color:inherit}
 .mini{display:block;width:100%;padding:0;color:inherit;font:inherit;text-align:left;cursor:pointer;border-radius:.95rem;overflow:hidden;background:var(--mat);border:1px solid rgba(255,255,255,.35);box-shadow:0 10px 28px rgba(0,0,0,.38);transition:transform .5s var(--spring),box-shadow .5s var(--spring),border-color .35s var(--ease)}
 .mini .ph{display:block;aspect-ratio:2/3;overflow:hidden;background:var(--mat);padding:.65rem .65rem .35rem;position:relative}
 /* mots-clés au survol (desktop, activable) — pill flottante bas-gauche */
-#kwFab{position:fixed;left:1.5rem;bottom:1.4rem;z-index:1600;display:inline-flex;align-items:center;gap:.5rem;background:rgba(10,9,7,.85);backdrop-filter:blur(8px);border:1px solid var(--line);color:var(--muted);font-family:"DM Mono",monospace;font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;padding:.62rem 1rem;border-radius:40px;cursor:pointer;transition:.3s var(--ease)}
+#kwFab{position:fixed;left:1.5rem;bottom:1.4rem;z-index:1600;display:inline-flex;align-items:center;gap:.5rem;background:rgba(10,9,7,.85);backdrop-filter:blur(8px);border:1px solid var(--line);border-left:3px solid var(--line);color:var(--muted);font-family:"DM Mono",monospace;font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;padding:.62rem 1rem;border-radius:3px;cursor:pointer;transition:.3s var(--ease)}
 #kwFab svg{height:15px;width:auto;fill:currentColor}
-#kwFab:hover{color:var(--ac);border-color:var(--ac)}
-#kwFab.on{color:var(--ac);border-color:var(--ac);background:var(--ac-dim)}
+#kwFab:hover{color:var(--ac);border-color:var(--ac);border-left-color:var(--ac)}
+#kwFab.on{color:var(--ac);border-color:var(--ac);border-left-color:var(--ac);background:var(--ac-dim);box-shadow:0 0 24px var(--ac-dim)}
 @media(hover:none){#kwFab{display:none}}
 body.kw .mini .ph[data-kw]:not([data-kw=""])::after{content:attr(data-kw);position:absolute;inset:0;display:flex;align-items:center;justify-content:center;text-align:center;padding:.5rem;font-family:"DM Mono",monospace;font-size:1.18rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--ac);text-shadow:0 2px 14px rgba(0,0,0,.9);background:linear-gradient(180deg,rgba(10,9,7,.5),rgba(10,9,7,.88) 42%,rgba(10,9,7,.88) 58%,rgba(10,9,7,.5));border-top:1px solid rgba(201,162,39,.55);border-bottom:1px solid rgba(201,162,39,.55);opacity:0;transform:scale(.92);transition:.25s var(--ease);pointer-events:none;white-space:normal}
 body.kw .mini:hover .ph[data-kw]:not([data-kw=""])::after,body.kw .mini:focus-visible .ph[data-kw]:not([data-kw=""])::after{opacity:1;transform:scale(1)}
