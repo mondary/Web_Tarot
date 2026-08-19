@@ -84,6 +84,7 @@ $assocsJson = json_encode($assocsMap, JSON_UNESCAPED_UNICODE | JSON_HEX_TAG | JS
 $baseJson = json_encode($base, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
 $portraits = json_decode((string) @file_get_contents(__DIR__ . '/portraits.json'), true) ?: [];
 $portraitsJson = json_encode($portraits, JSON_UNESCAPED_UNICODE);
+$ver = '2026.08.19';
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -114,7 +115,7 @@ a{color:inherit}
 
 /* brand + topnav */
 .brand{position:fixed;top:1.2rem;left:1.5rem;z-index:1600;font-family:"DM Mono",monospace;font-size:.7rem;letter-spacing:.22em;text-transform:uppercase;color:var(--muted)}
-.brand b{color:var(--fg);font-weight:500} .brand em{font-style:italic;color:var(--ac);letter-spacing:.04em}
+.brand b{color:var(--fg);font-weight:500} .brand em{font-style:italic;color:var(--ac);letter-spacing:.04em} .brand .v{color:var(--muted);opacity:.7;letter-spacing:.08em}
 .topnav{position:fixed;top:1rem;right:1.5rem;z-index:1600;display:flex;gap:.4rem}
 .topnav button{display:inline-flex;align-items:center;gap:.4rem;background:rgba(10,9,7,.85);backdrop-filter:blur(8px);border:1px solid var(--line);color:var(--muted);font-family:"DM Mono",monospace;font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;padding:.5rem .8rem;border-radius:40px;cursor:pointer;transition:.3s var(--ease)}
 .topnav button svg{height:16px;width:auto;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
@@ -144,11 +145,14 @@ a{color:inherit}
 .full-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:1.4rem;align-items:start}
 .mini{display:block;width:100%;padding:0;color:inherit;font:inherit;text-align:left;cursor:pointer;border-radius:.95rem;overflow:hidden;background:var(--mat);border:1px solid rgba(255,255,255,.35);box-shadow:0 10px 28px rgba(0,0,0,.38);transition:transform .5s var(--spring),box-shadow .5s var(--spring),border-color .35s var(--ease)}
 .mini .ph{display:block;aspect-ratio:2/3;overflow:hidden;background:var(--mat);padding:.65rem .65rem .35rem;position:relative}
-/* mots-clés au survol (desktop, activable) */
-.topnav button.on{color:var(--ac);border-color:var(--ac);background:var(--ac-dim)}
-@media(hover:none){#kwToggle{display:none}}
-body.kw .mini .ph::after{content:attr(data-kw);position:absolute;left:.45rem;right:.45rem;bottom:.45rem;font-family:"DM Mono",monospace;font-size:.56rem;letter-spacing:.1em;text-transform:uppercase;text-align:center;color:var(--ac);background:rgba(10,9,7,.88);border:1px solid rgba(201,162,39,.45);border-radius:6px;padding:.32rem .4rem;opacity:0;transform:translateY(4px);transition:.25s var(--ease);pointer-events:none;white-space:normal}
-body.kw .mini:hover .ph::after,body.kw .mini:focus-visible .ph::after{opacity:1;transform:translateY(0)}
+/* mots-clés au survol (desktop, activable) — pill flottante bas-gauche */
+#kwFab{position:fixed;left:1.5rem;bottom:1.4rem;z-index:1600;display:inline-flex;align-items:center;gap:.5rem;background:rgba(10,9,7,.85);backdrop-filter:blur(8px);border:1px solid var(--line);color:var(--muted);font-family:"DM Mono",monospace;font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;padding:.62rem 1rem;border-radius:40px;cursor:pointer;transition:.3s var(--ease)}
+#kwFab svg{height:15px;width:auto;fill:currentColor}
+#kwFab:hover{color:var(--ac);border-color:var(--ac)}
+#kwFab.on{color:var(--ac);border-color:var(--ac);background:var(--ac-dim)}
+@media(hover:none){#kwFab{display:none}}
+body.kw .mini .ph[data-kw]:not([data-kw=""])::after{content:attr(data-kw);position:absolute;inset:0;display:flex;align-items:center;justify-content:center;text-align:center;padding:.5rem;font-family:"DM Mono",monospace;font-size:1.18rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--ac);text-shadow:0 2px 14px rgba(0,0,0,.9);background:linear-gradient(180deg,rgba(10,9,7,.5),rgba(10,9,7,.88) 42%,rgba(10,9,7,.88) 58%,rgba(10,9,7,.5));border-top:1px solid rgba(201,162,39,.55);border-bottom:1px solid rgba(201,162,39,.55);opacity:0;transform:scale(.92);transition:.25s var(--ease);pointer-events:none;white-space:normal}
+body.kw .mini:hover .ph[data-kw]:not([data-kw=""])::after,body.kw .mini:focus-visible .ph[data-kw]:not([data-kw=""])::after{opacity:1;transform:scale(1)}
 .mini .ph img{width:100%;height:100%;object-fit:contain;border-radius:.55rem;transition:transform .6s var(--ease)}
 .mini:hover{transform:translateY(-10px);border-color:var(--ac);box-shadow:0 18px 40px -12px rgba(0,0,0,.7),0 0 30px var(--ac-dim)}
 .mini:focus-visible{outline:2px solid var(--ac);outline-offset:2px}
@@ -339,14 +343,14 @@ body:has(.d-stage.open) .brand{opacity:0;pointer-events:none}
 <body>
 <div id="loader"><div class="pulse"></div></div>
 <div class="fx-grain"></div><div class="fx-vignette"></div>
-<div class="brand"><b>TAROT</b> <em>DIVINATOIRE</em></div>
+<div class="brand"><b>TAROT</b> <em>DIVINATOIRE</em><span class="v"> · v<?= $ver ?></span></div>
 <nav class="topnav">
   <button aria-label="Tirages" onclick="TarotSpreads&&TarotSpreads.open()"><svg viewBox="0 0 162 154" fill="currentColor"><path d="M41.3 12.5C16 18.4 13.9 19.2 10.5 23.2c-3.4 4.1-3.9 8.4-2 17.9 3 14.8 17.5 80.3 18.6 83.6.6 1.8 2.7 4.6 4.6 6.4l3.7 3.2 9.5-.8c16.9-1.3 17.3-1.2 38.1 6 28.4 9.9 35.9 10 43.3.3 5.3-6.9 28.7-72.8 28.7-80.7q0-8.5-7.5-11.7c-2.9-1.2-3.3-1.8-3.3-5.3q-.2-8.3-6.7-11.5a81 81 0 0 0-19-4.6c-1.2 0-2.7-1.3-3.7-3-2.5-4.5-7.3-6-21.5-6.9-12.2-.7-12.6-.8-14.6-3.6a15 15 0 0 0-11.9-5.4c-1.8.1-13.3 2.5-25.5 5.4m32.8 2.6c1 1.3 2 3.5 2.3 4.9 10.5 48.8 18.6 90.1 18.1 92.7a10 10 0 0 1-3.1 5.2C87.5 121 51.2 129 41.3 129c-6.7 0-8.5-2.5-11.7-16.1C21.4 78 12 34.4 12 31.2c0-1.3 1.2-3.6 2.8-5.1 2.3-2.3 5.5-3.4 20.2-6.9l23.5-5.7c7.9-1.9 13.4-1.3 15.6 1.6m22.6 6.3c10.5.6 12.8 1.7 14.4 6.4 1.1 3.5.1 31.1-2.7 72.5-1.5 22.5-2.4 26.5-6.3 28.7a71 71 0 0 1-22.2.3l-6.4-.6 9.5-2.3c8.1-2 10-2.9 12.7-5.8 5.6-6 5.5-6.6-4.6-55.1L82 20.7c0-.3 1.2-.5 2.8-.2zm29.7 11.1c13.6 2.9 14.7 5 11.1 22.4-2.8 13.5-14.1 58.7-17.5 70.1-3.3 10.9-8.5 13.8-20.5 11.1l-3-.7 3.6-.7c4.4-.9 8.4-3.9 10.4-7.7 1-1.9 2-10.1 3-25.7 1.7-26.2 3.5-59.8 3.5-66.1 0-4.8-.2-4.7 9.4-2.7"/></svg><span class="tl">Tirages</span></button>
   <button aria-label="Nuances" onclick="openNuances()"><svg viewBox="0 0 100 132" fill="currentColor"><path fill-rule="evenodd" d="M55.3 5.8C51.1 17.2 42.9 31.7 27.9 53.2 16.5 69.6 11.2 81.8 11.2 92.1c0 18.3 15.4 31.8 35.7 32.3 21 .5 38.2-12.8 38.2-33 0-11.2-5.7-24-16.2-39.9C60.9 39.6 57.7 24.4 55.3 5.8m-.1 16.7c-4.6 10.2-11.8 22.9-22.1 37.8-8.5 12.3-13 22.2-13 31 0 14.9 12.3 25.1 26.9 25.5 15.3.4 29.2-10.9 29.2-26.1 0-9.6-4.9-20.3-13.7-34-5.6-9.3-6.3-21.2-7.3-34.2M44 100a5.2 5.2 0 1 0 .1 0z"/></svg><span class="tl">Nuances</span></button>
   <button aria-label="Apprendre" onclick="openLearn()"><svg viewBox="0 0 576 512" aria-hidden="true"><path d="M288 0 0 144l288 144 236.1-118.1V352H576V144L288 0zm-184.4 266.2L96 416c80 42.7 304 42.7 384 0l-7.6-149.8L288 358.4 103.6 266.2z"/></svg><span class="tl">Apprendre</span></button>
   <button aria-label="Recherche" onclick="openSearch()"><svg viewBox="0 0 135 131" fill="currentColor"><path d="M39.8 8.9A47.5 47.5 0 0 0 7 54c0 13.1 4.3 23.5 13.4 32.5A46 46 0 0 0 54.1 100c11.4 0 21.4-3.6 31.3-11.4.8-.5 7.4 5.5 18.6 16.9 9.6 9.7 18.3 18 19.3 18.6 2.4 1.4 5.9-.7 5.5-3.2-.2-1.1-8.6-10.2-18.8-20.4L91.6 82l1.7-3a58 58 0 0 0 6.4-21.6 46.5 46.5 0 0 0-34.1-49 55 55 0 0 0-25.8.5m29.7 8.9a39 39 0 0 1 22.1 44.1c-6.4 30.8-42.2 41.4-65.7 19.4-18.2-17-13.6-48.8 9-62.1a37 37 0 0 1 34.6-1.4"/></svg><span class="tl">Recherche</span></button>
-  <button id="kwToggle" aria-pressed="false" aria-label="Mots-clés au survol" onclick="toggleKw()"><svg viewBox="0 0 24 24"><path d="M14.5 3a6.5 6.5 0 0 0-6.32 8.02L2.3 16.9a1 1 0 0 0-.3.7V21a1 1 0 0 0 1 1h2.5a1 1 0 0 0 1-1v-1.5H8a1 1 0 0 0 1-1v-1.5h1.5a1 1 0 0 0 .7-.3l.28-.28A6.5 6.5 0 1 0 14.5 3Zm2 6.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3Z"/></svg><span class="tl">Mots-clés</span></button>
 </nav>
+<button id="kwFab" aria-pressed="false" aria-label="Mots-clés au survol" onclick="toggleKw()"><svg viewBox="0 0 24 24"><path d="M14.5 3a6.5 6.5 0 0 0-6.32 8.02L2.3 16.9a1 1 0 0 0-.3.7V21a1 1 0 0 0 1 1h2.5a1 1 0 0 0 1-1v-1.5H8a1 1 0 0 0 1-1v-1.5h1.5a1 1 0 0 0 .7-.3l.28-.28A6.5 6.5 0 1 0 14.5 3Zm2 6.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3Z"/></svg>Mots-clés</button>
 
 <div id="landing">
   <div class="landing-head">
@@ -425,7 +429,7 @@ function parsePortrait(md){const o={key:'',idee:'',realite:''};if(!md)return o;f
 
 // mots-clés au survol (desktop) — toggle persistant
 const KW={};for(const c of CARDS){const p=parsePortrait(PORTRAITS[c.id]||'');if(p.key)KW[c.id]=p.key}
-function toggleKw(){const on=document.body.classList.toggle('kw');const b=document.getElementById('kwToggle');if(b)b.setAttribute('aria-pressed',String(on));try{localStorage.setItem('tarotKw',on?'1':'0')}catch(e){}}
+function toggleKw(){const on=document.body.classList.toggle('kw');const b=document.getElementById('kwFab');if(b){b.setAttribute('aria-pressed',String(on));b.classList.toggle('on',on)}try{localStorage.setItem('tarotKw',on?'1':'0')}catch(e){}}
 if(localStorage.getItem('tarotKw')==='1')toggleKw();
 
 const DOMAINS=[{kw:'amour',label:'Amour'},{kw:'travail',label:'Travail'},{kw:'finance',label:'Finances'},{kw:'guidance',label:'Guidance'}];
