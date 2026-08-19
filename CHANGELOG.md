@@ -6,7 +6,7 @@ Toutes les notes de release du projet Web Tarot. Le format de version suit `vYYY
 
 ## TODO — Roadmap
 
-Statut : `2026.08.27` (V9 - apprentissage)
+Statut : `2026.08.28` (V9 - ordre des familles)
 
 ### Phase 1 — Fondations ✅
 - [x] Interface V2 unifiée (carousel d'accueil + grille par famille + vue détail)
@@ -33,6 +33,10 @@ Statut : `2026.08.27` (V9 - apprentissage)
 ---
 
 ## Releases
+
+### [2026.08.28] - 2026-08-19
+#### Changed
+- **Ordre des familles** : affichage et navigation réordonnés — Arcanes Majeurs, Épées, Coupes, Bâtons, Deniers (vault v9 recâblé, numérotation globale suivie)
 
 ### [2026.08.27] - 2026-08-19
 #### Fixed
