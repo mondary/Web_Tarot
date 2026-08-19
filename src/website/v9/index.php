@@ -143,7 +143,12 @@ a{color:inherit}
 .chip:hover{color:var(--fg);border-color:var(--ac)} .chip.active{color:var(--fg);border-color:var(--ac);background:var(--ac-dim)}
 .full-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:1.4rem;align-items:start}
 .mini{display:block;width:100%;padding:0;color:inherit;font:inherit;text-align:left;cursor:pointer;border-radius:.95rem;overflow:hidden;background:var(--mat);border:1px solid rgba(255,255,255,.35);box-shadow:0 10px 28px rgba(0,0,0,.38);transition:transform .5s var(--spring),box-shadow .5s var(--spring),border-color .35s var(--ease)}
-.mini .ph{display:block;aspect-ratio:2/3;overflow:hidden;background:var(--mat);padding:.65rem .65rem .35rem}
+.mini .ph{display:block;aspect-ratio:2/3;overflow:hidden;background:var(--mat);padding:.65rem .65rem .35rem;position:relative}
+/* mots-clés au survol (desktop, activable) */
+.topnav button.on{color:var(--ac);border-color:var(--ac);background:var(--ac-dim)}
+@media(hover:none){#kwToggle{display:none}}
+body.kw .mini .ph::after{content:attr(data-kw);position:absolute;left:.45rem;right:.45rem;bottom:.45rem;font-family:"DM Mono",monospace;font-size:.56rem;letter-spacing:.1em;text-transform:uppercase;text-align:center;color:var(--ac);background:rgba(10,9,7,.88);border:1px solid rgba(201,162,39,.45);border-radius:6px;padding:.32rem .4rem;opacity:0;transform:translateY(4px);transition:.25s var(--ease);pointer-events:none;white-space:normal}
+body.kw .mini:hover .ph::after,body.kw .mini:focus-visible .ph::after{opacity:1;transform:translateY(0)}
 .mini .ph img{width:100%;height:100%;object-fit:contain;border-radius:.55rem;transition:transform .6s var(--ease)}
 .mini:hover{transform:translateY(-10px);border-color:var(--ac);box-shadow:0 18px 40px -12px rgba(0,0,0,.7),0 0 30px var(--ac-dim)}
 .mini:focus-visible{outline:2px solid var(--ac);outline-offset:2px}
@@ -340,6 +345,7 @@ body:has(.d-stage.open) .brand{opacity:0;pointer-events:none}
   <button aria-label="Nuances" onclick="openNuances()"><svg viewBox="0 0 100 132" fill="currentColor"><path fill-rule="evenodd" d="M55.3 5.8C51.1 17.2 42.9 31.7 27.9 53.2 16.5 69.6 11.2 81.8 11.2 92.1c0 18.3 15.4 31.8 35.7 32.3 21 .5 38.2-12.8 38.2-33 0-11.2-5.7-24-16.2-39.9C60.9 39.6 57.7 24.4 55.3 5.8m-.1 16.7c-4.6 10.2-11.8 22.9-22.1 37.8-8.5 12.3-13 22.2-13 31 0 14.9 12.3 25.1 26.9 25.5 15.3.4 29.2-10.9 29.2-26.1 0-9.6-4.9-20.3-13.7-34-5.6-9.3-6.3-21.2-7.3-34.2M44 100a5.2 5.2 0 1 0 .1 0z"/></svg><span class="tl">Nuances</span></button>
   <button aria-label="Apprendre" onclick="openLearn()"><svg viewBox="0 0 576 512" aria-hidden="true"><path d="M288 0 0 144l288 144 236.1-118.1V352H576V144L288 0zm-184.4 266.2L96 416c80 42.7 304 42.7 384 0l-7.6-149.8L288 358.4 103.6 266.2z"/></svg><span class="tl">Apprendre</span></button>
   <button aria-label="Recherche" onclick="openSearch()"><svg viewBox="0 0 135 131" fill="currentColor"><path d="M39.8 8.9A47.5 47.5 0 0 0 7 54c0 13.1 4.3 23.5 13.4 32.5A46 46 0 0 0 54.1 100c11.4 0 21.4-3.6 31.3-11.4.8-.5 7.4 5.5 18.6 16.9 9.6 9.7 18.3 18 19.3 18.6 2.4 1.4 5.9-.7 5.5-3.2-.2-1.1-8.6-10.2-18.8-20.4L91.6 82l1.7-3a58 58 0 0 0 6.4-21.6 46.5 46.5 0 0 0-34.1-49 55 55 0 0 0-25.8.5m29.7 8.9a39 39 0 0 1 22.1 44.1c-6.4 30.8-42.2 41.4-65.7 19.4-18.2-17-13.6-48.8 9-62.1a37 37 0 0 1 34.6-1.4"/></svg><span class="tl">Recherche</span></button>
+  <button id="kwToggle" aria-pressed="false" aria-label="Mots-clés au survol" onclick="toggleKw()"><svg viewBox="0 0 24 24"><path d="M14.5 3a6.5 6.5 0 0 0-6.32 8.02L2.3 16.9a1 1 0 0 0-.3.7V21a1 1 0 0 0 1 1h2.5a1 1 0 0 0 1-1v-1.5H8a1 1 0 0 0 1-1v-1.5h1.5a1 1 0 0 0 .7-.3l.28-.28A6.5 6.5 0 1 0 14.5 3Zm2 6.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3Z"/></svg><span class="tl">Mots-clés</span></button>
 </nav>
 
 <div id="landing">
@@ -416,6 +422,11 @@ function secParas(s){return s?Array.from(s.querySelectorAll('p')).map(p=>'<p>'+p
 function secText(s){return s?(s.querySelector('p')?.textContent||''):''}
 
 function parsePortrait(md){const o={key:'',idee:'',realite:''};if(!md)return o;for(const line of md.split('\n').map(l=>l.trim())){if(!line)continue;if(line.startsWith('🧠'))o.idee=line.replace(/^🧠\s*Idée centrale\s*:\s*/i,'').replace(/^🧠\s*/,'').trim();else if(line.startsWith('💭'))o.realite=line.replace(/^💭\s*Ce qui se passe réellement\s*:\s*/i,'').replace(/^💭\s*/,'').trim();else if(line.startsWith('🔑'))o.key=line.replace(/^🔑\s*Mot-clé(?: distinctif)?\s*:\s*/i,'').replace(/^🔑\s*/,'').trim()}return o}
+
+// mots-clés au survol (desktop) — toggle persistant
+const KW={};for(const c of CARDS){const p=parsePortrait(PORTRAITS[c.id]||'');if(p.key)KW[c.id]=p.key}
+function toggleKw(){const on=document.body.classList.toggle('kw');const b=document.getElementById('kwToggle');if(b)b.setAttribute('aria-pressed',String(on));try{localStorage.setItem('tarotKw',on?'1':'0')}catch(e){}}
+if(localStorage.getItem('tarotKw')==='1')toggleKw();
 
 const DOMAINS=[{kw:'amour',label:'Amour'},{kw:'travail',label:'Travail'},{kw:'finance',label:'Finances'},{kw:'guidance',label:'Guidance'}];
 
@@ -642,11 +653,11 @@ function learnReset(){learnSave({});openLearn()}
 // Grille principale : les 78 lames sont visibles sans saisie.
 function familyIntro(f,n){const glyph=f.key&&f.key!=='majors'?'<img class="family-glyph" src="'+B+'/index.php?svg='+f.key+'" alt="">':'<span class="family-glyph">'+(f.sym||'✦')+'</span>';return '<button type="button" class="mini family-intro" style="--family:'+(f.ac||'#c9a227')+'" onclick="openFamily(\''+f.key+'\')"><span class="ph">'+glyph+'<span class="family-name">'+f.name+'</span><span class="family-element">'+(f.el||'')+'</span></span><span class="cap"><span class="nm">Famille</span><span class="no">00</span></span></button>'}
 function renderGrid(){let h='',last=null;for(const c of CARDS){if(c.fam!==last){const f=fam(c.fam),group=CARDS.filter(x=>x.fam===c.fam);h+='<div class="fam-card"><span class="g">'+(f.sym||'✦')+'</span><span class="fn">'+f.name+'</span><span class="fc">'+group.length+' lames</span></div>'+familyIntro(f,group.length);last=c.fam}h+=mini(c)}document.getElementById('grid').innerHTML=h}
-function mini(c){return '<button type="button" class="mini" onclick="openDetail('+c.sort+')"><span class="ph"><img src="'+IMG_MAP[c.id]+'" alt="'+c.name+'" loading="lazy"></span><span class="cap"><span class="nm">'+c.name+'</span><span class="no">'+String(c.sort+1).padStart(2,'0')+'</span></span></button>'}
+function mini(c){return '<button type="button" class="mini" onclick="openDetail('+c.sort+')"><span class="ph" data-kw="'+escapeHtml(KW[c.id]||'')+'"><img src="'+IMG_MAP[c.id]+'" alt="'+c.name+'" loading="lazy"></span><span class="cap"><span class="nm">'+c.name+'</span><span class="no">'+String(c.sort+1).padStart(2,'0')+'</span></span></button>'}
 
 // Recherche
 function syncQuery(){const q=document.getElementById('sQuery');q.innerHTML=searchState.q?'<span>'+escapeHtml(searchState.q)+'</span>':'<span class="ph">Tapez une lame…</span>'}
-function searchRender(){const out=CARDS.filter(c=>(!searchState.fam||c.fam===searchState.fam)&&(!searchState.q||c.name.toLowerCase().includes(searchState.q)||String(c.num).padStart(2,'0').includes(searchState.q)));document.getElementById('sGrid').innerHTML=out.length?out.map((c,i)=>'<div class="mini '+(i===searchState.selIdx?'sel':'')+'" onclick="openDetail('+c.sort+');closeSearch()"><div class="ph"><img src="'+IMG_MAP[c.id]+'"></div><div class="cap"><span class="nm">'+c.name+'</span><span class="no">'+String(c.sort+1).padStart(2,'0')+'</span></div></div>').join(''):'<div class="s-empty">Aucune lame</div>'}
+function searchRender(){const out=CARDS.filter(c=>(!searchState.fam||c.fam===searchState.fam)&&(!searchState.q||c.name.toLowerCase().includes(searchState.q)||String(c.num).padStart(2,'0').includes(searchState.q)));document.getElementById('sGrid').innerHTML=out.length?out.map((c,i)=>'<div class="mini '+(i===searchState.selIdx?'sel':'')+'" onclick="openDetail('+c.sort+');closeSearch()"><div class="ph" data-kw="'+escapeHtml(KW[c.id]||'')+'"><img src="'+IMG_MAP[c.id]+'"></div><div class="cap"><span class="nm">'+c.name+'</span><span class="no">'+String(c.sort+1).padStart(2,'0')+'</span></div></div>').join(''):'<div class="s-empty">Aucune lame</div>'}
 function openSearch(initial=''){if(initial){searchState.q=initial.toLowerCase();searchState.selIdx=0;document.getElementById('sInput').value=initial}document.getElementById('search').classList.add('open');document.body.style.overflow='hidden';syncQuery();renderChips();searchRender();setTimeout(()=>document.getElementById('sInput').focus(),100)}
 function closeSearch(){document.getElementById('search').classList.remove('open');document.body.style.overflow='';document.getElementById('sInput').value='';searchState={fam:'',q:'',selIdx:0};syncQuery();renderChips()}
 function setFam(f){searchState.fam=f;searchState.selIdx=0;renderChips();searchRender()}
