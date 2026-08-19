@@ -84,7 +84,7 @@ $assocsJson = json_encode($assocsMap, JSON_UNESCAPED_UNICODE | JSON_HEX_TAG | JS
 $baseJson = json_encode($base, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
 $portraits = json_decode((string) @file_get_contents(__DIR__ . '/portraits.json'), true) ?: [];
 $portraitsJson = json_encode($portraits, JSON_UNESCAPED_UNICODE);
-$ver = '2026.08.26';
+$ver = '2026.08.27';
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -620,7 +620,7 @@ function learnNext(){
   const stage=document.getElementById('learnStage'),end=document.getElementById('learnEnd'),dock=document.getElementById('learnDock');
   if(!LEARN.queue.length){
     const lv=learnLvls(),mastered=learnDeck().filter(x=>(lv[x.c.id]||0)>=3).length,miss=Object.values(LEARN.missed);
-    stage.style.display='none';dock.style.display='none';end.classList.add('show');
+    document.getElementById('learnDrawer').classList.remove('open');stage.style.display='none';dock.style.display='none';end.classList.add('show');
     end.innerHTML='<h3>Session terminée</h3><div class="score">'+LEARN.hits+' ✓ · '+miss.length+' ratée'+(miss.length>1?'s':'')+' · '+mastered+'/'+LEARN.total+' maîtrisées (niveau ≥ 3)</div>'
       +(miss.length?'<div class="missed"><b>À revoir :</b> '+miss.map(m=>escapeHtml(m.c.name)+' ('+escapeHtml(m.answer)+')').join(' · ')+'</div>':'')
       +'<button class="learn-next" onclick="openLearn()">Recommencer</button> <button class="learn-next" style="background:none;border-color:var(--line);color:var(--muted)" onclick="learnReset()">Réinitialiser la progression</button>';

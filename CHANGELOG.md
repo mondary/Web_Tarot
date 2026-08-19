@@ -6,7 +6,7 @@ Toutes les notes de release du projet Web Tarot. Le format de version suit `vYYY
 
 ## TODO — Roadmap
 
-Statut : `2026.08.26` (V9 - mots-clés affinés)
+Statut : `2026.08.27` (V9 - apprentissage)
 
 ### Phase 1 — Fondations ✅
 - [x] Interface V2 unifiée (carousel d'accueil + grille par famille + vue détail)
@@ -33,6 +33,10 @@ Statut : `2026.08.26` (V9 - mots-clés affinés)
 ---
 
 ## Releases
+
+### [2026.08.27] - 2026-08-19
+#### Fixed
+- **Fin de session d'apprentissage** : le drawer de correction est fermé avant l'affichage de l'écran « Session terminée ».
 
 ### [2026.08.26] - 2026-08-19
 #### Changed
