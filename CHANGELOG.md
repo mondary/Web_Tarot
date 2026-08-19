@@ -6,7 +6,7 @@ Toutes les notes de release du projet Web Tarot. Le format de version suit `vYYY
 
 ## TODO — Roadmap
 
-Statut : `2026.08.24` (V9 - navigation animée)
+Statut : `2026.08.25` (V9 - mots-clés affinés)
 
 ### Phase 1 — Fondations ✅
 - [x] Interface V2 unifiée (carousel d'accueil + grille par famille + vue détail)
@@ -33,6 +33,11 @@ Statut : `2026.08.24` (V9 - navigation animée)
 ---
 
 ## Releases
+
+### [2026.08.25] - 2026-08-19
+#### Changed
+- **As de Coupes** : mot-clé affiné de « Ouverture du cœur » à « Émotion naissante », fidèle à la naissance d'un sentiment décrite par la lame.
+- **Neuf de Deniers** : « Indépendance » devient « Aisance », qui souligne le confort acquis et la capacité à en profiter.
 
 ### [2026.08.24] - 2026-08-19
 #### Added

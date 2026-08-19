@@ -593,7 +593,7 @@ Contrairement à la Mort, ce n'est pas seulement quelque chose qui finit : quelq
 🏆 AS DE COUPES
 🧠 Idée centrale : Une émotion naît en moi
 💭 Ce qui se passe réellement : Un sentiment nouveau apparaît et commence à m'envahir : amour, affection, joie, ouverture émotionnelle. C'est la naissance brute du sentiment, avant même de savoir ce que je vais en faire.
-🔑 Mot-clé : OUVERTURE DU CŒUR
+🔑 Mot-clé : ÉMOTION NAISSANTE
 🖼️ Une main surgit des nuages et offre une coupe → quelque chose de nouveau apparaît. La coupe déborde d'eau → le sentiment naît et ne demande qu'à s'exprimer.
 ✨ « Je sens quelque chose naître en moi. »
 
@@ -923,7 +923,7 @@ Contrairement à la Mort, ce n'est pas seulement quelque chose qui finit : quelq
 🪙 9 DE DENIERS
 🧠 Idée centrale : Je profite de ce que j'ai construit
 💭 Ce qui se passe réellement : Mon travail m'a permis d'obtenir suffisamment de confort et de sécurité pour en profiter librement, sans dépendre des autres.
-🔑 Mot-clé : INDÉPENDANCE
+🔑 Mot-clé : AISANCE
 🖼️ Elle se promène seule dans son domaine, entourée de deniers et de vignes → abondance déjà acquise. Elle ne travaille pas : elle profite. Le faucon posé sur sa main → loisir, maîtrise, statut. Elle est seule mais manifestement bien → autonomie.
 ✨ « J'ai construit mon confort, maintenant j'en profite comme je veux. »
 

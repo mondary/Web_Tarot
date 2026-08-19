@@ -84,7 +84,7 @@ $assocsJson = json_encode($assocsMap, JSON_UNESCAPED_UNICODE | JSON_HEX_TAG | JS
 $baseJson = json_encode($base, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
 $portraits = json_decode((string) @file_get_contents(__DIR__ . '/portraits.json'), true) ?: [];
 $portraitsJson = json_encode($portraits, JSON_UNESCAPED_UNICODE);
-$ver = '2026.08.24';
+$ver = '2026.08.25';
 ?>
 <!DOCTYPE html>
 <html lang="fr">
