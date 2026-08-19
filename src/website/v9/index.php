@@ -84,7 +84,7 @@ $assocsJson = json_encode($assocsMap, JSON_UNESCAPED_UNICODE | JSON_HEX_TAG | JS
 $baseJson = json_encode($base, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
 $portraits = json_decode((string) @file_get_contents(__DIR__ . '/portraits.json'), true) ?: [];
 $portraitsJson = json_encode($portraits, JSON_UNESCAPED_UNICODE);
-$ver = '2026.08.21';
+$ver = '2026.08.22';
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -151,6 +151,7 @@ a{color:inherit}
 #kwFab:hover{color:var(--ac);border-color:var(--ac);border-left-color:var(--ac)}
 #kwFab.on{color:var(--ac);border-color:var(--ac);border-left-color:var(--ac);background:var(--ac-dim);box-shadow:0 0 24px var(--ac-dim)}
 @media(hover:none){#kwFab{display:none}}
+.kw-overlay{display:none}
 body.kw .kw-overlay{position:absolute;inset:0;z-index:2;display:flex;align-items:center;justify-content:center;text-align:center;padding:1rem;background:linear-gradient(180deg,rgba(10,9,7,.7),rgba(10,9,7,.94));opacity:0;transform:scale(.92);transition:.25s var(--ease);pointer-events:none}
 body.kw .mini:hover .kw-overlay,body.kw .mini:focus-visible .kw-overlay{opacity:1;transform:scale(1)}
 .kw-overlay .kw{font-family:"DM Mono",monospace;font-size:1.18rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--ac);text-shadow:0 2px 14px rgba(0,0,0,.9)}

@@ -6,7 +6,7 @@ Toutes les notes de release du projet Web Tarot. Le format de version suit `vYYY
 
 ## TODO — Roadmap
 
-Statut : `2026.08.21` (V9 - toggle mots-clés)
+Statut : `2026.08.22` (V9 - toggle mots-clés)
 
 ### Phase 1 — Fondations ✅
 - [x] Interface V2 unifiée (carousel d'accueil + grille par famille + vue détail)
@@ -33,6 +33,10 @@ Statut : `2026.08.21` (V9 - toggle mots-clés)
 ---
 
 ## Releases
+
+### [2026.08.22] - 2026-08-19
+#### Fixed
+- **Toggle mots-clés désactivé** : l'overlay est désormais masqué par défaut ; le mot-clé et le nom ne s'affichent plus sous la carte lorsque le toggle est décoché.
 
 ### [2026.08.21] - 2026-08-19
 #### Changed
