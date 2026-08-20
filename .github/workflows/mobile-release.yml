@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
   push:
     branches: [main]
-    paths: [package.json, package-lock.json, capacitor.config.ts, mobile/**, .github/workflows/mobile-release.yml, src/website/v9/vault.sqlite, icon.png]
+    paths: [package.json, package-lock.json, capacitor.config.ts, src/mobile/**, .github/workflows/mobile-release.yml, src/website/v9/vault.sqlite, icon.png]
 
 permissions:
   contents: read

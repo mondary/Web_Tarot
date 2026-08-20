@@ -9,31 +9,20 @@
 .*
 .DS_Store
 node_modules/
-mobile/www/
-android/
-ios/
-resources/
-icons/
-dist/
+/android/
+/ios/
+/dist/
+/release/
 build/
 .env
 .venv/
 __pycache__/
 *.log
-package-lock.json
-!package-lock.json
 
-# Sources
+# Generated
+/src/mobile/www/
+/src/scripts/legacy/
+
+# Sources locales
 website/sources/
-
-# Outils
-scripts/
-
-# Archives locales
-archives/
-
-# Assets poids lourd (images cartes sans bordure)
-clm_borderless/
-
-/screenshots/
 screenshots/

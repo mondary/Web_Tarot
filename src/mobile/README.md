@@ -1,8 +1,8 @@
 # Tarot Divinatoire mobile
 
 La source mobile est une application Capacitor **hors ligne**. Au build,
-`mobile/scripts/export.php` extrait les données, les 78 illustrations et les polices
-du vault V9 vers `mobile/www/`, puis Capacitor les intègre à Android et iOS.
+`src/mobile/scripts/export.php` extrait les données, les 78 illustrations et les polices
+du vault V9 vers `src/mobile/www/`, puis Capacitor les intègre à Android et iOS.
 
 ## Packages livrés
 

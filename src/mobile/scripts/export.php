@@ -2,10 +2,10 @@
 declare(strict_types=1);
 
 /** Convert the V9 SQLite vault into immutable Capacitor web assets. */
-$root = dirname(__DIR__, 2);
+$root = dirname(__DIR__, 3);
 $source = $root . '/src/website/v9/vault.sqlite';
-$web = $root . '/mobile/www';
-$template = $root . '/mobile/src';
+$web = $root . '/src/mobile/www';
+$template = $root . '/src/mobile/src';
 
 if (!is_file($source)) { fwrite(STDERR, "V9 vault not found.\n"); exit(1); }
 

@@ -82,7 +82,7 @@ db.execute('''CREATE TABLE IF NOT EXISTS vault (
 vault_dirs = ['website', 'archives', 'benchmarks', 'scripts']
 vault_count = 0
 for vd in vault_dirs:
-    files = walk_dir(ROOT / vd, vd)
+    files = walk_dir(ROOT / 'src' / vd, vd)
     stored = 0
     for full_path, rel_path in files:
         ext = Path(full_path).suffix.lower()
@@ -157,10 +157,10 @@ NUM_NAMES = {0: '', 1: 'As', 2: 'Deux', 3: 'Trois', 4: 'Quatre', 5: 'Cinq',
              6: 'Six', 7: 'Sept', 8: 'Huit', 9: 'Neuf', 10: 'Dix'}
 SUIT_NAMES = {'b': 'de Bâton', 'c': 'de Coupe', 'd': 'de Denier', 'e': "d'Épée"}
 
-fr_files = sorted(glob.glob(str(ROOT / 'benchmarks' / 'cards_alt' / '*_unlimitedFR.md')))
+fr_files = sorted(glob.glob(str(ROOT / 'src' / 'benchmarks' / 'cards_alt' / '*_unlimitedFR.md')))
 fr_files = [f for f in fr_files if not Path(f).name.startswith('t_')]
 
-cards_dir = ROOT / 'website' / 'cards'
+cards_dir = ROOT / 'src' / 'website' / 'cards'
 sort_global = 0
 card_count = 0
 img_count = 0

@@ -1,6 +1,6 @@
-/* organize-decks.js — Organise les images sources par deck dans benchmarks/decks/.
+/* organize-decks.js — Organise les images sources par deck dans src/benchmarks/decks/.
    Source : website/cards/{prefix}_{num}_{slug}{_suffix}.{ext}
-   Destination : benchmarks/decks/{deck}/{prefix}_{num}_{slug}.{ext}
+   Destination : src/benchmarks/decks/{deck}/{prefix}_{num}_{slug}.{ext}
    Decks : marseille, rider_waite (image principale), wiki, fr */
 const fs = require('fs');
 const path = require('path');
@@ -45,5 +45,5 @@ Object.entries(canon).forEach(([key, slug]) => {
   });
 });
 
-console.log('Organisation benchmarks/decks/ :');
+console.log('Organisation src/benchmarks/decks/ :');
 Object.entries(stats).forEach(([d, n]) => console.log(`  ${d}/ : ${n} images`));
