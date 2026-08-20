@@ -5,7 +5,7 @@
   "scripts": {
     "mobile:prepare": "php -d auto_prepend_file= src/mobile/scripts/export.php",
     "mobile:sync": "npm run mobile:prepare && npx cap sync",
-    "mobile:icons": "mkdir -p dist/resources && cp icon.png dist/resources/icon.png && npx capacitor-assets generate --assetPath dist/resources --android --ios --iconBackgroundColor '#10100e' --splashBackgroundColor '#10100e'",
+    "mobile:icons": "mkdir -p src/mobile/resources && cp icon.png src/mobile/resources/icon.png && npx capacitor-assets generate --assetPath src/mobile/resources --android --ios --iconBackgroundColor '#10100e' --splashBackgroundColor '#10100e'",
     "android:release": "npm run mobile:sync && cd android && ./gradlew bundleRelease",
     "ios:build": "npm run mobile:sync && cd ios/App && xcodebuild -workspace App.xcworkspace -scheme App -configuration Release -sdk iphoneos -derivedDataPath build CODE_SIGNING_ALLOWED=NO CODE_SIGNING_REQUIRED=NO CODE_SIGN_IDENTITY='' build"
   },

@@ -11,7 +11,7 @@
 node_modules/
 /android/
 /ios/
-/dist/
+/src/clm_borderless/
 /release/
 build/
 .env
