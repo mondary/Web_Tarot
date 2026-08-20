@@ -2,6 +2,7 @@
   "name": "tarot-divinatoire-mobile",
   "private": true,
   "version": "1.0.0",
+  "packageManager": "pnpm@11.22.0",
   "scripts": {
     "mobile:prepare": "php -d auto_prepend_file= src/mobile/scripts/export.php",
     "mobile:sync": "npm run mobile:prepare && npx cap sync",
