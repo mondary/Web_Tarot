@@ -7,9 +7,9 @@ du vault V9 vers `mobile/www/`, puis Capacitor les intègre à Android et iOS.
 ## Packages livrés
 
 - `release/android/tarot-divinatoire.aab` : bundle Android à signer et publier sur Google Play.
-- `release/ios/TarotDivinatoire-unsigned.xcarchive` : archive iOS non signée. Une archive ou
-  un IPA App Store nécessite le compte Apple Developer, un identifiant d’app enregistré et des
-  certificats/profils de provisionnement.
+- `release/ios/TarotDivinatoire-unsigned.app` : build iOS non signé, utile pour vérifier la
+  compilation. Un IPA App Store nécessite le compte Apple Developer, un identifiant d’app
+  enregistré et des certificats/profils de provisionnement.
 
 Les dossiers sont créés par le workflow GitHub Actions **Mobile release packages** ; les
 paquets sont ensuite disponibles comme artefacts du workflow.

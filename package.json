@@ -7,7 +7,7 @@
     "mobile:sync": "npm run mobile:prepare && npx cap sync",
     "mobile:icons": "mkdir -p resources && cp icon.png resources/icon.png && npx capacitor-assets generate --android --ios --iconBackgroundColor '#10100e' --splashBackgroundColor '#10100e'",
     "android:release": "npm run mobile:sync && cd android && ./gradlew bundleRelease",
-    "ios:build": "npm run mobile:sync && cd ios/App && xcodebuild -workspace App.xcworkspace -scheme App -configuration Release -sdk iphoneos -archivePath build/TarotDivinatoire.xcarchive CODE_SIGNING_ALLOWED=NO archive"
+    "ios:build": "npm run mobile:sync && cd ios/App && xcodebuild -workspace App.xcworkspace -scheme App -configuration Release -sdk iphoneos -derivedDataPath build CODE_SIGNING_ALLOWED=NO build"
   },
   "dependencies": {
     "@capacitor/android": "7.4.3",
