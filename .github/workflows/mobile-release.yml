@@ -15,6 +15,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - uses: shivammathur/setup-php@v2
+        with: {php-version: '8.3', extensions: pdo_sqlite}
       - uses: actions/setup-node@v4
         with: {node-version: 20, cache: npm}
       - uses: actions/setup-java@v4
@@ -33,6 +35,8 @@ jobs:
     runs-on: macos-latest
     steps:
       - uses: actions/checkout@v4
+      - uses: shivammathur/setup-php@v2
+        with: {php-version: '8.3', extensions: pdo_sqlite}
       - uses: actions/setup-node@v4
         with: {node-version: 20, cache: npm}
       - run: npm ci
