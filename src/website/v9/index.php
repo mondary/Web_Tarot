@@ -97,6 +97,12 @@ $ver = '2026.08.28';
 <style id="ff">@font-face{font-family:"Cormorant Garamond";font-style:normal;font-weight:400 600;src:url("<?= $base ?>/index.php?font=cormorant-garamond.woff2") format("woff2");font-display:swap}@font-face{font-family:"Cormorant Garamond";font-style:italic;font-weight:400 500;src:url("<?= $base ?>/index.php?font=cormorant-garamond-i.woff2") format("woff2");font-display:swap}@font-face{font-family:"DM Mono";font-style:normal;font-weight:400;src:url("<?= $base ?>/index.php?font=dm-mono-400.woff2") format("woff2");font-display:swap}@font-face{font-family:"DM Mono";font-style:normal;font-weight:500;src:url("<?= $base ?>/index.php?font=dm-mono-500.woff2") format("woff2");font-display:swap}</style>
 <style>
 :root{--bg:#0a0907;--panel:#14120e;--panel2:#1a1712;--line:#2a2620;--fg:#f1ede4;--muted:#8a8174;--ac:#c9a227;--ac-dim:rgba(201,162,39,.18);--mat:#fff;--ease:cubic-bezier(.22,1,.36,1);--spring:cubic-bezier(.34,1.56,.64,1)}
+/* thèmes : nuit (défaut) / ivoire / sylve */
+html[data-theme=ivoire]{--bg:#efe9dc;--panel:#e4dcc9;--panel2:#dad1bb;--line:#c9bfa6;--fg:#221c12;--muted:#7a6f5a;--ac:#8a6d1d;--ac-dim:rgba(138,109,29,.16);--mat:#fff}
+html[data-theme=sylve]{--bg:#0a0f0b;--panel:#101812;--panel2:#16211a;--line:#23322a;--fg:#e8f0e6;--muted:#7e9180;--ac:#a3c98a;--ac-dim:rgba(163,201,138,.16);--mat:#fff}
+html[data-theme=ivoire] .fx-vignette{background:radial-gradient(120% 100% at 50% 0%,transparent 50%,rgba(60,50,30,.25) 100%)}
+html[data-theme=ivoire] #loader,html[data-theme=ivoire] .topnav button,html[data-theme=ivoire] .back-btn,html[data-theme=ivoire] #autoFab,html[data-theme=ivoire] #kwFab{background:rgba(239,233,220,.9)}
+html[data-theme=ivoire] .d-loop{background:linear-gradient(transparent,rgba(239,233,220,.9) 40%)}
 *{box-sizing:border-box}
 html,body{margin:0;padding:0;background:var(--bg);color:var(--fg);-webkit-font-smoothing:antialiased}
 body{font-family:"Cormorant Garamond",Georgia,serif;font-size:1.06rem;line-height:1.55;min-height:100vh;overflow-x:hidden}
@@ -106,10 +112,16 @@ em{font-style:italic;color:var(--ac)}
 a{color:inherit}
 
 /* loader + grain + vignette */
-#loader{position:fixed;inset:0;background:var(--bg);z-index:2000;display:flex;align-items:center;justify-content:center;transition:opacity .6s var(--ease)}
+#loader{position:fixed;inset:0;background:var(--bg);z-index:2000;display:flex;flex-direction:column;align-items:center;justify-content:center;transition:opacity .6s var(--ease)}
 #loader.gone{opacity:0;pointer-events:none}
-#loader .pulse{width:14px;height:14px;border-radius:50%;background:var(--ac);box-shadow:0 0 0 0 var(--ac-dim);animation:pulse 1.6s var(--ease) infinite}
-@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(201,162,39,.5)}70%{box-shadow:0 0 0 22px rgba(201,162,39,0)}100%{box-shadow:0 0 0 0 rgba(201,162,39,0)}}
+#loader .moon{font-size:clamp(60px,10vw,100px);line-height:1;color:var(--ac);animation:moonPulse 2s ease-in-out infinite,moonSpin 8s linear infinite;text-shadow:0 0 40px rgba(201,162,39,.5),0 0 80px rgba(201,162,39,.2)}
+#loader .loader-text{font-family:"DM Mono",monospace;font-size:clamp(.6rem,1.4vw,.72rem);letter-spacing:.4em;text-transform:uppercase;color:var(--muted);margin-top:1.8rem;opacity:0;animation:loaderFadeUp 1s var(--ease) .5s forwards}
+#loader .loader-bar{width:200px;height:1px;background:var(--ac-dim);margin-top:1.4rem;position:relative;overflow:hidden}
+#loader .loader-bar::after{content:'';position:absolute;left:-100%;top:0;width:100%;height:100%;background:linear-gradient(90deg,transparent,var(--ac),transparent);animation:loaderSweep 1.5s ease-in-out infinite}
+@keyframes moonPulse{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(1.1);opacity:.7}}
+@keyframes moonSpin{from{transform:rotate(0)}to{transform:rotate(360deg)}}
+@keyframes loaderSweep{0%{left:-100%}100%{left:100%}}
+@keyframes loaderFadeUp{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
 .fx-grain{position:fixed;inset:0;pointer-events:none;z-index:1500;opacity:.035;mix-blend-mode:overlay;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
 .fx-vignette{position:fixed;inset:0;pointer-events:none;z-index:1400;background:radial-gradient(120% 100% at 50% 0%,transparent 50%,rgba(0,0,0,.55) 100%)}
 
@@ -205,6 +217,9 @@ body.kw .mini:hover .kw-overlay,body.kw .mini:focus-visible .kw-overlay{opacity:
 .back-btn{position:fixed;top:1.2rem;left:1.5rem;z-index:1650;font-family:"DM Mono",monospace;font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);cursor:pointer;background:rgba(10,9,7,.7);backdrop-filter:blur(8px);padding:.5rem .9rem;border-radius:40px;border:1px solid var(--line);transition:.3s}
 .back-btn:hover{color:var(--ac);border-color:var(--ac)}
 body:has(.d-stage.open) .brand{opacity:0;pointer-events:none}
+#autoFab{display:none}
+body:has(.d-stage.open) #autoFab{display:inline-flex}
+@media(max-width:640px){#autoFab{bottom:4.4rem;right:1rem;padding:.55rem .8rem}}
 
 /* HERO conservé */
 .d-hero{position:relative;height:70vh;min-height:420px;width:100%;overflow:hidden;background:#0a0a0a}
@@ -292,6 +307,18 @@ body:has(.d-stage.open) .brand{opacity:0;pointer-events:none}
 .d-thumb:hover{opacity:1}
 .d-thumb.current{opacity:1;border-color:var(--ac);box-shadow:0 0 0 2px var(--ac)}
 .d-loop{max-width:760px;margin:0 auto;padding:0 1.5rem 3rem;display:flex;justify-content:space-between;align-items:center;gap:1rem;font-family:"DM Mono",monospace;font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+
+/* ===== DIAPO AUTO ===== */
+#autoFab{position:fixed;right:1.5rem;bottom:1.4rem;z-index:1650;display:inline-flex;align-items:center;gap:.5rem;background:rgba(10,9,7,.85);backdrop-filter:blur(8px);border:1px solid var(--line);color:var(--muted);font-family:"DM Mono",monospace;font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;padding:.62rem 1rem;border-radius:40px;cursor:pointer;transition:.3s var(--ease)}
+#autoFab:hover{color:var(--ac);border-color:var(--ac)}
+#autoFab.on{color:var(--ac);border-color:var(--ac);background:var(--ac-dim);box-shadow:0 0 24px var(--ac-dim)}
+#autoFab .ic-pause{display:none} #autoFab.on .ic-pause{display:inline} #autoFab.on .ic-play{display:none}
+#autoFab .spd{display:inline-flex;gap:.15rem;margin-left:.3rem}
+#autoFab .spd button{background:none;border:1px solid transparent;border-radius:3px;color:inherit;font:inherit;padding:.1rem .3rem;cursor:pointer}
+#autoFab .spd button.cur{border-color:var(--ac);color:var(--ac)}
+.auto-ring{position:fixed;top:0;left:0;right:0;height:2px;z-index:1660;background:var(--ac-dim);opacity:0;transition:opacity .3s}
+.auto-ring.on{opacity:1}
+.auto-ring::after{content:'';position:absolute;top:0;bottom:0;left:0;width:var(--auto-p,0%);background:var(--ac);transition:width .12s linear}
 .d-loop a{cursor:pointer;transition:.3s} .d-loop a:hover{color:var(--ac)}
 .d-loop .pos b{color:var(--ac)}
 .content-icon{display:inline-flex;width:20px;height:20px;vertical-align:middle;margin-right:.4rem}
@@ -348,15 +375,17 @@ body:has(.d-stage.open) .brand{opacity:0;pointer-events:none}
 </style>
 </head>
 <body>
-<div id="loader"><div class="pulse"></div></div>
+<div id="loader"><div class="moon">☽</div><div class="loader-text">Entrez dans le mystère</div><div class="loader-bar"></div></div>
 <div class="fx-grain"></div><div class="fx-vignette"></div>
 <div class="brand"><b>TAROT</b> <em>DIVINATOIRE</em><span class="v"> · v<?= $ver ?></span></div>
 <nav class="topnav">
   <button aria-label="Tirages" onclick="TarotSpreads&&TarotSpreads.open()"><svg viewBox="0 0 162 154" fill="currentColor"><path d="M41.3 12.5C16 18.4 13.9 19.2 10.5 23.2c-3.4 4.1-3.9 8.4-2 17.9 3 14.8 17.5 80.3 18.6 83.6.6 1.8 2.7 4.6 4.6 6.4l3.7 3.2 9.5-.8c16.9-1.3 17.3-1.2 38.1 6 28.4 9.9 35.9 10 43.3.3 5.3-6.9 28.7-72.8 28.7-80.7q0-8.5-7.5-11.7c-2.9-1.2-3.3-1.8-3.3-5.3q-.2-8.3-6.7-11.5a81 81 0 0 0-19-4.6c-1.2 0-2.7-1.3-3.7-3-2.5-4.5-7.3-6-21.5-6.9-12.2-.7-12.6-.8-14.6-3.6a15 15 0 0 0-11.9-5.4c-1.8.1-13.3 2.5-25.5 5.4m32.8 2.6c1 1.3 2 3.5 2.3 4.9 10.5 48.8 18.6 90.1 18.1 92.7a10 10 0 0 1-3.1 5.2C87.5 121 51.2 129 41.3 129c-6.7 0-8.5-2.5-11.7-16.1C21.4 78 12 34.4 12 31.2c0-1.3 1.2-3.6 2.8-5.1 2.3-2.3 5.5-3.4 20.2-6.9l23.5-5.7c7.9-1.9 13.4-1.3 15.6 1.6m22.6 6.3c10.5.6 12.8 1.7 14.4 6.4 1.1 3.5.1 31.1-2.7 72.5-1.5 22.5-2.4 26.5-6.3 28.7a71 71 0 0 1-22.2.3l-6.4-.6 9.5-2.3c8.1-2 10-2.9 12.7-5.8 5.6-6 5.5-6.6-4.6-55.1L82 20.7c0-.3 1.2-.5 2.8-.2zm29.7 11.1c13.6 2.9 14.7 5 11.1 22.4-2.8 13.5-14.1 58.7-17.5 70.1-3.3 10.9-8.5 13.8-20.5 11.1l-3-.7 3.6-.7c4.4-.9 8.4-3.9 10.4-7.7 1-1.9 2-10.1 3-25.7 1.7-26.2 3.5-59.8 3.5-66.1 0-4.8-.2-4.7 9.4-2.7"/></svg><span class="tl">Tirages</span></button>
   <button aria-label="Nuances" onclick="openNuances()"><svg viewBox="0 0 100 132" fill="currentColor"><path fill-rule="evenodd" d="M55.3 5.8C51.1 17.2 42.9 31.7 27.9 53.2 16.5 69.6 11.2 81.8 11.2 92.1c0 18.3 15.4 31.8 35.7 32.3 21 .5 38.2-12.8 38.2-33 0-11.2-5.7-24-16.2-39.9C60.9 39.6 57.7 24.4 55.3 5.8m-.1 16.7c-4.6 10.2-11.8 22.9-22.1 37.8-8.5 12.3-13 22.2-13 31 0 14.9 12.3 25.1 26.9 25.5 15.3.4 29.2-10.9 29.2-26.1 0-9.6-4.9-20.3-13.7-34-5.6-9.3-6.3-21.2-7.3-34.2M44 100a5.2 5.2 0 1 0 .1 0z"/></svg><span class="tl">Nuances</span></button>
   <button aria-label="Apprendre" onclick="openLearn()"><svg viewBox="0 0 576 512" aria-hidden="true"><path d="M288 0 0 144l288 144 236.1-118.1V352H576V144L288 0zm-184.4 266.2L96 416c80 42.7 304 42.7 384 0l-7.6-149.8L288 358.4 103.6 266.2z"/></svg><span class="tl">Apprendre</span></button>
+  <button aria-label="Thème" id="themeBtn" onclick="cycleTheme()"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 3a9 9 0 1 0 0 18c.4 0 .8 0 1.2-.1a7 7 0 0 1 0-17.8c-.4-.1-.8-.1-1.2-.1Z"/></svg><span class="tl" id="themeLbl">Nuit</span></button>
   <button aria-label="Recherche" onclick="openSearch()"><svg viewBox="0 0 135 131" fill="currentColor"><path d="M39.8 8.9A47.5 47.5 0 0 0 7 54c0 13.1 4.3 23.5 13.4 32.5A46 46 0 0 0 54.1 100c11.4 0 21.4-3.6 31.3-11.4.8-.5 7.4 5.5 18.6 16.9 9.6 9.7 18.3 18 19.3 18.6 2.4 1.4 5.9-.7 5.5-3.2-.2-1.1-8.6-10.2-18.8-20.4L91.6 82l1.7-3a58 58 0 0 0 6.4-21.6 46.5 46.5 0 0 0-34.1-49 55 55 0 0 0-25.8.5m29.7 8.9a39 39 0 0 1 22.1 44.1c-6.4 30.8-42.2 41.4-65.7 19.4-18.2-17-13.6-48.8 9-62.1a37 37 0 0 1 34.6-1.4"/></svg><span class="tl">Recherche</span></button>
 </nav>
+<button id="autoFab" aria-pressed="false" aria-label="Diaporama automatique"><span class="ic-play">▶</span><span class="ic-pause">❚❚</span> Diaporama<span class="spd" id="autoSpd"></span></button>
 <button id="kwFab" aria-pressed="false" aria-label="Mots-clés au survol" onclick="toggleKw()"><svg viewBox="0 0 24 24"><path d="M14.5 3a6.5 6.5 0 0 0-6.32 8.02L2.3 16.9a1 1 0 0 0-.3.7V21a1 1 0 0 0 1 1h2.5a1 1 0 0 0 1-1v-1.5H8a1 1 0 0 0 1-1v-1.5h1.5a1 1 0 0 0 .7-.3l.28-.28A6.5 6.5 0 1 0 14.5 3Zm2 6.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3Z"/></svg>Mots-clés</button>
 
 <div id="landing">
@@ -403,8 +432,9 @@ body:has(.d-stage.open) .brand{opacity:0;pointer-events:none}
   </div>
 </div>
 
-<div class="d-stage" id="detail">
+ <div class="d-stage" id="detail">
   <div class="back-btn" id="backBtn">← Retour</div>
+  <div class="auto-ring" id="autoRing"></div>
   <div class="d-hero"><img class="d-hero-img" id="heroImg" alt=""><div class="d-hero-loupe" id="heroLoupe"></div></div>
   <div class="d-panel"><div class="d-panel-inner" id="dInner"></div></div>
   <div class="d-loop" id="loopBar"></div>
@@ -500,7 +530,21 @@ function openDetail(sort,dir=0){
   detail.classList.add('open');detail.scrollTop=0;
   if(dir&&wasOpen){clearTimeout(detailSlideTimer);detail.classList.remove('slide-next','slide-prev');void detail.offsetWidth;detail.classList.add(dir>0?'slide-next':'slide-prev');detailSlideTimer=setTimeout(()=>detail.classList.remove('slide-next','slide-prev'),340)}
 }
-function closeDetail(){document.getElementById('detail').classList.remove('open');currentIdx=-1}
+function closeDetail(){document.getElementById('detail').classList.remove('open');currentIdx=-1;stopAuto()}
+
+// diaporama auto : avance les lames, pause/reprise, vitesse 5/8/12 s
+const AUTO_SPEEDS=[5,8,12];let autoTimer=0,autoT0=0,autoTick=0,autoDur=8;function autoRing(p){document.documentElement.style.setProperty('--auto-p',(p*100).toFixed(1)+'%')}
+function autoStep(){autoTick+=.12;autoRing(Math.min(1,autoTick/autoDur));if(autoTick>=autoDur){autoNext()}}
+function autoNext(){autoTick=0;autoRing(0);openDetail(CARDS[(currentIdx+1)%CARDS.length].sort,1)}
+function startAuto(){if(currentIdx<0)openDetail(CARDS[0].sort,1);document.body.classList.add('auto-running');document.getElementById('autoFab').classList.add('on');document.getElementById('autoFab').setAttribute('aria-pressed','true');document.getElementById('autoRing').classList.add('on');autoTick=0;clearInterval(autoTimer);autoTimer=setInterval(autoStep,120)}
+function stopAuto(){clearInterval(autoTimer);autoTimer=0;autoTick=0;autoRing(0);document.body.classList.remove('auto-running');const b=document.getElementById('autoFab');if(b){b.classList.remove('on');b.setAttribute('aria-pressed','false')}document.getElementById('autoRing').classList.remove('on')}
+function toggleAuto(){autoTimer?stopAuto():startAuto()}
+(function(){const fab=document.getElementById('autoFab'),spd=document.getElementById('autoSpd');
+fab.addEventListener('click',e=>{if(e.target.closest('.spd'))return;toggleAuto()});
+spd.innerHTML=AUTO_SPEEDS.map(s=>'<button data-s="'+s+'"'+(s===autoDur?' class="cur"':'')+'>'+s+'s</button>').join('');
+spd.addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;autoDur=+b.dataset.s;autoTick=0;spd.querySelectorAll('button').forEach(x=>x.classList.toggle('cur',x===b))});
+document.getElementById('detail').addEventListener('click',e=>{if(autoTimer&&!e.target.closest('a,button,#autoFab,.d-thumb'))stopAuto()},true);
+window.addEventListener('keydown',e=>{if(e.key===' '&&autoTimer&&currentIdx>=0&&!/INPUT|TEXTAREA|SELECT/i.test(document.activeElement.tagName)){e.preventDefault();stopAuto()}})})();
 
 function assocCard(t){if(!t)return null;let cs=[t];if(t.indexOf('/')>=0)cs=cs.concat(t.split('/').map(s=>s.trim()));for(const cand of cs){const n=cand.toLowerCase().replace(/[\u2018\u2019]/g,"'");for(const c of CARDS){if(c.name.toLowerCase()===n)return c}}return null}
 function renderAssociations(rows){if(!rows||!rows.length)return'';const secs={},order=[];for(const r of rows){if(!secs[r.section]){secs[r.section]={it:[]};order.push(r.section)}secs[r.section].it.push(r)}let h='';for(const k of order){const s=secs[k];h+='<div class="association-section"><h3>'+k+'</h3><ul>';for(const r of s.it){const target=(r.pair||'').indexOf(' + ')>=0?(r.pair.split(' + ')[1]||'').trim():(r.pair||'');const card=assocCard(target);const thumb=card?'<a class="assoc-thumb" onclick="openDetail('+card.sort+')">'+(IMG_MAP[card.id]?'<img src="'+IMG_MAP[card.id]+'">':'')+'</a>':'';const link=card?'<a class="assoc-link" onclick="openDetail('+card.sort+')">'+target+'</a>':'<span class="assoc-link">'+target+'</span>';h+='<li>'+thumb+'<div class="assoc-text">'+link+'<p>'+(r.descr||'')+'</p></div></li>'}h+='</ul></div>'}return h}
@@ -692,7 +736,7 @@ if(Math.abs(dx)>60&&Math.abs(dx)>Math.abs(dy)*1.5&&Date.now()-st<800){e.preventD
 document.addEventListener('keydown',e=>{if(e.metaKey||e.ctrlKey||e.altKey)return;const tag=e.target?.tagName;
   const sg=document.getElementById('search').classList.contains('open');
   const lg=document.getElementById('learn').classList.contains('open');
-  if(e.key==='Escape'){if(lg)closeLearn();else if(sg)closeSearch();else if(document.getElementById('nuances').classList.contains('open'))closeNuances();else closeDetail();return}
+  if(e.key==='Escape'){if(lg)closeLearn();else if(sg)closeSearch();else if(document.getElementById('nuances').classList.contains('open'))closeNuances();else{if(autoTimer)stopAuto();closeDetail()}return}
   if(lg){if(/^[1-5]$/.test(e.key))learnAnswer(+e.key-1);else if(LEARN&&LEARN.answered&&(e.key==='Enter'||e.key===' '||e.key==='ArrowRight')){e.preventDefault();learnNext()}return}
   if(tag&&/INPUT|TEXTAREA|SELECT/i.test(tag))return;
   if(sg){if(e.key==='ArrowDown'){searchState.selIdx++;searchRender()}if(e.key==='ArrowUp'){searchState.selIdx=Math.max(0,searchState.selIdx-1);searchRender()}if(e.key==='Enter'){document.querySelector('#sGrid .mini.sel')?.click()}return}
@@ -702,6 +746,12 @@ document.addEventListener('keydown',e=>{if(e.metaKey||e.ctrlKey||e.altKey)return
 
 renderGrid();renderChips();requestAnimationFrame(()=>document.querySelector('.seuil-title').classList.add('revealed'));
 document.getElementById('loader').classList.add('gone');
+
+// thème : nuit / ivoire / sylve, persisté
+const THEMES=[{k:'',l:'Nuit',c:'#0a0907'},{k:'ivoire',l:'Ivoire',c:'#efe9dc'},{k:'sylve',l:'Sylve',c:'#0a0f0b'}];
+(function(){const saved=localStorage.getItem('tarotTheme')||'';const t=THEMES.find(x=>x.k===saved)||THEMES[0];applyTheme(t,false)})();
+function applyTheme(t,save){document.documentElement.dataset.theme=t.k;document.getElementById('themeLbl').textContent=t.l;document.querySelector('meta[name=theme-color]').setAttribute('content',t.c);if(save)try{localStorage.setItem('tarotTheme',t.k)}catch(e){}}
+function cycleTheme(){const cur=localStorage.getItem('tarotTheme')||'';const i=THEMES.findIndex(x=>x.k===cur);applyTheme(THEMES[(i+1)%THEMES.length],true)}
 
 // loupe hero (conservé)
 (function(){const hero=document.querySelector('.d-hero'),loupe=document.getElementById('heroLoupe');if(!hero||!loupe)return;let active=false;hero.addEventListener('mouseenter',()=>{active=true;loupe.classList.add('active')});hero.addEventListener('mouseleave',()=>{active=false;loupe.classList.remove('active')});hero.addEventListener('mousemove',e=>{if(!active)return;const r=hero.getBoundingClientRect();loupe.style.left=(e.clientX-r.left)+'px';loupe.style.top=(e.clientY-r.top)+'px'})})();

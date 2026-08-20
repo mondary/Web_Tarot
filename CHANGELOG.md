@@ -21,18 +21,30 @@ Statut : `2026.08.28` (V9 - ordre des familles)
 
 ### Phase 2 — Expérience
 - [x] Tirages (spreads) interactifs
-- [ ] Mode diaporama plein écran avec lecture auto
+- [x] Mode diaporama plein écran avec lecture auto
 - [x] Recherche et filtrage des cartes par mot-clé
 - [x] Scanner mobile de lames par caméra
 - [x] Portraits des 78 lames (_portrait.md)
 - [x] Nuances entre cartes (pense-bête thématique)
 - [x] Essences des 78 lames (_essence.md)
 - [x] Animations d'entrée et transitions entre vues
-- [ ] Sélecteur de thème / palette
+- [x] Sélecteur de thème / palette
+
+### Phase 3 — Livraison mobile
+- [ ] Pousser + vérifier la CI (workflow mobile avec pnpm)
+- [ ] Publication Google Play : signer l'AAB, fiche store, upload
 
 ---
 
 ## Releases
+
+### [2026.08.29] - 2026-08-20
+#### Added
+- **Diaporama lecture auto** : bouton ▶ dans la vue détail, enchaîne les 78 lames avec anneau de progression, vitesse réglable (5/8/12 s), pause au clic ou espace, reprend/quitte proprement.
+- **Sélecteur de thème** : bouton lune dans la topnav, cycle Nuit / Ivoire (clair) / Sylve (vert occulte), persisté en localStorage, meta theme-color synchronisée.
+- **Loader céleste** : le point pulsé est remplacé par le loader V1 — croissant ☽ doré rotatif, « Entrez dans le mystère », barre de balayage dorée.
+#### Changed
+- **Repo** : racine minimale (src/ + release/), migration pnpm store partagé, scripts de build suivis dans git (voir 0ea3aae, 058cb2a, 3cf6786).
 
 ### [2026.08.28] - 2026-08-19
 #### Changed
