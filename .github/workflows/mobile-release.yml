@@ -1,0 +1,45 @@
+name: Mobile release packages
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths: [package.json, package-lock.json, capacitor.config.ts, mobile/**, .github/workflows/mobile-release.yml, src/website/v9/vault.sqlite, icon.png]
+
+permissions:
+  contents: read
+
+jobs:
+  android:
+    name: Android AAB
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: {node-version: 20, cache: npm}
+      - uses: actions/setup-java@v4
+        with: {distribution: temurin, java-version: '21'}
+      - run: npm ci
+      - run: npm run mobile:icons
+      - run: npx cap add android
+      - run: npm run android:release
+      - run: mkdir -p release/android && cp android/app/build/outputs/bundle/release/app-release.aab release/android/tarot-divinatoire.aab
+      - name: Upload Android bundle
+        uses: actions/upload-artifact@v4
+        with: {name: tarot-divinatoire-android-aab, path: release/android/tarot-divinatoire.aab, if-no-files-found: error}
+
+  ios:
+    name: iOS archive source
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: {node-version: 20, cache: npm}
+      - run: npm ci
+      - run: npm run mobile:icons
+      - run: npx cap add ios
+      - run: npm run ios:build
+      - run: mkdir -p release/ios && cp -R ios/App/build/TarotDivinatoire.xcarchive release/ios/TarotDivinatoire-unsigned.xcarchive
+      - name: Upload unsigned iOS app
+        uses: actions/upload-artifact@v4
+        with: {name: tarot-divinatoire-ios-unsigned, path: release/ios/TarotDivinatoire-unsigned.xcarchive, if-no-files-found: error}

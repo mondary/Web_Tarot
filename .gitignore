@@ -9,6 +9,11 @@
 .*
 .DS_Store
 node_modules/
+mobile/www/
+android/
+ios/
+resources/
+icons/
 dist/
 build/
 .env
@@ -16,6 +21,7 @@ build/
 __pycache__/
 *.log
 package-lock.json
+!package-lock.json
 
 # Sources
 website/sources/

@@ -1,0 +1,22 @@
+{
+  "name": "tarot-divinatoire-mobile",
+  "private": true,
+  "version": "1.0.0",
+  "scripts": {
+    "mobile:prepare": "php -n -d auto_prepend_file= mobile/scripts/export.php",
+    "mobile:sync": "npm run mobile:prepare && npx cap sync",
+    "mobile:icons": "mkdir -p resources && cp icon.png resources/icon.png && npx capacitor-assets generate --android --ios --iconBackgroundColor '#10100e' --splashBackgroundColor '#10100e'",
+    "android:release": "npm run mobile:sync && cd android && ./gradlew bundleRelease",
+    "ios:build": "npm run mobile:sync && cd ios/App && xcodebuild -workspace App.xcworkspace -scheme App -configuration Release -sdk iphoneos -archivePath build/TarotDivinatoire.xcarchive CODE_SIGNING_ALLOWED=NO archive"
+  },
+  "dependencies": {
+    "@capacitor/android": "7.4.3",
+    "@capacitor/core": "7.4.3",
+    "@capacitor/ios": "7.4.3"
+  },
+  "devDependencies": {
+    "@capacitor/assets": "3.0.5",
+    "@capacitor/cli": "7.4.3",
+    "typescript": "^5.8.3"
+  }
+}
