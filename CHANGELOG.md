@@ -6,7 +6,7 @@ Toutes les notes de release du projet Web Tarot. Le format de version suit `vYYY
 
 ## TODO — Roadmap
 
-Statut : `2026.08.28` (V9 - ordre des familles)
+Statut : `2026.08.30` (V9 - decks et affichage)
 
 ### Phase 1 — Fondations ✅
 - [x] Interface V2 unifiée (carousel d'accueil + grille par famille + vue détail)
@@ -37,6 +37,15 @@ Statut : `2026.08.28` (V9 - ordre des familles)
 ---
 
 ## Releases
+
+### [2026.08.30] - 2026-08-21
+#### Added
+- **Type de cartes (deck)** : sélecteur RWS / CLM (jeu perso) / Marseille — bascule instantanée de toutes les vues (grille, recherche, nuances, associations, apprentissage, tirages, détail), choix persisté. Deux nouveaux decks intégrés au vault en 640 px (CLM depuis `TAROTclm/`, Marseille depuis les scans benchmarks).
+#### Changed
+- **Réorganisation des contrôles** : navigation en haut (Tirages, Nuances, Apprendre, Recherche), options d'affichage regroupées dans la barre du bas (Thème, Type de cartes, Mots-clés, Diaporama).
+- **Thème clair (Ivoire)** : noirs codés en dur remplacés par des variables — hero, panneau détail, overlays, boutons et drawer suivent désormais le thème.
+#### Fixed
+- **Cartes accentuées en deck CLM** : l'Impératrice, la Papesse, l'Étoile… étaient cassées (filtre d'URL supprimant les accents).
 
 ### [2026.08.29] - 2026-08-20
 #### Added
