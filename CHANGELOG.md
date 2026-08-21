@@ -6,7 +6,7 @@ Toutes les notes de release du projet Web Tarot. Le format de version suit `vYYY
 
 ## TODO — Roadmap
 
-Statut : `2026.08.30` (V9 - decks et affichage)
+Statut : `2026.08.31` (V9 - decks et affichage)
 
 ### Phase 1 — Fondations ✅
 - [x] Interface V2 unifiée (carousel d'accueil + grille par famille + vue détail)
@@ -37,6 +37,10 @@ Statut : `2026.08.30` (V9 - decks et affichage)
 ---
 
 ## Releases
+
+### [2026.08.31] - 2026-08-21
+#### Fixed
+- **Barre d'affichage sur mobile** : centrée au-dessus du safe-area, icônes seules (labels masqués), plus de débordement ni de chevauchement.
 
 ### [2026.08.30] - 2026-08-21
 #### Added

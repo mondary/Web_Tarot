@@ -180,7 +180,15 @@ a{color:inherit}
 .auto-ring{position:fixed;top:0;left:0;right:0;height:2px;z-index:1660;background:var(--ac-dim);opacity:0;transition:opacity .3s}
 .auto-ring.on{opacity:1}
 .auto-ring::after{content:'';position:absolute;top:0;bottom:0;left:0;width:var(--auto-p,0%);background:var(--ac);transition:width .12s linear}
-@media(max-width:640px){.viewbar{left:.8rem;bottom:.8rem}.viewbar button{padding:.55rem .8rem;font-size:.55rem}#autoFab .spd{display:none}}
+@media(max-width:640px){
+  .viewbar{left:50%;transform:translateX(-50%);bottom:calc(.7rem + env(safe-area-inset-bottom));width:max-content;max-width:calc(100vw - 1.6rem);gap:.3rem}
+  .viewbar button{padding:.55rem .7rem;font-size:.55rem}
+  .viewbar .tl{display:none}
+  .viewbar #kwFab svg{margin-right:-.2rem}
+  .viewbar #autoFab{gap:.35rem}
+  .viewbar #autoFab .spd{display:none}
+  .viewbar #autoFab .ic-play,.viewbar #autoFab .ic-pause{font-size:.7rem;line-height:1}
+}
 .kw-overlay{display:none}
 body.kw .kw-overlay{position:absolute;inset:0;z-index:2;display:flex;align-items:center;justify-content:center;text-align:center;padding:1rem;background:linear-gradient(180deg,var(--overlay-soft),color-mix(in srgb,var(--bg) 94%,transparent));opacity:0;transform:scale(.92);transition:.25s var(--ease);pointer-events:none}
 body.kw .mini:hover .kw-overlay,body.kw .mini:focus-visible .kw-overlay{opacity:1;transform:scale(1)}
