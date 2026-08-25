@@ -186,6 +186,8 @@ a{color:inherit}
 .settings-panel button.on{background:var(--ac-dim);box-shadow:none}
 .settings-panel .tl{display:inline}
 .settings-panel .spd{margin-left:auto}
+.settings-panel .set-ver{font-family:"DM Mono",monospace;font-size:.55rem;letter-spacing:.14em;color:var(--muted);opacity:.7;text-align:center;padding:.35rem 0 .15rem;border-top:1px solid var(--line);margin-top:.25rem}
+@media(max-width:640px){.brand .v{display:none}}
 .auto-ring{position:fixed;top:0;left:0;right:0;height:2px;z-index:1660;background:var(--ac-dim);opacity:0;transition:opacity .3s}
 .auto-ring.on{opacity:1}
 .auto-ring::after{content:'';position:absolute;top:0;bottom:0;left:0;width:var(--auto-p,0%);background:var(--ac);transition:width .12s linear}
@@ -424,6 +426,7 @@ body:has(.d-stage.open) .brand{opacity:0;pointer-events:none}
       <button aria-label="Type de cartes" id="deckBtn" onclick="cycleDeck()"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M6 2h12a1 1 0 0 1 1 1v16.5a1 1 0 0 1-1.4.9L12 18l-5.6 2.4a1 1 0 0 1-1.4-.9V3a1 1 0 0 1 1-1Zm5 11.4 2.5-1.3 2.5 1.3-.5-2.8 2-2-2.8-.4L13.5 7.6l-1.2 2.6-2.8.4 2 2-.5 2.8Z"/></svg><span class="tl" id="deckLbl">RWS</span></button>
       <button id="kwFab" aria-pressed="false" aria-label="Mots-clés au survol" onclick="toggleKw()"><svg viewBox="0 0 24 24"><path d="M14.5 3a6.5 6.5 0 0 0-6.32 8.02L2.3 16.9a1 1 0 0 0-.3.7V21a1 1 0 0 0 1 1h2.5a1 1 0 0 0 1-1v-1.5H8a1 1 0 0 0 1-1v-1.5h1.5a1 1 0 0 0 .7-.3l.28-.28A6.5 6.5 0 1 0 14.5 3Zm2 6.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 0 0 3Z"/></svg>Mots-clés</button>
       <button id="autoFab" aria-pressed="false" aria-label="Diaporama automatique"><span class="ic-play">▶</span><span class="ic-pause">❚❚</span> Diaporama<span class="spd" id="autoSpd"></span></button>
+      <div class="set-ver">v<?= $ver ?></div>
     </div>
   </div>
 </div>

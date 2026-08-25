@@ -42,6 +42,7 @@ Statut : `2026.08.32` (V9 - decks et affichage)
 #### Changed
 - **Mots-clés sur mobile** : pas de survol sur écran tactile — l'overlay mot-clé est affiché en permanence quand le toggle est actif (`@media (hover:none)`).
 - **Menu Réglages unique** : les 4 options d'affichage (Thème, Type de cartes, Mots-clés, Diaporama) regroupées dans un seul bouton « Réglages » en bas à gauche ouvrant un panneau — fermeture au clic extérieur ou Échap.
+- **Version sur mobile** : le numéro masqué du bandeau (chevauchait les boutons) s'affiche désormais en pied du panneau Réglages.
 #### Fixed
 - **Numéro de version masqué sur mobile** : le `· v` du bandeau n'était plus affiché sous 640 px ; version affichée (et rattrapée — elle était restée en 2026.08.28).
 
