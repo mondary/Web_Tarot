@@ -69,6 +69,23 @@ if (isset($_GET['js']) && $_GET['js'] === 'spreads') {
 if (isset($_GET['svg']) && preg_match('/^[a-z]+$/', (string)$_GET['svg'])) {
     Vault::image('/svg/' . $_GET['svg'] . '.svg');
 }
+// fichiers statiques PWA servis via PHP (o2switch bloque l'accès direct)
+if (preg_match('#^/(manifest\.json|sw\.js|icon-\d+\.png)$#', $path, $m)) {
+    $file = __DIR__ . '/' . $m[1];
+    if (file_exists($file)) {
+        $mime = match(pathinfo($file, PATHINFO_EXTENSION)) {
+            'json' => 'application/manifest+json',
+            'js'   => 'application/javascript',
+            'png'  => 'image/png',
+            default => 'application/octet-stream',
+        };
+        header('Content-Type: ' . $mime);
+        header('Cache-Control: public, max-age=86400');
+        readfile($file);
+        exit;
+    }
+    http_response_code(404); exit('Not found');
+}
 if ($path !== '/') { http_response_code(404); exit('404'); }
 
 $data = Vault::json('/app-data.json');
