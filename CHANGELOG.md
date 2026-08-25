@@ -41,6 +41,8 @@ Statut : `2026.08.32` (V9 - decks et affichage)
 ### [2026.08.32] - 2026-08-25
 #### Changed
 - **Mots-clés sur mobile** : pas de survol sur écran tactile — l'overlay mot-clé est affiché en permanence quand le toggle est actif (`@media (hover:none)`).
+#### Fixed
+- **Numéro de version masqué sur mobile** : le `· v` du bandeau n'était plus affiché sous 640 px ; version affichée (et rattrapée — elle était restée en 2026.08.28).
 
 ### [2026.08.31] - 2026-08-21
 #### Fixed

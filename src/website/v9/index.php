@@ -89,7 +89,7 @@ $assocsJson = json_encode($assocsMap, JSON_UNESCAPED_UNICODE | JSON_HEX_TAG | JS
 $baseJson = json_encode($base, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
 $portraits = json_decode((string) @file_get_contents(__DIR__ . '/portraits.json'), true) ?: [];
 $portraitsJson = json_encode($portraits, JSON_UNESCAPED_UNICODE);
-$ver = '2026.08.28';
+$ver = '2026.08.32';
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -392,7 +392,7 @@ body:has(.d-stage.open) .brand{opacity:0;pointer-events:none}
   .learn-title{font-size:.92rem}
   .learn-mode{margin-bottom:.38rem}
 }
-@media(max-width:640px){.brand .v{display:none}.full-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:.8rem}.mini .ph{padding:.45rem .45rem .25rem}.mini .cap{padding:.5rem .55rem .6rem}.mini .cap .nm{font-size:.9rem}}
+@media(max-width:640px){.full-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:.8rem}.mini .ph{padding:.45rem .45rem .25rem}.mini .cap{padding:.5rem .55rem .6rem}.mini .cap .nm{font-size:.9rem}}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}.seuil-title .split-word span{transform:none}.mini:hover{transform:none}}
 </style>
 </head>
