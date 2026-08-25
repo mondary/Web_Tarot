@@ -45,6 +45,7 @@ Statut : `2026.08.32` (V9 - decks et affichage)
 - **Version sur mobile** : le numéro masqué du bandeau (chevauchait les boutons) s'affiche désormais en pied du panneau Réglages.
 #### Fixed
 - **Numéro de version masqué sur mobile** : le `· v` du bandeau n'était plus affiché sous 640 px ; version affichée (et rattrapée — elle était restée en 2026.08.28).
+- **PWA installable** : ajout du manifest.json, service worker et icônes — le site s'ouvre désormais en mode standalone (sans barre d'adresse) quand on l'ajoute à l'écran d'accueil sur Android et iOS.
 
 ### [2026.08.31] - 2026-08-21
 #### Fixed

@@ -408,6 +408,9 @@ body:has(.d-stage.open) .brand{opacity:0;pointer-events:none}
 @media(max-width:640px){.full-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:.8rem}.mini .ph{padding:.45rem .45rem .25rem}.mini .cap{padding:.5rem .55rem .6rem}.mini .cap .nm{font-size:.9rem}}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}.seuil-title .split-word span{transform:none}.mini:hover{transform:none}}
 </style>
+<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" href="icon-512.png">
+<meta name="mobile-web-app-capable" content="yes">
 </head>
 <body>
 <div id="loader"><div class="moon">☽</div><div class="loader-text">Entrez dans le mystère</div><div class="loader-bar"></div></div>
@@ -816,5 +819,6 @@ function cycleTheme(){const cur=localStorage.getItem('tarotTheme')||'';const i=T
 function buildTarot(){window.TAROT={families:FAMILIES.map(function(f){return{key:f.key,name:f.name,accent:f.ac||'#c9a227',cards:CARDS.filter(function(c){return c.fam===f.key}).map(function(c){const es=ES_MAP[c.id]||{};return{id:c.id,name:c.name,num:c.num,sort:c.sort,family:c.fam,familyName:f.name,element:f.el||'',file:deckUrl(c.id)||'',es:{reponse:es.rep||'',affirmation:es.aff||''}}})}})}}
 buildTarot();if(window.TarotSpreads)TarotSpreads.init();
 window.tarotOpenCard=function(card){if(window.TarotSpreads)TarotSpreads.closeSpread();if(typeof card.sort==='number')openDetail(card.sort)};
+if('serviceWorker' in navigator)navigator.serviceWorker.register('sw.js');
 </script>
 </body></html>
