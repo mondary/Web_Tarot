@@ -177,6 +177,15 @@ a{color:inherit}
 #autoFab .spd button{background:none;border:1px solid transparent;border-radius:3px;color:inherit;font:inherit;padding:.1rem .3rem;cursor:pointer}
 #autoFab .spd button.cur{border-color:var(--ac);color:var(--ac)}
 #autoFab{position:static}
+/* panneau réglages : les 4 options dans un seul menu */
+.settings-wrap{position:relative}
+.settings-panel{position:absolute;bottom:calc(100% + .6rem);left:0;display:none;flex-direction:column;gap:.25rem;min-width:230px;padding:.55rem;background:var(--overlay);backdrop-filter:blur(12px);border:1px solid var(--line);border-radius:14px;box-shadow:0 18px 44px rgba(0,0,0,.55);z-index:1650}
+.settings-panel.open{display:flex}
+.settings-panel button{justify-content:flex-start;border-color:transparent;background:transparent;backdrop-filter:none;box-shadow:none;border-radius:9px;width:100%;padding:.6rem .8rem}
+.settings-panel button:hover{background:var(--ac-dim);border-color:transparent}
+.settings-panel button.on{background:var(--ac-dim);box-shadow:none}
+.settings-panel .tl{display:inline}
+.settings-panel .spd{margin-left:auto}
 .auto-ring{position:fixed;top:0;left:0;right:0;height:2px;z-index:1660;background:var(--ac-dim);opacity:0;transition:opacity .3s}
 .auto-ring.on{opacity:1}
 .auto-ring::after{content:'';position:absolute;top:0;bottom:0;left:0;width:var(--auto-p,0%);background:var(--ac);transition:width .12s linear}
@@ -188,6 +197,7 @@ a{color:inherit}
   .viewbar #autoFab{gap:.35rem}
   .viewbar #autoFab .spd{display:none}
   .viewbar #autoFab .ic-play,.viewbar #autoFab .ic-pause{font-size:.7rem;line-height:1}
+  .settings-panel{left:50%;transform:translateX(-50%)}
 }
 .kw-overlay{display:none}
 body.kw .kw-overlay{position:absolute;inset:0;z-index:2;display:flex;align-items:center;justify-content:center;text-align:center;padding:1rem;background:linear-gradient(180deg,var(--overlay-soft),color-mix(in srgb,var(--bg) 94%,transparent));opacity:0;transform:scale(.92);transition:.25s var(--ease);pointer-events:none}
@@ -407,10 +417,15 @@ body:has(.d-stage.open) .brand{opacity:0;pointer-events:none}
   <button aria-label="Recherche" onclick="openSearch()"><svg viewBox="0 0 135 131" fill="currentColor"><path d="M39.8 8.9A47.5 47.5 0 0 0 7 54c0 13.1 4.3 23.5 13.4 32.5A46 46 0 0 0 54.1 100c11.4 0 21.4-3.6 31.3-11.4.8-.5 7.4 5.5 18.6 16.9 9.6 9.7 18.3 18 19.3 18.6 2.4 1.4 5.9-.7 5.5-3.2-.2-1.1-8.6-10.2-18.8-20.4L91.6 82l1.7-3a58 58 0 0 0 6.4-21.6 46.5 46.5 0 0 0-34.1-49 55 55 0 0 0-25.8.5m29.7 8.9a39 39 0 0 1 22.1 44.1c-6.4 30.8-42.2 41.4-65.7 19.4-18.2-17-13.6-48.8 9-62.1a37 37 0 0 1 34.6-1.4"/></svg><span class="tl">Recherche</span></button>
 </nav>
 <div class="viewbar" id="viewbar">
-  <button aria-label="Thème" id="themeBtn" onclick="cycleTheme()"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 3a9 9 0 1 0 0 18c.4 0 .8 0 1.2-.1a7 7 0 0 1 0-17.8c-.4-.1-.8-.1-1.2-.1Z"/></svg><span class="tl" id="themeLbl">Nuit</span></button>
-  <button aria-label="Type de cartes" id="deckBtn" onclick="cycleDeck()"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M6 2h12a1 1 0 0 1 1 1v16.5a1 1 0 0 1-1.4.9L12 18l-5.6 2.4a1 1 0 0 1-1.4-.9V3a1 1 0 0 1 1-1Zm5 11.4 2.5-1.3 2.5 1.3-.5-2.8 2-2-2.8-.4L13.5 7.6l-1.2 2.6-2.8.4 2 2-.5 2.8Z"/></svg><span class="tl" id="deckLbl">RWS</span></button>
-  <button id="kwFab" aria-pressed="false" aria-label="Mots-clés au survol" onclick="toggleKw()"><svg viewBox="0 0 24 24"><path d="M14.5 3a6.5 6.5 0 0 0-6.32 8.02L2.3 16.9a1 1 0 0 0-.3.7V21a1 1 0 0 0 1 1h2.5a1 1 0 0 0 1-1v-1.5H8a1 1 0 0 0 1-1v-1.5h1.5a1 1 0 0 0 .7-.3l.28-.28A6.5 6.5 0 1 0 14.5 3Zm2 6.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3Z"/></svg>Mots-clés</button>
-  <button id="autoFab" aria-pressed="false" aria-label="Diaporama automatique"><span class="ic-play">▶</span><span class="ic-pause">❚❚</span> Diaporama<span class="spd" id="autoSpd"></span></button>
+  <div class="settings-wrap">
+    <button id="setFab" aria-expanded="false" aria-haspopup="true" aria-label="Réglages d'affichage" onclick="toggleSettings(event)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M4 7h10M18 7h2M4 17h4M12 17h8"/><circle cx="16" cy="7" r="2"/><circle cx="10" cy="17" r="2"/></svg><span class="tl">Réglages</span></button>
+    <div class="settings-panel" id="setPanel">
+      <button aria-label="Thème" id="themeBtn" onclick="cycleTheme()"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 3a9 9 0 1 0 0 18c.4 0 .8 0 1.2-.1a7 7 0 0 1 0-17.8c-.4-.1-.8-.1-1.2-.1Z"/></svg><span class="tl" id="themeLbl">Nuit</span></button>
+      <button aria-label="Type de cartes" id="deckBtn" onclick="cycleDeck()"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M6 2h12a1 1 0 0 1 1 1v16.5a1 1 0 0 1-1.4.9L12 18l-5.6 2.4a1 1 0 0 1-1.4-.9V3a1 1 0 0 1 1-1Zm5 11.4 2.5-1.3 2.5 1.3-.5-2.8 2-2-2.8-.4L13.5 7.6l-1.2 2.6-2.8.4 2 2-.5 2.8Z"/></svg><span class="tl" id="deckLbl">RWS</span></button>
+      <button id="kwFab" aria-pressed="false" aria-label="Mots-clés au survol" onclick="toggleKw()"><svg viewBox="0 0 24 24"><path d="M14.5 3a6.5 6.5 0 0 0-6.32 8.02L2.3 16.9a1 1 0 0 0-.3.7V21a1 1 0 0 0 1 1h2.5a1 1 0 0 0 1-1v-1.5H8a1 1 0 0 0 1-1v-1.5h1.5a1 1 0 0 0 .7-.3l.28-.28A6.5 6.5 0 1 0 14.5 3Zm2 6.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 0 0 3Z"/></svg>Mots-clés</button>
+      <button id="autoFab" aria-pressed="false" aria-label="Diaporama automatique"><span class="ic-play">▶</span><span class="ic-pause">❚❚</span> Diaporama<span class="spd" id="autoSpd"></span></button>
+    </div>
+  </div>
 </div>
 
 <div id="landing">
@@ -501,6 +516,11 @@ const KW={};for(const c of CARDS){const p=parsePortrait(PORTRAITS[c.id]||'');if(
 function toggleKw(){const on=document.body.classList.toggle('kw');const b=document.getElementById('kwFab');if(b){b.setAttribute('aria-pressed',String(on));b.classList.toggle('on',on)}try{localStorage.setItem('tarotKw',on?'1':'0')}catch(e){}}
 if(localStorage.getItem('tarotKw')==='1')toggleKw();
 
+// panneau réglages (toutes les options d'affichage en un menu)
+function toggleSettings(e){e.stopPropagation();const p=document.getElementById('setPanel');const open=p.classList.toggle('open');document.getElementById('setFab').setAttribute('aria-expanded',String(open))}
+document.addEventListener('click',e=>{const p=document.getElementById('setPanel');if(p&&p.classList.contains('open')&&!e.target.closest('.settings-wrap'))p.classList.remove('open')});
+document.addEventListener('keydown',e=>{if(e.key==='Escape'){const p=document.getElementById('setPanel');if(p)p.classList.remove('open')}});
+
 const DOMAINS=[{kw:'amour',label:'Amour'},{kw:'travail',label:'Travail'},{kw:'finance',label:'Finances'},{kw:'guidance',label:'Guidance'}];
 
 function openDetail(sort,dir=0){
@@ -572,7 +592,7 @@ function startAuto(){if(currentIdx<0)openDetail(CARDS[0].sort,1);document.body.c
 function stopAuto(){clearInterval(autoTimer);autoTimer=0;autoTick=0;autoRing(0);document.body.classList.remove('auto-running');const b=document.getElementById('autoFab');if(b){b.classList.remove('on');b.setAttribute('aria-pressed','false')}document.getElementById('autoRing').classList.remove('on')}
 function toggleAuto(){autoTimer?stopAuto():startAuto()}
 (function(){const fab=document.getElementById('autoFab'),spd=document.getElementById('autoSpd');
-fab.addEventListener('click',e=>{if(e.target.closest('.spd'))return;toggleAuto()});
+fab.addEventListener('click',e=>{if(e.target.closest('.spd'))return;toggleAuto();document.getElementById('setPanel').classList.remove('open')});
 spd.innerHTML=AUTO_SPEEDS.map(s=>'<button data-s="'+s+'"'+(s===autoDur?' class="cur"':'')+'>'+s+'s</button>').join('');
 spd.addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;autoDur=+b.dataset.s;autoTick=0;spd.querySelectorAll('button').forEach(x=>x.classList.toggle('cur',x===b))});
 document.getElementById('detail').addEventListener('click',e=>{if(autoTimer&&!e.target.closest('a,button,#autoFab,.d-thumb'))stopAuto()},true);
