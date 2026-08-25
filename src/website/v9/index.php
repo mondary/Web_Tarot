@@ -200,6 +200,7 @@ a{color:inherit}
   .viewbar #autoFab .spd{display:none}
   .viewbar #autoFab .ic-play,.viewbar #autoFab .ic-pause{font-size:.7rem;line-height:1}
   .settings-panel{left:50%;transform:translateX(-50%)}
+  .viewbar .settings-panel .tl{display:inline}
 }
 .kw-overlay{display:none}
 body.kw .kw-overlay{position:absolute;inset:0;z-index:2;display:flex;align-items:center;justify-content:center;text-align:center;padding:1rem;background:linear-gradient(180deg,var(--overlay-soft),color-mix(in srgb,var(--bg) 94%,transparent));opacity:0;transform:scale(.92);transition:.25s var(--ease);pointer-events:none}
