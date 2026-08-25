@@ -192,6 +192,7 @@ a{color:inherit}
 .kw-overlay{display:none}
 body.kw .kw-overlay{position:absolute;inset:0;z-index:2;display:flex;align-items:center;justify-content:center;text-align:center;padding:1rem;background:linear-gradient(180deg,var(--overlay-soft),color-mix(in srgb,var(--bg) 94%,transparent));opacity:0;transform:scale(.92);transition:.25s var(--ease);pointer-events:none}
 body.kw .mini:hover .kw-overlay,body.kw .mini:focus-visible .kw-overlay{opacity:1;transform:scale(1)}
+@media(hover:none){body.kw .kw-overlay{opacity:1;transform:scale(1)}} /* tactile : pas de hover, toujours visible */
 .kw-overlay .kw{font-family:"DM Mono",monospace;font-size:1.18rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--ac);text-shadow:0 2px 14px rgba(0,0,0,.9)}
 .kw-overlay .kn{position:absolute;right:1rem;bottom:1rem;left:1rem;font-family:"Cormorant Garamond",serif;font-size:1.35rem;font-weight:600;color:var(--ac);line-height:1.05}
 .mini .ph img{width:100%;height:100%;object-fit:contain;border-radius:.55rem;transition:transform .6s var(--ease)}
