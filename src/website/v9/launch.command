@@ -9,8 +9,8 @@ command -v php >/dev/null 2>&1 || { printf 'PHP introuvable.\n'; read -n1 -r; ex
 PORT=8772
 while lsof -iTCP:"$PORT" -sTCP:LISTEN >/dev/null 2>&1; do PORT=$((PORT+1)); done
 
-# -n -d auto_prepend_file= : évite l'interférence Herd
-php -n -d auto_prepend_file= -S 127.0.0.1:"$PORT" -t . index.php &
+# -n -d auto_prepend_file= : évite l'interférence Herd · 0.0.0.0 : accessible du téléphone (même Wi-Fi)
+php -n -d auto_prepend_file= -S 0.0.0.0:"$PORT" -t . index.php &
 PID=$!
 trap 'kill $PID 2>/dev/null' EXIT INT TERM
 
@@ -25,5 +25,8 @@ case "$(uname)" in
   Linux)  xdg-open "http://127.0.0.1:$PORT/" >/dev/null 2>&1 ;;
 esac
 
-printf '\n  ► V9 http://127.0.0.1:%s/  (ferme cette fenêtre pour arrêter)\n\n' "$PORT"
+LAN_IP=$(ipconfig getifaddr en0 2>/dev/null || ipconfig getifaddr en1 2>/dev/null)
+printf '\n  ► Sur ce Mac : http://127.0.0.1:%s/\n' "$PORT"
+[ -n "$LAN_IP" ] && printf '  ► Sur le téléphone (même Wi-Fi) : http://%s:%s/\n' "$LAN_IP" "$PORT"
+printf '    (ferme cette fenêtre pour arrêter)\n\n'
 wait $PID

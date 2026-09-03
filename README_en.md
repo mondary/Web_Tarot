@@ -16,6 +16,7 @@ An editorial website for exploring the 78 Rider-Waite-Smith Tarot cards, their m
 - **Learning mode**: multiple-choice flashcard quiz (simplified Leitner) using either each card's distinctive keyword or central description phrase — known cards go to the bottom of the deck, missed ones come back quickly; progress is saved locally
 - **Fullscreen search**: instant filtering by name or number, with family filters
 - **Nuances**: a reference comparing cards with closely related themes
+- **URL sharing**: every card has its own address (`?carte=…&deck=…&theme=…&kw=1`) updated live — a **Share** button in each sheet (native Android/iOS share sheet, otherwise copied link) and an Open Graph card preview in WhatsApp/iMessage
 - **Keyboard navigation**: type to search, use `←`/`→` between card sheets, and `Esc` to return
 - **Self-contained architecture**: PHP application with content embedded in a SQLite vault
 
@@ -26,6 +27,7 @@ An editorial website for exploring the 78 Rider-Waite-Smith Tarot cards, their m
 3. Use `←`/`→` to move to the previous or next card.
 4. Type a letter or number to open and prefill search.
 5. Open **Spreads**, **Nuances** or **Learn** from the top navigation.
+6. **Share a card**: use the *Share* button in the sheet, or simply copy the address — it carries the current card and display settings.
 
 ## ⚙️ Settings
 
@@ -60,7 +62,7 @@ browser blocks `fetch()` to SQLite and WebAssembly loading.
 
 ## 📋 See [CHANGELOG](CHANGELOG.md) for full history.
 
-Current version: `v2026.08.32`
+Current version: `v2026.09.01`
 
 ## 🔗 Links
 

@@ -6,7 +6,7 @@ Toutes les notes de release du projet Web Tarot. Le format de version suit `vYYY
 
 ## TODO — Roadmap
 
-Statut : `2026.08.32` (V9 - decks et affichage)
+Statut : `2026.09.01` (V9 — partage des lames par URL)
 
 ### Phase 1 — Fondations ✅
 - [x] Interface V2 unifiée (carousel d'accueil + grille par famille + vue détail)
@@ -37,6 +37,14 @@ Statut : `2026.08.32` (V9 - decks et affichage)
 ---
 
 ## Releases
+
+### [2026.09.01] - 2026-09-03
+#### Added
+- **Partage par URL** : chaque lame a désormais son adresse — `?carte=<id>`, complétée par `?deck=<k>`, `?theme=<k>`, `?kw=1`. L'URL se met à jour en temps réel (navigation, thème, deck, mots-clés) et une URL partagée restaure exactement la vue du partageur (les paramètres d'URL priment sur le localStorage du visiteur, sans s'y écrire).
+- **Bouton Partager** : dans la fiche lame, à côté de Retour — ouvre la feuille de partage native sur Android/iOS (WhatsApp, mail…) via la Web Share API, sinon copie le lien dans le presse-papiers avec confirmation par toast.
+- **Aperçu social (Open Graph)** : partager `?carte=…` génère côté serveur les balises og:title/og:image/og:description — WhatsApp, iMessage ou X affichent le nom et l'image de la lame au lieu d'un lien nu.
+#### Changed
+- **Baseline du loader** : « Entrez dans le mystère » remplacée par une phrase tirée au hasard à chaque visite (lumière, révélation, éclaircissement) — *Entrez dans la lumière · Ce que vous cherchez vous cherche · Laissez la lumière parler · La réponse est déjà en vous · Éclairez ce qui est voilé*.
 
 ### [2026.08.32] - 2026-08-25
 #### Changed

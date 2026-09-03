@@ -106,7 +106,13 @@ $assocsJson = json_encode($assocsMap, JSON_UNESCAPED_UNICODE | JSON_HEX_TAG | JS
 $baseJson = json_encode($base, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
 $portraits = json_decode((string) @file_get_contents(__DIR__ . '/portraits.json'), true) ?: [];
 $portraitsJson = json_encode($portraits, JSON_UNESCAPED_UNICODE);
-$ver = '2026.08.32';
+// Open Graph : aperçu de la lame quand une URL ?carte=… est partagée (WhatsApp, iMessage, mail…)
+$og = null;
+$ogId = (string)($_GET['carte'] ?? '');
+if ($ogId !== '') {
+    foreach ($cards as $c) if ($c['id'] === $ogId) { $og = $c; break; }
+}
+$ver = '2026.09.01';
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -116,6 +122,12 @@ $ver = '2026.08.32';
 <title>Tarot Divinatoire</title>
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔮</text></svg>">
 <meta name="theme-color" content="#0a0907">
+<?php if ($og): ?>
+<meta property="og:title" content="<?= htmlspecialchars($og['name'], ENT_QUOTES) ?> — Tarot Divinatoire">
+<meta property="og:description" content="Signification de la lame <?= htmlspecialchars($og['name'], ENT_QUOTES) ?> : mots-clés, amour, travail, finances et guidance.">
+<meta property="og:image" content="<?= htmlspecialchars(((!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') ? 'https' : 'http') . '://' . ($_SERVER['HTTP_HOST'] ?? '') . $base . '/index.php?img=' . urlencode($og['id'] . '.jpg'), ENT_QUOTES) ?>">
+<meta property="og:type" content="website">
+<?php endif; ?>
 <style id="ff">@font-face{font-family:"Cormorant Garamond";font-style:normal;font-weight:400 600;src:url("<?= $base ?>/index.php?font=cormorant-garamond.woff2") format("woff2");font-display:swap}@font-face{font-family:"Cormorant Garamond";font-style:italic;font-weight:400 500;src:url("<?= $base ?>/index.php?font=cormorant-garamond-i.woff2") format("woff2");font-display:swap}@font-face{font-family:"DM Mono";font-style:normal;font-weight:400;src:url("<?= $base ?>/index.php?font=dm-mono-400.woff2") format("woff2");font-display:swap}@font-face{font-family:"DM Mono";font-style:normal;font-weight:500;src:url("<?= $base ?>/index.php?font=dm-mono-500.woff2") format("woff2");font-display:swap}</style>
 </style>
 </style>
@@ -273,6 +285,12 @@ body.kw .mini:hover .kw-overlay,body.kw .mini:focus-visible .kw-overlay{opacity:
 @keyframes detail-prev{from{opacity:0;transform:translateX(-9vw)}to{opacity:1;transform:translateX(0)}}
 .back-btn{position:fixed;top:1.2rem;left:1.5rem;z-index:1650;font-family:"DM Mono",monospace;font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);cursor:pointer;background:var(--overlay-soft);backdrop-filter:blur(8px);padding:.5rem .9rem;border-radius:40px;border:1px solid var(--line);transition:.3s}
 .back-btn:hover{color:var(--ac);border-color:var(--ac)}
+.d-topbar{position:fixed;top:1.2rem;left:1.5rem;z-index:1650;display:flex;gap:.5rem}
+.d-topbar .back-btn{position:static}
+.d-topbar button.back-btn{appearance:none;display:inline-flex;align-items:center;gap:.45rem}
+.d-topbar button.back-btn svg{width:14px;height:14px;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+#toast{position:fixed;left:50%;bottom:calc(4.6rem + env(safe-area-inset-bottom));transform:translate(-50%,12px);background:var(--overlay);backdrop-filter:blur(8px);border:1px solid var(--ac);color:var(--ac);font-family:"DM Mono",monospace;font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;padding:.6rem 1.1rem;border-radius:40px;opacity:0;pointer-events:none;transition:.3s var(--ease);z-index:2000;max-width:90vw;text-align:center}
+#toast.show{opacity:1;transform:translate(-50%,0)}
 body:has(.d-stage.open) .brand{opacity:0;pointer-events:none}
 /* diaporama : visible partout via viewbar */
 
@@ -430,7 +448,7 @@ body:has(.d-stage.open) .brand{opacity:0;pointer-events:none}
 <meta name="mobile-web-app-capable" content="yes">
 </head>
 <body>
-<div id="loader"><div class="moon">☽</div><div class="loader-text">Entrez dans le mystère</div><div class="loader-bar"></div></div>
+<div id="loader"><div class="moon">☽</div><div class="loader-text"></div><div class="loader-bar"></div></div>
 <div class="fx-grain"></div><div class="fx-vignette"></div>
 <div class="brand"><b>TAROT</b> <em>DIVINATOIRE</em><span class="v"> · v<?= $ver ?></span></div>
 <nav class="topnav">
@@ -497,7 +515,7 @@ body:has(.d-stage.open) .brand{opacity:0;pointer-events:none}
 </div>
 
  <div class="d-stage" id="detail">
-  <div class="back-btn" id="backBtn">← Retour</div>
+  <div class="d-topbar"><div class="back-btn" id="backBtn">← Retour</div><button type="button" class="back-btn" aria-label="Partager cette lame" onclick="shareCurrent()"><svg viewBox="0 0 24 24"><path d="M12 15V3m0 0L8 7m4-4 4 4M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-7"/></svg>Partager</button></div>
   <div class="auto-ring" id="autoRing"></div>
   <div class="d-hero"><img class="d-hero-img" id="heroImg" alt=""><div class="d-hero-loupe" id="heroLoupe"></div></div>
   <div class="d-panel"><div class="d-panel-inner" id="dInner"></div></div>
@@ -514,8 +532,9 @@ const DECKS=[{k:'rws',l:'RWS'},{k:'clm',l:'CLM'},{k:'marseille',l:'Marseille'}];
 let DECK=(localStorage.getItem('tarotDeck')||'rws');
 function deckUrl(id){return DECK!=='rws'?B+'/index.php?deckimg='+DECK+'/'+encodeURIComponent(id+'.jpg')+'&v='+V:IMG_MAP[id]}
 function applyDeck(){document.getElementById('deckLbl').textContent=(DECKS.find(x=>x.k===DECK)||DECKS[0]).l;document.querySelectorAll('img[data-card]').forEach(im=>{im.src=deckUrl(im.dataset.card)});}
-function cycleDeck(){const i=DECKS.findIndex(x=>x.k===DECK);DECK=DECKS[(i+1)%DECKS.length].k;try{localStorage.setItem('tarotDeck',DECK)}catch(e){}applyDeck()}
+function cycleDeck(){const i=DECKS.findIndex(x=>x.k===DECK);DECK=DECKS[(i+1)%DECKS.length].k;try{localStorage.setItem('tarotDeck',DECK)}catch(e){}applyDeck();syncUrl()}
 let currentIdx=-1,detailSlideTimer=0,searchState={fam:'',q:'',selIdx:0};
+let booted=false; // syncUrl() muet avant la fin du boot (lecture des paramètres d'URL)
 
 const PICTOS={
  amour:'<svg viewBox="0 0 24 24"><path d="M20.8 4.8a5.5 5.5 0 0 0-7.8 0L12 5.9l-1.1-1.1a5.5 5.5 0 0 0-7.8 7.8L12 21l8.9-8.4a5.5 5.5 0 0 0-.1-7.8Z"/></svg>',
@@ -537,7 +556,7 @@ function parsePortrait(md){const o={key:'',idee:'',realite:''};if(!md)return o;f
 
 // mots-clés au survol (desktop) — toggle persistant
 const KW={};for(const c of CARDS){const p=parsePortrait(PORTRAITS[c.id]||'');if(p.key)KW[c.id]=p.key}
-function toggleKw(){const on=document.body.classList.toggle('kw');const b=document.getElementById('kwFab');if(b){b.setAttribute('aria-pressed',String(on));b.classList.toggle('on',on)}try{localStorage.setItem('tarotKw',on?'1':'0')}catch(e){}}
+function toggleKw(){const on=document.body.classList.toggle('kw');const b=document.getElementById('kwFab');if(b){b.setAttribute('aria-pressed',String(on));b.classList.toggle('on',on)}try{localStorage.setItem('tarotKw',on?'1':'0')}catch(e){}syncUrl()}
 if(localStorage.getItem('tarotKw')==='1')toggleKw();
 
 // panneau réglages (toutes les options d'affichage en un menu)
@@ -604,9 +623,16 @@ function openDetail(sort,dir=0){
   const prev=CARDS[(i-1+CARDS.length)%CARDS.length],next=CARDS[(i+1)%CARDS.length];
   document.getElementById('loopBar').innerHTML='<a onclick="openDetail('+prev.sort+',-1)">← '+prev.name+'</a><span class="pos"><b>'+num+'</b> / '+CARDS.length+'</span><a onclick="openDetail('+next.sort+',1)">'+next.name+' →</a>';
   detail.classList.add('open');detail.scrollTop=0;
+  document.title=c.name+' — Tarot Divinatoire';syncUrl();
   if(dir&&wasOpen){clearTimeout(detailSlideTimer);detail.classList.remove('slide-next','slide-prev');void detail.offsetWidth;detail.classList.add(dir>0?'slide-next':'slide-prev');detailSlideTimer=setTimeout(()=>detail.classList.remove('slide-next','slide-prev'),340)}
 }
-function closeDetail(){document.getElementById('detail').classList.remove('open');currentIdx=-1;stopAuto()}
+function closeDetail(){document.getElementById('detail').classList.remove('open');currentIdx=-1;stopAuto();document.title='Tarot Divinatoire';syncUrl()}
+
+// état dans l'URL : ?carte=<id>&deck=<k>&theme=<k>&kw=1 — l'adresse reste toujours partageable
+function syncUrl(){if(!booted)return;const p=new URLSearchParams();if(currentIdx>=0)p.set('carte',CARDS[currentIdx].id);if(DECK!=='rws')p.set('deck',DECK);const tk=document.documentElement.dataset.theme||'';if(tk)p.set('theme',tk);if(document.body.classList.contains('kw'))p.set('kw','1');const q=p.toString();try{history.replaceState(null,'',location.pathname+(q?'?'+q:''))}catch(e){}}
+function toast(m){let t=document.getElementById('toast');if(!t){t=document.createElement('div');t.id='toast';document.body.appendChild(t)}t.textContent=m;t.classList.add('show');clearTimeout(t._h);t._h=setTimeout(()=>t.classList.remove('show'),2400)}
+// partage natif (Android/iOS : WhatsApp, mail…) sinon copie du lien dans le presse-papiers
+function shareCurrent(){const c=CARDS[currentIdx];if(!c)return;syncUrl();const u=location.href;const d={title:c.name+' — Tarot Divinatoire',text:c.name+' — signification et mots-clés',url:u};if(navigator.share)navigator.share(d).catch(()=>{});else if(navigator.clipboard&&navigator.clipboard.writeText)navigator.clipboard.writeText(u).then(()=>toast('Lien copié'),()=>toast(u));else toast(u)}
 
 // diaporama auto : avance les lames, pause/reprise, vitesse 5/8/12 s
 const AUTO_SPEEDS=[5,8,12];let autoTimer=0,autoT0=0,autoTick=0,autoDur=8;function autoRing(p){document.documentElement.style.setProperty('--auto-p',(p*100).toFixed(1)+'%')}
@@ -821,13 +847,19 @@ document.addEventListener('keydown',e=>{if(e.metaKey||e.ctrlKey||e.altKey)return
 });
 
 renderGrid();renderChips();applyDeck();requestAnimationFrame(()=>document.querySelector('.seuil-title').classList.add('revealed'));
+// baseline du loader : une phrase tirée au hasard à chaque visite
+const BASELINES=['Entrez dans la lumière','Ce que vous cherchez vous cherche','Laissez la lumière parler','La réponse est déjà en vous','Éclairez ce qui est voilé'];
+document.querySelector('.loader-text').textContent=BASELINES[Math.floor(Math.random()*BASELINES.length)];
 document.getElementById('loader').classList.add('gone');
 
 // thème : nuit / ivoire / sylve, persisté
 const THEMES=[{k:'',l:'Nuit',c:'#0a0907'},{k:'ivoire',l:'Ivoire',c:'#efe9dc'},{k:'sylve',l:'Sylve',c:'#0a0f0b'}];
 (function(){const saved=localStorage.getItem('tarotTheme')||'';const t=THEMES.find(x=>x.k===saved)||THEMES[0];applyTheme(t,false)})();
-function applyTheme(t,save){document.documentElement.dataset.theme=t.k;document.getElementById('themeLbl').textContent=t.l;document.querySelector('meta[name=theme-color]').setAttribute('content',t.c);if(save)try{localStorage.setItem('tarotTheme',t.k)}catch(e){}}
+function applyTheme(t,save){document.documentElement.dataset.theme=t.k;document.getElementById('themeLbl').textContent=t.l;document.querySelector('meta[name=theme-color]').setAttribute('content',t.c);if(save){try{localStorage.setItem('tarotTheme',t.k)}catch(e){}syncUrl()}}
 function cycleTheme(){const cur=localStorage.getItem('tarotTheme')||'';const i=THEMES.findIndex(x=>x.k===cur);applyTheme(THEMES[(i+1)%THEMES.length],true)}
+
+// restauration depuis une URL partagée : les paramètres priment sur localStorage, sans s'y écrire
+(function(){booted=true;const p=new URLSearchParams(location.search);const dk=p.get('deck');if(dk&&DECKS.some(x=>x.k===dk)){DECK=dk;applyDeck()}const tk=p.get('theme');if(tk){const t=THEMES.find(x=>x.k===tk);if(t)applyTheme(t,false)}if(p.get('kw')==='1'&&!document.body.classList.contains('kw'))toggleKw();const id=p.get('carte');if(id)openDetailById(id)})();
 
 // loupe hero (conservé)
 (function(){const hero=document.querySelector('.d-hero'),loupe=document.getElementById('heroLoupe');if(!hero||!loupe)return;let active=false;hero.addEventListener('mouseenter',()=>{active=true;loupe.classList.add('active')});hero.addEventListener('mouseleave',()=>{active=false;loupe.classList.remove('active')});hero.addEventListener('mousemove',e=>{if(!active)return;const r=hero.getBoundingClientRect();loupe.style.left=(e.clientX-r.left)+'px';loupe.style.top=(e.clientY-r.top)+'px'})})();

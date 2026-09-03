@@ -16,6 +16,7 @@ Un site éditorial pour explorer les 78 lames du Tarot de Rider-Waite-Smith, leu
 - **Mode apprentissage** : quiz QCM type flashcards (Leitner simplifié) au choix sur le mot-clé ou la phrase centrale de chaque lame — les lames sues partent au fond de la pile, les ratées reviennent vite ; progression conservée localement
 - **Recherche plein écran** : filtrage instantané par nom ou numéro, avec filtres par famille
 - **Nuances** : pense-bête comparant les lames aux thèmes proches
+- **Partage par URL** : chaque lame a son adresse (`?carte=…&deck=…&theme=…&kw=1`) mise à jour en direct — bouton **Partager** dans la fiche (feuille native Android/iOS, sinon lien copié) et aperçu de la lame dans WhatsApp/iMessage via Open Graph
 - **Navigation clavier** : saisie directe pour chercher, `←`/`→` entre les fiches et `Échap` pour revenir
 - **Architecture autonome** : application PHP et contenu embarqué dans un vault SQLite
 
@@ -26,6 +27,7 @@ Un site éditorial pour explorer les 78 lames du Tarot de Rider-Waite-Smith, leu
 3. Utilisez `←`/`→` pour passer à la lame précédente ou suivante.
 4. Tapez une lettre ou un chiffre pour ouvrir et préremplir la recherche.
 5. Ouvrez **Tirages**, **Nuances** ou **Apprendre** depuis la navigation supérieure.
+6. **Partagez une lame** : bouton *Partager* dans la fiche, ou copiez simplement l'adresse — elle contient la lame et l'affichage en cours.
 
 ## ⚙️ Réglages
 
@@ -60,7 +62,7 @@ le navigateur bloque alors `fetch()` vers SQLite et le chargement de WebAssembly
 
 ## 📋 Voir le [CHANGELOG](CHANGELOG.md) pour l'historique complet.
 
-Version courante : `v2026.08.32`
+Version courante : `v2026.09.01`
 
 ## 🔗 Liens
 
