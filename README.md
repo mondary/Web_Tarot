@@ -17,6 +17,7 @@ Un site éditorial pour explorer les 78 lames du Tarot de Rider-Waite-Smith, leu
 - **Recherche plein écran** : filtrage instantané par nom ou numéro, avec filtres par famille
 - **Nuances** : pense-bête comparant les lames aux thèmes proches
 - **Partage par URL** : chaque lame a son adresse (`?carte=…&deck=…&theme=…&kw=1`) mise à jour en direct — bouton **Partager** dans la fiche (feuille native Android/iOS, sinon lien copié) et aperçu de la lame dans WhatsApp/iMessage via Open Graph
+- **Arcana Index (v11 expérimental)** : bibliothèque Three.js dense, organisée en rayonnages 3D par famille et numéro, avec recherche instantanée et fiche au clic
 - **Navigation clavier** : saisie directe pour chercher, `←`/`→` entre les fiches et `Échap` pour revenir
 - **Architecture autonome** : application PHP et contenu embarqué dans un vault SQLite
 
@@ -62,7 +63,7 @@ le navigateur bloque alors `fetch()` vers SQLite et le chargement de WebAssembly
 
 ## 📋 Voir le [CHANGELOG](CHANGELOG.md) pour l'historique complet.
 
-Version courante : `v2026.09.01`
+Version courante : `v2026.09.02`
 
 ## 🔗 Liens
 

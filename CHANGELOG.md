@@ -6,7 +6,7 @@ Toutes les notes de release du projet Web Tarot. Le format de version suit `vYYY
 
 ## TODO — Roadmap
 
-Statut : `2026.09.01` (V9 — partage des lames par URL)
+Statut : `2026.09.02` (V11 — archive Three.js)
 
 ### Phase 1 — Fondations ✅
 - [x] Interface V2 unifiée (carousel d'accueil + grille par famille + vue détail)
@@ -37,6 +37,13 @@ Statut : `2026.09.01` (V9 — partage des lames par URL)
 ---
 
 ## Releases
+
+### [2026.09.02] - 2026-09-03
+#### Added
+- **Arcana Index (v11 expérimental)** : archive Three.js dense de 78 meshes, organisée par famille et numéro, avec raycasting, recherche instantanée, filtres, zoom, drag orbital et fiche latérale.
+- **Accès isolé** : nouveau dossier `src/website/v11/` et launcher local dédié, sans modifier la structure de la V9.
+#### Changed
+- **Version** : passage à `2026.09.02` et renouvellement du cache PWA.
 
 ### [2026.09.01] - 2026-09-03
 #### Added
