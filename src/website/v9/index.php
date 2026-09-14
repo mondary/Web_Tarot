@@ -1,6 +1,10 @@
 <?php
 declare(strict_types=1);
 
+if (str_contains($_SERVER['HTTP_ACCEPT_ENCODING'] ?? '', 'gzip')) {
+    ob_start('ob_gzhandler');
+}
+
 // V9 — refonte grand format inspirée de V3, contenu éditorial de V8.
 // Couche données portée de V7 (vault SQLite). Layout 100 % neuf.
 
@@ -66,6 +70,16 @@ if (isset($_GET['js']) && $_GET['js'] === 'spreads') {
     readfile(__DIR__ . '/tarot-spreads.js');
     exit;
 }
+if (isset($_GET['assocs'])) {
+    $id = (string)$_GET['assocs'];
+    if (!preg_match('/^[a-z0-9_-]+$/i', $id)) { http_response_code(400); exit('Bad request'); }
+    $assocs = Vault::json('/cards/' . $id . '/associations.json');
+    if (!$assocs) { http_response_code(404); exit('Not found'); }
+    header('Content-Type: application/json; charset=utf-8');
+    header('Cache-Control: public, max-age=86400');
+    echo json_encode($assocs, JSON_UNESCAPED_UNICODE);
+    exit;
+}
 if (isset($_GET['svg']) && preg_match('/^[a-z]+$/', (string)$_GET['svg'])) {
     Vault::image('/svg/' . $_GET['svg'] . '.svg');
 }
@@ -97,12 +111,6 @@ $es = $data['es'];
 $cardsJson = json_encode($cards, JSON_UNESCAPED_UNICODE | JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT);
 $familiesJson = json_encode($families, JSON_UNESCAPED_UNICODE | JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT);
 $esJson = json_encode($es, JSON_UNESCAPED_UNICODE | JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT);
-$assocsMap = [];
-foreach ($cards as $c) {
-    $a = Vault::json('/cards/' . $c['id'] . '/associations.json');
-    if ($a) $assocsMap[$c['id']] = $a;
-}
-$assocsJson = json_encode($assocsMap, JSON_UNESCAPED_UNICODE | JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT);
 $baseJson = json_encode($base, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
 $portraits = json_decode((string) @file_get_contents(__DIR__ . '/portraits.json'), true) ?: [];
 $portraitsJson = json_encode($portraits, JSON_UNESCAPED_UNICODE);
@@ -524,7 +532,7 @@ body:has(.d-stage.open) .brand{opacity:0;pointer-events:none}
 
 <script src="<?= $base ?>/index.php?js=spreads"></script>
 <script>
-const B=<?= $baseJson ?>,CARDS=<?= $cardsJson ?>,FAMILIES=<?= $familiesJson ?>,ES_MAP=<?= $esJson ?>,ASSOCS=<?= $assocsJson ?>,PORTRAITS=<?= $portraitsJson ?>,IMG_MAP={};
+const B=<?= $baseJson ?>,CARDS=<?= $cardsJson ?>,FAMILIES=<?= $familiesJson ?>,ES_MAP=<?= $esJson ?>,PORTRAITS=<?= $portraitsJson ?>,IMG_MAP={},ASSOCS={};
 const V=<?= (string)@filemtime(__DIR__.'/vault.sqlite') ?>;
 for(const c of CARDS) IMG_MAP[c.id]=B+'/index.php?img='+encodeURIComponent(c.id+'.jpg')+'&v='+V;
 // decks : rws (défaut) / clm (perso)
@@ -608,7 +616,7 @@ function openDetail(sort,dir=0){
 
   // associations tiroir
   const assocs=renderAssociations(ASSOCS[c.id]);
-  const assocsBlock=assocs?'<div class="d-assocs" id="dAssocs"><button class="d-assocs-toggle" onclick="document.getElementById(\'dAssocs\').classList.toggle(\'open\')"><span id="assocsCount"></span><span class="arr">▾</span></button><div class="d-assocs-body">'+assocs+'</div></div>':'';
+  const assocsBlock='<div class="d-assocs" id="dAssocs" data-card="'+c.id+'"><button class="d-assocs-toggle" onclick="document.getElementById(\'dAssocs\').classList.toggle(\'open\')"><span id="assocsCount">Associations</span><span class="arr">▾</span></button><div class="d-assocs-body">'+(assocs||'<p class="assoc-loading">Chargement…</p>')+'</div></div>';
 
   const thumbs=inFam.map(x=>'<div class="d-thumb'+(x.id===c.id?' current':'')+'" onclick="openDetail('+x.sort+')"><img data-card="'+x.id+'" src="'+deckUrl(x.id)+'"></div>').join('');
 
@@ -619,12 +627,30 @@ function openDetail(sort,dir=0){
     '<div class="d-thumbs">'+thumbs+'</div>';
 
   if(assocs){const n=(ASSOCS[c.id]||[]).length;const el=document.getElementById('assocsCount');if(el)el.textContent=n+' combinaison'+(n>1?'s':'')}
+  else loadAssociations(c.id);
 
   const prev=CARDS[(i-1+CARDS.length)%CARDS.length],next=CARDS[(i+1)%CARDS.length];
   document.getElementById('loopBar').innerHTML='<a onclick="openDetail('+prev.sort+',-1)">← '+prev.name+'</a><span class="pos"><b>'+num+'</b> / '+CARDS.length+'</span><a onclick="openDetail('+next.sort+',1)">'+next.name+' →</a>';
   detail.classList.add('open');detail.scrollTop=0;
   document.title=c.name+' — Tarot Divinatoire';syncUrl();
   if(dir&&wasOpen){clearTimeout(detailSlideTimer);detail.classList.remove('slide-next','slide-prev');void detail.offsetWidth;detail.classList.add(dir>0?'slide-next':'slide-prev');detailSlideTimer=setTimeout(()=>detail.classList.remove('slide-next','slide-prev'),340)}
+}
+async function loadAssociations(id){
+  if(ASSOCS[id])return;
+  try{
+    const r=await fetch(B+'/index.php?assocs='+encodeURIComponent(id),{headers:{Accept:'application/json'}});
+    if(!r.ok)throw new Error('HTTP '+r.status);
+    ASSOCS[id]=await r.json();
+    const box=document.getElementById('dAssocs');
+    if(!box||box.dataset.card!==id)return;
+    const body=box.querySelector('.d-assocs-body'), rows=ASSOCS[id], html=renderAssociations(rows);
+    body.innerHTML=html||'<p class="assoc-loading">Aucune association.</p>';
+    const count=box.querySelector('#assocsCount');
+    if(count)count.textContent=rows.length+' combinaison'+(rows.length>1?'s':'');
+  }catch(e){
+    const body=document.querySelector('#dAssocs .d-assocs-body');
+    if(body)body.innerHTML='<p class="assoc-loading">Associations indisponibles.</p>';
+  }
 }
 function closeDetail(){document.getElementById('detail').classList.remove('open');currentIdx=-1;stopAuto();document.title='Tarot Divinatoire';syncUrl()}
 
