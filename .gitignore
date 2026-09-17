@@ -27,3 +27,7 @@ __pycache__/
 website/sources/
 screenshots/
 /TAROTclm/
+
+# v12-rust (genere)
+/src/website/v12-rust/target/
+/src/website/v12-rust/www/

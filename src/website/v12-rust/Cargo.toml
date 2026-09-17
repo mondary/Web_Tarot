@@ -1,0 +1,7 @@
+[workspace]
+resolver = "2"
+members = ["crates/exporter", "crates/app"]
+
+[profile.release]
+opt-level = "z"
+lto = true
