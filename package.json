@@ -5,8 +5,8 @@
   "packageManager": "pnpm@11.22.0",
   "scripts": {
     "mobile:prepare": "php -d auto_prepend_file= src/mobile/scripts/export.php",
-    "mobile:sync": "npm run mobile:prepare && npx cap sync",
-    "mobile:icons": "mkdir -p src/mobile/resources && cp icon.png src/mobile/resources/icon.png && npx capacitor-assets generate --assetPath src/mobile/resources --android --ios --iconBackgroundColor '#10100e' --splashBackgroundColor '#10100e'",
+    "mobile:sync": "pnpm android:sync && pnpm mobile:prepare && CAP_PLATFORM=ios pnpm exec cap sync ios",
+    "mobile:icons": "mkdir -p src/mobile/resources && cp icon.png src/mobile/resources/icon.png && npx capacitor-assets generate --assetPath src/mobile/resources --ios --iconBackgroundColor '#10100e' --splashBackgroundColor '#10100e' && node Android/scripts/store-assets.cjs",
     "android:release": "pnpm android:sync && cd Android && ./gradlew assembleDebug bundleRelease",
     "ios:build": "pnpm mobile:prepare && CAP_PLATFORM=ios pnpm exec cap sync ios && cd ios/App && xcodebuild -workspace App.xcworkspace -scheme App -configuration Release -sdk iphoneos -derivedDataPath build CODE_SIGNING_ALLOWED=NO CODE_SIGNING_REQUIRED=NO CODE_SIGN_IDENTITY='' build",
     "android:prepare": "python3 Android/scripts/prepare.py",
