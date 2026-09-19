@@ -7,7 +7,7 @@ android {
         applicationId "fr.mondary.tarotdivinatoire"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode (System.getenv("ANDROID_VERSION_CODE") ?: "2").toInteger()
+        versionCode = (System.getenv("ANDROID_VERSION_CODE") ?: "2").toInteger()
         versionName "1.1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         aaptOptions {
