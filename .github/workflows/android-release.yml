@@ -1,0 +1,53 @@
+name: Android release
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths: ['Android/**', 'capacitor.config.ts', 'package.json', 'pnpm-lock.yaml', '.github/workflows/android-release.yml']
+permissions:
+  contents: read
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with: {node-version: 22, cache: pnpm}
+      - uses: actions/setup-java@v4
+        with: {distribution: temurin, java-version: '21'}
+      - uses: android-actions/setup-android@v3
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm android:sync
+      - name: Configure optional upload signing
+        env:
+          KEYSTORE: ${{ secrets.ANDROID_KEYSTORE_BASE64 }}
+        run: |
+          if [ -n "$KEYSTORE" ]; then
+            printf '%s' "$KEYSTORE" | base64 --decode > "$RUNNER_TEMP/upload.jks"
+            echo "ANDROID_KEYSTORE_PATH=$RUNNER_TEMP/upload.jks" >> "$GITHUB_ENV"
+          fi
+      - name: Build installable APK and release bundle
+        working-directory: Android
+        env:
+          ANDROID_KEYSTORE_PASSWORD: ${{ secrets.ANDROID_KEYSTORE_PASSWORD }}
+          ANDROID_KEY_ALIAS: ${{ secrets.ANDROID_KEY_ALIAS }}
+          ANDROID_KEY_PASSWORD: ${{ secrets.ANDROID_KEY_PASSWORD }}
+          ANDROID_VERSION_CODE: ${{ github.run_number }}
+        run: |
+          chmod +x gradlew
+          ./gradlew assembleDebug bundleRelease lintDebug
+          mkdir -p release
+          cp app/build/outputs/apk/debug/app-debug.apk release/tarot-divinatoire-debug.apk
+          if [ -n "$ANDROID_KEYSTORE_PATH" ]; then
+            cp app/build/outputs/bundle/release/app-release.aab release/tarot-divinatoire-signed.aab
+          else
+            cp app/build/outputs/bundle/release/app-release.aab release/tarot-divinatoire-unsigned.aab
+          fi
+          cd release
+          sha256sum *.apk *.aab > SHA256SUMS
+      - uses: actions/upload-artifact@v4
+        with:
+          name: tarot-android
+          path: Android/release/
+          if-no-files-found: error

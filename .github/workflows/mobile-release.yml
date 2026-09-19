@@ -10,27 +10,6 @@ permissions:
   contents: read
 
 jobs:
-  android:
-    name: Android AAB
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: shivammathur/setup-php@v2
-        with: {php-version: '8.3', extensions: pdo_sqlite}
-      - uses: pnpm/action-setup@v4
-      - uses: actions/setup-node@v4
-        with: {node-version: 20, cache: pnpm}
-      - uses: actions/setup-java@v4
-        with: {distribution: temurin, java-version: '21'}
-      - run: pnpm install --frozen-lockfile
-      - run: npm run mobile:icons
-      - run: npx cap add android
-      - run: npm run android:release
-      - run: mkdir -p release/android && cp android/app/build/outputs/bundle/release/app-release.aab release/android/tarot-divinatoire.aab
-      - name: Upload Android bundle
-        uses: actions/upload-artifact@v4
-        with: {name: tarot-divinatoire-android-aab, path: release/android/tarot-divinatoire.aab, if-no-files-found: error}
-
   ios:
     name: iOS archive source
     runs-on: macos-latest

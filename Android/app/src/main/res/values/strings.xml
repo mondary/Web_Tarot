@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Tarot Divinatoire</string>
+    <string name="title_activity_main">Tarot Divinatoire</string>
+    <string name="package_name">fr.mondary.tarotdivinatoire</string>
+    <string name="custom_url_scheme">fr.mondary.tarotdivinatoire</string>
+</resources>

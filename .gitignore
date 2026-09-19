@@ -9,7 +9,14 @@
 .*
 .DS_Store
 node_modules/
-/android/
+/Android/www/
+/Android/release/
+/Android/.gradle/
+/Android/local.properties
+/Android/capacitor-cordova-android-plugins/
+/Android/app/src/main/assets/
+*.keystore
+*.jks
 /ios/
 /src/clm_borderless/
 /release/
