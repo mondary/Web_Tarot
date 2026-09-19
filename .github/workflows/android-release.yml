@@ -17,6 +17,8 @@ jobs:
       - uses: actions/setup-java@v4
         with: {distribution: temurin, java-version: '21'}
       - uses: android-actions/setup-android@v3
+        with:
+          packages: platform-tools platforms;android-36 build-tools;35.0.0
       - run: pnpm install --frozen-lockfile
       - run: pnpm android:sync
       - name: Configure optional upload signing
