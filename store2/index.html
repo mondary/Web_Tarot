@@ -1,0 +1,1029 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Lumen Tarot — le Rider-Waite-Smith, enfin limpide</title>
+<meta name="description" content="Apprends le tarot Rider-Waite-Smith sans effort : chaque carte en un mot, une phrase, à l'endroit, à l'envers, par thèmes (amour, travail, argent, famille, réussite) — plus les 3 003 combinaisons de cartes. Recherche instantanée, pensé mobile.">
+<meta name="theme-color" content="#08090d">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%2308090d'/%3E%3Cpath d='M16 5l2.4 7.1 7.1 2.4-7.1 2.4L16 24l-2.4-7.1L6.5 14.5l7.1-2.4z' fill='%23e8b45a'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=DM+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ============ ROOT ============ */
+:root{
+  --bg0:#0a0907; --bg1:#14120e; --panel:rgba(20,18,14,.72); --panel2:rgba(20,18,14,.9);
+  --ink:#f1ede4; --mut:#8a8174; --mut2:#5f584c;
+  --gold:#c9a227; --gold2:#e5c96b; --goldline:rgba(201,162,39,.16);
+  --green:#5ceab2; --pink:#ff5c8a;
+  --serif:'Cormorant Garamond',Georgia,serif;
+  --sans:'Space Grotesk',ui-sans-serif,system-ui,sans-serif;
+  --mono:'DM Mono',ui-monospace,SFMono-Regular,Menlo,monospace;
+  --rad:16px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:84px;overflow-x:hidden}
+body{
+  font-family:var(--sans);background:var(--bg0);color:var(--ink);
+  overflow-x:hidden;line-height:1.6;-webkit-font-smoothing:antialiased;
+}
+::selection{background:rgba(232,180,90,.35);color:#fff}
+img,svg{display:block}
+a{color:inherit;text-decoration:none}
+button{font-family:inherit;cursor:pointer}
+mark{background:rgba(232,180,90,.3);color:var(--gold2);border-radius:3px;padding:0 2px}
+:focus-visible{outline:2px solid var(--gold);outline-offset:3px;border-radius:6px}
+
+/* ============ BACKGROUND STAGE ============ */
+#bgStage{position:fixed;inset:-12%;z-index:-3;will-change:transform}
+.bg{position:absolute;inset:0;background-size:cover;background-position:center;
+  opacity:0;visibility:hidden;transition:opacity 1.8s ease,visibility 0s linear 1.8s;transform:scale(1.04)}
+.bg.on{opacity:1;visibility:visible;animation:kenburns 26s ease-in-out infinite alternate}
+@keyframes kenburns{from{transform:scale(1.02) translate(0,0)}to{transform:scale(1.12) translate(1.6%,-1.6%)}}
+#shade{position:fixed;inset:0;z-index:-2;pointer-events:none;
+  background:linear-gradient(180deg,rgba(6,7,10,.82),rgba(6,7,10,.58) 38%,rgba(6,7,10,.72) 62%,rgba(6,7,10,.9))}
+#shade::after{content:"";position:absolute;inset:0;
+  background:radial-gradient(120% 90% at 50% 10%,transparent 40%,rgba(4,5,8,.75) 100%)}
+#grid{position:fixed;inset:0;z-index:-2;pointer-events:none;opacity:.5;
+  background-image:linear-gradient(rgba(92,234,178,.045) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(92,234,178,.045) 1px,transparent 1px);
+  background-size:52px 52px;
+  mask-image:radial-gradient(80% 70% at 50% 30%,#000 0%,transparent 100%);
+  -webkit-mask-image:radial-gradient(80% 70% at 50% 30%,#000 0%,transparent 100%)}
+#scan{position:fixed;inset:0;z-index:9;pointer-events:none;opacity:.35;mix-blend-mode:overlay;
+  background:repeating-linear-gradient(0deg,rgba(0,0,0,.28) 0 1px,transparent 1px 3px)}
+#glow{position:fixed;width:640px;height:640px;border-radius:50%;z-index:-1;pointer-events:none;
+  left:0;top:0;transform:translate(-50%,-50%);mix-blend-mode:screen;opacity:.5;
+  background:radial-gradient(circle,rgba(232,180,90,.14),rgba(143,123,255,.06) 42%,transparent 70%)}
+
+/* ============ NAV ============ */
+#nav{position:fixed;top:0;left:0;right:0;z-index:50;transition:background .35s,border-color .35s,backdrop-filter .35s;
+  border-bottom:1px solid transparent}
+#nav.scrolled{background:rgba(8,9,13,.82);backdrop-filter:blur(14px);border-color:var(--goldline)}
+.nav-inner{max-width:1180px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;gap:26px}
+.logo{font-family:var(--mono);font-weight:600;font-size:15px;letter-spacing:.06em;display:flex;align-items:center;gap:10px}
+.logo .sigil{width:22px;height:22px;color:var(--gold);filter:drop-shadow(0 0 8px rgba(232,180,90,.6))}
+.logo b{color:var(--gold)}
+.logo .v{color:var(--mut2);font-weight:400}
+.links{display:flex;gap:22px;margin-left:auto;font-size:14px;color:var(--mut)}
+.links a{transition:color .2s;letter-spacing:.02em}
+.links a:hover{color:var(--gold2)}
+.btn{display:inline-flex;align-items:center;gap:9px;border-radius:12px;padding:11px 20px;
+  font-weight:600;font-size:14.5px;letter-spacing:.02em;border:1px solid transparent;
+  transition:transform .18s,box-shadow .25s,background .25s;white-space:nowrap}
+.btn:active{transform:scale(.97)}
+.btn-gold{background:linear-gradient(140deg,var(--gold2),var(--gold) 60%,#c98f2e);color:#1b1204;
+  box-shadow:0 6px 26px rgba(232,180,90,.3)}
+.btn-gold:hover{box-shadow:0 10px 36px rgba(232,180,90,.5);transform:translateY(-2px)}
+.btn-ghost{border-color:var(--goldline);color:var(--ink);background:rgba(255,255,255,.02)}
+.btn-ghost:hover{border-color:rgba(232,180,90,.5);background:rgba(232,180,90,.07);transform:translateY(-2px)}
+.btn .bi{width:16px;height:16px}
+#navCta{padding:9px 16px;font-size:13.5px}
+
+/* ============ GENERIC SECTIONS ============ */
+main{position:relative;z-index:1}
+section{padding:clamp(76px,11vh,130px) 24px;position:relative}
+.sec-inner{max-width:1180px;margin:0 auto}
+.kicker{font-family:var(--mono);font-size:12px;letter-spacing:.32em;color:var(--green);
+  text-transform:uppercase;display:flex;align-items:center;gap:12px;margin-bottom:18px}
+.kicker::before{content:"";width:34px;height:1px;background:linear-gradient(90deg,var(--green),transparent)}
+h2{font-family:var(--serif);font-weight:600;font-size:clamp(30px,4.6vw,52px);line-height:1.08;
+  letter-spacing:.01em;margin-bottom:16px}
+h2 em{font-style:italic;color:var(--gold2)}
+.lead{color:var(--mut);font-size:clamp(15.5px,1.7vw,18px);max-width:640px}
+.lead code{font-family:var(--mono);font-size:.86em;color:var(--green);background:rgba(92,234,178,.08);
+  padding:1px 6px;border-radius:5px}
+.ghost-glyph{position:absolute;pointer-events:none;color:rgba(232,180,90,.05);z-index:0;
+  font-family:var(--serif);line-height:1;user-select:none}
+.reveal{opacity:0;transform:translateY(30px);transition:opacity .8s ease,transform .8s cubic-bezier(.2,.7,.2,1)}
+.reveal.in{opacity:1;transform:none}
+.d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}.d4{transition-delay:.42s}
+
+/* ============ HERO ============ */
+#hero{min-height:100svh;display:flex;flex-direction:column;justify-content:center;padding-top:120px;padding-bottom:60px}
+.hero-inner{max-width:1180px;margin:0 auto;width:100%}
+.badge{display:inline-flex;align-items:center;gap:10px;font-family:var(--mono);font-size:11.5px;
+  letter-spacing:.22em;color:var(--gold);border:1px solid var(--goldline);border-radius:999px;
+  padding:8px 16px;background:rgba(13,15,22,.55);backdrop-filter:blur(6px);margin-bottom:26px}
+.badge .dot{width:6px;height:6px;border-radius:50%;background:var(--green);
+  box-shadow:0 0 10px var(--green);animation:pulse 2.2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
+h1{font-size:clamp(40px,7.2vw,88px);line-height:.98;font-weight:700;letter-spacing:-.015em;margin-bottom:24px}
+h1 .l1{display:block}
+h1 .l2{display:block;background:linear-gradient(100deg,var(--gold2) 10%,var(--gold) 45%,var(--green) 105%);
+  -webkit-background-clip:text;background-clip:text;color:transparent;font-family:var(--serif);
+  font-weight:600;font-style:italic;letter-spacing:0}
+.glitch{position:relative;display:block}
+.glitch::before,.glitch::after{content:attr(data-text);position:absolute;left:0;top:0;width:100%;
+  opacity:.8;pointer-events:none}
+.glitch::before{color:var(--green);animation:gl1 3.4s infinite steps(1)}
+.glitch::after{color:var(--pink);animation:gl2 3.4s infinite steps(1)}
+@keyframes gl1{0%,86%,100%{clip-path:inset(0 0 100% 0);transform:none}
+  88%{clip-path:inset(12% 0 58% 0);transform:translate(-4px,-2px)}
+  92%{clip-path:inset(62% 0 8% 0);transform:translate(3px,1px)}
+  96%{clip-path:inset(34% 0 44% 0);transform:translate(-2px,2px)}}
+@keyframes gl2{0%,86%,100%{clip-path:inset(100% 0 0 0);transform:none}
+  89%{clip-path:inset(58% 0 22% 0);transform:translate(4px,2px)}
+  93%{clip-path:inset(8% 0 72% 0);transform:translate(-3px,-1px)}
+  97%{clip-path:inset(44% 0 38% 0);transform:translate(2px,-2px)}}
+.hero-sub{color:var(--mut);font-size:clamp(16px,1.9vw,19px);max-width:600px;margin-bottom:34px}
+.hero-sub b{color:var(--ink);font-weight:600}
+.cta-row{display:flex;gap:16px;flex-wrap:wrap;align-items:center;margin-bottom:30px}
+.hint{font-family:var(--mono);font-size:12.5px;color:var(--mut2)}
+.hint .k{color:var(--green)}
+.hint::before{content:"> ";color:var(--gold)}
+.hero-cards{position:absolute;right:2%;top:50%;transform:translateY(-58%);z-index:-1;display:flex;gap:26px}
+.fmini{width:clamp(110px,10vw,150px);aspect-ratio:3/5;border-radius:14px;position:relative;
+  border:1px solid var(--goldline);background:
+   radial-gradient(circle at 50% 30%,rgba(232,180,90,.25),transparent 60%),
+   repeating-linear-gradient(45deg,rgba(232,180,90,.06) 0 2px,transparent 2px 9px),
+   linear-gradient(160deg,#17141f,#0b0a10);
+  box-shadow:0 24px 60px rgba(0,0,0,.55);display:flex;flex-direction:column;align-items:center;
+  justify-content:center;gap:12px;will-change:transform}
+.fmini .sym{width:38%;height:38%;color:var(--gold)}
+.fmini .nm{font-family:var(--serif);font-size:clamp(12px,1vw,15px);color:var(--gold2);letter-spacing:.04em}
+.fmini .rnum{position:absolute;top:10px;font-family:var(--mono);font-size:11px;color:var(--mut)}
+.fmini:nth-child(2){transform:translateY(34px) rotate(7deg)}
+.fmini:nth-child(1){transform:rotate(-6deg)}
+.fmini:nth-child(3){transform:translateY(14px) rotate(14deg);opacity:.7}
+.scroll-cue{position:absolute;bottom:26px;left:50%;transform:translateX(-50%);
+  font-family:var(--mono);font-size:10.5px;letter-spacing:.3em;color:var(--mut2);
+  display:flex;flex-direction:column;align-items:center;gap:10px}
+.scroll-cue::after{content:"";width:1px;height:44px;background:linear-gradient(var(--gold),transparent);
+  animation:drop 1.8s ease-in-out infinite}
+@keyframes drop{0%{transform:scaleY(0);transform-origin:top}55%{transform:scaleY(1);transform-origin:top}
+  56%{transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+
+/* ============ DRAW / TIRAGE ============ */
+#tirage{background:radial-gradient(70% 60% at 50% 40%,rgba(201,162,39,.05),transparent 70%)}
+.draw-stage{margin-top:54px;display:flex;gap:clamp(28px,6vw,84px);align-items:center;justify-content:center;
+  flex-wrap:wrap;position:relative;z-index:1}
+.deck{position:relative;width:clamp(104px,12vw,136px);aspect-ratio:58/100}
+.dcard{position:absolute;inset:0;border-radius:10px;overflow:hidden;box-shadow:0 14px 34px rgba(0,0,0,.55);
+  transition:transform .5s cubic-bezier(.2,.7,.2,1.2)}
+.dcard img{width:100%;height:100%;object-fit:cover;display:block}
+.deck .dcard:nth-child(1){transform:translate(-5px,5px) rotate(-3deg)}
+.deck .dcard:nth-child(3){transform:translate(5px,5px) rotate(3deg)}
+.deck .dcard:nth-child(4){transform:translate(2px,8px) rotate(1.5deg)}
+.deck.shuffling .dcard:nth-child(1){animation:shufA .5s ease-in-out 2 alternate}
+.deck.shuffling .dcard:nth-child(2){animation:shufB .5s ease-in-out 2 alternate}
+.deck.shuffling .dcard:nth-child(3){animation:shufA .5s .12s ease-in-out 2 alternate}
+.deck.shuffling .dcard:nth-child(4){animation:shufB .5s .08s ease-in-out 2 alternate}
+@keyframes shufA{from{transform:translate(0,0) rotate(0)}to{transform:translate(-46px,-6px) rotate(-14deg)}}
+@keyframes shufB{from{transform:translate(0,0) rotate(0)}to{transform:translate(46px,6px) rotate(14deg)}}
+.slots{display:flex;gap:clamp(16px,3.4vw,36px);justify-content:center}
+.slot{width:clamp(128px,25vw,178px);display:flex;flex-direction:column;gap:12px}
+.slot .cardbox{position:relative;aspect-ratio:58/100}
+.slot .ghostcard{position:absolute;inset:0;border-radius:10px;border:1.5px dashed rgba(201,162,39,.25);
+  display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:11px;
+  color:var(--mut2);letter-spacing:.2em;transition:opacity .4s}
+.slot.filled .ghostcard{opacity:0}
+.tcard{position:absolute;inset:0;border:none;background:none;padding:0;perspective:1000px;
+  transition:transform .75s cubic-bezier(.2,.7,.25,1.15),opacity .75s ease;will-change:transform}
+.tcard .inner{position:absolute;inset:0;transform-style:preserve-3d;transition:transform .8s cubic-bezier(.3,.9,.3,1)}
+.tcard.flip .inner{transform:rotateY(180deg)}
+.tface{position:absolute;inset:0;border-radius:10px;backface-visibility:hidden;-webkit-backface-visibility:hidden;
+  overflow:hidden;box-shadow:0 20px 44px rgba(0,0,0,.55);background:#161310}
+.tface img{width:100%;height:100%;object-fit:cover;display:block}
+.tfront{transform:rotateY(180deg)}
+.tcard:not(.flip):hover{transform:translateY(-8px)}
+.slot .cap{min-height:46px;text-align:center;opacity:0;transform:translateY(6px);
+  transition:opacity .5s,transform .5s}
+.slot .cap.show{opacity:1;transform:none}
+.slot .cap .nm{display:block;font-family:var(--serif);font-weight:600;font-size:clamp(15px,1.6vw,19px);
+  color:var(--gold2);line-height:1.2}
+.slot .cap .wd{font-family:var(--mono);font-size:11px;color:var(--green);letter-spacing:.14em;text-transform:uppercase}
+.flip-hint{margin-top:24px;text-align:center;font-family:var(--mono);font-size:11.5px;color:var(--mut2);
+  letter-spacing:.18em;opacity:0;transition:opacity .5s}
+.flip-hint.show{opacity:1}
+.draw-actions{margin-top:34px;display:flex;justify-content:center}
+/* oracle — sans boîte */
+.oracle{margin:52px auto 0;max-width:620px;text-align:center;opacity:0;transform:translateY(18px);
+  transition:all .7s cubic-bezier(.2,.7,.2,1);pointer-events:none}
+.oracle.show{opacity:1;transform:none;pointer-events:auto}
+.oracle .o1{font-family:var(--mono);font-size:12px;letter-spacing:.3em;color:var(--green);
+  text-transform:uppercase;margin-bottom:14px;min-height:1.4em}
+.oracle .caret{display:inline-block;width:8px;height:13px;background:var(--green);vertical-align:-2px;
+  margin-left:3px;animation:pulse 1s steps(1) infinite}
+.oracle .o2{font-family:var(--serif);font-style:italic;font-size:clamp(21px,2.8vw,29px);
+  color:var(--ink);line-height:1.3;margin-bottom:6px}
+.oracle .o3{font-size:14px;color:var(--mut);margin-bottom:20px}
+.o-link{font-family:var(--mono);font-size:13px;color:var(--gold2);letter-spacing:.06em;white-space:nowrap;
+  border-bottom:1px solid var(--goldline);padding-bottom:2px;transition:color .2s,border-color .2s}
+.o-link:hover{color:var(--gold);border-color:var(--gold)}
+
+/* ============ APPRENTISSAGE — lecteur de carte ============ */
+.learn-grid{margin-top:56px;display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);
+  gap:clamp(28px,4vw,54px);align-items:center}
+.reader-card{position:relative;justify-self:center}
+.reader-card img{width:clamp(200px,26vw,300px);border-radius:12px;display:block;
+  box-shadow:0 30px 70px rgba(0,0,0,.6)}
+.reader-card img.pop{animation:pop .5s cubic-bezier(.2,.7,.3,1.2)}
+.reader-thumbs{display:flex;gap:12px;justify-content:center;margin-top:22px}
+.reader-thumbs button{width:52px;padding:0;background:none;border:none;opacity:.5;
+  transition:opacity .25s,transform .25s}
+.reader-thumbs button img{width:52px;border-radius:6px;box-shadow:0 8px 22px rgba(0,0,0,.45);display:block}
+.reader-thumbs button.on{opacity:1;transform:translateY(-4px)}
+.reader-thumbs button:hover{opacity:.85}
+.reader-panel .rc-num{font-family:var(--mono);font-size:11px;letter-spacing:.32em;color:var(--mut);
+  text-transform:uppercase}
+.reader-panel .rc-name{font-family:var(--serif);font-weight:600;font-size:clamp(28px,3.4vw,42px);
+  color:var(--ink);line-height:1.05;margin:6px 0 18px}
+.rpills{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:22px}
+.rpills button{font-family:var(--mono);font-size:11.5px;letter-spacing:.05em;color:var(--mut);
+  background:none;border:1px solid var(--goldline);border-radius:999px;padding:7px 15px;transition:all .2s}
+.rpills button:hover{color:var(--gold2)}
+.rpills button.on{color:#141005;background:linear-gradient(140deg,var(--gold2),var(--gold));
+  border-color:transparent}
+.rbody{min-height:120px}
+.rbody .fade{animation:resIn .45s cubic-bezier(.2,.7,.3,1) both}
+.rbody .bword{font-family:var(--serif);font-style:italic;font-weight:600;
+  font-size:clamp(30px,3.6vw,46px);color:var(--gold2);line-height:1.1}
+.rbody .bphrase{font-family:var(--serif);font-style:italic;font-size:clamp(19px,2.2vw,25px);
+  color:var(--ink);line-height:1.4;max-width:34ch}
+.rbody .bwords{font-family:var(--serif);font-size:clamp(19px,2.2vw,26px);color:var(--gold2);
+  line-height:1.5;max-width:30ch}
+.rbody .bwords.dim{color:var(--mut)}
+.rbody .bcap{font-family:var(--mono);font-size:11px;letter-spacing:.2em;color:var(--mut2);
+  text-transform:uppercase;margin-top:14px}
+.rbody .brow{display:flex;gap:14px;align-items:baseline;padding:8px 0;border-bottom:1px solid rgba(201,162,39,.1)}
+.rbody .brow:last-child{border-bottom:none}
+.rbody .blabel{font-family:var(--mono);font-size:10.5px;letter-spacing:.22em;color:var(--gold);
+  text-transform:uppercase;flex:none;width:88px}
+.rbody .bval{font-size:15.5px;color:var(--ink)}
+.feat-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.feat{border:1px solid var(--goldline);border-radius:14px;background:var(--panel);backdrop-filter:blur(8px);
+  padding:20px;transition:transform .25s,border-color .25s,box-shadow .25s}
+.feat:hover{transform:translateY(-4px);border-color:rgba(232,180,90,.45);box-shadow:0 18px 44px rgba(0,0,0,.4)}
+.feat .fi{width:34px;height:34px;color:var(--gold);margin-bottom:12px}
+.feat h3{font-size:15.5px;font-weight:600;margin-bottom:5px;letter-spacing:.01em}
+.feat h3 code{font-family:var(--mono);font-size:11px;color:var(--green);font-weight:400}
+.feat p{font-size:13px;color:var(--mut);line-height:1.55}
+
+/* ============ COMBINAISONS ============ */
+#combinaisons .ghost-glyph{font-size:44vw;right:-6%;top:6%}
+.pair-lab{margin-top:56px;display:flex;align-items:center;justify-content:center;gap:clamp(14px,3vw,30px);
+  flex-wrap:wrap;position:relative;z-index:1}
+.pcard{width:clamp(108px,17vw,150px);aspect-ratio:3/5;border-radius:13px;border:1px solid rgba(232,180,90,.42);
+  background:linear-gradient(165deg,#1b1626,#0d0b13);box-shadow:0 18px 40px rgba(0,0,0,.5);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;
+  padding:10px;text-align:center;position:relative;transition:transform .5s cubic-bezier(.2,.7,.2,1.2)}
+.pcard.pop{animation:pop .55s cubic-bezier(.2,.7,.3,1.4)}
+@keyframes pop{0%{transform:scale(.6) rotate(-6deg);opacity:0}100%{transform:scale(1) rotate(0);opacity:1}}
+.pcard .rnum{font-family:var(--mono);font-size:10px;color:var(--mut);letter-spacing:.22em}
+.pcard .sym{width:36%;height:36%;color:var(--gold)}
+.pcard .nm{font-family:var(--serif);font-size:clamp(13px,1.4vw,16px);color:var(--gold2);line-height:1.15}
+.pair-op{font-family:var(--mono);font-size:clamp(26px,4vw,40px);color:var(--gold);text-shadow:0 0 20px rgba(232,180,90,.5)}
+.pair-out{margin-top:34px;max-width:620px;margin-left:auto;margin-right:auto;border:1px solid var(--goldline);
+  border-radius:var(--rad);background:var(--panel2);backdrop-filter:blur(10px);padding:26px 28px;text-align:center;
+  position:relative;z-index:1}
+.pair-out .pt{font-family:var(--serif);font-style:italic;font-size:clamp(18px,2.3vw,23px);line-height:1.4;min-height:1.5em}
+.pair-out .pm{font-family:var(--mono);font-size:11.5px;color:var(--mut2);margin-top:14px;letter-spacing:.12em}
+.pair-out .pm b{color:var(--green);font-weight:400}
+.pairs-curated{margin:44px auto 0;max-width:760px;display:grid;gap:12px;position:relative;z-index:1}
+.pcur{display:flex;gap:16px;align-items:baseline;border-left:2px solid var(--goldline);padding:4px 0 4px 18px;
+  transition:border-color .25s}
+.pcur:hover{border-color:var(--gold)}
+.pcur .pp{font-family:var(--mono);font-size:12.5px;color:var(--gold2);white-space:nowrap}
+.pcur .pd{color:var(--mut);font-size:14px}
+.math-note{margin-top:36px;text-align:center;font-family:var(--mono);font-size:12.5px;color:var(--mut2);position:relative;z-index:1}
+.math-note b{color:var(--green);font-weight:400}
+
+/* ============ RECHERCHE ============ */
+.searchbar{margin:50px auto 0;max-width:760px;display:flex;align-items:center;gap:14px;
+  border:1px solid var(--goldline);border-radius:16px;background:rgba(10,11,16,.88);backdrop-filter:blur(10px);
+  padding:16px 20px;transition:border-color .3s,box-shadow .3s;position:relative;z-index:1}
+.searchbar:focus-within{border-color:rgba(232,180,90,.55);box-shadow:0 0 0 4px rgba(232,180,90,.08),0 18px 50px rgba(0,0,0,.45)}
+.searchbar .si{width:20px;height:20px;color:var(--gold);flex:none}
+.searchbar input{flex:1;background:none;border:none;outline:none;color:var(--ink);
+  font-family:var(--mono);font-size:16px;min-width:0}
+.searchbar input::placeholder{color:var(--mut2)}
+.searchbar kbd{font-family:var(--mono);font-size:10.5px;color:var(--mut);border:1px solid var(--goldline);
+  border-radius:6px;padding:4px 8px;white-space:nowrap}
+.chips{display:flex;gap:9px;flex-wrap:wrap;justify-content:center;margin-top:18px;position:relative;z-index:1}
+.chips button{font-family:var(--mono);font-size:12px;letter-spacing:.06em;color:var(--mut);
+  border:1px solid var(--goldline);background:rgba(255,255,255,.02);border-radius:999px;padding:7px 15px;
+  transition:all .2s}
+.chips button:hover{color:var(--gold2);border-color:rgba(232,180,90,.4)}
+.chips button.on{color:#141005;background:linear-gradient(140deg,var(--gold2),var(--gold));border-color:transparent;font-weight:600}
+.res-count{margin:26px 0 16px;text-align:center;font-family:var(--mono);font-size:12.5px;color:var(--mut2);position:relative;z-index:1}
+.results{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:14px;position:relative;z-index:1}
+.res{border:1px solid var(--goldline);border-radius:14px;background:var(--panel);backdrop-filter:blur(6px);
+  padding:18px;display:flex;gap:14px;align-items:center;cursor:pointer;
+  transition:transform .22s,border-color .22s,box-shadow .22s;animation:resIn .5s cubic-bezier(.2,.7,.3,1) both}
+@keyframes resIn{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+.res:hover{transform:translateY(-4px);border-color:rgba(232,180,90,.5);box-shadow:0 16px 40px rgba(0,0,0,.4)}
+.res .rd{width:52px;height:52px;flex:none;display:flex;align-items:center;justify-content:center;
+  border:1px solid var(--goldline);border-radius:12px;transform:rotate(45deg);margin:6px 8px 6px 2px;background:rgba(232,180,90,.05)}
+.res .rd .sym{width:26px;height:26px;color:var(--gold);transform:rotate(-45deg)}
+.res .rrnum{font-family:var(--mono);font-size:10px;color:var(--mut2);letter-spacing:.2em}
+.res .rnm{font-family:var(--serif);font-size:17px;color:var(--ink);line-height:1.2}
+.res .rwd{font-family:var(--mono);font-size:11px;color:var(--green);letter-spacing:.1em;text-transform:uppercase}
+.res .rph{font-size:12px;color:var(--mut);line-height:1.45}
+.res-empty{grid-column:1/-1;text-align:center;font-family:var(--mono);font-size:13px;color:var(--mut2);
+  border:1.5px dashed var(--goldline);border-radius:14px;padding:38px 20px}
+.res-empty b{color:var(--gold);font-weight:400}
+
+/* ============ STORE ============ */
+#store .sec-inner{text-align:center}
+.store-panel{margin:54px auto 0;max-width:880px;border:1px solid var(--goldline);border-radius:22px;
+  background:var(--panel2);backdrop-filter:blur(14px);padding:clamp(28px,5vw,54px);
+  box-shadow:0 40px 100px rgba(0,0,0,.55);position:relative;overflow:hidden}
+.store-panel::before{content:"✦";position:absolute;top:-30px;right:-16px;font-size:170px;
+  color:rgba(232,180,90,.06);font-family:var(--serif)}
+.store-list{list-style:none;display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+  gap:12px 26px;margin:34px 0 40px;text-align:left}
+.store-list li{display:flex;gap:11px;align-items:flex-start;font-size:14.5px;color:var(--mut)}
+.store-list li::before{content:"✦";color:var(--gold);flex:none;margin-top:1px;font-size:12px}
+.store-list li b{color:var(--ink);font-weight:600}
+.badges{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+.badge-store{display:flex;align-items:center;gap:13px;border:1px solid rgba(201,162,39,.4);border-radius:14px;
+  padding:13px 22px;background:rgba(255,255,255,.03);transition:all .25s;min-width:200px;text-align:left}
+.badge-store:hover{transform:translateY(-3px);border-color:var(--gold);background:rgba(201,162,39,.09);
+  box-shadow:0 16px 44px rgba(0,0,0,.4)}
+.badge-store .bi{width:26px;height:26px;color:var(--gold2);flex:none}
+.badge-store .bl1{font-family:var(--mono);font-size:10px;color:var(--mut);letter-spacing:.14em}
+.badge-store .bl2{font-size:16px;font-weight:600;color:var(--ink);letter-spacing:.01em;line-height:1.2}
+.store-note{margin-top:30px;font-family:var(--mono);font-size:12.5px;color:var(--mut2);
+  display:flex;gap:10px;justify-content:center;flex-wrap:wrap;align-items:baseline}
+
+/* ============ FOOTER ============ */
+footer{border-top:1px solid var(--goldline);padding:44px 24px;position:relative;z-index:1;
+  background:rgba(6,7,10,.75);backdrop-filter:blur(8px)}
+.foot-inner{max-width:1180px;margin:0 auto;display:flex;justify-content:space-between;gap:26px;
+  flex-wrap:wrap;align-items:center}
+.foot-mono{font-family:var(--mono);font-size:12px;color:var(--mut2);line-height:2}
+.foot-mono .g{color:var(--green)}
+.foot-links{display:flex;gap:20px;font-size:13px;color:var(--mut)}
+.foot-links a:hover{color:var(--gold2)}
+.foot-small{width:100%;margin-top:18px;padding-top:18px;border-top:1px solid rgba(201,162,39,.09);
+  font-size:12px;color:var(--mut2);display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap}
+
+/* ============ TOAST ============ */
+#toast{position:fixed;bottom:28px;left:50%;transform:translate(-50%,80px);z-index:100;
+  font-family:var(--mono);font-size:13px;color:var(--gold2);border:1px solid rgba(232,180,90,.45);
+  background:rgba(10,11,16,.94);border-radius:12px;padding:13px 22px;opacity:0;
+  transition:all .45s cubic-bezier(.2,.7,.3,1.2);box-shadow:0 20px 50px rgba(0,0,0,.5);pointer-events:none;
+  max-width:88vw;text-align:center}
+#toast.show{transform:translate(-50%,0);opacity:1}
+#toast::before{content:"∴ ";color:var(--green)}
+
+/* ============ RESPONSIVE ============ */
+@media (max-width:980px){
+  .hero-cards{display:none}
+  .learn-grid{grid-template-columns:1fr}
+}
+@media (max-width:760px){
+  .links{display:none}
+  .feat-grid{grid-template-columns:1fr}
+  .draw-stage{gap:38px}
+  .deck{width:110px;height:184px}
+  h1{font-size:clamp(38px,11.5vw,58px)}
+  section{padding-left:18px;padding-right:18px}
+  .searchbar kbd{display:none}
+}
+/* ============ REDUCED MOTION ============ */
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms !important;animation-iteration-count:1 !important;transition-duration:.01ms !important}
+  html{scroll-behavior:auto}
+  .reveal{opacity:1;transform:none}
+  #glow{display:none}
+}
+</style>
+</head>
+<body>
+
+<!-- fond : 5 plans, crossfade + parallaxe -->
+<div id="bgStage" aria-hidden="true">
+  <div class="bg bg-1 on" style="background-image:url('assets/bg-1.png')"></div>
+  <div class="bg bg-2" style="background-image:url('assets/bg-2.png')"></div>
+  <div class="bg bg-3" style="background-image:url('assets/bg-3.png')"></div>
+  <div class="bg bg-4" style="background-image:url('assets/bg-4.png')"></div>
+  <div class="bg bg-5" style="background-image:url('assets/bg-5.png')"></div>
+</div>
+<div id="shade" aria-hidden="true"></div>
+<div id="grid" aria-hidden="true"></div>
+<div id="scan" aria-hidden="true"></div>
+<div id="glow" aria-hidden="true"></div>
+
+<header id="nav">
+  <div class="nav-inner">
+    <a class="logo" href="#hero" aria-label="Lumen Tarot — accueil">
+      <svg class="sigil" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+        <path d="M16 3l2.8 8.2L27 14l-8.2 2.8L16 25l-2.8-8.2L5 14l8.2-2.8z" fill="currentColor"/>
+        <circle cx="16" cy="14" r="1.6" fill="#08090d"/>
+      </svg>
+      LUMEN<b>://</b>TAROT <span class="v">v2.0</span>
+    </a>
+    <nav class="links" aria-label="Navigation principale">
+      <a href="#tirage">Tirage</a>
+      <a href="#apprentissage">Méthode</a>
+      <a href="#combinaisons">Combinaisons</a>
+      <a href="#recherche">Recherche</a>
+    </nav>
+    <a class="btn btn-gold" id="navCta" href="#store">Télécharger</a>
+  </div>
+</header>
+
+<main>
+
+<!-- ================= HERO ================= -->
+<section id="hero" aria-label="Introduction">
+  <div class="hero-cards" data-para="0.05" aria-hidden="true">
+    <div class="fmini"><span class="rnum">XVIII</span>
+      <svg class="sym" viewBox="0 0 48 48" fill="none"><use href="#g-moon"/></svg><span class="nm">La Lune</span></div>
+    <div class="fmini"><span class="rnum">XVII</span>
+      <svg class="sym" viewBox="0 0 48 48" fill="none"><use href="#g-star"/></svg><span class="nm">L'Étoile</span></div>
+    <div class="fmini"><span class="rnum">XIX</span>
+      <svg class="sym" viewBox="0 0 48 48" fill="none"><use href="#g-sun"/></svg><span class="nm">Le Soleil</span></div>
+  </div>
+  <div class="hero-inner">
+    <div class="badge reveal"><span class="dot"></span>RIDER·WAITE·SMITH — ÉDITION NUMÉRIQUE</div>
+    <h1>
+      <span class="l1 glitch" data-text="TIRE TES CARTES.">TIRE TES CARTES.</span>
+      <span class="l2">Trouve ta lumière.</span>
+    </h1>
+    <p class="hero-sub reveal d1"><b>Lumen Tarot</b> rend le tarot divinatoire limpide : chaque carte du
+      Rider-Waite-Smith expliquée en <b>un mot</b>, en <b>une phrase</b>, à l'endroit, à l'envers, ou
+      par thèmes — amour, travail, argent, famille, réussite. Et quand deux cartes s'assemblent,
+      l'app lit l'alchimie pour toi.</p>
+    <div class="cta-row reveal d2">
+      <a class="btn btn-gold" href="#tirage">
+        <svg class="bi" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="8" width="11" height="13" rx="2"/><path d="M9 5h9a2 2 0 0 1 2 2v11"/></svg>
+        Lancer mon tirage</a>
+      <a class="btn btn-ghost" href="#apprentissage">Voir la méthode</a>
+    </div>
+    <p class="hint reveal d3">astuce geek : <span class="k">commence à taper n'importe où</span> — la recherche du deck t'écoute déjà</p>
+  </div>
+  <div class="scroll-cue" aria-hidden="true">SCROLL</div>
+</section>
+
+<!-- ================= TIRAGE ================= -->
+<section id="tirage" aria-label="Tirage de bienvenue">
+  <span class="ghost-glyph" data-para="0.08" aria-hidden="true">✦</span>
+  <div class="sec-inner">
+    <p class="kicker reveal">rituel de bienvenue</p>
+    <h2 class="reveal d1">Le deck t'attendait,<br><em>et il a un message.</em></h2>
+    <p class="lead reveal d2">Mélange. Trois cartes. Le site te les tire lui-même — parce que tout rituel
+      initiatique commence ainsi : on se lance, les arcanes répondent, et le chemin mène
+      vers la lumière.</p>
+
+    <div class="draw-stage reveal d3">
+      <div class="deck" id="deck" aria-hidden="true">
+        <div class="dcard"><img src="assets/cards/back.jpg" alt=""></div>
+        <div class="dcard"><img src="assets/cards/back.jpg" alt=""></div>
+        <div class="dcard"><img src="assets/cards/back.jpg" alt=""></div>
+        <div class="dcard"><img src="assets/cards/back.jpg" alt=""></div>
+      </div>
+      <div>
+        <div class="slots" id="slots">
+          <div class="slot"><div class="cardbox"><span class="ghostcard">?</span></div><p class="cap"></p></div>
+          <div class="slot"><div class="cardbox"><span class="ghostcard">?</span></div><p class="cap"></p></div>
+          <div class="slot"><div class="cardbox"><span class="ghostcard">?</span></div><p class="cap"></p></div>
+        </div>
+        <p class="flip-hint" id="flipHint">touche une carte pour la révéler</p>
+      </div>
+    </div>
+
+    <div class="draw-actions reveal d4">
+      <button class="btn btn-gold" id="drawBtn" disabled>
+        <svg class="bi" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7h4l4 5 4-5"/><path d="M3 17h4l4-5"/><path d="M17 7h4"/><path d="M17 17h4"/></svg>
+        <span id="drawLabel">Mélanger &amp; tirer</span></button>
+    </div>
+
+    <div class="oracle" id="oracle" role="status" aria-live="polite">
+      <p class="o1"><span id="oType"></span><span class="caret" id="oCaret"></span></p>
+      <p class="o2">« Tu commences un rituel initiatique — et il t'emmène vers la lumière. »</p>
+      <p class="o3">Les trois lames que tu viens de retourner composent ton point de départ.</p>
+      <a class="o-link" href="https://mondary.design/pk/-Games-cards/tarot/" target="_blank" rel="noopener">Poursuivre le rituel dans l'app →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ================= APPRENTISSAGE ================= -->
+<section id="apprentissage" aria-label="Méthode d'apprentissage">
+  <span class="ghost-glyph" data-para="-0.05" style="left:-4%;top:10%" aria-hidden="true">☾</span>
+  <div class="sec-inner">
+    <p class="kicker reveal">mode apprentissage</p>
+    <h2 class="reveal d1">Simple, par conception.<br><em>Parce que le tarot n'a pas à être obscur.</em></h2>
+    <p class="lead reveal d2">Toutes les explications ont été réécrites pour se lire en quelques secondes.
+      Exactement comme dans l'app : choisis ta carte, puis ta profondeur — <code>1 mot</code>,
+      <code>1 phrase</code>, <code>endroit</code>, <code>envers</code>, ou <code>par thème</code>.</p>
+
+    <div class="learn-grid">
+      <div class="reveal d3">
+        <div class="reader-card"><img id="readerImg" src="assets/cards/star.jpg" alt="L'Étoile — Rider-Waite-Smith"></div>
+        <div class="reader-thumbs" id="readerThumbs" aria-label="Choisir une carte d'exemple">
+          <button class="on" data-card="etoile" aria-label="L'Étoile"><img src="assets/cards/star.jpg" alt=""></button>
+          <button data-card="soleil" aria-label="Le Soleil"><img src="assets/cards/sun.jpg" alt=""></button>
+          <button data-card="lune" aria-label="La Lune"><img src="assets/cards/moon.jpg" alt=""></button>
+        </div>
+      </div>
+      <div class="reader-panel reveal d2">
+        <p class="rc-num" id="rcNum">arcane xvii</p>
+        <h3 class="rc-name" id="rcName">L'Étoile</h3>
+        <div class="rpills" id="rPills" role="tablist" aria-label="Profondeur d'explication">
+          <button class="on" data-mode="mot">un mot</button>
+          <button data-mode="phrase">une phrase</button>
+          <button data-mode="endroit">endroit</button>
+          <button data-mode="envers">envers</button>
+          <button data-mode="themes">par thème</button>
+        </div>
+        <div class="rbody" id="rBody" aria-live="polite"></div>
+      </div>
+    </div>
+
+    <div class="feat-grid">
+      <article class="feat reveal d1"><svg class="fi" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><use href="#g-eye"/></svg>
+        <h3>1 mot · 1 phrase</h3><p>L'essence en un mot, le ton en une phrase. Deux secondes de lecture.</p></article>
+      <article class="feat reveal d2"><svg class="fi" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><use href="#g-world"/></svg>
+        <h3>Endroit &amp; envers</h3><p>Les mots-clés des deux sens, pour ne plus jamais hésiter avant de lire.</p></article>
+      <article class="feat reveal d2"><svg class="fi" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><use href="#g-heart"/></svg>
+        <h3>Par thèmes</h3><p>Amour, travail, argent, famille, réussite : la carte répond à ta vraie question.</p></article>
+      <article class="feat reveal d3"><svg class="fi" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><use href="#g-key"/></svg>
+        <h3>78 cartes, hors-ligne</h3><p>Tout le Rider-Waite-Smith dans la poche — réseau ou pas.</p></article>
+    </div>
+  </div>
+</section>
+
+<!-- ================= COMBINAISONS ================= -->
+<section id="combinaisons" aria-label="Combinaisons de cartes">
+  <span class="ghost-glyph" aria-hidden="true">⊕</span>
+  <div class="sec-inner">
+    <p class="kicker reveal">alchimie à deux cartes</p>
+    <h2 class="reveal d1">Seule, une carte parle.<br><em>À deux, elle prophétise.</em></h2>
+    <p class="lead reveal d2">Quand une carte en croise une autre, son message change. L'app interprète
+      <b style="color:var(--ink)">tous les couples possibles</b> du deck. Le moteur en tire une pour toi :</p>
+
+    <div class="pair-lab reveal d2">
+      <div class="pcard" id="pairA"></div>
+      <span class="pair-op" aria-hidden="true">+</span>
+      <div class="pcard" id="pairB"></div>
+      <span class="pair-op" aria-hidden="true">=</span>
+    </div>
+    <div class="pair-out reveal d3">
+      <p class="pt" id="pairText"></p>
+      <p class="pm">combinaison <b id="pairNum">####</b> / 3 003 couvertes dans l'app</p>
+      <div class="draw-actions" style="margin-top:20px">
+        <button class="btn btn-ghost" id="pairBtn">
+          <svg class="bi" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4v6h6"/><path d="M20 20v-6h-6"/><path d="M4.5 10a8 8 0 0 1 13-3"/><path d="M19.5 14a8 8 0 0 1-13 3"/></svg>
+          Une autre alchimie</button>
+      </div>
+    </div>
+
+    <div class="pairs-curated reveal d3">
+      <div class="pcur"><span class="pp">L'Étoile + Le Soleil</span><span class="pd">l'espoir se vérifie : ce que tu appelais de tes vœux s'illumine sous tes yeux.</span></div>
+      <div class="pcur"><span class="pp">La Lune + La Papesse</span><span class="pd">double appel de l'intuition — fais confiance à ce que tu sais sans savoir pourquoi.</span></div>
+      <div class="pcur"><span class="pp">Le Mat + Le Monde</span><span class="pd">le saut dans l'inconnu referme un grand cycle : ose, tu atterris en dansant.</span></div>
+    </div>
+    <p class="math-note reveal d4">3 003 = C(78,2) — <b>chaque paire possible des 78 lames</b>, interprétée. Oui, toutes.</p>
+  </div>
+</section>
+
+<!-- ================= RECHERCHE ================= -->
+<section id="recherche" aria-label="Recherche instantanée">
+  <span class="ghost-glyph" data-para="0.05" style="right:-3%;bottom:2%" aria-hidden="true">✧</span>
+  <div class="sec-inner">
+    <p class="kicker reveal">recherche instantanée</p>
+    <h2 class="reveal d1">Une carte en tête ?<br><em>Tape. Le deck répond.</em></h2>
+    <p class="lead reveal d2">Commence à écrire <b style="color:var(--ink)">n'importe où sur la page</b> — la
+      recherche s'active toute seule. Ici, les 22 arcanes majeurs ; dans l'app, les 78.</p>
+
+    <div class="searchbar reveal d2">
+      <svg class="si" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+      <input id="q" type="search" placeholder="étoile, lune, diable…" autocomplete="off" aria-label="Rechercher une carte">
+      <kbd id="kbdHint">le site t'écoute</kbd>
+    </div>
+    <div class="chips" id="tagChips" role="group" aria-label="Filtrer par thème">
+      <button class="on" data-tag="tout">tout</button>
+      <button data-tag="amour">amour</button>
+      <button data-tag="travail">travail</button>
+      <button data-tag="argent">argent</button>
+      <button data-tag="famille">famille</button>
+      <button data-tag="reussite">réussite</button>
+    </div>
+    <p class="res-count" id="resCount" aria-live="polite"></p>
+    <div class="results" id="results"></div>
+  </div>
+</section>
+
+<!-- ================= STORE ================= -->
+<section id="store" aria-label="Télécharger l'application">
+  <div class="sec-inner">
+    <p class="kicker reveal" style="justify-content:center">prêt·e à passer le voile ?</p>
+    <h2 class="reveal d1">Ton rituel tient<br><em>dans ta poche.</em></h2>
+    <p class="lead reveal d2" style="margin:0 auto">Hyper mobile, hyper simple : Lumen Tarot a été pensé
+      pouce d'abord. Un geste pour chercher, un tap pour tirer, une lecture claire à chaque fois.</p>
+
+    <div class="store-panel reveal d3">
+      <ul class="store-list">
+        <li><span><b>78 cartes RWS</b> en haute définition, couvertures et détails</span></li>
+        <li><span><b>1 mot · 1 phrase</b> — la profondeur que tu choisis, en 2 secondes</span></li>
+        <li><span><b>Mots-clés</b> à l'endroit et à l'envers pour chaque lame</span></li>
+        <li><span><b>Interprétations par thème</b> : amour, travail, argent, famille, réussite</span></li>
+        <li><span><b>3 003 combinaisons</b> de cartes, toutes interprétées</span></li>
+        <li><span><b>Recherche instantanée</b> — tape, trouve, tire</span></li>
+        <li><span><b>Hors-ligne</b> — le grimoire voyage avec toi</span></li>
+        <li><span><b>Zéro compte</b> à créer, zéro friction</span></li>
+      </ul>
+      <div class="badges">
+        <a class="badge-store" href="https://mondary.design/pk/-Games-cards/tarot/" target="_blank" rel="noopener" aria-label="Bientôt sur l'App Store">
+          <svg class="bi" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.7 12.9c0-2.4 2-3.6 2.1-3.6-1.1-1.7-2.9-1.9-3.5-1.9-1.5-.2-2.9.9-3.7.9-.8 0-1.9-.9-3.2-.9-1.6 0-3.1 1-4 2.4-1.7 3-.4 7.3 1.2 9.7.8 1.2 1.8 2.5 3 2.4 1.2 0 1.7-.8 3.2-.8s1.9.8 3.2.8c1.3 0 2.2-1.2 3-2.4.9-1.4 1.3-2.7 1.3-2.8-.1 0-2.6-1-2.6-3.8zM14.4 5.6c.7-.8 1.1-1.9 1-3.1-1 .1-2.2.7-2.9 1.5-.6.7-1.2 1.9-1 3 1.1.1 2.2-.6 2.9-1.4z"/></svg>
+          <span><span class="bl1">BIENTÔT SUR</span><br><span class="bl2">App Store</span></span></a>
+        <a class="badge-store" href="https://mondary.design/pk/-Games-cards/tarot/" target="_blank" rel="noopener" aria-label="Bientôt sur Google Play">
+          <svg class="bi" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3.6 2.3c-.3.2-.5.5-.5 1v17.4c0 .5.2.8.5 1l9.2-9.7L3.6 2.3zM14.6 12l3-3.2 3.5 2c1 .6 1 1.9 0 2.5l-3.5 2-3-3.3zM13.8 12.8l-8.4 8.9c.3.1.7.1 1.1-.1l10.1-5.7-2.8-3.1zM13.8 11.2l2.8-3.1L6.5 2.4c-.4-.2-.8-.2-1.1-.1l8.4 8.9z"/></svg>
+          <span><span class="bl1">BIENTÔT SUR</span><br><span class="bl2">Google Play</span></span></a>
+      </div>
+      <p class="store-note">iOS &amp; Android en préparation — en attendant :
+        <a class="o-link" href="https://mondary.design/pk/-Games-cards/tarot/" target="_blank" rel="noopener">la web-app</a> ·
+        <a class="o-link" href="https://github.com/mondary/Web_Tarot" target="_blank" rel="noopener">GitHub</a></p>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="foot-inner">
+    <div class="foot-mono">
+      <span class="g">$</span> lumen --version<br>
+      lumen 2.0 — <span class="g">"vers la lumière"</span>
+    </div>
+    <nav class="foot-links" aria-label="Pied de page">
+      <a href="#tirage">Tirage</a><a href="#apprentissage">Méthode</a>
+      <a href="#combinaisons">Combinaisons</a><a href="#recherche">Recherche</a>
+      <a href="https://mondary.design/pk/-Games-cards/tarot/" target="_blank" rel="noopener">Web-app</a>
+      <a href="https://github.com/mondary/Web_Tarot" target="_blank" rel="noopener">GitHub</a>
+    </nav>
+    <div class="foot-small">
+      <span>Lumen Tarot — le Rider-Waite-Smith, enfin limpide.</span>
+      <span>Forgé carte par carte. Scans RWS · domaine public.</span>
+    </div>
+  </div>
+</footer>
+
+<div id="toast" role="status" aria-live="polite"></div>
+
+<!-- ============ SYMBOLES SVG ============ -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+<symbol id="g-star" viewBox="0 0 48 48"><path d="M24 4l4.4 13.2L42 21l-13.6 3.8L24 38l-4.4-13.2L6 21l13.6-3.8z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><circle cx="24" cy="21" r="3" fill="currentColor"/></symbol>
+<symbol id="g-sun" viewBox="0 0 48 48"><circle cx="24" cy="24" r="9" fill="none" stroke="currentColor" stroke-width="2"/><path d="M24 4v7M24 37v7M4 24h7M37 24h7M9.9 9.9l4.9 4.9M33.2 33.2l4.9 4.9M38.1 9.9l-4.9 4.9M14.8 33.2l-4.9 4.9" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+<symbol id="g-moon" viewBox="0 0 48 48"><path d="M28 6a18 18 0 1 0 14 28A15 15 0 0 1 28 6z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><circle cx="34" cy="14" r="2" fill="currentColor"/></symbol>
+<symbol id="g-world" viewBox="0 0 48 48"><circle cx="24" cy="24" r="13" fill="none" stroke="currentColor" stroke-width="2"/><ellipse cx="24" cy="24" rx="19" ry="7" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M24 15l1.8 5.2L31 22l-5.2 1.8L24 29l-1.8-5.2L17 22l5.2-1.8z" fill="currentColor"/></symbol>
+<symbol id="g-wheel" viewBox="0 0 48 48"><circle cx="24" cy="24" r="17" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="24" cy="24" r="7" fill="none" stroke="currentColor" stroke-width="2"/><path d="M24 7v10M24 31v10M7 24h10M31 24h10M12 12l7 7M29 29l7 7M36 12l-7 7M19 29l-7 7" stroke="currentColor" stroke-width="1.6"/></symbol>
+<symbol id="g-eye" viewBox="0 0 48 48"><path d="M4 24C10 14 17 9 24 9s14 5 20 15c-6 10-13 15-20 15S10 34 4 24z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><circle cx="24" cy="24" r="6.5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="24" cy="24" r="2.4" fill="currentColor"/><path d="M24 3v4M24 41v4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+<symbol id="g-key" viewBox="0 0 48 48"><circle cx="16" cy="16" r="9" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="16" cy="16" r="3.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M22.5 22.5L42 42M36 36l5-5M31 31l4-4" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></symbol>
+<symbol id="g-flame" viewBox="0 0 48 48"><path d="M24 4c2 8-8 12-8 22a8 8 0 0 0 16 0c0-4-2-6-4-9-1 3-3 4-4 3-2-2 2-8 0-16z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><circle cx="24" cy="29" r="3" fill="currentColor"/></symbol>
+<symbol id="g-bolt" viewBox="0 0 48 48"><path d="M27 3L10 27h10l-3 18 18-26H24l3-16z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></symbol>
+<symbol id="g-cup" viewBox="0 0 48 48"><path d="M10 10h28l-3 13c-1.6 6-5.9 9-11 9s-9.4-3-11-9L10 10z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M16 40h16M24 32v8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M17 15c2 2.4 4.4 3.6 7 3.6s5-1.2 7-3.6" fill="none" stroke="currentColor" stroke-width="1.6"/></symbol>
+<symbol id="g-scale" viewBox="0 0 48 48"><path d="M24 6v34M14 40h20M10 14h28" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M10 14l-6 12h12l-6-12zM38 14l-6 12h12l-6-12z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><circle cx="24" cy="10" r="2.6" fill="currentColor"/></symbol>
+<symbol id="g-tower" viewBox="0 0 48 48"><path d="M17 44V16l7-8 7 8v28" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M15 24h18M15 33h18" stroke="currentColor" stroke-width="1.6"/><path d="M30 4l4 5M12 6l5-4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+<symbol id="g-heart" viewBox="0 0 48 48"><path d="M24 42S6 30 6 17C6 10 11 6 16.5 6c3.4 0 6 1.8 7.5 4.5C25.5 7.8 28.1 6 31.5 6 37 6 42 10 42 17c0 13-18 25-18 25z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M24 15l2.2 4.6 5 .7-3.6 3.5.9 5-4.5-2.4-4.5 2.4.9-5-3.6-3.5 5-.7z" fill="currentColor"/></symbol>
+<symbol id="g-crown" viewBox="0 0 48 48"><path d="M8 34l-3-17 10 7 9-13 9 13 10-7-3 17H8z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M8 38h32" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><circle cx="5" cy="14" r="2" fill="currentColor"/><circle cx="43" cy="14" r="2" fill="currentColor"/><circle cx="24" cy="8" r="2" fill="currentColor"/></symbol>
+<symbol id="g-seed" viewBox="0 0 48 48"><path d="M24 44V22" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/><path d="M24 26C14 26 9 18 9 8c10 0 15 6 15 18zM24 30c8 0 13-6 13-14-8 0-13 5-13 14z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><circle cx="24" cy="19" r="2.4" fill="currentColor"/></symbol>
+<symbol id="g-infinity" viewBox="0 0 48 48"><path d="M12 16c-6 0-8 4-8 8s2 8 8 8c7 0 17-16 24-16 6 0 8 4 8 8s-2 8-8 8c-7 0-17-16-24-16z" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+<symbol id="g-chain" viewBox="0 0 48 48"><rect x="6" y="16" width="16" height="16" rx="8" fill="none" stroke="currentColor" stroke-width="2" transform="rotate(-20 14 24)"/><rect x="26" y="16" width="16" height="16" rx="8" fill="none" stroke="currentColor" stroke-width="2" transform="rotate(-20 34 24)"/><circle cx="24" cy="19" r="2" fill="currentColor"/></symbol>
+</defs></svg>
+
+<script>
+/* ================================================================
+   LUMEN://TAROT — store page engine
+   ================================================================ */
+'use strict';
+const $=(s,c=document)=>c.querySelector(s);
+const $$=(s,c=document)=>[...c.querySelectorAll(s)];
+const RM=matchMedia('(prefers-reduced-motion: reduce)').matches;
+const norm=s=>s.normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase();
+
+/* ---------- DONNÉES : 22 arcanes majeurs ---------- */
+const MAJORS=[
+{n:'0',name:'Le Mat',word:'élan',phrase:'Fonce : l\'inconnu te sourit.',duo:'un nouveau départ s\'élance',tags:['travail','reussite'],sym:'g-key'},
+{n:'I',name:'Le Bateleur',word:'initiative',phrase:'Tout est déjà sur ta table.',duo:'l\'initiative se concrétise',tags:['travail','reussite'],sym:'g-bolt'},
+{n:'II',name:'La Papesse',word:'intuition',phrase:'Écoute ce qui se tait.',duo:'l\'intuition révèle ce qui dormait',tags:['amour','famille'],sym:'g-moon'},
+{n:'III',name:'L\'Impératrice',word:'abondance',phrase:'Tout fleurit autour de toi.',duo:'la créativité déborde du cadre',tags:['amour','argent'],sym:'g-seed'},
+{n:'IV',name:'L\'Empereur',word:'structure',phrase:'Pose le cadre, le reste suit.',duo:'le cadre devient puissance',tags:['travail','argent'],sym:'g-crown'},
+{n:'V',name:'Le Pape',word:'transmission',phrase:'Un guide frappe à ta porte.',duo:'la tradition t\'épaule',tags:['famille','travail'],sym:'g-key'},
+{n:'VI',name:'L\'Amoureux',word:'choix',phrase:'Le cœur tranche : assume-le.',duo:'un choix sincère se présente',tags:['amour'],sym:'g-heart'},
+{n:'VII',name:'Le Chariot',word:'victoire',phrase:'Cap droit, tu avances.',duo:'la victoire prend les rênes',tags:['reussite','travail'],sym:'g-wheel'},
+{n:'VIII',name:'La Force',word:'courage',phrase:'Doucement, tu domptes.',duo:'la douceur vainc l\'obstacle',tags:['reussite','famille'],sym:'g-infinity'},
+{n:'IX',name:'L\'Ermite',word:'sagesse',phrase:'Ralentis pour voir clair.',duo:'la lucidité s\'allume',tags:['travail'],sym:'g-flame'},
+{n:'X',name:'La Roue de Fortune',word:'cycle',phrase:'La roue tourne pour toi.',duo:'un cycle favorable s\'enclenche',tags:['argent'],sym:'g-wheel'},
+{n:'XI',name:'La Justice',word:'équilibre',phrase:'Chaque acte trouve son poids.',duo:'les comptes se rééquilibrent',tags:['travail','argent'],sym:'g-scale'},
+{n:'XII',name:'Le Pendu',word:'lâcher-prise',phrase:'Suspends ton jugement.',duo:'le regard se retourne',tags:['famille'],sym:'g-eye'},
+{n:'XIII',name:'L\'Arcane sans nom',word:'mutation',phrase:'Finir, c\'est déjà recommencer.',duo:'l\'inévitable devient libération',tags:['famille','travail'],sym:'g-tower'},
+{n:'XIV',name:'La Tempérance',word:'harmonie',phrase:'Le juste rythme te porte.',duo:'les extrêmes se réconcilient',tags:['famille','amour'],sym:'g-cup'},
+{n:'XV',name:'Le Diable',word:'attachement',phrase:'Regarde tes chaînes en face.',duo:'un lien se démasque',tags:['argent','amour'],sym:'g-chain'},
+{n:'XVI',name:'La Maison Dieu',word:'éclair',phrase:'Ce qui s\'écroule te libère.',duo:'la foudre éclaircit le faux',tags:['travail'],sym:'g-bolt'},
+{n:'XVII',name:'L\'Étoile',word:'espoir',phrase:'L\'inspiration revient, tu retrouves ta voie.',duo:'l\'espoir redevient concret',tags:['amour','reussite'],sym:'g-star'},
+{n:'XVIII',name:'La Lune',word:'intuition',phrase:'Marche doucement : le brouillard se lève.',duo:'l\'instinct trace le chemin',tags:['amour','famille'],sym:'g-moon'},
+{n:'XIX',name:'Le Soleil',word:'lumière',phrase:'Tout s\'éclaire : rayonne.',duo:'la lumière démultiplie tout',tags:['reussite','amour'],sym:'g-sun'},
+{n:'XX',name:'Le Jugement',word:'renaissance',phrase:'L\'appel est lancé : réponds.',duo:'une renaissance s\'annonce',tags:['famille','reussite'],sym:'g-eye'},
+{n:'XXI',name:'Le Monde',word:'accomplissement',phrase:'Le cercle est complet.',duo:'l\'accomplissement se referme en danse',tags:['reussite','argent'],sym:'g-world'}
+];
+const BY={};MAJORS.forEach(m=>BY[norm(m.name)]=m);
+
+/* tirage de bienvenue — vraies lames (scans RWS, domaine public) */
+const POOL=[
+ {img:'assets/cards/fool.jpg',name:'Le Mat',word:'élan',phrase:"Fonce : l'inconnu te sourit."},
+ {img:'assets/cards/wheel.jpg',name:'La Roue de Fortune',word:'cycle',phrase:'La roue tourne pour toi.'},
+ {img:'assets/cards/strength.jpg',name:'La Force',word:'courage',phrase:'Doucement, tu domptes.'},
+ {img:'assets/cards/temperance.jpg',name:'La Tempérance',word:'harmonie',phrase:'Le juste rythme te porte.'},
+ {img:'assets/cards/empress.jpg',name:"L'Impératrice",word:'abondance',phrase:'Tout fleurit autour de toi.'},
+ {img:'assets/cards/star.jpg',name:"L'Étoile",word:'espoir',phrase:"L'inspiration revient, tu retrouves ta voie."},
+ {img:'assets/cards/sun.jpg',name:'Le Soleil',word:'lumière',phrase:"Tout s'éclaire : rayonne."},
+ {img:'assets/cards/world.jpg',name:'Le Monde',word:'accomplissement',phrase:'Le cercle est complet.'}];
+const GOLDEN=[POOL[5],POOL[6],POOL[7]];
+
+/* lecteur d'apprentissage — 3 cartes détaillées comme dans l'app */
+const READER={
+etoile:{img:'assets/cards/star.jpg',num:'arcane xvii',name:"L'Étoile",mot:'espoir',
+ phrase:"L'inspiration revient, tu retrouves ta voie.",
+ up:'foi · guérison · sérénité · inspiration',rev:'doute · découragement · égarement',
+ th:{amour:'Une rencontre illumine le quotidien.',travail:'Ta créativité est enfin reconnue.',
+     argent:'Les projets mûrissent en ta faveur.',famille:"L'apaisement revient à la maison.",
+     reussite:'Tu brilles sans te brûler.'}},
+soleil:{img:'assets/cards/sun.jpg',num:'arcane xix',name:'Le Soleil',mot:'lumière',
+ phrase:"Tout s'éclaire : la joie rayonne sans filtre.",
+ up:'succès · vitalité · clarté · enthousiasme',rev:'triomphe retardé · confiance vacillante',
+ th:{amour:'Une passion franche, sans jeux de masques.',travail:'Reconnaissance méritée, projet qui brille.',
+     argent:'Une rentrée lumineuse et méritée.',famille:'Rires, chaleur, table pleine.',
+     reussite:'Le succès éclate : assume-le.'}},
+lune:{img:'assets/cards/moon.jpg',num:'arcane xviii',name:'La Lune',mot:'intuition',
+ phrase:'Marche doucement : le brouillard se lève.',
+ up:'rêves · instinct · cycles · mystère',rev:'peurs levées · confusion qui se dissipe',
+ th:{amour:'Des non-dits demandent la lumière.',travail:'Vérifie les détails avant de signer.',
+     argent:'Méfie-toi des mirages dorés.',famille:'Un secret de famille frémit.',
+     reussite:'Ta boussole intérieure a raison.'}}
+};
+
+/* ---------- fond : crossfade ---------- */
+const bgs=$$('.bg');let bgI=0;
+setInterval(()=>{bgs[bgI].classList.remove('on');bgI=(bgI+1)%bgs.length;bgs[bgI].classList.add('on');},7000);
+
+/* ---------- nav ---------- */
+const nav=$('#nav');
+addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>30),{passive:true});
+
+/* ---------- parallaxe (lerp) ---------- */
+const paraEls=$$('[data-para]');
+const bgStage=$('#bgStage');
+let target=scrollY,cur=scrollY,rafOn=false;
+function wake(){if(!RM&&!rafOn){rafOn=true;requestAnimationFrame(loop);}}
+function loop(){
+  cur+=(target-cur)*.08;
+  if(Math.abs(target-cur)<.1)cur=target;
+  bgStage.style.transform=`translateY(${(cur*.12).toFixed(2)}px)`;
+  for(const el of paraEls){
+    const r=el.getBoundingClientRect();
+    if(r.bottom>0&&r.top<innerHeight){
+      const off=(r.top+r.height/2-innerHeight/2)*parseFloat(el.dataset.para);
+      el.style.transform=`translateY(${off.toFixed(2)}px)`;
+    }
+  }
+  const gSettled=!fine||(Math.abs(tx-gx)<.5&&Math.abs(ty-gy)<.5);
+  if(gSettled){gx=tx;gy=ty;}
+  glowLoop();
+  if(cur===target&&gSettled){rafOn=false;return;}
+  requestAnimationFrame(loop);
+}
+addEventListener('scroll',()=>{target=scrollY;wake();},{passive:true});
+addEventListener('pointermove',wake,{passive:true});
+if(!RM)wake();else glowLoop();
+
+/* halo curseur */
+const glow=$('#glow');let gx=innerWidth/2,gy=innerHeight/3,tx=gx,ty=gy;
+const fine=matchMedia('(pointer:fine)').matches;
+if(fine)addEventListener('pointermove',e=>{tx=e.clientX;ty=e.clientY;},{passive:true});
+function glowLoop(){if(!fine)return;gx+=(tx-gx)*.1;gy+=(ty-gy)*.1;glow.style.left=gx+'px';glow.style.top=gy+'px';}
+
+/* ---------- reveal au scroll ---------- */
+const io=new IntersectionObserver(es=>es.forEach(e=>{
+  if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}
+}),{threshold:.12});
+$$('.reveal').forEach(el=>io.observe(el));
+
+/* ---------- toast ---------- */
+const toastEl=$('#toast');let toastT;
+function toast(msg){toastEl.textContent=msg;toastEl.classList.add('show');
+  clearTimeout(toastT);toastT=setTimeout(()=>toastEl.classList.remove('show'),2600);}
+
+/* ================================================================
+   TIRAGE
+   ================================================================ */
+const deck=$('#deck'),slots=$$('#slots .slot'),drawBtn=$('#drawBtn'),drawLabel=$('#drawLabel'),
+      flipHint=$('#flipHint'),oracle=$('#oracle'),oType=$('#oType'),oCaret=$('#oCaret');
+let drew=0,flips=0,busy=false;
+
+function pick(n,pool){
+  const p=[...pool],out=[];
+  while(out.length<n&&p.length)out.push(p.splice(Math.floor(Math.random()*p.length),1)[0]);
+  return out;
+}
+function shuffle(pool){
+  if(busy)return;busy=true;drew++;flips=0;
+  drawBtn.disabled=true;
+  oracle.classList.remove('show');flipHint.classList.remove('show');
+  slots.forEach(s=>{s.classList.remove('filled');
+    s.querySelector('.tcard')?.remove();
+    s.querySelector('.cap').classList.remove('show');
+    s.querySelector('.cap').innerHTML='';});
+  deck.classList.add('shuffling');
+  drawLabel.textContent='mélange…';
+  setTimeout(()=>{
+    deck.classList.remove('shuffling');
+    deal(pick(3,pool));
+  },RM?50:1050);
+}
+function deal(cards){
+  const dr=deck.getBoundingClientRect();
+  const dcx=dr.left+dr.width/2,dcy=dr.top+dr.height/2;
+  cards.forEach((m,i)=>{
+    const slot=slots[i];slot.classList.add('filled');
+    const box=slot.querySelector('.cardbox');
+    const b=document.createElement('button');
+    b.className='tcard';b.type='button';
+    b.setAttribute('aria-label','Carte face cachée '+(i+1)+' — toucher pour révéler');
+    b.innerHTML=`<div class="inner">
+      <div class="tface tback"><img src="assets/cards/back.jpg" alt=""></div>
+      <div class="tface tfront"><img src="${m.img}" alt="${m.name} — Rider-Waite-Smith"></div></div>`;
+    box.appendChild(b);
+    const sr=b.getBoundingClientRect();
+    const dx=dcx-(sr.left+sr.width/2),dy=dcy-(sr.top+sr.height/2);
+    b.style.transform=`translate(${dx}px,${dy}px) rotate(${(i-1)*9}deg) scale(.72)`;
+    b.style.opacity='0';
+    b.style.transitionDelay=(RM?0:i*130)+'ms';
+    b.dataset.card=m.name;
+    requestAnimationFrame(()=>requestAnimationFrame(()=>{
+      b.style.transform='';b.style.opacity='1';
+      setTimeout(()=>b.style.transitionDelay='0ms',(RM?0:600)+i*130);
+    }));
+    b.addEventListener('click',()=>flip(b,m,slot),{once:true});
+  });
+  setTimeout(()=>{flipHint.classList.add('show');busy=false;
+    drawBtn.disabled=false;drawLabel.textContent='Recommencer le tirage';},RM?60:1000);
+}
+function flip(b,m,slot){
+  b.classList.add('flip');
+  b.setAttribute('aria-label',m.name+' — '+m.word+' : '+m.phrase);
+  slot.querySelector('.cap').innerHTML=`<span class="nm">${m.name}</span><span class="wd">${m.word}</span>`;
+  slot.querySelector('.cap').classList.add('show');
+  flips++;
+  if(flips===1)flipHint.classList.remove('show');
+  if(flips===3)setTimeout(revealOracle,650);
+}
+function revealOracle(){
+  oracle.classList.add('show');
+  typeInto(oType,'RITUEL INITIATIQUE DÉTECTÉ — '+(drew===1?'PREMIER CONTACT':'LE CYCLE CONTINUE'));
+}
+/* machine à écrire */
+function typeInto(el,text){
+  if(RM){el.textContent=text;return;}
+  el.textContent='';let i=0;
+  (function t(){if(i<=text.length){el.textContent=text.slice(0,i++);setTimeout(t,26);}})();
+}
+drawBtn.addEventListener('click',()=>shuffle(POOL));
+/* auto-tirage à l'arrivée sur la section */
+let autoDone=false;
+new IntersectionObserver((es,obs)=>{es.forEach(e=>{
+  if(e.isIntersecting&&!autoDone){autoDone=true;obs.disconnect();
+    setTimeout(()=>{if(!drew)shuffle(POOL);},700);}
+})},{threshold:.35}).observe($('#tirage'));
+
+
+/* ================================================================
+   APPRENTISSAGE — lecteur de carte
+   ================================================================ */
+const rBody=$('#rBody'),readerImg=$('#readerImg'),rcNum=$('#rcNum'),rcName=$('#rcName');
+let rMode='mot',rCard='etoile';
+function renderReader(){
+  const d=READER[rCard];
+  rcNum.textContent=d.num;rcName.textContent=d.name;
+  if(readerImg.src!==d.img){
+    readerImg.src=d.img;readerImg.alt=d.name+' — Rider-Waite-Smith';
+    readerImg.classList.remove('pop');void readerImg.offsetWidth;readerImg.classList.add('pop');
+  }
+  let h='';
+  if(rMode==='mot')
+    h=`<p class="bword fade">${d.mot}</p><p class="bcap fade">l'essence de la carte, en un mot</p>`;
+  else if(rMode==='phrase')
+    h=`<p class="bphrase fade">« ${d.phrase} »</p>`;
+  else if(rMode==='endroit')
+    h=`<p class="bwords fade">${d.up}</p><p class="bcap fade">mots-clés à l'endroit</p>`;
+  else if(rMode==='envers')
+    h=`<p class="bwords dim fade">${d.rev}</p><p class="bcap fade">mots-clés à l'envers</p>`;
+  else h=['amour','travail','argent','famille','reussite'].map(k=>
+    `<div class="brow fade"><span class="blabel">${k==='reussite'?'réussite':k}</span><span class="bval">${d.th[k]}</span></div>`).join('');
+  rBody.innerHTML=h;
+}
+$('#rPills').addEventListener('click',e=>{
+  const b=e.target.closest('button');if(!b)return;
+  $$('#rPills button').forEach(x=>x.classList.toggle('on',x===b));
+  rMode=b.dataset.mode;renderReader();
+});
+$('#readerThumbs').addEventListener('click',e=>{
+  const b=e.target.closest('button');if(!b)return;
+  $$('#readerThumbs button').forEach(x=>x.classList.toggle('on',x===b));
+  rCard=b.dataset.card;renderReader();
+});
+new IntersectionObserver((es,o)=>{es.forEach(e=>{if(e.isIntersecting){renderReader();o.disconnect();}})},
+  {threshold:.3}).observe($('#apprentissage'));
+
+/* ================================================================
+   COMBINAISONS
+   ================================================================ */
+const pairA=$('#pairA'),pairB=$('#pairB'),pairText=$('#pairText'),pairNum=$('#pairNum');
+const CURATED=[["L'Étoile","Le Soleil",'L\'espoir se vérifie : ce que tu appelais de tes vœux s\'illumine sous tes yeux.'],
+ ['La Lune','La Papesse','Double appel de l\'intuition — fais confiance à ce que tu sais sans savoir pourquoi.'],
+ ['Le Mat','Le Monde','Le saut dans l\'inconnu referme un grand cycle : ose, tu atterris en dansant.']];
+function pcardHTML(el,m){
+  el.innerHTML=`<span class="rnum">${m.n}</span>
+    <svg class="sym" viewBox="0 0 48 48" fill="none"><use href="#${m.sym}"/></svg>
+    <span class="nm">${m.name}</span>`;
+  el.classList.remove('pop');void el.offsetWidth;el.classList.add('pop');
+}
+function newPair(){
+  const [a,b]=pick(2,MAJORS);
+  pcardHTML(pairA,a);pcardHTML(pairB,b);
+  const key=norm(a.name)+'+'+norm(b.name);
+  const hit=CURATED.find(c=>key===norm(c[0])+'+'+norm(c[1])||key===norm(c[1])+'+'+norm(c[0]));
+  const txt=hit?hit[2]:`${a.duo[0].toUpperCase()+a.duo.slice(1)} — et pendant ce temps, ${b.duo}.`;
+  pairText.textContent=txt;
+  pairNum.textContent=String(Math.floor(Math.random()*3003)+1).padStart(4,'0');
+}
+$('#pairBtn').addEventListener('click',newPair);
+newPair();
+
+/* ================================================================
+   RECHERCHE — taper n'importe où
+   ================================================================ */
+const q=$('#q'),results=$('#results'),resCount=$('#resCount');let tag='tout';
+function hi(t,query){
+  if(!query)return t;
+  const i=norm(t).indexOf(query);
+  if(i<0)return t;
+  return t.slice(0,i)+'<mark>'+t.slice(i,i+query.length)+'</mark>'+t.slice(i+query.length);
+}
+function renderRes(){
+  const query=norm(q.value.trim());
+  const list=MAJORS.filter(m=>
+    (tag==='tout'||m.tags.includes(tag))&&
+    (!query||norm(m.name).includes(query)||norm(m.word).includes(query)||norm(m.phrase).includes(query)));
+  resCount.textContent=list.length+' arcane'+(list.length>1?'s':'')+' majeur'+(list.length>1?'s':'')+
+    (tag==='tout'?'':' · thème '+tag)+(query?' · "'+q.value.trim()+'"':'')+' — les 78 dans l\'app';
+  if(!list.length){
+    results.innerHTML=`<div class="res-empty">aucune lame ne répond à « <b>${q.value.trim()||tag}</b> »<br>— dans l'app, la recherche porte sur les 78 cartes, mots-clés et thèmes —</div>`;
+    return;
+  }
+  results.innerHTML=list.map((m,i)=>{
+    const nm=hi(m.name,query);
+    return`<div class="res" role="button" tabindex="0" data-name="${m.name}" style="animation-delay:${Math.min(i*40,320)}ms">
+      <span class="rd"><svg class="sym" viewBox="0 0 48 48" fill="none"><use href="#${m.sym}"/></svg></span>
+      <span><span class="rrnum">${m.n}</span><br>
+      <span class="rnm">${nm}</span> <span class="rwd">· ${m.word}</span><br>
+      <span class="rph">${m.phrase}</span></span></div>`;
+  }).join('');
+}
+q.addEventListener('input',renderRes);
+$('#tagChips').addEventListener('click',e=>{
+  const b=e.target.closest('button');if(!b)return;
+  $$('#tagChips button').forEach(x=>x.classList.toggle('on',x===b));
+  tag=b.dataset.tag;renderRes();
+});
+results.addEventListener('click',e=>{
+  const r=e.target.closest('.res');
+  if(r)toast('Fiche « '+r.dataset.name+' » — lecture complète dans l\'app');
+});
+results.addEventListener('keydown',e=>{
+  const r=e.target.closest('.res');
+  if(r&&(e.key==='Enter'||e.key===' ')){e.preventDefault();toast('Fiche « '+r.dataset.name+' » — lecture complète dans l\'app');}
+});
+/* taper n'importe où → focus recherche */
+addEventListener('keydown',e=>{
+  const a=document.activeElement;
+  const typing=a&&(a.tagName==='INPUT'||a.tagName==='TEXTAREA'||a.isContentEditable);
+  if(e.metaKey||e.ctrlKey||e.altKey)return;
+  if(e.key==='/'&&!typing){e.preventDefault();q.focus();return;}
+  if(!typing&&e.key.length===1&&/[\p{L}\p{N}]/u.test(e.key)){
+    q.focus();
+    if(innerHeight+scrollY<$('#recherche').offsetTop)toast('recherche activée — tape ta carte');
+  }
+});
+renderRes();
+
+/* ================================================================
+   KONAMI — mode voyant
+   ================================================================ */
+const KONAMI=['ArrowUp','ArrowUp','ArrowDown','ArrowDown','ArrowLeft','ArrowRight','ArrowLeft','ArrowRight','b','a'];
+let ki=0;
+addEventListener('keydown',e=>{
+  if(e.key===KONAMI[ki]||e.key.toLowerCase()===KONAMI[ki]){ki++;if(ki===KONAMI.length){ki=0;seer();}}
+  else ki=0;
+});
+function seer(){
+  toast('MODE VOYANT ACTIVÉ — les arcanes te voient aussi');
+  $('#tirage').scrollIntoView({behavior:RM?'auto':'smooth'});
+  setTimeout(()=>{drew=0;shuffle(GOLDEN);},RM?200:900);
+}
+</script>
+</body>
+</html>
