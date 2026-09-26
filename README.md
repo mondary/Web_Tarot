@@ -18,6 +18,7 @@ Un site éditorial pour explorer les 78 lames du Tarot de Rider-Waite-Smith, leu
 - **Nuances** : pense-bête comparant les lames aux thèmes proches
 - **Partage par URL** : chaque lame a son adresse (`?carte=…&deck=…&theme=…&kw=1`) mise à jour en direct — bouton **Partager** dans la fiche (feuille native Android/iOS, sinon lien copié) et aperçu de la lame dans WhatsApp/iMessage via Open Graph
 - **Arcana Index (v11 expérimental)** : bibliothèque Three.js dense, organisée en rayonnages 3D par famille et numéro, avec recherche instantanée et fiche au clic
+- **Soixante-Dix-Huit (v13 expérimentale)** : étagère 3D animée (Three.js) façon « best-sellers » — lames reliées en livres rares numérotés, caméra qui glisse le long du rayonnage, hover qui soulève, clic qui amène la lame en grand avec fiche-livre, filtres par famille
 - **Navigation clavier** : saisie directe pour chercher, `←`/`→` entre les fiches et `Échap` pour revenir
 - **Architecture autonome** : application PHP et contenu embarqué dans un vault SQLite
 

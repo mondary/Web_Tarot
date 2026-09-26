@@ -18,6 +18,7 @@ An editorial website for exploring the 78 Rider-Waite-Smith Tarot cards, their m
 - **Nuances**: a reference comparing cards with closely related themes
 - **URL sharing**: every card has its own address (`?carte=…&deck=…&theme=…&kw=1`) updated live — a **Share** button in each sheet (native Android/iOS share sheet, otherwise copied link) and an Open Graph card preview in WhatsApp/iMessage
 - **Arcana Index (experimental v11)**: a dense Three.js library arranged as 3D shelves by family and number, with instant search and click-to-open card sheets
+- **Soixante-Dix-Huit (experimental v13)**: an animated 3D shelf (Three.js) in a bestsellers-showcase spirit — cards bound as numbered rare books, a camera gliding along the shelf, hover lift, click bringing the card up large with its book sheet, family filters
 - **Keyboard navigation**: type to search, use `←`/`→` between card sheets, and `Esc` to return
 - **Self-contained architecture**: PHP application with content embedded in a SQLite vault
 

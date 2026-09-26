@@ -38,6 +38,13 @@ Statut : `2026.09.02` (V11 — archive Three.js)
 
 ## Releases
 
+### [2026.09.03] - 2026-09-25
+#### Added
+- **Soixante-Dix-Huit (v13)** : étagère 3D animée des 78 lames (Three.js) façon « best-sellers book showcase » — lames reliées en livres rares numérotés sur une étagère dorée, entrée orchestrée carte par carte, caméra qui glisse le long du rayonnage (molette/glisser/inertie/← →), hover qui soulève la lame, clic qui l'amène en grand à côté d'une fiche-livre éditoriale (essence, mots-clés, lien V9), poussière d'or, plaques de famille, filtres par famille et partage `?carte=`.
+- **Accès isolé** : nouveau dossier `src/website/v13/` et launcher local dédié, sans modifier la structure de la V9.
+#### Changed
+- **Version** : passage à `2026.09.03`.
+
 ### [2026.09.02] - 2026-09-03
 #### Added
 - **Arcana Index (v11 expérimental)** : archive Three.js dense de 78 meshes, organisée par famille et numéro, avec raycasting, recherche instantanée, filtres, zoom, drag orbital et fiche latérale.
