@@ -145,7 +145,7 @@ mdFiles.forEach(file => {
 
 Object.values(families).forEach(f => f.cards.sort((a, b) => a.num - b.num));
 
-const VERSION = fs.readFileSync(path.join(__dirname, '..', 'VERSION'), 'utf8').trim();
+const VERSION = fs.readFileSync(path.join(__dirname, '..', '..', 'CHANGELOG.md'), 'utf8').match(/^#{2,3} \[([0-9]+\.[0-9]+\.[0-9]+)\]/m)[1];
 
 const output = {
   version: VERSION,

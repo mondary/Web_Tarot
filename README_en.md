@@ -6,6 +6,8 @@
 
 An editorial website for exploring the 78 Rider-Waite-Smith Tarot cards, their meanings, and their associations.
 
+![Settings and support](store/screenshots/01-reglages.png)
+
 ## ✅ Features
 
 - **78 cards**: 22 Major Arcana + 56 Minor Arcana (Wands, Swords, Cups, Pentacles)
@@ -64,7 +66,7 @@ browser blocks `fetch()` to SQLite and WebAssembly loading.
 
 ## 📋 See [CHANGELOG](CHANGELOG.md) for full history.
 
-Current version: `v2026.09.02`
+Current version: **2026.10.01**
 
 ## 🔗 Links
 
@@ -81,3 +83,7 @@ Current version: `v2026.09.02`
 
 The code and design of this project are MIT-licensed (see `LICENSE`).
 The descriptive texts are original. The Rider-Waite-Smith Tarot illustrations are in the public domain.
+
+[Support on Ko-fi](https://ko-fi.com/pouark)
+
+Promotional page: [store/website](store/website/index.html) (French only; bilingual version pending). Historical media: `store/v1/`.

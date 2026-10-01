@@ -6,7 +6,7 @@ Toutes les notes de release du projet Web Tarot. Le format de version suit `vYYY
 
 ## TODO — Roadmap
 
-Statut : `2026.09.02` (V11 — archive Three.js)
+Statut : `2026.10.01`
 
 ### Phase 1 — Fondations ✅
 - [x] Interface V2 unifiée (carousel d'accueil + grille par famille + vue détail)
@@ -37,6 +37,15 @@ Statut : `2026.09.02` (V11 — archive Three.js)
 ---
 
 ## Releases
+
+## [2026.10.01] - 2026-10-01
+
+### Changed
+- Réorganisation des médias historiques dans `store/v1/` et de la landing dans `store/website/`.
+- Synchronisation de la version et des README français et anglais ; le CHANGELOG devient la référence de version.
+
+### Added
+- Liens de soutien Ko-fi dans les README, la landing et les réglages de la V9.
 
 ### [2026.09.03] - 2026-09-25
 #### Added

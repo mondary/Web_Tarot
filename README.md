@@ -6,6 +6,8 @@
 
 Un site éditorial pour explorer les 78 lames du Tarot de Rider-Waite-Smith, leurs significations et leurs associations.
 
+![Réglages et soutien](store/screenshots/01-reglages.png)
+
 ## ✅ Fonctionnalités
 
 - **78 cartes** : 22 arcanes majeurs + 56 mineurs (Bâtons, Épées, Coupes, Deniers)
@@ -64,7 +66,7 @@ le navigateur bloque alors `fetch()` vers SQLite et le chargement de WebAssembly
 
 ## 📋 Voir le [CHANGELOG](CHANGELOG.md) pour l'historique complet.
 
-Version courante : `v2026.09.02`
+Version courante : **2026.10.01**
 
 ## 🔗 Liens
 
@@ -81,3 +83,7 @@ Version courante : `v2026.09.02`
 
 Le code et le design de ce projet sont sous licence MIT (voir `LICENSE`).
 Les textes descriptifs sont originaux. Les illustrations du Tarot de Rider-Waite-Smith sont dans le domaine public.
+
+[Soutenir sur Ko-fi](https://ko-fi.com/pouark)
+
+Page promotionnelle : [store/website](store/website/index.html) (français uniquement ; version bilingue à compléter). Médias historiques : `store/v1/`.

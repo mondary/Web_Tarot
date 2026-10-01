@@ -101,7 +101,7 @@ for vd in vault_dirs:
     print(f'  📁 {vd}: {stored} fichiers texte')
 
 # Fichiers root
-for rf in ['README.md', 'CHANGELOG.md', 'VERSION', 'LICENSE', '.gitignore',
+for rf in ['README.md', 'CHANGELOG.md', 'LICENSE', '.gitignore',
            'build_vault.py', 'extract_vault.py']:
     fp = ROOT / rf
     if fp.exists():
