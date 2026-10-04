@@ -120,7 +120,7 @@ $ogId = (string)($_GET['carte'] ?? '');
 if ($ogId !== '') {
     foreach ($cards as $c) if ($c['id'] === $ogId) { $og = $c; break; }
 }
-$ver = '2026.10.02';
+$ver = '2026.10.03';
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -224,6 +224,13 @@ a{color:inherit}
 .settings-panel .tl{display:inline}
 .settings-panel .spd{margin-left:auto}
 .settings-panel .set-ver{font-family:"DM Mono",monospace;font-size:.55rem;letter-spacing:.14em;color:var(--muted);opacity:.7;text-align:center;padding:.35rem 0 .15rem;border-top:1px solid var(--line);margin-top:.25rem}
+/* lien Ko-fi : même habillage que les boutons du panneau + badge officiel */
+.settings-panel .kofi-link{display:flex;align-items:center;gap:.55rem;width:100%;padding:.6rem .8rem;border-radius:9px;
+  color:var(--muted);font-family:"DM Mono",monospace;font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;
+  text-decoration:none;transition:.3s var(--ease)}
+.settings-panel .kofi-link:hover{background:var(--ac-dim);color:var(--ac)}
+.settings-panel .kofi-link:focus-visible{outline:2px solid var(--ac);outline-offset:2px}
+.kofi-link .kofi-badge{width:17px;height:17px;flex:0 0 auto;display:block;border-radius:5px}
 @media(max-width:640px){.brand .v{display:none}}
 .auto-ring{position:fixed;top:0;left:0;right:0;height:2px;z-index:1660;background:var(--ac-dim);opacity:0;transition:opacity .3s}
 .auto-ring.on{opacity:1}
@@ -474,7 +481,10 @@ body:has(.d-stage.open) .brand{opacity:0;pointer-events:none}
       <button aria-label="Mode de tirage" id="drawModeBtn" onclick="TarotSpreads&&TarotSpreads.cycleDrawMode()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="8" width="7" height="12" rx="1.2" transform="rotate(-9 7 14)"/><rect x="9.5" y="5.5" width="7" height="12" rx="1.2" transform="rotate(3 13 11.5)"/><rect x="16" y="9" width="6" height="11" rx="1.2" transform="rotate(14 19 14.5)"/></svg><span class="tl" id="drawModeLbl">Rapide</span></button>
       <button id="kwFab" aria-pressed="false" aria-label="Mots-clés au survol" onclick="toggleKw()"><svg viewBox="0 0 24 24"><path d="M14.5 3a6.5 6.5 0 0 0-6.32 8.02L2.3 16.9a1 1 0 0 0-.3.7V21a1 1 0 0 0 1 1h2.5a1 1 0 0 0 1-1v-1.5H8a1 1 0 0 0 1-1v-1.5h1.5a1 1 0 0 0 .7-.3l.28-.28A6.5 6.5 0 1 0 14.5 3Zm2 6.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 0 0 3Z"/></svg>Mots-clés</button>
       <button id="autoFab" aria-pressed="false" aria-label="Diaporama automatique"><span class="ic-play">▶</span><span class="ic-pause">❚❚</span> Diaporama<span class="spd" id="autoSpd"></span></button>
-      <a href="https://ko-fi.com/pouark" target="_blank" rel="noopener noreferrer" style="padding:.6rem .8rem">Soutenir sur Ko-fi</a>
+      <a class="kofi-link" href="https://ko-fi.com/pouark" target="_blank" rel="noopener noreferrer">
+        <svg class="kofi-badge" viewBox="0 0 24 24" aria-hidden="true"><rect width="24" height="24" rx="6.5" fill="#FF6433"/><g transform="translate(2.4 2.4) scale(.8)"><path fill="#fff" d="M11.351 2.715c-2.7 0-4.986.025-6.83.26C2.078 3.285 0 5.154 0 8.61c0 3.506.182 6.13 1.585 8.493 1.584 2.701 4.233 4.182 7.662 4.182h.83c4.209 0 6.494-2.234 7.637-4a9.5 9.5 0 0 0 1.091-2.338C21.792 14.688 24 12.22 24 9.208v-.415c0-3.247-2.13-5.507-5.792-5.87-1.558-.156-2.65-.208-6.857-.208m0 1.947c4.208 0 5.09.052 6.571.182 2.624.311 4.13 1.584 4.13 4v.39c0 2.156-1.792 3.844-3.87 3.844h-.935l-.156.649c-.208 1.013-.597 1.818-1.039 2.546-.909 1.428-2.545 3.064-5.922 3.064h-.805c-2.571 0-4.831-.883-6.078-3.195-1.09-2-1.298-4.155-1.298-7.506 0-2.181.857-3.402 3.012-3.714 1.533-.233 3.559-.26 6.39-.26m6.547 2.287c-.416 0-.65.234-.65.546v2.935c0 .311.234.545.65.545 1.324 0 2.051-.754 2.051-2s-.727-2.026-2.052-2.026m-10.39.182c-1.818 0-3.013 1.48-3.013 3.142 0 1.533.858 2.857 1.949 3.897.727.701 1.87 1.429 2.649 1.896a1.47 1.47 0 0 0 1.507 0c.78-.467 1.922-1.195 2.623-1.896 1.117-1.039 1.974-2.364 1.974-3.897 0-1.662-1.247-3.142-3.039-3.142-1.065 0-1.792.545-2.338 1.298-.493-.753-1.246-1.298-2.312-1.298"/></g></svg>
+        <span>Soutenir sur Ko-fi</span>
+      </a>
       <div class="set-ver">v<?= $ver ?></div>
     </div>
   </div>

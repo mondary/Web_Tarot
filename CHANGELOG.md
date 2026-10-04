@@ -6,7 +6,7 @@ Toutes les notes de release du projet Web Tarot. Le format de version suit `vYYY
 
 ## TODO — Roadmap
 
-Statut : `2026.10.02`
+Statut : `2026.10.03`
 
 ### Phase 1 — Fondations ✅
 - [x] Interface V2 unifiée (carousel d'accueil + grille par famille + vue détail)
@@ -37,6 +37,14 @@ Statut : `2026.10.02`
 ---
 
 ## Releases
+
+## [2026.10.03] - 2026-10-04
+
+### Fixed
+- **Lien Ko-fi des réglages** : intégré au style du panneau (DM Mono, majuscules, pas de soulignement) et accompagné du badge officiel Ko-fi (tasse rouge `#FF6433` en SVG inline, sans dépendance externe).
+
+### Changed
+- **Version** : passage à `2026.10.03` (cache service worker inclus).
 
 ## [2026.10.02] - 2026-10-04
 
