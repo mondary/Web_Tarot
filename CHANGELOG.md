@@ -6,7 +6,7 @@ Toutes les notes de release du projet Web Tarot. Le format de version suit `vYYY
 
 ## TODO — Roadmap
 
-Statut : `2026.10.04`
+Statut : `2026.10.05`
 
 ### Phase 1 — Fondations ✅
 - [x] Interface V2 unifiée (carousel d'accueil + grille par famille + vue détail)
@@ -37,6 +37,16 @@ Statut : `2026.10.04`
 ---
 
 ## Releases
+
+## [2026.10.05] - 2026-10-04
+
+### Added
+- **Ordre de tirage guidé** : chaque position d'un tirage porte son numéro d'ordre (badge ①②③…), la prochaine à piocher ou révéler est dorée et mise en avant. Par défaut l'ordre est **prédéterminé** — pioche puis révélation dans l'ordre numéroté, les clics hors tour sont refusés (secousse + message) ; un ordre **libre** reste disponible dans le menu Tirages (« Ordre de tirage : Prédéterminé / Libre », persistant). « Tout révéler » passe outre l'ordre.
+
+### Changed
+- **Éventail mobile en arc radial** : la colonne verticale laisse place à un véritable éventail — pivot à gauche de l'écran, demi-arc bombé vers la droite, les 78 dos de cartes rayonnent autour du pivot. Le défilement vertical fait tourner l'éventail (snap sur chaque carte), la carte au sommet de l'arc grossit, les extrêmes s'estompent, et un compteur indique la position (carte 21 / 78).
+- **Croix de Décision : la carte avant tout** : cartes agrandies, l'image remplit la lame, le nom devient un voile discret en bas de la carte — plus de bloc numéro/famille/mots-clés qui écrasait les petites cartes (idem disposition celtique).
+- **Version** : passage à `2026.10.05` (cache service worker inclus).
 
 ## [2026.10.04] - 2026-10-04
 

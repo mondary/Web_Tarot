@@ -21,12 +21,30 @@
     updateDrawModeUI();
   }
   function cycleDrawMode(){ setDrawMode(DRAW_MODE==='manual'?'quick':'manual'); }
+
+  /* ---- Ordre de tirage : prédéterminé (défaut) / libre ---- */
+  let DRAW_ORDER='fixed';
+  try{ if(localStorage.getItem('tarotDrawOrder')==='free') DRAW_ORDER='free'; }catch(e){}
+  function getDrawOrder(){ return DRAW_ORDER; }
+  function setDrawOrder(o){
+    DRAW_ORDER = o==='free' ? 'free' : 'fixed';
+    try{ localStorage.setItem('tarotDrawOrder',DRAW_ORDER); }catch(e){}
+    updateDrawModeUI();
+    updateOrderBadges();
+    if(typeof toast==='function') toast(DRAW_ORDER==='free'?'Ordre libre':'Ordre prédéterminé');
+  }
+
   function updateDrawModeUI(){
     document.querySelectorAll('#sp-mode-toggle button').forEach(b=>b.classList.toggle('on',b.dataset.m===DRAW_MODE));
     const d=$('#sp-mode-desc');
     if(d) d.textContent = DRAW_MODE==='manual'
       ? 'Coupez le paquet, puis choisissez vous-même chaque carte dans l\u2019éventail.'
       : 'Les cartes sont distribuées automatiquement, au hasard.';
+    document.querySelectorAll('#sp-order-toggle button').forEach(b=>b.classList.toggle('on',b.dataset.o===DRAW_ORDER));
+    const od=$('#sp-order-desc');
+    if(od) od.textContent = DRAW_ORDER==='free'
+      ? 'Piochez et révélez dans l\u2019ordre que vous voulez.'
+      : 'Les positions se remplissent, puis se révèlent, dans l\u2019ordre numéroté.';
     const l=document.getElementById('drawModeLbl'); if(l) l.textContent = DRAW_MODE==='manual'?'Piocher':'Rapide';
     const b=document.getElementById('drawModeBtn'); if(b) b.setAttribute('aria-label','Mode de tirage : '+(DRAW_MODE==='manual'?'Piocher':'Rapide'));
   }
@@ -169,11 +187,20 @@
 .sp-card-front .sp-card-info .kw{margin-top:.3rem;font-size:.72rem;color:#6f6a5f;line-height:1.25;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
 
 /* Position label */
-.sp-pos{display:flex;flex-direction:column;align-items:center;gap:.5rem}
+.sp-pos{position:relative;display:flex;flex-direction:column;align-items:center;gap:.5rem}
 .sp-pos-label{font-family:'DM Mono',monospace;font-size:.58rem;letter-spacing:.16em;text-transform:uppercase;
   color:#8a8378;text-align:center;max-width:140px;line-height:1.3}
 .sp-pos-desc{font-size:.68rem;color:rgba(138,131,120,.6);text-align:center;max-width:140px;line-height:1.3}
 .sp-card:hover .sp-card-back{border-color:rgba(201,162,39,.4)}
+
+/* Badge d'ordre de tirage */
+.sp-order{position:absolute;top:-9px;left:-9px;z-index:9;width:23px;height:23px;border-radius:50%;
+  background:#0a0907;border:1px solid rgba(201,162,39,.45);color:#c9a227;display:grid;place-items:center;
+  font-family:'DM Mono',monospace;font-size:.6rem;box-shadow:0 4px 14px rgba(0,0,0,.45);pointer-events:none}
+.sp-order.now{background:#c9a227;color:#0a0907;border-color:#c9a227;box-shadow:0 0 18px rgba(201,162,39,.55)}
+.sp-layout-name .sp-order{top:-7px;left:calc(50% - 46px)}
+@keyframes spShake{0%,100%{transform:translateX(0)}25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
+.sp-shake{animation:spShake .32s ease}
 
 /* Layouts */
 .sp-layout-single{--sp-card-h:80vh;display:flex;justify-content:center}
@@ -183,7 +210,7 @@
 .sp-layout-trois .sp-card{height:auto;width:100%}
 
 /* Croix (Décision) — forme fixe à toute résolution */
-.sp-layout-cross{display:grid;grid-template-columns:repeat(3,var(--cc));grid-template-rows:repeat(3,auto);gap:.8rem;place-items:center;--cc:clamp(66px,20vmin,138px)}
+.sp-layout-cross{display:grid;grid-template-columns:repeat(3,var(--cc));grid-template-rows:repeat(3,auto);gap:.8rem;place-items:center;--cc:clamp(84px,22vmin,160px)}
 .sp-layout-cross .sp-pos:nth-child(1){grid-area:2/2}
 .sp-layout-cross .sp-pos:nth-child(2){grid-area:2/3}
 .sp-layout-cross .sp-pos:nth-child(3){grid-area:2/1}
@@ -191,6 +218,13 @@
 .sp-layout-cross .sp-pos:nth-child(5){grid-area:1/2}
 .sp-layout-cross .sp-card{width:var(--cc);height:calc(var(--cc)*1.5);max-width:none}
 .sp-layout-cross .sp-pos-label{font-size:.56rem;max-width:110px}
+/* croix (et celtic) : la carte avant tout — image pleine, nom en voile, pas de numéro */
+.sp-layout-cross .sp-card-front,.sp-layout-celtic .sp-card-front{display:block;position:relative}
+.sp-layout-cross .sp-card-imgwrap,.sp-layout-celtic .sp-card-imgwrap{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;padding:.28rem}
+.sp-layout-cross .sp-card-info,.sp-layout-celtic .sp-card-info{position:absolute;left:0;right:0;bottom:0;padding:1.2rem .3rem .3rem;
+  background:linear-gradient(transparent,rgba(10,9,7,.85));border-top:none;text-align:center}
+.sp-layout-cross .sp-card-info .nm,.sp-layout-celtic .sp-card-info .nm{font-size:.74rem;color:#f1ede4}
+.sp-layout-cross .sp-card-info .no,.sp-layout-cross .sp-card-info .kw,.sp-layout-celtic .sp-card-info .no,.sp-layout-celtic .sp-card-info .kw{display:none}
 @media(max-width:600px){
   .sp-layout-trois{flex-direction:column;align-items:center;gap:1rem}
   .sp-layout-trois .sp-pos{max-width:240px}
@@ -371,8 +405,12 @@
 .sp-fan-card{position:absolute;top:50%;left:0;width:var(--w);margin-top:calc(var(--w)*-.75);padding:0;border:none;background:none;cursor:pointer;
   transform:translate(var(--x),var(--y)) rotate(var(--r)) scale(var(--s,1));transform-origin:50% 130%;
   transition:transform .25s cubic-bezier(.16,1,.3,1);z-index:1}
-/* variante verticale (mobile) : colonne défilante centrée */
+/* variante verticale (mobile) : éventail radial — pivot à gauche, arc bombé à droite */
 .sp-fan-card.v{top:0;left:50%;margin-top:0;margin-left:calc(var(--w)*-.5);transform-origin:50% 50%;scroll-snap-align:center;transition:transform .12s linear}
+.sp-fan-card.rad{top:var(--py);left:var(--px);margin-top:calc(var(--w)*-.75);margin-left:calc(var(--w)*-.5);
+  transform-origin:50% 50%;transition:none;
+  transform:rotate(var(--a)) translateX(var(--R)) rotate(90deg) scale(var(--s,1));opacity:var(--o,1)}
+.sp-fan-card.rad.picked{transform:rotate(var(--a)) translateX(calc(var(--R) + 16px)) rotate(90deg) scale(calc(var(--s,1)*1.12))}
 .sp-fan-back{display:flex;align-items:center;justify-content:center;width:100%;aspect-ratio:2/3;border-radius:.65rem;
   background:linear-gradient(135deg,#0a0907,#15110d);border:1px solid rgba(201,162,39,.15);
   box-shadow:0 10px 26px rgba(0,0,0,.55);transition:border-color .25s}
@@ -426,6 +464,14 @@
             </div>
             <div class="sp-mode-desc" id="sp-mode-desc"></div>
           </div>
+          <div class="sp-mode-row" style="margin-top:.9rem">
+            <div class="sp-mode-lbl">Ordre de tirage</div>
+            <div class="sp-mode-toggle" id="sp-order-toggle">
+              <button type="button" data-o="fixed">①②③ Prédéterminé</button>
+              <button type="button" data-o="free">Libre</button>
+            </div>
+            <div class="sp-mode-desc" id="sp-order-desc"></div>
+          </div>
         </div>`;
       document.body.appendChild(menu);
       $('#sp-menu-close').addEventListener('click',closeMenu);
@@ -433,6 +479,10 @@
       $('#sp-mode-toggle').addEventListener('click',e=>{
         const b=e.target.closest('button'); if(!b)return;
         setDrawMode(b.dataset.m);
+      });
+      $('#sp-order-toggle').addEventListener('click',e=>{
+        const b=e.target.closest('button'); if(!b)return;
+        setDrawOrder(b.dataset.o);
       });
     }
 
@@ -734,6 +784,7 @@
       const pos=spreadDef.positions[i]||{label:'',desc:''};
       positionsHtml+=`
         <div class="sp-pos" data-idx="${i}">
+          ${n>1?`<span class="sp-order" aria-hidden="true">${i+1}</span>`:''}
           ${spreadDef.layout==='name'?`<div class="sp-name-letter">${esc(pos.label)}</div>`:''}
           <div class="sp-slot-empty" data-idx="${i}" role="button" tabindex="0" aria-label="Piocher une carte : ${esc(pos.label||('position '+(i+1)))}">
             <span class="sp-slot-plus">＋</span>
@@ -759,7 +810,18 @@
       <button class="sp-reveal-all" id="sp-reveal-all" style="display:none">Tout révéler</button>`;
 
     stage.querySelectorAll('.sp-slot-empty').forEach(el=>{
-      const go=()=>openFan(+el.dataset.idx);
+      const go=()=>{
+        // Ordre prédéterminé : seul l'emplacement suivant est piochable
+        if(DRAW_ORDER==='fixed'){
+          const nx=nextEmptySlot();
+          if(nx>=0&&+el.dataset.idx!==nx){
+            shakeEl(el);
+            if(typeof toast==='function') toast('Piochez d\u2019abord la position '+(nx+1));
+            return;
+          }
+        }
+        openFan(+el.dataset.idx);
+      };
       el.addEventListener('click',go);
       el.addEventListener('keydown',e=>{ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); go(); } });
     });
@@ -772,6 +834,7 @@
     });
     const revAll=$('#sp-reveal-all');
     if(revAll) revAll.addEventListener('click',revealAll);
+    updateOrderBadges();
   }
 
   function buildSlotCard(card,idx){
@@ -799,10 +862,37 @@
 
   function nextEmptySlot(){ return manualSlots.findIndex(s=>!s); }
 
+  function nextRevealIdx(){
+    let next=-1;
+    document.querySelectorAll('#sp-spread .sp-card').forEach(el=>{
+      const i=+el.dataset.idx;
+      if(!el.classList.contains('revealed')&&(next<0||i<next)) next=i;
+    });
+    return next;
+  }
+
+  function updateOrderBadges(){
+    const positions=[...document.querySelectorAll('#sp-spread .sp-pos')];
+    if(!positions.length) return;
+    let next = manualModeActive ? nextEmptySlot() : -1;
+    if(next<0) next=nextRevealIdx();
+    positions.forEach(p=>{
+      const b=p.querySelector('.sp-order');
+      if(b) b.classList.toggle('now',+p.dataset.idx===next);
+    });
+  }
+
+  function shakeEl(el){
+    if(!el) return;
+    el.classList.remove('sp-shake'); void el.offsetWidth; el.classList.add('sp-shake');
+    setTimeout(()=>el.classList.remove('sp-shake'),380);
+  }
+
   function pulseSlot(idx){
     document.querySelectorAll('#sp-spread .sp-slot-empty').forEach(el=>{
       el.classList.toggle('next',+el.dataset.idx===idx);
     });
+    updateOrderBadges();
   }
 
   function setHint(t){
@@ -875,21 +965,21 @@
     let h='';
 
     if(mobile){
-      /* roulette verticale façon dock : colonne centrée qui profite de la hauteur
-         de l'écran, magnification des cartes proches du centre */
-      const cardW=Math.round(Math.min(132,Math.max(96,vw*.27)));
-      const cardH=Math.round(cardW*1.5);
-      const step=Math.round(cardH*.5);
-      const padT=Math.round(vh*.3);
-      const H=padT*2+n*step+cardH;
+      /* éventail radial façon dock : pivot à gauche de l'écran, arc bombé vers la
+         droite, la carte au sommet grossit ; le défilement vertical fait tourner l'éventail */
+      const cardW=Math.round(Math.min(118,Math.max(88,vw*.24)));
+      const R=Math.round(Math.min(vw*.94,cardW*1.5+vw*.42));
+      const px=Math.round(-vw*.12), py=Math.round(vh*.52);
+      const pxPerCard=44, degPerCard=3;
+      const totalScroll=n*pxPerCard;
+      const H=totalScroll+vh;
       for(let i=0;i<n;i++){
-        const t=n>1?((i/(n-1))*2-1):0;
-        h+=`<button type="button" class="sp-fan-card v" data-i="${i}" style="--x:0px;--y:${padT+i*step}px;--r:${(t*3).toFixed(2)}deg;--w:${cardW}px" aria-label="Piocher la carte ${i+1}">${FAN_BACK}</button>`;
+        h+=`<button type="button" class="sp-fan-card rad" data-i="${i}" style="--px:${px}px;--py:${py}px;--R:${R}px;--a:0deg;--w:${cardW}px" aria-label="Piocher la carte ${i+1}">${FAN_BACK}</button>`;
       }
       stage.style.width='100%';
       stage.style.height=H+'px';
-      if(scroll) scroll.classList.add('vmode');
-      if(hint) hint.textContent='Faites défiler puis touchez une carte';
+      if(scroll) scroll.classList.remove('vmode');
+      if(hint) hint.textContent='Faites défiler l\u2019éventail puis touchez une carte';
     }else{
       /* éventail horizontal : arc léger étalé de droite à gauche */
       const cardW=Math.round(Math.min(110,Math.max(72,vw*.075)));
@@ -902,6 +992,7 @@
       }
       stage.style.width='100%';
       stage.style.height='';
+      stage.style.transform='';
       if(scroll) scroll.classList.remove('vmode');
       if(hint) hint.textContent='Cartes faces cachées — laissez-vous guider';
     }
@@ -916,21 +1007,39 @@
     if(mobile){
       if(scroll){
         scroll.scrollTop=keepScroll?Math.round(ratio*scroll.scrollHeight):0;
-        /* loupe centrale : la carte proche du milieu de l'écran grossit */
+        /* éventail radial : le défilement fait tourner les cartes autour du pivot ;
+           la carte au sommet de l'arc grossit, les extrêmes s'estompent */
         fanAbort=new AbortController();
-        let raf=0;
-        const mag=()=>{
-          const mid=vh/2;
+        const pxPerCard=44, degPerCard=3;
+        let raf=0, snapT=0, lastApex=-1;
+        const spin=()=>{
+          const st=scroll.scrollTop;
+          stage.style.transform=`translateY(${st}px)`; // le plateau reste fixe, seul l'angle tourne
+          const scrollDeg=st/pxPerCard*degPerCard;
           stage.querySelectorAll('.sp-fan-card').forEach(el=>{
-            const r=el.getBoundingClientRect();
-            const d=Math.abs((r.top+r.height/2)-mid);
-            const k=Math.max(0,1-d/(vh*.36));
-            el.style.setProperty('--s',(1+.32*k*(2-k)).toFixed(3));
+            const a=(+el.dataset.i)*degPerCard-scrollDeg;
+            const ad=Math.abs(a);
+            if(ad>64){ el.style.visibility='hidden'; return; }
+            el.style.visibility='';
+            const k=Math.max(0,1-ad/16);
+            el.style.setProperty('--a',a.toFixed(2)+'deg');
+            el.style.setProperty('--s',(1+.24*k).toFixed(3));
+            el.style.setProperty('--o',Math.max(0,Math.min(1,1-(ad-38)/22)).toFixed(3));
+            el.style.zIndex=el.classList.contains('picked')?'200':String(100-Math.round(ad));
           });
+          const apex=Math.max(0,Math.min(n-1,Math.round(scrollDeg/degPerCard)));
+          if(apex!==lastApex&&cnt){ lastApex=apex; cnt.textContent='carte '+(apex+1)+' / '+n; }
         };
-        const onScroll=()=>{ if(!raf)raf=requestAnimationFrame(()=>{raf=0;mag();}); };
+        const onScroll=()=>{
+          if(!raf)raf=requestAnimationFrame(()=>{raf=0;spin();});
+          clearTimeout(snapT);
+          snapT=setTimeout(()=>{
+            const target=Math.round(scroll.scrollTop/pxPerCard)*pxPerCard;
+            if(Math.abs(target-scroll.scrollTop)>1) scroll.scrollTo({top:target,behavior:'smooth'});
+          },160);
+        };
         scroll.addEventListener('scroll',onScroll,{passive:true,signal:fanAbort.signal});
-        requestAnimationFrame(mag);
+        requestAnimationFrame(spin);
       }
     }else if(scroll){
       scroll.scrollLeft=0; scroll.scrollTop=0;
@@ -959,6 +1068,7 @@
       const kw=extractKeywords(card.md).slice(0,3);
       positionsHtml+=`
         <div class="sp-pos" data-idx="${i}">
+          ${spreadDef.positions.length>1?`<span class="sp-order" aria-hidden="true">${i+1}</span>`:''}
           ${spreadDef.layout==='name'?`<div class="sp-name-letter">${pos.label}</div>`:''}
           <div class="sp-card" data-idx="${i}" data-id="${card.id}">
             <div class="sp-card-inner">
@@ -1014,6 +1124,7 @@
     stage.querySelectorAll('.sp-card').forEach(el=>{
       el.addEventListener('click',()=>revealCard(el));
     });
+    updateOrderBadges();
 
     // Wire buttons
     const closeBtn=$('#sp-close-spread');
@@ -1046,12 +1157,22 @@
       }
       return;
     }
+    // Ordre prédéterminé : on révèle la prochaine carte, pas une autre
+    if(DRAW_ORDER==='fixed'){
+      const nx=nextRevealIdx();
+      if(nx>=0&&+el.dataset.idx!==nx){
+        shakeEl(el);
+        if(typeof toast==='function') toast('Révélez d\u2019abord la position '+(nx+1));
+        return;
+      }
+    }
     el.classList.add('revealed');
     const hint=$('#sp-hint');
     if(hint){
       const remaining=document.querySelectorAll('#sp-spread .sp-card:not(.revealed)').length;
       if(remaining===0) hint.style.display='none';
     }
+    updateOrderBadges();
   }
 
   function revealAll(){
@@ -1059,6 +1180,7 @@
       el.classList.add('revealed');
     });
     const hint=$('#sp-hint');if(hint)hint.style.display='none';
+    updateOrderBadges();
   }
 
   function openSpread(){const s=$('#sp-spread');if(s)s.classList.add('open');document.body.style.overflow='hidden';}
@@ -1188,6 +1310,7 @@
 
   // API publique
   window.TarotSpreads={init:init,open:openMenu,close:closeMenu,closeSpread:closeSpread,
-    getDrawMode:getDrawMode,setDrawMode:setDrawMode,cycleDrawMode:cycleDrawMode};
+    getDrawMode:getDrawMode,setDrawMode:setDrawMode,cycleDrawMode:cycleDrawMode,
+    getDrawOrder:getDrawOrder,setDrawOrder:setDrawOrder};
 
 })();
