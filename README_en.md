@@ -21,7 +21,7 @@ An editorial website for exploring the 78 Rider-Waite-Smith Tarot cards, their m
 - **Editorial card sheets**: identity, card of the day, Love, Work, Finances, Guidance, meaning, and description
 - **Associations**: card combinations available in a collapsible panel
 - **Interactive spreads**: several integrated spread layouts
-- **Two draw modes**: *Quick* (cards dealt at random) or *Pick* — a setting and a toggle in the Spreads menu. In Pick mode, you cut the shuffled deck yourself at the height you choose (the two halves are swapped), then choose each card from the fan of all 78 face-down cards — a gentle right-to-left arc on desktop, a left-to-right scrolling strip on mobile. The Card of the Day is hand-picked too and stays remembered for the day
+- **Two draw modes**: *Quick* (cards dealt at random) or *Pick* — a setting and a toggle in the Spreads menu. In Pick mode, you cut the shuffled deck yourself at the height you choose (the two halves are swapped), then choose each card from the fan of all 78 face-down cards — a gentle right-to-left arc on desktop, a dock-style vertical scrolling column with a center magnifier on mobile. The fan adapts live when the window is resized. The Card of the Day is hand-picked too and stays remembered for the day
 - **Learning mode**: multiple-choice flashcard quiz (simplified Leitner) using either each card's distinctive keyword or central description phrase — known cards go to the bottom of the deck, missed ones come back quickly; progress is saved locally
 - **Fullscreen search**: instant filtering by name or number, with family filters
 - **Nuances**: a reference comparing cards with closely related themes

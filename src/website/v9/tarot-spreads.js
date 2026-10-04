@@ -342,8 +342,10 @@
   background:linear-gradient(180deg,#241d15,#171208);border-left:1px solid rgba(201,162,39,.10);border-right:1px solid rgba(201,162,39,.06);
   transition:transform .75s cubic-bezier(.16,1,.3,1)}
 .sp-cut-layer.top{background:linear-gradient(180deg,#332916,#1c150b);border-color:rgba(201,162,39,.22);border-left-width:1px}
-.sp-cut-layer.mv-down{transform:translate(16px,var(--dy))}
-.sp-cut-layer.mv-up{transform:translate(0,var(--dy))}
+@keyframes spCutLift{0%{transform:none}32%{transform:translate(30px,-34px)}58%{transform:translate(34px,-26px)}100%{transform:translate(0,var(--dy))}}
+@keyframes spCutRise{0%{transform:none}100%{transform:translate(0,var(--dy))}}
+.sp-cut-layer.cut-top{animation:spCutLift .8s cubic-bezier(.5,.06,.3,1) both;animation-delay:calc(var(--k)*.009s)}
+.sp-cut-layer.cut-bot{animation:spCutRise .72s cubic-bezier(.5,.06,.3,1) both;animation-delay:calc(var(--k)*.006s)}
 .sp-cut-line{position:absolute;left:-44px;right:-44px;top:50%;pointer-events:none;z-index:3;transition:opacity .3s}
 .sp-cut-line::before{content:'';position:absolute;left:0;right:0;top:-1px;border-top:2px dashed #c9a227;box-shadow:0 0 12px rgba(201,162,39,.4)}
 .sp-cut-n{position:absolute;right:-12px;top:-2.2rem;padding:.3rem .7rem;border-radius:50px;background:rgba(10,9,7,.92);
@@ -364,18 +366,25 @@
   font-family:'DM Mono',monospace;font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;cursor:pointer;transition:.3s}
 .sp-fan-close:hover{border-color:#c9a227;color:#c9a227}
 .sp-fan-scroll{flex:1;overflow-x:auto;overflow-y:hidden;position:relative;scrollbar-width:thin}
+.sp-fan-scroll.vmode{overflow-x:hidden;overflow-y:auto;scroll-snap-type:y proximity}
 .sp-fan-stage{position:relative;height:min(64vh,600px);width:100%}
 .sp-fan-card{position:absolute;top:50%;left:0;width:var(--w);margin-top:calc(var(--w)*-.75);padding:0;border:none;background:none;cursor:pointer;
-  transform:translate(var(--x),var(--y)) rotate(var(--r));transform-origin:50% 130%;
+  transform:translate(var(--x),var(--y)) rotate(var(--r)) scale(var(--s,1));transform-origin:50% 130%;
   transition:transform .25s cubic-bezier(.16,1,.3,1);z-index:1}
+/* variante verticale (mobile) : colonne défilante centrée */
+.sp-fan-card.v{top:0;left:50%;margin-top:0;margin-left:calc(var(--w)*-.5);transform-origin:50% 50%;scroll-snap-align:center;transition:transform .12s linear}
 .sp-fan-back{display:flex;align-items:center;justify-content:center;width:100%;aspect-ratio:2/3;border-radius:.65rem;
   background:linear-gradient(135deg,#0a0907,#15110d);border:1px solid rgba(201,162,39,.15);
   box-shadow:0 10px 26px rgba(0,0,0,.55);transition:border-color .25s}
 .sp-fan-back svg{width:40%;height:40%;color:rgba(201,162,39,.17)}
-.sp-fan-card:hover,.sp-fan-card:focus-visible{outline:none;z-index:6;
-  transform:translate(var(--x),calc(var(--y) - 24px)) rotate(var(--r)) scale(1.03)}
-.sp-fan-card:hover .sp-fan-back,.sp-fan-card:focus-visible .sp-fan-back{border-color:rgba(201,162,39,.55)}
-.sp-fan-card.picked{z-index:9;transform:translate(var(--x),calc(var(--y) - 30px)) rotate(var(--r)) scale(1.1)}
+@media(hover:hover){
+  .sp-fan-card:hover,.sp-fan-card:focus-visible{outline:none;z-index:6;
+    transform:translate(var(--x),calc(var(--y) - 24px)) rotate(var(--r)) scale(calc(var(--s,1)*1.03))}
+  .sp-fan-card:hover .sp-fan-back,.sp-fan-card:focus-visible .sp-fan-back{border-color:rgba(201,162,39,.55)}
+}
+.sp-fan-card:focus-visible{outline:none}
+.sp-fan-card:active .sp-fan-back{border-color:rgba(201,162,39,.6)}
+.sp-fan-card.picked{z-index:9;transform:translate(var(--x),calc(var(--y) - 30px)) rotate(var(--r)) scale(calc(var(--s,1)*1.1))}
 .sp-fan-card.picked .sp-fan-back{border-color:#c9a227;box-shadow:0 0 0 2px #c9a227,0 16px 40px rgba(0,0,0,.6)}
 .sp-fan-hint{flex:0 0 auto;text-align:center;color:#8a8378;font-family:'DM Mono',monospace;font-size:.6rem;
   letter-spacing:.16em;text-transform:uppercase;padding:1rem 1rem calc(1.2rem + env(safe-area-inset-bottom))}
@@ -445,7 +454,7 @@
           <button class="sp-fan-close" id="sp-fan-x">✕ Fermer</button>
         </div>
         <div class="sp-fan-scroll" id="sp-fan-scroll"><div class="sp-fan-stage" id="sp-fan-stage"></div></div>
-        <div class="sp-fan-hint">Cartes faces cachées — laissez-vous guider</div>`;
+        <div class="sp-fan-hint" id="sp-fan-hint">Cartes faces cachées — laissez-vous guider</div>`;
       document.body.appendChild(fan);
       $('#sp-fan-x').addEventListener('click',closeFan);
     }
@@ -629,9 +638,18 @@
     const stage=$('#sp-cut-stage'), stack=$('#sp-cut-stack'), line=$('#sp-cut-line'),
           nEl=$('#sp-cut-n'), go=$('#sp-cut-go');
     const n=deck.length;
-    const layerH=window.innerWidth<640?5:6;
+    let layerH=window.innerWidth<640?5:6;
     let cutIdx=Math.floor(n/2);
     let busy=false;
+    const ctrl=new AbortController();
+
+    // recadrage si la fenêtre change pendant la coupe (layers en flux, hauteur pilotée par --layer-h)
+    window.addEventListener('resize',()=>{
+      if(!ov.classList.contains('open')||busy)return;
+      layerH=window.innerWidth<640?5:6;
+      stack.style.setProperty('--layer-h',layerH+'px');
+      setCut(cutIdx);
+    },{signal:ctrl.signal});
 
     let html='';
     for(let i=0;i<n;i++) html+=`<div class="sp-cut-layer${i===0?' top':''}" data-i="${i}"></div>`;
@@ -668,23 +686,37 @@
       const topH=cutIdx*layerH, stackH=n*layerH;
       stack.querySelectorAll('.sp-cut-layer').forEach(el=>{
         const i=+el.getAttribute('data-i');
-        if(i<cutIdx){ el.style.setProperty('--dy',(stackH-topH)+'px'); el.classList.add('mv-down'); }
-        else{ el.style.setProperty('--dy',(-topH)+'px'); el.classList.add('mv-up'); }
+        if(i<cutIdx){
+          // moitié soulevée : décolle, cascade depuis la coupe, puis se glisse dessous
+          el.style.setProperty('--dy',(stackH-topH)+'px');
+          el.style.setProperty('--k',String(cutIdx-1-i));
+          el.classList.add('cut-top');
+        }else{
+          // moitié dessous : remonte à la place libérée
+          el.style.setProperty('--dy',(-topH)+'px');
+          el.style.setProperty('--k',String(Math.max(0,i-cutIdx)));
+          el.classList.add('cut-bot');
+        }
       });
       const newDeck=deck.slice(cutIdx).concat(deck.slice(0,cutIdx));
       setTimeout(()=>{
         ov.classList.remove('open');
-        stack.querySelectorAll('.sp-cut-layer').forEach(el=>{ el.classList.remove('mv-down','mv-up'); el.style.removeProperty('--dy'); });
+        stack.querySelectorAll('.sp-cut-layer').forEach(el=>{
+          el.classList.remove('cut-top','cut-bot');
+          el.style.removeProperty('--dy'); el.style.removeProperty('--k');
+        });
         stage.onpointermove=stage.onpointerdown=stage.onpointerup=null;
         cutValidate=cutCancel=null;
+        ctrl.abort();
         onDone(newDeck);
-      },800);
+      },1250);
     }
     function cancel(){
       if(busy||!ov.classList.contains('open'))return;
       ov.classList.remove('open');
       stage.onpointermove=stage.onpointerdown=stage.onpointerup=null;
       cutValidate=cutCancel=null;
+      ctrl.abort();
       manualModeActive=false;
       document.body.style.overflow='';
     }
@@ -827,39 +859,82 @@
     if(manualModeActive){ const nx=nextEmptySlot(); if(nx>=0) pulseSlot(nx); }
   }
 
-  function renderFan(){
+  const FAN_BACK='<span class="sp-fan-back"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width=".5"><circle cx="12" cy="12" r="11"/><path d="M12 1v22M1 12h22M4 4l16 16M20 4 4 20"/></svg></span>';
+  let fanAbort=null;
+
+  function renderFan(keepScroll){
     const stage=$('#sp-fan-stage');
+    const scroll=$('#sp-fan-scroll');
     const cnt=$('#sp-fan-count');
+    const hint=$('#sp-fan-hint');
     if(!stage) return;
+    if(fanAbort){ fanAbort.abort(); fanAbort=null; }
     const n=manualDeck.length;
-    const vw=window.innerWidth;
+    const vw=window.innerWidth, vh=window.innerHeight;
     const mobile=vw<700;
-    const cardW=Math.round(mobile?Math.min(96,vw*.24):Math.min(110,Math.max(72,vw*.075)));
-    const pad=mobile?Math.round(vw*.06):Math.round(vw*.035);
-    const step=mobile
-      ? Math.round(cardW*.38)
-      : Math.max(6,Math.floor((vw-2*pad-cardW)/Math.max(1,n-1)));
-    const W=mobile?(n*step+cardW+pad*2):vw;
-    // desktop : éventail étalé de droite à gauche · mobile : roulette de gauche à droite
-    const dir=mobile?1:-1;
     let h='';
-    manualDeck.forEach((card,i)=>{
-      const x=mobile?(pad+i*step):(vw-pad-cardW-i*step);
-      const t=n>1?((i/(n-1))*2-1):0;
-      const r=(t*4.5*dir).toFixed(2);
-      const y=(Math.pow(Math.abs(t),1.6)*14).toFixed(1);
-      h+=`<button type="button" class="sp-fan-card" data-i="${i}" style="--x:${Math.round(x)}px;--y:${y}px;--r:${r}deg;--w:${cardW}px" aria-label="Piocher la carte ${i+1}">
-        <span class="sp-fan-back"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width=".5"><circle cx="12" cy="12" r="11"/><path d="M12 1v22M1 12h22M4 4l16 16M20 4 4 20"/></svg></span>
-      </button>`;
-    });
-    stage.style.width=mobile?W+'px':'100%';
+
+    if(mobile){
+      /* roulette verticale façon dock : colonne centrée qui profite de la hauteur
+         de l'écran, magnification des cartes proches du centre */
+      const cardW=Math.round(Math.min(132,Math.max(96,vw*.27)));
+      const cardH=Math.round(cardW*1.5);
+      const step=Math.round(cardH*.5);
+      const padT=Math.round(vh*.3);
+      const H=padT*2+n*step+cardH;
+      for(let i=0;i<n;i++){
+        const t=n>1?((i/(n-1))*2-1):0;
+        h+=`<button type="button" class="sp-fan-card v" data-i="${i}" style="--x:0px;--y:${padT+i*step}px;--r:${(t*3).toFixed(2)}deg;--w:${cardW}px" aria-label="Piocher la carte ${i+1}">${FAN_BACK}</button>`;
+      }
+      stage.style.width='100%';
+      stage.style.height=H+'px';
+      if(scroll) scroll.classList.add('vmode');
+      if(hint) hint.textContent='Faites défiler puis touchez une carte';
+    }else{
+      /* éventail horizontal : arc léger étalé de droite à gauche */
+      const cardW=Math.round(Math.min(110,Math.max(72,vw*.075)));
+      const pad=Math.round(vw*.035);
+      const step=Math.max(6,Math.floor((vw-2*pad-cardW)/Math.max(1,n-1)));
+      for(let i=0;i<n;i++){
+        const x=vw-pad-cardW-i*step;
+        const t=n>1?((i/(n-1))*2-1):0;
+        h+=`<button type="button" class="sp-fan-card" data-i="${i}" style="--x:${Math.round(x)}px;--y:${(Math.pow(Math.abs(t),1.6)*14).toFixed(1)}px;--r:${(t*-4.5).toFixed(2)}deg;--w:${cardW}px" aria-label="Piocher la carte ${i+1}">${FAN_BACK}</button>`;
+      }
+      stage.style.width='100%';
+      stage.style.height='';
+      if(scroll) scroll.classList.remove('vmode');
+      if(hint) hint.textContent='Cartes faces cachées — laissez-vous guider';
+    }
+
+    const ratio=keepScroll&&scroll?scroll.scrollTop/Math.max(1,scroll.scrollHeight):0;
     stage.innerHTML=h;
     if(cnt) cnt.textContent=n+' carte'+(n>1?'s':'');
     stage.querySelectorAll('.sp-fan-card').forEach(el=>{
       el.addEventListener('click',()=>pickFanCard(+el.dataset.i,el));
     });
-    const scroll=$('#sp-fan-scroll');
-    if(scroll&&mobile) scroll.scrollLeft=0;
+
+    if(mobile){
+      if(scroll){
+        scroll.scrollTop=keepScroll?Math.round(ratio*scroll.scrollHeight):0;
+        /* loupe centrale : la carte proche du milieu de l'écran grossit */
+        fanAbort=new AbortController();
+        let raf=0;
+        const mag=()=>{
+          const mid=vh/2;
+          stage.querySelectorAll('.sp-fan-card').forEach(el=>{
+            const r=el.getBoundingClientRect();
+            const d=Math.abs((r.top+r.height/2)-mid);
+            const k=Math.max(0,1-d/(vh*.36));
+            el.style.setProperty('--s',(1+.32*k*(2-k)).toFixed(3));
+          });
+        };
+        const onScroll=()=>{ if(!raf)raf=requestAnimationFrame(()=>{raf=0;mag();}); };
+        scroll.addEventListener('scroll',onScroll,{passive:true,signal:fanAbort.signal});
+        requestAnimationFrame(mag);
+      }
+    }else if(scroll){
+      scroll.scrollLeft=0; scroll.scrollTop=0;
+    }
   }
 
   function pickFanCard(i,el){
@@ -1089,6 +1164,16 @@
     if(typeof TAROT==='undefined'||!TAROT.families){console.warn('tarot-spreads: TAROT non prêt');return;}
     ALL_CARDS=TAROT.families.flatMap(f=>f.cards);
     inject();
+    // éventail responsive : recalcul en direct quand la fenêtre change de taille
+    if(!window.__spFanResize){
+      window.__spFanResize=true;
+      let raf=0;
+      window.addEventListener('resize',()=>{
+        const f=$('#sp-fan');
+        if(!f||!f.classList.contains('open'))return;
+        if(!raf)raf=requestAnimationFrame(()=>{raf=0;renderFan(true);});
+      },{passive:true});
+    }
     if(!window.__spEsc){window.__spEsc=true;document.addEventListener('keydown',e=>{
       const f=$('#sp-fan'),c=$('#sp-cut'),d=$('#sp-drawer'),s=$('#sp-spread'),m=$('#sp-menu');
       if(e.key==='Enter'&&cutValidate&&c&&c.classList.contains('open')){cutValidate();e.stopPropagation();return;}

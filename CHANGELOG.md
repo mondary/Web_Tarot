@@ -6,7 +6,7 @@ Toutes les notes de release du projet Web Tarot. Le format de version suit `vYYY
 
 ## TODO — Roadmap
 
-Statut : `2026.10.03`
+Statut : `2026.10.04`
 
 ### Phase 1 — Fondations ✅
 - [x] Interface V2 unifiée (carousel d'accueil + grille par famille + vue détail)
@@ -37,6 +37,14 @@ Statut : `2026.10.03`
 ---
 
 ## Releases
+
+## [2026.10.04] - 2026-10-04
+
+### Changed
+- **Éventail mobile repensé en dock vertical** : au lieu de la bande horizontale quasi à plat, les cartes forment une colonne centrée qui profite de la hauteur de l'écran, défile verticalement (snap doux) et grossit au centre façon magnification du Dock macOS — la carte sous les doigts ressort, les autres s'estompent.
+- **Éventail responsive** : le redimensionnement de la fenêtre (agrandissement, rétrécissement, rotation) recalcule l'éventail en direct ; la coupe se recadre aussi si la fenêtre change pendant l'opération.
+- **Animation de coupe retravaillée** : la moitié soulevée décolle vers le haut avec une légère cascade depuis la ligne de coupe, puis se glisse sous la moitié inférieure qui remonte à sa place — plus proche du geste réel.
+- **Version** : passage à `2026.10.04` (cache service worker inclus).
 
 ## [2026.10.03] - 2026-10-04
 

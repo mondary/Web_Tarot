@@ -1,4 +1,4 @@
-const CACHE = 'tarot-v2026.10.03';
+const CACHE = 'tarot-v2026.10.04';
 const SHELL = ['./', 'manifest.json', 'icon-192.png', 'icon-512.png'];
 
 self.addEventListener('install', e => {
