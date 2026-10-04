@@ -175,7 +175,8 @@
 .sp-card-inner{position:relative;width:100%;height:100%;transition:transform .7s cubic-bezier(.16,1,.3,1);transform-style:preserve-3d}
 .sp-card.revealed .sp-card-inner{transform:rotateY(180deg)}
 .sp-card-face{position:absolute;inset:0;border-radius:1.1rem;overflow:hidden;backface-visibility:hidden;-webkit-backface-visibility:hidden}
-.sp-card-back{background:#15110d var(--tarot-back,none) center/cover no-repeat;border:1px solid rgba(201,162,39,.12)}
+.sp-card-back{background:linear-gradient(135deg,#17130e,#262019);border:1px solid rgba(201,162,39,.32);display:grid;place-items:center}
+.sp-card-back svg{width:40%;height:40%;color:rgba(201,162,39,.45)}
 .sp-card-front{transform:rotateY(180deg);background:#fff;display:flex;flex-direction:column}
 .sp-card-front .sp-card-imgwrap{flex:1;display:flex;align-items:center;justify-content:center;padding:.5rem;overflow:hidden}
 .sp-card-front img{height:100%;width:auto;object-fit:contain}
@@ -410,12 +411,13 @@
 /* variante verticale (mobile) : éventail radial — pivot à gauche, arc bombé à droite */
 .sp-fan-card.v{top:0;left:50%;margin-top:0;margin-left:calc(var(--w)*-.5);transform-origin:50% 50%;scroll-snap-align:center;transition:transform .12s linear}
 .sp-fan-card.rad{top:var(--py);left:var(--px);margin-top:calc(var(--w)*-.75);margin-left:calc(var(--w)*-.5);
-  transform-origin:50% 50%;transition:none;
-  transform:rotate(var(--a)) translateX(var(--R)) rotate(90deg) scale(var(--s,1));opacity:var(--o,1)}
-.sp-fan-card.rad.picked{transform:rotate(var(--a)) translateX(calc(var(--R) + 16px)) rotate(90deg) scale(calc(var(--s,1)*1.12))}
+  transform-origin:50% 50%;transition:transform .15s ease-out;
+  transform:rotate(var(--a)) translateX(calc(var(--R) + var(--out,0px))) rotate(90deg) scale(var(--s,1));opacity:var(--o,1)}
+.sp-fan-card.rad.picked{transform:rotate(var(--a)) translateX(calc(var(--R) + 28px)) rotate(90deg) scale(1.08)}
 .sp-fan-back{display:flex;align-items:center;justify-content:center;width:100%;aspect-ratio:2/3;border-radius:.65rem;
-  background:#15110d var(--tarot-back,none) center/cover no-repeat;border:1px solid rgba(201,162,39,.15);
+  background:linear-gradient(135deg,#17130e,#262019);border:1px solid rgba(201,162,39,.32);
   box-shadow:0 10px 26px rgba(0,0,0,.55);transition:border-color .2s,box-shadow .2s}
+.sp-fan-back svg{width:40%;height:40%;color:rgba(201,162,39,.45)}
 /* survol piloté en JS (pas de :hover CSS) : évite le clignotement des cartes superposées */
 .sp-fan-card.lift{z-index:999;transform:translate(var(--x),calc(var(--y) - 26px)) rotate(var(--r)) scale(calc(var(--s,1)*1.04))}
 .sp-fan-card.lift .sp-fan-back{border-color:rgba(201,162,39,.6);box-shadow:0 16px 34px rgba(0,0,0,.6)}
@@ -432,11 +434,9 @@
 #sp-fan.mobile .sp-fan-scroll{overflow-y:auto;overflow-x:hidden;touch-action:pan-y;scrollbar-width:none}
 #sp-fan.mobile .sp-fan-scroll::-webkit-scrollbar{display:none}
 #sp-fan.mobile .sp-fan-stage{position:sticky;top:0;overflow:hidden}
-#sp-fan.mobile .sp-fan-card.selected .sp-fan-back{outline:3px solid #c9a227;outline-offset:3px}
-#sp-fan.mobile .sp-fan-actions{display:flex;flex:0 0 auto;gap:.65rem;padding:.75rem 1rem 0}
+#sp-fan.mobile .sp-fan-actions{display:flex;justify-content:space-between;flex:0 0 auto;gap:.65rem;padding:.75rem 1rem 0}
 .sp-fan-actions button{min-width:48px;min-height:48px;border:1px solid #8a8378;border-radius:12px;background:#15110d;color:#f1ede4;font:inherit;cursor:pointer}
 .sp-fan-actions button:disabled{opacity:.4;cursor:default}
-#sp-fan-pick{flex:1;background:#c9a227;border-color:#c9a227;color:#050505;font-weight:600}
 #sp-fan button:focus-visible,#sp-fan-scroll:focus-visible{outline:2px solid #f1ede4;outline-offset:-4px}
 #sp-fan.mobile .sp-fan-hint{font-size:.65rem;letter-spacing:.03em;text-transform:none;padding:.7rem 1rem calc(.75rem + env(safe-area-inset-bottom))}
 @media(prefers-reduced-motion:reduce){#sp-fan,#sp-fan .sp-fan-card{transition:none}}
@@ -523,7 +523,6 @@
         <div class="sp-fan-scroll" id="sp-fan-scroll"><div class="sp-fan-stage" id="sp-fan-stage"></div></div>
         <div class="sp-fan-actions">
           <button type="button" id="sp-fan-prev" aria-label="Carte précédente">↑</button>
-          <button type="button" id="sp-fan-pick">Piocher cette carte</button>
           <button type="button" id="sp-fan-next" aria-label="Carte suivante">↓</button>
         </div>
         <div class="sp-fan-hint" id="sp-fan-hint">Cartes faces cachées — laissez-vous guider</div>`;
@@ -531,10 +530,6 @@
       $('#sp-fan-x').addEventListener('click',closeFan);
       $('#sp-fan-prev').addEventListener('click',()=>selectFanCard(Math.round(fanRot)-1));
       $('#sp-fan-next').addEventListener('click',()=>selectFanCard(Math.round(fanRot)+1));
-      $('#sp-fan-pick').addEventListener('click',()=>{
-        const i=Math.round(fanRot);
-        pickFanCard(i,fan.querySelector(`[data-i="${i}"]`));
-      });
       fan.addEventListener('keydown',e=>{
         if(e.key!=='Tab')return;
         const items=[...fan.querySelectorAll('button:not(:disabled),[tabindex="0"]')].filter(el=>el.getClientRects().length);
@@ -883,7 +878,7 @@
     div.dataset.id=card.id;
     div.innerHTML=`
       <div class="sp-card-inner">
-        <div class="sp-card-face sp-card-back"></div>
+        <div class="sp-card-face sp-card-back">${FAN_SYMBOL}</div>
         <div class="sp-card-face sp-card-front">
           <div class="sp-card-imgwrap"><img src="${card.file}" alt="${esc(card.name)}" loading="lazy"></div>
           <div class="sp-card-info">
@@ -1005,7 +1000,8 @@
     if(manualModeActive){ const nx=nextEmptySlot(); if(nx>=0) pulseSlot(nx); }
   }
 
-  const FAN_BACK='<span class="sp-fan-back"></span>';
+  const FAN_SYMBOL='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width=".5" aria-hidden="true"><circle cx="12" cy="12" r="11"/><path d="M12 1v22M1 12h22M4 4l16 16M20 4 4 20"/></svg>';
+  const FAN_BACK='<span class="sp-fan-back">'+FAN_SYMBOL+'</span>';
   let fanAbort=null;
   let fanPickTimer=0,fanNextTimer=0,fanPicking=false,fanReturnFocus=null;
 
@@ -1021,11 +1017,10 @@
     const mobile=vw<700||matchMedia('(pointer:coarse)').matches;
     $('#sp-fan').classList.toggle('mobile',mobile);
     if(cnt)cnt.textContent=n+' cartes';
-    $('#sp-fan-pick').disabled=fanPicking;
     scroll.querySelector('.sp-fan-space')?.remove();
     scroll.style.touchAction='';scroll.style.overflow='';
     scroll.tabIndex=mobile?0:-1;
-    scroll.setAttribute('aria-label','Parcourir les cartes : glisser ou utiliser les flèches');
+    scroll.setAttribute('aria-label','Parcourir les cartes avec les flèches, Entrée pour piocher');
     let fanStep=0, fanX0=0, fanW=0;
     let h='';
 
@@ -1038,12 +1033,12 @@
       fanAngleStep=32/R*180/Math.PI;
       fanAngleLimit=Math.atan((height/2+cardW)/R)*180/Math.PI;
       for(let i=0;i<n;i++){
-        h+=`<button type="button" class="sp-fan-card rad" tabindex="-1" data-i="${i}" style="--px:${px}px;--py:${py}px;--R:${R}px;--a:0deg;--w:${cardW}px" aria-label="Sélectionner la carte ${i+1}">${FAN_BACK}</button>`;
+        h+=`<button type="button" class="sp-fan-card rad" tabindex="-1" data-i="${i}" style="--px:${px}px;--py:${py}px;--R:${R}px;--a:0deg;--w:${cardW}px" aria-label="Piocher la carte ${i+1}">${FAN_BACK}</button>`;
       }
       stage.style.width='100%';
       stage.style.height=height+'px';
       stage.style.transform='';
-      if(hint) hint.textContent='Glissez pour choisir · Piocher pour confirmer';
+      if(hint) hint.textContent='Glissez pour parcourir · touchez une carte pour la piocher';
     }else{
       /* éventail horizontal : arc léger étalé de droite à gauche.
          Le survol est piloté en JS (cible calculée depuis l'abscisse) : les cartes se
@@ -1069,7 +1064,10 @@
     stage.innerHTML=h;
     if(cnt) cnt.textContent=n+' carte'+(n>1?'s':'');
     stage.querySelectorAll('.sp-fan-card').forEach(el=>{
-      el.addEventListener('click',()=>mobile?selectFanCard(+el.dataset.i):pickFanCard(+el.dataset.i,el));
+      el.addEventListener('click',()=>{
+        if(mobile&&fanTouchDragged)return;
+        pickFanCard(+el.dataset.i,el);
+      });
     });
 
     if(mobile){
@@ -1107,7 +1105,7 @@
 
   /* ---- Défilement natif : le navigateur gère le toucher, la molette et l'inertie. ---- */
   const FAN_PX_PER_CARD=44;
-  let fanRot=0,fanAngleStep=1,fanAngleLimit=20,fanSnapTimer=0;
+  let fanRot=0,fanAngleStep=1,fanAngleLimit=20,fanSnapTimer=0,fanTouchDragged=false;
 
   function stopFanMotion(){
     if(fanAbort){fanAbort.abort();fanAbort=null;}
@@ -1136,8 +1134,9 @@
       if(ad>fanAngleLimit){ el.style.visibility='hidden'; return; }
       el.style.visibility='';
       el.style.setProperty('--a',a.toFixed(2)+'deg');
-      el.style.setProperty('--s',selected?'1.1':'1');
-      el.style.setProperty('--o',selected?'1':'.7');
+      el.style.setProperty('--s','1');
+      el.style.setProperty('--out',selected?'16px':'0px');
+      el.style.setProperty('--o',selected?'1':'.85');
       el.style.zIndex=selected?'200':String(100-Math.round(Math.abs(offset)));
     });
     if(cnt){
@@ -1145,7 +1144,6 @@
       cnt.textContent='Carte '+(apex+1)+' / '+n+' · sélectionnée';
       $('#sp-fan-prev').disabled=apex===0||fanPicking;
       $('#sp-fan-next').disabled=apex===n-1||fanPicking;
-      $('#sp-fan-pick').setAttribute('aria-label','Piocher la carte '+(apex+1)+' sur '+n);
     }
   }
 
@@ -1153,14 +1151,31 @@
     const surf=$('#sp-fan-scroll'); if(!surf)return;
     fanAbort=new AbortController();
     const sig={signal:fanAbort.signal};
-    let touching=false;
+    let touching=false,touchY=0,touchX=0,tappedCard=null;
     const snap=()=>{
       clearTimeout(fanSnapTimer);
       fanSnapTimer=setTimeout(()=>{if(!touching)selectFanCard(Math.round(fanRot));},180);
     };
-    surf.addEventListener('touchstart',()=>{touching=true;clearTimeout(fanSnapTimer);},{...sig,passive:true});
-    surf.addEventListener('touchend',()=>{touching=false;snap();},{...sig,passive:true});
-    surf.addEventListener('touchcancel',()=>{touching=false;snap();},{...sig,passive:true});
+    surf.addEventListener('touchstart',e=>{
+      touching=true;fanTouchDragged=false;
+      touchY=e.touches[0]?.clientY??0;
+      touchX=e.touches[0]?.clientX??0;
+      tappedCard=e.target.closest('.sp-fan-card');
+      clearTimeout(fanSnapTimer);
+    },{...sig,passive:true});
+    surf.addEventListener('touchmove',e=>{
+      if(Math.abs((e.touches[0]?.clientY??touchY)-touchY)>10||
+         Math.abs((e.touches[0]?.clientX??touchX)-touchX)>10)fanTouchDragged=true;
+    },{...sig,passive:true});
+    surf.addEventListener('touchend',e=>{
+      touching=false;
+      if(!fanTouchDragged&&tappedCard){
+        e.preventDefault(); // éviter le clic synthétique et sa cible éventuellement déplacée
+        pickFanCard(+tappedCard.dataset.i,tappedCard);
+      }else snap();
+      tappedCard=null;
+    },{...sig,passive:false});
+    surf.addEventListener('touchcancel',()=>{touching=false;tappedCard=null;snap();},{...sig,passive:true});
     surf.addEventListener('scroll',()=>{
       if(fanPicking)return;
       fanRot=Math.max(0,Math.min(manualDeck.length-1,surf.scrollTop/FAN_PX_PER_CARD));
@@ -1168,9 +1183,15 @@
       snap();
     },{...sig,passive:true});
     surf.addEventListener('keydown',e=>{
+      if(e.target!==surf)return;
       const delta={ArrowDown:1,ArrowUp:-1,PageDown:10,PageUp:-10}[e.key];
       if(delta!==undefined){e.preventDefault();selectFanCard(Math.round(fanRot)+delta);}
       else if(e.key==='Home'||e.key==='End'){e.preventDefault();selectFanCard(e.key==='Home'?0:manualDeck.length-1);}
+      else if(e.key==='Enter'||e.key===' '){
+        e.preventDefault();
+        const i=Math.round(fanRot);
+        pickFanCard(i,$(`#sp-fan-stage .sp-fan-card[data-i="${i}"]`));
+      }
     },sig);
   }
 
@@ -1180,7 +1201,6 @@
     if(!card) return;
     const slot=fanSlot;
     fanPicking=true;
-    $('#sp-fan-pick').disabled=true;
     stopFanMotion();
     el.classList.add('picked');
     fanPickTimer=setTimeout(()=>{
@@ -1205,7 +1225,7 @@
           ${spreadDef.layout==='name'?`<div class="sp-name-letter">${pos.label}</div>`:''}
           <div class="sp-card" data-idx="${i}" data-id="${card.id}">
             <div class="sp-card-inner">
-              <div class="sp-card-face sp-card-back"></div>
+              <div class="sp-card-face sp-card-back">${FAN_SYMBOL}</div>
               <div class="sp-card-face sp-card-front">
                 <div class="sp-card-imgwrap"><img src="${card.file}" alt="${esc(card.name)}" loading="lazy"></div>
                 <div class="sp-card-info">
@@ -1416,8 +1436,6 @@
   function init(){
     if(typeof TAROT==='undefined'||!TAROT.families){console.warn('tarot-spreads: TAROT non prêt');return;}
     ALL_CARDS=TAROT.families.flatMap(f=>f.cards);
-    // dos de carte RWS (Pamela Colman Smith) fourni par l'hôte
-    if(window.TAROT_BACK) document.documentElement.style.setProperty('--tarot-back','url("'+window.TAROT_BACK+'")');
     inject();
     // éventail responsive : recalcul en direct quand la fenêtre change de taille
     if(!window.__spFanResize){

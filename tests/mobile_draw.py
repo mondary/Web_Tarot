@@ -41,6 +41,11 @@ def swipe(page):
     cdp.detach()
 
 
+def tap_selected(page):
+    box = page.locator('#sp-fan .selected').bounding_box()
+    page.touchscreen.tap(box['x']+box['width']/2, box['y']+box['height']/2)
+
+
 with sync_playwright() as p:
     browser = p.chromium.launch(**({'executable_path': CHROME} if CHROME else {}))
     for width, height in [(320, 568), (390, 844), (430, 932), (844, 390)]:
@@ -62,7 +67,14 @@ with sync_playwright() as p:
         expect(page.locator('#sp-fan .selected')).to_have_count(1)
         page.wait_for_timeout(250)
         in_view(page, page.locator('#sp-fan .selected'))
-        in_view(page, page.locator('#sp-fan-pick'))
+        capture = os.environ.get('CAPTURE_DIR')
+        if capture and width == 390:
+            Path(capture).mkdir(parents=True, exist_ok=True)
+            page.wait_for_timeout(350)
+            page.locator('#sp-fan').screenshot(path=str(Path(capture) / '05-tirage-eventail-mobile.png'))
+        assert page.locator('#sp-fan-pick').count() == 0
+        assert page.locator('#sp-fan .selected').evaluate("el => el.style.getPropertyValue('--out')") == '16px'
+        assert page.locator('#sp-fan .selected svg').count() == 1
         before = page.locator('#sp-fan-count').inner_text()
         swipe(page)
         expect(page.locator('#sp-fan-count')).not_to_have_text(before)
@@ -82,11 +94,8 @@ with sync_playwright() as p:
         expect(page.locator('#sp-fan-next')).to_be_disabled()
         page.keyboard.press('ArrowUp')
         expect(page.locator('#sp-fan-next')).to_be_enabled()
-        # A tap on a card only selects it.
-        page.locator('#sp-fan .selected').tap()
-        assert page.locator('#sp-spread .sp-card').count() == 0
-        # Cancel during the deal animation: no delayed insertion / reopening.
-        page.locator('#sp-fan-pick').tap()
+        # A tap picks directly, unlike a swipe. Cancel during the deal animation.
+        tap_selected(page)
         page.locator('#sp-fan-x').tap()
         page.wait_for_timeout(900)
         assert page.locator('#sp-spread .sp-card').count() == 0
@@ -97,22 +106,16 @@ with sync_playwright() as p:
             page.set_viewport_size({'width': 844, 'height': 390})
             page.wait_for_timeout(300)
             in_view(page, page.locator('#sp-fan .selected'))
-            in_view(page, page.locator('#sp-fan-pick'))
+            assert page.locator('#sp-fan-pick').count() == 0
             page.set_viewport_size({'width': width, 'height': height})
             page.wait_for_timeout(300)
             in_view(page, page.locator('#sp-fan .selected'))
-            capture = os.environ.get('CAPTURE_DIR')
-            if capture:
-                Path(capture).mkdir(parents=True, exist_ok=True)
-                page.screenshot(path=str(Path(capture) / '05-tirage-eventail-mobile.png'))
         for i in range(5):
             expect(page.locator('#sp-fan')).to_be_visible()
             expect(page.locator('#sp-fan-pos')).to_contain_text(f'{i+1} / 5')
             page.locator('#sp-fan-next').tap()
-            box = page.locator('#sp-fan-pick').bounding_box()
-            x, y = box['x']+box['width']/2, box['y']+box['height']/2
-            page.touchscreen.tap(x, y)
-            page.touchscreen.tap(x, y)
+            tap_selected(page)
+            tap_selected(page)
             expect(page.locator('#sp-spread .sp-card')).to_have_count(i+1)
         expect(page.locator('#sp-fan')).to_be_hidden()
         ids = page.locator('#sp-spread .sp-card').evaluate_all('(cards)=>cards.map(c=>c.dataset.id)')
@@ -124,7 +127,7 @@ with sync_playwright() as p:
         open_draw(page, 0)
         page.locator('#sp-cut-go').tap()
         expect(page.locator('#sp-fan')).to_be_visible()
-        page.locator('#sp-fan-pick').tap()
+        tap_selected(page)
         expect(page.locator('#sp-spread .sp-card.revealed')).to_have_count(1)
         daily = page.locator('#sp-spread .sp-card').get_attribute('data-id')
         page.locator('#sp-close-spread').tap()
@@ -139,13 +142,17 @@ with sync_playwright() as p:
         expect(page.locator('#sp-fan')).to_be_visible()
         page.locator('#sp-fan-x').tap()
         page.locator('.sp-slot-empty[data-idx="3"]').tap()
-        page.locator('#sp-fan-pick').tap()
+        if width == 390:
+            page.locator('#sp-fan-scroll').focus()
+            page.keyboard.press('Enter')
+        else:
+            tap_selected(page)
         expect(page.locator('#sp-spread .sp-card[data-idx="3"]')).to_have_count(1)
         page.wait_for_timeout(800)
         expect(page.locator('#sp-fan')).to_be_hidden()
         page.locator('#sp-spread .sp-card[data-idx="3"]').tap()
         expect(page.locator('#sp-spread .sp-card.revealed')).to_have_count(1)
         assert not errors, errors
-        print(f'PASS {width}x{height}: cut/cancel, native swipe/wheel, endpoints, explicit pick, double tap, 5-card reveal, daily persistence, free order')
+        print(f'PASS {width}x{height}: cut/cancel, native swipe/wheel, endpoints, direct card tap, double tap, 5-card reveal, daily persistence, free order')
         ctx.close()
     browser.close()

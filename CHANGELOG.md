@@ -6,7 +6,7 @@ Toutes les notes de release du projet Web Tarot. Le format de version suit `vYYY
 
 ## TODO — Roadmap
 
-Statut : `2026.10.07`
+Statut : `2026.10.08`
 
 ### Phase 1 — Fondations ✅
 - [x] Interface V2 unifiée (carousel d'accueil + grille par famille + vue détail)
@@ -37,6 +37,14 @@ Statut : `2026.10.07`
 ---
 
 ## Releases
+
+## [2026.10.08] - 2026-10-04
+
+### Changed
+- **Pioche mobile directe** : tap sur la carte = pioche, sans bouton de confirmation. Un glissement continue de parcourir le paquet sans poser de carte ; le tap capture sa cible au début du geste pour rester fiable pendant l'inertie.
+- **Carte repérée par le relief** : la carte centrale sort légèrement du paquet (16 px) sans encadrement jaune.
+- **Ancien dos restauré** : retour au dos sombre à symbole géométrique doré pour l'éventail et les cartes posées, en remplacement du scan RWS.
+- Version, cache et capture mobile synchronisés localement.
 
 ## [2026.10.07] - 2026-10-04
 

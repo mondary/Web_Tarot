@@ -120,7 +120,7 @@ $ogId = (string)($_GET['carte'] ?? '');
 if ($ogId !== '') {
     foreach ($cards as $c) if ($c['id'] === $ogId) { $og = $c; break; }
 }
-$ver = '2026.10.07';
+$ver = '2026.10.08';
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -904,8 +904,6 @@ function cycleTheme(){const cur=localStorage.getItem('tarotTheme')||'';const i=T
 
 // spreads
 function buildTarot(){window.TAROT={families:FAMILIES.map(function(f){return{key:f.key,name:f.name,accent:f.ac||'#c9a227',cards:CARDS.filter(function(c){return c.fam===f.key}).map(function(c){const es=ES_MAP[c.id]||{};return{id:c.id,name:c.name,num:c.num,sort:c.sort,family:c.fam,familyName:f.name,element:f.el||'',file:deckUrl(c.id)||'',es:{reponse:es.rep||'',affirmation:es.aff||''}}})}})}}
-// dos de carte RWS (Pamela Colman Smith) — utilisé par l'éventail et les cartes posées
-window.TAROT_BACK=B+'/index.php?img=back.jpg&v='+V;
 buildTarot();if(window.TarotSpreads)TarotSpreads.init();
 window.tarotOpenCard=function(card){if(window.TarotSpreads)TarotSpreads.closeSpread();if(typeof card.sort==='number')openDetail(card.sort)};
 if('serviceWorker' in navigator)navigator.serviceWorker.register('sw.js');
