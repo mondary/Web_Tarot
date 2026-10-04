@@ -21,7 +21,7 @@ An editorial website for exploring the 78 Rider-Waite-Smith Tarot cards, their m
 - **Editorial card sheets**: identity, card of the day, Love, Work, Finances, Guidance, meaning, and description
 - **Associations**: card combinations available in a collapsible panel
 - **Interactive spreads**: several integrated spread layouts
-- **Two draw modes**: *Pick* (default) — cut the shuffled deck yourself at the height you choose (the two halves are swapped), then choose each card from the face-down RWS (Pamela Colman Smith) fan — or *Quick* (automatic deal), with a toggle in the Spreads menu. On desktop: a gentle right-to-left arc; on mobile: a radial fan filling the full screen height, pivoting on the left and bulging right — the apex card magnifies, rotate with your finger or the mouse wheel, position counter. The fan adapts live when the window is resized. The Card of the Day is hand-picked too and stays remembered for the day
+- **Two draw modes**: *Pick* (default) — cut the shuffled deck at your chosen height, then choose your cards — or *Quick* (automatic deal). On desktop: a right-to-left fan. On mobile: a shallow arc, native touch scrolling or mouse wheel, and a fully visible selected card outlined in gold; **Pick this card** confirms the choice. The ↑ / ↓ buttons allow precise selection. The cut and fan adapt to small screens and landscape. The Card of the Day stays remembered for the day.
 - **Guided draw order**: every position carries its order number (①②③…) and the next one to pick or reveal pulses in gold. The default is a *predetermined* order (draw then reveal in sequence, the fan chains automatically); a *free* order remains available in the Spreads menu for those who want to pick and reveal as they feel
 - **Learning mode**: multiple-choice flashcard quiz (simplified Leitner) using either each card's distinctive keyword or central description phrase — known cards go to the bottom of the deck, missed ones come back quickly; progress is saved locally
 - **Fullscreen search**: instant filtering by name or number, with family filters
@@ -39,7 +39,7 @@ An editorial website for exploring the 78 Rider-Waite-Smith Tarot cards, their m
 3. Use `←`/`→` to move to the previous or next card.
 4. Type a letter or number to open and prefill search.
 5. Open **Spreads**, **Nuances** or **Learn** from the top navigation.
-6. **Draw in Pick mode**: switch modes in the Spreads menu (or from Settings), cut the deck at your chosen height, then touch an empty slot and choose your card from the fan.
+6. **Draw in Pick mode**: choose a spread and cut the deck at your chosen height. On mobile, swipe to select a card, then press **Pick this card**. In predetermined order, the next position opens automatically; in free order, touch the desired slot. Then reveal the dealt cards.
 7. **Share a card**: use the *Share* button in the sheet, or simply copy the address — it carries the current card and display settings.
 
 ## ⚙️ Settings
@@ -57,6 +57,7 @@ The global palette and accent colors are defined through CSS variables in the `:
 | `Enter` / `→` | Move to the next card (learning mode) |
 | `Enter` | Confirm the deck cut (Pick mode) |
 | `Esc` | Close the fan or cancel the cut |
+| `↑` / `↓`, `Home` / `End` | Choose a card while the mobile fan is focused |
 
 ## 📦 Build & Package
 
@@ -77,7 +78,7 @@ browser blocks `fetch()` to SQLite and WebAssembly loading.
 
 ## 📋 See [CHANGELOG](CHANGELOG.md) for full history.
 
-Current version: **2026.10.01**
+Current local version: **2026.10.07**
 
 ## 🔗 Links
 

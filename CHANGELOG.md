@@ -6,7 +6,7 @@ Toutes les notes de release du projet Web Tarot. Le format de version suit `vYYY
 
 ## TODO — Roadmap
 
-Statut : `2026.10.06`
+Statut : `2026.10.07`
 
 ### Phase 1 — Fondations ✅
 - [x] Interface V2 unifiée (carousel d'accueil + grille par famille + vue détail)
@@ -37,6 +37,19 @@ Statut : `2026.10.06`
 ---
 
 ## Releases
+
+## [2026.10.07] - 2026-10-04
+
+### Fixed
+- **Pioche mobile** : remplacement de la rotation personnalisée par le défilement natif tactile/molette. Arc peu courbé cadré dans la surface disponible ; la carte sélectionnée est entièrement visible, même sur petit écran et en paysage.
+- **Choix explicite** : glisser ou toucher une carte la sélectionne ; seul le bouton « Piocher cette carte » la pose. Boutons précédent/suivant et navigation clavier pour atteindre les 78 cartes.
+- **Parcours** : annulation de la pioche en attente, protection contre les doubles appuis, arrêt des écouteurs et temporisations à la fermeture ; mise à jour du repère de révélation après la dernière pioche.
+- **Coupe** : hauteur adaptée à l'écran et bouton Annuler accessible au toucher.
+- **Dos des cartes posées** : correction de la déclaration CSS de fond invalide.
+
+### Verification
+- `tests/mobile_draw.py` : parcours tactiles Chromium émulés en 320×568, 390×844, 430×932 et 844×390, coupe/annulation, gestes et molette, extrémités du paquet, double appui, révélation de cinq cartes, ordre libre et carte du jour. Pas de validation sur téléphone physique ou Safari iOS.
+- README FR/EN, capture mobile et cache service worker synchronisés ; version locale uniquement.
 
 ## [2026.10.06] - 2026-10-04
 

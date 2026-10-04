@@ -21,7 +21,7 @@ Un site éditorial pour explorer les 78 lames du Tarot de Rider-Waite-Smith, leu
 - **Fiches éditoriales** : identité, carte du jour, Amour, Travail, Finances, Guidance, signification et description
 - **Associations** : combinaisons entre lames accessibles dans un panneau repliable
 - **Tirages interactifs** : plusieurs dispositions de tirage intégrées
-- **Deux modes de tirages** : *Piocher* (par défaut) — couper soi-même le paquet mélangé à la hauteur choisie (les deux moitiés s'inversent), puis choisir chaque carte dans l'éventail de dos RWS (Pamela Colman Smith) — ou *Rapide* (distribution automatique), avec bascule dans le menu Tirages. Sur ordinateur : arc léger étalé de droite à gauche ; sur mobile : éventail radial à toute la hauteur de l'écran, pivot à gauche, bombé vers la droite — la carte au sommet grossit, rotation au doigt ou à la molette, compteur de position. L'éventail suit le redimensionnement de la fenêtre en direct. La Carte du jour se pioche aussi à la main et reste mémorisée pour la journée
+- **Deux modes de tirage** : *Piocher* (par défaut) — couper le paquet mélangé à la hauteur choisie, puis choisir ses cartes — ou *Rapide* (distribution automatique). Sur ordinateur : éventail étalé de droite à gauche. Sur mobile : arc peu courbé, défilement tactile natif ou molette, carte sélectionnée entièrement visible et entourée de doré ; le bouton **Piocher cette carte** confirme le choix. Les boutons ↑ / ↓ permettent une sélection précise. La coupe et l'éventail s'adaptent aux petits écrans et au paysage. La Carte du jour est mémorisée pour la journée.
 - **Ordre de tirage guidé** : chaque position porte son numéro d'ordre (①②③…) et la prochaine à piocher ou révéler pulse en doré. Par défaut l'ordre est *prédéterminé* (pioche puis révélation dans l'ordre, l'éventail s'enchaîne tout seul) ; un ordre *libre* reste disponible dans le menu Tirages pour ceux qui veulent piocher et révéler comme ils le sentent
 - **Mode apprentissage** : quiz QCM type flashcards (Leitner simplifié) au choix sur le mot-clé ou la phrase centrale de chaque lame — les lames sues partent au fond de la pile, les ratées reviennent vite ; progression conservée localement
 - **Recherche plein écran** : filtrage instantané par nom ou numéro, avec filtres par famille
@@ -39,7 +39,7 @@ Un site éditorial pour explorer les 78 lames du Tarot de Rider-Waite-Smith, leu
 3. Utilisez `←`/`→` pour passer à la lame précédente ou suivante.
 4. Tapez une lettre ou un chiffre pour ouvrir et préremplir la recherche.
 5. Ouvrez **Tirages**, **Nuances** ou **Apprendre** depuis la navigation supérieure.
-6. **Tirez en mode Piocher** : basculez le mode dans le menu Tirages (ou depuis les Réglages), coupez le paquet à la hauteur voulue, puis touchez un emplacement vide et choisissez votre carte dans l'éventail.
+6. **Tirez en mode Piocher** : choisissez un tirage et coupez le paquet à la hauteur voulue. Sur mobile, glissez pour sélectionner une carte puis appuyez sur **Piocher cette carte**. En ordre prédéterminé, la position suivante s'ouvre automatiquement ; en ordre libre, touchez l'emplacement souhaité. Révélez ensuite les cartes posées.
 7. **Partagez une lame** : bouton *Partager* dans la fiche, ou copiez simplement l'adresse — elle contient la lame et l'affichage en cours.
 
 ## ⚙️ Réglages
@@ -57,6 +57,7 @@ La palette globale et les couleurs d'accent sont définies via les variables CSS
 | `Entrée` / `→` | Passer à la lame suivante (mode apprentissage) |
 | `Entrée` | Valider la coupe du paquet (mode Piocher) |
 | `Échap` | Fermer l'éventail ou annuler la coupe |
+| `↑` / `↓`, `Début` / `Fin` | Choisir une carte quand l'éventail mobile a le focus |
 
 ## 📦 Build & Package
 
@@ -77,7 +78,7 @@ le navigateur bloque alors `fetch()` vers SQLite et le chargement de WebAssembly
 
 ## 📋 Voir le [CHANGELOG](CHANGELOG.md) pour l'historique complet.
 
-Version courante : **2026.10.01**
+Version locale courante : **2026.10.07**
 
 ## 🔗 Liens
 

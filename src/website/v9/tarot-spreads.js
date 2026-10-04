@@ -175,7 +175,7 @@
 .sp-card-inner{position:relative;width:100%;height:100%;transition:transform .7s cubic-bezier(.16,1,.3,1);transform-style:preserve-3d}
 .sp-card.revealed .sp-card-inner{transform:rotateY(180deg)}
 .sp-card-face{position:absolute;inset:0;border-radius:1.1rem;overflow:hidden;backface-visibility:hidden;-webkit-backface-visibility:hidden}
-.sp-card-back{background:linear-gradient(135deg,#0a0907,#15110d) var(--tarot-back,none) center/cover no-repeat;border:1px solid rgba(201,162,39,.12)}
+.sp-card-back{background:#15110d var(--tarot-back,none) center/cover no-repeat;border:1px solid rgba(201,162,39,.12)}
 .sp-card-front{transform:rotateY(180deg);background:#fff;display:flex;flex-direction:column}
 .sp-card-front .sp-card-imgwrap{flex:1;display:flex;align-items:center;justify-content:center;padding:.5rem;overflow:hidden}
 .sp-card-front img{height:100%;width:auto;object-fit:contain}
@@ -388,9 +388,10 @@
 .sp-cut-go{margin-top:1.8rem;padding:.75rem 2rem;border:none;border-radius:50px;background:#c9a227;color:#050505;
   font-family:'DM Mono',monospace;font-size:.66rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;cursor:pointer;transition:.3s}
 .sp-cut-go:hover{filter:brightness(1.1);transform:translateY(-1px)}
+.sp-cut-cancel{display:block;margin:.4rem auto 0;min-height:44px;padding:0 1rem;background:none;border:0;color:#f1ede4;cursor:pointer}
 
 /* Éventail (mode piocher) */
-#sp-fan{position:fixed;inset:0;z-index:8300;display:none;flex-direction:column;background:rgba(5,5,5,.97);opacity:0;transition:opacity .3s}
+#sp-fan{position:fixed;inset:0;z-index:8300;display:none;flex-direction:column;background:#050505;opacity:0;transition:opacity .3s}
 #sp-fan.open{display:flex;opacity:1}
 .sp-fan-bar{flex:0 0 auto;display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:1.3rem 2rem .6rem}
 .sp-fan-title{font-family:'Cormorant Garamond',serif;font-size:1.5rem;color:#f1ede4;line-height:1.1}
@@ -400,7 +401,7 @@
 .sp-fan-close{background:none;border:1px solid rgba(241,237,228,.14);border-radius:50px;padding:.45rem .9rem;color:#8a8378;
   font-family:'DM Mono',monospace;font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;cursor:pointer;transition:.3s}
 .sp-fan-close:hover{border-color:#c9a227;color:#c9a227}
-.sp-fan-scroll{flex:1;overflow-x:auto;overflow-y:hidden;position:relative;scrollbar-width:thin}
+.sp-fan-scroll{flex:1;min-height:0;overflow-x:auto;overflow-y:hidden;position:relative;scrollbar-width:thin;overscroll-behavior:contain}
 .sp-fan-scroll.vmode{overflow-x:hidden;overflow-y:auto;scroll-snap-type:y proximity}
 .sp-fan-stage{position:relative;height:min(64vh,600px);width:100%}
 .sp-fan-card{position:absolute;top:50%;left:0;width:var(--w);margin-top:calc(var(--w)*-.75);padding:0;border:none;background:none;cursor:pointer;
@@ -423,6 +424,22 @@
 .sp-fan-card:active .sp-fan-back{border-color:rgba(201,162,39,.6)}
 .sp-fan-hint{flex:0 0 auto;text-align:center;color:#8a8378;font-family:'DM Mono',monospace;font-size:.6rem;
   letter-spacing:.16em;text-transform:uppercase;padding:1rem 1rem calc(1.2rem + env(safe-area-inset-bottom))}
+.sp-fan-actions{display:none}
+#sp-fan.mobile .sp-fan-bar{padding:calc(.75rem + env(safe-area-inset-top)) 1rem .75rem;flex-wrap:wrap;gap:.5rem}
+#sp-fan.mobile .sp-fan-title{flex:1;font-size:1.3rem}
+#sp-fan.mobile .sp-fan-count{order:3;width:100%;font-size:.7rem;color:#c9a227}
+#sp-fan.mobile .sp-fan-close{min-height:44px;letter-spacing:.06em}
+#sp-fan.mobile .sp-fan-scroll{overflow-y:auto;overflow-x:hidden;touch-action:pan-y;scrollbar-width:none}
+#sp-fan.mobile .sp-fan-scroll::-webkit-scrollbar{display:none}
+#sp-fan.mobile .sp-fan-stage{position:sticky;top:0;overflow:hidden}
+#sp-fan.mobile .sp-fan-card.selected .sp-fan-back{outline:3px solid #c9a227;outline-offset:3px}
+#sp-fan.mobile .sp-fan-actions{display:flex;flex:0 0 auto;gap:.65rem;padding:.75rem 1rem 0}
+.sp-fan-actions button{min-width:48px;min-height:48px;border:1px solid #8a8378;border-radius:12px;background:#15110d;color:#f1ede4;font:inherit;cursor:pointer}
+.sp-fan-actions button:disabled{opacity:.4;cursor:default}
+#sp-fan-pick{flex:1;background:#c9a227;border-color:#c9a227;color:#050505;font-weight:600}
+#sp-fan button:focus-visible,#sp-fan-scroll:focus-visible{outline:2px solid #f1ede4;outline-offset:-4px}
+#sp-fan.mobile .sp-fan-hint{font-size:.65rem;letter-spacing:.03em;text-transform:none;padding:.7rem 1rem calc(.75rem + env(safe-area-inset-bottom))}
+@media(prefers-reduced-motion:reduce){#sp-fan,#sp-fan .sp-fan-card{transition:none}}
 @media(max-width:640px){
   .sp-fan-bar{padding:1rem 1rem .4rem}
   .sp-fan-title{font-size:1.2rem}
@@ -494,16 +511,37 @@
     if(!document.getElementById('sp-fan')){
       const fan=document.createElement('div');
       fan.id='sp-fan';
+      fan.setAttribute('role','dialog');
+      fan.setAttribute('aria-modal','true');
+      fan.setAttribute('aria-labelledby','sp-fan-title');
       fan.innerHTML=`
         <div class="sp-fan-bar">
-          <div class="sp-fan-title"><em>Choisissez votre carte</em><span class="sp-fan-pos" id="sp-fan-pos"></span></div>
+          <div class="sp-fan-title"><em id="sp-fan-title">Choisissez votre carte</em><span class="sp-fan-pos" id="sp-fan-pos"></span></div>
           <span class="sp-fan-count" id="sp-fan-count"></span>
           <button class="sp-fan-close" id="sp-fan-x">✕ Fermer</button>
         </div>
         <div class="sp-fan-scroll" id="sp-fan-scroll"><div class="sp-fan-stage" id="sp-fan-stage"></div></div>
+        <div class="sp-fan-actions">
+          <button type="button" id="sp-fan-prev" aria-label="Carte précédente">↑</button>
+          <button type="button" id="sp-fan-pick">Piocher cette carte</button>
+          <button type="button" id="sp-fan-next" aria-label="Carte suivante">↓</button>
+        </div>
         <div class="sp-fan-hint" id="sp-fan-hint">Cartes faces cachées — laissez-vous guider</div>`;
       document.body.appendChild(fan);
       $('#sp-fan-x').addEventListener('click',closeFan);
+      $('#sp-fan-prev').addEventListener('click',()=>selectFanCard(Math.round(fanRot)-1));
+      $('#sp-fan-next').addEventListener('click',()=>selectFanCard(Math.round(fanRot)+1));
+      $('#sp-fan-pick').addEventListener('click',()=>{
+        const i=Math.round(fanRot);
+        pickFanCard(i,fan.querySelector(`[data-i="${i}"]`));
+      });
+      fan.addEventListener('keydown',e=>{
+        if(e.key!=='Tab')return;
+        const items=[...fan.querySelectorAll('button:not(:disabled),[tabindex="0"]')].filter(el=>el.getClientRects().length);
+        const first=items[0],last=items[items.length-1];
+        if(e.shiftKey&&document.activeElement===first){e.preventDefault();last.focus();}
+        else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first.focus();}
+      });
     }
 
     // Coupe du paquet (mode piocher)
@@ -520,6 +558,7 @@
             </div>
           </div>
           <button class="sp-cut-go" id="sp-cut-go">✂ Couper ici</button>
+          <button class="sp-cut-cancel" id="sp-cut-cancel" type="button">Annuler</button>
         </div>`;
       document.body.appendChild(cut);
     }
@@ -625,6 +664,7 @@
   let fanSlot=-1;
 
   function startSpread(spreadDef,force){
+    closeFan();
     currentSpread=spreadDef;
 
     // Mode piocher : couper le paquet puis choisir ses cartes
@@ -672,8 +712,7 @@
       manualDeck=cutDeck;
       renderSpreadSlots(spreadDef);
       openSpread();
-      // Première pioche proposée d'office, les suivantes au clic sur un emplacement vide
-      setTimeout(()=>{ const nx=nextEmptySlot(); if(nx>=0&&manualModeActive){ pulseSlot(nx); openFan(nx); } },650);
+      fanNextTimer=setTimeout(()=>{ const nx=nextEmptySlot(); if(nx>=0&&manualModeActive){ pulseSlot(nx); openFan(nx); } },650);
     });
   }
 
@@ -685,7 +724,8 @@
     const stage=$('#sp-cut-stage'), stack=$('#sp-cut-stack'), line=$('#sp-cut-line'),
           nEl=$('#sp-cut-n'), go=$('#sp-cut-go');
     const n=deck.length;
-    let layerH=window.innerWidth<640?5:6;
+    const fittedLayerHeight=()=>Math.max(1,Math.min(window.innerWidth<640?5:6,(window.innerHeight-300)/n));
+    let layerH=fittedLayerHeight();
     let cutIdx=Math.floor(n/2);
     let busy=false;
     const ctrl=new AbortController();
@@ -693,7 +733,7 @@
     // recadrage si la fenêtre change pendant la coupe (layers en flux, hauteur pilotée par --layer-h)
     window.addEventListener('resize',()=>{
       if(!ov.classList.contains('open')||busy)return;
-      layerH=window.innerWidth<640?5:6;
+      layerH=fittedLayerHeight();
       stack.style.setProperty('--layer-h',layerH+'px');
       setCut(cutIdx);
     },{signal:ctrl.signal});
@@ -769,6 +809,7 @@
     }
     cutValidate=doCut; cutCancel=cancel;
     go.onclick=doCut;
+    $('#sp-cut-cancel').onclick=cancel;
   }
 
   /* ---- Rendu du tirage en mode piocher (emplacements vides) ---- */
@@ -926,7 +967,8 @@
       setHint('Choisissez votre carte dans l\u2019éventail');
       // Ordre prédéterminé : l'éventail s'enchaîne tout seul sur la position suivante
       if(DRAW_ORDER==='fixed'){
-        setTimeout(()=>{
+        clearTimeout(fanNextTimer);
+        fanNextTimer=setTimeout(()=>{
           const f=$('#sp-fan');
           if(manualModeActive&&nextEmptySlot()>=0&&!(f&&f.classList.contains('open'))) openFan(nextEmptySlot());
         },420);
@@ -934,28 +976,38 @@
     }else{
       setHint('Touchez une carte pour la révéler');
       showRevealAll();
+      updateOrderBadges();
     }
   }
 
   /* ---- Éventail ---- */
   function openFan(slotIdx){
-    if(!manualDeck.length) return;
+    if(!manualDeck.length||fanPicking||manualSlots[slotIdx]) return;
+    clearTimeout(fanNextTimer);
+    fanReturnFocus=document.activeElement;
     fanSlot=slotIdx;
     const pos=currentSpread&&currentSpread.positions[slotIdx];
     const t=$('#sp-fan-pos');
-    if(t) t.textContent=pos?('Position : '+pos.label):'';
-    renderFan();
+    if(t) t.textContent=pos?((slotIdx+1)+' / '+manualSlots.length+' · '+pos.label):'';
     const ov=$('#sp-fan');
     if(ov) ov.classList.add('open');
+    renderFan();
+    $('#sp-fan-x').focus({preventScroll:true});
   }
   function closeFan(){
+    clearTimeout(fanNextTimer);
+    clearTimeout(fanPickTimer);
+    stopFanMotion();
+    fanPicking=false;
     const ov=$('#sp-fan'); if(ov) ov.classList.remove('open');
+    if(fanReturnFocus&&fanReturnFocus.isConnected)fanReturnFocus.focus({preventScroll:true});
     // L'emplacement à piocher continue de pulser pour guider
     if(manualModeActive){ const nx=nextEmptySlot(); if(nx>=0) pulseSlot(nx); }
   }
 
   const FAN_BACK='<span class="sp-fan-back"></span>';
   let fanAbort=null;
+  let fanPickTimer=0,fanNextTimer=0,fanPicking=false,fanReturnFocus=null;
 
   function renderFan(keepScroll){
     const stage=$('#sp-fan-stage');
@@ -963,26 +1015,35 @@
     const cnt=$('#sp-fan-count');
     const hint=$('#sp-fan-hint');
     if(!stage) return;
-    if(fanAbort){ fanAbort.abort(); fanAbort=null; }
+    stopFanMotion();
     const n=manualDeck.length;
-    const vw=window.innerWidth, vh=window.innerHeight;
-    const mobile=vw<700;
-    let fanPad=0, fanStep=0, fanX0=0, fanW=0;
+    const vw=window.innerWidth;
+    const mobile=vw<700||matchMedia('(pointer:coarse)').matches;
+    $('#sp-fan').classList.toggle('mobile',mobile);
+    if(cnt)cnt.textContent=n+' cartes';
+    $('#sp-fan-pick').disabled=fanPicking;
+    scroll.querySelector('.sp-fan-space')?.remove();
+    scroll.style.touchAction='';scroll.style.overflow='';
+    scroll.tabIndex=mobile?0:-1;
+    scroll.setAttribute('aria-label','Parcourir les cartes : glisser ou utiliser les flèches');
+    let fanStep=0, fanX0=0, fanW=0;
     let h='';
 
     if(mobile){
-      /* éventail radial — l'arc occupe toute la hauteur de l'écran (rayon = ~48 % de la
-         hauteur), pivot hors champ à gauche ; rotation au doigt + molette, avec inertie et snap. */
-      const cardW=Math.round(Math.min(118,Math.max(88,vw*.24)));
-      const R=Math.round(vh*.48);
-      const px=Math.round(vw-cardW*.75-R), py=Math.round(vh*.5);
+      // Mesurer la surface disponible après l'en-tête et les commandes, pas le viewport.
+      const height=scroll.clientHeight;
+      const cardW=Math.round(Math.min(124,Math.max(88,height*.22)));
+      const R=Math.round(height*1.7);
+      const px=Math.round(vw-cardW*.9-22-R), py=Math.round(height*.5);
+      fanAngleStep=32/R*180/Math.PI;
+      fanAngleLimit=Math.atan((height/2+cardW)/R)*180/Math.PI;
       for(let i=0;i<n;i++){
-        h+=`<button type="button" class="sp-fan-card rad" data-i="${i}" style="--px:${px}px;--py:${py}px;--R:${R}px;--a:0deg;--w:${cardW}px" aria-label="Piocher la carte ${i+1}">${FAN_BACK}</button>`;
+        h+=`<button type="button" class="sp-fan-card rad" tabindex="-1" data-i="${i}" style="--px:${px}px;--py:${py}px;--R:${R}px;--a:0deg;--w:${cardW}px" aria-label="Sélectionner la carte ${i+1}">${FAN_BACK}</button>`;
       }
       stage.style.width='100%';
-      stage.style.height='';
+      stage.style.height=height+'px';
       stage.style.transform='';
-      if(hint) hint.textContent='Faites tourner l\u2019éventail puis touchez une carte';
+      if(hint) hint.textContent='Glissez pour choisir · Piocher pour confirmer';
     }else{
       /* éventail horizontal : arc léger étalé de droite à gauche.
          Le survol est piloté en JS (cible calculée depuis l'abscisse) : les cartes se
@@ -990,7 +1051,7 @@
       const cardW=Math.round(Math.min(110,Math.max(72,vw*.075)));
       const pad=Math.round(vw*.035);
       const step=Math.max(6,Math.floor((vw-2*pad-cardW)/Math.max(1,n-1)));
-      fanPad=pad; fanStep=step; fanX0=vw-pad-cardW; fanW=cardW;
+      fanStep=step; fanX0=vw-pad-cardW; fanW=cardW;
       for(let i=0;i<n;i++){
         const x=vw-pad-cardW-i*step;
         const t=n>1?((i/(n-1))*2-1):0;
@@ -1008,14 +1069,18 @@
     stage.innerHTML=h;
     if(cnt) cnt.textContent=n+' carte'+(n>1?'s':'');
     stage.querySelectorAll('.sp-fan-card').forEach(el=>{
-      el.addEventListener('click',()=>pickFanCard(+el.dataset.i,el));
+      el.addEventListener('click',()=>mobile?selectFanCard(+el.dataset.i):pickFanCard(+el.dataset.i,el));
     });
 
     if(mobile){
-      if(scroll){ scroll.style.touchAction='none'; scroll.style.overflow='hidden'; }
-      if(!keepScroll) fanRot=(n-1)/2; // ouvert au centre : demi-cercle complet
-      fanVel=0; fanDragPid=null; fanMovedFar=false;
-      if(fanRaf){ cancelAnimationFrame(fanRaf); fanRaf=0; }
+      const space=document.createElement('div');
+      space.className='sp-fan-space';
+      space.style.height=((n-1)*FAN_PX_PER_CARD)+'px';
+      space.setAttribute('aria-hidden','true');
+      scroll.appendChild(space);
+      if(!keepScroll)fanRot=Math.floor((n-1)/2);
+      fanRot=Math.max(0,Math.min(n-1,Math.round(fanRot)));
+      scroll.scrollTop=fanRot*FAN_PX_PER_CARD;
       bindFanRotation();
       updateFanRot();
     }else if(scroll){
@@ -1023,7 +1088,6 @@
       // survol piloté : la carte survolée est déduite de l'abscisse du pointeur
       if(fanAbort)fanAbort.abort();
       fanAbort=new AbortController();
-      const x0=fanX0;
       let lift=-1;
       const cards=[...stage.querySelectorAll('.sp-fan-card')];
       const onMove=e=>{
@@ -1041,9 +1105,21 @@
     }
   }
 
-  /* ---- Rotation de l'éventail radial (mobile) : doigt + inertie + snap ---- */
-  const FAN_PX_PER_CARD=44, FAN_DEG_PER_CARD=3.6;
-  let fanRot=0, fanVel=0, fanRaf=0, fanDragPid=null, fanMovedFar=false;
+  /* ---- Défilement natif : le navigateur gère le toucher, la molette et l'inertie. ---- */
+  const FAN_PX_PER_CARD=44;
+  let fanRot=0,fanAngleStep=1,fanAngleLimit=20,fanSnapTimer=0;
+
+  function stopFanMotion(){
+    if(fanAbort){fanAbort.abort();fanAbort=null;}
+    clearTimeout(fanSnapTimer);
+  }
+
+  function selectFanCard(i){
+    if(fanPicking||!manualDeck.length)return;
+    fanRot=Math.max(0,Math.min(manualDeck.length-1,i));
+    $('#sp-fan-scroll').scrollTop=fanRot*FAN_PX_PER_CARD;
+    updateFanRot();
+  }
 
   function updateFanRot(){
     const stage=$('#sp-fan-stage'); if(!stage)return;
@@ -1051,104 +1127,66 @@
     if(!cards.length)return;
     const n=manualDeck.length, cnt=$('#sp-fan-count');
     cards.forEach(el=>{
-      const a=((+el.dataset.i)-fanRot)*FAN_DEG_PER_CARD;
+      const offset=(+el.dataset.i)-fanRot;
+      const a=offset*fanAngleStep;
       const ad=Math.abs(a);
-      if(ad>92){ el.style.visibility='hidden'; return; }
+      const selected=+el.dataset.i===Math.round(fanRot);
+      el.classList.toggle('selected',selected);
+      el.setAttribute('aria-pressed',String(selected));
+      if(ad>fanAngleLimit){ el.style.visibility='hidden'; return; }
       el.style.visibility='';
-      const k=Math.max(0,1-ad/16);
       el.style.setProperty('--a',a.toFixed(2)+'deg');
-      el.style.setProperty('--s',(1+.24*k).toFixed(3));
-      el.style.setProperty('--o',Math.max(0,Math.min(1,1-(ad-68)/22)).toFixed(3));
-      el.style.zIndex=el.classList.contains('picked')?'200':String(100-Math.round(ad));
+      el.style.setProperty('--s',selected?'1.1':'1');
+      el.style.setProperty('--o',selected?'1':'.7');
+      el.style.zIndex=selected?'200':String(100-Math.round(Math.abs(offset)));
     });
     if(cnt){
       const apex=Math.max(0,Math.min(n-1,Math.round(fanRot)));
-      cnt.textContent='carte '+(apex+1)+' / '+n;
-    }
-  }
-
-  function fanLoop(){
-    const n=manualDeck.length;
-    if(fanDragPid!==null){ fanRaf=0; return; }
-    if(Math.abs(fanVel)>.0015){
-      fanRot+=fanVel*16;
-      fanVel*=.94;
-      if(fanRot<-.8){ fanRot=-.8; fanVel=0; }
-      if(fanRot>n-1+.8){ fanRot=n-1+.8; fanVel=0; }
-      updateFanRot();
-      fanRaf=requestAnimationFrame(fanLoop);
-      return;
-    }
-    const target=Math.max(0,Math.min(n-1,Math.round(fanRot)));
-    const d=target-fanRot;
-    if(Math.abs(d)>.002){
-      fanRot+=d*.16;
-      updateFanRot();
-      fanRaf=requestAnimationFrame(fanLoop);
-    }else{
-      fanRot=target;
-      updateFanRot();
-      fanRaf=0;
+      cnt.textContent='Carte '+(apex+1)+' / '+n+' · sélectionnée';
+      $('#sp-fan-prev').disabled=apex===0||fanPicking;
+      $('#sp-fan-next').disabled=apex===n-1||fanPicking;
+      $('#sp-fan-pick').setAttribute('aria-label','Piocher la carte '+(apex+1)+' sur '+n);
     }
   }
 
   function bindFanRotation(){
     const surf=$('#sp-fan-scroll'); if(!surf)return;
-    if(fanAbort){ fanAbort.abort(); }
     fanAbort=new AbortController();
     const sig={signal:fanAbort.signal};
-    let lastY=0,lastT=0,vel=0,moved=0;
-    surf.addEventListener('pointerdown',e=>{
-      if(fanDragPid!==null)return;
-      fanDragPid=e.pointerId;
-      lastY=e.clientY; lastT=performance.now();
-      vel=0; moved=0; fanVel=0; fanMovedFar=false;
-      if(fanRaf){ cancelAnimationFrame(fanRaf); fanRaf=0; }
-    },sig);
-    window.addEventListener('pointermove',e=>{
-      if(e.pointerId!==fanDragPid)return;
-      const t=performance.now(), dt=Math.max(1,t-lastT);
-      const dy=e.clientY-lastY;
-      moved+=Math.abs(dy);
-      if(moved>10) fanMovedFar=true;
-      fanRot+=(-dy/FAN_PX_PER_CARD);
-      vel=(-dy/FAN_PX_PER_CARD)/dt;
-      lastY=e.clientY; lastT=t;
-      updateFanRot();
-    },sig);
-    const up=e=>{
-      if(e.pointerId!==fanDragPid)return;
-      fanDragPid=null;
-      fanVel=Math.max(-.05,Math.min(.05,vel));
-      fanRaf=requestAnimationFrame(fanLoop);
+    let touching=false;
+    const snap=()=>{
+      clearTimeout(fanSnapTimer);
+      fanSnapTimer=setTimeout(()=>{if(!touching)selectFanCard(Math.round(fanRot));},180);
     };
-    window.addEventListener('pointerup',up,sig);
-    window.addEventListener('pointercancel',up,sig);
-    // molette : fait tourner l'éventail comme un doigt
-    const onWheel=e=>{
-      e.preventDefault();
-      if(fanDragPid!==null)return;
-      if(fanRaf){ cancelAnimationFrame(fanRaf); fanRaf=0; }
-      const d=(Math.abs(e.deltaY)>=Math.abs(e.deltaX)?e.deltaY:e.deltaX);
-      fanRot+=d/180;
-      fanRot=Math.max(-1,Math.min(manualDeck.length,fanRot));
+    surf.addEventListener('touchstart',()=>{touching=true;clearTimeout(fanSnapTimer);},{...sig,passive:true});
+    surf.addEventListener('touchend',()=>{touching=false;snap();},{...sig,passive:true});
+    surf.addEventListener('touchcancel',()=>{touching=false;snap();},{...sig,passive:true});
+    surf.addEventListener('scroll',()=>{
+      if(fanPicking)return;
+      fanRot=Math.max(0,Math.min(manualDeck.length-1,surf.scrollTop/FAN_PX_PER_CARD));
       updateFanRot();
-      clearTimeout(wheelSnap);
-      wheelSnap=setTimeout(()=>{ fanVel=0; fanRaf=requestAnimationFrame(fanLoop); },140);
-    };
-    let wheelSnap=0;
-    surf.addEventListener('wheel',onWheel,{passive:false,signal:fanAbort.signal});
+      snap();
+    },{...sig,passive:true});
+    surf.addEventListener('keydown',e=>{
+      const delta={ArrowDown:1,ArrowUp:-1,PageDown:10,PageUp:-10}[e.key];
+      if(delta!==undefined){e.preventDefault();selectFanCard(Math.round(fanRot)+delta);}
+      else if(e.key==='Home'||e.key==='End'){e.preventDefault();selectFanCard(e.key==='Home'?0:manualDeck.length-1);}
+    },sig);
   }
 
   function pickFanCard(i,el){
-    if(fanMovedFar) return; // le doigt a tourné l'éventail : ce n'était pas une pioche
+    if(fanPicking||!el||!$('#sp-fan').classList.contains('open'))return;
     const card=manualDeck[i];
     if(!card) return;
+    const slot=fanSlot;
+    fanPicking=true;
+    $('#sp-fan-pick').disabled=true;
+    stopFanMotion();
     el.classList.add('picked');
-    setTimeout(()=>{
+    fanPickTimer=setTimeout(()=>{
       closeFan();
       manualDeck.splice(i,1);
-      fillSlot(fanSlot,card);
+      fillSlot(slot,card);
     },280);
   }
 
