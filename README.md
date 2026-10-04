@@ -8,6 +8,12 @@ Un site éditorial pour explorer les 78 lames du Tarot de Rider-Waite-Smith, leu
 
 ![Réglages et soutien](store/screenshots/01-reglages.png)
 
+![Couper le paquet](store/screenshots/03-tirage-coupe.png)
+
+![Éventail des 78 cartes](store/screenshots/04-tirage-eventail.png)
+
+![Éventail sur mobile](store/screenshots/05-tirage-eventail-mobile.png)
+
 ## ✅ Fonctionnalités
 
 - **78 cartes** : 22 arcanes majeurs + 56 mineurs (Bâtons, Épées, Coupes, Deniers)
@@ -15,6 +21,7 @@ Un site éditorial pour explorer les 78 lames du Tarot de Rider-Waite-Smith, leu
 - **Fiches éditoriales** : identité, carte du jour, Amour, Travail, Finances, Guidance, signification et description
 - **Associations** : combinaisons entre lames accessibles dans un panneau repliable
 - **Tirages interactifs** : plusieurs dispositions de tirage intégrées
+- **Deux modes de tirage** : *Rapide* (les cartes sont distribuées au hasard) ou *Piocher* — un réglage et une bascule dans le menu Tirages. En mode Piocher, on coupe soi-même le paquet mélangé à la hauteur choisie (les deux moitiés s'inversent), puis on choisit chaque carte dans l'éventail des 78 lames faces cachées — arc léger de droite à gauche sur ordinateur, roulette défilante de gauche à droite sur mobile. La Carte du jour se pioche aussi à la main et reste mémorisée pour la journée
 - **Mode apprentissage** : quiz QCM type flashcards (Leitner simplifié) au choix sur le mot-clé ou la phrase centrale de chaque lame — les lames sues partent au fond de la pile, les ratées reviennent vite ; progression conservée localement
 - **Recherche plein écran** : filtrage instantané par nom ou numéro, avec filtres par famille
 - **Nuances** : pense-bête comparant les lames aux thèmes proches
@@ -31,7 +38,8 @@ Un site éditorial pour explorer les 78 lames du Tarot de Rider-Waite-Smith, leu
 3. Utilisez `←`/`→` pour passer à la lame précédente ou suivante.
 4. Tapez une lettre ou un chiffre pour ouvrir et préremplir la recherche.
 5. Ouvrez **Tirages**, **Nuances** ou **Apprendre** depuis la navigation supérieure.
-6. **Partagez une lame** : bouton *Partager* dans la fiche, ou copiez simplement l'adresse — elle contient la lame et l'affichage en cours.
+6. **Tirez en mode Piocher** : basculez le mode dans le menu Tirages (ou depuis les Réglages), coupez le paquet à la hauteur voulue, puis touchez un emplacement vide et choisissez votre carte dans l'éventail.
+7. **Partagez une lame** : bouton *Partager* dans la fiche, ou copiez simplement l'adresse — elle contient la lame et l'affichage en cours.
 
 ## ⚙️ Réglages
 
@@ -46,6 +54,8 @@ La palette globale et les couleurs d'accent sont définies via les variables CSS
 | `Échap` | Retour à la grille depuis une fiche |
 | `1`–`5` | Répondre dans le mode apprentissage |
 | `Entrée` / `→` | Passer à la lame suivante (mode apprentissage) |
+| `Entrée` | Valider la coupe du paquet (mode Piocher) |
+| `Échap` | Fermer l'éventail ou annuler la coupe |
 
 ## 📦 Build & Package
 

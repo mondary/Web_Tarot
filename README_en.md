@@ -8,6 +8,12 @@ An editorial website for exploring the 78 Rider-Waite-Smith Tarot cards, their m
 
 ![Settings and support](store/screenshots/01-reglages.png)
 
+![Cutting the deck](store/screenshots/03-tirage-coupe.png)
+
+![Fan of all 78 cards](store/screenshots/04-tirage-eventail.png)
+
+![Fan on mobile](store/screenshots/05-tirage-eventail-mobile.png)
+
 ## ✅ Features
 
 - **78 cards**: 22 Major Arcana + 56 Minor Arcana (Wands, Swords, Cups, Pentacles)
@@ -15,6 +21,7 @@ An editorial website for exploring the 78 Rider-Waite-Smith Tarot cards, their m
 - **Editorial card sheets**: identity, card of the day, Love, Work, Finances, Guidance, meaning, and description
 - **Associations**: card combinations available in a collapsible panel
 - **Interactive spreads**: several integrated spread layouts
+- **Two draw modes**: *Quick* (cards dealt at random) or *Pick* — a setting and a toggle in the Spreads menu. In Pick mode, you cut the shuffled deck yourself at the height you choose (the two halves are swapped), then choose each card from the fan of all 78 face-down cards — a gentle right-to-left arc on desktop, a left-to-right scrolling strip on mobile. The Card of the Day is hand-picked too and stays remembered for the day
 - **Learning mode**: multiple-choice flashcard quiz (simplified Leitner) using either each card's distinctive keyword or central description phrase — known cards go to the bottom of the deck, missed ones come back quickly; progress is saved locally
 - **Fullscreen search**: instant filtering by name or number, with family filters
 - **Nuances**: a reference comparing cards with closely related themes
@@ -31,7 +38,8 @@ An editorial website for exploring the 78 Rider-Waite-Smith Tarot cards, their m
 3. Use `←`/`→` to move to the previous or next card.
 4. Type a letter or number to open and prefill search.
 5. Open **Spreads**, **Nuances** or **Learn** from the top navigation.
-6. **Share a card**: use the *Share* button in the sheet, or simply copy the address — it carries the current card and display settings.
+6. **Draw in Pick mode**: switch modes in the Spreads menu (or from Settings), cut the deck at your chosen height, then touch an empty slot and choose your card from the fan.
+7. **Share a card**: use the *Share* button in the sheet, or simply copy the address — it carries the current card and display settings.
 
 ## ⚙️ Settings
 
@@ -46,6 +54,8 @@ The global palette and accent colors are defined through CSS variables in the `:
 | `Esc` | Back to grid from a card sheet |
 | `1`–`5` | Answer in learning mode |
 | `Enter` / `→` | Move to the next card (learning mode) |
+| `Enter` | Confirm the deck cut (Pick mode) |
+| `Esc` | Close the fan or cancel the cut |
 
 ## 📦 Build & Package
 

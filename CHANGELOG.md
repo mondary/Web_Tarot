@@ -6,7 +6,7 @@ Toutes les notes de release du projet Web Tarot. Le format de version suit `vYYY
 
 ## TODO — Roadmap
 
-Statut : `2026.10.01`
+Statut : `2026.10.02`
 
 ### Phase 1 — Fondations ✅
 - [x] Interface V2 unifiée (carousel d'accueil + grille par famille + vue détail)
@@ -37,6 +37,20 @@ Statut : `2026.10.01`
 ---
 
 ## Releases
+
+## [2026.10.02] - 2026-10-04
+
+### Added
+- **Mode de tirage « Piocher » (tirage manuel)** : réglage Rapide / Piocher persistant, accessible depuis le panneau Réglages et depuis une bascule dans le menu Tirages. En mode Piocher, le paquet mélangé (Fisher-Yates) est coupé par le consultant à la hauteur choisie — la partie soulevée passe dessous — puis chaque carte est choisie dans un éventail de dos : arc léger étalé de droite à gauche sur ordinateur, roulette défilante de gauche à droite sur mobile. Premier emplacement proposé d'office, suivants au clic sur un emplacement vide qui pulse ; ordre de tirage respecté, cartes posées face cachée puis révélées au toucher.
+- **Carte du jour manuelle** : en mode Piocher, la carte du jour se coupe et se pioche à la main, puis reste mémorisée pour la journée (annuler une nouvelle coupe ne perd pas la carte tirée).
+- Raccourcis : `Entrée` valide la coupe, `Échap` ferme l'éventail ou annule la coupe.
+- Captures du mode Piocher dans les README FR/EN (`store/screenshots/03–05`).
+
+### Fixed
+- `revealCard` : plantage JS silencieux lors de la révélation de la dernière carte d'un tirage (`querySelector` nul sur `.sp-card:not(.revealed)`).
+
+### Changed
+- **Version** : passage à `2026.10.02` (cache service worker inclus).
 
 ## [2026.10.01] - 2026-10-01
 
