@@ -4,7 +4,9 @@ TAROT_URL and CHROME_PATH optionally override the server and browser executable.
 Interactions use real hit-tested taps / CDP touch gestures, never DOM .click().
 """
 import os
+from io import BytesIO
 from pathlib import Path
+from PIL import Image, ImageStat
 from playwright.sync_api import sync_playwright, expect
 
 URL = os.environ.get('TAROT_URL', 'http://127.0.0.1:8772/')
@@ -121,8 +123,14 @@ with sync_playwright() as p:
         ids = page.locator('#sp-spread .sp-card').evaluate_all('(cards)=>cards.map(c=>c.dataset.id)')
         assert len(set(ids)) == 5, ids
         for i in range(5):
-            page.locator(f'#sp-spread .sp-card[data-idx="{i}"]').tap()
+            card = page.locator(f'#sp-spread .sp-card[data-idx="{i}"]')
+            card.tap()
             expect(page.locator('#sp-spread .sp-card.revealed')).to_have_count(i+1)
+            expect(card.locator('img')).to_have_js_property('complete', True)
+            assert card.locator('img').evaluate('img=>img.naturalWidth') > 0
+            page.wait_for_timeout(300)
+            brightness = sum(ImageStat.Stat(Image.open(BytesIO(card.screenshot())).convert('RGB')).mean) / 3
+            assert brightness > 70, f'black revealed manual cross card {i}: {brightness:.1f}'
         page.locator('#sp-close-spread').tap()
         open_draw(page, 0)
         page.locator('#sp-cut-go').tap()

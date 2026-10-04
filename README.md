@@ -14,14 +14,18 @@ Un site éditorial pour explorer les 78 lames du Tarot de Rider-Waite-Smith, leu
 
 ![Éventail sur mobile](store/screenshots/05-tirage-eventail-mobile.png)
 
+![Écran dédié au tirage du prénom](store/screenshots/06-tirage-prenom.png)
+
+![Croix de Décision avec cinq illustrations révélées](store/screenshots/07-croix-revelee.png)
+
 ## ✅ Fonctionnalités
 
 - **78 cartes** : 22 arcanes majeurs + 56 mineurs (Bâtons, Épées, Coupes, Deniers)
 - **Accueil complet** : les 78 lames sont visibles directement, regroupées par famille avec cinq intercalaires
 - **Fiches éditoriales** : identité, carte du jour, Amour, Travail, Finances, Guidance, signification et description
 - **Associations** : combinaisons entre lames accessibles dans un panneau repliable
-- **Tirages interactifs** : plusieurs dispositions de tirage intégrées
-- **Deux modes de tirage** : *Piocher* (par défaut) — couper le paquet mélangé à la hauteur choisie, puis choisir ses cartes — ou *Rapide* (distribution automatique). Sur ordinateur : éventail étalé de droite à gauche. Sur mobile : arc peu courbé, défilement tactile natif ou molette, carte centrale légèrement sortie du paquet ; touchez une carte pour la piocher directement. Le dos sombre au symbole doré est utilisé dans l'éventail et le tirage. Les boutons ↑ / ↓ permettent de parcourir les cartes. La coupe et l'éventail s'adaptent aux petits écrans et au paysage. La Carte du jour est mémorisée pour la journée.
+- **Tirages interactifs** : plusieurs dispositions intégrées, dont la Croix de Décision (illustrations visibles après révélation) et le tirage du Prénom avec écran de saisie dédié
+- **Deux modes de tirage** : *Piocher* (par défaut) — couper le paquet mélangé à la hauteur choisie, puis choisir ses cartes — ou *Rapide* (distribution automatique). Sur ordinateur : éventail étalé de droite à gauche, la carte survolée sort légèrement du paquet. Sur mobile : arc peu courbé, défilement tactile natif ou molette, carte centrale légèrement sortie du paquet ; touchez une carte pour la piocher directement. Le dos sombre au symbole doré est utilisé dans l'éventail et le tirage. Les boutons ↑ / ↓ permettent de parcourir les cartes. La coupe et l'éventail s'adaptent aux petits écrans et au paysage. La Carte du jour est mémorisée pour la journée.
 - **Ordre de tirage guidé** : chaque position porte son numéro d'ordre (①②③…) et la prochaine à piocher ou révéler pulse en doré. Par défaut l'ordre est *prédéterminé* (pioche puis révélation dans l'ordre, l'éventail s'enchaîne tout seul) ; un ordre *libre* reste disponible dans le menu Tirages pour ceux qui veulent piocher et révéler comme ils le sentent
 - **Mode apprentissage** : quiz QCM type flashcards (Leitner simplifié) au choix sur le mot-clé ou la phrase centrale de chaque lame — les lames sues partent au fond de la pile, les ratées reviennent vite ; progression conservée localement
 - **Recherche plein écran** : filtrage instantané par nom ou numéro, avec filtres par famille
@@ -40,7 +44,8 @@ Un site éditorial pour explorer les 78 lames du Tarot de Rider-Waite-Smith, leu
 4. Tapez une lettre ou un chiffre pour ouvrir et préremplir la recherche.
 5. Ouvrez **Tirages**, **Nuances** ou **Apprendre** depuis la navigation supérieure.
 6. **Tirez en mode Piocher** : choisissez un tirage et coupez le paquet à la hauteur voulue. Sur mobile, glissez pour parcourir les cartes puis touchez celle que vous voulez piocher. En ordre prédéterminé, la position suivante s'ouvre automatiquement ; en ordre libre, touchez l'emplacement souhaité. Révélez ensuite les cartes posées.
-7. **Partagez une lame** : bouton *Partager* dans la fiche, ou copiez simplement l'adresse — elle contient la lame et l'affichage en cours.
+7. **Tirage du Prénom** : choisissez-le dans la liste, saisissez votre prénom dans l'écran dédié, puis poursuivez vers le tirage. Le bouton Retour vous ramène à la liste.
+8. **Partagez une lame** : bouton *Partager* dans la fiche, ou copiez simplement l'adresse — elle contient la lame et l'affichage en cours.
 
 ## ⚙️ Réglages
 
@@ -78,7 +83,7 @@ le navigateur bloque alors `fetch()` vers SQLite et le chargement de WebAssembly
 
 ## 📋 Voir le [CHANGELOG](CHANGELOG.md) pour l'historique complet.
 
-Version locale courante : **2026.10.08**
+Version locale courante : **2026.10.09**
 
 ## 🔗 Liens
 

@@ -138,19 +138,26 @@
 .sp-item .sp-count{flex:0 0 auto;font-family:'DM Mono',monospace;font-size:.6rem;letter-spacing:.12em;
   text-transform:uppercase;color:#8a8378;padding:.25rem .55rem;border:1px solid rgba(241,237,228,.1);border-radius:50px}
 
-/* Overlay input prénom */
-#sp-menu .sp-input-wrap{display:none;margin-bottom:1rem}
-#sp-menu .sp-input-wrap.show{display:block}
-.sp-input-wrap label{display:block;font-family:'DM Mono',monospace;font-size:.62rem;letter-spacing:.18em;
+/* Écran dédié au tirage du prénom */
+#sp-name-screen{position:fixed;inset:0;z-index:8050;display:none;align-items:center;justify-content:center;
+  padding:1.5rem;background:#050505;color:#f1ede4;overflow-y:auto}
+#sp-name-screen.open{display:flex}
+.sp-name-panel{width:min(100%,520px);margin:auto;padding:clamp(1.5rem,5vw,3rem);border:1px solid rgba(201,162,39,.22);border-radius:1.4rem;background:#0a0907}
+.sp-name-back{min-height:44px;padding:.4rem 0;background:none;border:0;color:#c9a227;cursor:pointer;font:inherit}
+.sp-name-panel h2{margin:1.5rem 0 .6rem;font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,7vw,3rem);font-weight:400;color:#c9a227}
+.sp-name-panel p{margin:0 0 2rem;color:#b8b0a2;line-height:1.5}
+.sp-name-panel label{display:block;font-family:'DM Mono',monospace;font-size:.62rem;letter-spacing:.18em;
   text-transform:uppercase;color:#8a8378;margin-bottom:.5rem}
-.sp-input-wrap input{width:100%;padding:.8rem 1rem;border-radius:.8rem;background:rgba(241,237,228,.05);
+.sp-name-panel input{width:100%;padding:.8rem 1rem;border-radius:.8rem;background:rgba(241,237,228,.05);
   border:1px solid rgba(241,237,228,.12);color:#f1ede4;font-family:'Cormorant Garamond',serif;font-size:1.5rem;
   text-transform:uppercase;letter-spacing:.1em;outline:none;transition:border-color .3s}
-.sp-input-wrap input:focus{border-color:#c9a227}
-.sp-input-go{margin-top:.6rem;width:100%;padding:.7rem;border:none;border-radius:.7rem;background:#c9a227;
+.sp-name-panel input:focus{border-color:#c9a227}
+.sp-input-go{margin-top:1rem;width:100%;min-height:48px;padding:.7rem;border:none;border-radius:.7rem;background:#c9a227;
   color:#050505;font-family:'DM Mono',monospace;font-size:.7rem;font-weight:600;letter-spacing:.16em;
   text-transform:uppercase;cursor:pointer;transition:.3s}
 .sp-input-go:hover{filter:brightness(1.1)}
+.sp-name-error{min-height:1.3em;margin-top:.5rem;color:#f1a8a0;font-size:.8rem}
+.sp-name-panel :focus-visible{outline:2px solid #c9a227;outline-offset:3px}
 
 /* Overlay tirage (spread) */
 #sp-spread{position:fixed;inset:0;z-index:8100;display:none;flex-direction:column;
@@ -219,6 +226,10 @@
 .sp-layout-cross .sp-pos:nth-child(4){grid-area:3/2}
 .sp-layout-cross .sp-pos:nth-child(5){grid-area:1/2}
 .sp-layout-cross .sp-card{width:var(--cc);height:calc(var(--cc)*1.5);max-width:none}
+.sp-layout-cross .sp-card-inner,.sp-layout-cross .sp-card.revealed .sp-card-inner{transform:none;transform-style:flat}
+.sp-layout-cross .sp-card-front{transform:none;opacity:0;visibility:hidden;transition:opacity .25s ease,visibility 0s .25s}
+.sp-layout-cross .sp-card.revealed .sp-card-front{opacity:1;visibility:visible;transition:opacity .25s ease}
+.sp-layout-cross .sp-card.revealed .sp-card-back{visibility:hidden}
 .sp-layout-cross .sp-pos-label{font-size:.56rem;max-width:110px}
 /* croix (et celtic) : la carte avant tout — image plein cadre, nom en voile discret,
    pas de bandeau numéro/famille qui écrasait les petites cartes.
@@ -419,8 +430,8 @@
   box-shadow:0 10px 26px rgba(0,0,0,.55);transition:border-color .2s,box-shadow .2s}
 .sp-fan-back svg{width:40%;height:40%;color:rgba(201,162,39,.45)}
 /* survol piloté en JS (pas de :hover CSS) : évite le clignotement des cartes superposées */
-.sp-fan-card.lift{z-index:999;transform:translate(var(--x),calc(var(--y) - 26px)) rotate(var(--r)) scale(calc(var(--s,1)*1.04))}
-.sp-fan-card.lift .sp-fan-back{border-color:rgba(201,162,39,.6);box-shadow:0 16px 34px rgba(0,0,0,.6)}
+.sp-fan-card.lift{z-index:999;transform:translate(var(--x),calc(var(--y) - 16px)) rotate(var(--r)) scale(var(--s,1))}
+.sp-fan-card.lift .sp-fan-back{box-shadow:0 16px 34px rgba(0,0,0,.6)}
 .sp-fan-card:focus-visible{outline:none}
 .sp-fan-card:focus-visible .sp-fan-back{border-color:rgba(201,162,39,.6)}
 .sp-fan-card:active .sp-fan-back{border-color:rgba(201,162,39,.6)}
@@ -464,11 +475,6 @@
             <h2><em>Tirages</em></h2>
             <button class="sp-menu-close" id="sp-menu-close"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 6 12 12M18 6 6 18"/></svg></button>
           </div>
-          <div class="sp-input-wrap" id="sp-input-wrap">
-            <label id="sp-input-label">Tapez un prénom</label>
-            <input type="text" id="sp-name-input" placeholder="ALICE" maxlength="20" autocomplete="off">
-            <button class="sp-input-go" id="sp-input-go">Tirer les cartes</button>
-          </div>
           <div class="sp-menu-list" id="sp-menu-list"></div>
           <div class="sp-mode-row">
             <div class="sp-mode-lbl">Mode de tirage</div>
@@ -497,6 +503,47 @@
       $('#sp-order-toggle').addEventListener('click',e=>{
         const b=e.target.closest('button'); if(!b)return;
         setDrawOrder(b.dataset.o);
+      });
+    }
+
+    if(!$('#sp-name-screen')){
+      const screen=document.createElement('div');
+      screen.id='sp-name-screen';
+      screen.setAttribute('role','dialog');
+      screen.setAttribute('aria-modal','true');
+      screen.setAttribute('aria-labelledby','sp-name-title');
+      screen.innerHTML=`
+        <div class="sp-name-panel">
+          <button class="sp-name-back" id="sp-name-back" type="button">← Retour aux tirages</button>
+          <h2 id="sp-name-title">Tirage du Prénom</h2>
+          <p>Une carte pour chaque lettre de votre prénom.</p>
+          <form id="sp-name-form">
+            <label for="sp-name-input">Tapez un prénom</label>
+            <input type="text" id="sp-name-input" placeholder="Ex : ALICE" minlength="2" maxlength="20" autocomplete="given-name" aria-describedby="sp-name-error" required>
+            <div class="sp-name-error" id="sp-name-error" aria-live="polite"></div>
+            <button class="sp-input-go" id="sp-input-go" type="submit">Continuer vers le tirage</button>
+          </form>
+        </div>`;
+      document.body.appendChild(screen);
+      $('#sp-name-back').addEventListener('click',()=>closeNameScreen(true));
+      $('#sp-name-input').addEventListener('input',()=>{ $('#sp-name-error').textContent=''; $('#sp-name-input').removeAttribute('aria-invalid'); });
+      $('#sp-name-form').addEventListener('submit',e=>{
+        e.preventDefault();
+        const input=$('#sp-name-input'),name=input.value.trim().toUpperCase();
+        if(name.length<2){
+          input.setAttribute('aria-invalid','true');
+          $('#sp-name-error').textContent='Saisissez au moins deux lettres.';
+          input.focus();return;
+        }
+        closeNameScreen(false);
+        startSpread({...SPREADS.find(sp=>sp.needsInput),positions:[...name].map(ch=>({label:ch,desc:''})),name});
+        input.value='';
+      });
+      screen.addEventListener('keydown',e=>{
+        if(e.key!=='Tab')return;
+        const items=[...screen.querySelectorAll('button,input')];
+        if(e.shiftKey&&document.activeElement===items[0]){e.preventDefault();items.at(-1).focus();}
+        else if(!e.shiftKey&&document.activeElement===items.at(-1)){e.preventDefault();items[0].focus();}
       });
     }
 
@@ -571,6 +618,8 @@
       const count = sp.layout==='name' ? 'N' : sp.positions.length;
       const item=document.createElement('div');
       item.className='sp-item';
+      item.setAttribute('role','button');
+      item.tabIndex=0;
       item.innerHTML=`
         <div class="sp-icon">${sp.icon}</div>
         <div class="sp-copy">
@@ -578,30 +627,20 @@
           <span>${sp.desc}</span>
         </div>
         <span class="sp-count">${count} cartes</span>`;
-      item.addEventListener('click',()=>{
+      const choose=()=>{
         if(sp.needsInput){
-          const wrap=$('#sp-input-wrap');
-          const label=$('#sp-input-label');
-          const input=$('#sp-name-input');
-          const go=$('#sp-input-go');
-          wrap.classList.add('show');
-          if(sp.inputLabel) label.textContent=sp.inputLabel;
-          if(sp.inputPlaceholder) input.placeholder=sp.inputPlaceholder;
-          input.focus();
-          go.onclick=()=>{
-            const name=input.value.trim().toUpperCase();
-            if(name.length<2) return;
-            const positions=name.split('').map(ch=>({label:ch,desc:''}));
-            closeMenu();
-            startSpread({...sp,positions,name});
-            wrap.classList.remove('show');
-            input.value='';
-          };
-          input.onkeydown=e=>{if(e.key==='Enter')go.click();};
-        } else {
+          closeMenu();
+          const screen=$('#sp-name-screen');
+          screen.classList.add('open');
+          $('#sp-name-input').focus({preventScroll:true});
+        }else{
           closeMenu();
           startSpread(sp);
         }
+      };
+      item.addEventListener('click',choose);
+      item.addEventListener('keydown',e=>{
+        if(e.key==='Enter'||e.key===' '){e.preventDefault();choose();}
       });
       list.appendChild(item);
     });
@@ -610,7 +649,6 @@
   /* ---- Menu ---- */
   function openMenu(){
     const m=$('#sp-menu');if(m)m.classList.add('open');
-    const wrap=$('#sp-input-wrap');if(wrap)wrap.classList.remove('show');
     // Carte du jour badge
     const today=LOCAL_DATE_KEY();
     const drawn=localStorage.getItem('tarot_cjd_'+today);
@@ -624,6 +662,12 @@
     }
   }
   function closeMenu(){const m=$('#sp-menu');if(m)m.classList.remove('open');}
+  function closeNameScreen(back){
+    $('#sp-name-screen').classList.remove('open');
+    $('#sp-name-error').textContent='';
+    $('#sp-name-input').removeAttribute('aria-invalid');
+    if(back){openMenu();$('#sp-menu-list .sp-item:last-child').focus({preventScroll:true});}
+  }
 
   /* ---- Tirage aléatoire ---- */
   function shuffleDeck(pool){
@@ -880,7 +924,7 @@
       <div class="sp-card-inner">
         <div class="sp-card-face sp-card-back">${FAN_SYMBOL}</div>
         <div class="sp-card-face sp-card-front">
-          <div class="sp-card-imgwrap"><img src="${card.file}" alt="${esc(card.name)}" loading="lazy"></div>
+          <div class="sp-card-imgwrap"><img src="${card.file}" alt="${esc(card.name)}" loading="eager"></div>
           <div class="sp-card-info">
             <span class="nm">${esc(card.name)}</span>
             <span class="no">${String(card.num).padStart(2,'0')} · ${esc(card.familyName)}</span>
@@ -1091,6 +1135,11 @@
       const onMove=e=>{
         if(e.pointerType&&e.pointerType!=='mouse')return;
         const r=stage.getBoundingClientRect();
+        const middle=r.top+r.height/2;
+        if(e.clientY<middle-fanW*.75-20||e.clientY>middle+fanW*.75+20){
+          if(lift>=0){lift=-1;cards.forEach(el=>el.classList.remove('lift'));}
+          return;
+        }
         // la carte survolée = celle qui recevrait le clic (celle du dessus à cette abscisse)
         const idx=Math.max(0,Math.min(n-1,Math.floor((fanX0-(e.clientX-r.left))/fanStep + fanW/fanStep)));
         if(idx===lift)return;
@@ -1227,7 +1276,7 @@
             <div class="sp-card-inner">
               <div class="sp-card-face sp-card-back">${FAN_SYMBOL}</div>
               <div class="sp-card-face sp-card-front">
-                <div class="sp-card-imgwrap"><img src="${card.file}" alt="${esc(card.name)}" loading="lazy"></div>
+                <div class="sp-card-imgwrap"><img src="${card.file}" alt="${esc(card.name)}" loading="eager"></div>
                 <div class="sp-card-info">
                   <span class="nm">${esc(card.name)}</span>
                   <span class="no">${String(card.num).padStart(2,'0')} · ${esc(card.familyName)}</span>
@@ -1448,12 +1497,13 @@
       },{passive:true});
     }
     if(!window.__spEsc){window.__spEsc=true;document.addEventListener('keydown',e=>{
-      const f=$('#sp-fan'),c=$('#sp-cut'),d=$('#sp-drawer'),s=$('#sp-spread'),m=$('#sp-menu');
+      const f=$('#sp-fan'),c=$('#sp-cut'),d=$('#sp-drawer'),s=$('#sp-spread'),m=$('#sp-menu'),name=$('#sp-name-screen');
       if(e.key==='Enter'&&cutValidate&&c&&c.classList.contains('open')){cutValidate();e.stopPropagation();return;}
       if(e.key!=='Escape')return;
       if(d&&d.classList.contains('open')){closeDrawer();e.stopPropagation();return;}
       if(f&&f.classList.contains('open')){closeFan();e.stopPropagation();return;}
       if(c&&c.classList.contains('open')){if(cutCancel)cutCancel();e.stopPropagation();return;}
+      if(name&&name.classList.contains('open')){closeNameScreen(true);e.stopPropagation();return;}
       if(s&&s.classList.contains('open')){closeSpread();e.stopPropagation();return;}
       if(m&&m.classList.contains('open')){closeMenu();e.stopPropagation();return;}
     });}

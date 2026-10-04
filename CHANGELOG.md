@@ -6,7 +6,7 @@ Toutes les notes de release du projet Web Tarot. Le format de version suit `vYYY
 
 ## TODO — Roadmap
 
-Statut : `2026.10.08`
+Statut : `2026.10.09`
 
 ### Phase 1 — Fondations ✅
 - [x] Interface V2 unifiée (carousel d'accueil + grille par famille + vue détail)
@@ -37,6 +37,16 @@ Statut : `2026.10.08`
 ---
 
 ## Releases
+
+## [2026.10.09] - 2026-10-04
+
+### Fixed
+- **Croix de Décision** : le retournement utilise un changement de face 2D, sans la rotation 3D susceptible de laisser un aplat noir ; chargement anticipé des illustrations. Les cinq cartes révélées sont vérifiées par captures/pixels en mode rapide desktop et en pioche manuelle mobile.
+- **Éventail desktop** : survol limité à la bande des cartes, avec une seule carte qui sort discrètement du paquet (16 px), sans cadre jaune ni clignotement.
+
+### Changed
+- **Tirage du Prénom** : saisie dans un écran dédié après le choix du tirage, avec retour, validation du prénom et focus clavier ; plus de champ dans la liste des tirages.
+- Captures et documentation FR/EN mises à jour ; cache de la version locale incrémenté. Aucune publication.
 
 ## [2026.10.08] - 2026-10-04
 
