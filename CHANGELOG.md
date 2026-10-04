@@ -6,7 +6,7 @@ Toutes les notes de release du projet Web Tarot. Le format de version suit `vYYY
 
 ## TODO — Roadmap
 
-Statut : `2026.10.05`
+Statut : `2026.10.06`
 
 ### Phase 1 — Fondations ✅
 - [x] Interface V2 unifiée (carousel d'accueil + grille par famille + vue détail)
@@ -37,6 +37,23 @@ Statut : `2026.10.05`
 ---
 
 ## Releases
+
+## [2026.10.06] - 2026-10-04
+
+### Fixed
+- **Carte noire à la révélation (Croix de Décision)** : la carte révélée n'affichait plus le visuel — un aplat noir du fond de tirage à la place de l'illustration (cause : le bloc image était positionné en absolu dans la croix). L'image repasse en flux normal et s'affiche comme dans les autres tirages (vérifié pixel par pixel, desktop et mobile).
+- **Éventail desktop : plus de clignotement au survol** — les cartes se chevauchant, la cible du survol est calculée en JS depuis l'abscisse du pointeur (la carte soulevée est celle qui recevrait le clic) ; les extrémités de l'éventail s'estompent, plus de carte fantôme isolée au bout de l'arc.
+- **Éventail mobile : la molette fait tourner l'éventail** comme le doigt, avec inertie et snap sur chaque carte.
+
+### Added
+- **Dos de carte Pamela Colman Smith** : l'éventail et les cartes posées utilisent le dos RWS authentique (scan déjà présent dans le projet, embarqué dans le vault) en remplacement du dos générique.
+- **Enchaînement automatique (ordre prédéterminé)** : après chaque pioche, l'éventail s'ouvre seul sur la position suivante — plus de reclic entre deux cartes.
+- **Guidage de la révélation** : la carte à révéler pulse d'un halo doré ; les clics hors tour sont refusés avec un message explicite.
+
+### Changed
+- **Piocher par défaut** : le mode de tirage démarre sur *Piocher* (bouton à gauche présélectionné), *Rapide* à droite.
+- **Éventail mobile : l'arc occupe toute la hauteur de l'écran** (rayon = 48 % de la hauteur, pivot hors champ à gauche).
+- **Version** : passage à `2026.10.06` (cache service worker inclus).
 
 ## [2026.10.05] - 2026-10-04
 
