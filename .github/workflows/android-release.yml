@@ -33,6 +33,10 @@ jobs:
             printf '%s' "$KEYSTORE" | base64 --decode > "$RUNNER_TEMP/upload.jks"
             echo "ANDROID_KEYSTORE_PATH=$RUNNER_TEMP/upload.jks" >> "$GITHUB_ENV"
           fi
+      - name: Detect Google Play service account
+        env:
+          SA: ${{ secrets.GOOGLE_PLAY_SERVICE_ACCOUNT_JSON }}
+        run: echo "HAS_PLAY_SA=$([ -n "$SA" ] && echo yes || echo no)" >> "$GITHUB_ENV"
       - name: Build installable APK and release bundle
         working-directory: Android
         env:
@@ -58,7 +62,7 @@ jobs:
           path: Android/release/
           if-no-files-found: error
       - name: Upload to Google Play (internal track)
-        if: ${{ secrets.GOOGLE_PLAY_SERVICE_ACCOUNT_JSON != '' }}
+        if: env.HAS_PLAY_SA == 'yes'
         uses: r0adkll/upload-google-play@v1
         with:
           serviceAccountJson: ${{ secrets.GOOGLE_PLAY_SERVICE_ACCOUNT_JSON }}
