@@ -6,7 +6,7 @@ Toutes les notes de release du projet Web Tarot. Le format de version suit `vYYY
 
 ## TODO — Roadmap
 
-Statut : `2026.10.12`
+Statut : `2026.10.13`
 
 ### Phase 1 — Fondations ✅
 - [x] Interface V2 unifiée (carousel d'accueil + grille par famille + vue détail)
@@ -37,6 +37,11 @@ Statut : `2026.10.12`
 ---
 
 ## Releases
+
+## [2026.10.13] - 2026-10-05
+
+### Changed
+- Les expériences archivées rejoignent `src/archives/` (emplacement existant du dépôt) au lieu d'un dossier `archive/` à la racine. Site inchangé.
 
 ## [2026.10.12] - 2026-10-05
 
