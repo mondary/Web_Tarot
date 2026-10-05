@@ -76,7 +76,8 @@ with sync_playwright() as p:
             page.locator('#sp-fan').screenshot(path=str(Path(capture) / '05-tirage-eventail-mobile.png'))
         assert page.locator('#sp-fan-pick').count() == 0
         assert page.locator('#sp-fan .selected').evaluate("el => el.style.getPropertyValue('--out')") == '16px'
-        assert page.locator('#sp-fan .selected svg').count() == 1
+        assert page.locator('#sp-fan .selected .sp-fan-back > svg').count() == 1
+        assert not page.locator('#sp-fan .selected .sp-fan-edge').is_visible()
         before = page.locator('#sp-fan-count').inner_text()
         swipe(page)
         expect(page.locator('#sp-fan-count')).not_to_have_text(before)

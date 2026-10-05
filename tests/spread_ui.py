@@ -95,6 +95,11 @@ with sync_playwright() as p:
     page.locator('#sp-menu-list .sp-item').nth(2).click()
     page.locator('#sp-cut-go').click()
     expect(page.locator('#sp-fan')).to_be_visible()
+    # The narrow visible strips must show a geometric back motif, not just a border.
+    edge = page.locator('#sp-fan .sp-fan-card').nth(38).locator('.sp-fan-edge svg')
+    expect(edge).to_be_visible()
+    assert edge.bounding_box()['width'] >= 10
+    assert edge.evaluate('el=>getComputedStyle(el).color') != 'rgba(0, 0, 0, 0)'
     page.mouse.move(710, 100)
     page.wait_for_timeout(250)
     assert page.locator('#sp-fan .lift').count() == 0
@@ -115,5 +120,5 @@ with sync_playwright() as p:
     capture = os.environ.get('CAPTURE_DIR')
     if capture:
         page.locator('#sp-fan').screenshot(path=str(Path(capture) / '04-tirage-eventail.png'))
-    print('PASS desktop: actual mouse hover lifts one card ~16px, clears off deck, stable target')
+    print('PASS desktop: geometric back motif visible on card edges; hover lifts one card ~16px')
     browser.close()

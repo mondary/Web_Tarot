@@ -6,7 +6,7 @@ Toutes les notes de release du projet Web Tarot. Le format de version suit `vYYY
 
 ## TODO — Roadmap
 
-Statut : `2026.10.09`
+Statut : `2026.10.10`
 
 ### Phase 1 — Fondations ✅
 - [x] Interface V2 unifiée (carousel d'accueil + grille par famille + vue détail)
@@ -37,6 +37,13 @@ Statut : `2026.10.09`
 ---
 
 ## Releases
+
+## [2026.10.10] - 2026-10-05
+
+### Fixed
+- Le service worker donne priorité au réseau pour la page et le script des tirages, et affiche un état explicite si une image non mise en cache est demandée hors connexion, sans rejet non intercepté.
+- Le script des tirages porte désormais la version courante dans son URL pour éviter une ancienne interface conservée par le navigateur. Aucune publication.
+- Les bandes visibles des cartes de l'éventail desktop montrent à nouveau un petit motif géométrique doré, tandis que la carte entière garde son grand symbole central.
 
 ## [2026.10.09] - 2026-10-04
 

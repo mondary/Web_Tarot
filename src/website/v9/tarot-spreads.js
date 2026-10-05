@@ -425,10 +425,14 @@
   transform-origin:50% 50%;transition:transform .15s ease-out;
   transform:rotate(var(--a)) translateX(calc(var(--R) + var(--out,0px))) rotate(90deg) scale(var(--s,1));opacity:var(--o,1)}
 .sp-fan-card.rad.picked{transform:rotate(var(--a)) translateX(calc(var(--R) + 28px)) rotate(90deg) scale(1.08)}
-.sp-fan-back{display:flex;align-items:center;justify-content:center;width:100%;aspect-ratio:2/3;border-radius:.65rem;
+.sp-fan-back{position:relative;display:flex;align-items:center;justify-content:center;width:100%;aspect-ratio:2/3;border-radius:.65rem;
   background:linear-gradient(135deg,#17130e,#262019);border:1px solid rgba(201,162,39,.32);
   box-shadow:0 10px 26px rgba(0,0,0,.55);transition:border-color .2s,box-shadow .2s}
 .sp-fan-back svg{width:40%;height:40%;color:rgba(201,162,39,.45)}
+/* Sur bureau, seule une bande de chaque carte dépasse : le motif central est recouvert. */
+.sp-fan-edge{display:none}
+.sp-fan-card:not(.rad) .sp-fan-edge{position:absolute;right:2px;top:50%;transform:translateY(-50%);display:flex;width:12px;height:12px}
+.sp-fan-card:not(.rad) .sp-fan-edge svg{width:100%;height:100%;color:rgba(201,162,39,.85)}
 /* survol piloté en JS (pas de :hover CSS) : évite le clignotement des cartes superposées */
 .sp-fan-card.lift{z-index:999;transform:translate(var(--x),calc(var(--y) - 16px)) rotate(var(--r)) scale(var(--s,1))}
 .sp-fan-card.lift .sp-fan-back{box-shadow:0 16px 34px rgba(0,0,0,.6)}
@@ -1045,7 +1049,7 @@
   }
 
   const FAN_SYMBOL='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width=".5" aria-hidden="true"><circle cx="12" cy="12" r="11"/><path d="M12 1v22M1 12h22M4 4l16 16M20 4 4 20"/></svg>';
-  const FAN_BACK='<span class="sp-fan-back">'+FAN_SYMBOL+'</span>';
+  const FAN_BACK='<span class="sp-fan-back">'+FAN_SYMBOL+'<span class="sp-fan-edge" aria-hidden="true">'+FAN_SYMBOL+'</span></span>';
   let fanAbort=null;
   let fanPickTimer=0,fanNextTimer=0,fanPicking=false,fanReturnFocus=null;
 
