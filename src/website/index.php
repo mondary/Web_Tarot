@@ -122,7 +122,7 @@ $ogId = (string)($_GET['carte'] ?? '');
 if ($ogId !== '') {
     foreach ($cards as $c) if ($c['id'] === $ogId) { $og = $c; break; }
 }
-$ver = '2026.10.15';
+$ver = '2026.10.16';
 ?>
 <!DOCTYPE html>
 <html lang="fr">

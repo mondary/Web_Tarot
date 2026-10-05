@@ -1,10 +1,10 @@
 {
   "name": "tarot-divinatoire-mobile",
   "private": true,
-  "version": "2026.10.15",
+  "version": "2026.10.16",
   "packageManager": "pnpm@11.22.0",
   "scripts": {
-    "mobile:prepare": "php -n -d auto_prepend_file= src/mobile/scripts/export.php",
+    "mobile:prepare": "php -d auto_prepend_file= src/mobile/scripts/export.php",
     "mobile:sync": "pnpm mobile:prepare && pnpm exec cap sync android && CAP_PLATFORM=ios pnpm exec cap sync ios",
     "mobile:icons": "mkdir -p src/mobile/resources && cp icon.png src/mobile/resources/icon.png && npx capacitor-assets generate --assetPath src/mobile/resources --ios --iconBackgroundColor '#10100e' --splashBackgroundColor '#10100e' && node Android/scripts/store-assets.cjs",
     "android:release": "pnpm android:sync && cd Android && ./gradlew assembleDebug bundleRelease",
