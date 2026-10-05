@@ -3,7 +3,7 @@ on:
   workflow_dispatch:
   push:
     branches: [main]
-    paths: ['Android/**', 'capacitor.config.ts', 'package.json', 'pnpm-lock.yaml', '.github/workflows/android-release.yml']
+    paths: ['Android/**', 'capacitor.config.ts', 'package.json', 'pnpm-lock.yaml', 'src/mobile/**', 'src/website/tarot-spreads.js', 'src/website/vault.sqlite', '.github/workflows/android-release.yml']
 permissions:
   contents: read
 jobs:
@@ -14,6 +14,8 @@ jobs:
       - uses: pnpm/action-setup@v4
       - uses: actions/setup-node@v4
         with: {node-version: 22, cache: pnpm}
+      - uses: shivammathur/setup-php@v2
+        with: {php-version: '8.3', extensions: pdo_sqlite}
       - uses: actions/setup-java@v4
         with: {distribution: temurin, java-version: '21'}
       - uses: android-actions/setup-android@v3
@@ -21,6 +23,8 @@ jobs:
           packages: platform-tools platforms;android-36 build-tools;35.0.0
       - run: pnpm install --frozen-lockfile
       - run: pnpm android:sync
+      - name: App version from package.json
+        run: echo "ANDROID_VERSION_NAME=$(node -p "require('./package.json').version")" >> "$GITHUB_ENV"
       - name: Configure optional upload signing
         env:
           KEYSTORE: ${{ secrets.ANDROID_KEYSTORE_BASE64 }}

@@ -6,7 +6,7 @@ Toutes les notes de release du projet Web Tarot. Le format de version suit `vYYY
 
 ## TODO — Roadmap
 
-Statut : `2026.10.13`
+Statut : `2026.10.14`
 
 ### Phase 1 — Fondations ✅
 - [x] Interface V2 unifiée (carousel d'accueil + grille par famille + vue détail)
@@ -37,6 +37,17 @@ Statut : `2026.10.13`
 ---
 
 ## Releases
+
+## [2026.10.14] - 2026-10-05
+
+### Added
+- **Apps Android et iOS unifiées** : une seule interface mobile (rituel, bibliothèque, journal) embarquant le moteur complet des tirages du site — coupe, éventail tactile, croix de décision, passé-présent-futur, tirage du prénom, modes piocher/rapide et ordre prédéterminé/libre. Bouton flottant « Tirages » au-dessus de la navigation basse.
+- `tests/mobile_app.py` : régression tactile du bundle mobile (78 cartes, rituel, tirage complet révélé au pixel, journal, zéro erreur/CSP).
+
+### Changed
+- `src/mobile/src` devient la source unique des deux plateformes ; `Android/web` et `Android/scripts/prepare.py` sont retirés au profit de l'export `mobile:prepare` unique. `capacitor.config.ts` pointe les deux plateformes vers `src/mobile/www`.
+- versionName Android et CFBundleShortVersionString iOS alignés sur le CalVer du dépôt via la CI ; versionCode et CFBundleVersion suivent le numéro d'exécution.
+- Kit store actualisé : descriptions Google Play, visuel 1024×500 et captures réelles 1080×2400 (rituel, bibliothèque, journal, menu des tirages).
 
 ## [2026.10.13] - 2026-10-05
 

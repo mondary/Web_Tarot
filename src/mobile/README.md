@@ -1,8 +1,14 @@
 # Tarot Divinatoire mobile
 
-La source mobile est une application Capacitor **hors ligne**. Au build,
-`src/mobile/scripts/export.php` extrait les données, les 78 illustrations et les polices
-du vault V9 vers `src/mobile/www/`, puis Capacitor les intègre à Android et iOS.
+La source mobile est une application Capacitor **hors ligne**, partagée par Android et iOS.
+Au build, `src/mobile/scripts/export.php` copie l'interface unifiée de `src/mobile/src/`,
+le moteur des tirages `src/website/tarot-spreads.js`, puis extrait les données, les 78
+illustrations et les polices du vault vers `src/mobile/www/`, que Capacitor intègre aux
+deux plateformes.
+
+L'interface propose le rituel du jour, **les tirages complets** (coupe à la hauteur choisie,
+éventail tactile, croix de décision, passé-présent-futur, tirage du prénom, modes piocher/rapide
+et ordre prédéterminé/libre), la bibliothèque des 78 cartes avec recherche et le journal personnel.
 
 ## Packages livrés
 

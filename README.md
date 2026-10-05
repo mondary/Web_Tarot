@@ -83,7 +83,7 @@ le navigateur bloque alors `fetch()` vers SQLite et le chargement de WebAssembly
 
 ## 📋 Voir le [CHANGELOG](CHANGELOG.md) pour l'historique complet.
 
-Version locale courante : **2026.10.13**
+Version locale courante : **2026.10.14**
 
 ## 🔗 Liens
 

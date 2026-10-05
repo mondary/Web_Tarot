@@ -6,6 +6,7 @@ $root = dirname(__DIR__, 3);
 $source = $root . '/src/website/vault.sqlite';
 $web = $root . '/src/mobile/www';
 $template = $root . '/src/mobile/src';
+$spreads = $root . '/src/website/tarot-spreads.js';
 
 if (!is_file($source)) { fwrite(STDERR, "V9 vault not found.\n"); exit(1); }
 
@@ -26,6 +27,7 @@ function copy_tree(string $from, string $to): void {
 remove_tree($web);
 mkdir($web, 0775, true);
 copy_tree($template, $web);
+copy($spreads, $web . '/tarot-spreads.js');
 
 $db = new PDO('sqlite:' . $source, null, null, [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]);
 $rows = $db->query("SELECT path, data FROM vault WHERE path='/app-data.json' OR path LIKE '/img/%' OR path LIKE '/fonts/%'");

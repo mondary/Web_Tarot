@@ -23,6 +23,11 @@ jobs:
       - run: pnpm install --frozen-lockfile
       - run: npm run mobile:icons
       - run: npx cap add ios
+      - name: App version from package.json
+        run: |
+          VERSION=$(node -p "require('./package.json').version")
+          /usr/libexec/PlistBuddy -c "Set :CFBundleShortVersionString $VERSION" ios/App/App/Info.plist
+          /usr/libexec/PlistBuddy -c "Set :CFBundleVersion ${{ github.run_number }}" ios/App/App/Info.plist
       - run: npm run ios:build
       - run: mkdir -p release/ios && cp -R ios/App/build/Build/Products/Release-iphoneos/App.app release/ios/TarotDivinatoire-unsigned.app
       - name: Upload unsigned iOS app
