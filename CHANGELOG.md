@@ -6,7 +6,7 @@ Toutes les notes de release du projet Web Tarot. Le format de version suit `vYYY
 
 ## TODO — Roadmap
 
-Statut : `2026.10.10`
+Statut : `2026.10.11`
 
 ### Phase 1 — Fondations ✅
 - [x] Interface V2 unifiée (carousel d'accueil + grille par famille + vue détail)
@@ -37,6 +37,11 @@ Statut : `2026.10.10`
 ---
 
 ## Releases
+
+## [2026.10.11] - 2026-10-05
+
+### Changed
+- Publication en ligne de la V9 sur mondary.design : croix révélée, écran dédié du tirage du Prénom, relief au survol desktop, motifs du dos dans l'éventail et coffret SQLite à jour. `sw.js` est désormais servi avec un cache HTTP court (10 min) pour que les navigateurs déjà inscrits récupèrent vite le service worker à jour.
 
 ## [2026.10.10] - 2026-10-05
 

@@ -94,7 +94,9 @@ if (preg_match('#^/(manifest\.json|sw\.js|icon-\d+\.png)$#', $path, $m)) {
             default => 'application/octet-stream',
         };
         header('Content-Type: ' . $mime);
-        header('Cache-Control: public, max-age=86400');
+        // sw.js : cache court pour que les navigateurs déjà inscrits récupèrent
+        // rapidement la nouvelle version du service worker.
+        header('Cache-Control: public, max-age=' . ($m[1] === 'sw.js' ? 600 : 86400));
         readfile($file);
         exit;
     }
@@ -120,7 +122,7 @@ $ogId = (string)($_GET['carte'] ?? '');
 if ($ogId !== '') {
     foreach ($cards as $c) if ($c['id'] === $ogId) { $og = $c; break; }
 }
-$ver = '2026.10.10';
+$ver = '2026.10.11';
 ?>
 <!DOCTYPE html>
 <html lang="fr">
