@@ -6,7 +6,7 @@ Toutes les notes de release du projet Web Tarot. Le format de version suit `vYYY
 
 ## TODO — Roadmap
 
-Statut : `2026.10.16`
+Statut : `2026.10.17`
 
 ### Phase 1 — Fondations ✅
 - [x] Interface V2 unifiée (carousel d'accueil + grille par famille + vue détail)
@@ -37,6 +37,11 @@ Statut : `2026.10.16`
 ---
 
 ## Releases
+
+## [2026.10.17] - 2026-10-05
+
+### Added
+- CI Android : étape d'upload Google Play (piste interne), automatique dès que le secret `GOOGLE_PLAY_SERVICE_ACCOUNT_JSON` est renseigné.
 
 ## [2026.10.16] - 2026-10-05
 
