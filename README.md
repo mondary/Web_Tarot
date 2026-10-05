@@ -49,7 +49,7 @@ Un site éditorial pour explorer les 78 lames du Tarot de Rider-Waite-Smith, leu
 
 ## ⚙️ Réglages
 
-La palette globale et les couleurs d'accent sont définies via les variables CSS du bloc `:root` dans `src/website/v9/index.php`.
+La palette globale et les couleurs d'accent sont définies via les variables CSS du bloc `:root` dans `src/website/index.php`.
 
 ## 🧾 Commandes
 
@@ -70,11 +70,11 @@ La V9 ne nécessite pas de build : `index.php` sert l'interface et les ressource
 
 ## 🧪 Test local
 
-Le site (V9) se lance depuis `src/website/v9/` avec `launch.command` (double-clic
+Le site (V9) se lance depuis `src/website/` avec `launch.command` (double-clic
 macOS : port libre, PHP, ouvre le navigateur), ou en CLI :
 
 ```bash
-php -n -d auto_prepend_file= -S 127.0.0.1:8772 -t src/website/v9 src/website/v9/index.php
+php -n -d auto_prepend_file= -S 127.0.0.1:8772 -t src/website src/website/index.php
 ```
 
 Pour tester les versions archivées (V2 à V7, extraites depuis les branches git),
@@ -83,7 +83,7 @@ le navigateur bloque alors `fetch()` vers SQLite et le chargement de WebAssembly
 
 ## 📋 Voir le [CHANGELOG](CHANGELOG.md) pour l'historique complet.
 
-Version locale courante : **2026.10.11**
+Version locale courante : **2026.10.12**
 
 ## 🔗 Liens
 

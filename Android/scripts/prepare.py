@@ -6,7 +6,7 @@ web = android / 'www'
 web.mkdir(exist_ok=True)
 for source in (android / 'web').iterdir():
     if source.is_file(): shutil.copy2(source, web / source.name)
-with sqlite3.connect(android.parent / 'src/website/v9/vault.sqlite') as db:
+with sqlite3.connect(android.parent / 'src/website/vault.sqlite') as db:
     for name, data in db.execute("SELECT path,CAST(data AS BLOB) FROM vault WHERE path='/app-data.json' OR path LIKE '/img/%' OR path LIKE '/fonts/%'"):
         target = web / name.lstrip('/')
         target.parent.mkdir(parents=True, exist_ok=True)

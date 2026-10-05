@@ -49,7 +49,7 @@ An editorial website for exploring the 78 Rider-Waite-Smith Tarot cards, their m
 
 ## ⚙️ Settings
 
-The global palette and accent colors are defined through CSS variables in the `:root` block of `src/website/v9/index.php`.
+The global palette and accent colors are defined through CSS variables in the `:root` block of `src/website/index.php`.
 
 ## 🧾 Shortcuts
 
@@ -70,11 +70,11 @@ V9 requires no build step: `index.php` serves the interface and resources, while
 
 ## 🧪 Local test
 
-The site (V9) runs from `src/website/v9/` with `launch.command` (macOS
+The site (V9) runs from `src/website/` with `launch.command` (macOS
 double-click: free port, PHP, opens the browser), or from the CLI:
 
 ```bash
-php -n -d auto_prepend_file= -S 127.0.0.1:8772 -t src/website/v9 src/website/v9/index.php
+php -n -d auto_prepend_file= -S 127.0.0.1:8772 -t src/website src/website/index.php
 ```
 
 To test the archived versions (V2 through V7, extracted from the git branches), use
@@ -83,7 +83,7 @@ browser blocks `fetch()` to SQLite and WebAssembly loading.
 
 ## 📋 See [CHANGELOG](CHANGELOG.md) for full history.
 
-Current local version: **2026.10.11**
+Current local version: **2026.10.12**
 
 ## 🔗 Links
 

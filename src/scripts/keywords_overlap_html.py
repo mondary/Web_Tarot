@@ -8,7 +8,7 @@ from collections import defaultdict
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
-DB = ROOT / 'src/website/v9/vault.sqlite'
+DB = ROOT / 'src/website/vault.sqlite'
 OUT = ROOT / 'benchmarks/keywords/analyse.html'
 
 FAMNAMES = {'majors': 'Majeurs', 'batons': 'Bâtons', 'epees': 'Épées', 'coupes': 'Coupes', 'deniers': 'Deniers'}

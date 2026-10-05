@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 /** Convert the V9 SQLite vault into immutable Capacitor web assets. */
 $root = dirname(__DIR__, 3);
-$source = $root . '/src/website/v9/vault.sqlite';
+$source = $root . '/src/website/vault.sqlite';
 $web = $root . '/src/mobile/www';
 $template = $root . '/src/mobile/src';
 
