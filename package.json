@@ -1,7 +1,7 @@
 {
   "name": "tarot-divinatoire-mobile",
   "private": true,
-  "version": "2026.10.14",
+  "version": "2026.10.15",
   "packageManager": "pnpm@11.22.0",
   "scripts": {
     "mobile:prepare": "php -n -d auto_prepend_file= src/mobile/scripts/export.php",
