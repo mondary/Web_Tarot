@@ -6,7 +6,7 @@ Toutes les notes de release du projet Web Tarot. Le format de version suit `vYYY
 
 ## TODO — Roadmap
 
-Statut : `2026.10.19`
+Statut : `2026.10.20`
 
 ### Phase 1 — Fondations ✅
 - [x] Interface V2 unifiée (carousel d'accueil + grille par famille + vue détail)
@@ -37,6 +37,17 @@ Statut : `2026.10.19`
 ---
 
 ## Releases
+
+## [2026.10.20] - 2026-10-06
+
+### Fixed
+- L'application Android et l'archive iOS embarquent désormais le **véritable site V9**, au lieu de l'interface mobile parallèle qui ne respectait ni son design ni ses fonctions. L'export PHP convertit les images des trois jeux, les polices, les SVG et les associations du vault en ressources hors ligne ; les tirages utilisent le même JS que le site.
+- Retour système Android adapté aux panneaux et fiches du site ; couleurs natives alignées sur sa palette. Test de parité visuelle site/export et régressions tactiles sur le bundle.
+- Kit Google Play corrigé : captures du vrai site, descriptions et politique de confidentialité sans promesse de journal absent.
+
+### Changed
+- Générations d'images CLM regroupées sous `src/TAROTclm/` et ajoutées à Git avec leurs sous-dossiers ; archive expérimentale Rust V12 retirée, y compris son cache local de compilation. Les benchmarks, le kit store et les releases restent inchangés.
+- `node_modules` n'est requis que pour empaqueter les apps natives dans la CI ; le site et son export PHP ne l'utilisent pas.
 
 ## [2026.10.19] - 2026-10-06
 

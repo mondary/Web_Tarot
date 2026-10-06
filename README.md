@@ -6,6 +6,8 @@
 
 Un site éditorial pour explorer les 78 lames du Tarot de Rider-Waite-Smith, leurs significations et leurs associations.
 
+L’application Android embarque **cette même interface**, avec ses thèmes, ses trois jeux et ses tirages ; le site PHP est exporté en ressources locales pour fonctionner hors ligne. L’APK de test se trouve dans `release/android/tarot-divinatoire-debug.apk`. Capacitor/pnpm ne servent qu’à la compilation native en CI : aucun `node_modules` n’est nécessaire pour lancer le site ou exporter ses ressources. Les générations d’images CLM sont regroupées dans `src/TAROTclm/` et suivies par Git.
+
 ![Réglages et soutien](store/screenshots/01-reglages.png)
 
 ![Couper le paquet](store/screenshots/03-tirage-coupe.png)
@@ -83,7 +85,7 @@ le navigateur bloque alors `fetch()` vers SQLite et le chargement de WebAssembly
 
 ## 📋 Voir le [CHANGELOG](CHANGELOG.md) pour l'historique complet.
 
-Version locale courante : **2026.10.19**
+Version locale courante : **2026.10.20**
 
 ## 🔗 Liens
 

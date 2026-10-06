@@ -6,6 +6,8 @@
 
 An editorial website for exploring the 78 Rider-Waite-Smith Tarot cards, their meanings, and their associations.
 
+The Android app bundles **this exact interface**, including its themes, three decks and spreads; the PHP site is exported to local assets for offline use. The test APK is at `release/android/tarot-divinatoire-debug.apk`. Capacitor/pnpm are used only for native CI packaging: no local `node_modules` is needed to run the website or export it. CLM image generations are grouped under `src/TAROTclm/` and tracked in Git.
+
 ![Settings and support](store/screenshots/01-reglages.png)
 
 ![Cutting the deck](store/screenshots/03-tirage-coupe.png)
@@ -83,7 +85,7 @@ browser blocks `fetch()` to SQLite and WebAssembly loading.
 
 ## 📋 See [CHANGELOG](CHANGELOG.md) for full history.
 
-Current local version: **2026.10.19**
+Current local version: **2026.10.20**
 
 ## 🔗 Links
 

@@ -1,8 +1,8 @@
 # Tarot Divinatoire — Android
 
-Application Capacitor hors ligne. Une seule interface web partagée avec iOS, incluant le moteur complet des tirages.
+Application Capacitor hors ligne. Son écran est le **vrai site web**, rendu depuis `src/website/index.php` ; aucune interface Android parallèle.
 
-- `src/mobile/src/` (au dépôt racine) : interface unifiée — rituel, tirages (coupe, éventail, croix, prénom), bibliothèque, journal.
+- `src/mobile/scripts/export.php` : rend la page du site et extrait toutes ses ressources du vault dans `src/mobile/www/`.
 - `src/website/tarot-spreads.js` : moteur des tirages embarqué tel quel depuis le site V9.
 - `app/`, `gradle/` : projet natif, identifiant `fr.mondary.tarotdivinatoire`.
 - `store/` : textes, visuels, confidentialité et procédure de publication.
@@ -14,6 +14,6 @@ La compilation s’effectue dans GitHub Actions, workflow **Android release** (J
 
 ## Fonctionnement
 
-Carte quotidienne mémorisée selon la date locale, tirages complets en mode piocher (coupe à la hauteur choisie, éventail tactile) ou rapide, ordre prédéterminé ou libre, recherche insensible aux accents, filtres par famille, lectures thématiques, notes et suppression locale. Les 78 illustrations et les polices sont embarquées. Sans publicité, compte, analytics ou permission sensible. Sauvegarde Android désactivée.
+Carte du jour, tirages complets en mode piocher (coupe et éventail tactile) ou rapide, ordre prédéterminé ou libre, recherche, filtres par famille, associations et lectures thématiques. Les 78 cartes des jeux RWS, CLM et Marseille ainsi que les polices sont embarquées. Thèmes Nuit, Ivoire et Sylve. Sans publicité, compte, analytics ou permission sensible. Sauvegarde Android désactivée.
 
-La désinstallation efface le journal. Les lectures sont symboliques ; aucun service de prédiction n’est fourni.
+La désinstallation efface les préférences locales. Il n'y a pas de journal de notes. Les lectures sont symboliques ; aucun service de prédiction n’est fourni.

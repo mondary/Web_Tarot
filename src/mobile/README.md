@@ -1,24 +1,31 @@
 # Tarot Divinatoire mobile
 
-La source mobile est une application Capacitor **hors ligne**, partagée par Android et iOS.
-Au build, `src/mobile/scripts/export.php` copie l'interface unifiée de `src/mobile/src/`,
-le moteur des tirages `src/website/tarot-spreads.js`, puis extrait les données, les 78
-illustrations et les polices du vault vers `src/mobile/www/`, que Capacitor intègre aux
-deux plateformes.
+La source mobile est **le site actuel** `src/website/index.php`, exporté hors ligne
+par `src/mobile/scripts/export.php`. Le même HTML, CSS et JavaScript que la version
+web sont intégrés à Android et iOS ; seul le routage PHP des ressources est remplacé
+par des fichiers locaux. Le vault fournit les illustrations des trois jeux, les
+associations, les symboles et les polices. `src/mobile/src/` ne contient que la
+politique de confidentialité, **pas une seconde interface**.
 
-L'interface propose le rituel du jour, **les tirages complets** (coupe à la hauteur choisie,
-éventail tactile, croix de décision, passé-présent-futur, tirage du prénom, modes piocher/rapide
-et ordre prédéterminé/libre), la bibliothèque des 78 cartes avec recherche et le journal personnel.
+L'interface reprend les thèmes, les trois jeux, la bibliothèque des 78 cartes,
+les associations et les tirages complets du site (coupe, éventail, croix,
+passé-présent-futur, prénom, modes piocher/rapide et ordre libre). Il n'y a pas
+de journal de notes dans le site ni dans ce bundle mobile.
+
+`node_modules/` n'est pas nécessaire pour consulter le site ni pour l'export PHP :
+les dépendances pnpm/Capacitor servent uniquement à empaqueter les plateformes
+natives, en CI. Le dossier local peut être supprimé et recréé avec `pnpm install`.
 
 ## Packages livrés
 
-- `release/android/tarot-divinatoire.aab` : bundle Android à signer et publier sur Google Play.
+- `release/android/tarot-divinatoire-debug.apk` : APK installable pour essais.
+- `release/android/tarot-divinatoire-signed.aab` : bundle Android signé pour Google Play.
 - `release/ios/TarotDivinatoire-unsigned.app` : build iOS non signé, utile pour vérifier la
   compilation. Un IPA App Store nécessite le compte Apple Developer, un identifiant d’app
   enregistré et des certificats/profils de provisionnement.
 
-Les dossiers sont créés par le workflow GitHub Actions **Mobile release packages** ; les
-paquets sont ensuite disponibles comme artefacts du workflow.
+Les artefacts sont générés par les workflows GitHub Actions **Android release**
+et **Mobile release packages**, puis téléchargeables depuis leurs runs.
 
 ## Publication Store
 

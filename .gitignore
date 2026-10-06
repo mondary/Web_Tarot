@@ -18,7 +18,6 @@ node_modules/
 *.keystore
 *.jks
 /ios/
-/src/clm_borderless/
 /release/
 build/
 .env
@@ -33,10 +32,6 @@ __pycache__/
 # Sources locales
 website/sources/
 screenshots/
-/src/TAROTclm/
 
-# v12-rust (genere)
-/src/website/v12-rust/target/
-/src/website/v12-rust/www/
 .inspi
 dist/

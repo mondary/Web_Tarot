@@ -6,7 +6,7 @@ const config: CapacitorConfig = {
   webDir: 'src/mobile/www',
   bundledWebRuntime: false,
   ios: { contentInset: 'always' },
-  android: { path: 'Android', allowMixedContent: false, adjustMarginsForEdgeToEdge: 'force', backgroundColor: '#101d2b' }
+  android: { path: 'Android', allowMixedContent: false, adjustMarginsForEdgeToEdge: 'force', backgroundColor: '#0a0907' }
 };
 
 export default config;

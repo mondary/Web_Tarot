@@ -24,3 +24,16 @@ Les tests sur téléphone et TalkBack restent à effectuer avant soumission (voi
 - Bouton flottant Tirages au-dessus de la navigation basse, masqué sur le rituel.
 - Journal fonctionnel après un tirage ; zéro erreur JavaScript, zéro violation CSP.
 - Captures store réelles 1080 × 2400 : rituel, bibliothèque, journal, menu des tirages.
+
+# Validation du 6 octobre 2026 — retour au site réel
+
+L'interface mobile distincte ci-dessus a été retirée. `src/mobile/scripts/export.php`
+rend désormais `src/website/index.php` tel quel ; les routes du vault deviennent
+des fichiers locaux. Le test `src/tests/mobile_app.py` compare le rendu mobile
+au site PHP (différence moyenne < 3/255 par canal) et vérifie les tirages,
+les associations, les jeux CLM et Marseille, et l'absence de requêtes en échec.
+`src/tests/mobile_draw.py` et `src/tests/spread_ui.py` passent sur le bundle
+statique aux largeurs 320, 390 et 430 px ainsi qu'en paysage 844 × 390.
+Les captures store actuelles montrent l'accueil, une fiche, le menu des tirages
+et la croix révélée du **site** ; les captures précédentes n'étaient pas
+représentatives de ce produit.

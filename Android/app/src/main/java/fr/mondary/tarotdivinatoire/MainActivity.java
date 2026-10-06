@@ -12,7 +12,7 @@ public class MainActivity extends BridgeActivity {
             @Override
             public void handleOnBackPressed() {
                 bridge.getWebView().evaluateJavascript(
-                    "(function(){var d=document.querySelector('dialog[open]');if(d){d.close();return true;}var v=document.querySelector('#rituel');if(v&&v.hidden){document.querySelector('[data-view=rituel]').click();return true;}return false;})()",
+                    "(function(){if(document.querySelector('#sp-drawer.open,#sp-fan.open,#sp-cut.open,#sp-name-screen.open,#sp-spread.open,#sp-menu.open,#search.open,#learn.open,#nuances.open,#setPanel.open')){document.dispatchEvent(new KeyboardEvent('keydown',{key:'Escape',bubbles:true}));return true;}if(document.querySelector('#detail.open')){closeDetail();return true;}return false;})()",
                     handled -> {
                         if (!"true".equals(handled)) {
                             if (bridge.getWebView().canGoBack()) bridge.getWebView().goBack();

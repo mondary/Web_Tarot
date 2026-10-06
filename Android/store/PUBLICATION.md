@@ -21,12 +21,12 @@ La CI utilise son numéro d’exécution comme versionCode : vérifier qu’il d
 2. Renseigner l’adresse e-mail de support réelle, l’identité et les coordonnées du développeur ; choisir pays et prix.
 3. Héberger `privacy.html` et renseigner son URL publique. Vérifier les coordonnées de contact du document.
 4. Coller les textes, téléverser l’icône, la feature graphic et les captures. Captures issues du rendu web réel de l’app ; valider aussi le résultat natif sur téléphone avant soumission.
-5. Sécurité des données : aucune donnée collectée ni partagée ; notes et tirages traités uniquement localement. Aucun SDK publicitaire ou analytique.
+5. Sécurité des données : aucune donnée collectée ni partagée ; préférences et carte du jour traitées uniquement localement. Aucun SDK publicitaire ou analytique.
 6. Publicités : non. Accès à l’application : toutes les fonctions accessibles sans compte. Aucun achat intégré.
 7. Compléter sincèrement le questionnaire IARC et sélectionner l’audience visée ; ne pas inventer une classification avant la réponse de Google.
 8. Vérifier les droits des textes et illustrations pour les pays distribués (Rider–Waite–Smith, Pamela Colman Smith, 1909). Aucun transfert de droits n’est présumé par la génération du paquet.
 9. Importer l’AAB signé en test interne, puis satisfaire l’éventuel test fermé imposé au compte. Consulter le rapport de pré-lancement.
-10. Tester sur Android : lancement hors ligne, rotation, retour système, taille de texte élevée, recherche, lecture, journal après redémarrage, suppression et TalkBack. Soumettre ensuite à examen.
+10. Tester sur Android : lancement hors ligne, rotation, retour système, taille de texte élevée, recherche, fiche de lame, associations, thèmes, jeux alternatifs et TalkBack. Soumettre ensuite à examen.
 
 ## Références officielles vérifiées le 19 septembre 2026
 
