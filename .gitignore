@@ -33,8 +33,10 @@ __pycache__/
 # Sources locales
 website/sources/
 screenshots/
-/TAROTclm/
+/src/TAROTclm/
 
 # v12-rust (genere)
 /src/website/v12-rust/target/
 /src/website/v12-rust/www/
+.inspi
+dist/

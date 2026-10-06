@@ -9,7 +9,7 @@ from pathlib import Path
 from PIL import Image, ImageStat
 from playwright.sync_api import sync_playwright, expect
 
-ROOT = Path(__file__).resolve().parents[1]
+ROOT = Path(__file__).resolve().parents[2]
 WWW = ROOT / 'src/mobile/www'
 PORT = int(os.environ.get('APP_PORT', '8773'))
 CHROME = os.environ.get('CHROME_PATH')

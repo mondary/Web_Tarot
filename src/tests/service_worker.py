@@ -10,7 +10,7 @@ local_chrome = Path.home() / 'Library/Caches/ms-playwright/chromium-1228/chrome-
 if not CHROME and local_chrome.exists():
     CHROME = str(local_chrome)
 
-source = (Path(__file__).resolve().parents[1] / 'src/website/sw.js').read_text()
+source = (Path(__file__).resolve().parents[2] / 'src/website/sw.js').read_text()
 CACHE = re.search(r"const CACHE = '([^']+)'", source).group(1)
 VERSION = CACHE.removeprefix('tarot-v')
 

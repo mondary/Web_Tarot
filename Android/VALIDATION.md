@@ -16,7 +16,7 @@ Les tests sur téléphone et TalkBack restent à effectuer avant soumission (voi
 
 # Validation du 5 octobre 2026 — interface unifiée + moteur des tirages
 
-`tests/mobile_app.py` (Chromium mobile tactile 390 × 844, bundle `src/mobile/www` servi localement) :
+`src/tests/mobile_app.py` (Chromium mobile tactile 390 × 844, bundle `src/mobile/www` servi localement) :
 
 - Interface partagée Android/iOS : rituel, bibliothèque (78 cartes), journal.
 - Moteur des tirages complet embarqué : menu, croix en mode rapide, cinq cartes
