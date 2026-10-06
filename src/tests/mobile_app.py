@@ -56,6 +56,7 @@ with sync_playwright() as p:
     page.get_by_role('button', name='Tirages', exact=True).tap()
     expect(page.locator('#sp-menu')).to_be_visible()
     page.keyboard.press('Escape')
+    assert page.locator('#iosInstallBtn').get_attribute('hidden') is not None
     page.evaluate('openDetail(0)')
     expect(page.locator('#assocsCount')).not_to_have_text('Associations')
     assert page.locator('#heroImg').evaluate('(i) => i.naturalWidth') > 0
@@ -86,6 +87,16 @@ with sync_playwright() as p:
         source, mobile = screenshot(site), screenshot(URL)
         difference = ImageStat.Stat(ImageChops.difference(source, mobile)).mean
         assert sum(difference) / 3 < 3, f'Website/mobile visual drift: {difference}'
+    ios_ctx = browser.new_context(viewport={'width': 390, 'height': 844}, is_mobile=True, has_touch=True,
+                                  user_agent='Mozilla/5.0 (iPhone; CPU iPhone OS 17_5 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.5 Mobile/15E148 Safari/604.1')
+    ios_page = ios_ctx.new_page()
+    ios_page.goto(URL)
+    ios_page.get_by_role('button', name="Réglages d'affichage").tap()
+    expect(ios_page.locator('#iosInstallBtn')).to_be_visible()
+    ios_page.locator('#iosInstallBtn').tap()
+    expect(ios_page.locator('#iosInstallSteps')).to_be_visible()
+    assert 'accueil' in ios_page.locator('#iosInstallSteps').inner_text()
+    ios_ctx.close()
     ctx.close()
     browser.close()
-print('PASS mobile: website design, persistent text sizes, spreads, associations, alternate decks, offline assets')
+print('PASS mobile: website design, persistent text sizes, iOS install hint, spreads, associations, alternate decks, offline assets')

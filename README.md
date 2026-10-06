@@ -6,7 +6,7 @@
 
 Un site éditorial pour explorer les 78 lames du Tarot de Rider-Waite-Smith, leurs significations et leurs associations.
 
-L’application Android embarque **cette même interface**, avec ses thèmes, ses trois jeux et ses tirages ; le site PHP est exporté en ressources locales pour fonctionner hors ligne. L’APK à installer se trouve dans `release/android/tarot-divinatoire-release.apk` (clé durable). Capacitor/pnpm ne servent qu’à la compilation native en CI : aucun `node_modules` n’est nécessaire pour lancer le site ou exporter ses ressources. Les générations d’images CLM sont regroupées dans `src/TAROTclm/` et suivies par Git.
+L’application Android embarque **cette même interface**, avec ses thèmes, ses trois jeux et ses tirages ; le site PHP est exporté en ressources locales pour fonctionner hors ligne. L’APK à installer se trouve dans `release/android/tarot-divinatoire-release.apk` (clé durable) ou en téléchargement public dans les [Releases GitHub](https://github.com/mondary/Web_Tarot/releases). Capacitor/pnpm ne servent qu’à la compilation native en CI : aucun `node_modules` n’est nécessaire pour lancer le site ou exporter ses ressources. Les générations d’images CLM sont regroupées dans `src/TAROTclm/` et suivies par Git.
 
 ![Réglages et soutien](store/screenshots/01-reglages.png)
 
@@ -52,7 +52,7 @@ L’application Android embarque **cette même interface**, avec ses thèmes, se
 ## ⚙️ Réglages
 
 La palette globale et les couleurs d'accent sont définies via les variables CSS du bloc `:root` dans `src/website/index.php`.
-Dans **Réglages**, en bas de l'écran, choisissez **Petit**, **Normal** ou **Grand** sous « Taille du texte ». Ce choix est mémorisé sur l'appareil, sur le site comme dans l'app hors ligne. L'icône de l'application et du site provient de `icon.png` à la racine.
+Dans **Réglages**, en bas de l'écran, choisissez **Petit**, **Normal** ou **Grand** sous « Taille du texte ». Ce choix est mémorisé sur l'appareil, sur le site comme dans l'app hors ligne. L'icône de l'application et du site provient de `icon.png` à la racine. Sur iPhone/iPad, l'entrée **« Installer sur iPhone »** des Réglages installe le site comme application hors ligne (Partager → « Sur l'écran d'accueil »), sans passer par l'App Store.
 
 ## 🧾 Commandes
 
@@ -86,7 +86,7 @@ le navigateur bloque alors `fetch()` vers SQLite et le chargement de WebAssembly
 
 ## 📋 Voir le [CHANGELOG](CHANGELOG.md) pour l'historique complet.
 
-Version locale courante : **2026.10.23**
+Version locale courante : **2026.10.24**
 
 ## 🔗 Liens
 

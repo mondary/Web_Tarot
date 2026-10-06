@@ -122,7 +122,7 @@ $ogId = (string)($_GET['carte'] ?? '');
 if ($ogId !== '') {
     foreach ($cards as $c) if ($c['id'] === $ogId) { $og = $c; break; }
 }
-$ver = '2026.10.23';
+$ver = '2026.10.24';
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -232,6 +232,9 @@ a{color:inherit}
 .settings-panel .text-size-choices button[aria-pressed=true]{color:var(--ac);border-color:var(--ac);background:var(--ac-dim)}
 .settings-panel .tl{display:inline}
 .settings-panel .spd{margin-left:auto}
+.settings-panel .install-steps{font-family:"DM Mono",monospace;font-size:.58rem;letter-spacing:.05em;color:var(--muted);padding:.15rem .8rem .5rem;line-height:1.75}
+.settings-panel .install-steps b{color:var(--fg);font-weight:500}
+.settings-panel .install-steps[hidden]{display:none}
 .settings-panel .set-ver{font-family:"DM Mono",monospace;font-size:.55rem;letter-spacing:.14em;color:var(--muted);opacity:.7;text-align:center;padding:.35rem 0 .15rem;border-top:1px solid var(--line);margin-top:.25rem}
 /* lien Ko-fi : même habillage que les boutons du panneau + badge officiel */
 .settings-panel .kofi-link{display:flex;align-items:center;gap:.55rem;width:100%;padding:.6rem .8rem;border-radius:9px;
@@ -495,6 +498,8 @@ body:has(.d-stage.open) .brand{opacity:0;pointer-events:none}
           <button type="button" data-text-choice="large" aria-pressed="false" onclick="setTextSize('large')">Grand</button>
         </div>
       </div>
+      <button type="button" id="iosInstallBtn" aria-expanded="false" aria-label="Installer sur iPhone" hidden onclick="var s=document.getElementById('iosInstallSteps');s.hidden=!s.hidden;this.setAttribute('aria-expanded',String(!s.hidden))"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.3 2.9c.9-1.1 1.6-2.6 1.4-4.1-1.4.1-3 .9-3.9 2-.8.9-1.6 2.5-1.4 3.9 1.6.1 3-.8 3.9-1.8Zm4 8.7c0-2.1 1.3-3.2 1.4-3.3-1.4-2-3.4-2.2-4.1-2.3-1.8-.1-3.4 1-4.2 1s-2.2-1-3.6-1c-1.9 0-3.6 1.1-4.6 2.8-1.9 3.4-.5 8.4 1.4 11.2.9 1.3 2 2.8 3.4 2.8 1.4-.1 1.9-.9 3.5-.9s2 .9 3.5.9c1.4 0 2.4-1.3 3.3-2.7.6-.9.9-1.4 1.3-2.4-3.4-1.3-3.5-5.1-3.5-5.1Z"/></svg><span class="tl">Installer sur iPhone</span></button>
+      <div class="install-steps" id="iosInstallSteps" hidden>Dans Safari : bouton <b>Partager</b> <svg viewBox="0 0 24 24" style="height:.7rem;width:.7rem;fill:currentColor" aria-hidden="true"><path d="M12 3v10M7.5 7.5 12 3l4.5 4.5M5 13v6a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-6"/></svg> en bas, puis <b>« Sur l'écran d'accueil »</b>, puis <b>Ajouter</b>. L'application fonctionne alors hors ligne.</div>
       <button aria-label="Mode de tirage" id="drawModeBtn" onclick="TarotSpreads&&TarotSpreads.cycleDrawMode()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="8" width="7" height="12" rx="1.2" transform="rotate(-9 7 14)"/><rect x="9.5" y="5.5" width="7" height="12" rx="1.2" transform="rotate(3 13 11.5)"/><rect x="16" y="9" width="6" height="11" rx="1.2" transform="rotate(14 19 14.5)"/></svg><span class="tl" id="drawModeLbl">Rapide</span></button>
       <button id="kwFab" aria-pressed="false" aria-label="Mots-clés au survol" onclick="toggleKw()"><svg viewBox="0 0 24 24"><path d="M14.5 3a6.5 6.5 0 0 0-6.32 8.02L2.3 16.9a1 1 0 0 0-.3.7V21a1 1 0 0 0 1 1h2.5a1 1 0 0 0 1-1v-1.5H8a1 1 0 0 0 1-1v-1.5h1.5a1 1 0 0 0 .7-.3l.28-.28A6.5 6.5 0 1 0 14.5 3Zm2 6.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 0 0 3Z"/></svg>Mots-clés</button>
       <button id="autoFab" aria-pressed="false" aria-label="Diaporama automatique"><span class="ic-play">▶</span><span class="ic-pause">❚❚</span> Diaporama<span class="spd" id="autoSpd"></span></button>
@@ -605,6 +610,8 @@ function setTextSize(size){
   try{localStorage.setItem('tarotTextSize',size)}catch(e){}
 }
 try{setTextSize(localStorage.getItem('tarotTextSize')||'normal')}catch(e){setTextSize('normal')}
+// invitation installation PWA : uniquement iPhone/iPad sous Safari, hors app native et hors installation déjà faite
+(function(){const b=document.getElementById('iosInstallBtn');if(!b)return;const ios=/iphone|ipad|ipod/i.test(navigator.userAgent)||(navigator.platform==='MacIntel'&&navigator.maxTouchPoints>1);const installed=window.matchMedia('(display-mode: standalone)').matches||navigator.standalone===true;if(ios&&!installed&&!window.Capacitor)b.hidden=false})();
 function toggleSettings(e){e.stopPropagation();const p=document.getElementById('setPanel');const open=p.classList.toggle('open');document.getElementById('setFab').setAttribute('aria-expanded',String(open))}
 document.addEventListener('click',e=>{const p=document.getElementById('setPanel');if(p&&p.classList.contains('open')&&!e.target.closest('.settings-wrap'))p.classList.remove('open')});
 document.addEventListener('keydown',e=>{if(e.key==='Escape'){const p=document.getElementById('setPanel');if(p)p.classList.remove('open')}});

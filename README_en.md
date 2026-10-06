@@ -6,7 +6,7 @@
 
 An editorial website for exploring the 78 Rider-Waite-Smith Tarot cards, their meanings, and their associations.
 
-The Android app bundles **this exact interface**, including its themes, three decks and spreads; the PHP site is exported to local assets for offline use. Install the APK at `release/android/tarot-divinatoire-release.apk` (durable signing key). Capacitor/pnpm are used only for native CI packaging: no local `node_modules` is needed to run the website or export it. CLM image generations are grouped under `src/TAROTclm/` and tracked in Git.
+The Android app bundles **this exact interface**, including its themes, three decks and spreads; the PHP site is exported to local assets for offline use. Install the APK at `release/android/tarot-divinatoire-release.apk` (durable signing key) or from the public [GitHub Releases](https://github.com/mondary/Web_Tarot/releases). Capacitor/pnpm are used only for native CI packaging: no local `node_modules` is needed to run the website or export it. CLM image generations are grouped under `src/TAROTclm/` and tracked in Git.
 
 ![Settings and support](store/screenshots/01-reglages.png)
 
@@ -52,7 +52,7 @@ The Android app bundles **this exact interface**, including its themes, three de
 ## ⚙️ Settings
 
 The global palette and accent colors are defined through CSS variables in the `:root` block of `src/website/index.php`.
-In **Settings** at the bottom of the screen, choose **Petit**, **Normal** or **Grand** under “Taille du texte”. The choice is stored on the device, both on the website and in the offline app. The app and website icon comes from the root `icon.png`.
+In **Settings** at the bottom of the screen, choose **Petit**, **Normal** or **Grand** under “Taille du texte”. The choice is stored on the device, both on the website and in the offline app. The app and website icon comes from the root `icon.png`. On iPhone/iPad, the **“Installer sur iPhone”** entry in Settings installs the site as an offline app (Share → “Add to Home Screen”), without the App Store.
 
 ## 🧾 Shortcuts
 
@@ -86,7 +86,7 @@ browser blocks `fetch()` to SQLite and WebAssembly loading.
 
 ## 📋 See [CHANGELOG](CHANGELOG.md) for full history.
 
-Current local version: **2026.10.23**
+Current local version: **2026.10.24**
 
 ## 🔗 Links
 

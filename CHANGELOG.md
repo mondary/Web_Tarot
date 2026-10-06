@@ -6,7 +6,7 @@ Toutes les notes de release du projet Web Tarot. Le format de version suit `vYYY
 
 ## TODO — Roadmap
 
-Statut : `2026.10.23`
+Statut : `2026.10.24`
 
 ### Phase 1 — Fondations ✅
 - [x] Interface V2 unifiée (carousel d'accueil + grille par famille + vue détail)
@@ -37,6 +37,12 @@ Statut : `2026.10.23`
 ---
 
 ## Releases
+
+## [2026.10.24] - 2026-10-06
+
+### Added
+- Invitation « Installer sur iPhone » dans les Réglages, visible uniquement sur iPhone/iPad sous Safari et hors installation déjà faite : guide Partager → « Sur l'écran d'accueil ». Masquée sur Android, desktop et dans l'app native.
+- APK Android signé publié en Release GitHub publique (`v2026.10.24`), téléchargeable sans compte Play.
 
 ## [2026.10.23] - 2026-10-06
 
