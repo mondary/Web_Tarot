@@ -6,6 +6,9 @@ web sont intégrés à Android et iOS ; seul le routage PHP des ressources est r
 par des fichiers locaux. Le vault fournit les illustrations des trois jeux, les
 associations, les symboles et les polices. `src/mobile/src/` ne contient que la
 politique de confidentialité, **pas une seconde interface**.
+La taille du texte (Petit, Normal, Grand) est commune au site et au bundle ;
+elle est enregistrée localement dans chaque installation. L'icône native vient
+du `icon.png` de la racine, sans illustration de remplacement.
 
 L'interface reprend les thèmes, les trois jeux, la bibliothèque des 78 cartes,
 les associations et les tirages complets du site (coupe, éventail, croix,

@@ -122,7 +122,7 @@ $ogId = (string)($_GET['carte'] ?? '');
 if ($ogId !== '') {
     foreach ($cards as $c) if ($c['id'] === $ogId) { $og = $c; break; }
 }
-$ver = '2026.10.19';
+$ver = '2026.10.23';
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -130,7 +130,7 @@ $ver = '2026.10.19';
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=5">
 <title>Tarot Divinatoire</title>
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔮</text></svg>">
+<link rel="icon" type="image/png" href="<?= $base ?>/icon-192.png">
 <meta name="theme-color" content="#0a0907">
 <?php if ($og): ?>
 <meta property="og:title" content="<?= htmlspecialchars($og['name'], ENT_QUOTES) ?> — Tarot Divinatoire">
@@ -144,6 +144,8 @@ $ver = '2026.10.19';
 </style>
 <style>
 :root{--bg:#0a0907;--panel:#14120e;--panel2:#1a1712;--line:#2a2620;--fg:#f1ede4;--muted:#8a8174;--ac:#c9a227;--ac-dim:rgba(201,162,39,.18);--mat:#fff;--hero:#0a0a0a;--overlay:rgba(10,9,7,.85);--overlay-soft:rgba(10,9,7,.7);--cap-line:rgba(0,0,0,.08);--ease:cubic-bezier(.22,1,.36,1);--spring:cubic-bezier(.34,1.56,.64,1)}
+html[data-text-size=small]{font-size:90%}
+html[data-text-size=large]{font-size:120%}
 /* thèmes : nuit (défaut) / ivoire / sylve */
 html[data-theme=ivoire]{--bg:#efe9dc;--panel:#e4dcc9;--panel2:#dad1bb;--line:#c9bfa6;--fg:#221c12;--muted:#6f6450;--ac:#8a6d1d;--ac-dim:rgba(138,109,29,.16);--mat:#fffdf7;--hero:#e7dfcd;--overlay:rgba(239,233,220,.9);--overlay-soft:rgba(239,233,220,.75);--cap-line:rgba(60,50,30,.14)}
 html[data-theme=sylve]{--bg:#0a0f0b;--panel:#101812;--panel2:#16211a;--line:#23322a;--fg:#e8f0e6;--muted:#7e9180;--ac:#a3c98a;--ac-dim:rgba(163,201,138,.16);--mat:#fff;--hero:#0d130e;--overlay:rgba(10,15,11,.85);--overlay-soft:rgba(10,15,11,.7);--cap-line:rgba(0,0,0,.08)}
@@ -216,13 +218,18 @@ a{color:inherit}
 #autoFab .spd button{background:none;border:1px solid transparent;border-radius:3px;color:inherit;font:inherit;padding:.1rem .3rem;cursor:pointer}
 #autoFab .spd button.cur{border-color:var(--ac);color:var(--ac)}
 #autoFab{position:static}
-/* panneau réglages : les 4 options dans un seul menu */
+/* panneau réglages */
 .settings-wrap{position:relative}
 .settings-panel{position:absolute;bottom:calc(100% + .6rem);left:0;display:none;flex-direction:column;gap:.25rem;min-width:230px;padding:.55rem;background:var(--overlay);backdrop-filter:blur(12px);border:1px solid var(--line);border-radius:14px;box-shadow:0 18px 44px rgba(0,0,0,.55);z-index:1650}
 .settings-panel.open{display:flex}
 .settings-panel button{justify-content:flex-start;border-color:transparent;background:transparent;backdrop-filter:none;box-shadow:none;border-radius:9px;width:100%;padding:.6rem .8rem}
 .settings-panel button:hover{background:var(--ac-dim);border-color:transparent}
 .settings-panel button.on{background:var(--ac-dim);box-shadow:none}
+.settings-panel .text-size-setting{padding:.6rem .8rem;border-top:1px solid var(--line);margin-top:.15rem}
+.text-size-setting .text-size-label{display:block;color:var(--muted);font-family:"DM Mono",monospace;font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;margin-bottom:.5rem}
+.text-size-setting .text-size-choices{display:flex;gap:.35rem}
+.settings-panel .text-size-choices button{justify-content:center;flex:1;padding:.45rem .3rem;border:1px solid var(--line);border-radius:7px;min-height:2.5rem;font-size:.62rem;letter-spacing:0;text-transform:none}
+.settings-panel .text-size-choices button[aria-pressed=true]{color:var(--ac);border-color:var(--ac);background:var(--ac-dim)}
 .settings-panel .tl{display:inline}
 .settings-panel .spd{margin-left:auto}
 .settings-panel .set-ver{font-family:"DM Mono",monospace;font-size:.55rem;letter-spacing:.14em;color:var(--muted);opacity:.7;text-align:center;padding:.35rem 0 .15rem;border-top:1px solid var(--line);margin-top:.25rem}
@@ -480,6 +487,14 @@ body:has(.d-stage.open) .brand{opacity:0;pointer-events:none}
     <div class="settings-panel" id="setPanel">
       <button aria-label="Thème" id="themeBtn" onclick="cycleTheme()"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 3a9 9 0 1 0 0 18c.4 0 .8 0 1.2-.1a7 7 0 0 1 0-17.8c-.4-.1-.8-.1-1.2-.1Z"/></svg><span class="tl" id="themeLbl">Nuit</span></button>
       <button aria-label="Type de cartes" id="deckBtn" onclick="cycleDeck()"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M6 2h12a1 1 0 0 1 1 1v16.5a1 1 0 0 1-1.4.9L12 18l-5.6 2.4a1 1 0 0 1-1.4-.9V3a1 1 0 0 1 1-1Zm5 11.4 2.5-1.3 2.5 1.3-.5-2.8 2-2-2.8-.4L13.5 7.6l-1.2 2.6-2.8.4 2 2-.5 2.8Z"/></svg><span class="tl" id="deckLbl">RWS</span></button>
+      <div class="text-size-setting" role="group" aria-label="Taille du texte">
+        <span class="text-size-label" aria-hidden="true">Taille du texte</span>
+        <div class="text-size-choices">
+          <button type="button" data-text-choice="small" aria-pressed="false" onclick="setTextSize('small')">Petit</button>
+          <button type="button" data-text-choice="normal" aria-pressed="true" onclick="setTextSize('normal')">Normal</button>
+          <button type="button" data-text-choice="large" aria-pressed="false" onclick="setTextSize('large')">Grand</button>
+        </div>
+      </div>
       <button aria-label="Mode de tirage" id="drawModeBtn" onclick="TarotSpreads&&TarotSpreads.cycleDrawMode()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="8" width="7" height="12" rx="1.2" transform="rotate(-9 7 14)"/><rect x="9.5" y="5.5" width="7" height="12" rx="1.2" transform="rotate(3 13 11.5)"/><rect x="16" y="9" width="6" height="11" rx="1.2" transform="rotate(14 19 14.5)"/></svg><span class="tl" id="drawModeLbl">Rapide</span></button>
       <button id="kwFab" aria-pressed="false" aria-label="Mots-clés au survol" onclick="toggleKw()"><svg viewBox="0 0 24 24"><path d="M14.5 3a6.5 6.5 0 0 0-6.32 8.02L2.3 16.9a1 1 0 0 0-.3.7V21a1 1 0 0 0 1 1h2.5a1 1 0 0 0 1-1v-1.5H8a1 1 0 0 0 1-1v-1.5h1.5a1 1 0 0 0 .7-.3l.28-.28A6.5 6.5 0 1 0 14.5 3Zm2 6.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 0 0 3Z"/></svg>Mots-clés</button>
       <button id="autoFab" aria-pressed="false" aria-label="Diaporama automatique"><span class="ic-play">▶</span><span class="ic-pause">❚❚</span> Diaporama<span class="spd" id="autoSpd"></span></button>
@@ -582,6 +597,14 @@ function toggleKw(){const on=document.body.classList.toggle('kw');const b=docume
 if(localStorage.getItem('tarotKw')==='1')toggleKw();
 
 // panneau réglages (toutes les options d'affichage en un menu)
+function setTextSize(size){
+  if(!['small','normal','large'].includes(size))size='normal';
+  if(size==='normal')delete document.documentElement.dataset.textSize;
+  else document.documentElement.dataset.textSize=size;
+  document.querySelectorAll('[data-text-choice]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.textChoice===size)));
+  try{localStorage.setItem('tarotTextSize',size)}catch(e){}
+}
+try{setTextSize(localStorage.getItem('tarotTextSize')||'normal')}catch(e){setTextSize('normal')}
 function toggleSettings(e){e.stopPropagation();const p=document.getElementById('setPanel');const open=p.classList.toggle('open');document.getElementById('setFab').setAttribute('aria-expanded',String(open))}
 document.addEventListener('click',e=>{const p=document.getElementById('setPanel');if(p&&p.classList.contains('open')&&!e.target.closest('.settings-wrap'))p.classList.remove('open')});
 document.addEventListener('keydown',e=>{if(e.key==='Escape'){const p=document.getElementById('setPanel');if(p)p.classList.remove('open')}});

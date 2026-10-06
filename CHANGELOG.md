@@ -6,7 +6,7 @@ Toutes les notes de release du projet Web Tarot. Le format de version suit `vYYY
 
 ## TODO — Roadmap
 
-Statut : `2026.10.22`
+Statut : `2026.10.23`
 
 ### Phase 1 — Fondations ✅
 - [x] Interface V2 unifiée (carousel d'accueil + grille par famille + vue détail)
@@ -37,6 +37,14 @@ Statut : `2026.10.22`
 ---
 
 ## Releases
+
+## [2026.10.23] - 2026-10-06
+
+### Fixed
+- Icônes Android (classiques et adaptatives) et visuels Google Play générés exclusivement depuis l'icône officielle `icon.png` ; favicon du site aligné sur cette icône. La CI régénère les ressources avant le build.
+
+### Added
+- Réglage persistant de taille du texte Petit / Normal / Grand dans le panneau inférieur du site, partagé avec l'application mobile hors ligne.
 
 ## [2026.10.22] - 2026-10-06
 

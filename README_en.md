@@ -52,6 +52,7 @@ The Android app bundles **this exact interface**, including its themes, three de
 ## ⚙️ Settings
 
 The global palette and accent colors are defined through CSS variables in the `:root` block of `src/website/index.php`.
+In **Settings** at the bottom of the screen, choose **Petit**, **Normal** or **Grand** under “Taille du texte”. The choice is stored on the device, both on the website and in the offline app. The app and website icon comes from the root `icon.png`.
 
 ## 🧾 Shortcuts
 
@@ -85,7 +86,7 @@ browser blocks `fetch()` to SQLite and WebAssembly loading.
 
 ## 📋 See [CHANGELOG](CHANGELOG.md) for full history.
 
-Current local version: **2026.10.22**
+Current local version: **2026.10.23**
 
 ## 🔗 Links
 

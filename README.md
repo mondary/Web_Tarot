@@ -52,6 +52,7 @@ L’application Android embarque **cette même interface**, avec ses thèmes, se
 ## ⚙️ Réglages
 
 La palette globale et les couleurs d'accent sont définies via les variables CSS du bloc `:root` dans `src/website/index.php`.
+Dans **Réglages**, en bas de l'écran, choisissez **Petit**, **Normal** ou **Grand** sous « Taille du texte ». Ce choix est mémorisé sur l'appareil, sur le site comme dans l'app hors ligne. L'icône de l'application et du site provient de `icon.png` à la racine.
 
 ## 🧾 Commandes
 
@@ -85,7 +86,7 @@ le navigateur bloque alors `fetch()` vers SQLite et le chargement de WebAssembly
 
 ## 📋 Voir le [CHANGELOG](CHANGELOG.md) pour l'historique complet.
 
-Version locale courante : **2026.10.22**
+Version locale courante : **2026.10.23**
 
 ## 🔗 Liens
 

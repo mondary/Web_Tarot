@@ -22,6 +22,7 @@ $html = (string) ob_get_clean();
 
 // PHP routes become ordinary local assets. Keep the website source untouched.
 $html = replace_once($html, '/index.php?js=spreads&amp;v=', '/tarot-spreads.js?v=');
+$html = replace_once($html, 'href="/icon-192.png"', 'href="icon-192.png"');
 $html = replace_once($html, "B+'/index.php?img='+encodeURIComponent(c.id+'.jpg')+'&v='+V", "B+'/img/'+encodeURIComponent(c.id+'.jpg')+'?v='+V");
 $html = replace_once($html, "B+'/index.php?deckimg='+DECK+'/'+encodeURIComponent(id+'.jpg')+'&v='+V", "B+'/decks/'+DECK+'/'+encodeURIComponent(id+'.jpg')+'?v='+V");
 $html = replace_once($html, "B+'/index.php?assocs='+encodeURIComponent(id)", "B+'/assocs/'+encodeURIComponent(id)+'.json'");

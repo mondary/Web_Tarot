@@ -1,6 +1,7 @@
 # Tarot Divinatoire — Android
 
 Application Capacitor hors ligne. Son écran est le **vrai site web**, rendu depuis `src/website/index.php` ; aucune interface Android parallèle.
+L'icône Android (y compris adaptative) et le visuel Play sont générés depuis `icon.png` à la racine par `Android/scripts/store-assets.cjs`, exécuté avant chaque build CI. Les réglages du bas proposent trois tailles de texte, persistées localement.
 
 - `src/mobile/scripts/export.php` : rend la page du site et extrait toutes ses ressources du vault dans `src/mobile/www/`.
 - `src/website/tarot-spreads.js` : moteur des tirages embarqué tel quel depuis le site V9.

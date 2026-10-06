@@ -33,6 +33,26 @@ with sync_playwright() as p:
     page.goto(URL)
     expect(page.get_by_role('button', name='Tirages', exact=True)).to_be_visible()
     expect(page.locator('#detail')).to_have_count(1)
+    page.get_by_role('button', name="Réglages d'affichage").tap()
+    normal_size = page.evaluate('getComputedStyle(document.documentElement).fontSize')
+    page.get_by_role('button', name='Grand', exact=True).tap()
+    expect(page.get_by_role('button', name='Grand', exact=True)).to_have_attribute('aria-pressed', 'true')
+    assert float(page.evaluate('parseFloat(getComputedStyle(document.documentElement).fontSize)')) > float(normal_size[:-2])
+    assert page.evaluate("localStorage.getItem('tarotTextSize')") == 'large'
+    page.reload()
+    expect(page.locator('html')).to_have_attribute('data-text-size', 'large')
+    page.get_by_role('button', name="Réglages d'affichage").tap()
+    page.get_by_role('button', name='Petit', exact=True).tap()
+    expect(page.locator('html')).to_have_attribute('data-text-size', 'small')
+    page.get_by_role('button', name='Normal', exact=True).tap()
+    assert page.locator('html').get_attribute('data-text-size') is None
+    page.get_by_role('button', name='Grand', exact=True).tap()
+    page.set_viewport_size({'width': 320, 'height': 568})
+    panel = page.locator('#setPanel').bounding_box()
+    assert panel and panel['x'] >= 0 and panel['x'] + panel['width'] <= 320, panel
+    page.set_viewport_size({'width': 390, 'height': 844})
+    page.get_by_role('button', name='Normal', exact=True).tap()
+    page.keyboard.press('Escape')
     page.get_by_role('button', name='Tirages', exact=True).tap()
     expect(page.locator('#sp-menu')).to_be_visible()
     page.keyboard.press('Escape')
@@ -68,4 +88,4 @@ with sync_playwright() as p:
         assert sum(difference) / 3 < 3, f'Website/mobile visual drift: {difference}'
     ctx.close()
     browser.close()
-print('PASS mobile: production website design, spreads, associations, alternate decks, offline assets')
+print('PASS mobile: website design, persistent text sizes, spreads, associations, alternate decks, offline assets')
