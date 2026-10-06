@@ -39,6 +39,13 @@ with sync_playwright() as p:
     page.evaluate('openDetail(0)')
     expect(page.locator('#assocsCount')).not_to_have_text('Associations')
     assert page.locator('#heroImg').evaluate('(i) => i.naturalWidth') > 0
+    shared = page.evaluate('''async () => {
+        let url = '';
+        Object.defineProperty(navigator, 'share', { configurable: true, value: (data) => { url = data.url; return Promise.resolve(); } });
+        shareCurrent();
+        return url;
+    }''')
+    assert shared.startswith('https://mondary.design/pk/-Games-cards/tarot/?carte=a_00_Fou'), shared
     for deck in ('clm', 'marseille'):
         page.evaluate('(deck) => { DECK = deck; applyDeck() }', deck)
         expect(page.locator('#heroImg')).to_have_js_property('complete', True)

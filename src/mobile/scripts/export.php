@@ -26,6 +26,7 @@ $html = replace_once($html, "B+'/index.php?img='+encodeURIComponent(c.id+'.jpg')
 $html = replace_once($html, "B+'/index.php?deckimg='+DECK+'/'+encodeURIComponent(id+'.jpg')+'&v='+V", "B+'/decks/'+DECK+'/'+encodeURIComponent(id+'.jpg')+'?v='+V");
 $html = replace_once($html, "B+'/index.php?assocs='+encodeURIComponent(id)", "B+'/assocs/'+encodeURIComponent(id)+'.json'");
 $html = replace_once($html, "B+'/index.php?svg='+f.key", "B+'/svg/'+f.key+'.svg'");
+$html = replace_once($html, 'const u=location.href;', "const u='https://mondary.design/pk/-Games-cards/tarot/'+location.search;");
 $html = replace_once($html, "if('serviceWorker' in navigator)navigator.serviceWorker.register('sw.js', {updateViaCache:'none'});", '');
 $html = str_replace('/index.php?font=', '/fonts/', $html, $fontCount);
 if ($fontCount !== 4) throw new RuntimeException("Expected four font URLs, found $fontCount");

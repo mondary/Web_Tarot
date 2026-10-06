@@ -6,7 +6,7 @@ Toutes les notes de release du projet Web Tarot. Le format de version suit `vYYY
 
 ## TODO — Roadmap
 
-Statut : `2026.10.21`
+Statut : `2026.10.22`
 
 ### Phase 1 — Fondations ✅
 - [x] Interface V2 unifiée (carousel d'accueil + grille par famille + vue détail)
@@ -37,6 +37,11 @@ Statut : `2026.10.21`
 ---
 
 ## Releases
+
+## [2026.10.22] - 2026-10-06
+
+### Fixed
+- Le partage d'une fiche depuis le bundle mobile ouvre désormais une URL publique de la lame, et non une URL `localhost` inaccessible au destinataire. Régression automatisée ajoutée.
 
 ## [2026.10.21] - 2026-10-06
 
