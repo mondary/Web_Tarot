@@ -8,6 +8,10 @@ Application Capacitor hors ligne. Son écran est le **vrai site web**, rendu dep
 - `store/` : textes, visuels, confidentialité et procédure de publication.
 - `release/` : APK installable, AAB et empreintes SHA-256 récupérés de CI (ignorés par Git).
 
+Installer de préférence `release/android/tarot-divinatoire-release.apk`, signé
+avec la clé durable. Un ancien APK debug doit d'abord être désinstallé car sa
+signature est différente (les préférences locales seront effacées).
+
 Depuis la racine : `pnpm install --frozen-lockfile`, puis `pnpm android:sync`
 (exporte le web depuis le vault puis synchronise Capacitor).
 La compilation s’effectue dans GitHub Actions, workflow **Android release** (Java 21, SDK 36). Aucun SDK à installer sur le Mac.

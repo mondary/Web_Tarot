@@ -6,7 +6,7 @@ Toutes les notes de release du projet Web Tarot. Le format de version suit `vYYY
 
 ## TODO — Roadmap
 
-Statut : `2026.10.20`
+Statut : `2026.10.21`
 
 ### Phase 1 — Fondations ✅
 - [x] Interface V2 unifiée (carousel d'accueil + grille par famille + vue détail)
@@ -37,6 +37,11 @@ Statut : `2026.10.20`
 ---
 
 ## Releases
+
+## [2026.10.21] - 2026-10-06
+
+### Added
+- APK Android de production (`release/android/tarot-divinatoire-release.apk`) signé avec la clé d'upload durable, pour les installations et mises à jour locales ; l'APK debug reste réservé au développement.
 
 ## [2026.10.20] - 2026-10-06
 

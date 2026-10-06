@@ -46,10 +46,11 @@ jobs:
           ANDROID_VERSION_CODE: ${{ github.run_number }}
         run: |
           chmod +x gradlew
-          ./gradlew assembleDebug bundleRelease lintDebug
+          ./gradlew assembleDebug assembleRelease bundleRelease lintDebug
           mkdir -p release
           cp app/build/outputs/apk/debug/app-debug.apk release/tarot-divinatoire-debug.apk
           if [ -n "$ANDROID_KEYSTORE_PATH" ]; then
+            cp app/build/outputs/apk/release/app-release.apk release/tarot-divinatoire-release.apk
             cp app/build/outputs/bundle/release/app-release.aab release/tarot-divinatoire-signed.aab
           else
             cp app/build/outputs/bundle/release/app-release.aab release/tarot-divinatoire-unsigned.aab

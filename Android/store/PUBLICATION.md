@@ -3,6 +3,7 @@
 ## Livrables
 
 - `../release/tarot-divinatoire-debug.apk` : installation et essais, signature de développement uniquement.
+- `../release/tarot-divinatoire-release.apk` : installation avec la clé durable du projet, à préférer pour les essais et les mises à jour locales.
 - `../release/tarot-divinatoire-unsigned.aab` : compilation de production vérifiable ; NON publiable tant qu’elle n’est pas signée.
 - Avec les secrets configurés, la CI produit `tarot-divinatoire-signed.aab`.
 - `fr-FR/` : nom, descriptions et nouveautés prêts à copier.

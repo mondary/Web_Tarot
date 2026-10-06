@@ -18,7 +18,8 @@ natives, en CI. Le dossier local peut être supprimé et recréé avec `pnpm ins
 
 ## Packages livrés
 
-- `release/android/tarot-divinatoire-debug.apk` : APK installable pour essais.
+- `release/android/tarot-divinatoire-release.apk` : APK installable signé avec la clé durable du projet.
+- `release/android/tarot-divinatoire-debug.apk` : APK de développement, signature temporaire ; ne pas utiliser pour les mises à jour.
 - `release/android/tarot-divinatoire-signed.aab` : bundle Android signé pour Google Play.
 - `release/ios/TarotDivinatoire-unsigned.app` : build iOS non signé, utile pour vérifier la
   compilation. Un IPA App Store nécessite le compte Apple Developer, un identifiant d’app
@@ -26,6 +27,10 @@ natives, en CI. Le dossier local peut être supprimé et recréé avec `pnpm ins
 
 Les artefacts sont générés par les workflows GitHub Actions **Android release**
 et **Mobile release packages**, puis téléchargeables depuis leurs runs.
+Si un ancien APK debug est déjà installé, le désinstaller avant la première
+installation de l'APK release : les signatures diffèrent. Cette désinstallation
+efface les préférences locales. Ensuite, les versions release signées avec la
+même clé pourront se mettre à jour par-dessus.
 
 ## Publication Store
 
